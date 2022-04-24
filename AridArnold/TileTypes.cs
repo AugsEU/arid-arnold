@@ -8,6 +8,14 @@ using Microsoft.Xna.Framework.Content;
 
 namespace AridArnold
 {
+    enum TileType
+    {
+        Square,
+        Air,
+        Wall,
+        Platform
+    }
+
     abstract class Tile
     {
         protected Texture2D mTexture = null;
@@ -16,27 +24,17 @@ namespace AridArnold
         {
         }
 
-        public abstract void LoadContent(ContentManager content);
-
+        public abstract TileType GetTileType(); 
         public abstract CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime);
-
-        public Texture2D GetTexture(DrawInfo info)
-        {
-            if (mTexture == null)
-            {
-                mTexture = new Texture2D(info.graphics.GraphicsDevice, 1, 1);
-
-                Color[] data = new Color[1];
-                data[0] = Color.White;
-                mTexture.SetData(data);
-            }
-
-            return mTexture;
-        }
     }
 
     abstract class SquareTile : Tile
     {
+        public override TileType GetTileType()
+        {
+            return TileType.Square;
+        }
+
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
             Rect2f rect2F = new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
@@ -46,8 +44,9 @@ namespace AridArnold
 
     class AirTile : Tile
     {
-        public AirTile()
+        public override TileType GetTileType()
         {
+            return TileType.Air;
         }
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
@@ -59,22 +58,35 @@ namespace AridArnold
 
             return results;
         }
-
-        public override void LoadContent(ContentManager content)
-        {
-            mTexture = content.Load<Texture2D>("Tiles/air");
-        }
     }
 
     class WallTile : SquareTile
     {
-        public WallTile()
+        public override TileType GetTileType()
         {
+            return TileType.Wall;
+        }
+    }
+
+    class PlatformTile : Tile
+    {
+        public override TileType GetTileType()
+        {
+            return TileType.Platform;
         }
 
-        public override void LoadContent(ContentManager content)
+        public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
-            mTexture = content.Load<Texture2D>("Tiles/wall");
+            Rect2f rect2F = new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+            CollisionResults results = Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), rect2F);
+
+            //Not a ground, ignore it.
+            if(Collision2D.GetCollisionType(results.normal) != CollisionType.Ground)
+            {
+                results.t = null;
+            }
+
+            return results;
         }
     }
 }

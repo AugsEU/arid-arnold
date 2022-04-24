@@ -51,6 +51,8 @@ namespace AridArnold
             {
                 entity.LoadContent(Content);
             }
+
+            TileManager.I.LoadLevel(Content, "Levels/testlevel");
         }
 
         protected override void Update(GameTime gameTime)
