@@ -12,8 +12,6 @@ namespace AridArnold
     {
         protected Texture2D mTexture = null;
 
-        public bool debugRed = false;
-
         public Tile()
         {
         }

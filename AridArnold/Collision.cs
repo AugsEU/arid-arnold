@@ -55,10 +55,30 @@ namespace AridArnold
         public Vector2 normal;
     }
 
-
+    enum CollisionType
+    {
+        Ground,
+        Wall,
+        Ceiling
+    }
 
     static class Collision2D
     {
+
+        public static CollisionType GetCollisionType(Vector2 normal)
+        {
+            if (normal.Y == -1.0f && normal.X == 0.0f)
+            {
+                return CollisionType.Ground;
+            }
+
+            if (normal.Y == 1.0f && normal.X == 0.0f)
+            {
+                return CollisionType.Ceiling;
+            }
+
+            return CollisionType.Wall;
+        }
         
         public static CollisionResults MovingRectVsRect(Rect2f movingRect, Vector2 displacement, Rect2f targetRect)
         {
@@ -81,11 +101,6 @@ namespace AridArnold
             if(ray.direction == Vector2.Zero)
             {
                 return results;
-            }
-
-            if(ray.direction.X < 0.0f)
-            {
-                //Debug.WriteLine("Negative X");
             }
 
             //Handle zero case
@@ -194,7 +209,7 @@ namespace AridArnold
             float nearest_t = Math.Max(x_near, y_near);
             float farthest_t = Math.Min(x_far, y_far);
 
-            if(farthest_t < 0.0f || nearest_t > 1.0f)
+            if(farthest_t < 0.0f || nearest_t < 0.0f || nearest_t > 1.0f)
             {
                 //No collision
                 return results;

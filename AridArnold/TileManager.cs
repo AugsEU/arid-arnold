@@ -75,14 +75,7 @@ namespace AridArnold
 
                     Rectangle drawRectangle = new Rectangle(offset.X + x * (int)mTileSize, offset.Y + y * (int)mTileSize, (int)mTileSize, (int)mTileSize);
 
-                    Color col = Color.White;
-
-                    if (mTileMap[x, y].debugRed)
-                        col = Color.Red;
-
-                    info.spriteBatch.Draw(texture, drawRectangle, col);
-
-                    mTileMap[x, y].debugRed = false;
+                    info.spriteBatch.Draw(texture, drawRectangle, Color.White);
                 }
             }
         }
@@ -103,8 +96,6 @@ namespace AridArnold
         {
             List<Tuple<Point, CollisionResults>> results = new List<Tuple<Point, CollisionResults>>();
 
-            Debug.WriteLine("==Resolving==");
-
             //TO DO: OPTIMISE THIS FOR THE LOVE OF GOD
             for (int x = 0; x < mTileMap.GetLength(0); x++)
             {
@@ -117,11 +108,9 @@ namespace AridArnold
                     if(collisionResults.t.HasValue)
                     {
                         results.Add(new Tuple<Point, CollisionResults>(new Point(x,y), collisionResults));
-                        //mTileMap[x, y].debugRed = mTileMap[x, y].debugRed || entity.velocity.X < 0.0f;
                     }
                 }
             }
-
             results.Sort(new TileCollisionResultsSorter());
 
             for (int i = 0; i < results.Count; i++)
@@ -135,9 +124,9 @@ namespace AridArnold
 
                 if (collisionResults.t.HasValue)
                 {
-                    Debug.WriteLine("   Pushing by normal " + collisionResults.normal.X + ", " + collisionResults.normal.Y + "(" + collisionResults.t.Value + ")");
                     entity.velocity += collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
-                    tile.debugRed = true;
+
+                    entity.ReactToCollision(Collision2D.GetCollisionType(collisionResults.normal));
                 }
             }
         }
