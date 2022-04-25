@@ -19,7 +19,7 @@ namespace AridArnold
     }
 
 
-    internal class Util
+    internal static class Util
     {
         public static void Swap<T>(ref T lhs, ref T rhs)
         {
@@ -29,6 +29,16 @@ namespace AridArnold
             rhs = temp;
         }
 
+        public static float Cross(Vector2 a, Vector2 b)
+        {
+            return a.X * b.Y - a.Y * b.X;
+        }
+
+        public static Vector2 Perpendicular(Vector2 a)
+        {
+            return new Vector2(a.Y, -a.X);
+        }
+
         public static void Log(String msg)
         {
 #if DEBUG_LOG
@@ -36,4 +46,6 @@ namespace AridArnold
 #endif
         }
     }
+
+
 }

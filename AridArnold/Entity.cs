@@ -66,7 +66,7 @@ namespace AridArnold
     abstract class PlatformingEntity : MovingEntity
     {
         const float DEFAULT_WALK_SPEED = 9.0f;
-        const float DEFAULT_GRAVITY = 5.0f;
+        const float DEFAULT_GRAVITY = 4.25f;
         const float DEFAULT_JUMP_SPEED = 25.0f;
 
         protected bool mOnGround;
@@ -92,7 +92,7 @@ namespace AridArnold
             float mod = 1.0f;
             if(mVelocity.Y < 0.0f)
             {
-                mod = 1.7f;
+                mod = 2.0f;
             }
 
             float delta = mGravity * GetDeltaT(gameTime) * mod;
@@ -143,7 +143,7 @@ namespace AridArnold
                     mOnGround = true;
                     break;
                 case CollisionType.Ceiling:
-                    mDirection = EntityDirection.None;
+                    mVelocity.Y = mGravity;
                     break;
             }
         }

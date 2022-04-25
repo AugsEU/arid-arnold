@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using AridArnold.Screens;
 
 namespace AridArnold
 {
@@ -11,10 +11,6 @@ namespace AridArnold
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private Arnold mArnold;
-
-        private List<Entity> mRegisteredEntities;
-
         public Main()
         {
             //XNA
@@ -22,11 +18,6 @@ namespace AridArnold
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             //XNA
-
-            mArnold = new Arnold();
-
-            mRegisteredEntities = new List<Entity>();
-            RegisterDefaultEntities();
         }
 
         protected override void Initialize()
@@ -45,14 +36,10 @@ namespace AridArnold
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            TileManager.I.LoadContent(Content);
+            ScreenManager.I.LoadScreen(new GameScreen(), Content);
 
-            foreach (Entity entity in mRegisteredEntities)
-            {
-                entity.LoadContent(Content);
-            }
 
-            TileManager.I.LoadLevel(Content, "Levels/testlevel");
+            ScreenManager.I.ActivateScreen(ScreenType.Game);
         }
 
         protected override void Update(GameTime gameTime)
@@ -60,9 +47,12 @@ namespace AridArnold
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            foreach (Entity entity in mRegisteredEntities)
+            //Update Active screen
+            Screen screen = ScreenManager.I.GetActiveScreen();
+
+            if (screen != null)
             {
-                entity.Update(gameTime);
+                screen.Update(gameTime);
             }
 
             base.Update(gameTime);
@@ -79,27 +69,18 @@ namespace AridArnold
             frameInfo.graphics = _graphics;
             frameInfo.spriteBatch = _spriteBatch;
             frameInfo.gameTime = gameTime;
-
-            foreach (Entity entity in mRegisteredEntities)
-            {
-                entity.Draw(frameInfo);
-            }
-
-            TileManager.I.DrawCentredX(frameInfo);
-
+            
             base.Draw(gameTime);
 
+            //Draw active screen.
+            Screen screen = ScreenManager.I.GetActiveScreen();
+
+            if(screen != null)
+            {
+                screen.Draw(frameInfo);
+            }
+
             _spriteBatch.End();
-        }
-
-        private void RegisterEntity(Entity entity)
-        {
-            mRegisteredEntities.Add(entity);
-        }
-
-        private void RegisterDefaultEntities()
-        {
-            RegisterEntity(mArnold);
         }
     }
 }

@@ -77,8 +77,7 @@ namespace AridArnold
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
-            Rect2f rect2F = new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
-            CollisionResults results = Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), rect2F);
+            CollisionResults results = Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength);
 
             //Not a ground, ignore it.
             if(Collision2D.GetCollisionType(results.normal) != CollisionType.Ground)

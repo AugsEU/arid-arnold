@@ -62,7 +62,6 @@ namespace AridArnold
 
     static class Collision2D
     {
-
         public static CollisionType GetCollisionType(Vector2 normal)
         {
             if (normal.Y == -1.0f && normal.X == 0.0f)
@@ -87,6 +86,51 @@ namespace AridArnold
             targetRect.max += sizeVec;
 
             return RayVsBox(new Ray2f(movingRect.Centre, displacement), targetRect);
+        }
+
+        public static CollisionResults MovingRectVsPlatform(Rect2f movingRect, Vector2 displacement, Vector2 platLeft, float length)
+        {
+            //Expand target rect
+            Vector2 sizeVec = new Vector2(movingRect.Width * 0.5f, movingRect.Height * 0.5f);
+
+            platLeft = platLeft - sizeVec;
+            length += sizeVec.X * 2.0f;
+
+            Ray2f platformRay = new Ray2f(platLeft, new Vector2(length, 0.0f));
+            Ray2f movingRay = new Ray2f(movingRect.Centre, displacement);
+
+            return RayVsRay(movingRay, platformRay);
+        }
+
+        public static CollisionResults RayVsRay(Ray2f checkRay, Ray2f targetRay)
+        {
+            CollisionResults results;
+            results.t = null;
+            results.normal = Vector2.Zero;
+
+            float directionFactor = Util.Cross(checkRay.direction, targetRay.direction);
+
+            if(directionFactor != 0.0f)
+            { 
+                float t = Util.Cross(targetRay.origin - checkRay.origin, targetRay.direction) / directionFactor;
+                float u = Util.Cross(targetRay.origin - checkRay.origin, checkRay.direction) / directionFactor;
+
+                if(1.0f >= t && t >= 0.0f && 1.0f >= u && u >= 0.0f)
+                {
+                    //A hit
+                    results.t = t;
+                    results.normal = Util.Perpendicular(targetRay.direction);
+
+                    if(directionFactor > 0.0f)
+                    {
+                        results.normal = -results.normal;
+                    }
+
+                    results.normal.Normalize();
+                }
+            }
+
+            return results;
         }
 
         //Checks if a 2d ray intersects a 2d box
