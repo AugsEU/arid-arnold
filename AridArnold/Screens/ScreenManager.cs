@@ -21,10 +21,10 @@ namespace AridArnold.Screens
         List<Screen> mScreens = new List<Screen>();
         int mActiveScreen = -1;
 
-        public void LoadScreen(Screen screen, ContentManager content)
+        public void LoadScreen(Screen screen)
         {
             mScreens.Add(screen);
-            screen.LoadContent(content);
+            screen.LoadContent();
         }         
 
         public Screen GetScreen(ScreenType type)
@@ -67,12 +67,19 @@ namespace AridArnold.Screens
 
     abstract class Screen
     {
+        protected ContentManager mContentManager;
+
+        public Screen(ContentManager content)
+        {
+            mContentManager = content;
+        }
+
         public abstract ScreenType GetScreenType();
 
         public abstract void Draw(DrawInfo info);
 
         public abstract void Update(GameTime gameTime);
 
-        public abstract void LoadContent(ContentManager content);
+        public abstract void LoadContent();
     }
 }

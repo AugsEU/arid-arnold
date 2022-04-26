@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using AridArnold.Levels;
 
 namespace AridArnold.Screens
 {
@@ -14,29 +15,41 @@ namespace AridArnold.Screens
 
         private List<Entity> mRegisteredEntities;
 
+        private List<Level> mLevels;
+        private int mCurrentLevel;
+
         public override ScreenType GetScreenType()
         {
             return ScreenType.Game;
         }
 
-        public GameScreen()
+        public GameScreen(ContentManager content) : base(content)
         {
             mArnold = new Arnold();
 
             mRegisteredEntities = new List<Entity>();
             RegisterDefaultEntities();
+
+            mLevels = new List<Level>();
+            mLevels.Add(new CollectWaterLevel("testlevel", 5));
+
+            LoadLevel(0);
         }
 
-        public override void LoadContent(ContentManager content)
+        private void LoadLevel(int levelIndex)
         {
-            TileManager.I.LoadContent(content);
+            mCurrentLevel = levelIndex;
+            mLevels[levelIndex].Begin(mContentManager);
+        }
+
+        public override void LoadContent()
+        {
+            TileManager.I.LoadContent(mContentManager);
 
             foreach (Entity entity in mRegisteredEntities)
             {
-                entity.LoadContent(content);
+                entity.LoadContent(mContentManager);
             }
-
-            TileManager.I.LoadLevel(content, "Levels/testlevel");
         }
 
         public override void Draw(DrawInfo info)
