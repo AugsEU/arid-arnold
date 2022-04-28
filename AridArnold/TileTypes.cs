@@ -13,7 +13,8 @@ namespace AridArnold
         Square,
         Air,
         Wall,
-        Platform
+        Platform,
+        Water
     }
 
     abstract class Tile
@@ -26,6 +27,17 @@ namespace AridArnold
 
         public abstract TileType GetTileType(); 
         public abstract CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime);
+
+        public virtual void Update(GameTime gameTime) { }
+
+        public virtual void OnTouch(MovingEntity entity) { }
+
+        public virtual void OnPlayerIntersect(Arnold player) { }
+
+        public Rect2f GetBounds(Vector2 topLeft, float sideLength)
+        {
+            return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+        }
     }
 
     abstract class SquareTile : Tile
@@ -37,8 +49,7 @@ namespace AridArnold
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
-            Rect2f rect2F = new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
-            return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), rect2F);
+            return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), GetBounds(topLeft, sideLength));
         }
     }
 
@@ -86,6 +97,14 @@ namespace AridArnold
             }
 
             return results;
+        }
+    }
+
+    class WaterTile : AirTile
+    {
+        public override TileType GetTileType()
+        {
+            return TileType.Water;
         }
     }
 }

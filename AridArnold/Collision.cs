@@ -42,6 +42,24 @@ namespace AridArnold
             get { return (min + max)/2.0f; }
         }
 
+        public static Rect2f operator +(Rect2f a, Rect2f b)
+        {
+            float minX = Math.Min(a.min.X, b.min.X);
+            float minY = Math.Min(a.min.Y, b.min.Y);
+            float maxX = Math.Max(a.max.X, b.max.X);
+            float maxY = Math.Max(a.max.Y, b.max.Y);
+
+            return new Rect2f(new Vector2(minX, minY), new Vector2(maxX, maxY));
+        }
+
+        public static Rect2f operator +(Rect2f rect, Vector2 vec)
+        {
+            rect.min += vec;
+            rect.max += vec;
+
+            return rect;
+        }
+
         public Vector2 min;
         public Vector2 max;
     }
@@ -115,7 +133,7 @@ namespace AridArnold
                 float t = Util.Cross(targetRay.origin - checkRay.origin, targetRay.direction) / directionFactor;
                 float u = Util.Cross(targetRay.origin - checkRay.origin, checkRay.direction) / directionFactor;
 
-                if(1.0f >= t && t >= 0.0f && 1.0f >= u && u >= 0.0f)
+                if(1.00f >= t && t >= 0.0f && 1.00f >= u && u >= 0.0f)
                 {
                     //A hit
                     results.t = t;
@@ -289,6 +307,18 @@ namespace AridArnold
             }
 
             return results;
+        }
+
+        public static bool BoxVsBox(Rect2f rect1, Rect2f rect2)
+        {
+            return rect1.min.X <= rect2.max.X && rect2.min.X <= rect1.max.X &&
+                rect1.min.Y <= rect2.max.Y && rect2.min.Y <= rect1.max.Y;
+        }
+
+        public static bool BoxVsPoint(Rect2f rect, Vector2 point)
+        {
+            return rect.min.X <= point.X && point.X <= rect.max.X &&
+                rect.min.Y <= point.Y && point.Y <= rect.max.Y;
         }
 
     }

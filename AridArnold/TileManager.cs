@@ -38,8 +38,27 @@ namespace AridArnold
             LoadTileType(content, TileType.Square, "blank");
             LoadTileType(content, TileType.Wall, "wall");
             LoadTileType(content, TileType.Platform, "platform");
+            LoadTileType(content, TileType.Water, "bottle");
 
             mDefaultTileTexture = content.Load<Texture2D>("Tiles/blank");
+        }
+
+        private Tile GetTileFromColour(Color col)
+        {
+            if (col == Color.Black)
+            {
+                return new WallTile();
+            }
+            else if (col == Color.DarkGray)
+            {
+                return new PlatformTile();
+            }
+            else if (col == Color.Blue)
+            {
+                return new WaterTile();
+            }
+
+            return new AirTile();
         }
 
         private void LoadTileType(ContentManager content, TileType type, string textureName)
@@ -72,20 +91,37 @@ namespace AridArnold
                 {
                     int index = x + y * tileTexture.Width;
 
-                    if (colors1D[index] == Color.Black)
-                    {
-                        mTileMap[x, y] = new WallTile();
-                    }
-                    else if (colors1D[index] == Color.Red)
-                    {
-                        mTileMap[x, y] = new PlatformTile();
-                    }
-                    else
-                    {
-                        mTileMap[x, y] = new AirTile();
-                    }
+                    mTileMap[x,y] = GetTileFromColour(colors1D[index]);
                 }
             }
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            foreach(Tile tile in mTileMap)
+            {
+                tile.Update(gameTime);
+            }
+        }
+
+        public void ArnoldTouchTiles(Arnold arnold)
+        {
+            foreach (Tile tile in mTileMap)
+            {
+
+               
+            }
+        }
+        
+        public Rectangle PossibleIntersectTiles(Rect2f box)
+        {
+            box.min = (box.min - mTileMapPos)/ mTileSize;
+            box.max = (box.max - mTileMapPos) / mTileSize;
+
+            Point rMin = new Point(Math.Max((int)box.min.X - 1, 0), Math.Max((int)box.min.Y - 1, 0));
+            Point rMax = new Point(Math.Min((int)box.max.X + 2, mTileMap.GetLength(0) - 1), Math.Min((int)box.max.Y + 2, mTileMap.GetLength(1) - 1));
+
+            return new Rectangle(rMin, rMax - rMin);
         }
 
         private void Draw(DrawInfo info)
@@ -122,18 +158,24 @@ namespace AridArnold
 
             Util.Log("==Resolving==");
 
-            //TO DO: OPTIMISE THIS FOR THE LOVE OF GOD
-            for (int x = 0; x < mTileMap.GetLength(0); x++)
+            Rect2f playerBounds = entity.ColliderBounds();
+            Rect2f futurePlayerBounds = entity.ColliderBounds() + entity.VelocityToDisplacement(gameTime);
+
+            Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
+
+            Util.Log("Tile bounds: " + tileBounds.X + "," + tileBounds.Y + " DIM: " + tileBounds.Width + "," + tileBounds.Height);
+
+            for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
             {
-                for (int y = 0; y < mTileMap.GetLength(1); y++)
+                for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
                 {
                     Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
                     CollisionResults collisionResults = mTileMap[x, y].Collide(entity, tileTopLeft, mTileSize, gameTime);
 
-                    if(collisionResults.t.HasValue)
+                    if (collisionResults.t.HasValue)
                     {
-                        results.Add(new Tuple<Point, CollisionResults>(new Point(x,y), collisionResults));
+                        results.Add(new Tuple<Point, CollisionResults>(new Point(x, y), collisionResults));
                     }
                 }
             }
@@ -156,6 +198,12 @@ namespace AridArnold
 
                     entity.ReactToCollision(Collision2D.GetCollisionType(collisionResults.normal));
                 }
+            }
+
+            //Other effects from touching it.
+            foreach (Tuple<Point, CollisionResults> res in results)
+            {
+                mTileMap[res.Item1.X, res.Item1.Y].OnTouch(entity);
             }
         }
     }
