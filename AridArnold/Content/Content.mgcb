@@ -97,6 +97,18 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/arnold-stand.png
 
+#begin Levels/level1-1.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Levels/level1-1.bmp
+
 #begin Levels/testlevel.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
