@@ -17,10 +17,10 @@ namespace AridArnold
         Texture2D mJumpUpTex;
         Texture2D mJumpDownTex;
 
-        public Arnold()
+        public Arnold(Vector2 pos) : base(pos)
         {
-            mPosition = new Vector2(400, 190);
-            mVelocity = new Vector2(0, 0);
+            mDirection = EntityDirection.None;
+            mPrevDirection = EntityDirection.Right;
         }
 
         public override void LoadContent(ContentManager content)
@@ -48,7 +48,14 @@ namespace AridArnold
             {
                 if (state.IsKeyDown(Keys.Space))
                 {
-                    Jump();
+                    if(state.IsKeyDown(Keys.Down))
+                    {
+                        FallThroughPlatforms();
+                    }
+                    else
+                    {
+                        Jump();
+                    }
                 }
 
                 if(state.IsKeyDown(Keys.Left))
@@ -66,6 +73,8 @@ namespace AridArnold
                     mDirection = EntityDirection.None;
                 }
             }
+
+            TileManager.I.ArnoldTouchTiles(this);
 
             base.Update(gameTime);
         }

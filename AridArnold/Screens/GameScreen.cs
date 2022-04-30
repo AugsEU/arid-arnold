@@ -11,10 +11,6 @@ namespace AridArnold.Screens
 {
     internal class GameScreen : Screen
     {
-        private Arnold mArnold;
-
-        private List<Entity> mRegisteredEntities;
-
         private List<Level> mLevels;
         private int mCurrentLevel;
 
@@ -23,15 +19,10 @@ namespace AridArnold.Screens
             return ScreenType.Game;
         }
 
-        public GameScreen(ContentManager content) : base(content)
+        public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
-            mArnold = new Arnold();
-
-            mRegisteredEntities = new List<Entity>();
-            RegisterDefaultEntities();
-
             mLevels = new List<Level>();
-            mLevels.Add(new CollectWaterLevel("testlevel", 5));
+            mLevels.Add(new CollectWaterLevel("level1-1", 5));
 
             LoadLevel(0);
         }
@@ -40,45 +31,23 @@ namespace AridArnold.Screens
         {
             mCurrentLevel = levelIndex;
             mLevels[levelIndex].Begin(mContentManager);
+
+            TileManager.I.CentreX(mGraphics);
         }
 
         public override void LoadContent()
         {
-            TileManager.I.LoadContent(mContentManager);
-
-            foreach (Entity entity in mRegisteredEntities)
-            {
-                entity.LoadContent(mContentManager);
-            }
         }
 
         public override void Draw(DrawInfo info)
         {
-            foreach (Entity entity in mRegisteredEntities)
-            {
-                entity.Draw(info);
-            }
-
-            TileManager.I.DrawCentredX(info);
-
+            EntityManager.I.Draw(info);
+            TileManager.I.Draw(info);
         }
 
         public override void Update(GameTime gameTime)
         {
-            foreach (Entity entity in mRegisteredEntities)
-            {
-                entity.Update(gameTime);
-            }
-        }
-
-        private void RegisterEntity(Entity entity)
-        {
-            mRegisteredEntities.Add(entity);
-        }
-
-        private void RegisterDefaultEntities()
-        {
-            RegisterEntity(mArnold);
+            EntityManager.I.Update(gameTime);
         }
     }
 }

@@ -18,29 +18,21 @@ namespace AridArnold
 
     internal class TileManager : Singleton<TileManager>
     {
+        //============================================
+        //  Members
+        //--------------------------------------------
         Vector2 mTileMapPos;
         float mTileSize;
-        Texture2D mDefaultTileTexture;
 
         Tile[,] mTileMap = new Tile[32, 32];
 
-        Dictionary<TileType, Texture2D> mTileTextures = new Dictionary<TileType, Texture2D>();
-
+        //============================================
+        //  Initialisation
+        //--------------------------------------------
         public void Init(Vector2 position, float tileSize)
         {
             mTileMapPos = position;
             mTileSize = tileSize;
-        }
-
-        public void LoadContent(ContentManager content)
-        {
-            LoadTileType(content, TileType.Air, "air");
-            LoadTileType(content, TileType.Square, "blank");
-            LoadTileType(content, TileType.Wall, "wall");
-            LoadTileType(content, TileType.Platform, "platform");
-            LoadTileType(content, TileType.Water, "bottle");
-
-            mDefaultTileTexture = content.Load<Texture2D>("Tiles/blank");
         }
 
         private Tile GetTileFromColour(Color col)
@@ -61,26 +53,19 @@ namespace AridArnold
             return new AirTile();
         }
 
-        private void LoadTileType(ContentManager content, TileType type, string textureName)
+        private void AddEntityFromColour(Color col, Vector2 pos, ContentManager content)
         {
-            mTileTextures.Add(type, content.Load<Texture2D>("Tiles/" + textureName));
-        }
-
-        private Texture2D GetTileTexture(Tile tile)
-        {
-            Texture2D tex;
-            if(mTileTextures.TryGetValue(tile.GetTileType(), out tex))
+            if (col == Color.Crimson)
             {
-                return tex;
+                EntityManager.I.RegisterEntity(new Arnold(pos), content);
             }
-
-            return mDefaultTileTexture;
         }
-
 
         public void LoadLevel(ContentManager content, string name)
         {
             Texture2D tileTexture = content.Load<Texture2D>(name);
+
+            mTileMap = new Tile[tileTexture.Width, tileTexture.Height];
 
             Color[] colors1D = new Color[tileTexture.Width * tileTexture.Height];
             tileTexture.GetData<Color>(colors1D);
@@ -90,41 +75,84 @@ namespace AridArnold
                 for (int y = 0; y < tileTexture.Height; y++)
                 {
                     int index = x + y * tileTexture.Width;
+                    Color col = colors1D[index];
 
-                    mTileMap[x,y] = GetTileFromColour(colors1D[index]);
+                    mTileMap[x, y] = GetTileFromColour(colors1D[index]);
+                    mTileMap[x, y].LoadContent(content);
+
+                    Vector2 entityPos = new Vector2(x * mTileSize, y * mTileSize) + mTileMapPos;
+                    AddEntityFromColour(col, entityPos, content);
+                }
+            }
+
+            CalculateTileAdjacency();
+        }
+
+        private void CalculateTileAdjacency()
+        {
+            for (int x = 0; x < mTileMap.GetLength(0); x++)
+            {
+                for (int y = 0; y < mTileMap.GetLength(1); y++)
+                {
+                    if(x + 1 < mTileMap.GetLength(0))
+                    {
+                        Type type1 = mTileMap[x, y].GetType();
+                        Type type2 = mTileMap[x+1, y].GetType();
+
+                        if (mTileMap[x, y].GetType() == mTileMap[x+1,y].GetType())
+                        {
+                            mTileMap[x, y].SetRightAdjacent(mTileMap[x + 1, y]);
+                        }
+                    }
+
+                    if (y + 1 < mTileMap.GetLength(1))
+                    {
+                        if (mTileMap[x, y].GetType() == mTileMap[x, y + 1].GetType())
+                        {
+                            mTileMap[x, y].SetBottomAdjacent(mTileMap[x, y + 1]);
+                        }
+                    }
                 }
             }
         }
 
+        //============================================
+        //  Updates
+        //--------------------------------------------
         public void Update(GameTime gameTime)
         {
             foreach(Tile tile in mTileMap)
             {
-                tile.Update(gameTime);
+                if (tile.Enabled)
+                {
+                    tile.Update(gameTime);
+                }
             }
         }
 
         public void ArnoldTouchTiles(Arnold arnold)
         {
-            foreach (Tile tile in mTileMap)
-            {
+            Rectangle tileBounds = PossibleIntersectTiles(arnold.ColliderBounds());
 
-               
+            for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
+            {
+                for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
+                {
+                    Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
+
+                    if (mTileMap[x, y].Enabled && Collision2D.BoxVsBox(mTileMap[x,y].GetBounds(tileTopLeft, mTileSize), arnold.ColliderBounds()))
+                    {
+                        mTileMap[x, y].OnPlayerIntersect(arnold);
+                    }
+                }
             }
         }
-        
-        public Rectangle PossibleIntersectTiles(Rect2f box)
-        {
-            box.min = (box.min - mTileMapPos)/ mTileSize;
-            box.max = (box.max - mTileMapPos) / mTileSize;
+       
 
-            Point rMin = new Point(Math.Max((int)box.min.X - 1, 0), Math.Max((int)box.min.Y - 1, 0));
-            Point rMax = new Point(Math.Min((int)box.max.X + 2, mTileMap.GetLength(0) - 1), Math.Min((int)box.max.Y + 2, mTileMap.GetLength(1) - 1));
-
-            return new Rectangle(rMin, rMax - rMin);
-        }
-
-        private void Draw(DrawInfo info)
+        //============================================
+        //  Draw
+        //--------------------------------------------
+        public void Draw(DrawInfo info)
         {
             Point offset = new Point((int)mTileMapPos.X, (int)mTileMapPos.Y);
 
@@ -132,26 +160,153 @@ namespace AridArnold
             {
                 for(int y= 0; y<mTileMap.GetLength(1); y++)
                 {
-                    Texture2D texture = GetTileTexture(mTileMap[x,y]);
+                    if (mTileMap[x, y].Enabled)
+                    {
+                        Rectangle drawRectangle = new Rectangle(offset.X + x * (int)mTileSize, offset.Y + y * (int)mTileSize, (int)mTileSize, (int)mTileSize);
 
-                    Rectangle drawRectangle = new Rectangle(offset.X + x * (int)mTileSize, offset.Y + y * (int)mTileSize, (int)mTileSize, (int)mTileSize);
-
-                    info.spriteBatch.Draw(texture, drawRectangle, Color.White);
+                        DrawTile(info, drawRectangle, mTileMap[x, y]);
+                    }
                 }
             }
         }
 
-        public void DrawCentredX(DrawInfo info)
+        public void DrawTile(DrawInfo info, Rectangle drawDestination, Tile tile)
         {
-            float ourWidth = mTileSize * mTileMap.GetLength(0);
-            float xOffset = (info.graphics.PreferredBackBufferWidth - ourWidth)/2.0f;
+            Texture2D tileTexture = tile.GetTexture();
 
-            mTileMapPos.X = xOffset;
+            int tileHeight = tileTexture.Height;
 
-            Draw(info);
+            //Tile index that we will pick from the texture.
+            int tileIndex = 0;
+
+            //Rotation amount so we can fit tiles together. Should be multiples of 90.
+            float rotation = 0.0f;
+            Vector2 offset = Vector2.Zero;
+
+            SpriteEffects effect = SpriteEffects.None;
+
+            if(tileHeight % drawDestination.Height != 0)
+            {
+                throw new Exception("Tile size doesn't match tile map, stretching may be happening. Must be an integer multiple.");
+            }
+
+            //Square texture, draw as is.
+            if (tileTexture.Width == tileTexture.Height)
+            {
+                tileIndex = 0;
+                rotation = 0.0f;
+            }
+            //Otherwise, look for texture with different edge types
+            else if (tileTexture.Width == 6 * tileTexture.Height)
+            {
+                const float PI2 = MathHelper.PiOver2;
+                const float PI = MathHelper.Pi;
+                const float PI32 = MathHelper.Pi * 1.5f;
+
+                switch (tile.GetAdjacency())
+                {
+                    case AdjacencyType.None:
+                        tileIndex = 0;
+                        rotation = 0.0f;
+                        break;
+                    case AdjacencyType.Top:
+                        tileIndex = 1;
+                        rotation = PI32;
+                        break;
+                    case AdjacencyType.Bottom:
+                        tileIndex = 1;
+                        rotation = PI2;
+                        break;
+                    case AdjacencyType.Left:
+                        tileIndex = 1;
+                        rotation = PI;
+                        break;
+                    case AdjacencyType.Right:
+                        tileIndex = 1;
+                        rotation = 0.0f;
+                        break;
+                    case AdjacencyType.TopBottom:
+                        tileIndex = 2;
+                        rotation = PI2;
+                        break;
+                    case AdjacencyType.TopLeft:
+                        tileIndex = 5;
+                        rotation = 0.0f;
+                        break;
+                    case AdjacencyType.TopRight:
+                        tileIndex = 5;
+                        rotation = PI2;
+                        break;
+                    case AdjacencyType.TopBottomLeft:
+                        tileIndex = 3;
+                        rotation = PI32;
+                        break;
+                    case AdjacencyType.TopBottomRight:
+                        tileIndex = 3;
+                        rotation = PI2;
+                        break;
+                    case AdjacencyType.TopLeftRight:
+                        tileIndex = 3;
+                        rotation = 0.0f;
+                        break;
+                    case AdjacencyType.BottomRight:
+                        tileIndex = 5;
+                        rotation = PI;
+                        break;
+                    case AdjacencyType.BottomLeft:
+                        tileIndex = 5;
+                        rotation = PI32;
+                        break;
+                    case AdjacencyType.BottomLeftRight:
+                        tileIndex = 3;
+                        rotation = PI;
+                        break;
+                    case AdjacencyType.LeftRight:
+                        tileIndex = 2;
+                        rotation = 0.0f;
+                        break;
+                    case AdjacencyType.All:
+                        tileIndex = 4;
+                        rotation = 0.0f;
+                        break;
+                }
+            }
+            //What is this?
+            else
+            {
+                throw new Exception("Unhandled texture dimensions");
+            }
+
+            Rectangle sourceRectangle = new Rectangle(tileIndex * tileHeight, 0, tileHeight, tileHeight);
+
+            info.spriteBatch.Draw(tileTexture, drawDestination, sourceRectangle, Color.White, rotation, SetupRotationOffset(rotation, tileHeight), effect, 1.0f);
         }
 
-        //Collisions
+        private Vector2 SetupRotationOffset(float rotation, float tileHeight)
+        {
+            const float SQRT2_2 = 0.70710678118f;
+
+            float angle = (-rotation + MathHelper.PiOver4);
+            float tileDiagHalf = tileHeight * SQRT2_2;
+
+            Vector2 oldCentre = new Vector2(tileHeight / 2.0f, tileHeight / 2.0f);
+            Vector2 newCentre = new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * tileDiagHalf;
+
+            //Util.DLog("Returned " + (oldCentre - newCentre).X + " , " + (oldCentre - newCentre).Y);
+            return oldCentre - newCentre;
+        }
+
+        public void CentreX(GraphicsDeviceManager graphics)
+        {
+            float ourWidth = mTileSize * mTileMap.GetLength(0);
+            float xOffset = (graphics.PreferredBackBufferWidth - ourWidth)/2.0f;
+
+            mTileMapPos.X = xOffset;
+        }
+
+        //============================================
+        //  Collisions
+        //--------------------------------------------
         public void ResolveCollisions(MovingEntity entity, GameTime gameTime)
         {
             List<Tuple<Point, CollisionResults>> results = new List<Tuple<Point, CollisionResults>>();
@@ -169,13 +324,16 @@ namespace AridArnold
             {
                 for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
                 {
-                    Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
-
-                    CollisionResults collisionResults = mTileMap[x, y].Collide(entity, tileTopLeft, mTileSize, gameTime);
-
-                    if (collisionResults.t.HasValue)
+                    if (mTileMap[x, y].Enabled)
                     {
-                        results.Add(new Tuple<Point, CollisionResults>(new Point(x, y), collisionResults));
+                        Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
+
+                        CollisionResults collisionResults = mTileMap[x, y].Collide(entity, tileTopLeft, mTileSize, gameTime);
+
+                        if (collisionResults.t.HasValue)
+                        {
+                            results.Add(new Tuple<Point, CollisionResults>(new Point(x, y), collisionResults));
+                        }
                     }
                 }
             }
@@ -194,7 +352,7 @@ namespace AridArnold
                 {
                     Util.Log("   Pushing by normal " + collisionResults.normal.X + ", " + collisionResults.normal.Y + "(" + collisionResults.t.Value + ")");
 
-                    entity.velocity += collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.01f;
+                    entity.velocity += collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
 
                     entity.ReactToCollision(Collision2D.GetCollisionType(collisionResults.normal));
                 }
@@ -205,6 +363,17 @@ namespace AridArnold
             {
                 mTileMap[res.Item1.X, res.Item1.Y].OnTouch(entity);
             }
+        }
+
+        public Rectangle PossibleIntersectTiles(Rect2f box)
+        {
+            box.min = (box.min - mTileMapPos) / mTileSize;
+            box.max = (box.max - mTileMapPos) / mTileSize;
+
+            Point rMin = new Point(Math.Max((int)box.min.X - 1, 0), Math.Max((int)box.min.Y - 1, 0));
+            Point rMax = new Point(Math.Min((int)box.max.X + 2, mTileMap.GetLength(0) - 1), Math.Min((int)box.max.Y + 2, mTileMap.GetLength(1) - 1));
+
+            return new Rectangle(rMin, rMax - rMin);
         }
     }
 }

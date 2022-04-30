@@ -21,6 +21,11 @@ namespace AridArnold
         protected Vector2 mPosition;
         protected Texture2D mTexture;
 
+        public Entity(Vector2 pos)
+        {
+            mPosition = pos;
+        }
+
         public abstract void Update(GameTime gameTime);
 
         public abstract void Draw(DrawInfo info);
@@ -36,6 +41,16 @@ namespace AridArnold
     abstract class MovingEntity : Entity
     {
         protected Vector2 mVelocity;
+        protected bool mFallthrough;
+
+        public MovingEntity(Vector2 pos) : base(pos)
+        {
+        }
+
+        public bool CollideWithPlatforms()
+        {
+            return !mFallthrough;
+        }
 
         public Vector2 velocity
         {
@@ -58,6 +73,8 @@ namespace AridArnold
         public override void Update(GameTime gameTime)
         {
             ApplyVelocity(gameTime);
+
+            mFallthrough = false;
         }
 
         public abstract void ReactToCollision(CollisionType collisionType);
@@ -66,7 +83,7 @@ namespace AridArnold
     abstract class PlatformingEntity : MovingEntity
     {
         const float DEFAULT_WALK_SPEED = 9.0f;
-        const float DEFAULT_GRAVITY = 4.25f;
+        const float DEFAULT_GRAVITY = 4.35f;
         const float DEFAULT_JUMP_SPEED = 25.0f;
 
         protected bool mOnGround;
@@ -76,7 +93,7 @@ namespace AridArnold
         private float mJumpSpeed = DEFAULT_JUMP_SPEED;
         private float mGravity = DEFAULT_GRAVITY;
 
-        public PlatformingEntity()
+        public PlatformingEntity(Vector2 pos) : base(pos)
         {
             mVelocity = Vector2.Zero;
             mDirection = EntityDirection.None;
@@ -85,6 +102,11 @@ namespace AridArnold
         protected void Jump()
         {
             mVelocity.Y = -mJumpSpeed;
+        }
+
+        protected void FallThroughPlatforms()
+        {
+            mFallthrough = true;
         }
 
         private void ApplyGravity(GameTime gameTime)
@@ -99,7 +121,7 @@ namespace AridArnold
 
             if(mVelocity.Y < 0.0f && delta > -mVelocity.Y)
             {
-                delta = delta / 4.0f;
+                delta = delta / 3.5f;
             }
 
             mVelocity.Y += delta;

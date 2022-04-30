@@ -68,10 +68,11 @@ namespace AridArnold.Screens
     abstract class Screen
     {
         protected ContentManager mContentManager;
-
-        public Screen(ContentManager content)
+        protected GraphicsDeviceManager mGraphics;
+        public Screen(ContentManager content, GraphicsDeviceManager graphics)
         {
             mContentManager = content;
+            mGraphics = graphics;
         }
 
         public abstract ScreenType GetScreenType();

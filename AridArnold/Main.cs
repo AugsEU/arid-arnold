@@ -36,7 +36,7 @@ namespace AridArnold
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenManager.I.LoadScreen(new GameScreen(Content));
+            ScreenManager.I.LoadScreen(new GameScreen(Content, _graphics));
             ScreenManager.I.ActivateScreen(ScreenType.Game);
         }
 

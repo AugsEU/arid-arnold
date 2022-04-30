@@ -8,25 +8,48 @@ using Microsoft.Xna.Framework.Content;
 
 namespace AridArnold
 {
-    enum TileType
+    enum AdjacencyType
     {
-        Square,
-        Air,
-        Wall,
-        Platform,
-        Water
+        None =              0b0000,
+        Top =               0b0001,
+        Bottom =            0b0010,
+        Left =              0b0100,
+        Right =             0b1000,
+        TopBottom =         Top | Bottom,
+        TopLeft =           Top | Left,
+        TopRight =          Top | Right,
+        TopBottomLeft =     Top | Bottom | Left,
+        TopBottomRight =    Top | Bottom | Right,
+        TopLeftRight =      Top | Left | Right,
+        BottomRight =       Bottom | Right,
+        BottomLeft =        Bottom | Left,
+        BottomLeftRight =   Bottom | Left | Right,
+        LeftRight =         Left | Right,
+        All =               Top | Bottom | Left | Right,
     }
 
     abstract class Tile
     {
         protected Texture2D mTexture = null;
+        protected bool mEnabled = true;
+        protected AdjacencyType mAdjacency = AdjacencyType.None;
+
+        public bool Enabled
+        {
+            get { return mEnabled; }
+            set { mEnabled = value; }
+        }
 
         public Tile()
         {
         }
 
-        public abstract TileType GetTileType(); 
         public abstract CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime);
+
+        public virtual void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/blank");
+        }
 
         public virtual void Update(GameTime gameTime) { }
 
@@ -38,13 +61,41 @@ namespace AridArnold
         {
             return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
         }
+
+        public Texture2D GetTexture()
+        {
+            return mTexture;
+        }
+
+        public AdjacencyType GetAdjacency()
+        {
+            return mAdjacency;
+        }
+
+        public void SetRightAdjacent(Tile neighbour)
+        {
+            //My neighbour is to the right of me
+            mAdjacency |= AdjacencyType.Right;
+
+            //I'm to the left of my neighbour
+            neighbour.mAdjacency |= AdjacencyType.Left;
+        }
+
+        public void SetBottomAdjacent(Tile neighbour)
+        {
+            //My neighbour is under me
+            mAdjacency |= AdjacencyType.Bottom;
+
+            //I'm above my neighbour
+            neighbour.mAdjacency |= AdjacencyType.Top;
+        }
     }
 
     abstract class SquareTile : Tile
     {
-        public override TileType GetTileType()
+        public override void LoadContent(ContentManager content)
         {
-            return TileType.Square;
+            mTexture = content.Load<Texture2D>("Tiles/blank");
         }
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
@@ -55,9 +106,9 @@ namespace AridArnold
 
     class AirTile : Tile
     {
-        public override TileType GetTileType()
+        public override void LoadContent(ContentManager content)
         {
-            return TileType.Air;
+            mTexture = content.Load<Texture2D>("Tiles/air");
         }
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
@@ -73,21 +124,30 @@ namespace AridArnold
 
     class WallTile : SquareTile
     {
-        public override TileType GetTileType()
+        public override void LoadContent(ContentManager content)
         {
-            return TileType.Wall;
+            mTexture = content.Load<Texture2D>("Tiles/wall");
         }
     }
 
     class PlatformTile : Tile
     {
-        public override TileType GetTileType()
+        public override void LoadContent(ContentManager content)
         {
-            return TileType.Platform;
+            mTexture = content.Load<Texture2D>("Tiles/platform");
         }
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
+            if(!entity.CollideWithPlatforms())
+            {
+                CollisionResults nilResults;
+                nilResults.t = null;
+                nilResults.normal = Vector2.Zero;
+
+                return nilResults;
+            }
+
             CollisionResults results = Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength);
 
             //Not a ground, ignore it.
@@ -100,11 +160,27 @@ namespace AridArnold
         }
     }
 
-    class WaterTile : AirTile
+    abstract class CollectibleTile : AirTile
     {
-        public override TileType GetTileType()
+        protected abstract CollectibleType GetCollectibleType();
+
+        public override void OnPlayerIntersect(Arnold player) 
         {
-            return TileType.Water;
+            CollectibleManager.I.CollectItem(GetCollectibleType());
+            mEnabled = false;
+        }
+    }
+
+    class WaterTile : CollectibleTile
+    {
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/bottle");
+        }
+
+        protected override CollectibleType GetCollectibleType()
+        {
+            return CollectibleType.WaterBottle;
         }
     }
 }

@@ -39,11 +39,16 @@ namespace AridArnold
             return new Vector2(a.Y, -a.X);
         }
 
-        public static void Log(String msg)
+        public static void Log(string msg)
         {
 #if DEBUG_LOG
             Debug.WriteLine(msg);
 #endif
+        }
+
+        public static void DLog(string msg)
+        {
+            Debug.WriteLine(msg);
         }
     }
 
