@@ -63,6 +63,8 @@ namespace AridArnold
 
         public void LoadLevel(ContentManager content, string name)
         {
+            EntityManager.I.ClearEntities();
+
             Texture2D tileTexture = content.Load<Texture2D>(name);
 
             mTileMap = new Tile[tileTexture.Width, tileTexture.Height];
@@ -318,7 +320,8 @@ namespace AridArnold
 
             Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
 
-            Util.Log("Tile bounds: " + tileBounds.X + "," + tileBounds.Y + " DIM: " + tileBounds.Width + "," + tileBounds.Height);
+            //Util.Log("Tile bounds: " + tileBounds.X + "," + tileBounds.Y + " DIM: " + tileBounds.Width + "," + tileBounds.Height);
+            Util.Log(" Starting vel " + entity.velocity.X + ", " + entity.velocity.Y);
 
             for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
             {
@@ -350,13 +353,17 @@ namespace AridArnold
 
                 if (collisionResults.t.HasValue)
                 {
-                    Util.Log("   Pushing by normal " + collisionResults.normal.X + ", " + collisionResults.normal.Y + "(" + collisionResults.t.Value + ")");
+                    Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
 
-                    entity.velocity += collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
+                    Util.Log("   Pushing by normal " + pushVec.X + ", " + pushVec.Y + "(" + collisionResults.t.Value + ")");
+
+                    entity.velocity += pushVec;
 
                     entity.ReactToCollision(Collision2D.GetCollisionType(collisionResults.normal));
                 }
             }
+
+            Util.Log(" Final vel " + entity.velocity.X + ", " + entity.velocity.Y);
 
             //Other effects from touching it.
             foreach (Tuple<Point, CollisionResults> res in results)

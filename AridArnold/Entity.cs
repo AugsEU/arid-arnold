@@ -75,6 +75,8 @@ namespace AridArnold
             ApplyVelocity(gameTime);
 
             mFallthrough = false;
+
+            Util.Log(" Final Y " + mPosition.Y);
         }
 
         public abstract void ReactToCollision(CollisionType collisionType);
