@@ -145,6 +145,16 @@ namespace AridArnold
                     }
 
                     results.normal.Normalize();
+
+                    //Normalisation can fail so add this to fix it.
+                    if(results.normal.X == 0.0f)
+                    {
+                        results.normal.Y = MathF.Sign(results.normal.Y);
+                    }
+                    else if (results.normal.Y == 0.0f)
+                    {
+                        results.normal.X = MathF.Sign(results.normal.X);
+                    }
                 }
             }
 

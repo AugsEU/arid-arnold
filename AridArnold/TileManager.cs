@@ -294,7 +294,6 @@ namespace AridArnold
             Vector2 oldCentre = new Vector2(tileHeight / 2.0f, tileHeight / 2.0f);
             Vector2 newCentre = new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * tileDiagHalf;
 
-            //Util.DLog("Returned " + (oldCentre - newCentre).X + " , " + (oldCentre - newCentre).Y);
             return oldCentre - newCentre;
         }
 
@@ -319,8 +318,7 @@ namespace AridArnold
             Rect2f futurePlayerBounds = entity.ColliderBounds() + entity.VelocityToDisplacement(gameTime);
 
             Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
-
-            //Util.Log("Tile bounds: " + tileBounds.X + "," + tileBounds.Y + " DIM: " + tileBounds.Width + "," + tileBounds.Height);
+           
             Util.Log(" Starting vel " + entity.velocity.X + ", " + entity.velocity.Y);
 
             for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
@@ -341,6 +339,8 @@ namespace AridArnold
                 }
             }
             results.Sort(new TileCollisionResultsSorter());
+
+            Util.Log(" Resolving all " + results.Count + " collisions");
 
             for (int i = 0; i < results.Count; i++)
             {
