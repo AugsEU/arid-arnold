@@ -41,6 +41,10 @@ namespace AridArnold
             {
                 return new WallTile();
             }
+            else if (col == Color.DarkBlue)
+            {
+                return new SteelTile();
+            }
             else if (col == Color.DarkGray)
             {
                 return new PlatformTile();

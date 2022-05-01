@@ -130,6 +130,14 @@ namespace AridArnold
         }
     }
 
+    class SteelTile : SquareTile
+    {
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/steel");
+        }
+    }
+
     class PlatformTile : Tile
     {
         public override void LoadContent(ContentManager content)
