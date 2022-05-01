@@ -52,11 +52,6 @@ namespace AridArnold.Screens
 
             LevelStatus status = mLevels[mCurrentLevel].Update(gameTime);
 
-            if(EntityManager.I.HasRequestedEnd())
-            {
-                status = LevelStatus.Loss;
-            }
-
             if(status == LevelStatus.Win)
             {
                 LoadLevel(mCurrentLevel + 1);
