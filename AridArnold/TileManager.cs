@@ -180,7 +180,7 @@ namespace AridArnold
             int tileHeight = tileTexture.Height;
 
             //Tile index that we will pick from the texture.
-            int tileIndex = 0;
+            Point tileIndex = new Point(0, 0);
 
             //Rotation amount so we can fit tiles together. Should be multiples of 90.
             float rotation = 0.0f;
@@ -188,91 +188,20 @@ namespace AridArnold
 
             SpriteEffects effect = SpriteEffects.None;
 
-            if(tileHeight % drawDestination.Height != 0)
-            {
-                throw new Exception("Tile size doesn't match tile map, stretching may be happening. Must be an integer multiple.");
-            }
-
             //Square texture, draw as is.
             if (tileTexture.Width == tileTexture.Height)
             {
-                tileIndex = 0;
-                rotation = 0.0f;
+                //Leave as defaults.
             }
             //Otherwise, look for texture with different edge types
-            else if (tileTexture.Width == 6 * tileTexture.Height)
+            else if (tileTexture.Width == 6 * tileTexture.Height) //Needs rotating
             {
-                const float PI2 = MathHelper.PiOver2;
-                const float PI = MathHelper.Pi;
-                const float PI32 = MathHelper.Pi * 1.5f;
-
-                switch (tile.GetAdjacency())
-                {
-                    case AdjacencyType.None:
-                        tileIndex = 0;
-                        rotation = 0.0f;
-                        break;
-                    case AdjacencyType.Top:
-                        tileIndex = 1;
-                        rotation = PI32;
-                        break;
-                    case AdjacencyType.Bottom:
-                        tileIndex = 1;
-                        rotation = PI2;
-                        break;
-                    case AdjacencyType.Left:
-                        tileIndex = 1;
-                        rotation = PI;
-                        break;
-                    case AdjacencyType.Right:
-                        tileIndex = 1;
-                        rotation = 0.0f;
-                        break;
-                    case AdjacencyType.TopBottom:
-                        tileIndex = 2;
-                        rotation = PI2;
-                        break;
-                    case AdjacencyType.TopLeft:
-                        tileIndex = 5;
-                        rotation = 0.0f;
-                        break;
-                    case AdjacencyType.TopRight:
-                        tileIndex = 5;
-                        rotation = PI2;
-                        break;
-                    case AdjacencyType.TopBottomLeft:
-                        tileIndex = 3;
-                        rotation = PI32;
-                        break;
-                    case AdjacencyType.TopBottomRight:
-                        tileIndex = 3;
-                        rotation = PI2;
-                        break;
-                    case AdjacencyType.TopLeftRight:
-                        tileIndex = 3;
-                        rotation = 0.0f;
-                        break;
-                    case AdjacencyType.BottomRight:
-                        tileIndex = 5;
-                        rotation = PI;
-                        break;
-                    case AdjacencyType.BottomLeft:
-                        tileIndex = 5;
-                        rotation = PI32;
-                        break;
-                    case AdjacencyType.BottomLeftRight:
-                        tileIndex = 3;
-                        rotation = PI;
-                        break;
-                    case AdjacencyType.LeftRight:
-                        tileIndex = 2;
-                        rotation = 0.0f;
-                        break;
-                    case AdjacencyType.All:
-                        tileIndex = 4;
-                        rotation = 0.0f;
-                        break;
-                }
+                SetupTileWithRotation(tile.GetAdjacency(), ref rotation, ref tileIndex);
+            }
+            else if(tileTexture.Width == 4 * tileTexture.Height)
+            {
+                tileHeight = tileHeight / 2;
+                SetupTileNoRotation(tile.GetAdjacency(), ref tileIndex);
             }
             //What is this?
             else
@@ -280,9 +209,161 @@ namespace AridArnold
                 throw new Exception("Unhandled texture dimensions");
             }
 
-            Rectangle sourceRectangle = new Rectangle(tileIndex * tileHeight, 0, tileHeight, tileHeight);
+
+            if (tileHeight % drawDestination.Height != 0)
+            {
+                throw new Exception("Tile size doesn't match tile map, stretching may be happening. Must be an integer multiple.");
+            }
+
+            Rectangle sourceRectangle = new Rectangle(tileIndex.X * tileHeight, tileIndex.Y * tileHeight, tileHeight, tileHeight);
 
             info.spriteBatch.Draw(tileTexture, drawDestination, sourceRectangle, Color.White, rotation, SetupRotationOffset(rotation, tileHeight), effect, 1.0f);
+        }
+
+        private void SetupTileNoRotation(AdjacencyType adjacency, ref Point tileIndex)
+        {
+            switch (adjacency)
+            {
+                case AdjacencyType.None:
+                    tileIndex.X = 7;
+                    tileIndex.Y = 1;
+                    break;
+                case AdjacencyType.Top:
+                    tileIndex.X = 0;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.Bottom:
+                    tileIndex.X = 2;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.Left:
+                    tileIndex.X = 3;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.Right:
+                    tileIndex.X = 1;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.TopBottom:
+                    tileIndex.X = 5;
+                    tileIndex.Y = 1;
+                    break;
+                case AdjacencyType.TopLeft:
+                    tileIndex.X = 0;
+                    tileIndex.Y = 1;
+                    break;
+                case AdjacencyType.TopRight:
+                    tileIndex.X = 1;
+                    tileIndex.Y = 1;
+                    break;
+                case AdjacencyType.TopBottomLeft:
+                    tileIndex.X = 5;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.TopBottomRight:
+                    tileIndex.X = 7;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.TopLeftRight:
+                    tileIndex.X = 6;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.BottomRight:
+                    tileIndex.X = 2;
+                    tileIndex.Y = 1;
+                    break;
+                case AdjacencyType.BottomLeft:
+                    tileIndex.X = 3;
+                    tileIndex.Y = 1;
+                    break;
+                case AdjacencyType.BottomLeftRight:
+                    tileIndex.X = 4;
+                    tileIndex.Y = 0;
+                    break;
+                case AdjacencyType.LeftRight:
+                    tileIndex.X = 4;
+                    tileIndex.Y = 1;
+                    break;
+                case AdjacencyType.All:
+                    tileIndex.X = 6;
+                    tileIndex.Y = 1;
+                    break;
+            }
+        }
+
+        private void SetupTileWithRotation(AdjacencyType adjacency, ref float rotation, ref Point tileIndex)
+        {
+            const float PI2 = MathHelper.PiOver2;
+            const float PI = MathHelper.Pi;
+            const float PI32 = MathHelper.Pi * 1.5f;
+
+            switch (adjacency)
+            {
+                case AdjacencyType.None:
+                    tileIndex.X = 0;
+                    rotation = 0.0f;
+                    break;
+                case AdjacencyType.Top:
+                    tileIndex.X = 1;
+                    rotation = PI32;
+                    break;
+                case AdjacencyType.Bottom:
+                    tileIndex.X = 1;
+                    rotation = PI2;
+                    break;
+                case AdjacencyType.Left:
+                    tileIndex.X = 1;
+                    rotation = PI;
+                    break;
+                case AdjacencyType.Right:
+                    tileIndex.X = 1;
+                    rotation = 0.0f;
+                    break;
+                case AdjacencyType.TopBottom:
+                    tileIndex.X = 2;
+                    rotation = PI2;
+                    break;
+                case AdjacencyType.TopLeft:
+                    tileIndex.X = 5;
+                    rotation = 0.0f;
+                    break;
+                case AdjacencyType.TopRight:
+                    tileIndex.X = 5;
+                    rotation = PI2;
+                    break;
+                case AdjacencyType.TopBottomLeft:
+                    tileIndex.X = 3;
+                    rotation = PI32;
+                    break;
+                case AdjacencyType.TopBottomRight:
+                    tileIndex.X = 3;
+                    rotation = PI2;
+                    break;
+                case AdjacencyType.TopLeftRight:
+                    tileIndex.X = 3;
+                    rotation = 0.0f;
+                    break;
+                case AdjacencyType.BottomRight:
+                    tileIndex.X = 5;
+                    rotation = PI;
+                    break;
+                case AdjacencyType.BottomLeft:
+                    tileIndex.X = 5;
+                    rotation = PI32;
+                    break;
+                case AdjacencyType.BottomLeftRight:
+                    tileIndex.X = 3;
+                    rotation = PI;
+                    break;
+                case AdjacencyType.LeftRight:
+                    tileIndex.X = 2;
+                    rotation = 0.0f;
+                    break;
+                case AdjacencyType.All:
+                    tileIndex.X = 4;
+                    rotation = 0.0f;
+                    break;
+            }
         }
 
         private Vector2 SetupRotationOffset(float rotation, float tileHeight)

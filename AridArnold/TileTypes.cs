@@ -126,7 +126,7 @@ namespace AridArnold
     {
         public override void LoadContent(ContentManager content)
         {
-            mTexture = content.Load<Texture2D>("Tiles/wall");
+            mTexture = content.Load<Texture2D>("Tiles/wall4");
         }
     }
 
