@@ -76,6 +76,11 @@ namespace AridArnold
 
             TileManager.I.ArnoldTouchTiles(this);
 
+            if(mPosition.Y > 1000.0f)
+            {
+                Kill();
+            }
+
             base.Update(gameTime);
         }
 
@@ -117,5 +122,13 @@ namespace AridArnold
             info.spriteBatch.Draw(texture, new Rectangle((int)mPosition.X, (int)mPosition.Y+1, mTexture.Width, mTexture.Height), null, Color.White, 0.0f, Vector2.Zero, effect, 0.0f);
         }
 
+
+        public override void Kill()
+        {
+            EArgs eArgs;
+            eArgs.sender = this;
+
+            EventManager.I.SendEvent(EventType.PlayerDead, eArgs);
+        }
     }
 }

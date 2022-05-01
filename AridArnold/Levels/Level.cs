@@ -19,14 +19,23 @@ namespace AridArnold.Levels
     {
         string mName;
 
+        protected LevelStatus mLevelStatus;
+
         public Level(string levelName)
         {
-            this.mName = levelName;
+            mName = levelName;
+            EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
         }
 
         public void Begin(ContentManager content)
         {
+            mLevelStatus = LevelStatus.Continue;
             TileManager.I.LoadLevel(content, "Levels/" + mName);
+        }
+
+        public virtual void HandlePlayerDeath(EArgs args)
+        {
+            mLevelStatus = LevelStatus.Loss;
         }
 
         public abstract LevelStatus Update(GameTime gameTime);
@@ -44,10 +53,10 @@ namespace AridArnold.Levels
         {
             if(CollectibleManager.I.GetCollected(CollectibleType.WaterBottle) >= mNumWaterNeeded)
             {
-                return LevelStatus.Win;
+                mLevelStatus = LevelStatus.Win;
             }
 
-            return LevelStatus.Continue;
+            return mLevelStatus;
         }
     }
 }

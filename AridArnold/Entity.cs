@@ -36,6 +36,11 @@ namespace AridArnold
         {
             return (float)gameTime.ElapsedGameTime.TotalSeconds * 10.0f;
         }
+
+        public virtual void Kill()
+        {
+
+        }
     }
 
     abstract class MovingEntity : Entity
