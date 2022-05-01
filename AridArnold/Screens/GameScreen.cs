@@ -23,6 +23,7 @@ namespace AridArnold.Screens
         {
             mLevels = new List<Level>();
             mLevels.Add(new CollectWaterLevel("level1-1", 5));
+            mLevels.Add(new CollectWaterLevel("level1-2", 5));
 
             LoadLevel(0);
         }
@@ -48,6 +49,22 @@ namespace AridArnold.Screens
         public override void Update(GameTime gameTime)
         {
             EntityManager.I.Update(gameTime);
+
+            LevelStatus status = mLevels[mCurrentLevel].Update(gameTime);
+
+            if(EntityManager.I.HasRequestedEnd())
+            {
+                status = LevelStatus.Loss;
+            }
+
+            if(status == LevelStatus.Win)
+            {
+                LoadLevel(mCurrentLevel + 1);
+            }
+            else if(status == LevelStatus.Loss)
+            {
+                LoadLevel(mCurrentLevel);
+            }
         }
     }
 }
