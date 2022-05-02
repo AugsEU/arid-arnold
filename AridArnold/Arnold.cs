@@ -21,6 +21,8 @@ namespace AridArnold
         {
             mDirection = EntityDirection.None;
             mPrevDirection = EntityDirection.Right;
+
+            EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
         }
 
         public override void LoadContent(ContentManager content)
@@ -129,6 +131,13 @@ namespace AridArnold
             eArgs.sender = this;
 
             EventManager.I.SendEvent(EventType.PlayerDead, eArgs);
+
+            base.Kill();
+        }
+
+        public virtual void SignalPlayerDead(EArgs args)
+        {
+            Kill();
         }
     }
 }

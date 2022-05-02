@@ -53,6 +53,10 @@ namespace AridArnold
             {
                 return new WaterTile();
             }
+            else if(Util.CompareHEX(col, 0x404040))
+            {
+                return new SpikesTile();
+            }
 
             return new AirTile();
         }

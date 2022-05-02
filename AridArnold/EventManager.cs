@@ -15,6 +15,7 @@ namespace AridArnold
     enum EventType
     {
         PlayerDead,
+        KillPlayer
     }
 
     internal class EventManager : Singleton<EventManager>

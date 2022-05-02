@@ -188,6 +188,9 @@ namespace AridArnold
         }
     }
 
+    //============================================
+    //  Collectible types
+    //--------------------------------------------
     class WaterTile : CollectibleTile
     {
         public override void LoadContent(ContentManager content)
@@ -199,5 +202,25 @@ namespace AridArnold
         {
             return CollectibleType.WaterBottle;
         }
+    }
+
+    //============================================
+    //  Special types
+    //--------------------------------------------
+    class SpikesTile : AirTile
+    {
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/spikes");
+        }
+
+        public override void OnPlayerIntersect(Arnold player)
+        {
+            EArgs eArgs;
+            eArgs.sender = this;
+
+            EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+        }
+
     }
 }

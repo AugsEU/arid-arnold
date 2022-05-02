@@ -39,6 +39,13 @@ namespace AridArnold
             return new Vector2(a.Y, -a.X);
         }
 
+        public static bool CompareHEX(Color color, ulong hexCode)
+        {
+            ulong colourHex = (ulong)(color.B) + ((ulong)(color.G) << 8) + +((ulong)(color.G) << 16);
+
+            return colourHex == hexCode;
+        }
+
         public static void Log(string msg)
         {
 #if DEBUG_LOG
