@@ -28,6 +28,9 @@ namespace AridArnold
         All =               Top | Bottom | Left | Right,
     }
 
+    //============================================
+    //  Base class
+    //--------------------------------------------
     abstract class Tile
     {
         protected Texture2D mTexture = null;
@@ -91,6 +94,9 @@ namespace AridArnold
         }
     }
 
+    //============================================
+    //  Basic types
+    //--------------------------------------------
     abstract class SquareTile : Tile
     {
         public override void LoadContent(ContentManager content)
@@ -127,14 +133,6 @@ namespace AridArnold
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/wall4");
-        }
-    }
-
-    class SteelTile : SquareTile
-    {
-        public override void LoadContent(ContentManager content)
-        {
-            mTexture = content.Load<Texture2D>("Tiles/steel");
         }
     }
 
@@ -176,6 +174,17 @@ namespace AridArnold
         {
             CollectibleManager.I.CollectItem(GetCollectibleType());
             mEnabled = false;
+        }
+    }
+
+    //============================================
+    //  Square types
+    //--------------------------------------------
+    class SteelTile : SquareTile
+    {
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/steel");
         }
     }
 

@@ -58,7 +58,7 @@ namespace AridArnold
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(new Color(0,20,10));
 
             _spriteBatch.Begin();
 
