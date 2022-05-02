@@ -69,6 +69,27 @@ namespace AridArnold
         //t is our percentage of where it hit, null if not hit.
         public float? t;
         public Vector2 normal;
+
+        public static CollisionResults None
+        {
+            get
+            {
+                CollisionResults none;
+
+                none.t = null;
+                none.normal = Vector2.Zero;
+
+                return none;
+            }
+        }
+
+        public bool Collided
+        {
+            get
+            {
+                return t.HasValue;
+            }
+        }
     }
 
     enum CollisionType

@@ -30,10 +30,10 @@ namespace AridArnold.Screens
 
         private void LoadLevel(int levelIndex)
         {
+            TileManager.I.CentreX(mGraphics);
+
             mCurrentLevel = levelIndex;
             mLevels[levelIndex].Begin(mContentManager);
-
-            TileManager.I.CentreX(mGraphics);
         }
 
         public override void LoadContent()

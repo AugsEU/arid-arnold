@@ -58,9 +58,16 @@ namespace AridArnold
 
         protected override void Draw(GameTime gameTime)
         {
+            RenderTarget2D rt = new RenderTarget2D(GraphicsDevice, 200, 200);
+            Rectangle rect = new Rectangle(0, 0, 200, 200);
+            GraphicsDevice.SetRenderTarget(rt);
             GraphicsDevice.Clear(new Color(0,20,10));
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Immediate,
+                                BlendState.AlphaBlend,
+                                SamplerState.PointClamp,
+                                DepthStencilState.None,
+                                RasterizerState.CullNone);
 
             DrawInfo frameInfo;
 

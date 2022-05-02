@@ -60,7 +60,7 @@ namespace AridArnold
 
         public virtual void OnPlayerIntersect(Arnold player) { }
 
-        public Rect2f GetBounds(Vector2 topLeft, float sideLength)
+        public virtual Rect2f GetBounds(Vector2 topLeft, float sideLength)
         {
             return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
         }
@@ -120,11 +120,7 @@ namespace AridArnold
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
             // No collision.
-            CollisionResults results;
-            results.t = null;
-            results.normal = Vector2.Zero;
-
-            return results;
+            return CollisionResults.None;
         }
     }
 
@@ -147,11 +143,7 @@ namespace AridArnold
         {
             if(!entity.CollideWithPlatforms())
             {
-                CollisionResults nilResults;
-                nilResults.t = null;
-                nilResults.normal = Vector2.Zero;
-
-                return nilResults;
+                return CollisionResults.None;
             }
 
             CollisionResults results = Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength);
@@ -222,5 +214,14 @@ namespace AridArnold
             EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
         }
 
+        //Make bounds a bit smaller to make it fairer
+        public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+        {
+            const float smallerFactor = 6.0f;
+            topLeft.Y += smallerFactor;
+            topLeft.X += smallerFactor/2.0f;
+            sideLength -= smallerFactor;
+            return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+        }
     }
 }

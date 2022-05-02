@@ -38,6 +38,9 @@ namespace AridArnold
             mRunningAnimation.LoadFrame(content, "Arnold/arnold-run3", 0.15f);
 
             mRunningAnimation.Play();
+
+            //Botch position a bit. Not sure what's happening here.
+            mPosition.Y -= 2.0f;
         }
 
         public override void Update(GameTime gameTime)
@@ -121,7 +124,10 @@ namespace AridArnold
                 }
             }
 
-            info.spriteBatch.Draw(texture, new Rectangle((int)mPosition.X, (int)mPosition.Y+1, mTexture.Width, mTexture.Height), null, Color.White, 0.0f, Vector2.Zero, effect, 0.0f);
+            int xDiff = (texture.Width - mTexture.Width)/2;
+            int yDiff = texture.Height - mTexture.Height;
+
+            info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y+1 - yDiff, texture.Width, texture.Height), null, Color.White, 0.0f, Vector2.Zero, effect, 0.0f);
         }
 
 

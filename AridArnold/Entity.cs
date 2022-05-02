@@ -70,6 +70,24 @@ namespace AridArnold
             return mVelocity * GetDeltaT(gameTime);
         }
 
+        private void ApplyCollisions(GameTime gameTime)
+        {
+            List<TileCollisionResults> tileResults = TileManager.I.ResolveCollisions(this, gameTime);
+
+            ApplyVelocity(gameTime);
+
+            //Post collision effects.
+            foreach (var res in tileResults)
+            {
+                if(res.result.Collided)
+                {
+                    ReactToCollision(Collision2D.GetCollisionType(res.result.normal));
+                }
+
+                //mTileMap[res.coord.X, res.coord.Y].OnTouch(this);
+            }
+        }
+
         protected void ApplyVelocity(GameTime gameTime)
         {
             mPosition += VelocityToDisplacement(gameTime);
@@ -77,14 +95,12 @@ namespace AridArnold
 
         public override void Update(GameTime gameTime)
         {
-            ApplyVelocity(gameTime);
+            ApplyCollisions(gameTime);
 
             mFallthrough = false;
-
-            Util.Log(" Final Y " + mPosition.Y);
         }
 
-        public abstract void ReactToCollision(CollisionType collisionType);
+        protected abstract void ReactToCollision(CollisionType collisionType);
     }
 
     abstract class PlatformingEntity : MovingEntity
@@ -152,19 +168,11 @@ namespace AridArnold
 
             ApplyGravity(gameTime);
 
-            ApplyCollisions(gameTime);
-
+            mOnGround = false;
             base.Update(gameTime);
         }
 
-        private void ApplyCollisions(GameTime gameTime)
-        {
-            mOnGround = false;
-
-            TileManager.I.ResolveCollisions(this, gameTime);
-        }
-
-        public override void ReactToCollision(CollisionType collisionType)
+        protected override void ReactToCollision(CollisionType collisionType)
         {
             switch(collisionType)
             {

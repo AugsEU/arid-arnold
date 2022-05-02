@@ -8,12 +8,24 @@ using Microsoft.Xna.Framework.Content;
 
 namespace AridArnold
 {
-    class TileCollisionResultsSorter : IComparer<Tuple<Point, CollisionResults>>
+    class TileCollisionResultsSorter : IComparer<TileCollisionResults>
     {
-        public int Compare(Tuple<Point, CollisionResults> a, Tuple<Point, CollisionResults> b)
+        public int Compare(TileCollisionResults a, TileCollisionResults b)
         {
-            return a.Item2.t.Value.CompareTo(b.Item2.t.Value);
+            return a.result.t.Value.CompareTo(b.result.t.Value);
         }
+    }
+
+    class TileCollisionResults
+    {
+        public TileCollisionResults(Point p, CollisionResults r)
+        {
+            coord = p;
+            result = r;
+        }
+
+        public Point coord;
+        public CollisionResults result;
     }
 
     internal class TileManager : Singleton<TileManager>
@@ -398,9 +410,9 @@ namespace AridArnold
         //============================================
         //  Collisions
         //--------------------------------------------
-        public void ResolveCollisions(MovingEntity entity, GameTime gameTime)
+        public List<TileCollisionResults> ResolveCollisions(MovingEntity entity, GameTime gameTime)
         {
-            List<Tuple<Point, CollisionResults>> results = new List<Tuple<Point, CollisionResults>>();
+            List<TileCollisionResults> results = new List<TileCollisionResults>();
 
             Util.Log("==Resolving==");
 
@@ -409,22 +421,24 @@ namespace AridArnold
 
             Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
            
-            Util.Log(" Starting vel " + entity.velocity.X + ", " + entity.velocity.Y);
+            Util.Log(" Starting vel " + entity.velocity.ToString());
 
             for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
             {
                 for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
                 {
-                    if (mTileMap[x, y].Enabled)
+                    if (mTileMap[x, y].Enabled == false)
                     {
-                        Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
+                        continue;
+                    }
 
-                        CollisionResults collisionResults = mTileMap[x, y].Collide(entity, tileTopLeft, mTileSize, gameTime);
+                    Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-                        if (collisionResults.t.HasValue)
-                        {
-                            results.Add(new Tuple<Point, CollisionResults>(new Point(x, y), collisionResults));
-                        }
+                    CollisionResults collisionResults = mTileMap[x, y].Collide(entity, tileTopLeft, mTileSize, gameTime);
+
+                    if (collisionResults.Collided)
+                    {
+                        results.Add(new TileCollisionResults(new Point(x, y), collisionResults));
                     }
                 }
             }
@@ -434,32 +448,28 @@ namespace AridArnold
 
             for (int i = 0; i < results.Count; i++)
             {
-                Point point = results[i].Item1;
+                Point point = results[i].coord;
                 Vector2 tileTopLeft = mTileMapPos + new Vector2(point.X, point.Y) * mTileSize;
 
                 Tile tile = mTileMap[point.X, point.Y];
 
                 CollisionResults collisionResults = tile.Collide(entity, tileTopLeft, mTileSize, gameTime);
 
-                if (collisionResults.t.HasValue)
+                if (collisionResults.Collided)
                 {
                     Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
 
-                    Util.Log("   Pushing by normal " + pushVec.X + ", " + pushVec.Y + "(" + collisionResults.t.Value + ")");
+                    Util.Log("   Pushing by normal " + pushVec.ToString() + "(" + collisionResults.t.Value + ")");
 
                     entity.velocity += pushVec;
-
-                    entity.ReactToCollision(Collision2D.GetCollisionType(collisionResults.normal));
                 }
+
+                results[i].result = collisionResults;
             }
 
             Util.Log(" Final vel " + entity.velocity.X + ", " + entity.velocity.Y);
 
-            //Other effects from touching it.
-            foreach (Tuple<Point, CollisionResults> res in results)
-            {
-                mTileMap[res.Item1.X, res.Item1.Y].OnTouch(entity);
-            }
+            return results;
         }
 
         public Rectangle PossibleIntersectTiles(Rect2f box)
