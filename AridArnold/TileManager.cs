@@ -193,6 +193,16 @@ namespace AridArnold
             }
         }
 
+        public int GetDrawWidth()
+        {
+            return (int)(mTileSize * mTileMap.GetLength(0));
+        }
+
+        public int GetDrawHeight()
+        {
+            return (int)(mTileSize * mTileMap.GetLength(1));
+        }
+
         public void DrawTile(DrawInfo info, Rectangle drawDestination, Tile tile)
         {
             Texture2D tileTexture = tile.GetTexture();
@@ -402,9 +412,9 @@ namespace AridArnold
         public void CentreX(GraphicsDeviceManager graphics)
         {
             float ourWidth = mTileSize * mTileMap.GetLength(0);
-            float xOffset = (graphics.PreferredBackBufferWidth - ourWidth)/2.0f;
+            //float xOffset = (graphics.GraphicsDevice.GetRenderTargets()[0]. - ourWidth)/2.0f;
 
-            mTileMapPos.X = xOffset;
+            mTileMapPos.X = 0.0f;
         }
 
         //============================================

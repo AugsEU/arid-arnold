@@ -10,6 +10,7 @@ namespace AridArnold
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Rectangle windowedRect;
 
         public Main()
         {
@@ -22,12 +23,12 @@ namespace AridArnold
 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = 524;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 720;   // set this value to the desired height of your window
-            //_graphics.IsFullScreen = true;
+            _graphics.PreferredBackBufferWidth = 550;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = 550;   // set this value to the desired height of your window
+            _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
-            TileManager.I.Init(new Vector2(0.0f, 150.0f), 16);
+            Window.AllowUserResizing = true;
 
             base.Initialize();
         }
@@ -42,8 +43,17 @@ namespace AridArnold
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
+
+            foreach(Keys key in keyboardState.GetPressedKeys())
+            {
+                HandleKeyPress(key);
+            }
 
             //Update Active screen
             Screen screen = ScreenManager.I.GetActiveScreen();
@@ -56,26 +66,45 @@ namespace AridArnold
             base.Update(gameTime);
         }
 
+        private void HandleKeyPress(Keys key)
+        {
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            bool alt = keyboardState.IsKeyDown(Keys.LeftAlt) || keyboardState.IsKeyDown(Keys.RightAlt);
+            if (key == Keys.Enter && alt)
+            {
+                ToggleFullscreen();
+            }
+        }
+
+        private void ToggleFullscreen()
+        {
+            if (_graphics.IsFullScreen)
+            {
+                _graphics.IsFullScreen = false;
+                _graphics.PreferredBackBufferWidth = windowedRect.Width;
+                _graphics.PreferredBackBufferHeight = windowedRect.Height;
+            }
+            else
+            {
+                windowedRect = GraphicsDevice.PresentationParameters.Bounds;
+                _graphics.IsFullScreen = true;
+                
+                _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            }
+
+            _graphics.ApplyChanges();
+        }
+
         protected override void Draw(GameTime gameTime)
         {
-            RenderTarget2D rt = new RenderTarget2D(GraphicsDevice, 200, 200);
-            Rectangle rect = new Rectangle(0, 0, 200, 200);
-            GraphicsDevice.SetRenderTarget(rt);
-            GraphicsDevice.Clear(new Color(0,20,10));
-
-            _spriteBatch.Begin(SpriteSortMode.Immediate,
-                                BlendState.AlphaBlend,
-                                SamplerState.PointClamp,
-                                DepthStencilState.None,
-                                RasterizerState.CullNone);
-
             DrawInfo frameInfo;
 
             frameInfo.graphics = _graphics;
             frameInfo.spriteBatch = _spriteBatch;
             frameInfo.gameTime = gameTime;
-            
-            base.Draw(gameTime);
+            frameInfo.device = GraphicsDevice;
 
             //Draw active screen.
             Screen screen = ScreenManager.I.GetActiveScreen();
@@ -85,7 +114,7 @@ namespace AridArnold
                 screen.Draw(frameInfo);
             }
 
-            _spriteBatch.End();
+            base.Draw(gameTime);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿#define DEBUG_LOG
+﻿//#define DEBUG_LOG
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,7 @@ namespace AridArnold
         public GameTime gameTime;
         public SpriteBatch spriteBatch;
         public GraphicsDeviceManager graphics;
+        public GraphicsDevice device;
     }
 
 
