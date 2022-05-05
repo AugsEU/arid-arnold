@@ -14,6 +14,7 @@ namespace AridArnold.Screens
         public const int TILE_SIZE = 16;
         private List<Level> mLevels;
         private int mCurrentLevel;
+        private RenderTarget2D mGameArea;
 
         public override ScreenType GetScreenType()
         {
@@ -24,11 +25,14 @@ namespace AridArnold.Screens
         {
             mLevels = new List<Level>();
             mLevels.Add(new CollectWaterLevel("level1-1", 5));
-            mLevels.Add(new CollectWaterLevel("level1-2", 5));
-
+            mLevels.Add(new CollectWaterLevel("level1-2", 2));
+            mLevels.Add(new CollectWaterLevel("level1-3", 3));
+            mLevels.Add(new CollectWaterLevel("level1-4", 3));
 
             TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
+
             LoadLevel(0);
+            mGameArea = null;
         }
 
         private void LoadLevel(int levelIndex)
@@ -49,7 +53,7 @@ namespace AridArnold.Screens
             Rectangle screenRect = info.device.PresentationParameters.Bounds;
 
             //Get game rendered as a texture
-            RenderTarget2D gameArea = RenderGameAreaToTarget(info);
+            RenderGameAreaToTarget(info);
 
             //Draw out the game area
             info.device.SetRenderTarget(null);
@@ -61,7 +65,7 @@ namespace AridArnold.Screens
                                     DepthStencilState.None,
                                     RasterizerState.CullNone);
 
-            DrawGameArea(info, gameArea, screenRect);
+            DrawGameArea(info, mGameArea, screenRect);
 
             info.spriteBatch.End();
         }
@@ -95,11 +99,14 @@ namespace AridArnold.Screens
         }
 
 
-        private RenderTarget2D RenderGameAreaToTarget(DrawInfo info)
+        private void RenderGameAreaToTarget(DrawInfo info)
         {
-            RenderTarget2D rt = new RenderTarget2D(info.device, TileManager.I.GetDrawWidth(), TileManager.I.GetDrawHeight() + TILE_SIZE);
+            if(mGameArea == null)
+            {
+                mGameArea = new RenderTarget2D(info.device, TileManager.I.GetDrawWidth(), TileManager.I.GetDrawHeight() + TILE_SIZE);
+            }
 
-            info.device.SetRenderTarget(rt);
+            info.device.SetRenderTarget(mGameArea);
 
             info.device.Clear(new Color(0, 20, 10));
 
@@ -115,8 +122,6 @@ namespace AridArnold.Screens
             TileManager.I.Draw(info);
 
             info.spriteBatch.End();
-
-            return rt;
         }
 
         public override void Update(GameTime gameTime)
