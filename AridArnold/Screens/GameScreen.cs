@@ -26,7 +26,7 @@ namespace AridArnold.Screens
             mLevels = new List<Level>();
             mLevels.Add(new CollectWaterLevel("level1-1", 5));
             mLevels.Add(new CollectWaterLevel("level1-2", 2));
-            mLevels.Add(new CollectWaterLevel("level1-3", 3));
+            mLevels.Add(new CollectWaterLevel("level1-3", 2));
             mLevels.Add(new CollectWaterLevel("level1-4", 3));
 
             TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
@@ -37,6 +37,7 @@ namespace AridArnold.Screens
 
         private void LoadLevel(int levelIndex)
         {
+            mContentManager.Unload();
             TileManager.I.CentreX(mGraphics);
 
             mCurrentLevel = levelIndex;
