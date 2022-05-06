@@ -97,7 +97,7 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/arnold-stand.png
 
-#begin Levels/level1-1.bmp
+#begin Levels/level1-1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,9 +107,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Levels/level1-1.bmp
+/build:Levels/level1-1.png
 
-#begin Levels/level1-2.bmp
+#begin Levels/level1-2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,9 +119,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Levels/level1-2.bmp
+/build:Levels/level1-2.png
 
-#begin Levels/level1-3.bmp
+#begin Levels/level1-3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -131,9 +131,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Levels/level1-3.bmp
+/build:Levels/level1-3.png
 
-#begin Levels/level1-4.bmp
+#begin Levels/level1-4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -143,19 +143,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Levels/level1-4.bmp
-
-#begin Levels/testlevel.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Levels/testlevel.bmp
+/build:Levels/level1-4.png
 
 #begin Tiles/air.png
 /importer:TextureImporter
