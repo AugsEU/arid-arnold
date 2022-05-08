@@ -47,6 +47,9 @@ namespace AridArnold
 
         protected override void Update(GameTime gameTime)
         {
+            //Record elapsed time
+            TimeManager.I.Update(gameTime);
+
             KeyboardState keyboardState = Keyboard.GetState();
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))

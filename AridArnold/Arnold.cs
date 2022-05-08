@@ -10,12 +10,17 @@ namespace AridArnold
 {
     class Arnold : PlatformingEntity
     {
-        EntityDirection mPrevDirection;
+        const double DEATH_TIME = 500.0;
+        const double FLASH_TIME = 100.0;
 
+        EntityDirection mPrevDirection;
         Animator mRunningAnimation;
 
         Texture2D mJumpUpTex;
         Texture2D mJumpDownTex;
+
+        //Various timers.
+        MonoTimer mTimerSinceDeath;
 
         public Arnold(Vector2 pos) : base(pos)
         {
@@ -23,6 +28,8 @@ namespace AridArnold
             mPrevDirection = EntityDirection.Right;
 
             EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
+
+            mTimerSinceDeath = new MonoTimer();
         }
 
         public override void LoadContent(ContentManager content)
@@ -45,6 +52,17 @@ namespace AridArnold
 
         public override void Update(GameTime gameTime)
         {
+            if(mTimerSinceDeath.IsPlaying())
+            {
+                if(mTimerSinceDeath.GetElapsedMs() > DEATH_TIME)
+                {
+                    SendPlayerDeathEvent();
+                    mTimerSinceDeath.FullReset();
+                }
+
+                return;
+            }
+
             mRunningAnimation.Update(gameTime);
 
             KeyboardState state = Keyboard.GetState();
@@ -81,7 +99,7 @@ namespace AridArnold
 
             TileManager.I.ArnoldTouchTiles(this);
 
-            if(mPosition.Y > 1000.0f)
+            if(mPosition.Y > TileManager.I.GetDrawHeight())
             {
                 Kill();
             }
@@ -127,11 +145,32 @@ namespace AridArnold
             int xDiff = (texture.Width - mTexture.Width)/2;
             int yDiff = texture.Height - mTexture.Height;
 
-            info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y+1 - yDiff, texture.Width, texture.Height), null, Color.White, 0.0f, Vector2.Zero, effect, 0.0f);
+            Color color = Color.White;
+
+            if(mTimerSinceDeath.IsPlaying())
+            {
+                double timeSinceDeath = mTimerSinceDeath.GetElapsedMs();
+
+                if((int)(timeSinceDeath / FLASH_TIME) % 2 == 0)
+                {
+                    color = new Color(255,51,33);
+                }
+                else
+                {
+                    color = new Color(255, 128, 79);
+                }
+            }
+
+            info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y+1 - yDiff, texture.Width, texture.Height), null, color, 0.0f, Vector2.Zero, effect, 0.0f);
         }
 
 
         public override void Kill()
+        {
+            mTimerSinceDeath.Start();
+        }
+
+        private void SendPlayerDeathEvent()
         {
             EArgs eArgs;
             eArgs.sender = this;

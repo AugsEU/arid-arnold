@@ -47,6 +47,13 @@ namespace AridArnold
             return colourHex == hexCode;
         }
 
+        public static void DrawStringCentred(SpriteBatch sb, SpriteFont font, Vector2 position, Color color, string text)
+        {
+            Vector2 size = font.MeasureString(text);
+
+            sb.DrawString(font, text, position - size / 2, color);
+        }
+
         public static void Log(string msg)
         {
 #if DEBUG_LOG

@@ -33,7 +33,7 @@ namespace AridArnold.Screens
 
         private void LoadLevel(int levelIndex)
         {
-            mContentManager.Unload();
+            //mContentManager.Unload();
             TileManager.I.CentreX(mGraphics);
 
             mCurrentLevel = levelIndex;
@@ -44,7 +44,7 @@ namespace AridArnold.Screens
         {
             TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
 
-            LoadLevel(0);
+            LoadLevel(1);
             mGameArea = null;
         }
 
@@ -152,6 +152,7 @@ namespace AridArnold.Screens
             }
             else if(status == LevelStatus.Loss)
             {
+                ScreenManager.I.ActivateScreen(ScreenType.GameOver);
                 LoadLevel(mCurrentLevel);
             }
         }

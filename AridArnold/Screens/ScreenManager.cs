@@ -27,6 +27,7 @@ namespace AridArnold.Screens
             mScreens.Clear();
 
             LoadScreen(ScreenType.Game, new GameScreen(content, deviceManager), content);
+            LoadScreen(ScreenType.GameOver, new GameOverScreen(content, deviceManager), content);
         }
         
         private void LoadScreen(ScreenType type, Screen screen, ContentManager content)
