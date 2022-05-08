@@ -11,8 +11,6 @@ namespace AridArnold.Screens
 {
     internal class GameOverScreen : Screen
     {
-        private SpriteFont mFont;
-
         public GameOverScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
 
@@ -30,11 +28,13 @@ namespace AridArnold.Screens
 
         public override void LoadContent(ContentManager content)
         {
-            mFont  = content.Load<SpriteFont>("Fonts/Pixica");
+
         }
 
         public override void Draw(DrawInfo info)
         {
+            SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
+
             Rectangle screenRect = info.device.PresentationParameters.Bounds;
             Vector2 centre = new Vector2(screenRect.Width/2, screenRect.Height / 2);
 
@@ -48,7 +48,7 @@ namespace AridArnold.Screens
                                     DepthStencilState.None,
                                     RasterizerState.CullNone);
 
-            Util.DrawStringCentred(info.spriteBatch, mFont, centre, Color.White, "GAME OVER");
+            Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "GAME OVER");
 
             info.spriteBatch.End();
         }

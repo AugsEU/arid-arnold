@@ -41,6 +41,7 @@ namespace AridArnold
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            FontManager.I.LoadAllFonts(Content);
             ScreenManager.I.LoadAllScreens(Content, _graphics);
             ScreenManager.I.ActivateScreen(ScreenType.Game);
         }

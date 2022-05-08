@@ -84,14 +84,14 @@ namespace AridArnold.Screens
             mGraphics = graphics;
         }
 
-        public abstract void Draw(DrawInfo info);
-
-        public abstract void Update(GameTime gameTime);
+        public abstract void LoadContent(ContentManager content);
 
         public abstract void OnActivate();
 
         public abstract void OnDeactivate();
 
-        public abstract void LoadContent(ContentManager content);
+        public abstract void Draw(DrawInfo info);
+
+        public abstract void Update(GameTime gameTime);
     }
 }

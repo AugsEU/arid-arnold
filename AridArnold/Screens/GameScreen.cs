@@ -18,6 +18,7 @@ namespace AridArnold.Screens
         private List<Level> mLevels;
         private int mCurrentLevel;
         private RenderTarget2D mGameArea;
+        private int mLives;
 
         //============================================
         //  Initialisation
@@ -37,15 +38,17 @@ namespace AridArnold.Screens
             TileManager.I.CentreX(mGraphics);
 
             mCurrentLevel = levelIndex;
-            mLevels[levelIndex].Begin(mContentManager);
+            mLevels[mCurrentLevel].Begin(mContentManager);
         }
 
         public override void OnActivate()
         {
             TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
 
-            LoadLevel(1);
+            LoadLevel(ProgressManager.I.LastCheckPoint);
             mGameArea = null;
+
+            mLives = 4;
         }
 
         public override void OnDeactivate()
@@ -134,7 +137,19 @@ namespace AridArnold.Screens
             EntityManager.I.Draw(info);
             TileManager.I.Draw(info);
 
+            DrawUI(info);
+
             info.spriteBatch.End();
+        }
+
+        private void DrawUI(DrawInfo info)
+        {
+            SpriteFont font = FontManager.I.GetFont("Pixica-24");
+
+            Rectangle screenRect = info.device.PresentationParameters.Bounds;
+            Vector2 pos = new Vector2(TileManager.I.GetDrawWidth() / 2, 20.0f);
+
+            Util.DrawStringCentred(info.spriteBatch, font, pos, Color.White, "Lives: " + mLives.ToString());
         }
 
         //============================================
@@ -152,7 +167,13 @@ namespace AridArnold.Screens
             }
             else if(status == LevelStatus.Loss)
             {
-                ScreenManager.I.ActivateScreen(ScreenType.GameOver);
+                mLives--;
+
+                if (mLives == 0)
+                {
+                    ScreenManager.I.ActivateScreen(ScreenType.GameOver);
+                }
+
                 LoadLevel(mCurrentLevel);
             }
         }
