@@ -14,27 +14,32 @@ namespace AridArnold.Screens
         LevelStart,
         Game,
         GameOver,
+        None
     }
 
     internal class ScreenManager : Singleton<ScreenManager>
     {
-        List<Screen> mScreens = new List<Screen>();
-        int mActiveScreen = -1;
+        Dictionary<ScreenType, Screen> mScreens = new Dictionary<ScreenType, Screen>();
+        ScreenType mActiveScreen = ScreenType.None;
 
-        public void LoadScreen(Screen screen)
+        public void LoadAllScreens(ContentManager content, GraphicsDeviceManager deviceManager)
         {
-            mScreens.Add(screen);
-            screen.LoadContent();
+            mScreens.Clear();
+
+            LoadScreen(ScreenType.Game, new GameScreen(content, deviceManager), content);
+        }
+        
+        private void LoadScreen(ScreenType type, Screen screen, ContentManager content)
+        {
+            mScreens.Add(type, screen);
+            screen.LoadContent(content);
         }         
 
         public Screen GetScreen(ScreenType type)
         {
-            foreach(Screen screen in mScreens)
+            if(mScreens.ContainsKey(type))
             {
-                if(screen.GetScreenType() == type)
-                {   
-                    return screen;
-                }
+                return mScreens[type];
             }
 
             return null;
@@ -42,26 +47,29 @@ namespace AridArnold.Screens
 
         public Screen GetActiveScreen()
         {
-            if(mActiveScreen == -1)
+            if(mScreens.ContainsKey(mActiveScreen))
             {
-                return null;
+                return mScreens[mActiveScreen];
             }
 
-            return mScreens[mActiveScreen];
+            return null;
         }
 
         public void ActivateScreen(ScreenType type)
         {
-            for(int i = 0; i < mScreens.Count; i++)
+            if (!mScreens.ContainsKey(type))
             {
-                if(mScreens[i].GetScreenType() == type)
-                {
-                    mActiveScreen = i;
-                    return;
-                }
+                return;
             }
 
-            mActiveScreen = -1;
+            if(mScreens.ContainsKey(mActiveScreen))
+            {
+                mScreens[mActiveScreen].OnDeactivate();
+            }
+
+            mActiveScreen = type;
+
+            mScreens[type].OnActivate();
         }
     }
 
@@ -75,12 +83,14 @@ namespace AridArnold.Screens
             mGraphics = graphics;
         }
 
-        public abstract ScreenType GetScreenType();
-
         public abstract void Draw(DrawInfo info);
 
         public abstract void Update(GameTime gameTime);
 
-        public abstract void LoadContent();
+        public abstract void OnActivate();
+
+        public abstract void OnDeactivate();
+
+        public abstract void LoadContent(ContentManager content);
     }
 }

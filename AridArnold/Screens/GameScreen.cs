@@ -11,16 +11,17 @@ namespace AridArnold.Screens
 {
     internal class GameScreen : Screen
     {
+        //============================================
+        //  Members
+        //--------------------------------------------
         public const int TILE_SIZE = 16;
         private List<Level> mLevels;
         private int mCurrentLevel;
         private RenderTarget2D mGameArea;
 
-        public override ScreenType GetScreenType()
-        {
-            return ScreenType.Game;
-        }
-
+        //============================================
+        //  Initialisation
+        //--------------------------------------------
         public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
             mLevels = new List<Level>();
@@ -28,11 +29,6 @@ namespace AridArnold.Screens
             mLevels.Add(new CollectWaterLevel("level1-2", 2));
             mLevels.Add(new CollectWaterLevel("level1-3", 2));
             mLevels.Add(new CollectWaterLevel("level1-4", 3));
-
-            TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
-
-            LoadLevel(0);
-            mGameArea = null;
         }
 
         private void LoadLevel(int levelIndex)
@@ -44,11 +40,27 @@ namespace AridArnold.Screens
             mLevels[levelIndex].Begin(mContentManager);
         }
 
-        public override void LoadContent()
+        public override void OnActivate()
+        {
+            TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
+
+            LoadLevel(0);
+            mGameArea = null;
+        }
+
+        public override void OnDeactivate()
         {
 
         }
 
+        public override void LoadContent(ContentManager content)
+        {
+
+        }
+
+        //============================================
+        //  Draw
+        //--------------------------------------------
         public override void Draw(DrawInfo info)
         {
             Rectangle screenRect = info.device.PresentationParameters.Bounds;
@@ -125,6 +137,9 @@ namespace AridArnold.Screens
             info.spriteBatch.End();
         }
 
+        //============================================
+        //  Update
+        //--------------------------------------------
         public override void Update(GameTime gameTime)
         {
             EntityManager.I.Update(gameTime);

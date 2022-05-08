@@ -28,6 +28,14 @@ namespace AridArnold
         All =               Top | Bottom | Left | Right,
     }
 
+    enum TileRotation
+    {
+        Up = 0,
+        Right = 1,
+        Down = 2,
+        Left = 3,
+    }
+
     //============================================
     //  Base class
     //--------------------------------------------
@@ -91,6 +99,17 @@ namespace AridArnold
 
             //I'm above my neighbour
             neighbour.mAdjacency |= AdjacencyType.Top;
+        }
+
+        //1 type tiles can be rotated freely.
+        public virtual float GetRotation()
+        {
+            return 0.0f;
+        }
+
+        public virtual SpriteEffects GetEffect()
+        {
+            return SpriteEffects.None;
         }
     }
 
@@ -201,6 +220,13 @@ namespace AridArnold
     //--------------------------------------------
     class SpikesTile : AirTile
     {
+        TileRotation mRotation;
+
+        public SpikesTile(TileRotation rotation) : base()
+        {
+            mRotation = rotation;
+        }
+
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/spikes");
@@ -217,11 +243,46 @@ namespace AridArnold
         //Make bounds a bit smaller to make it fairer
         public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
         {
-            const float smallerFactor = 6.0f;
-            topLeft.Y += smallerFactor;
-            topLeft.X += smallerFactor/2.0f;
+            const float smallerFactor = 7.0f;
+
+            switch (mRotation)
+            {
+                case TileRotation.Up:
+                    topLeft.Y += smallerFactor;
+                    topLeft.X += smallerFactor / 2.0f;
+                    break;
+                case TileRotation.Right:
+                    topLeft.Y += smallerFactor / 2.0f;
+                    break;
+                case TileRotation.Left:
+                    topLeft.X += smallerFactor;
+                    topLeft.Y += smallerFactor / 2.0f;
+                    break;
+                case TileRotation.Down:
+                    topLeft.X += smallerFactor / 2.0f;
+                    break;
+            }
+
             sideLength -= smallerFactor;
+
             return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+        }
+
+        public override float GetRotation()
+        {
+            switch (mRotation)
+            {
+                case TileRotation.Up:
+                    return 0.0f;
+                case TileRotation.Right:
+                    return MathHelper.PiOver2;
+                case TileRotation.Down:
+                    return MathHelper.Pi;
+                case TileRotation.Left:
+                    return MathHelper.PiOver2 * 3.0f;
+            }
+
+            return 0.0f;
         }
     }
 }

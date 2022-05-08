@@ -42,7 +42,7 @@ namespace AridArnold
 
         public static bool CompareHEX(Color color, ulong hexCode)
         {
-            ulong colourHex = (ulong)(color.B) + ((ulong)(color.G) << 8) + +((ulong)(color.G) << 16);
+            ulong colourHex = (ulong)(color.B) + ((ulong)(color.G) << 8) + +((ulong)(color.R) << 16);
 
             return colourHex == hexCode;
         }

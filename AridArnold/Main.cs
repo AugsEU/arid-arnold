@@ -19,6 +19,10 @@ namespace AridArnold
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             //XNA
+
+            // Fix to 60 fps.
+            IsFixedTimeStep = true;//false;
+            TargetElapsedTime = System.TimeSpan.FromSeconds(1d / 60d);
         }
 
         protected override void Initialize()
@@ -37,7 +41,7 @@ namespace AridArnold
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenManager.I.LoadScreen(new GameScreen(Content, _graphics));
+            ScreenManager.I.LoadAllScreens(Content, _graphics);
             ScreenManager.I.ActivateScreen(ScreenType.Game);
         }
 

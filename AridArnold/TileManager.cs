@@ -49,6 +49,9 @@ namespace AridArnold
 
         private Tile GetTileFromColour(Color col)
         {
+            //Use alpha component as a parameter.
+            int param = 255 - col.A;
+
             if (col == Color.Black)
             {
                 return new WallTile();
@@ -67,7 +70,7 @@ namespace AridArnold
             }
             else if(Util.CompareHEX(col, 0x404040))
             {
-                return new SpikesTile();
+                return new SpikesTile((TileRotation)param);
             }
 
             return new AirTile();
@@ -214,14 +217,16 @@ namespace AridArnold
 
             //Rotation amount so we can fit tiles together. Should be multiples of 90.
             float rotation = 0.0f;
-            Vector2 offset = Vector2.Zero;
 
             SpriteEffects effect = SpriteEffects.None;
 
             //Square texture, draw as is.
             if (tileTexture.Width == tileTexture.Height)
             {
-                //Leave as defaults.
+                //Square textures can be rotated freely.
+                //Others can't since they need ot be rotated to fit together.
+                rotation = tile.GetRotation();
+                effect = tile.GetEffect();
             }
             //Otherwise, look for texture with different edge types
             else if (tileTexture.Width == 6 * tileTexture.Height) //Needs rotating
