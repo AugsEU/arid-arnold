@@ -203,6 +203,8 @@ namespace AridArnold
 
             Texture2D texture = mTexture;
 
+            float vecAlongGrav = Vector2.Dot(GravityVecNorm(), mVelocity);
+
             if (mOnGround)
             {
                 if (mWalkDirection != WalkDirection.None)
@@ -212,7 +214,7 @@ namespace AridArnold
             }
             else
             {
-                if (mVelocity.Y > 0.0f)
+                if (vecAlongGrav > 0.0f)
                 {
                     texture = mJumpDownTex;
                 }
@@ -241,9 +243,7 @@ namespace AridArnold
                     break;
                 case GravityDirection.Left:
                     Util.Swap(ref xDiff, ref yDiff);
-
-                    xDiff = -xDiff/2;
-
+                    xDiff = -2-xDiff/2;
                     yDiff += 2;
 
                     rotation = MathHelper.PiOver2;
@@ -252,16 +252,15 @@ namespace AridArnold
                     rotation = MathHelper.PiOver2 * 3.0f;
                     effect = effect ^ SpriteEffects.FlipHorizontally;
 
-                    
-                    xDiff--;
-                    yDiff++;
+                    Util.Swap(ref xDiff, ref yDiff);
+                    xDiff = (int)(xDiff/1.5f)-1;
+                    yDiff += 2;
 
                     break;
             }
 
             Vector2 rotationOffset = Util.CalcRotationOffset(rotation, texture.Width, texture.Height);
 
-            Util.DrawRect(info, ColliderBounds(), Color.Blue);
             info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, 0.0f);
 
             
