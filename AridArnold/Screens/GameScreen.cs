@@ -15,40 +15,52 @@ namespace AridArnold.Screens
         //  Members
         //--------------------------------------------
         public const int TILE_SIZE = 16;
+
+        private const double END_LEVEL_TIME = 1000.0;
+        private const double END_LEVEL_FLASH_TIME = 100.0;
+
+
+        private Color mBGCol;
         private List<Level> mLevels;
-        private int mCurrentLevel;
+
         private RenderTarget2D mGameArea;
-        private int mLives;
+
+        private MonoTimer mLevelEndTimer;
 
         //============================================
         //  Initialisation
         //--------------------------------------------
         public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
+            mBGCol = Color.Black;
+
+            mLevelEndTimer = new MonoTimer();
+
             mLevels = new List<Level>();
             mLevels.Add(new CollectWaterLevel("level1-1", 5));
             mLevels.Add(new CollectWaterLevel("level1-2", 2));
             mLevels.Add(new CollectWaterLevel("level1-3", 2));
-            mLevels.Add(new CollectWaterLevel("level1-4", 3));
+            mLevels.Add(new CollectFlagLevel("level1-4"));
+            mLevels.Add(new CollectWaterLevel("level2-1", 2));
         }
 
         private void LoadLevel(int levelIndex)
         {
-            //mContentManager.Unload();
-            TileManager.I.CentreX(mGraphics);
-
-            mCurrentLevel = levelIndex;
-            mLevels[mCurrentLevel].Begin(mContentManager);
+            mLevels[levelIndex].Begin(mContentManager);
         }
 
         public override void OnActivate()
         {
             TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
+            TileManager.I.CentreX(TileManager.I.GetDrawWidth() + 2 * TILE_SIZE);
 
-            LoadLevel(ProgressManager.I.LastCheckPoint);
+            if (mGameArea != null)
+            {
+                mGameArea.Dispose();
+            }
             mGameArea = null;
 
-            mLives = 4;
+            StartLevel();
         }
 
         public override void OnDeactivate()
@@ -59,6 +71,26 @@ namespace AridArnold.Screens
         public override void LoadContent(ContentManager content)
         {
 
+        }
+
+        //============================================
+        //  Utility
+        //--------------------------------------------
+        public Level GetCurrentLevel()
+        {
+            return mLevels[ProgressManager.I.CurrentLevel];
+        }
+
+        private void StartLevel()
+        {
+            mBGCol = GetBGColor();
+            LoadLevel(ProgressManager.I.CurrentLevel);
+            mLevelEndTimer.FullReset();
+        }
+
+        private Color GetBGColor()
+        {
+            return new Color(0, 20, 10);
         }
 
         //============================================
@@ -119,12 +151,24 @@ namespace AridArnold.Screens
         {
             if(mGameArea == null)
             {
-                mGameArea = new RenderTarget2D(info.device, TileManager.I.GetDrawWidth(), TileManager.I.GetDrawHeight() + TILE_SIZE);
+                mGameArea = new RenderTarget2D(info.device, TileManager.I.GetDrawWidth() + 2 * TILE_SIZE, TileManager.I.GetDrawHeight() + TILE_SIZE);
             }
 
             info.device.SetRenderTarget(mGameArea);
 
-            info.device.Clear(new Color(0, 20, 10));
+            Color clearCol = mBGCol;
+
+            if(mLevelEndTimer.IsPlaying())
+            {
+                double timeSinceDeath = mLevelEndTimer.GetElapsedMs();
+
+                if ((int)(timeSinceDeath / END_LEVEL_FLASH_TIME) % 2 == 0)
+                {
+                    Util.BrightenColour(ref clearCol, 0.05f);
+                }
+            }
+
+            info.device.Clear(clearCol);
 
             info.spriteBatch.Begin(SpriteSortMode.Immediate,
                                     BlendState.AlphaBlend,
@@ -144,12 +188,7 @@ namespace AridArnold.Screens
 
         private void DrawUI(DrawInfo info)
         {
-            SpriteFont font = FontManager.I.GetFont("Pixica-24");
 
-            Rectangle screenRect = info.device.PresentationParameters.Bounds;
-            Vector2 pos = new Vector2(TileManager.I.GetDrawWidth() / 2, 20.0f);
-
-            Util.DrawStringCentred(info.spriteBatch, font, pos, Color.White, "Lives: " + mLives.ToString());
         }
 
         //============================================
@@ -157,24 +196,55 @@ namespace AridArnold.Screens
         //--------------------------------------------
         public override void Update(GameTime gameTime)
         {
+            if(mLevelEndTimer.IsPlaying())
+            {
+                if(mLevelEndTimer.GetElapsedMs() > END_LEVEL_TIME)
+                {
+                    MoveToNextLevel();
+                }
+
+                return;
+            }
+
             EntityManager.I.Update(gameTime);
 
-            LevelStatus status = mLevels[mCurrentLevel].Update(gameTime);
+            LevelStatus status = GetCurrentLevel().Update(gameTime);
 
             if(status == LevelStatus.Win)
             {
-                LoadLevel(mCurrentLevel + 1);
+                LevelWin();
             }
             else if(status == LevelStatus.Loss)
             {
-                mLives--;
+                LevelLose();
+            }
+        }
 
-                if (mLives == 0)
-                {
-                    ScreenManager.I.ActivateScreen(ScreenType.GameOver);
-                }
+        private void LevelWin()
+        {
+            mLevelEndTimer.Start();
+        }
 
-                LoadLevel(mCurrentLevel);
+        private void MoveToNextLevel()
+        {
+            ProgressManager.I.ReportLevelWin();
+
+            ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
+        }
+
+        private void LevelLose()
+        {
+            ProgressManager.I.ReportLevelLoss();
+
+            if (ProgressManager.I.Lives == 0)
+            {
+                ScreenManager.I.ActivateScreen(ScreenType.GameOver);
+                ProgressManager.I.ResetGame();
+            }
+            else
+            {
+                //Start the level again
+                StartLevel();
             }
         }
     }

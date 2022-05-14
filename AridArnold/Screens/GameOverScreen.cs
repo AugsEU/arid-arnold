@@ -39,7 +39,6 @@ namespace AridArnold.Screens
             Vector2 centre = new Vector2(screenRect.Width/2, screenRect.Height / 2);
 
             //Draw out the game area
-            info.device.SetRenderTarget(null);
             info.device.Clear(new Color(0, 0, 0));
 
             info.spriteBatch.Begin(SpriteSortMode.Immediate,
@@ -57,7 +56,7 @@ namespace AridArnold.Screens
         {
             KeyboardState state = Keyboard.GetState();
 
-            if(state.IsKeyDown(Keys.Enter))
+            if(state.IsKeyDown(Keys.Enter) || state.IsKeyDown(Keys.Space))
             {
                 ScreenManager.I.ActivateScreen(ScreenType.Game);
             }

@@ -28,8 +28,9 @@ namespace AridArnold.Screens
 
             LoadScreen(ScreenType.Game, new GameScreen(content, deviceManager), content);
             LoadScreen(ScreenType.GameOver, new GameOverScreen(content, deviceManager), content);
+            LoadScreen(ScreenType.LevelStart, new StartLevelScreen(content, deviceManager), content);
         }
-        
+
         private void LoadScreen(ScreenType type, Screen screen, ContentManager content)
         {
             mScreens.Add(type, screen);

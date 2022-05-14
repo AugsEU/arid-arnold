@@ -54,6 +54,49 @@ namespace AridArnold
             sb.DrawString(font, text, position - size / 2, color);
         }
 
+        public static void DrawRect(DrawInfo info, Rect2f rect2f, Color col)
+        {
+            Point min = new Point((int)rect2f.min.X, (int)rect2f.min.Y);
+            Point max = new Point((int)rect2f.max.X, (int)rect2f.max.Y);
+
+            int width = max.X - min.X;
+            int height = max.Y - min.Y;
+
+            Texture2D rect = new Texture2D(info.device, width, height);
+
+            Color[] data = new Color[width * height];
+            for (int i = 0; i < data.Length; ++i)
+            {
+                data[i] = col;
+            }
+            rect.SetData(data);
+
+            info.spriteBatch.Draw(rect, rect2f.min, Color.White);
+        }
+
+        public static void BrightenColour(ref Color col, float bright)
+        {
+            col.R = (byte)((col.R * (1 - bright)) + (255 * bright));
+            col.G = (byte)((col.G * (1 - bright)) + (255 * bright));
+            col.B = (byte)((col.B * (1 - bright)) + (255 * bright));
+        }
+
+        public static Vector2 CalcRotationOffset(float rotation, float height)
+        {
+            return CalcRotationOffset(rotation, height, height);
+        }
+
+        public static Vector2 CalcRotationOffset(float rotation, float width, float height)
+        {
+            float c = MathF.Cos(rotation);
+            float s = MathF.Sin(-rotation);
+
+            Vector2 oldCentre = new Vector2(width / 2.0f, height / 2.0f);
+            Vector2 newCentre = new Vector2(oldCentre.X * c - oldCentre.Y * s, oldCentre.X * s + oldCentre.Y * c);
+
+            return oldCentre - newCentre;
+        }
+
         public static void Log(string msg)
         {
 #if DEBUG_LOG

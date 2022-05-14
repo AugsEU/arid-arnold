@@ -9,11 +9,19 @@ using Microsoft.Xna.Framework.Content;
 namespace AridArnold
 {
 
-    enum EntityDirection
+    enum WalkDirection
     {
         Left,
         Right,
         None,
+    }
+
+    enum GravityDirection
+    {
+        Down = 0,
+        Up,
+        Left,
+        Right,
     }
 
     abstract class Entity
@@ -81,10 +89,8 @@ namespace AridArnold
             {
                 if(res.result.Collided)
                 {
-                    ReactToCollision(Collision2D.GetCollisionType(res.result.normal));
+                    ReactToCollision(res.result.normal);
                 }
-
-                //mTileMap[res.coord.X, res.coord.Y].OnTouch(this);
             }
         }
 
@@ -100,7 +106,7 @@ namespace AridArnold
             mFallthrough = false;
         }
 
-        protected abstract void ReactToCollision(CollisionType collisionType);
+        protected abstract void ReactToCollision(Vector2 collisionNormal);
     }
 
     abstract class PlatformingEntity : MovingEntity
@@ -110,21 +116,57 @@ namespace AridArnold
         const float DEFAULT_JUMP_SPEED = 25.0f;
 
         protected bool mOnGround;
-        protected EntityDirection mDirection;
 
-        private float mWalkSpeed = DEFAULT_WALK_SPEED;
-        private float mJumpSpeed = DEFAULT_JUMP_SPEED;
-        private float mGravity = DEFAULT_GRAVITY;
+        //Magniture of motion vectors
+        private float mWalkSpeed;
+        private float mJumpSpeed;
+        private float mGravity; 
+
+        private GravityDirection mGravityDirection;
+        protected WalkDirection mWalkDirection;
 
         public PlatformingEntity(Vector2 pos) : base(pos)
         {
             mVelocity = Vector2.Zero;
-            mDirection = EntityDirection.None;
+            mWalkDirection = WalkDirection.None;
+
+            mWalkSpeed = DEFAULT_WALK_SPEED;
+            mJumpSpeed = DEFAULT_JUMP_SPEED;
+            mGravity = DEFAULT_GRAVITY;
+
+            mGravityDirection = GravityDirection.Left;
+        }
+
+        public void SetGravity(GravityDirection dir)
+        {
+            mGravityDirection = dir;
+        }
+
+        protected GravityDirection GetGravityDir()
+        {
+            return mGravityDirection;
+        }
+
+        protected Vector2 GravityVecNorm()
+        {
+            switch (GetGravityDir())
+            {
+                case AridArnold.GravityDirection.Down:
+                    return new Vector2(0.0f, 1.0f);
+                case AridArnold.GravityDirection.Up:
+                    return new Vector2(0.0f, -1.0f);
+                case AridArnold.GravityDirection.Left:
+                    return new Vector2(-1.0f, 0.0f);
+                case AridArnold.GravityDirection.Right:
+                    return new Vector2(1.0f, 0.0f);
+            }
+
+            throw new NotImplementedException();
         }
 
         protected void Jump()
         {
-            mVelocity.Y = -mJumpSpeed;
+            mVelocity = -mJumpSpeed * GravityVecNorm();
         }
 
         protected void FallThroughPlatforms()
@@ -134,35 +176,44 @@ namespace AridArnold
 
         private void ApplyGravity(GameTime gameTime)
         {
+            float vecAlongGrav = Vector2.Dot(GravityVecNorm(), mVelocity);
+
             float mod = 1.0f;
-            if(mVelocity.Y < 0.0f)
+            if(vecAlongGrav < 0.0f)
             {
                 mod = 2.0f;
             }
 
             float delta = mGravity * GetDeltaT(gameTime) * mod;
+            Vector2 deltaVec = GravityVecNorm() * delta;
 
-            if(mVelocity.Y < 0.0f && delta > -mVelocity.Y)
+            if(-delta < vecAlongGrav && vecAlongGrav < 0.0f )
             {
-                delta = delta / 3.5f;
+                deltaVec = deltaVec / 3.5f;
             }
 
-            mVelocity.Y += delta;
-
+            mVelocity += deltaVec;
         }
 
         public override void Update(GameTime gameTime)
         {
-            switch (mDirection)
+            Vector2 downVec = GravityVecNorm();
+
+            Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
+
+            float component = Vector2.Dot(mVelocity, sideVec);
+
+            mVelocity = mVelocity - component * sideVec;
+
+            switch (mWalkDirection)
             {
-                case EntityDirection.Left:
-                    mVelocity.X = -mWalkSpeed;
+                case WalkDirection.Left:
+                    mVelocity -= mWalkSpeed * sideVec;
                     break;
-                case EntityDirection.Right:
-                    mVelocity.X = mWalkSpeed;
+                case WalkDirection.Right:
+                    mVelocity += mWalkSpeed * sideVec;
                     break;
-                case EntityDirection.None:
-                    mVelocity.X = 0.0f;
+                case WalkDirection.None:
                     break;
             }
 
@@ -172,15 +223,32 @@ namespace AridArnold
             base.Update(gameTime);
         }
 
-        protected override void ReactToCollision(CollisionType collisionType)
+        protected override void ReactToCollision(Vector2 normal)
         {
-            switch(collisionType)
+            CollisionType collisionType;
+
+            float dp = Vector2.Dot(normal, GravityVecNorm());
+
+            if(dp >= 0.95f)
+            {
+                collisionType = CollisionType.Ceiling;
+            }
+            else if(dp <= -0.95f)
+            {
+                collisionType = CollisionType.Ground;
+            }
+            else
+            {
+                collisionType= CollisionType.Wall;
+            }
+
+            switch (collisionType)
             {
                 case CollisionType.Ground:
                     mOnGround = true;
                     break;
                 case CollisionType.Ceiling:
-                    mVelocity.Y = mGravity;
+                    mVelocity = GravityVecNorm() * mGravity;
                     break;
             }
         }

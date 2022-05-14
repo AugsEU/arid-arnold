@@ -195,13 +195,32 @@ namespace AridArnold
     {
         public override void LoadContent(ContentManager content)
         {
-            mTexture = content.Load<Texture2D>("Tiles/steel");
+            mTexture = content.Load<Texture2D>("Tiles/wall");
         }
     }
 
     //============================================
     //  Collectible types
     //--------------------------------------------
+    class FlagTile : CollectibleTile
+    {
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/flag");
+        }
+
+        public override void OnPlayerIntersect(Arnold player)
+        {
+            ProgressManager.I.ReportCheckpoint();
+            base.OnPlayerIntersect(player);
+        }
+
+        protected override CollectibleType GetCollectibleType()
+        {
+            return CollectibleType.Flag;
+        }
+    }
+
     class WaterTile : CollectibleTile
     {
         public override void LoadContent(ContentManager content)

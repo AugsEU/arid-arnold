@@ -6,7 +6,8 @@ namespace AridArnold
 {
     enum CollectibleType
     {
-        WaterBottle
+        WaterBottle,
+        Flag
     }
 
     internal class CollectibleManager : Singleton<CollectibleManager>

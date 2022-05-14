@@ -68,6 +68,10 @@ namespace AridArnold
             {
                 return new WaterTile();
             }
+            else if (col == Color.Red)
+            {
+                return new FlagTile();
+            }
             else if(Util.CompareHEX(col, 0x404040))
             {
                 return new SpikesTile((TileRotation)param);
@@ -252,7 +256,7 @@ namespace AridArnold
 
             Rectangle sourceRectangle = new Rectangle(tileIndex.X * tileHeight, tileIndex.Y * tileHeight, tileHeight, tileHeight);
 
-            info.spriteBatch.Draw(tileTexture, drawDestination, sourceRectangle, Color.White, rotation, SetupRotationOffset(rotation, tileHeight), effect, 1.0f);
+            info.spriteBatch.Draw(tileTexture, drawDestination, sourceRectangle, Color.White, rotation, Util.CalcRotationOffset(rotation, tileHeight), effect, 1.0f);
         }
 
         private void SetupTileNoRotation(AdjacencyType adjacency, ref Point tileIndex)
@@ -401,25 +405,12 @@ namespace AridArnold
             }
         }
 
-        private Vector2 SetupRotationOffset(float rotation, float tileHeight)
+        public void CentreX(float screenWidth)
         {
-            const float SQRT2_2 = 0.70710678118f;
+            float ourWidth = GetDrawWidth();
+            float xOffset = (screenWidth - ourWidth)/2.0f;
 
-            float angle = (-rotation + MathHelper.PiOver4);
-            float tileDiagHalf = tileHeight * SQRT2_2;
-
-            Vector2 oldCentre = new Vector2(tileHeight / 2.0f, tileHeight / 2.0f);
-            Vector2 newCentre = new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * tileDiagHalf;
-
-            return oldCentre - newCentre;
-        }
-
-        public void CentreX(GraphicsDeviceManager graphics)
-        {
-            float ourWidth = mTileSize * mTileMap.GetLength(0);
-            //float xOffset = (graphics.GraphicsDevice.GetRenderTargets()[0]. - ourWidth)/2.0f;
-
-            mTileMapPos.X = 0.0f;
+            mTileMapPos.X = xOffset;
         }
 
         //============================================

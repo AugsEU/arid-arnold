@@ -43,7 +43,7 @@ namespace AridArnold
 
             FontManager.I.LoadAllFonts(Content);
             ScreenManager.I.LoadAllScreens(Content, _graphics);
-            ScreenManager.I.ActivateScreen(ScreenType.Game);
+            ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
         }
 
         protected override void Update(GameTime gameTime)
