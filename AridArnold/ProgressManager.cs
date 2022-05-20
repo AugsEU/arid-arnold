@@ -1,18 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 namespace AridArnold
 {
+    struct WorldData
+    {
+        public int startLevel;
+        public string name;
+
+        //Style
+        public Color worldColor; 
+        public string wallTexture;
+        public string platformTexture;
+
+        public WorldData(int _start, string _name, Color _worldColor, string _wallTexture, string _platformTexture)
+        {
+            startLevel = _start;
+            name = _name;
+
+            //Style
+            worldColor = _worldColor;
+            wallTexture = _wallTexture;
+            platformTexture = _platformTexture;
+        }
+    }
+
     internal class ProgressManager : Singleton<ProgressManager>
     {
-        int mCurrentLevel = 4;
-        int mLastCheckPoint = 4;
-        int mLives = 4;
+        const int START_LEVEL = 4;
+        const int START_LIVES = 4;
+
+        WorldData[] mWorldData =
+        {
+            new WorldData(0, "Iron Works", new Color(0, 20, 10), "steel", "platform"),
+            new WorldData(4, "Land of Mirrors", new Color(50, 10, 20), "cobble", "platform")
+        };
+
+        int mCurrentLevel = START_LEVEL;
+        int mLastCheckPoint = START_LEVEL;
+        int mLives = START_LIVES;
 
         public void ResetGame()
         {
-            mLives = 4;
+            mLives = START_LIVES;
             mCurrentLevel = mLastCheckPoint;
         }
 
@@ -44,6 +79,32 @@ namespace AridArnold
         public int LastCheckPoint
         { 
             get { return mLastCheckPoint; } 
+        }
+
+        int mPrevLevelQuery = -1;
+        int mPrevWorldIndex = -1;
+        public WorldData GetWorldData()
+        {
+            //Memoize 
+            if(mCurrentLevel == mPrevLevelQuery && mPrevWorldIndex != -1)
+            {
+                return mWorldData[mPrevWorldIndex];
+            }
+
+            mPrevLevelQuery = mCurrentLevel;
+
+
+            for (int i = 0; i < mWorldData.Length; i++)
+            {
+                mPrevWorldIndex = i;
+
+                if (mCurrentLevel < mWorldData[i].startLevel)
+                {
+                    mPrevWorldIndex = i - 1;
+                }
+            }
+
+            return mWorldData[mPrevWorldIndex];
         }
     }
 }

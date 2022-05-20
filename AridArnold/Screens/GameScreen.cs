@@ -19,8 +19,6 @@ namespace AridArnold.Screens
         private const double END_LEVEL_TIME = 1000.0;
         private const double END_LEVEL_FLASH_TIME = 100.0;
 
-
-        private Color mBGCol;
         private List<Level> mLevels;
 
         private RenderTarget2D mGameArea;
@@ -32,8 +30,6 @@ namespace AridArnold.Screens
         //--------------------------------------------
         public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
-            mBGCol = Color.Black;
-
             mLevelEndTimer = new MonoTimer();
 
             mLevels = new List<Level>();
@@ -83,14 +79,8 @@ namespace AridArnold.Screens
 
         private void StartLevel()
         {
-            mBGCol = GetBGColor();
             LoadLevel(ProgressManager.I.CurrentLevel);
             mLevelEndTimer.FullReset();
-        }
-
-        private Color GetBGColor()
-        {
-            return new Color(0, 20, 10);
         }
 
         //============================================
@@ -156,7 +146,7 @@ namespace AridArnold.Screens
 
             info.device.SetRenderTarget(mGameArea);
 
-            Color clearCol = mBGCol;
+            Color clearCol = ProgressManager.I.GetWorldData().worldColor;
 
             if(mLevelEndTimer.IsPlaying())
             {

@@ -147,7 +147,7 @@ namespace AridArnold
     {
         public override void LoadContent(ContentManager content)
         {
-            mTexture = content.Load<Texture2D>("Tiles/wall4");
+            mTexture = content.Load<Texture2D>("Tiles/" + ProgressManager.I.GetWorldData().wallTexture);
         }
     }
 
@@ -155,7 +155,7 @@ namespace AridArnold
     {
         public override void LoadContent(ContentManager content)
         {
-            mTexture = content.Load<Texture2D>("Tiles/platform");
+            mTexture = content.Load<Texture2D>("Tiles/" + ProgressManager.I.GetWorldData().platformTexture);
         }
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
@@ -185,17 +185,6 @@ namespace AridArnold
         {
             CollectibleManager.I.CollectItem(GetCollectibleType());
             mEnabled = false;
-        }
-    }
-
-    //============================================
-    //  Square types
-    //--------------------------------------------
-    class SteelTile : SquareTile
-    {
-        public override void LoadContent(ContentManager content)
-        {
-            mTexture = content.Load<Texture2D>("Tiles/wall");
         }
     }
 

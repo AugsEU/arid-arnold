@@ -85,25 +85,6 @@ namespace AridArnold
                 HandleWalkInput(state);
             }
 
-            //DEBUG
-            if (state.IsKeyDown(Keys.W))
-            {
-                SetGravity(GravityDirection.Up);
-            }
-            else if (state.IsKeyDown(Keys.S))
-            {
-                SetGravity(GravityDirection.Down);
-            }
-            else if (state.IsKeyDown(Keys.A))
-            {
-                SetGravity(GravityDirection.Left);
-            }
-            else if (state.IsKeyDown(Keys.D))
-            {
-                SetGravity(GravityDirection.Right);
-            }
-            //DEBUG
-
             TileManager.I.ArnoldTouchTiles(this);
 
             if(CheckOffScreenDeath())

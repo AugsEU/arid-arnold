@@ -134,7 +134,7 @@ namespace AridArnold
             mJumpSpeed = DEFAULT_JUMP_SPEED;
             mGravity = DEFAULT_GRAVITY;
 
-            mGravityDirection = GravityDirection.Left;
+            mGravityDirection = GravityDirection.Down;
         }
 
         public void SetGravity(GravityDirection dir)
