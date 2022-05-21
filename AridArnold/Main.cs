@@ -52,17 +52,27 @@ namespace AridArnold
             TimeManager.I.Update(gameTime);
 
             KeyboardState keyboardState = Keyboard.GetState();
-
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
-            {
-                Exit();
-            }
-
-            foreach(Keys key in keyboardState.GetPressedKeys())
+            foreach (Keys key in keyboardState.GetPressedKeys())
             {
                 HandleKeyPress(key);
             }
 
+            const int updateSteps = 4;
+
+            System.TimeSpan timeInc = gameTime.ElapsedGameTime / updateSteps;
+            for(int i = 0; i < updateSteps; i++)
+            {
+                GameTime stepTime = new GameTime(gameTime.TotalGameTime - (updateSteps - 1 - i) * timeInc, timeInc);
+
+                GameUpdate(stepTime);
+
+            }
+
+            base.Update(gameTime);
+        }
+
+        private void GameUpdate(GameTime gameTime)
+        {
             //Update Active screen
             Screen screen = ScreenManager.I.GetActiveScreen();
 
@@ -70,8 +80,6 @@ namespace AridArnold
             {
                 screen.Update(gameTime);
             }
-
-            base.Update(gameTime);
         }
 
         private void HandleKeyPress(Keys key)
@@ -82,6 +90,11 @@ namespace AridArnold
             if (key == Keys.Enter && alt)
             {
                 ToggleFullscreen();
+            }
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
+            {
+                Exit();
             }
         }
 

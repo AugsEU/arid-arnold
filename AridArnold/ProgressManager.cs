@@ -37,8 +37,8 @@ namespace AridArnold
 
         WorldData[] mWorldData =
         {
-            new WorldData(0, "Iron Works", new Color(0, 20, 10), "steel", "platform"),
-            new WorldData(4, "Land of Mirrors", new Color(50, 10, 20), "cobble", "platform")
+            new WorldData(0, "Iron Works", new Color(0, 10,20), "steel", "platform"),
+            new WorldData(4, "Land of Mirrors", new Color(0, 24, 14), "cobble", "platform")
         };
 
         int mCurrentLevel = START_LEVEL;
