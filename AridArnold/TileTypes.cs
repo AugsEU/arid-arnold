@@ -293,4 +293,28 @@ namespace AridArnold
             return 0.0f;
         }
     }
+
+    class MirrorTile : SquareTile
+    {
+        public override void OnTouch(MovingEntity entity) 
+        {
+            if (entity is PlatformingEntity)
+            {
+                PlatformingEntity platformEntity = (PlatformingEntity)entity;
+                //do something with it
+
+                if (platformEntity.GetGravityDir() == GravityDirection.Down)
+                {
+                    platformEntity.SetGravity(GravityDirection.Up);
+
+                    platformEntity.ShiftPosition(new Vector2(0.0f, 32.0f));
+                }
+            }
+        }
+
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/mirror");
+        }
+    }
 }

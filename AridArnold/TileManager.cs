@@ -72,6 +72,10 @@ namespace AridArnold
             {
                 return new SpikesTile((TileRotation)param);
             }
+            else if (Util.CompareHEX(col, 0xFFFF00))
+            {
+                return new MirrorTile();
+            }
 
             return new AirTile();
         }
@@ -141,6 +145,15 @@ namespace AridArnold
                 }
             }
         }
+
+        //============================================
+        //  Utility
+        //--------------------------------------------
+        public Tile GetTile(Point coord)
+        {
+            return mTileMap[coord.X, coord.Y];
+        }
+
 
         //============================================
         //  Updates

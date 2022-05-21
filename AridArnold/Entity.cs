@@ -45,6 +45,11 @@ namespace AridArnold
             return (float)gameTime.ElapsedGameTime.TotalSeconds * 10.0f;
         }
 
+        public void ShiftPosition(Vector2 shift)
+        {
+            mPosition += shift;
+        }
+
         public virtual void Kill()
         {
 
@@ -91,6 +96,8 @@ namespace AridArnold
                 {
                     ReactToCollision(res.result.normal);
                 }
+
+                TileManager.I.GetTile(res.coord).OnTouch(this);
             }
         }
 
@@ -142,7 +149,7 @@ namespace AridArnold
             mGravityDirection = dir;
         }
 
-        protected GravityDirection GetGravityDir()
+        public GravityDirection GetGravityDir()
         {
             return mGravityDirection;
         }
