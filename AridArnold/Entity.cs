@@ -16,14 +16,6 @@ namespace AridArnold
         None,
     }
 
-    enum GravityDirection
-    {
-        Down = 0,
-        Up,
-        Left,
-        Right,
-    }
-
     abstract class Entity
     {
         protected Vector2 mPosition;
@@ -129,7 +121,7 @@ namespace AridArnold
         private float mJumpSpeed;
         private float mGravity; 
 
-        private GravityDirection mGravityDirection;
+        private CardinalDirection mCardinalDirection;
         protected WalkDirection mWalkDirection;
 
         public PlatformingEntity(Vector2 pos) : base(pos)
@@ -141,30 +133,30 @@ namespace AridArnold
             mJumpSpeed = DEFAULT_JUMP_SPEED;
             mGravity = DEFAULT_GRAVITY;
 
-            mGravityDirection = GravityDirection.Down;
+            mCardinalDirection = CardinalDirection.Down;
         }
 
-        public void SetGravity(GravityDirection dir)
+        public void SetGravity(CardinalDirection dir)
         {
-            mGravityDirection = dir;
+            mCardinalDirection = dir;
         }
 
-        public GravityDirection GetGravityDir()
+        public CardinalDirection GetGravityDir()
         {
-            return mGravityDirection;
+            return mCardinalDirection;
         }
 
         protected Vector2 GravityVecNorm()
         {
             switch (GetGravityDir())
             {
-                case AridArnold.GravityDirection.Down:
+                case AridArnold.CardinalDirection.Down:
                     return new Vector2(0.0f, 1.0f);
-                case AridArnold.GravityDirection.Up:
+                case AridArnold.CardinalDirection.Up:
                     return new Vector2(0.0f, -1.0f);
-                case AridArnold.GravityDirection.Left:
+                case AridArnold.CardinalDirection.Left:
                     return new Vector2(-1.0f, 0.0f);
-                case AridArnold.GravityDirection.Right:
+                case AridArnold.CardinalDirection.Right:
                     return new Vector2(1.0f, 0.0f);
             }
 
@@ -252,6 +244,10 @@ namespace AridArnold
             switch (collisionType)
             {
                 case CollisionType.Ground:
+                    if(!mOnGround && GetGravityDir() == CardinalDirection.Left)
+                    {
+                        //System.Diagnostics.Debugger.Break();
+                    }
                     mOnGround = true;
                     break;
                 case CollisionType.Ceiling:

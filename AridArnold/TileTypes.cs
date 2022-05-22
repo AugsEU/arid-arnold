@@ -28,14 +28,6 @@ namespace AridArnold
         All =               Top | Bottom | Left | Right,
     }
 
-    enum TileRotation
-    {
-        Up = 0,
-        Right = 1,
-        Down = 2,
-        Left = 3,
-    }
-
     //============================================
     //  Base class
     //--------------------------------------------
@@ -44,6 +36,7 @@ namespace AridArnold
         protected Texture2D mTexture = null;
         protected bool mEnabled = true;
         protected AdjacencyType mAdjacency = AdjacencyType.None;
+        protected CardinalDirection mRotation;
 
         public bool Enabled
         {
@@ -53,6 +46,7 @@ namespace AridArnold
 
         public Tile()
         {
+            mRotation = CardinalDirection.Up;
         }
 
         public abstract CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime);
@@ -101,9 +95,21 @@ namespace AridArnold
             neighbour.mAdjacency |= AdjacencyType.Top;
         }
 
-        //1 type tiles can be rotated freely.
-        public virtual float GetRotation()
+        //Tiles can be rotated.
+        public float GetRotation()
         {
+            switch (mRotation)
+            {
+                case CardinalDirection.Up:
+                    return 0.0f;
+                case CardinalDirection.Right:
+                    return MathHelper.PiOver2;
+                case CardinalDirection.Down:
+                    return MathHelper.Pi;
+                case CardinalDirection.Left:
+                    return MathHelper.PiOver2 * 3.0f;
+            }
+
             return 0.0f;
         }
 
@@ -153,6 +159,11 @@ namespace AridArnold
 
     class PlatformTile : Tile
     {
+        public PlatformTile(CardinalDirection rotation) : base()
+        {
+            mRotation = rotation;
+        }
+
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/" + ProgressManager.I.GetWorldData().platformTexture);
@@ -165,18 +176,13 @@ namespace AridArnold
                 return CollisionResults.None;
             }
 
-            CollisionResults results = Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength);
-
-            //Not a ground, ignore it.
-            if(Collision2D.GetCollisionType(results.normal) != CollisionType.Ground)
-            {
-                results.t = null;
-            }
-
-            return results;
+            return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);
         }
     }
 
+    //============================================
+    //  Collectible types
+    //--------------------------------------------
     abstract class CollectibleTile : AirTile
     {
         protected abstract CollectibleType GetCollectibleType();
@@ -188,9 +194,6 @@ namespace AridArnold
         }
     }
 
-    //============================================
-    //  Collectible types
-    //--------------------------------------------
     class FlagTile : CollectibleTile
     {
         public override void LoadContent(ContentManager content)
@@ -228,9 +231,7 @@ namespace AridArnold
     //--------------------------------------------
     class SpikesTile : AirTile
     {
-        TileRotation mRotation;
-
-        public SpikesTile(TileRotation rotation) : base()
+        public SpikesTile(CardinalDirection rotation) : base()
         {
             mRotation = rotation;
         }
@@ -255,18 +256,18 @@ namespace AridArnold
 
             switch (mRotation)
             {
-                case TileRotation.Up:
+                case CardinalDirection.Up:
                     topLeft.Y += smallerFactor;
                     topLeft.X += smallerFactor / 2.0f;
                     break;
-                case TileRotation.Right:
+                case CardinalDirection.Right:
                     topLeft.Y += smallerFactor / 2.0f;
                     break;
-                case TileRotation.Left:
+                case CardinalDirection.Left:
                     topLeft.X += smallerFactor;
                     topLeft.Y += smallerFactor / 2.0f;
                     break;
-                case TileRotation.Down:
+                case CardinalDirection.Down:
                     topLeft.X += smallerFactor / 2.0f;
                     break;
             }
@@ -275,41 +276,55 @@ namespace AridArnold
 
             return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
         }
-
-        public override float GetRotation()
-        {
-            switch (mRotation)
-            {
-                case TileRotation.Up:
-                    return 0.0f;
-                case TileRotation.Right:
-                    return MathHelper.PiOver2;
-                case TileRotation.Down:
-                    return MathHelper.Pi;
-                case TileRotation.Left:
-                    return MathHelper.PiOver2 * 3.0f;
-            }
-
-            return 0.0f;
-        }
     }
 
-    class MirrorTile : SquareTile
+    class MirrorTile : PlatformTile
     {
-        public override void OnTouch(MovingEntity entity) 
+        public MirrorTile(CardinalDirection rotation) : base(rotation)
         {
-            if (entity is PlatformingEntity)
+
+        }
+
+        public override void OnPlayerIntersect(Arnold entity) 
+        {
+            Rect2f bounds = entity.ColliderBounds();
+
+            switch (mRotation)
             {
-                PlatformingEntity platformEntity = (PlatformingEntity)entity;
-                //do something with it
-
-                if (platformEntity.GetGravityDir() == GravityDirection.Down)
-                {
-                    platformEntity.SetGravity(GravityDirection.Up);
-
-                    platformEntity.ShiftPosition(new Vector2(0.0f, 32.0f));
-                }
+                case CardinalDirection.Up:
+                    if (entity.GetGravityDir() != CardinalDirection.Down)
+                    {
+                        entity.SetGravity(CardinalDirection.Down);
+                        entity.ShiftPosition(new Vector2(0.0f, -(bounds.Height + 16.0f)));
+                    }
+                    break;
+                case CardinalDirection.Right:
+                    if (entity.GetGravityDir() != CardinalDirection.Left)
+                    {
+                        entity.SetGravity(CardinalDirection.Left);
+                        entity.ShiftPosition(new Vector2(bounds.Width + 16.0f, 0.0f));
+                    }
+                    break;
+                case CardinalDirection.Down:
+                    if (entity.GetGravityDir() != CardinalDirection.Up)
+                    {
+                        entity.SetGravity(CardinalDirection.Up);
+                        entity.ShiftPosition(new Vector2(0.0f, bounds.Height+16.0f));
+                    }
+                    break;
+                case CardinalDirection.Left:
+                    if (entity.GetGravityDir() != CardinalDirection.Right)
+                    {
+                        entity.SetGravity(CardinalDirection.Right);
+                        entity.ShiftPosition(new Vector2(-(bounds.Width + 16.0f), 0.0f));
+                    }
+                    break;
             }
+        }
+
+        public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
+        {
+            return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);
         }
 
         public override void LoadContent(ContentManager content)

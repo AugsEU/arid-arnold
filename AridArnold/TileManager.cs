@@ -52,29 +52,32 @@ namespace AridArnold
             //Use alpha component as a parameter.
             int param = 255 - col.A;
 
-            if (col == Color.Black)
+            if (col.A > 0)
             {
-                return new WallTile();
-            }
-            else if (col == Color.DarkGray)
-            {
-                return new PlatformTile();
-            }
-            else if (col == Color.Blue)
-            {
-                return new WaterTile();
-            }
-            else if (col == Color.Red)
-            {
-                return new FlagTile();
-            }
-            else if(Util.CompareHEX(col, 0x404040))
-            {
-                return new SpikesTile((TileRotation)param);
-            }
-            else if (Util.CompareHEX(col, 0xFFFF00))
-            {
-                return new MirrorTile();
+                if (Util.CompareHEX(col, 0x000000))
+                {
+                    return new WallTile();
+                }
+                else if (Util.CompareHEX(col, 0xA9A9A9))
+                {
+                    return new PlatformTile((CardinalDirection)param);
+                }
+                else if (Util.CompareHEX(col, 0x0000FF))
+                {
+                    return new WaterTile();
+                }
+                else if (Util.CompareHEX(col, 0xFF0000))
+                {
+                    return new FlagTile();
+                }
+                else if (Util.CompareHEX(col, 0x404040))
+                {
+                    return new SpikesTile((CardinalDirection)param);
+                }
+                else if (Util.CompareHEX(col, 0xFFFF00))
+                {
+                    return new MirrorTile((CardinalDirection)param);
+                }
             }
 
             return new AirTile();
@@ -474,7 +477,7 @@ namespace AridArnold
                 {
                     Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
 
-                    Util.Log("   Pushing by normal " + pushVec.ToString() + "(" + collisionResults.t.Value + ")");
+                    Util.Log("   " + point.ToString() + "Pushing by normal " + collisionResults.normal.ToString() + "(" + collisionResults.t.Value + ")");
 
                     entity.velocity += pushVec;
                 }

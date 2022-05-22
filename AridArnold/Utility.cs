@@ -19,6 +19,14 @@ namespace AridArnold
         public GraphicsDevice device;
     }
 
+    enum CardinalDirection
+    {
+        Up = 0,
+        Right = 1,
+        Down = 2,
+        Left = 3,
+    }
+
 
     internal static class Util
     {
@@ -28,6 +36,23 @@ namespace AridArnold
             temp = lhs;
             lhs = rhs;
             rhs = temp;
+        }
+
+        public static Vector2 GetNormal(CardinalDirection dir)
+        {
+            switch(dir)
+            {
+                case CardinalDirection.Up:
+                    return new Vector2(0.0f, -1.0f);
+                case CardinalDirection.Down:
+                    return new Vector2(0.0f, 1.0f);
+                case CardinalDirection.Left:
+                    return new Vector2(-1.0f, 0.0f);
+                case CardinalDirection.Right:
+                    return new Vector2(1.0f, 0.0f);
+            }
+
+            throw new NotImplementedException();
         }
 
         public static float Cross(Vector2 a, Vector2 b)

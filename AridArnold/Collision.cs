@@ -127,18 +127,56 @@ namespace AridArnold
             return RayVsBox(new Ray2f(movingRect.Centre, displacement), targetRect);
         }
 
-        public static CollisionResults MovingRectVsPlatform(Rect2f movingRect, Vector2 displacement, Vector2 platLeft, float length)
+        public static CollisionResults MovingRectVsPlatform(Rect2f movingRect, Vector2 displacement, Vector2 platOrigin, float length, CardinalDirection dir)
         {
             //Expand target rect
             Vector2 sizeVec = new Vector2(movingRect.Width * 0.5f, movingRect.Height * 0.5f);
 
-            platLeft = platLeft - sizeVec;
-            length += sizeVec.X * 2.0f;
+            Ray2f platformRay = new Ray2f();
+            switch (dir)
+            {
+                case CardinalDirection.Up:
+                    platOrigin += -sizeVec;
+                    length += sizeVec.X * 2.0f;
 
-            Ray2f platformRay = new Ray2f(platLeft, new Vector2(length, 0.0f));
+                    platformRay = new Ray2f(platOrigin, new Vector2(length, 0.0f));
+                    break;
+                case CardinalDirection.Right:
+                    platOrigin.X += length + sizeVec.X;
+                    platOrigin.Y += -sizeVec.Y;
+
+                    length += sizeVec.Y * 2.0f;
+
+                    platformRay = new Ray2f(platOrigin, new Vector2(0.0f, length));
+                    break;
+                case CardinalDirection.Down:
+                    platOrigin.X += -sizeVec.X;
+                    platOrigin.Y += length + sizeVec.Y;
+
+                    length += sizeVec.X * 2.0f;
+
+                    platformRay = new Ray2f(platOrigin, new Vector2(length, 0.0f));
+                    break;
+                case CardinalDirection.Left:
+
+                    platOrigin += -sizeVec;
+
+                    length += sizeVec.Y * 2.0f;
+
+                    platformRay = new Ray2f(platOrigin, new Vector2(0.0f, length));
+                    break;
+            }
+
             Ray2f movingRay = new Ray2f(movingRect.Centre, displacement);
 
-            return RayVsRay(movingRay, platformRay);
+            CollisionResults res = RayVsRay(movingRay, platformRay);
+
+            if(res.normal == Util.GetNormal(dir))
+            {
+                return res;
+            }
+
+            return CollisionResults.None;
         }
 
         public static CollisionResults RayVsRay(Ray2f checkRay, Ray2f targetRay)
@@ -189,9 +227,14 @@ namespace AridArnold
             results.t = null;
             results.normal = Vector2.Zero;
 
+            if(BoxVsPointOpen(rect, ray.origin))
+            {
+                return CollisionResults.None;
+            }
+
             if(ray.direction == Vector2.Zero)
             {
-                return results;
+                return CollisionResults.None;
             }
 
             //Handle zero case
@@ -267,6 +310,11 @@ namespace AridArnold
                     }
                 }
 
+                if (BoxVsPoint(rect, ray.origin))
+                {
+                    results.normal = CardinalFromCentre(rect, ray.origin);
+                }
+
                 return results;
             }
 
@@ -303,15 +351,15 @@ namespace AridArnold
             if(farthest_t < 0.0f || nearest_t < 0.0f || nearest_t > 1.0f)
             {
                 //No collision
-                return results;
+                return CollisionResults.None;
             }
 
             results.t = nearest_t;
 
             //Calculate normal
-            if(x_near < y_near)
+            if (x_near < y_near)
             {
-                if(ray.direction.Y < 0.0f)
+                if (ray.direction.Y < 0.0f)
                 {
                     results.normal = new Vector2(0.0f, 1.0f);
                 }
@@ -352,5 +400,40 @@ namespace AridArnold
                 rect.min.Y <= point.Y && point.Y <= rect.max.Y;
         }
 
+        public static bool BoxVsPointOpen(Rect2f rect, Vector2 point)
+        {
+            return rect.min.X < point.X && point.X < rect.max.X &&
+                rect.min.Y < point.Y && point.Y < rect.max.Y;
+        }
+
+        public static Vector2 CardinalFromCentre(Rect2f rect , Vector2 point)
+        {
+            point -= rect.Centre;
+
+            float gradient = (rect.max.Y - rect.min.Y) / (rect.max.X - rect.min.X);
+
+            if(point.Y > gradient * point.X)
+            {
+                if(point.Y > -gradient * point.X)
+                {
+                    return new Vector2(0.0f, 1.0f);
+                }
+                else
+                {
+                    return new Vector2(-1.0f, 0.0f);
+                }
+            }
+            else
+            {
+                if (point.Y > -gradient * point.X)
+                {
+                    return new Vector2(1.0f, 0.0f);
+                }
+                else
+                {
+                    return new Vector2(0.0f, -1.0f);
+                }
+            }
+        }
     }
 }

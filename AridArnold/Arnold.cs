@@ -66,20 +66,15 @@ namespace AridArnold
 
             KeyboardState state = Keyboard.GetState();
 
-
-
-            if (mOnGround)
+            if (state.IsKeyDown(Keys.Space) && state.IsKeyDown(GetFallthroughKey()))
+            {
+                FallThroughPlatforms();
+            }
+            else if (mOnGround)
             {
                 if (state.IsKeyDown(Keys.Space))
                 {
-                    if(state.IsKeyDown(GetFallthroughKey()))
-                    {
-                        FallThroughPlatforms();
-                    }
-                    else
-                    {
-                        Jump();
-                    }
+                    Jump();
                 }
 
                 HandleWalkInput(state);
@@ -99,13 +94,13 @@ namespace AridArnold
         {
             switch (GetGravityDir())
             {
-                case GravityDirection.Down:
+                case CardinalDirection.Down:
                     return Keys.Down;
-                case GravityDirection.Up:
+                case CardinalDirection.Up:
                     return Keys.Up;
-                case GravityDirection.Left:
+                case CardinalDirection.Left:
                     return Keys.Left;
-                case GravityDirection.Right:
+                case CardinalDirection.Right:
                     return Keys.Right;
             }
 
@@ -114,9 +109,9 @@ namespace AridArnold
 
         private void HandleWalkInput(KeyboardState state)
         {
-            GravityDirection gravDir = GetGravityDir();
+            CardinalDirection gravDir = GetGravityDir();
 
-            if(gravDir == GravityDirection.Down || gravDir == GravityDirection.Up)
+            if(gravDir == CardinalDirection.Down || gravDir == CardinalDirection.Up)
             {
                 if (state.IsKeyDown(Keys.Left))
                 {
@@ -133,7 +128,7 @@ namespace AridArnold
                     mWalkDirection = WalkDirection.None;
                 }
             }
-            else if(gravDir == GravityDirection.Left || gravDir == GravityDirection.Right)
+            else if(gravDir == CardinalDirection.Left || gravDir == CardinalDirection.Right)
             {
                 if (state.IsKeyDown(Keys.Up))
                 {
@@ -155,17 +150,24 @@ namespace AridArnold
 
         private bool CheckOffScreenDeath()
         {
-            //if (IsGravityInverted())
-            //{
-            //    return mPosition.Y < mTexture.Height/2.0f;
-            //}
+            switch (GetGravityDir())
+            {
+                case CardinalDirection.Up:
+                    return mPosition.Y < mTexture.Height / 2.0f;
+                case CardinalDirection.Right:
+                    return mPosition.X > TileManager.I.GetDrawWidth();
+                case CardinalDirection.Down:
+                    return mPosition.Y > TileManager.I.GetDrawHeight();
+                case CardinalDirection.Left:
+                    return mPosition.X < mTexture.Height / 2.0f;
+            }
 
-            return mPosition.Y > TileManager.I.GetDrawHeight();
+            throw new NotImplementedException();
         }
 
         public override Rect2f ColliderBounds()
         {
-            if(GetGravityDir() == GravityDirection.Left || GetGravityDir() == GravityDirection.Right)
+            if(GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
             {
                 return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));
             }
@@ -212,24 +214,24 @@ namespace AridArnold
 
             switch (GetGravityDir())
             {
-                case GravityDirection.Down:
+                case CardinalDirection.Down:
                     rotation = 0.0f;
                     xDiff = xDiff / 2;
                     break;
-                case GravityDirection.Up:
+                case CardinalDirection.Up:
                     rotation = MathHelper.Pi;
                     yDiff = 1;
                     xDiff = xDiff / 2;
                     effect = effect ^ SpriteEffects.FlipHorizontally;
                     break;
-                case GravityDirection.Left:
+                case CardinalDirection.Left:
                     Util.Swap(ref xDiff, ref yDiff);
                     xDiff = -2-xDiff/2;
                     yDiff += 2;
 
                     rotation = MathHelper.PiOver2;
                     break;
-                case GravityDirection.Right:
+                case CardinalDirection.Right:
                     rotation = MathHelper.PiOver2 * 3.0f;
                     effect = effect ^ SpriteEffects.FlipHorizontally;
 
