@@ -244,10 +244,6 @@ namespace AridArnold
             switch (collisionType)
             {
                 case CollisionType.Ground:
-                    if(!mOnGround && GetGravityDir() == CardinalDirection.Left)
-                    {
-                        //System.Diagnostics.Debugger.Break();
-                    }
                     mOnGround = true;
                     break;
                 case CollisionType.Ceiling:

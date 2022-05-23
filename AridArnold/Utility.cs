@@ -55,6 +55,23 @@ namespace AridArnold
             throw new NotImplementedException();
         }
 
+        public static CardinalDirection InvertDirection(CardinalDirection dir)
+        {
+            switch (dir)
+            {
+                case CardinalDirection.Up:
+                    return CardinalDirection.Down;
+                case CardinalDirection.Right:
+                    return CardinalDirection.Left;
+                case CardinalDirection.Down:
+                    return CardinalDirection.Up;
+                case CardinalDirection.Left:
+                    return CardinalDirection.Right;
+            }
+
+            throw new NotImplementedException();
+        }
+
         public static float Cross(Vector2 a, Vector2 b)
         {
             return a.X * b.Y - a.Y * b.X;

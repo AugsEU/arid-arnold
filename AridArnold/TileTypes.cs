@@ -173,7 +173,19 @@ namespace AridArnold
         {
             if(!entity.CollideWithPlatforms())
             {
-                return CollisionResults.None;
+                if(entity is PlatformingEntity)
+                {
+                    PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+
+                    if(mRotation == Util.InvertDirection(platformingEntity.GetGravityDir()))
+                    {
+                        return CollisionResults.None;
+                    }
+                }
+                else
+                {
+                    return CollisionResults.None;
+                }
             }
 
             return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);

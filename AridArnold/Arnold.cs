@@ -153,13 +153,13 @@ namespace AridArnold
             switch (GetGravityDir())
             {
                 case CardinalDirection.Up:
-                    return mPosition.Y < mTexture.Height / 2.0f;
+                    return mPosition.Y < -mTexture.Height / 2.0f;
                 case CardinalDirection.Right:
                     return mPosition.X > TileManager.I.GetDrawWidth();
                 case CardinalDirection.Down:
                     return mPosition.Y > TileManager.I.GetDrawHeight();
                 case CardinalDirection.Left:
-                    return mPosition.X < mTexture.Height / 2.0f;
+                    return mPosition.X < mTexture.Width / 2.0f;
             }
 
             throw new NotImplementedException();
