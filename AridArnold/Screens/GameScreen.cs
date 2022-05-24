@@ -38,6 +38,7 @@ namespace AridArnold.Screens
             mLevels.Add(new CollectWaterLevel("level1-3", 2));
             mLevels.Add(new CollectFlagLevel("level1-4"));
             mLevels.Add(new CollectWaterLevel("level2-1", 2));
+            mLevels.Add(new CollectWaterLevel("level2-2", 2));
         }
 
         private void LoadLevel(int levelIndex)
