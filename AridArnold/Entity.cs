@@ -26,26 +26,38 @@ namespace AridArnold
             mPosition = pos;
         }
 
-        public abstract void Update(GameTime gameTime);
+        public virtual void Update(GameTime gameTime)
+        {
+            TileManager.I.EntityTouchTiles(this);
+        }
 
         public abstract void Draw(DrawInfo info);
 
         public abstract void LoadContent(ContentManager content);
 
-        protected float GetDeltaT(GameTime gameTime)
-        {
-            return (float)gameTime.ElapsedGameTime.TotalSeconds * 10.0f;
-        }
+        public abstract Rect2f ColliderBounds();
 
         public void ShiftPosition(Vector2 shift)
         {
             mPosition += shift;
+        }
+        public Vector2 position
+        {
+            get { return mPosition; }
+            set { mPosition = value; }
         }
 
         public virtual void Kill()
         {
 
         }
+
+        protected float GetDeltaT(GameTime gameTime)
+        {
+            return (float)gameTime.ElapsedGameTime.TotalSeconds * 10.0f;
+        }
+
+
     }
 
     abstract class MovingEntity : Entity
@@ -67,8 +79,6 @@ namespace AridArnold
             get { return mVelocity; }
             set { mVelocity = value; }
         }
-
-        public abstract Rect2f ColliderBounds();
 
         public Vector2 VelocityToDisplacement(GameTime gameTime)
         {
@@ -103,6 +113,8 @@ namespace AridArnold
             ApplyCollisions(gameTime);
 
             mFallthrough = false;
+
+            base.Update(gameTime);
         }
 
         protected abstract void ReactToCollision(Vector2 collisionNormal);
@@ -139,6 +151,11 @@ namespace AridArnold
         public void SetGravity(CardinalDirection dir)
         {
             mCardinalDirection = dir;
+        }
+
+        public void SetWalkDirection(WalkDirection dir)
+        {
+            mWalkDirection=dir;
         }
 
         public CardinalDirection GetGravityDir()
@@ -213,6 +230,10 @@ namespace AridArnold
                     mVelocity += mWalkSpeed * sideVec;
                     break;
                 case WalkDirection.None:
+                    if(mOnGround == false)
+                    {
+                        mVelocity += component * sideVec;
+                    }
                     break;
             }
 

@@ -14,7 +14,7 @@ namespace AridArnold
         const double FLASH_TIME = 100.0;
 
         WalkDirection mPrevDirection;
-        Animator mRunningAnimation;
+        protected Animator mRunningAnimation;
 
         Texture2D mJumpUpTex;
         Texture2D mJumpDownTex;
@@ -51,6 +51,7 @@ namespace AridArnold
 
         public override void Update(GameTime gameTime)
         {
+            //Death
             if(mTimerSinceDeath.IsPlaying())
             {
                 if(mTimerSinceDeath.GetElapsedMs() > DEATH_TIME)
@@ -62,8 +63,16 @@ namespace AridArnold
                 return;
             }
 
+            //Anim
             mRunningAnimation.Update(gameTime);
 
+            if(mOnGround == false)
+            {
+                SetDirFromVelocity();
+            }
+
+
+            //Input
             KeyboardState state = Keyboard.GetState();
 
             if (state.IsKeyDown(Keys.Space) && state.IsKeyDown(GetFallthroughKey()))
@@ -79,8 +88,6 @@ namespace AridArnold
 
                 HandleWalkInput(state);
             }
-
-            TileManager.I.ArnoldTouchTiles(this);
 
             if(CheckOffScreenDeath())
             {
@@ -148,6 +155,36 @@ namespace AridArnold
             }
         }
 
+        protected void SetDirFromVelocity()
+        {
+            const float AIR_DIR_THRESH = 0.25f; 
+            switch (GetGravityDir())
+            {
+                case CardinalDirection.Down:
+                case CardinalDirection.Up:
+                    if(mVelocity.X > AIR_DIR_THRESH)
+                    {
+                        mPrevDirection = WalkDirection.Right;
+                    }
+                    else if(mVelocity.X < -AIR_DIR_THRESH)
+                    {
+                        mPrevDirection = WalkDirection.Left;
+                    }
+                    break;
+                case CardinalDirection.Right:
+                case CardinalDirection.Left:
+                    if (mVelocity.Y > AIR_DIR_THRESH)
+                    {
+                        mPrevDirection = WalkDirection.Right;
+                    }
+                    else if (mVelocity.Y < -AIR_DIR_THRESH)
+                    {
+                        mPrevDirection = WalkDirection.Left;
+                    }
+                    break;
+            }
+        }
+
         private bool CheckOffScreenDeath()
         {
             switch (GetGravityDir())
@@ -155,11 +192,11 @@ namespace AridArnold
                 case CardinalDirection.Up:
                     return mPosition.Y < -mTexture.Height / 2.0f;
                 case CardinalDirection.Right:
-                    return mPosition.X > TileManager.I.GetDrawWidth();
+                    return mPosition.X > TileManager.I.GetDrawWidth() + 2.0f * mTexture.Width;
                 case CardinalDirection.Down:
                     return mPosition.Y > TileManager.I.GetDrawHeight();
                 case CardinalDirection.Left:
-                    return mPosition.X < mTexture.Width / 2.0f;
+                    return mPosition.X < -mTexture.Width / 2.0f;
             }
 
             throw new NotImplementedException();
@@ -190,7 +227,7 @@ namespace AridArnold
 
             if (mOnGround)
             {
-                if (mWalkDirection != WalkDirection.None)
+                if (mVelocity.LengthSquared() > 0.001f)
                 {
                     texture = mRunningAnimation.GetCurrentTexture();
                 }
@@ -249,7 +286,7 @@ namespace AridArnold
             
         }
 
-        private Color GetDrawColour()
+        protected virtual Color GetDrawColour()
         {
             if (mTimerSinceDeath.IsPlaying())
             {

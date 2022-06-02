@@ -37,6 +37,16 @@ namespace AridArnold
             }
         }
 
+        public int GetEntityNum()
+        {
+            return mRegisteredEntities.Count;
+        }
+
+        public Entity GetEntity(int index)
+        {
+            return mRegisteredEntities[index];
+        }
+
         public void Draw(DrawInfo info)
         {
             foreach (Entity entity in mRegisteredEntities)

@@ -60,7 +60,7 @@ namespace AridArnold
 
         public virtual void OnTouch(MovingEntity entity) { }
 
-        public virtual void OnPlayerIntersect(Arnold player) { }
+        public virtual void OnEntityIntersect(Entity entity) { }
 
         public virtual Rect2f GetBounds(Vector2 topLeft, float sideLength)
         {
@@ -199,10 +199,13 @@ namespace AridArnold
     {
         protected abstract CollectibleType GetCollectibleType();
 
-        public override void OnPlayerIntersect(Arnold player) 
+        public override void OnEntityIntersect(Entity entity)
         {
-            CollectibleManager.I.CollectItem(GetCollectibleType());
-            mEnabled = false;
+            if (entity is Arnold)
+            {
+                CollectibleManager.I.CollectItem(GetCollectibleType());
+                mEnabled = false;
+            }
         }
     }
 
@@ -213,10 +216,13 @@ namespace AridArnold
             mTexture = content.Load<Texture2D>("Tiles/flag");
         }
 
-        public override void OnPlayerIntersect(Arnold player)
+        public override void OnEntityIntersect(Entity entity)
         {
-            ProgressManager.I.ReportCheckpoint();
-            base.OnPlayerIntersect(player);
+            if (entity is Arnold)
+            {
+                ProgressManager.I.ReportCheckpoint();
+            }
+            base.OnEntityIntersect(entity);
         }
 
         protected override CollectibleType GetCollectibleType()
@@ -253,12 +259,15 @@ namespace AridArnold
             mTexture = content.Load<Texture2D>("Tiles/spikes");
         }
 
-        public override void OnPlayerIntersect(Arnold player)
+        public override void OnEntityIntersect(Entity entity)
         {
-            EArgs eArgs;
-            eArgs.sender = this;
+            if (entity is Arnold)
+            {
+                EArgs eArgs;
+                eArgs.sender = this;
 
-            EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+                EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+            }
         }
 
         //Make bounds a bit smaller to make it fairer
@@ -297,40 +306,63 @@ namespace AridArnold
 
         }
 
-        public override void OnPlayerIntersect(Arnold entity) 
+        public override void OnEntityIntersect(Entity entity)
         {
-            Rect2f bounds = entity.ColliderBounds();
-
-            switch (mRotation)
+            if (entity is PlatformingEntity)
             {
-                case CardinalDirection.Up:
-                    if (entity.GetGravityDir() != CardinalDirection.Down)
-                    {
-                        entity.SetGravity(CardinalDirection.Down);
-                        entity.ShiftPosition(new Vector2(0.0f, -(bounds.Height + 16.0f)));
-                    }
-                    break;
-                case CardinalDirection.Right:
-                    if (entity.GetGravityDir() != CardinalDirection.Left)
-                    {
-                        entity.SetGravity(CardinalDirection.Left);
-                        entity.ShiftPosition(new Vector2(bounds.Width + 16.0f, 0.0f));
-                    }
-                    break;
-                case CardinalDirection.Down:
-                    if (entity.GetGravityDir() != CardinalDirection.Up)
-                    {
-                        entity.SetGravity(CardinalDirection.Up);
-                        entity.ShiftPosition(new Vector2(0.0f, bounds.Height+16.0f));
-                    }
-                    break;
-                case CardinalDirection.Left:
-                    if (entity.GetGravityDir() != CardinalDirection.Right)
-                    {
-                        entity.SetGravity(CardinalDirection.Right);
-                        entity.ShiftPosition(new Vector2(-(bounds.Width + 16.0f), 0.0f));
-                    }
-                    break;
+                PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+
+                Rect2f bounds = platformingEntity.ColliderBounds();
+
+                switch (mRotation)
+                {
+                    case CardinalDirection.Up:
+                        if (platformingEntity.GetGravityDir() != CardinalDirection.Down)
+                        {
+                            if(platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
+                            {
+                                platformingEntity.SetWalkDirection(WalkDirection.None);
+                            }
+                            platformingEntity.SetGravity(CardinalDirection.Down);
+                            platformingEntity.ShiftPosition(new Vector2(0.0f, -(bounds.Height + 16.0f)));
+                        }
+                        break;
+                    case CardinalDirection.Right:
+                        if (platformingEntity.GetGravityDir() != CardinalDirection.Left)
+                        {
+                            if (platformingEntity.GetGravityDir() == CardinalDirection.Up || platformingEntity.GetGravityDir() == CardinalDirection.Down)
+                            {
+                                platformingEntity.SetWalkDirection(WalkDirection.None);
+                            }
+                            platformingEntity.SetGravity(CardinalDirection.Left);
+                            platformingEntity.ShiftPosition(new Vector2(bounds.Width + 16.0f, 0.0f));
+                        }
+                        break;
+                    case CardinalDirection.Down:
+                        if (platformingEntity.GetGravityDir() != CardinalDirection.Up)
+                        {
+                            if (platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
+                            {
+                                platformingEntity.SetWalkDirection(WalkDirection.None);
+                            }
+                            platformingEntity.SetGravity(CardinalDirection.Up);
+                            platformingEntity.ShiftPosition(new Vector2(0.0f, bounds.Height + 16.0f));
+                        }
+                        break;
+                    case CardinalDirection.Left:
+                        if (platformingEntity.GetGravityDir() != CardinalDirection.Right)
+                        {
+                            if (platformingEntity.GetGravityDir() == CardinalDirection.Up || platformingEntity.GetGravityDir() == CardinalDirection.Down)
+                            {
+                                platformingEntity.SetWalkDirection(WalkDirection.None);
+                            }
+                            platformingEntity.SetGravity(CardinalDirection.Right);
+                            platformingEntity.ShiftPosition(new Vector2(-(bounds.Width + 16.0f), 0.0f));
+                        }
+                        break;
+                }
+
+                
             }
         }
 

@@ -39,6 +39,14 @@ namespace AridArnold.Levels
         }
 
         public abstract LevelStatus Update(GameTime gameTime);
+
+        public string Name
+        { 
+            get 
+            { 
+                return mName; 
+            } 
+        }
     }
 
 

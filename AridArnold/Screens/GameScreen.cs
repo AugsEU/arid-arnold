@@ -37,8 +37,9 @@ namespace AridArnold.Screens
             mLevels.Add(new CollectWaterLevel("level1-2", 2));
             mLevels.Add(new CollectWaterLevel("level1-3", 2));
             mLevels.Add(new CollectFlagLevel("level1-4"));
-            mLevels.Add(new CollectWaterLevel("level2-1", 2));
-            mLevels.Add(new CollectWaterLevel("level2-2", 2));
+            mLevels.Add(new CollectWaterLevel("level2-1", 1));
+            mLevels.Add(new CollectWaterLevel("level2-2", 3));
+            mLevels.Add(new CollectWaterLevel("level2-3", 3));
         }
 
         private void LoadLevel(int levelIndex)
@@ -82,6 +83,7 @@ namespace AridArnold.Screens
         {
             LoadLevel(ProgressManager.I.CurrentLevel);
             mLevelEndTimer.FullReset();
+            GhostManager.I.StartLevel(mLevels[ProgressManager.I.CurrentLevel]);
         }
 
         //============================================
@@ -170,6 +172,7 @@ namespace AridArnold.Screens
 
 
             EntityManager.I.Draw(info);
+            GhostManager.I.Draw(info);
             TileManager.I.Draw(info);
 
             DrawUI(info);
@@ -197,6 +200,7 @@ namespace AridArnold.Screens
                 return;
             }
 
+            GhostManager.I.Update(gameTime);
             EntityManager.I.Update(gameTime);
 
             LevelStatus status = GetCurrentLevel().Update(gameTime);
@@ -214,6 +218,8 @@ namespace AridArnold.Screens
         private void LevelWin()
         {
             mLevelEndTimer.Start();
+
+            GhostManager.I.EndLevel(true);
         }
 
         private void MoveToNextLevel()

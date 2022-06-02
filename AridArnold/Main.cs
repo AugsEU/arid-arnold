@@ -11,6 +11,7 @@ namespace AridArnold
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Rectangle windowedRect;
+        private const double FRAME_RATE = 60d;
 
         public Main()
         {
@@ -22,7 +23,7 @@ namespace AridArnold
 
             // Fix to 60 fps.
             IsFixedTimeStep = true;//false;
-            TargetElapsedTime = System.TimeSpan.FromSeconds(1d / 60d);
+            TargetElapsedTime = System.TimeSpan.FromSeconds(1d / FRAME_RATE);
         }
 
         protected override void Initialize()
@@ -44,10 +45,13 @@ namespace AridArnold
             FontManager.I.LoadAllFonts(Content);
             ScreenManager.I.LoadAllScreens(Content, _graphics);
             ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
+            GhostManager.I.Load(Content);
         }
 
         protected override void Update(GameTime gameTime)
         {
+            gameTime.ElapsedGameTime = TargetElapsedTime;
+
             //Record elapsed time
             TimeManager.I.Update(gameTime);
 

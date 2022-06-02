@@ -172,9 +172,9 @@ namespace AridArnold
             }
         }
 
-        public void ArnoldTouchTiles(Arnold arnold)
+        public void EntityTouchTiles(Entity entity)
         {
-            Rectangle tileBounds = PossibleIntersectTiles(arnold.ColliderBounds());
+            Rectangle tileBounds = PossibleIntersectTiles(entity.ColliderBounds());
 
             for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
             {
@@ -182,9 +182,9 @@ namespace AridArnold
                 {
                     Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-                    if (mTileMap[x, y].Enabled && Collision2D.BoxVsBox(mTileMap[x,y].GetBounds(tileTopLeft, mTileSize), arnold.ColliderBounds()))
+                    if (mTileMap[x, y].Enabled && Collision2D.BoxVsBox(mTileMap[x,y].GetBounds(tileTopLeft, mTileSize), entity.ColliderBounds()))
                     {
-                        mTileMap[x, y].OnPlayerIntersect(arnold);
+                        mTileMap[x, y].OnEntityIntersect(entity);
                     }
                 }
             }
