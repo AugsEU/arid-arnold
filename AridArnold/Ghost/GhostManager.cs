@@ -74,7 +74,10 @@ namespace AridArnold
         {
             mCurrentFrame++;
 
-            mGhostArnold.Update(gameTime);
+            if(mRecordFrame < mInputFile.GetFrameCount())
+            {
+                mGhostArnold.Update(gameTime);
+            }
 
             if (mCurrentFrame % FRAME_SUB == 0)
             {

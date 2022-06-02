@@ -32,7 +32,7 @@ namespace AridArnold
 
     internal class ProgressManager : Singleton<ProgressManager>
     {
-        const int START_LEVEL = 4;
+        const int START_LEVEL = 0;
         const int START_LIVES = 4;
 
         WorldData[] mWorldData =

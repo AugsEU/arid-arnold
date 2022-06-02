@@ -200,6 +200,16 @@ namespace AridArnold.Screens
                 return;
             }
 
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            if(keyboardState.IsKeyDown(Keys.R))
+            {
+                EArgs eArgs;
+                eArgs.sender = this;
+
+                EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+            }
+
             GhostManager.I.Update(gameTime);
             EntityManager.I.Update(gameTime);
 

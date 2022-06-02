@@ -12,12 +12,15 @@ namespace AridArnold
     {
         const double DEATH_TIME = 500.0;
         const double FLASH_TIME = 100.0;
+        const int COYOTE_TIME = 9;
 
         WalkDirection mPrevDirection;
         protected Animator mRunningAnimation;
 
         Texture2D mJumpUpTex;
         Texture2D mJumpDownTex;
+
+        int mTimeSinceGrounded;
 
         //Various timers.
         MonoTimer mTimerSinceDeath;
@@ -29,6 +32,8 @@ namespace AridArnold
             EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
 
             mTimerSinceDeath = new MonoTimer();
+
+            mTimeSinceGrounded = int.MaxValue;
         }
 
         public override void LoadContent(ContentManager content)
@@ -63,6 +68,11 @@ namespace AridArnold
                 return;
             }
 
+            if(mOnGround)
+            {
+                mTimeSinceGrounded = 0;
+            }
+
             //Anim
             mRunningAnimation.Update(gameTime);
 
@@ -70,7 +80,6 @@ namespace AridArnold
             {
                 SetDirFromVelocity();
             }
-
 
             //Input
             KeyboardState state = Keyboard.GetState();
@@ -84,9 +93,18 @@ namespace AridArnold
                 if (state.IsKeyDown(Keys.Space))
                 {
                     Jump();
+                    mTimeSinceGrounded = int.MaxValue;
                 }
 
                 HandleWalkInput(state);
+            }
+            else if (mTimeSinceGrounded < COYOTE_TIME)
+            {
+                if (state.IsKeyDown(Keys.Space))
+                {
+                    Jump();
+                    mTimeSinceGrounded = int.MaxValue;
+                }
             }
 
             if(CheckOffScreenDeath())
@@ -95,6 +113,12 @@ namespace AridArnold
             }
 
             base.Update(gameTime);
+
+            if(mTimeSinceGrounded != int.MaxValue)
+            {
+                mTimeSinceGrounded++;
+            }
+            
         }
 
         private Keys GetFallthroughKey()

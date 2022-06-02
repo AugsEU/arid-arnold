@@ -33,7 +33,7 @@ namespace AridArnold
 
         protected override Color GetDrawColour()
         {
-            return new Color(0.0f, 0.0f, 0.0f, 0.75f);
+            return new Color(0.0f, 0.4f, 0.0f, 0.9f);
         }
     }
 }
