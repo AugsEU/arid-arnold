@@ -60,7 +60,6 @@ namespace AridArnold
             mInputFile.Load();
         }
 
-
         public void EndLevel(bool levelWin)
         {
             if (levelWin)
@@ -115,6 +114,41 @@ namespace AridArnold
                     mGhostArnold.SetGhostInfo(ghost);
                     mGhostArnold.Draw(info);
                 }
+            }
+        }
+
+        //Interface
+        public string GetTime()
+        {
+            return FrameTimeToString(mOutputFile.GetFrameCount());
+        }
+
+        public string GetTimeToBeat()
+        {
+            if(mInputFile.IsEmpty())
+            {
+                return "";
+            }
+            
+            return FrameTimeToString(mInputFile.GetFrameCount());
+        }
+
+        //Util
+        private string FrameTimeToString(int frame)
+        {
+            int ms = (int)(frame * (1000.0f / 60.0f));
+            int cs = (int)(ms / 10);
+            int s = (int)(cs / 100);
+            int m = (int)(s / 60);
+
+
+            if (m == 0)
+            {
+                return String.Format("{0:D2} : {1:D2}", s, cs % 100);
+            }
+            else
+            {
+                return String.Format("{0:D} : {1:D2} : {2:D2}", m, s % 60, cs % 100);
             }
         }
     }

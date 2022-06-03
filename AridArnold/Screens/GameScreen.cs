@@ -219,13 +219,16 @@ namespace AridArnold.Screens
             int texWidth = mLifeTexture.Width * texScale;
             int texHeight = mLifeTexture.Height * texScale;
 
-            Rectangle lifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 50, texWidth, texHeight);
+            Rectangle lifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 32, texWidth, texHeight);
 
             for(int i = 0; i < lives; i++)
             {
                 info.spriteBatch.Draw(mLifeTexture, lifeRect, Color.White);
                 lifeRect.Y += texHeight + 10;
             }
+
+            Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetWorldData().name);
+            Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + (ProgressManager.I.CurrentLevel + 1));
 
             info.spriteBatch.End();
         }
@@ -240,7 +243,16 @@ namespace AridArnold.Screens
                         DepthStencilState.None,
                         RasterizerState.CullNone);
 
-            Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 20.0f), Color.White, "Time goes here");
+            Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 223.0f), Color.White, "Time");
+            Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 238.0f), Color.White, GhostManager.I.GetTime());
+
+            string timeToBeat = GhostManager.I.GetTimeToBeat();
+
+            if (timeToBeat != "")
+            {
+                Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 283.0f), Color.DarkOliveGreen, "Time to beat");
+                Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 298.0f), Color.DarkOliveGreen, timeToBeat);
+            }
 
             info.spriteBatch.End();
         }
