@@ -14,7 +14,13 @@ namespace AridArnold
     {
         public GhostArnold(Vector2 startPos) : base(startPos)
         {
+           
+        }
 
+        public void StartLevel()
+        {
+            mPrevDirection = WalkDirection.Right;
+            mVelocity = Vector2.Zero;
         }
 
         public override void Update(GameTime gameTime)

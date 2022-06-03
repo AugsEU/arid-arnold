@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -8,10 +11,14 @@ namespace AridArnold
 {
     public class Main : Game
     {
+        private const double FRAME_RATE = 60d;
+        private const int MIN_HEIGHT = 550;
+        private const float ASPECT_RATIO = 1.77778f;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Rectangle windowedRect;
-        private const double FRAME_RATE = 60d;
+
 
         public Main()
         {
@@ -24,12 +31,13 @@ namespace AridArnold
             // Fix to 60 fps.
             IsFixedTimeStep = true;//false;
             TargetElapsedTime = System.TimeSpan.FromSeconds(1d / FRAME_RATE);
+
+            Window.ClientSizeChanged += OnResize;
         }
 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = 550;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 550;   // set this value to the desired height of your window
+            SetWindowHeight(MIN_HEIGHT);
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
@@ -73,6 +81,37 @@ namespace AridArnold
             }
 
             base.Update(gameTime);
+        }
+
+        private void OnResize(object sender, EventArgs eventArgs)
+        {
+            if(_graphics.IsFullScreen)
+            {
+                return;
+            }
+            
+            int new_height = Math.Max(Window.ClientBounds.Height, MIN_HEIGHT);
+            float new_aspect = (float)Window.ClientBounds.Width / (float)new_height;
+
+            if (new_aspect >= ASPECT_RATIO)
+            {
+                if(new_height == MIN_HEIGHT)
+                {
+                    _graphics.PreferredBackBufferHeight = new_height;
+                }
+            }
+            else
+            {
+                
+                SetWindowHeight(new_height);
+            }
+        }
+
+        private void SetWindowHeight(int height)
+        {
+            _graphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
+            _graphics.PreferredBackBufferHeight = height;
+            _graphics.ApplyChanges();
         }
 
         private void GameUpdate(GameTime gameTime)

@@ -55,6 +55,8 @@ namespace AridArnold
             mInputFile = new GhostFile(level);
             mOutputFile = new GhostFile(level);
 
+            mGhostArnold.StartLevel();
+
             mInputFile.Load();
         }
 

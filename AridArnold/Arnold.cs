@@ -11,10 +11,11 @@ namespace AridArnold
     class Arnold : PlatformingEntity
     {
         const double DEATH_TIME = 500.0;
+        const double START_TIME = 500.0;
         const double FLASH_TIME = 100.0;
-        const int COYOTE_TIME = 9;
+        const int COYOTE_TIME = 8;
 
-        WalkDirection mPrevDirection;
+        protected WalkDirection mPrevDirection;
         protected Animator mRunningAnimation;
 
         Texture2D mJumpUpTex;
@@ -24,6 +25,7 @@ namespace AridArnold
 
         //Various timers.
         MonoTimer mTimerSinceDeath;
+        MonoTimer mTimerSinceStart;
 
         public Arnold(Vector2 pos) : base(pos)
         {
@@ -32,6 +34,7 @@ namespace AridArnold
             EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
 
             mTimerSinceDeath = new MonoTimer();
+            mTimerSinceStart = new MonoTimer();
 
             mTimeSinceGrounded = int.MaxValue;
         }
@@ -52,12 +55,25 @@ namespace AridArnold
 
             //Botch position a bit. Not sure what's happening here.
             mPosition.Y -= 2.0f;
+
+            mVelocity.Y = +0.01f;
         }
 
         public override void Update(GameTime gameTime)
         {
+            //Start
+            if (mTimerSinceStart.IsPlaying() == false)
+            {
+                mTimerSinceStart.Start();
+            }
+
+            if (mTimerSinceStart.GetElapsedMs() < START_TIME)
+            {
+                return;
+            }
+
             //Death
-            if(mTimerSinceDeath.IsPlaying())
+            if (mTimerSinceDeath.IsPlaying())
             {
                 if(mTimerSinceDeath.GetElapsedMs() > DEATH_TIME)
                 {
@@ -258,7 +274,7 @@ namespace AridArnold
             }
             else
             {
-                if (vecAlongGrav > 0.0f)
+                if (vecAlongGrav >= 0.0f)
                 {
                     texture = mJumpDownTex;
                 }
@@ -323,6 +339,17 @@ namespace AridArnold
                 else
                 {
                     return new Color(255, 128, 79);
+                }
+            }
+            else if(mTimerSinceStart.GetElapsedMs() < START_TIME)
+            {                
+                if ((int)(mTimerSinceStart.GetElapsedMs() / FLASH_TIME) % 2 == 0)
+                {
+                    return new Color(100, 255, 100);
+                }
+                else
+                {
+                    return new Color(200, 255, 200);
                 }
             }
 

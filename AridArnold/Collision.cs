@@ -27,6 +27,12 @@ namespace AridArnold
             max = _max;
         }
 
+        public Rect2f(Rectangle rect)
+        {
+            min = new Vector2(rect.X, rect.Y);
+            max = new Vector2(rect.X + rect.Width, rect.Y + rect.Height);
+        }
+
         public float Width
         {
             get { return Math.Abs(max.X - min.X); }

@@ -30,6 +30,12 @@ namespace AridArnold
         {
             string filePath = GetFilename();
 
+            if(mGhostInfos.Count == MAX_FRAMES)
+            {
+
+            }
+
+
             if (!File.Exists(filePath))
             {
                 File.Create(filePath).Close();

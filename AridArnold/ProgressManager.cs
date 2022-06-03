@@ -54,10 +54,15 @@ namespace AridArnold
         public void ReportCheckpoint()
         {
             mLastCheckPoint = mCurrentLevel + 1;
+            mLives = START_LIVES;
         }
         public void ReportLevelLoss()
         {
-            mLives--;
+            //Don't lose lives on the checkpoint levels.
+            if (mCurrentLevel != mLastCheckPoint)
+            {
+                mLives--;
+            }
         }
 
         public void ReportLevelWin()

@@ -22,8 +22,14 @@ namespace AridArnold.Screens
         private List<Level> mLevels;
 
         private RenderTarget2D mGameArea;
+        private RenderTarget2D mLeftUI;
+        private RenderTarget2D mRightUI;
+
+        private Texture2D mLifeTexture;
 
         private MonoTimer mLevelEndTimer;
+
+        SpriteFont mPixelFont;
 
         //============================================
         //  Initialisation
@@ -40,6 +46,10 @@ namespace AridArnold.Screens
             mLevels.Add(new CollectWaterLevel("level2-1", 1));
             mLevels.Add(new CollectWaterLevel("level2-2", 3));
             mLevels.Add(new CollectWaterLevel("level2-3", 3));
+
+            mGameArea = null;
+            mLeftUI = null;
+            mRightUI = null;
         }
 
         private void LoadLevel(int levelIndex)
@@ -52,12 +62,6 @@ namespace AridArnold.Screens
             TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
             TileManager.I.CentreX(TileManager.I.GetDrawWidth() + 2 * TILE_SIZE);
 
-            if (mGameArea != null)
-            {
-                mGameArea.Dispose();
-            }
-            mGameArea = null;
-
             StartLevel();
         }
 
@@ -68,7 +72,8 @@ namespace AridArnold.Screens
 
         public override void LoadContent(ContentManager content)
         {
-
+            mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
+            mLifeTexture = content.Load<Texture2D>("UI/Arnold-Life");
         }
 
         //============================================
@@ -92,9 +97,12 @@ namespace AridArnold.Screens
         public override void Draw(DrawInfo info)
         {
             Rectangle screenRect = info.device.PresentationParameters.Bounds;
-
-            //Get game rendered as a texture
+            
+            //Get game rendered as a texture & UI
             RenderGameAreaToTarget(info);
+            DrawUIToTarget(info);
+
+            Rectangle gameAreaRect = GetGameAreaRect(mGameArea, screenRect);
 
             //Draw out the game area
             info.device.SetRenderTarget(null);
@@ -106,37 +114,25 @@ namespace AridArnold.Screens
                                     DepthStencilState.None,
                                     RasterizerState.CullNone);
 
-            DrawGameArea(info, mGameArea, screenRect);
+            DrawGameArea(info, gameAreaRect);
+            DrawUI(info, gameAreaRect);
 
             info.spriteBatch.End();
         }
 
-        private void DrawGameArea(DrawInfo info, RenderTarget2D gameArea, Rectangle screenRect)
+        private void DrawGameArea(DrawInfo info, Rectangle destRect)
         {
-            int multiplier = (int)MathF.Min(screenRect.Width/ gameArea.Width, screenRect.Height / gameArea.Height);
+            info.spriteBatch.Draw(mGameArea, destRect, Color.White);
+        }
+
+        private Rectangle GetGameAreaRect(RenderTarget2D gameArea, Rectangle screenRect)
+        {
+            int multiplier = (int)MathF.Min(screenRect.Width / gameArea.Width, screenRect.Height / gameArea.Height);
 
             int finalWidth = gameArea.Width * multiplier;
             int finalHeight = gameArea.Height * multiplier;
 
-            if(multiplier == 0)
-            {
-                float screenAspectRatio = (float)screenRect.Width / (float)screenRect.Height;
-                float gameAspectRatio = (float)gameArea.Width / (float)gameArea.Height;
-
-                if (screenAspectRatio > gameAspectRatio)
-                {
-                    finalHeight = screenRect.Height;
-                    finalWidth = (int)(finalHeight * gameAspectRatio);
-                    
-                }
-                else
-                {
-                    finalWidth = screenRect.Width;
-                    finalHeight = (int)(finalWidth / gameAspectRatio);
-                }
-            }
-
-            info.spriteBatch.Draw(gameArea, new Rectangle((screenRect.Width - finalWidth)/2, 0, finalWidth, finalHeight), Color.White);
+            return new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
         }
 
 
@@ -175,14 +171,78 @@ namespace AridArnold.Screens
             GhostManager.I.Draw(info);
             TileManager.I.Draw(info);
 
-            DrawUI(info);
+            info.spriteBatch.End();
+        }
+
+        private void DrawUI(DrawInfo info, Rectangle gameAreaRect)
+        {
+            const int PADDING = 5;
+            float totalWidth = gameAreaRect.Height * 16.0f / 9.0f;
+            int perSideWidth = (int)((float)(totalWidth - gameAreaRect.Width) / 2.0f);
+
+            Rectangle leftRectangle = new Rectangle(gameAreaRect.X - perSideWidth - PADDING, gameAreaRect.Y, perSideWidth, gameAreaRect.Height);
+            Rectangle rightRectangle = new Rectangle(gameAreaRect.X + gameAreaRect.Width + PADDING, gameAreaRect.Y, perSideWidth, gameAreaRect.Height);
+
+            info.spriteBatch.Draw(mLeftUI, leftRectangle, Color.White);
+            info.spriteBatch.Draw(mRightUI, rightRectangle, Color.White);
+        }
+
+        private void DrawUIToTarget(DrawInfo info)
+        {
+            if (mLeftUI == null && mRightUI == null)
+            {
+                float unscaledWidth = mGameArea.Height * 16.0f / 9.0f;
+                int unscaledPerSideWidth = (int)((float)(unscaledWidth - mGameArea.Width) / 2.0f);
+
+
+                mLeftUI = new RenderTarget2D(info.device, unscaledPerSideWidth, mGameArea.Height);
+                mRightUI = new RenderTarget2D(info.device, unscaledPerSideWidth, mGameArea.Height);
+            }
+
+            DrawLeftUI(info);
+            DrawRightUI(info);
+        }
+
+        private void DrawLeftUI(DrawInfo info)
+        {
+            info.device.SetRenderTarget(mLeftUI);
+
+            info.spriteBatch.Begin(SpriteSortMode.Immediate,
+                        BlendState.AlphaBlend,
+                        SamplerState.PointClamp,
+                        DepthStencilState.None,
+                        RasterizerState.CullNone);
+
+            int lives = ProgressManager.I.Lives;
+
+            int texScale = 4;
+            int texWidth = mLifeTexture.Width * texScale;
+            int texHeight = mLifeTexture.Height * texScale;
+
+            Rectangle lifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 50, texWidth, texHeight);
+
+            for(int i = 0; i < lives; i++)
+            {
+                info.spriteBatch.Draw(mLifeTexture, lifeRect, Color.White);
+                lifeRect.Y += texHeight + 10;
+            }
 
             info.spriteBatch.End();
         }
 
-        private void DrawUI(DrawInfo info)
+        private void DrawRightUI(DrawInfo info)
         {
+            info.device.SetRenderTarget(mRightUI);
 
+            info.spriteBatch.Begin(SpriteSortMode.Immediate,
+                        BlendState.AlphaBlend,
+                        SamplerState.PointClamp,
+                        DepthStencilState.None,
+                        RasterizerState.CullNone);
+
+            Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 20.0f), Color.White, "Time goes here");
+
+            info.spriteBatch.End();
         }
 
         //============================================
