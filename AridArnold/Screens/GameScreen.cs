@@ -167,9 +167,8 @@ namespace AridArnold.Screens
                                     RasterizerState.CullNone);
 
 
-
-            EntityManager.I.Draw(info);
             GhostManager.I.Draw(info);
+            EntityManager.I.Draw(info);
             TileManager.I.Draw(info);
 
             info.spriteBatch.End();

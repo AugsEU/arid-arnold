@@ -237,7 +237,7 @@ namespace AridArnold
                 case CardinalDirection.Right:
                     return mPosition.X > TileManager.I.GetDrawWidth() + 2.0f * mTexture.Width;
                 case CardinalDirection.Down:
-                    return mPosition.Y > TileManager.I.GetDrawHeight();
+                    return mPosition.Y > TileManager.I.GetDrawHeight() + mTexture.Height / 2.0f;
                 case CardinalDirection.Left:
                     return mPosition.X < -mTexture.Width / 2.0f;
             }
@@ -325,8 +325,6 @@ namespace AridArnold
             Vector2 rotationOffset = Util.CalcRotationOffset(rotation, texture.Width, texture.Height);
 
             info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, 0.0f);
-
-            
         }
 
         protected virtual Color GetDrawColour()

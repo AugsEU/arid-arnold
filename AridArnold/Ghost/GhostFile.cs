@@ -32,13 +32,23 @@ namespace AridArnold
 
             if(mGhostInfos.Count == MAX_FRAMES)
             {
-
+                return;
             }
 
-
-            if (!File.Exists(filePath))
+            try
             {
-                File.Create(filePath).Close();
+                if (!Directory.Exists(GetFolder()))
+                {
+                    Directory.CreateDirectory(GetFolder());
+                }
+                if (!File.Exists(filePath))
+                {
+                    File.Create(filePath).Close();
+                }
+            }
+            catch (Exception)
+            {
+                return;
             }
 
             using (FileStream stream = File.OpenWrite(filePath))
@@ -164,9 +174,13 @@ namespace AridArnold
 
         private string GetFilename()
         {
-            return Directory.GetCurrentDirectory() + "\\ghostData\\" + mLevel.Name + ".ght";
+            return GetFolder() + mLevel.Name + ".ght";
         }
 
+        private string GetFolder()
+        {
+            return Directory.GetCurrentDirectory() + "\\ghostData\\";
+        }
 
     }
 }

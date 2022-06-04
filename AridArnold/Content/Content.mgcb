@@ -195,6 +195,18 @@
 /processorParam:TextureFormat=Color
 /build:Levels/level2-3.png
 
+#begin Levels/level2-4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Levels/level2-4.png
+
 #begin Tiles/air.png
 /importer:TextureImporter
 /processor:TextureProcessor
