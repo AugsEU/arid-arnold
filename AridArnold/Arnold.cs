@@ -102,7 +102,10 @@ namespace AridArnold
 
             if (state.IsKeyDown(Keys.Space) && state.IsKeyDown(GetFallthroughKey()))
             {
-                FallThroughPlatforms();
+                if (!(mOnGround && mWalkDirection != WalkDirection.None))
+                {
+                    FallThroughPlatforms();
+                }
             }
             else if (mOnGround)
             {
