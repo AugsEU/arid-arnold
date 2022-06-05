@@ -45,6 +45,12 @@ namespace AridArnold
         int mLastCheckPoint = START_LEVEL;
         int mLives = START_LIVES;
 
+        public void Init()
+        {
+            mLastCheckPoint = START_LEVEL;
+            ResetGame();
+        }
+
         public void ResetGame()
         {
             mLives = START_LIVES;

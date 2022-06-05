@@ -308,7 +308,15 @@ namespace AridArnold.Screens
         {
             ProgressManager.I.ReportLevelWin();
 
-            ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
+            if(ProgressManager.I.CurrentLevel >= mLevels.Count)
+            {
+                ScreenManager.I.ActivateScreen(ScreenType.EndGame);
+            }
+            else
+            {
+                ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
+            }
+           
         }
 
         private void LevelLose()
