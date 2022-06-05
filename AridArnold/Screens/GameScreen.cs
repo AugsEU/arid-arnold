@@ -55,6 +55,7 @@ namespace AridArnold.Screens
 
         private void LoadLevel(int levelIndex)
         {
+            FXManager.I.Clear();
             mLevels[levelIndex].Begin(mContentManager);
         }
 
@@ -166,10 +167,10 @@ namespace AridArnold.Screens
                                     DepthStencilState.None,
                                     RasterizerState.CullNone);
 
-
             GhostManager.I.Draw(info);
             EntityManager.I.Draw(info);
             TileManager.I.Draw(info);
+            FXManager.I.Draw(info);
 
             info.spriteBatch.End();
         }
@@ -262,7 +263,8 @@ namespace AridArnold.Screens
         //--------------------------------------------
         public override void Update(GameTime gameTime)
         {
-            if(mLevelEndTimer.IsPlaying())
+            FXManager.I.Update(gameTime);
+            if (mLevelEndTimer.IsPlaying())
             {
                 if(mLevelEndTimer.GetElapsedMs() > END_LEVEL_TIME)
                 {
@@ -300,14 +302,14 @@ namespace AridArnold.Screens
         private void LevelWin()
         {
             mLevelEndTimer.Start();
-
+            DisplayLevelEndText();
             GhostManager.I.EndLevel(true);
         }
 
         private void MoveToNextLevel()
         {
             ProgressManager.I.ReportLevelWin();
-
+            FXManager.I.Clear();
             if(ProgressManager.I.CurrentLevel >= mLevels.Count)
             {
                 ScreenManager.I.ActivateScreen(ScreenType.EndGame);
@@ -316,7 +318,6 @@ namespace AridArnold.Screens
             {
                 ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
             }
-           
         }
 
         private void LevelLose()
@@ -332,6 +333,49 @@ namespace AridArnold.Screens
             {
                 //Start the level again
                 StartLevel();
+            }
+        }
+
+        private void DisplayLevelEndText()
+        {
+            for (int i = 0; i < EntityManager.I.GetEntityNum(); i++)
+            {
+                Entity e = EntityManager.I.GetEntity(i);
+                if(e is Arnold)
+                {
+                    DisplayLevelEndTextOnArnold((Arnold)e);
+                }
+            }
+        }
+
+        private void DisplayLevelEndTextOnArnold(Arnold arnold)
+        {
+            int? timeDiff = GhostManager.I.GetTimeDifference();
+
+            if(timeDiff.HasValue)
+            {
+                int frameDiff = timeDiff.Value;
+
+                Color textCol = Color.White;
+                string prefix = "+";
+                
+                if(frameDiff > 0)
+                {
+                    prefix = "+";
+                    textCol = Color.Crimson;
+                }
+                else if(frameDiff < 0)
+                {
+                    prefix = "-";
+                    textCol = Color.DeepSkyBlue;
+                    frameDiff = -frameDiff;
+                }
+
+                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), textCol, arnold.position, prefix + GhostManager.I.FrameTimeToString(frameDiff));
+            }
+            else
+            {
+                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.position, "Level complete");
             }
         }
     }

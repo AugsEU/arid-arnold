@@ -35,7 +35,6 @@ namespace AridArnold
 
         GhostArnold mGhostArnold;
 
-
         GhostFile mInputFile;
         GhostFile mOutputFile;
 
@@ -133,8 +132,18 @@ namespace AridArnold
             return FrameTimeToString(mInputFile.GetFrameCount());
         }
 
+        public int? GetTimeDifference()
+        {
+            if(mInputFile.IsEmpty() || mOutputFile.IsEmpty())
+            {
+                return null;
+            }
+
+            return mOutputFile.GetFrameCount() - mInputFile.GetFrameCount();
+        }
+
         //Util
-        private string FrameTimeToString(int frame)
+        public string FrameTimeToString(int frame)
         {
             int ms = (int)(frame * (1000.0f / 60.0f));
             int cs = (int)(ms / 10);

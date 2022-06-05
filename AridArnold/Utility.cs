@@ -55,6 +55,10 @@ namespace AridArnold
             throw new NotImplementedException();
         }
 
+        public static float GetDeltaT(GameTime gameTime)
+        {
+            return (float)gameTime.ElapsedGameTime.TotalSeconds * 10.0f;
+        }
         public static CardinalDirection InvertDirection(CardinalDirection dir)
         {
             switch (dir)

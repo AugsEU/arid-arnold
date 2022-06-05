@@ -51,13 +51,6 @@ namespace AridArnold
         {
 
         }
-
-        protected float GetDeltaT(GameTime gameTime)
-        {
-            return (float)gameTime.ElapsedGameTime.TotalSeconds * 10.0f;
-        }
-
-
     }
 
     abstract class MovingEntity : Entity
@@ -82,7 +75,7 @@ namespace AridArnold
 
         public Vector2 VelocityToDisplacement(GameTime gameTime)
         {
-            return mVelocity * GetDeltaT(gameTime);
+            return mVelocity * Util.GetDeltaT(gameTime);
         }
 
         private void ApplyCollisions(GameTime gameTime)
@@ -200,7 +193,7 @@ namespace AridArnold
                 mod = 2.0f;
             }
 
-            float delta = mGravity * GetDeltaT(gameTime) * mod;
+            float delta = mGravity * Util.GetDeltaT(gameTime) * mod;
             Vector2 deltaVec = GravityVecNorm() * delta;
 
             if(-delta < vecAlongGrav && vecAlongGrav < 0.0f )
