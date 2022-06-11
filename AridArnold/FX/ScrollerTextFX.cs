@@ -14,6 +14,7 @@ namespace AridArnold
         Color mColor;
         Vector2 mStartPos;
         Vector2 mPos;
+        Vector2 mShadowOffset;
         float mSpeed;
         float mMaxHeight;
         float mTime;
@@ -31,6 +32,8 @@ namespace AridArnold
             mTime = time;
 
             mStartPos = pos;
+
+            mShadowOffset = new Vector2(1.0f, 2.0f);
         }
 
         public override void Update(GameTime gameTime)
@@ -41,9 +44,13 @@ namespace AridArnold
         public override void Draw(DrawInfo info)
         {
             Vector2 drawPos = mPos;
-
             drawPos.Y = Math.Max(drawPos.Y, mStartPos.Y - mMaxHeight);
+
+            Vector2 dropShadow = drawPos + mShadowOffset;
+
+            Util.DrawStringCentred(info.spriteBatch, mFont, dropShadow, Color.Black, mText);
             Util.DrawStringCentred(info.spriteBatch, mFont, drawPos, mColor, mText);
+
         }
 
         public override bool Finished()

@@ -375,7 +375,13 @@ namespace AridArnold.Screens
             }
             else
             {
-                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.position, "Level complete");
+                string levelCompleteMsg = "Level complete";
+
+                if(GetCurrentLevel() is CollectFlagLevel)
+                {
+                    levelCompleteMsg = "Checkpoint!";
+                }
+                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.position, levelCompleteMsg);
             }
         }
     }
