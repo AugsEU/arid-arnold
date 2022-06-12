@@ -79,12 +79,19 @@ namespace AridArnold.Screens
 
     abstract class Screen
     {
+        const int SCREEN_WIDTH = 948;
+        const int SCREEN_HEIGHT = 528;
+
         protected ContentManager mContentManager;
         protected GraphicsDeviceManager mGraphics;
+        protected RenderTarget2D mScreenTarget;
+
         public Screen(ContentManager content, GraphicsDeviceManager graphics)
         {
             mContentManager = content;
             mGraphics = graphics;
+
+            mScreenTarget = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH, SCREEN_HEIGHT);
         }
 
         public abstract void LoadContent(ContentManager content);
@@ -93,7 +100,7 @@ namespace AridArnold.Screens
 
         public abstract void OnDeactivate();
 
-        public abstract void Draw(DrawInfo info);
+        public abstract RenderTarget2D DrawToRenderTarget(DrawInfo info);
 
         public abstract void Update(GameTime gameTime);
     }

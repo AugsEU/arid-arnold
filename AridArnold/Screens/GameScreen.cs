@@ -39,7 +39,7 @@ namespace AridArnold.Screens
             mLevelEndTimer = new MonoTimer();
 
             mLevels = new List<Level>();
-            mLevels.Add(new CollectWaterLevel("level1-1", 5));
+            mLevels.Add(new CollectWaterLevel("level1-1", 1));
             mLevels.Add(new CollectWaterLevel("level1-2", 2));
             mLevels.Add(new CollectWaterLevel("level1-3", 2));
             mLevels.Add(new CollectFlagLevel("level1-4"));
@@ -96,18 +96,14 @@ namespace AridArnold.Screens
         //============================================
         //  Draw
         //--------------------------------------------
-        public override void Draw(DrawInfo info)
+        public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
         {
-            Rectangle screenRect = info.device.PresentationParameters.Bounds;
-            
             //Get game rendered as a texture & UI
             RenderGameAreaToTarget(info);
             DrawUIToTarget(info);
 
-            Rectangle gameAreaRect = GetGameAreaRect(mGameArea, screenRect);
-
             //Draw out the game area
-            info.device.SetRenderTarget(null);
+            info.device.SetRenderTarget(mScreenTarget);
             info.device.Clear(new Color(0, 0, 0));
 
             info.spriteBatch.Begin(SpriteSortMode.Immediate,
@@ -116,10 +112,13 @@ namespace AridArnold.Screens
                                     DepthStencilState.None,
                                     RasterizerState.CullNone);
 
+            Rectangle gameAreaRect = GetGameAreaRect();
             DrawGameArea(info, gameAreaRect);
             DrawUI(info, gameAreaRect);
 
             info.spriteBatch.End();
+
+            return mScreenTarget;
         }
 
         private void DrawGameArea(DrawInfo info, Rectangle destRect)
@@ -127,16 +126,10 @@ namespace AridArnold.Screens
             info.spriteBatch.Draw(mGameArea, destRect, Color.White);
         }
 
-        private Rectangle GetGameAreaRect(RenderTarget2D gameArea, Rectangle screenRect)
+        private Rectangle GetGameAreaRect()
         {
-            int multiplier = (int)MathF.Min(screenRect.Width / gameArea.Width, screenRect.Height / gameArea.Height);
-
-            int finalWidth = gameArea.Width * multiplier;
-            int finalHeight = gameArea.Height * multiplier;
-
-            return new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
+            return new Rectangle((mScreenTarget.Width - mGameArea.Width) / 2, (mScreenTarget.Height - mGameArea.Height) / 2, mGameArea.Width, mGameArea.Height);
         }
-
 
         private void RenderGameAreaToTarget(DrawInfo info)
         {

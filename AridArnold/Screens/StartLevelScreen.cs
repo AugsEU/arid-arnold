@@ -33,14 +33,14 @@ namespace AridArnold.Screens
 
         }
 
-        public override void Draw(DrawInfo info)
+        public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
         {
             SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
 
-            Rectangle screenRect = info.device.PresentationParameters.Bounds;
-            Vector2 centre = new Vector2(screenRect.Width / 2, screenRect.Height / 2);
+            Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
 
             //Draw out the game area
+            info.device.SetRenderTarget(mScreenTarget);
             info.device.Clear(new Color(0, 0, 0));
 
             info.spriteBatch.Begin(SpriteSortMode.Immediate,
@@ -55,6 +55,8 @@ namespace AridArnold.Screens
             Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "Level " + (ProgressManager.I.CurrentLevel + 1));
 
             info.spriteBatch.End();
+
+            return mScreenTarget;
         }
 
         public override void Update(GameTime gameTime)

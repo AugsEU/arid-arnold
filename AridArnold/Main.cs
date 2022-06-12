@@ -85,26 +85,25 @@ namespace AridArnold
 
         private void OnResize(object sender, EventArgs eventArgs)
         {
-            if(_graphics.IsFullScreen)
-            {
-                return;
-            }
+            //if(_graphics.IsFullScreen)
+            //{
+            //    return;
+            //}
             
-            int new_height = Math.Max(Window.ClientBounds.Height, MIN_HEIGHT);
-            float new_aspect = (float)Window.ClientBounds.Width / (float)new_height;
+            //int new_height = Math.Max(Window.ClientBounds.Height, MIN_HEIGHT);
+            //float new_aspect = (float)Window.ClientBounds.Width / (float)new_height;
 
-            if (new_aspect >= ASPECT_RATIO)
-            {
-                if(new_height == MIN_HEIGHT)
-                {
-                    _graphics.PreferredBackBufferHeight = new_height;
-                }
-            }
-            else
-            {
-                
-                SetWindowHeight(new_height);
-            }
+            //if (new_aspect >= ASPECT_RATIO)
+            //{
+            //    if(new_height == MIN_HEIGHT)
+            //    {
+            //        _graphics.PreferredBackBufferHeight = new_height;
+            //    }
+            //}
+            //else
+            //{
+            //    SetWindowHeight(new_height);
+            //}
         }
 
         private void SetWindowHeight(int height)
@@ -175,10 +174,33 @@ namespace AridArnold
 
             if(screen != null)
             {
-                screen.Draw(frameInfo);
+                RenderTarget2D screenTargetRef = screen.DrawToRenderTarget(frameInfo);
+
+                GraphicsDevice.SetRenderTarget(null);
+                _spriteBatch.Begin(SpriteSortMode.Immediate,
+                                    BlendState.AlphaBlend,
+                                    SamplerState.PointClamp,
+                                    DepthStencilState.None,
+                                    RasterizerState.CullNone);
+                DrawScreenPixelPerfect(frameInfo, screenTargetRef);
+                _spriteBatch.End();
             }
 
             base.Draw(gameTime);
+        }
+
+        private void DrawScreenPixelPerfect(DrawInfo info, RenderTarget2D screen)
+        {
+            Rectangle screenRect = info.device.PresentationParameters.Bounds;
+
+            int multiplier = (int)MathF.Min(screenRect.Width / screen.Width, screenRect.Height / screen.Height);
+
+            int finalWidth = screen.Width * multiplier;
+            int finalHeight = screen.Height * multiplier;
+
+            Rectangle destRect = new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
+
+            info.spriteBatch.Draw(screen, destRect, Color.White);
         }
     }
 }
