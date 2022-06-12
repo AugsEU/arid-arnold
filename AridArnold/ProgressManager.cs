@@ -33,7 +33,8 @@ namespace AridArnold
     internal class ProgressManager : Singleton<ProgressManager>
     {
         const int START_LEVEL = 0;
-        const int START_LIVES = 4;
+        const int START_LIVES = 5;
+        const int MAX_LIVES = 6;
 
         WorldData[] mWorldData =
         {
@@ -60,8 +61,13 @@ namespace AridArnold
         public void ReportCheckpoint()
         {
             mLastCheckPoint = mCurrentLevel + 1;
-            mLives = START_LIVES;
+
+            if (mLives < START_LIVES)
+            {
+                mLives = START_LIVES;
+            }
         }
+
         public void ReportLevelLoss()
         {
             //Don't lose lives on the checkpoint levels.
@@ -74,6 +80,14 @@ namespace AridArnold
         public void ReportLevelWin()
         {
             mCurrentLevel++;
+        }
+
+        public void GiveLife()
+        {
+            if(mLives < MAX_LIVES)
+            {
+                mLives++;
+            }
         }
 
         public int Lives

@@ -279,6 +279,18 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/gold-platform.png
 
+#begin Tiles/hotdog.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/hotdog.png
+
 #begin Tiles/mirror.png
 /importer:TextureImporter
 /processor:TextureProcessor

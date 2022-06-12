@@ -70,6 +70,10 @@ namespace AridArnold
                 {
                     return new FlagTile();
                 }
+                else if (Util.CompareHEX(col, 0xEA301F))
+                {
+                    return new HotDogTile();
+                }
                 else if (Util.CompareHEX(col, 0x404040))
                 {
                     return new SpikesTile((CardinalDirection)param);

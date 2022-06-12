@@ -231,6 +231,35 @@ namespace AridArnold
         }
     }
 
+    class HotDogTile : AirTile
+    {
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/hotdog");
+        }
+
+        public override void OnEntityIntersect(Entity entity)
+        {
+            if (entity is Arnold)
+            {
+                int livesBefore = ProgressManager.I.Lives;
+                ProgressManager.I.GiveLife();
+                mEnabled = false;
+
+                //If there is actually a life increase
+                if(livesBefore < ProgressManager.I.Lives)
+                {
+                    FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.position, "+1 Life");
+                }
+                else
+                {
+                    FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.position, "+0 Lives");
+                }
+            }
+            base.OnEntityIntersect(entity);
+        }
+    }
+
     class WaterTile : CollectibleTile
     {
         public override void LoadContent(ContentManager content)
