@@ -79,8 +79,8 @@ namespace AridArnold.Screens
 
     abstract class Screen
     {
-        const int SCREEN_WIDTH = 948;
-        const int SCREEN_HEIGHT = 528;
+        const int SCREEN_WIDTH = 960;
+        const int SCREEN_HEIGHT = 540;
 
         protected ContentManager mContentManager;
         protected GraphicsDeviceManager mGraphics;

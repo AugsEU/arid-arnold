@@ -85,25 +85,21 @@ namespace AridArnold
 
         private void OnResize(object sender, EventArgs eventArgs)
         {
-            //if(_graphics.IsFullScreen)
-            //{
-            //    return;
-            //}
-            
-            //int new_height = Math.Max(Window.ClientBounds.Height, MIN_HEIGHT);
-            //float new_aspect = (float)Window.ClientBounds.Width / (float)new_height;
+            if (_graphics.IsFullScreen)
+            {
+                return;
+            }
 
-            //if (new_aspect >= ASPECT_RATIO)
-            //{
-            //    if(new_height == MIN_HEIGHT)
-            //    {
-            //        _graphics.PreferredBackBufferHeight = new_height;
-            //    }
-            //}
-            //else
-            //{
-            //    SetWindowHeight(new_height);
-            //}
+            int min_width = (int)(ASPECT_RATIO * MIN_HEIGHT);
+
+            if(Window.ClientBounds.Height >= MIN_HEIGHT && Window.ClientBounds.Width >= min_width)
+            {
+                return;
+            }
+            else
+            {
+                SetWindowHeight(MIN_HEIGHT);
+            }
         }
 
         private void SetWindowHeight(int height)

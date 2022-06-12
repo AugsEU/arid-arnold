@@ -18,6 +18,7 @@ namespace AridArnold.Screens
 
         private const double END_LEVEL_TIME = 1000.0;
         private const double END_LEVEL_FLASH_TIME = 100.0;
+        private const int UI_PANEL_SIZE = 190;
 
         private List<Level> mLevels;
 
@@ -26,6 +27,7 @@ namespace AridArnold.Screens
         private RenderTarget2D mRightUI;
 
         private Texture2D mLifeTexture;
+        private Texture2D mUIBG;
 
         private MonoTimer mLevelEndTimer;
 
@@ -39,7 +41,7 @@ namespace AridArnold.Screens
             mLevelEndTimer = new MonoTimer();
 
             mLevels = new List<Level>();
-            mLevels.Add(new CollectWaterLevel("level1-1", 1));
+            mLevels.Add(new CollectWaterLevel("level1-1", 5));
             mLevels.Add(new CollectWaterLevel("level1-2", 2));
             mLevels.Add(new CollectWaterLevel("level1-3", 2));
             mLevels.Add(new CollectFlagLevel("level1-4"));
@@ -76,6 +78,7 @@ namespace AridArnold.Screens
         {
             mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
             mLifeTexture = content.Load<Texture2D>("UI/Arnold-Life");
+            mUIBG = content.Load<Texture2D>("UI/ui_bg");
         }
 
         //============================================
@@ -112,9 +115,13 @@ namespace AridArnold.Screens
                                     DepthStencilState.None,
                                     RasterizerState.CullNone);
 
+            info.spriteBatch.Draw(mUIBG, Vector2.Zero, Color.White);
+
             Rectangle gameAreaRect = GetGameAreaRect();
             DrawGameArea(info, gameAreaRect);
             DrawUI(info, gameAreaRect);
+
+
 
             info.spriteBatch.End();
 
@@ -170,12 +177,8 @@ namespace AridArnold.Screens
 
         private void DrawUI(DrawInfo info, Rectangle gameAreaRect)
         {
-            const int PADDING = 5;
-            float totalWidth = gameAreaRect.Height * 16.0f / 9.0f;
-            int perSideWidth = (int)((float)(totalWidth - gameAreaRect.Width) / 2.0f);
-
-            Rectangle leftRectangle = new Rectangle(gameAreaRect.X - perSideWidth - PADDING, gameAreaRect.Y, perSideWidth, gameAreaRect.Height);
-            Rectangle rightRectangle = new Rectangle(gameAreaRect.X + gameAreaRect.Width + PADDING, gameAreaRect.Y, perSideWidth, gameAreaRect.Height);
+            Rectangle leftRectangle = new Rectangle((gameAreaRect.X - mLeftUI.Width) / 2, gameAreaRect.Y, mLeftUI.Width, mLeftUI.Height);
+            Rectangle rightRectangle = new Rectangle((mScreenTarget.Width + gameAreaRect.X + gameAreaRect.Width - mRightUI.Width) / 2, gameAreaRect.Y, mRightUI.Width, mRightUI.Height);
 
             info.spriteBatch.Draw(mLeftUI, leftRectangle, Color.White);
             info.spriteBatch.Draw(mRightUI, rightRectangle, Color.White);
@@ -185,12 +188,8 @@ namespace AridArnold.Screens
         {
             if (mLeftUI == null && mRightUI == null)
             {
-                float unscaledWidth = mGameArea.Height * 16.0f / 9.0f;
-                int unscaledPerSideWidth = (int)((float)(unscaledWidth - mGameArea.Width) / 2.0f);
-
-
-                mLeftUI = new RenderTarget2D(info.device, unscaledPerSideWidth, mGameArea.Height);
-                mRightUI = new RenderTarget2D(info.device, unscaledPerSideWidth, mGameArea.Height);
+                mLeftUI = new RenderTarget2D(info.device, UI_PANEL_SIZE, mGameArea.Height);
+                mRightUI = new RenderTarget2D(info.device, UI_PANEL_SIZE, mGameArea.Height);
             }
 
             DrawLeftUI(info);
@@ -200,6 +199,7 @@ namespace AridArnold.Screens
         private void DrawLeftUI(DrawInfo info)
         {
             info.device.SetRenderTarget(mLeftUI);
+            info.device.Clear(Color.Transparent);
 
             info.spriteBatch.Begin(SpriteSortMode.Immediate,
                         BlendState.AlphaBlend,
@@ -230,6 +230,7 @@ namespace AridArnold.Screens
         private void DrawRightUI(DrawInfo info)
         {
             info.device.SetRenderTarget(mRightUI);
+            info.device.Clear(Color.Transparent);
 
             info.spriteBatch.Begin(SpriteSortMode.Immediate,
                         BlendState.AlphaBlend,
