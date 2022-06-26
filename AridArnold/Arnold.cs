@@ -13,7 +13,7 @@ namespace AridArnold
         const double DEATH_TIME = 500.0;
         const double START_TIME = 500.0;
         const double FLASH_TIME = 100.0;
-        const int COYOTE_TIME = 8;
+        const int COYOTE_TIME = 12;
 
         protected WalkDirection mPrevDirection;
         protected Animator mRunningAnimation;
