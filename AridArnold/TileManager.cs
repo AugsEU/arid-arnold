@@ -78,6 +78,10 @@ namespace AridArnold
                 {
                     return new SpikesTile((CardinalDirection)param);
                 }
+                else if (Util.CompareHEX(col, 0x2A3F50))
+                {
+                    return new StalactiteTile();
+                }
                 else if (Util.CompareHEX(col, 0xFFFF00))
                 {
                     return new MirrorTile((CardinalDirection)param);
@@ -167,11 +171,15 @@ namespace AridArnold
         //--------------------------------------------
         public void Update(GameTime gameTime)
         {
-            foreach(Tile tile in mTileMap)
+            Vector2 offset = new Vector2(mTileSize, mTileSize);
+            for (int x = 0; x < mTileMap.GetLength(0); x++)
             {
-                if (tile.Enabled)
+                for (int y = 0; y < mTileMap.GetLength(1); y++)
                 {
-                    tile.Update(gameTime);
+                    Vector2 newMin = new Vector2(mTileSize * x, mTileSize * y);
+                    Rect2f tileRect = new Rect2f(newMin, newMin + offset);
+
+                    mTileMap[x, y].Update(gameTime, tileRect);
                 }
             }
         }

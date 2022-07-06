@@ -56,7 +56,7 @@ namespace AridArnold
             mTexture = content.Load<Texture2D>("Tiles/blank");
         }
 
-        public virtual void Update(GameTime gameTime) { }
+        public virtual void Update(GameTime gameTime, Rect2f bounds) { }
 
         public virtual void OnTouch(MovingEntity entity) { }
 
@@ -403,6 +403,18 @@ namespace AridArnold
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/mirror");
+        }
+    }
+
+    class StalactiteTile : AirTile
+    {
+        public StalactiteTile() : base()
+        {
+        }
+
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/stalag-tile");
         }
     }
 }
