@@ -47,6 +47,11 @@ namespace AridArnold
             set { mPosition = value; }
         }
 
+        public virtual void CollideWithEntity(Entity entity)
+        {
+
+        }
+
         public virtual void Kill()
         {
 
@@ -122,21 +127,21 @@ namespace AridArnold
         protected bool mOnGround;
 
         //Magniture of motion vectors
-        private float mWalkSpeed;
-        private float mJumpSpeed;
-        private float mGravity; 
+        protected float mWalkSpeed;
+        protected float mJumpSpeed;
+        protected float mGravity; 
 
         private CardinalDirection mCardinalDirection;
         protected WalkDirection mWalkDirection;
 
-        public PlatformingEntity(Vector2 pos) : base(pos)
+        public PlatformingEntity(Vector2 pos, float walkSpeed = DEFAULT_WALK_SPEED, float jumpSpeed = DEFAULT_JUMP_SPEED, float gravity = DEFAULT_GRAVITY) : base(pos)
         {
             mVelocity = Vector2.Zero;
             mWalkDirection = WalkDirection.None;
 
-            mWalkSpeed = DEFAULT_WALK_SPEED;
-            mJumpSpeed = DEFAULT_JUMP_SPEED;
-            mGravity = DEFAULT_GRAVITY;
+            mWalkSpeed = walkSpeed;
+            mJumpSpeed = jumpSpeed;
+            mGravity = gravity;
 
             mCardinalDirection = CardinalDirection.Down;
         }
@@ -154,6 +159,16 @@ namespace AridArnold
         public CardinalDirection GetGravityDir()
         {
             return mCardinalDirection;
+        }
+
+        protected Vector2 GetForwardVec()
+        {
+            if(mWalkDirection == WalkDirection.Left)
+            {
+                return new Vector2(-1.0f, 0.0f);
+            }
+
+            return new Vector2(1.0f, 0.0f);
         }
 
         protected Vector2 GravityVecNorm()

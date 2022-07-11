@@ -261,7 +261,7 @@ namespace AridArnold.Screens
             FXManager.I.Update(gameTime);
             if (mLevelEndTimer.IsPlaying())
             {
-                if(mLevelEndTimer.GetElapsedMs() > END_LEVEL_TIME)
+                if (mLevelEndTimer.GetElapsedMs() > END_LEVEL_TIME)
                 {
                     MoveToNextLevel();
                 }

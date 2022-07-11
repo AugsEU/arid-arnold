@@ -147,6 +147,11 @@ namespace AridArnold
             // No collision.
             return CollisionResults.None;
         }
+
+        public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+        {
+            return new Rect2f(Vector2.Zero, Vector2.Zero);
+        }
     }
 
     class WallTile : SquareTile

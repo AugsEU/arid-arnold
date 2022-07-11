@@ -93,9 +93,13 @@ namespace AridArnold
 
         private void AddEntityFromColour(Color col, Vector2 pos, ContentManager content)
         {
-            if (col == Color.Crimson)
+            if (Util.CompareHEX(col, 0xDC143C))
             {
                 EntityManager.I.RegisterEntity(new Arnold(pos), content);
+            }
+            else if (Util.CompareHEX(col, 0x5B2C2C))
+            {
+                EntityManager.I.RegisterEntity(new Trundle(pos), content);
             }
         }
 
@@ -200,6 +204,26 @@ namespace AridArnold
                     }
                 }
             }
+        }
+
+        public bool DoesRectTouchTiles(Rect2f rect)
+        {
+            Rectangle tileBounds = PossibleIntersectTiles(rect);
+
+            for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
+            {
+                for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
+                {
+                    Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
+
+                    if (mTileMap[x, y].Enabled && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(tileTopLeft, mTileSize), rect))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
        
 
