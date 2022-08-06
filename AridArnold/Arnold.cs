@@ -24,8 +24,8 @@ namespace AridArnold
         int mTimeSinceGrounded;
 
         //Various timers.
-        MonoTimer mTimerSinceDeath;
-        MonoTimer mTimerSinceStart;
+        PercentageTimer mTimerSinceDeath;
+        PercentageTimer mTimerSinceStart;
 
         public Arnold(Vector2 pos) : base(pos)
         {
@@ -33,8 +33,8 @@ namespace AridArnold
 
             EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
 
-            mTimerSinceDeath = new MonoTimer();
-            mTimerSinceStart = new MonoTimer();
+            mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
+            mTimerSinceStart = new PercentageTimer(START_TIME);
 
             mTimeSinceGrounded = int.MaxValue;
         }
@@ -67,15 +67,19 @@ namespace AridArnold
                 mTimerSinceStart.Start();
             }
 
-            if (mTimerSinceStart.GetElapsedMs() < START_TIME)
+            if (mTimerSinceStart.GetPercentage() < 1.0)
             {
                 return;
+            }
+            else if(mTimerSinceStart.GetPercentage() == 1.0)
+            {
+                mTimerSinceStart.Stop();
             }
 
             //Death
             if (mTimerSinceDeath.IsPlaying())
             {
-                if(mTimerSinceDeath.GetElapsedMs() > DEATH_TIME)
+                if(mTimerSinceDeath.GetPercentage() == 1.0)
                 {
                     SendPlayerDeathEvent();
                     mTimerSinceDeath.FullReset();
@@ -342,9 +346,12 @@ namespace AridArnold
                     return new Color(255, 128, 79);
                 }
             }
-            else if(mTimerSinceStart.GetElapsedMs() < START_TIME)
-            {                
-                if ((int)(mTimerSinceStart.GetElapsedMs() / FLASH_TIME) % 2 == 0)
+            else if(mTimerSinceStart.IsPlaying())
+            {
+                //TO DO
+                double timeSinceStart = mTimerSinceStart.GetElapsedMs();
+
+                if ((int)(timeSinceStart / FLASH_TIME) % 2 == 0)
                 {
                     return new Color(100, 255, 100);
                 }

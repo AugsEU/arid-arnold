@@ -29,7 +29,7 @@ namespace AridArnold.Screens
         private Texture2D mLifeTexture;
         private Texture2D mUIBG;
 
-        private MonoTimer mLevelEndTimer;
+        private PercentageTimer mLevelEndTimer;
 
         SpriteFont mPixelFont;
 
@@ -38,7 +38,7 @@ namespace AridArnold.Screens
         //--------------------------------------------
         public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
-            mLevelEndTimer = new MonoTimer();
+            mLevelEndTimer = new PercentageTimer(END_LEVEL_TIME);
 
             mLevels = new List<Level>();
             mLevels.Add(new CollectWaterLevel("level1-1", 5));
@@ -261,7 +261,7 @@ namespace AridArnold.Screens
             FXManager.I.Update(gameTime);
             if (mLevelEndTimer.IsPlaying())
             {
-                if (mLevelEndTimer.GetElapsedMs() > END_LEVEL_TIME)
+                if (mLevelEndTimer.GetPercentage() == 1.0)
                 {
                     MoveToNextLevel();
                 }

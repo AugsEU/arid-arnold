@@ -66,6 +66,31 @@ namespace AridArnold
         }
     }
 
+    class PercentageTimer : MonoTimer
+    {
+        double mTotalTime;
+
+        public PercentageTimer(double totalTime) : base() 
+        {
+            mTotalTime = totalTime;
+        }
+
+        public double GetPercentage()
+        {
+            if(GetElapsedMs() < mTotalTime)
+            {
+                return GetElapsedMs() / mTotalTime;
+            }
+
+            return 1.0;
+        }
+
+        public float GetPercentageF()
+        {
+            return (float)GetPercentage();
+        }
+    }
+
     internal class TimeManager : Singleton<TimeManager>
     {
         List<MonoTimer> mTimers = new List<MonoTimer>();
