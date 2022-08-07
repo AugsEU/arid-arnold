@@ -23,6 +23,16 @@ namespace AridArnold
             mTimer = new MonoTimer();
         }
 
+        public bool CanMoveState()
+        {
+            if (mTimer.GetElapsedMs() > mWaitTime)
+            {
+                mCanMoveState = true;
+            }
+
+            return mCanMoveState;
+        }
+
         public T GetState()
         {
             return mState;
@@ -43,6 +53,12 @@ namespace AridArnold
             return mCanMoveState;
         }
 
+        public bool ForceSetState(T state)
+        {
+            ForceAvailable();
+            return SetState(state);
+        }
+
         public void GoToStateAndWait(T newState, double waitTime)
         {
             if (SetState(newState))
@@ -54,6 +70,18 @@ namespace AridArnold
                 mWaitTime = waitTime;
             }
         }
-        
+
+        public void ForceGoToStateAndWait(T newState, double waitTime)
+        {
+            ForceAvailable();
+            GoToStateAndWait(newState, waitTime);
+        }
+
+        private void ForceAvailable()
+        {
+            mTimer.FullReset();
+            mCanMoveState = true;
+        }
+
     }
 }

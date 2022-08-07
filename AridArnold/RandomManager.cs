@@ -29,7 +29,8 @@ namespace AridArnold
 
         public void ChugNumber(int number)
         {
-            mSeed += number; 
+            mSeed += number;
+            Next();
         }
 
         public int Next()
@@ -70,6 +71,16 @@ namespace AridArnold
         public bool PercentChance(float percent)
         {
             return GetFloatRange(0.0f, 100.0f) < percent;
+        }
+    }
+
+    internal class RandomManager : Singleton<RandomManager>
+    {
+        MonoRandom mWorldRandom = new MonoRandom();
+
+        public MonoRandom GetWorld()
+        {
+            return mWorldRandom;
         }
     }
 }
