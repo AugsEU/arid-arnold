@@ -86,6 +86,10 @@ namespace AridArnold
                 {
                     return new MirrorTile((CardinalDirection)param);
                 }
+                else if(Util.CompareHEX(col, 0x00CDF9))
+                {
+                    return new MushroomTile();
+                }
             }
 
             return new AirTile();

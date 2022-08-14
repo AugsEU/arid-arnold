@@ -10,22 +10,22 @@ namespace AridArnold
 {
     enum AdjacencyType
     {
-        None =              0b0000,
-        Top =               0b0001,
-        Bottom =            0b0010,
-        Left =              0b0100,
-        Right =             0b1000,
-        TopBottom =         Top | Bottom,
-        TopLeft =           Top | Left,
-        TopRight =          Top | Right,
-        TopBottomLeft =     Top | Bottom | Left,
-        TopBottomRight =    Top | Bottom | Right,
-        TopLeftRight =      Top | Left | Right,
-        BottomRight =       Bottom | Right,
-        BottomLeft =        Bottom | Left,
-        BottomLeftRight =   Bottom | Left | Right,
-        LeftRight =         Left | Right,
-        All =               Top | Bottom | Left | Right,
+        None = 0b0000,
+        Top = 0b0001,
+        Bottom = 0b0010,
+        Left = 0b0100,
+        Right = 0b1000,
+        TopBottom = Top | Bottom,
+        TopLeft = Top | Left,
+        TopRight = Top | Right,
+        TopBottomLeft = Top | Bottom | Left,
+        TopBottomRight = Top | Bottom | Right,
+        TopLeftRight = Top | Left | Right,
+        BottomRight = Bottom | Right,
+        BottomLeft = Bottom | Left,
+        BottomLeftRight = Bottom | Left | Right,
+        LeftRight = Left | Right,
+        All = Top | Bottom | Left | Right,
     }
 
     //============================================
@@ -154,6 +154,14 @@ namespace AridArnold
         }
     }
 
+    class InteractableTile : AirTile
+    {
+        public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+        {
+            return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+        }
+    }
+
     class WallTile : SquareTile
     {
         public override void LoadContent(ContentManager content)
@@ -176,13 +184,13 @@ namespace AridArnold
 
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
-            if(!entity.CollideWithPlatforms())
+            if (!entity.CollideWithPlatforms())
             {
-                if(entity is PlatformingEntity)
+                if (entity is PlatformingEntity)
                 {
                     PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
-                    if(mRotation == Util.InvertDirection(platformingEntity.GetGravityDir()))
+                    if (mRotation == Util.InvertDirection(platformingEntity.GetGravityDir()))
                     {
                         return CollisionResults.None;
                     }
@@ -200,7 +208,7 @@ namespace AridArnold
     //============================================
     //  Collectible types
     //--------------------------------------------
-    abstract class CollectibleTile : AirTile
+    abstract class CollectibleTile : InteractableTile
     {
         protected abstract CollectibleType GetCollectibleType();
 
@@ -236,7 +244,7 @@ namespace AridArnold
         }
     }
 
-    class HotDogTile : AirTile
+    class HotDogTile : InteractableTile
     {
         public override void LoadContent(ContentManager content)
         {
@@ -252,7 +260,7 @@ namespace AridArnold
                 mEnabled = false;
 
                 //If there is actually a life increase
-                if(livesBefore < ProgressManager.I.Lives)
+                if (livesBefore < ProgressManager.I.Lives)
                 {
                     FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.position, "+1 Life");
                 }
@@ -281,7 +289,7 @@ namespace AridArnold
     //============================================
     //  Special types
     //--------------------------------------------
-    class SpikesTile : AirTile
+    class SpikesTile : InteractableTile
     {
         public SpikesTile(CardinalDirection rotation) : base()
         {
@@ -353,7 +361,7 @@ namespace AridArnold
                     case CardinalDirection.Up:
                         if (platformingEntity.GetGravityDir() != CardinalDirection.Down)
                         {
-                            if(platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
+                            if (platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
                             {
                                 platformingEntity.SetWalkDirection(WalkDirection.None);
                             }
@@ -396,7 +404,7 @@ namespace AridArnold
                         break;
                 }
 
-                
+
             }
         }
 
@@ -420,6 +428,43 @@ namespace AridArnold
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/stalag-tile");
+        }
+    }
+
+    class MushroomTile : InteractableTile
+    {
+        public MushroomTile() : base()
+        {
+        }
+
+        public override void LoadContent(ContentManager content)
+        {
+            mTexture = content.Load<Texture2D>("Tiles/mushroom");
+        }
+
+        public override void OnEntityIntersect(Entity entity)
+        {
+            const float alpha = 1.25f;
+            const float minVel = 22.5f;
+
+            if (entity is Arnold)
+            {
+                PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+
+                if (platformingEntity.grounded == false)
+                {
+                    if (platformingEntity.velocity.Y > minVel)
+                    {
+                        platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -platformingEntity.velocity.Y * alpha);
+                    }
+                    else if (platformingEntity.velocity.Y > 0.0f)
+                    {
+                        platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -minVel);
+                    }
+
+                    platformingEntity.grounded = true;
+                }
+            }
         }
     }
 }
