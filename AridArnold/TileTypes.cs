@@ -67,7 +67,7 @@ namespace AridArnold
             return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
         }
 
-        public Texture2D GetTexture()
+        public virtual Texture2D GetTexture()
         {
             return mTexture;
         }
@@ -433,6 +433,8 @@ namespace AridArnold
 
     class MushroomTile : InteractableTile
     {
+        Animator mBounceAnim;
+
         public MushroomTile() : base()
         {
         }
@@ -440,12 +442,20 @@ namespace AridArnold
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/mushroom");
+            mBounceAnim = new Animator(Animator.PlayType.OneShot);
+
+            mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce1", 0.05f);
+            mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce2", 0.1f);
+            mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce1", 0.05f);
+            mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce3", 0.05f);
+            mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce4", 0.05f);
+            mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce3", 0.05f);
         }
 
         public override void OnEntityIntersect(Entity entity)
         {
-            const float alpha = 1.25f;
-            const float minVel = 22.5f;
+            const float alpha = 1.4f;
+            const float minVel = 19.5f;
 
             if (entity is Arnold)
             {
@@ -453,18 +463,47 @@ namespace AridArnold
 
                 if (platformingEntity.grounded == false)
                 {
+                    bool didBounce = false;
                     if (platformingEntity.velocity.Y > minVel)
                     {
                         platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -platformingEntity.velocity.Y * alpha);
+                        didBounce = true;
                     }
                     else if (platformingEntity.velocity.Y > 0.0f)
                     {
-                        platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -minVel);
+                        platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -minVel * alpha);
+                        didBounce = true;
                     }
 
-                    platformingEntity.grounded = true;
+                    if (didBounce)
+                    {
+                        platformingEntity.grounded = true;
+                        mBounceAnim.Play();
+                    }
                 }
             }
+        }
+
+        public override void Update(GameTime gameTime, Rect2f bounds) 
+        {
+            mBounceAnim.Update(gameTime);
+        }
+
+        public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+        {
+            Vector2 heightReduction = new Vector2(0.0f, 6.0f);
+
+            return new Rect2f(topLeft + heightReduction, topLeft + new Vector2(sideLength, sideLength));
+        }
+
+        public override Texture2D GetTexture()
+        {
+            if(mBounceAnim.IsPlaying())
+            {
+                return mBounceAnim.GetCurrentTexture();
+            }
+
+            return mTexture;
         }
     }
 }

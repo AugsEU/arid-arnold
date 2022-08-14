@@ -22,16 +22,24 @@ namespace AridArnold
 
     internal class Animator
     {
+        public enum PlayType
+        {
+            OneShot,
+            Repeat
+        };
+
         List<AnimationFrame> mFrames = new List<AnimationFrame>();
+        PlayType mPlayType;
         float mTotalDuration;
         float mPlayHead;
         bool mPlaying;
 
-        public Animator()
+        public Animator(PlayType playType = PlayType.Repeat)
         {
             mPlaying = false;
             mTotalDuration = 0.0f;
             mPlayHead = 0.0f;
+            mPlayType = playType;
         }
 
         public void Play()
@@ -43,6 +51,11 @@ namespace AridArnold
         public void Stop()
         {
             mPlaying = false;
+        }
+
+        public bool IsPlaying()
+        {
+            return mPlaying;
         }
 
         //Frames can only be added, not removed(yet).
@@ -58,10 +71,24 @@ namespace AridArnold
             {
                 mPlayHead += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                while (mPlayHead > mTotalDuration)
+                switch (mPlayType)
                 {
-                    mPlayHead -= mTotalDuration;
+                    case PlayType.OneShot:
+                        if (mPlayHead > mTotalDuration)
+                        {
+                            Stop();
+                        }
+                        break;
+                    case PlayType.Repeat:
+                        while (mPlayHead > mTotalDuration)
+                        {
+                            mPlayHead -= mTotalDuration;
+                        }
+                        break;
+                    default:
+                        break;
                 }
+
             }
         }
 

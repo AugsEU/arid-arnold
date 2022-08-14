@@ -281,6 +281,7 @@ namespace AridArnold.Screens
 
             GhostManager.I.Update(gameTime);
             EntityManager.I.Update(gameTime);
+            TileManager.I.Update(gameTime);
 
             LevelStatus status = GetCurrentLevel().Update(gameTime);
 
