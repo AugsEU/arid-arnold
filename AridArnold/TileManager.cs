@@ -88,7 +88,7 @@ namespace AridArnold
                 }
                 else if(Util.CompareHEX(col, 0x00CDF9))
                 {
-                    return new MushroomTile();
+                    return new MushroomTile((CardinalDirection)param);
                 }
             }
 
@@ -220,7 +220,7 @@ namespace AridArnold
                 {
                     Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-                    if (mTileMap[x, y].Enabled && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(tileTopLeft, mTileSize), rect))
+                    if (mTileMap[x, y].Enabled && mTileMap[x, y].IsSolid() && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(tileTopLeft, mTileSize), rect))
                     {
                         return true;
                     }
@@ -478,7 +478,7 @@ namespace AridArnold
             Rect2f futurePlayerBounds = entity.ColliderBounds() + entity.VelocityToDisplacement(gameTime);
 
             Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
-           
+            
             Util.Log(" Starting vel " + entity.velocity.ToString());
 
             for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)

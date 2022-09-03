@@ -156,6 +156,22 @@ namespace AridArnold
             mWalkDirection=dir;
         }
 
+        public void ReverseWalkDirection()
+        {
+            switch (mWalkDirection)
+            {
+                case WalkDirection.Left:
+                    mWalkDirection = WalkDirection.Right;
+                    break;
+                case WalkDirection.Right:
+                    mWalkDirection = WalkDirection.Left;
+                    break;
+                case WalkDirection.None:
+                default:
+                    break;
+            }
+        }
+
         public CardinalDirection GetGravityDir()
         {
             return mCardinalDirection;

@@ -67,6 +67,11 @@ namespace AridArnold
             return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
         }
 
+        public virtual bool IsSolid()
+        {
+            return false;
+        }
+
         public virtual Texture2D GetTexture()
         {
             return mTexture;
@@ -133,6 +138,11 @@ namespace AridArnold
         {
             return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), GetBounds(topLeft, sideLength));
         }
+
+        public override bool IsSolid()
+        {
+            return true;
+        }
     }
 
     class AirTile : Tile
@@ -151,6 +161,11 @@ namespace AridArnold
         public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
         {
             return new Rect2f(Vector2.Zero, Vector2.Zero);
+        }
+
+        public override bool IsSolid()
+        {
+            return false;
         }
     }
 
@@ -202,6 +217,11 @@ namespace AridArnold
             }
 
             return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);
+        }
+
+        public override bool IsSolid()
+        {
+            return true;
         }
     }
 
@@ -435,8 +455,9 @@ namespace AridArnold
     {
         Animator mBounceAnim;
 
-        public MushroomTile() : base()
+        public MushroomTile(CardinalDirection rotation) : base()
         {
+            mRotation = rotation;
         }
 
         public override void LoadContent(ContentManager content)
@@ -461,28 +482,83 @@ namespace AridArnold
             {
                 PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
-                if (platformingEntity.grounded == false)
-                {
-                    bool didBounce = false;
-                    if (platformingEntity.velocity.Y > minVel)
-                    {
-                        platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -platformingEntity.velocity.Y * alpha);
-                        didBounce = true;
-                    }
-                    else if (platformingEntity.velocity.Y > 0.0f)
-                    {
-                        platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -minVel * alpha);
-                        didBounce = true;
-                    }
+                bool didBounce = false;
 
-                    if (didBounce)
-                    {
-                        platformingEntity.grounded = true;
-                        mBounceAnim.Play();
-                    }
+                switch (mRotation)
+                {
+                    case CardinalDirection.Up:
+                        {
+                            if (platformingEntity.grounded == false)
+                            {
+                                if (platformingEntity.velocity.Y > minVel)
+                                {
+                                    platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -platformingEntity.velocity.Y * alpha);
+                                    didBounce = true;
+                                }
+                                else if (platformingEntity.velocity.Y > 0.0f)
+                                {
+                                    platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -minVel * alpha);
+                                    didBounce = true;
+                                }
+
+                                if (didBounce)
+                                {
+                                    platformingEntity.grounded = true;
+                                }
+                            }
+                        }
+                        break;
+                    case CardinalDirection.Left:
+                    case CardinalDirection.Right:
+                        {
+                            bool valid = (CardinalDirection.Left == mRotation) != (platformingEntity.velocity.X < 0.0f);
+
+                            if (valid)
+                            {
+                                if (platformingEntity.grounded == false)
+                                {
+                                    float newY = platformingEntity.velocity.Y;
+                                    if (newY < 0.0f && mBounceAnim.IsPlaying() == false)
+                                    {
+                                        newY = newY * alpha;
+                                    }
+                                    platformingEntity.velocity = new Vector2(-platformingEntity.velocity.X, newY);
+                                    platformingEntity.ReverseWalkDirection();
+                                }
+                                else
+                                {
+
+                                    platformingEntity.velocity = new Vector2(-platformingEntity.velocity.X, -minVel * alpha);
+                                    platformingEntity.ReverseWalkDirection();
+                                }
+
+                                didBounce = true;
+                            }
+                        }
+                        break;
+                    case CardinalDirection.Down:
+                        {
+                            if (platformingEntity.grounded == false)
+                            {
+                                if (platformingEntity.velocity.Y < 0.0f)
+                                {
+                                    platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -platformingEntity.velocity.Y * alpha);
+                                    didBounce = true;
+                                }
+                            }
+                        }
+
+                        break;
+                }
+
+                if (didBounce)
+                {
+                    mBounceAnim.Play();
                 }
             }
         }
+
+
 
         public override void Update(GameTime gameTime, Rect2f bounds) 
         {
@@ -491,9 +567,21 @@ namespace AridArnold
 
         public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
         {
-            Vector2 heightReduction = new Vector2(0.0f, 6.0f);
+            float heightReduction = 6.0f;
 
-            return new Rect2f(topLeft + heightReduction, topLeft + new Vector2(sideLength, sideLength));
+            switch (mRotation)
+            {
+                case CardinalDirection.Up:
+                    return new Rect2f(topLeft + new Vector2(0.0f, heightReduction), topLeft + new Vector2(sideLength, sideLength));
+                case CardinalDirection.Right:
+                    return new Rect2f(topLeft, topLeft + new Vector2(sideLength - heightReduction, sideLength));
+                case CardinalDirection.Down:
+                    return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength - heightReduction));
+                case CardinalDirection.Left:
+                    return new Rect2f(topLeft + new Vector2(heightReduction, 0.0f), topLeft + new Vector2(sideLength, sideLength));
+            }
+
+            throw new NotImplementedException();
         }
 
         public override Texture2D GetTexture()
