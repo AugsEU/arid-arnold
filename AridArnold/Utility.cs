@@ -1,6 +1,4 @@
-﻿//#define DEBUG_LOG
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -30,6 +28,8 @@ namespace AridArnold
 
     internal static class Util
     {
+        public static bool mDebugOn = false;
+
         public static void Swap<T>(ref T lhs, ref T rhs)
         {
             T temp;
@@ -145,9 +145,10 @@ namespace AridArnold
 
         public static void Log(string msg)
         {
-#if DEBUG_LOG
-            Debug.WriteLine(msg);
-#endif
+            if (mDebugOn)
+            {
+                Debug.WriteLine(msg);
+            }
         }
 
         public static void DLog(string msg)
