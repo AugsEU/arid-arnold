@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define EXPERIMENTAL_COLLISION_REMOVALS
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -246,6 +248,7 @@ namespace AridArnold
             //Handle zero case
             if(ray.direction.X == 0.0f)
             {
+                //Vertical case, check if we are within X bounds.
                 if (rect.min.X < ray.origin.X && ray.origin.X < rect.max.X)
                 {
                     float y_min = (rect.min.Y - ray.origin.Y) / ray.direction.Y;
@@ -258,12 +261,15 @@ namespace AridArnold
                             results.t = y_min;
                             results.normal = new Vector2(0.0f, -1.0f);
                         }
+#if !EXPERIMENTAL_COLLISION_REMOVALS
                         else if (1.0f > y_max && y_max >= 0.0f)
                         {
                             results.t = y_max;
                             results.normal = new Vector2(0.0f, -1.0f);
                         }
+#endif
                     }
+                    //Going up
                     else
                     {
                         if (1.0f > y_max && y_max >= 0.0f)
@@ -271,11 +277,13 @@ namespace AridArnold
                             results.t = y_max;
                             results.normal = new Vector2(0.0f, 1.0f);
                         }
+#if !EXPERIMENTAL_COLLISION_REMOVALS
                         else if (1.0f > y_min && y_min >= 0.0f)
                         {
                             results.t = y_min;
                             results.normal = new Vector2(0.0f, 1.0f);
                         }
+#endif
                     }
                 }
 
@@ -283,11 +291,13 @@ namespace AridArnold
             }
             else if(ray.direction.Y == 0.0f)
             {
+                //Horizontal case check if we are in Y bounds.
                 if (rect.min.Y < ray.origin.Y && ray.origin.Y < rect.max.Y)
                 {
                     float x_min = (rect.min.X - ray.origin.X) / ray.direction.X;
                     float x_max = (rect.max.X - ray.origin.X) / ray.direction.X;
 
+                    //Going right
                     if (ray.direction.X > 0.0f)
                     {
                         if (1.0f > x_min && x_min >= 0.0f)
@@ -295,11 +305,13 @@ namespace AridArnold
                             results.t = x_min;
                             results.normal = new Vector2(-1.0f, 0.0f);
                         }
+#if !EXPERIMENTAL_COLLISION_REMOVALS
                         else if (1.0f > x_max && x_max >= 0.0f)
                         {
                             results.t = x_max;
                             results.normal = new Vector2(-1.0f, 0.0f);
                         }
+#endif
                     }
                     else
                     {
@@ -308,11 +320,13 @@ namespace AridArnold
                             results.t = x_max;
                             results.normal = new Vector2(1.0f, 0.0f);
                         }
+#if !EXPERIMENTAL_COLLISION_REMOVALS
                         else if (1.0f > x_min && x_min >= 0.0f)
                         {
                             results.t = x_min;
                             results.normal = new Vector2(1.0f, 0.0f);
                         }
+#endif
                     }
                 }
 
