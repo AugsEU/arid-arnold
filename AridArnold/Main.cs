@@ -11,6 +11,7 @@ namespace AridArnold
 {
     public class Main : Game
     {
+        private const int FRAME_SLOWDOWN = 1;
         private const double FRAME_RATE = 60d;
         private const int MIN_HEIGHT = 550;
         private const float ASPECT_RATIO = 1.77778f;
@@ -18,6 +19,7 @@ namespace AridArnold
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Rectangle windowedRect;
+        private int mSlowDownCount;
 
 
         public Main()
@@ -33,6 +35,8 @@ namespace AridArnold
             TargetElapsedTime = System.TimeSpan.FromSeconds(1d / FRAME_RATE);
 
             Window.ClientSizeChanged += OnResize;
+
+            mSlowDownCount = 0;
         }
 
         protected override void Initialize()
@@ -60,24 +64,26 @@ namespace AridArnold
         {
             gameTime.ElapsedGameTime = TargetElapsedTime;
 
-            //Record elapsed time
-            TimeManager.I.Update(gameTime);
-
-            KeyboardState keyboardState = Keyboard.GetState();
-            foreach (Keys key in keyboardState.GetPressedKeys())
+            mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
+            if (mSlowDownCount == 0)
             {
-                HandleKeyPress(key);
-            }
+                //Record elapsed time
+                TimeManager.I.Update(gameTime);
 
-            const int updateSteps = 4;
+                KeyboardState keyboardState = Keyboard.GetState();
+                foreach (Keys key in keyboardState.GetPressedKeys())
+                {
+                    HandleKeyPress(key);
+                }
 
-            System.TimeSpan timeInc = gameTime.ElapsedGameTime / updateSteps;
-            for(int i = 0; i < updateSteps; i++)
-            {
-                GameTime stepTime = new GameTime(gameTime.TotalGameTime - (updateSteps - 1 - i) * timeInc, timeInc);
+                const int updateSteps = 4;
+                System.TimeSpan timeInc = gameTime.ElapsedGameTime / updateSteps;
+                for (int i = 0; i < updateSteps; i++)
+                {
+                    GameTime stepTime = new GameTime(gameTime.TotalGameTime - (updateSteps - 1 - i) * timeInc, timeInc);
 
-                GameUpdate(stepTime);
-
+                    GameUpdate(stepTime);
+                }
             }
 
             base.Update(gameTime);

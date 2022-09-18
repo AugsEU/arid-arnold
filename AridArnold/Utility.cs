@@ -86,6 +86,21 @@ namespace AridArnold
             return new Vector2(a.Y, -a.X);
         }
 
+        public static float ClampAbs(float toClamp, float absLimit)
+        {
+            absLimit = Math.Abs(absLimit);
+            if(toClamp > absLimit)
+            {
+                toClamp = absLimit;
+            }
+            else if(toClamp < -absLimit)
+            {
+                toClamp = -absLimit;
+            }
+
+            return toClamp;
+        }
+
         public static bool CompareHEX(Color color, ulong hexCode)
         {
             ulong colourHex = (ulong)(color.B) + ((ulong)(color.G) << 8) + +((ulong)(color.R) << 16);

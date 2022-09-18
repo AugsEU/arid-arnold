@@ -37,6 +37,7 @@ namespace AridArnold
         float mTileSize;
 
         Tile[,] mTileMap = new Tile[32, 32];
+        Tile mDummyTile;
 
         //============================================
         //  Initialisation
@@ -45,6 +46,7 @@ namespace AridArnold
         {
             mTileMapPos = position;
             mTileSize = tileSize;
+            mDummyTile = new AirTile();
         }
 
         private Tile GetTileFromColour(Color col)
@@ -168,12 +170,49 @@ namespace AridArnold
         //============================================
         //  Utility
         //--------------------------------------------
+        public Tile GetTile(Vector2 pos)
+        {
+            return GetTile(GetTileMapCoord(pos));
+        }
+
         public Tile GetTile(Point coord)
         {
-            return mTileMap[coord.X, coord.Y];
+            return GetTile(coord.X, coord.Y);
         }
 
 
+        public Tile GetTile(int x, int y)
+        {
+            if (0 <= x && x < mTileMap.GetLength(0) &&
+                0 <= y && y < mTileMap.GetLength(1))
+            {
+                return mTileMap[x, y];
+            }
+
+            return mDummyTile;
+        }
+
+        public Tile GetRelativeTile(Vector2 pos, Point displacement)
+        {
+            return GetRelativeTile(pos, displacement.X, displacement.Y);
+        }
+
+        public Tile GetRelativeTile(Vector2 pos, int dx, int dy)
+        {
+            Point coord = GetTileMapCoord(pos);
+
+            return GetTile(coord.X + dx, coord.Y + dy);
+        }
+
+        public Rect2f GetTileMapRectangle()
+        {
+            return new Rect2f(mTileMapPos, mTileMapPos + new Vector2(mTileSize * mTileMap.GetLength(0), mTileSize * mTileMap.GetLength(1)));
+        }
+
+        public float GetTileSize()
+        {
+            return mTileSize;
+        }
         //============================================
         //  Updates
         //--------------------------------------------
@@ -204,7 +243,8 @@ namespace AridArnold
 
                     if (mTileMap[x, y].Enabled && Collision2D.BoxVsBox(mTileMap[x,y].GetBounds(tileTopLeft, mTileSize), entity.ColliderBounds()))
                     {
-                        mTileMap[x, y].OnEntityIntersect(entity);
+                        Rect2f tileCollideBounds = mTileMap[x, y].GetBounds(tileTopLeft, mTileSize);
+                        mTileMap[x, y].OnEntityIntersect(entity, tileCollideBounds);
                     }
                 }
             }
@@ -539,6 +579,53 @@ namespace AridArnold
             Point rMax = new Point(Math.Min((int)box.max.X + 2, mTileMap.GetLength(0) - 1), Math.Min((int)box.max.Y + 2, mTileMap.GetLength(1) - 1));
 
             return new Rectangle(rMin, rMax - rMin);
+        }
+
+        public Rectangle GetNbyN(Vector2 pos, int n)
+        {
+            return GetNbyM(pos, n, n);
+        }
+
+        public Rectangle GetNbyM(Vector2 pos, int n, int m)
+        {
+            Vector2 tileSpacePos = (pos - mTileMapPos) / mTileSize;
+
+            Point point = new Point((int)tileSpacePos.X - (n-1)/2, (int)tileSpacePos.Y - (m - 1) / 2);
+            Point size = new Point(n,m);
+
+            if(point.X + size.X > mTileMap.GetLength(0))
+            {
+                size.X = mTileMap.GetLength(0) - point.X;
+            }
+
+            if(point.Y + size.Y > mTileMap.GetLength(1))
+            {
+                size.Y = mTileMap.GetLength(1) - point.Y;
+            }
+
+            return new Rectangle(point, size);
+        }
+
+        public Point GetTileMapCoord(Vector2 pos)
+        {
+            pos = pos - mTileMapPos;
+            pos = pos / mTileSize;
+
+            return new Point((int)Math.Floor(pos.X), (int)MathF.Floor(pos.Y));
+        }
+
+        public Vector2 RoundToTileCentre(Vector2 pos)
+        {
+            pos = pos - mTileMapPos;
+            pos = pos / mTileSize;
+
+            pos.X = (int)Math.Floor(pos.X) + 0.5f;
+            pos.Y = (int)Math.Floor(pos.Y) + 0.5f;
+
+            pos = pos * mTileSize;
+            pos = pos + mTileMapPos;
+
+            return pos;
         }
     }
 }

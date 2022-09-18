@@ -71,6 +71,20 @@ namespace AridArnold
             }
         }
 
+        public void GoToStateAndWaitForever(T newState)
+        {
+            if (SetState(newState))
+            {
+                mTimer.FullReset();
+                mTimer.Start();
+
+                mCanMoveState = false;
+
+                // Not technically forever, but long enough.
+                mWaitTime = double.MaxValue;
+            }
+        }
+
         public void ForceGoToStateAndWait(T newState, double waitTime)
         {
             ForceAvailable();

@@ -49,7 +49,8 @@ namespace AridArnold.Screens
             mLevels.Add(new CollectWaterLevel("level2-2", 3));
             mLevels.Add(new CollectWaterLevel("level2-3", 4));
             mLevels.Add(new CollectFlagLevel("level2-4"));
-            mLevels.Add(new CollectWaterLevel("level3-1", 5));
+            mLevels.Add(new CollectWaterLevel("level3-1", 4));
+            mLevels.Add(new CollectWaterLevel("level3-2", 3));
 
             mGameArea = null;
             mLeftUI = null;

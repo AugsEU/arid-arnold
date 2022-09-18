@@ -20,13 +20,20 @@ namespace AridArnold
         protected Texture2D mJumpDownTex;
 
         protected MonoRandom mRandom;
+        int mStartSeed;
         int mFrameNum;
 
-        public AIEntity(Vector2 pos, float walkSpeed, float jumpSpeed, float widthReduction, float heightReduction) : base(pos, walkSpeed, jumpSpeed)
+        public AIEntity(Vector2 pos, float walkSpeed, float jumpSpeed, float widthReduction, float heightReduction, int tileLook = 3) : base(pos, walkSpeed, jumpSpeed)
         {
             mRandom = new MonoRandom();
 
-            mPrevDirection = WalkDirection.Left;
+            mRandom.SetSeed(0);
+            mRandom.ChugNumber((int)pos.X);
+            mRandom.ChugNumber((int)pos.Y);
+
+            mStartSeed = mRandom.Next();
+
+            mPrevDirection = mRandom.PercentChance(50.0f) ? WalkDirection.Left : WalkDirection.Right;
             mWalkDirection = WalkDirection.None;
 
             mCWidthReduction = widthReduction;
@@ -56,7 +63,7 @@ namespace AridArnold
         private void ChugRandom()
         {
             //Make random deterministic based on player movement.
-            mRandom.SetSeed(0);
+            mRandom.SetSeed(mStartSeed);
             mRandom.ChugNumber((int)(mFrameNum / 15));
 
             int entityNum = EntityManager.I.GetEntityNum();
@@ -75,36 +82,17 @@ namespace AridArnold
             }
         }
 
+        protected Tile GetNearbyTile(int dx, int dy)
+        {
+            return TileManager.I.GetRelativeTile(mCentreOfMass, dx, dy);
+        }
+
+        protected bool CheckSolid(int dx, int dy)
+        {
+            return GetNearbyTile(dx,dy).IsSolid();
+        }
+
         protected abstract void DecideActions();
-
-        protected Rect2f GetFrontCheckBox()
-        {
-            Rect2f collider = ColliderBounds();
-
-            Vector2 min = collider.min;
-            Vector2 max = new Vector2(min.X + 1.0f, collider.max.Y - 1.0f);
-
-            if(mWalkDirection == WalkDirection.Right)
-            {
-                min += new Vector2(collider.Width, 0.0f);
-                max += new Vector2(collider.Width, 0.0f);
-            }
-
-            min += GetForwardVec() * 10.0f;
-            max += GetForwardVec() * 10.0f;
-
-            return new Rect2f(min, max);
-        }
-
-        protected Rect2f GetTopCheckBox()
-        {
-            Rect2f collider = ColliderBounds();
-
-            Vector2 min = new Vector2(collider.min.X, collider.min.Y - 13.0f);
-            Vector2 max = new Vector2(collider.max.X, collider.min.Y - 10.0f);
-
-            return new Rect2f(min, max);
-        }
 
         public override void Draw(DrawInfo info)
         {

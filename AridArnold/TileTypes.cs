@@ -60,7 +60,7 @@ namespace AridArnold
 
         public virtual void OnTouch(MovingEntity entity) { }
 
-        public virtual void OnEntityIntersect(Entity entity) { }
+        public virtual void OnEntityIntersect(Entity entity, Rect2f bounds) { }
 
         public virtual Rect2f GetBounds(Vector2 topLeft, float sideLength)
         {
@@ -232,7 +232,7 @@ namespace AridArnold
     {
         protected abstract CollectibleType GetCollectibleType();
 
-        public override void OnEntityIntersect(Entity entity)
+        public override void OnEntityIntersect(Entity entity, Rect2f bounds)
         {
             if (entity is Arnold)
             {
@@ -249,13 +249,13 @@ namespace AridArnold
             mTexture = content.Load<Texture2D>("Tiles/flag");
         }
 
-        public override void OnEntityIntersect(Entity entity)
+        public override void OnEntityIntersect(Entity entity, Rect2f bounds)
         {
             if (entity is Arnold)
             {
                 ProgressManager.I.ReportCheckpoint();
             }
-            base.OnEntityIntersect(entity);
+            base.OnEntityIntersect(entity, bounds);
         }
 
         protected override CollectibleType GetCollectibleType()
@@ -271,7 +271,7 @@ namespace AridArnold
             mTexture = content.Load<Texture2D>("Tiles/hotdog");
         }
 
-        public override void OnEntityIntersect(Entity entity)
+        public override void OnEntityIntersect(Entity entity, Rect2f bounds)
         {
             if (entity is Arnold)
             {
@@ -289,7 +289,7 @@ namespace AridArnold
                     FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.position, "+0 Lives");
                 }
             }
-            base.OnEntityIntersect(entity);
+            base.OnEntityIntersect(entity, bounds);
         }
     }
 
@@ -321,7 +321,7 @@ namespace AridArnold
             mTexture = content.Load<Texture2D>("Tiles/spikes");
         }
 
-        public override void OnEntityIntersect(Entity entity)
+        public override void OnEntityIntersect(Entity entity, Rect2f bounds)
         {
             if (entity is Arnold)
             {
@@ -368,13 +368,11 @@ namespace AridArnold
 
         }
 
-        public override void OnEntityIntersect(Entity entity)
+        public override void OnEntityIntersect(Entity entity, Rect2f bounds)
         {
             if (entity is PlatformingEntity)
             {
                 PlatformingEntity platformingEntity = (PlatformingEntity)entity;
-
-                Rect2f bounds = platformingEntity.ColliderBounds();
 
                 switch (mRotation)
                 {
@@ -473,14 +471,15 @@ namespace AridArnold
             mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce3", 0.05f);
         }
 
-        public override void OnEntityIntersect(Entity entity)
+        public override void OnEntityIntersect(Entity entity, Rect2f bounds)
         {
             const float alpha = 1.4f;
             const float minVel = 19.5f;
-
-            if (entity is Arnold)
+            
+            if (entity is PlatformingEntity)
             {
                 PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+                Rect2f entityBounds = platformingEntity.ColliderBounds();
 
                 bool didBounce = false;
 
@@ -503,6 +502,8 @@ namespace AridArnold
 
                                 if (didBounce)
                                 {
+                                    float newY = bounds.min.Y - entityBounds.Height;
+                                    platformingEntity.position = new Vector2(platformingEntity.position.X, newY);
                                     platformingEntity.grounded = true;
                                 }
                             }
@@ -517,17 +518,11 @@ namespace AridArnold
                             {
                                 if (platformingEntity.grounded == false)
                                 {
-                                    float newY = platformingEntity.velocity.Y;
-                                    if (newY < 0.0f && mBounceAnim.IsPlaying() == false)
-                                    {
-                                        newY = newY * alpha;
-                                    }
-                                    platformingEntity.velocity = new Vector2(-platformingEntity.velocity.X, newY);
+                                    platformingEntity.velocity = new Vector2(-platformingEntity.velocity.X, platformingEntity.velocity.Y);
                                     platformingEntity.ReverseWalkDirection();
                                 }
                                 else
                                 {
-
                                     platformingEntity.velocity = new Vector2(-platformingEntity.velocity.X, -minVel * alpha);
                                     platformingEntity.ReverseWalkDirection();
                                 }

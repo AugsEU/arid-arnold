@@ -19,16 +19,20 @@ namespace AridArnold
     abstract class Entity
     {
         protected Vector2 mPosition;
+        protected Vector2 mCentreOfMass;
         protected Texture2D mTexture;
 
         public Entity(Vector2 pos)
         {
             mPosition = pos;
+            mCentreOfMass = pos;
         }
 
         public virtual void Update(GameTime gameTime)
         {
             TileManager.I.EntityTouchTiles(this);
+
+            mCentreOfMass = ColliderBounds().Centre;
         }
 
         public abstract void Draw(DrawInfo info);
@@ -123,6 +127,7 @@ namespace AridArnold
         const float DEFAULT_WALK_SPEED = 9.0f;
         const float DEFAULT_GRAVITY = 4.35f;
         const float DEFAULT_JUMP_SPEED = 25.0f;
+        const float MAX_VELOCITY = 65.0f;
 
         protected bool mOnGround;
 
@@ -238,7 +243,6 @@ namespace AridArnold
         public override void Update(GameTime gameTime)
         {
             Vector2 downVec = GravityVecNorm();
-
             Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
 
             float component = Vector2.Dot(mVelocity, sideVec);
@@ -262,8 +266,10 @@ namespace AridArnold
             }
 
             ApplyGravity(gameTime);
-
             mOnGround = false;
+
+            mVelocity = new Vector2(Util.ClampAbs(mVelocity.X, MAX_VELOCITY), Util.ClampAbs(mVelocity.Y, MAX_VELOCITY));
+
             base.Update(gameTime);
         }
 

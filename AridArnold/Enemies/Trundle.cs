@@ -20,17 +20,14 @@ namespace AridArnold
         }
 
         const float TRUNDLE_WIDTH_REDUCTION = 6.0f;
-        const float TRUNDLE_HEIGHT_REDUCTION = 1.0f;
+        const float TRUNDLE_HEIGHT_REDUCTION = 3.0f;
+        const float TRUNDLE_JUMP_SPEED = 22.0f;
+        const float TRUNDLE_WALK_SPEED = 4.5f;
 
-        const float TRUNDLE_WALK_SPEED = 4.0f;
-        readonly float[] TRUNDLE_JUMP_SPEEDS = { 15.0f, 25.0f, 30.0f, 45.0f };
-
-        int mJumpSpeedIdx;
         StateMachine<State> mStateMachine;
 
-        public Trundle(Vector2 pos) : base(pos, TRUNDLE_WALK_SPEED, 0.0f, TRUNDLE_WIDTH_REDUCTION, TRUNDLE_HEIGHT_REDUCTION)
+        public Trundle(Vector2 pos) : base(pos + new Vector2(0.0f, 9.0f), TRUNDLE_WALK_SPEED, TRUNDLE_JUMP_SPEED, TRUNDLE_WIDTH_REDUCTION, TRUNDLE_HEIGHT_REDUCTION)
         {
-            mJumpSpeedIdx = 0;
             mStateMachine = new StateMachine<State>(State.Wait);
         }
 
@@ -58,46 +55,188 @@ namespace AridArnold
             mPosition.Y -= 2.0f;
         }
 
-        protected override void DecideActions()
+        bool CanWalkInDir(WalkDirection dir)
         {
-            if (mStateMachine.CanMoveState())
+            const float GRADIENT = 1.952342523523f;
+
+            if (mOnGround == false)
             {
-                //Walk
-                if (mRandom.PercentChance(30.0f))
+                return false;
+            }
+
+            Vector2 currentPosition = TileManager.I.RoundToTileCentre(mCentreOfMass);
+            Vector2 stepDir = Vector2.Zero;
+
+            switch (dir)
+            {
+                case WalkDirection.Left:
+                    if(CheckSolid(-1, 0))
+                    {
+                        return false;
+                    }
+
+                    if(CheckSolid(-1, 1))
+                    {
+                        return true;
+                    }
+
+                    stepDir = new Vector2(-1.0f / GRADIENT, 1.0f);
+                    break;
+                case WalkDirection.Right:
+                    if(CheckSolid(1, 0))
+                    {
+                        return false;
+                    }
+
+                    if (CheckSolid(1, 1))
+                    {
+                        return true;
+                    }
+
+                    stepDir = new Vector2(1.0f / GRADIENT, 1.0f);
+                    break;
+                case WalkDirection.None:
+                    return true;
+            }
+
+            //Found air in front of us
+            stepDir = stepDir * TileManager.I.GetTileSize();
+            Rect2f tileMapRect = TileManager.I.GetTileMapRectangle();
+
+            while (Collision2D.BoxVsPoint(tileMapRect, currentPosition))
+            {
+                currentPosition += stepDir;
+
+                Point tilePoint = TileManager.I.GetTileMapCoord(currentPosition);
+                bool currentTileSolid = TileManager.I.GetTile(tilePoint).IsSolid();
+                bool aboveTileSolid = TileManager.I.GetTile(tilePoint.X, tilePoint.Y - 1).IsSolid();
+
+                if(currentTileSolid && !aboveTileSolid)
                 {
-                    //lmao
-                    State newDirection = mRandom.PercentChance(52.0f) ? State.WalkLeft : State.WalkRight;
-                    
-                    mStateMachine.GoToStateAndWait(newDirection, 1000.0);
+                    return true;
                 }
-                else if(mRandom.PercentChance(30.0f))
+
+                if(currentTileSolid && aboveTileSolid)
                 {
-                    mStateMachine.GoToStateAndWait(State.Wait, 1500.0);
-                }
-                else if(mRandom.PercentChance(30.0f))
-                {
-                    mStateMachine.GoToStateAndWait(State.ChargeAtPlayer, 1500.0);
-                }
-                else
-                {
-                    mStateMachine.GoToStateAndWait(State.Jump, 3000.0);
+                    currentPosition.X -= stepDir.X;
+
+                    tilePoint = TileManager.I.GetTileMapCoord(currentPosition);
+                    currentTileSolid = TileManager.I.GetTile(tilePoint).IsSolid();
+                    aboveTileSolid = TileManager.I.GetTile(tilePoint.X, tilePoint.Y - 1).IsSolid();
+
+                    if (currentTileSolid && !aboveTileSolid)
+                    {
+                        return true;
+                    }
                 }
             }
 
-            if (mOnGround)
-            {
-                Rect2f frontCheck = GetFrontCheckBox();
-                bool frontIntersect = TileManager.I.DoesRectTouchTiles(frontCheck);
+            return false;
+        }
 
-                if (frontIntersect)
+        bool KeepWalking()
+        {
+            if(mOnGround == false)
+            {
+                return false;
+            }
+
+            if (mWalkDirection == WalkDirection.Right)
+            {
+                if (!CanWalkInDir(WalkDirection.Right))
                 {
                     mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (mWalkDirection == WalkDirection.Left)
+            {
+                if (!CanWalkInDir(WalkDirection.Left))
+                {
+                    mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
+                    return true;
+                }
+                else 
+                {
+                    return false;
+                }
+            }
 
-                    mPrevDirection = mPrevDirection == WalkDirection.Left ? WalkDirection.Right : WalkDirection.Left;
+            return false;
+        }
+
+        protected override void DecideActions()
+        {
+            if(mOnGround)
+            {
+                if (mRandom.PercentChance(0.15f))
+                {
+                    mStateMachine.ForceGoToStateAndWait(State.Wait, 3500.0f);
+                }
+
+                if (KeepWalking() == false)
+                {
+                    TryJumpUp();
+                    WalkInRandomDirection();
                 }
             }
 
             EnforceState();
+        }
+
+        void TryJumpUp()
+        {
+            if(mPrevDirection == WalkDirection.Left)
+            {
+                if (!CheckSolid(-1,-1) && CheckSolid(-1,0))
+                {
+                    mWalkDirection = WalkDirection.Left;
+                    mStateMachine.GoToStateAndWait(State.Jump, 100.0);
+                }
+            }
+            else if (mPrevDirection == WalkDirection.Right)
+            {
+                if (!CheckSolid(1,-1) && CheckSolid(1,0))
+                {
+                    mWalkDirection = WalkDirection.Right;
+                    mStateMachine.GoToStateAndWait(State.Jump, 100.0);
+                }
+            }
+        }
+
+        void WalkInRandomDirection()
+        {
+            bool canWalkLeft = CanWalkInDir(WalkDirection.Left);
+            bool canWalkRight = CanWalkInDir(WalkDirection.Right);
+
+            if (mRandom.PercentChance(10.0f))
+            {
+                mStateMachine.GoToStateAndWait(State.Wait, 1500.0f);
+            }
+
+            if (canWalkLeft && canWalkRight)
+            {
+                if (mPrevDirection == WalkDirection.Left)
+                {
+                    mStateMachine.GoToStateAndWaitForever(State.WalkLeft);
+                }
+                else
+                {
+                    mStateMachine.GoToStateAndWaitForever(State.WalkRight);
+                }
+            }
+            else if(canWalkLeft)
+            {
+                mStateMachine.GoToStateAndWaitForever(State.WalkLeft);
+            }
+            else if(canWalkRight)
+            {
+                mStateMachine.GoToStateAndWaitForever(State.WalkRight);
+            }
         }
 
         void EnforceState()
@@ -159,7 +298,7 @@ namespace AridArnold
 
             if (Math.Abs(dx) < 32.0f)
             {
-                mWalkDirection = WalkDirection.None;
+                mStateMachine.ForceGoToStateAndWait(State.Jump, 500.0f);
             }
             else if(dx < 0.0f)
             {
@@ -177,25 +316,8 @@ namespace AridArnold
         {
             if(mOnGround)
             {
-                if (mWalkDirection == WalkDirection.None)
-                {
-                    WalkDirection newDirection = mRandom.PercentChance(48.0f) ? WalkDirection.Left : WalkDirection.Right;
-                    mWalkDirection = newDirection;
-                }
-
-                Rect2f topCheck = GetTopCheckBox();
-                bool topIntersect = TileManager.I.DoesRectTouchTiles(topCheck);
-
-                if (topIntersect)
-                {
-                    mStateMachine.GoToStateAndWait(State.ChargeAtPlayer, 1500.0);
-                }
-                else
-                {
-                    mJumpSpeed = TRUNDLE_JUMP_SPEEDS[mJumpSpeedIdx];
-                    mJumpSpeedIdx = (mJumpSpeedIdx + 1) % TRUNDLE_JUMP_SPEEDS.Length;
-                    Jump();
-                }
+                Jump();
+                mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0f);
             }    
         }
     }
