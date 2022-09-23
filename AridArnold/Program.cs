@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
     public static class Program
     {

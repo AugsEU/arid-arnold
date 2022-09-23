@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using AridArnold.Screens;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
     class MonoTimer
     {
