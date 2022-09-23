@@ -32,7 +32,7 @@ namespace AridArnold
 
     internal class ProgressManager : Singleton<ProgressManager>
     {
-        const int START_LEVEL = 0;
+        const int START_LEVEL = 11;
         const int START_LIVES = 4;
         const int MAX_LIVES = 6;
 
@@ -40,7 +40,7 @@ namespace AridArnold
         {
             new WorldData(0, "Iron Works", new Color(0, 10,20), "steel", "platform"),
             new WorldData(4, "Land of Mirrors", new Color(0, 24, 14), "cobble", "gold-platform"),
-            new WorldData(8, "Buk's Cave", new Color(3, 3, 9), "cave", "gold-platform")
+            new WorldData(8, "Buk's Cave", new Color(3, 3, 9), "cave", "cave-platform")
         };
 
         int mCurrentLevel = START_LEVEL;

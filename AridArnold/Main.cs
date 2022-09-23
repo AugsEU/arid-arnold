@@ -11,7 +11,7 @@ namespace AridArnold
 {
     public class Main : Game
     {
-        private const int FRAME_SLOWDOWN = 3;
+        private const int FRAME_SLOWDOWN = 1;
         private const double FRAME_RATE = 60d;
         private const int MIN_HEIGHT = 550;
         private const float ASPECT_RATIO = 1.77778f;
