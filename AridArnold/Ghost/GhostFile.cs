@@ -4,21 +4,53 @@ using AridArnold.Levels;
 
 namespace AridArnold
 {
+    /// <summary>
+    /// A file that stores ghost information
+    /// </summary>
     internal class GhostFile
     {
-        const int MAX_FRAMES = 60 * 60 * 10;//10 minutes of recording.
+		#region rConstants
+
+		const int MAX_FRAMES = 60 * 60 * 10;//10 minutes of recording.
         readonly char[] FILE_MAGIC = { 'G', 'H', 'T' };
 
-        Level mLevel;
+		#endregion rConstants
+
+
+
+
+
+		#region rMembers
+
+		Level mLevel;
         List<List<GhostInfo>> mGhostInfos;
 
-        public GhostFile(Level level)
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
+
+		public GhostFile(Level level)
         {
             mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
             mLevel = level;
         }
 
-        public void Save()
+		#endregion rInitialisation
+
+
+
+
+
+		#region rFileOperations
+
+        /// <summary>
+        /// Save data from buffer into the file.
+        /// </summary>
+		public void Save()
         {
             string filePath = GetFilename();
 
@@ -67,6 +99,11 @@ namespace AridArnold
             }
         }
 
+
+
+        /// <summary>
+        /// Load data from file into buffers
+        /// </summary>
         public void Load()
         {
             string filePath = GetFilename();
@@ -123,13 +160,31 @@ namespace AridArnold
             }
         }
 
+
+
+        /// <summary>
+        /// Close this file.
+        /// </summary>
         public void Close()
         {
             mGhostInfos.Clear();
             mLevel = null;
         }
 
-        public void RecordFrame(PlatformingEntity entity, int frame)
+		#endregion rFileOperations
+
+
+
+
+
+		#region rReadWrite
+
+        /// <summary>
+        /// Record a frame into the buffer
+        /// </summary>
+        /// <param name="entity">Entity to record</param>
+        /// <param name="frame">Frame number</param>
+		public void RecordFrame(PlatformingEntity entity, int frame)
         {
             if (frame < MAX_FRAMES)
             {
@@ -139,40 +194,78 @@ namespace AridArnold
                 }
 
                 GhostInfo info;
-                info.position = entity.position;
-                info.velocity = entity.velocity;
-                info.grounded = entity.grounded;
+                info.position = entity.pPosition;
+                info.velocity = entity.pVelocity;
+                info.grounded = entity.pGrounded;
                 info.gravity = entity.GetGravityDir();
 
                 mGhostInfos[frame].Add(info);
             }
         }
 
+
+
+        /// <summary>
+        /// Read a frame of information.
+        /// </summary>
+        /// <param name="frame">Frame number to read</param>
+        /// <returns>List of ghosts that were recorded on that frame</returns>
         public List<GhostInfo> ReadFrame(int frame)
         {
             frame = Math.Min(frame, mGhostInfos.Count - 1);
             return mGhostInfos[frame];
         }
 
-        public bool IsEmpty()
+		#endregion rReadWrite
+
+
+
+
+
+		#region rUtility
+
+        /// <summary>
+        /// Is this file empty?
+        /// </summary>
+        /// <returns>True if file is empty</returns>
+		public bool IsEmpty()
         {
             return mGhostInfos.Count == 0;
         }
 
+
+
+        /// <summary>
+        /// Total frames in the buffer.
+        /// </summary>
+        /// <returns>Total frames in the buffer</returns>
         public int GetFrameCount()
         {
             return mGhostInfos.Count;
         }
 
+
+
+        /// <summary>
+        /// Get file name
+        /// </summary>
+        /// <returns>Full file path</returns>
         private string GetFilename()
         {
-            return GetFolder() + mLevel.Name + ".ght";
+            return GetFolder() + mLevel.pName + ".ght";
         }
 
+
+
+        /// <summary>
+        /// Get folder which this is storred in
+        /// </summary>
+        /// <returns>Full folder directory</returns>
         private string GetFolder()
         {
             return Directory.GetCurrentDirectory() + "\\ghostData\\";
         }
 
-    }
+		#endregion rUtility
+	}
 }

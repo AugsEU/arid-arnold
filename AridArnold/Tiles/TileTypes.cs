@@ -1,5 +1,8 @@
 ﻿namespace AridArnold
 {
+    /// <summary>
+    /// Bit map enum of all possible direct adjacencies.
+    /// </summary>
     enum AdjacencyType
     {
         None = 0b0000,
@@ -20,79 +23,104 @@
         All = Top | Bottom | Left | Right,
     }
 
-    //============================================
-    //  Base class
-    //--------------------------------------------
+
+
+
+
+    /// <summary>
+    /// Represents a tile in the game world.
+    /// </summary>
     abstract class Tile
     {
-        protected Texture2D mTexture = null;
+		#region rMembers
+
+		protected Texture2D mTexture = null;
         protected bool mEnabled = true;
         protected AdjacencyType mAdjacency = AdjacencyType.None;
         protected CardinalDirection mRotation;
 
-        public bool Enabled
-        {
-            get { return mEnabled; }
-            set { mEnabled = value; }
-        }
+        #endregion rMembers
 
+
+
+
+
+        #region rInitialisation 
+
+        /// <summary>
+        /// Tile constructor
+        /// </summary>
         public Tile()
         {
             mRotation = CardinalDirection.Up;
         }
 
-        public abstract CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime);
 
+
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public virtual void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/blank");
         }
 
+        #endregion rInitialisation
+
+
+
+
+
+        #region rUpdate
+
+        /// <summary>
+        /// Update the tile
+        /// </summary>
+        /// <param name="gameTime">Frame time</param>
+        /// <param name="bounds">Bounds of the tile. TO DO: Store this in the tile</param>
         public virtual void Update(GameTime gameTime, Rect2f bounds) { }
 
-        public virtual void OnTouch(MovingEntity entity) { }
+        #endregion rUpdate
 
-        public virtual void OnEntityIntersect(Entity entity, Rect2f bounds) { }
 
-        public virtual Rect2f GetBounds(Vector2 topLeft, float sideLength)
-        {
-            return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
-        }
 
-        public virtual bool IsSolid()
-        {
-            return false;
-        }
 
+
+        #region rDraw
+
+        /// <summary>
+        /// Get texture for this tile
+        /// </summary>
+        /// <returns>Texture reference</returns>
         public virtual Texture2D GetTexture()
         {
             return mTexture;
         }
 
-        public AdjacencyType GetAdjacency()
+
+
+        /// <summary>
+        /// Sprite effects can mirror or flip a tile when drawing.
+        /// </summary>
+        /// <returns>Sprite effect</returns>
+        public virtual SpriteEffects GetEffect()
         {
-            return mAdjacency;
+            return SpriteEffects.None;
         }
 
-        public void SetRightAdjacent(Tile neighbour)
-        {
-            //My neighbour is to the right of me
-            mAdjacency |= AdjacencyType.Right;
+        #endregion rDraw
 
-            //I'm to the left of my neighbour
-            neighbour.mAdjacency |= AdjacencyType.Left;
-        }
 
-        public void SetBottomAdjacent(Tile neighbour)
-        {
-            //My neighbour is under me
-            mAdjacency |= AdjacencyType.Bottom;
 
-            //I'm above my neighbour
-            neighbour.mAdjacency |= AdjacencyType.Top;
-        }
 
-        //Tiles can be rotated.
+
+        #region rUtility
+
+        /// <summary>
+        /// Get rotation of tile. E.g. platforms can be rotated
+        /// </summary>
+        /// <returns>Rotation in radians</returns>
         public float GetRotation()
         {
             switch (mRotation)
@@ -110,27 +138,148 @@
             return 0.0f;
         }
 
-        public virtual SpriteEffects GetEffect()
-        {
-            return SpriteEffects.None;
-        }
-    }
 
-    //============================================
-    //  Basic types
-    //--------------------------------------------
-    abstract class SquareTile : Tile
+
+        /// <summary>
+        /// Get type of tile adjacency.
+        /// </summary>
+        /// <returns>Tile adjacency</returns>
+        public AdjacencyType GetAdjacency()
+        {
+            return mAdjacency;
+        }
+
+
+
+        /// <summary>
+        /// Inform that a neighbour is to the right of this tile
+        /// </summary>
+        /// <param name="neighbour">Tile that is adjacent to us</param>
+        public void SetRightAdjacent(Tile neighbour)
+        {
+            //My neighbour is to the right of me
+            mAdjacency |= AdjacencyType.Right;
+
+            //I'm to the left of my neighbour
+            neighbour.mAdjacency |= AdjacencyType.Left;
+        }
+
+
+
+        /// <summary>
+        /// Inform that a neighbour is blow this tile 
+        /// </summary>
+        /// <param name="neighbour">Tile that is adjacent to us</param>
+        public void SetBottomAdjacent(Tile neighbour)
+        {
+            //My neighbour is under me
+            mAdjacency |= AdjacencyType.Bottom;
+
+            //I'm above my neighbour
+            neighbour.mAdjacency |= AdjacencyType.Top;
+        }
+
+
+
+        /// <summary>
+        /// Is this tile enabled?
+        /// </summary>
+        public bool pEnabled
+        {
+            get { return mEnabled; }
+            set { mEnabled = value; }
+        }
+
+        #endregion rUtility
+        
+
+
+
+
+        #region rCollision
+
+        /// <summary>
+        /// Resolve collision with an entity
+        /// </summary>
+        /// <param name="entity">Entity that is colliding with us</param>
+        /// <param name="topLeft">Top left position of this tile</param>
+        /// <param name="sideLength">Side length of this tile</param>
+        /// <param name="gameTime">Frame time</param>
+        /// <returns></returns>
+        public abstract CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime);
+
+
+
+        /// <summary>
+        /// Called when an entity touches us. E.g. Arnold is standing on a tile
+        /// </summary>
+        /// <param name="entity">Entity that touched us</param>
+        public virtual void OnTouch(MovingEntity entity) { }
+
+
+
+        /// <summary>
+        /// Called when an entity intersects us. E.g. Arnold passes through a water bottle
+        /// </summary>
+        /// <param name="entity">Entity that intersected us</param>
+        /// <param name="bounds">Our tile bounds</param>
+        public virtual void OnEntityIntersect(Entity entity, Rect2f bounds) { }
+
+
+
+        /// <summary>
+        /// Get bounds of this tile.
+        /// </summary>
+        /// <param name="topLeft">Top left position of tile.</param>
+        /// <param name="sideLength">Side length of tile</param>
+        /// <returns></returns>
+        public virtual Rect2f GetBounds(Vector2 topLeft, float sideLength)
+        {
+            return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+        }
+
+
+
+        /// <summary>
+        /// Is this tile solid?
+        /// </summary>
+        /// <returns>True if a tile is solid</returns>
+        public virtual bool IsSolid()
+        {
+            return false;
+        }
+
+		#endregion rCollision
+
+	}
+
+
+
+
+
+	/// <summary>
+    /// Simple tile with a square hitbox. Does nothing else.
+    /// </summary>
+	abstract class SquareTile : Tile
     {
-        public override void LoadContent(ContentManager content)
-        {
-            mTexture = content.Load<Texture2D>("Tiles/blank");
-        }
-
+        /// <summary>
+        /// Resolve collision with an entity
+        /// </summary>
+        /// <param name="entity">Entity that is colliding with us</param>
+        /// <param name="topLeft">Top left position of this tile</param>
+        /// <param name="sideLength">Side length of this tile</param>
+        /// <param name="gameTime">Frame time</param>
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
             return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), GetBounds(topLeft, sideLength));
         }
 
+
+
+        /// <summary>
+        /// Is this tile solid?
+        /// </summary>
+        /// <returns>True if a tile is solid</returns>
         public override bool IsSolid()
         {
             return true;
@@ -139,11 +288,23 @@
 
     class AirTile : Tile
     {
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/air");
         }
 
+        /// <summary>
+        /// Do not collide with the entity.
+        /// </summary>
+        /// <param name="entity">Entity that is colliding with us</param>
+        /// <param name="topLeft">Top left position of this tile</param>
+        /// <param name="sideLength">Side length of this tile</param>
+        /// <param name="gameTime">Frame time</param>
+        /// <returns></returns>
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
             // No collision.
@@ -155,6 +316,12 @@
             return new Rect2f(Vector2.Zero, Vector2.Zero);
         }
 
+
+
+        /// <summary>
+        /// Is this tile solid?
+        /// </summary>
+        /// <returns>True if a tile is solid</returns>
         public override bool IsSolid()
         {
             return false;
@@ -171,6 +338,10 @@
 
     class WallTile : SquareTile
     {
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/" + ProgressManager.I.GetWorldData().wallTexture);
@@ -184,11 +355,26 @@
             mRotation = rotation;
         }
 
+
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/" + ProgressManager.I.GetWorldData().platformTexture);
         }
 
+
+
+        /// <summary>
+        /// Resolve collision with an entity. Note: Some entities can pass through us.
+        /// </summary>
+        /// <param name="entity">Entity that is colliding with us</param>
+        /// <param name="topLeft">Top left position of this tile</param>
+        /// <param name="sideLength">Side length of this tile</param>
+        /// <param name="gameTime">Frame time</param>
+        /// <returns></returns>
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
             if (!entity.CollideWithPlatforms())
@@ -211,6 +397,12 @@
             return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);
         }
 
+
+
+        /// <summary>
+        /// Is this tile solid?
+        /// </summary>
+        /// <returns>True if a tile is solid</returns>
         public override bool IsSolid()
         {
             return true;
@@ -236,6 +428,10 @@
 
     class FlagTile : CollectibleTile
     {
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/flag");
@@ -258,6 +454,10 @@
 
     class HotDogTile : InteractableTile
     {
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/hotdog");
@@ -274,11 +474,11 @@
                 //If there is actually a life increase
                 if (livesBefore < ProgressManager.I.Lives)
                 {
-                    FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.position, "+1 Life");
+                    FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.pPosition, "+1 Life");
                 }
                 else
                 {
-                    FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.position, "+0 Lives");
+                    FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.pPosition, "+0 Lives");
                 }
             }
             base.OnEntityIntersect(entity, bounds);
@@ -287,6 +487,10 @@
 
     class WaterTile : CollectibleTile
     {
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/bottle");
@@ -308,6 +512,10 @@
             mRotation = rotation;
         }
 
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/spikes");
@@ -418,11 +626,22 @@
             }
         }
 
+        /// <summary>
+        /// Resolve collision with an entity. Note: Only the top side of the mirror is solid.
+        /// </summary>
+        /// <param name="entity">Entity that is colliding with us</param>
+        /// <param name="topLeft">Top left position of this tile</param>
+        /// <param name="sideLength">Side length of this tile</param>
+        /// <param name="gameTime">Frame time</param>
         public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
         {
             return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);
         }
 
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/mirror");
@@ -435,6 +654,12 @@
         {
         }
 
+
+
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/stalag-tile");
@@ -450,6 +675,10 @@
             mRotation = rotation;
         }
 
+        /// <summary>
+        /// Load a textures
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Tiles/mushroom");
@@ -479,24 +708,24 @@
                 {
                     case CardinalDirection.Up:
                         {
-                            if (platformingEntity.grounded == false)
+                            if (platformingEntity.pGrounded == false)
                             {
-                                if (platformingEntity.velocity.Y > minVel)
+                                if (platformingEntity.pVelocity.Y > minVel)
                                 {
-                                    platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -platformingEntity.velocity.Y * alpha);
+                                    platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -platformingEntity.pVelocity.Y * alpha);
                                     didBounce = true;
                                 }
-                                else if (platformingEntity.velocity.Y > 0.0f)
+                                else if (platformingEntity.pVelocity.Y > 0.0f)
                                 {
-                                    platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -minVel * alpha);
+                                    platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -minVel * alpha);
                                     didBounce = true;
                                 }
 
                                 if (didBounce)
                                 {
                                     float newY = bounds.min.Y - entityBounds.Height;
-                                    platformingEntity.position = new Vector2(platformingEntity.position.X, newY);
-                                    platformingEntity.grounded = true;
+                                    platformingEntity.pPosition = new Vector2(platformingEntity.pPosition.X, newY);
+                                    platformingEntity.pGrounded = true;
                                 }
                             }
                         }
@@ -504,18 +733,18 @@
                     case CardinalDirection.Left:
                     case CardinalDirection.Right:
                         {
-                            bool valid = (CardinalDirection.Left == mRotation) != (platformingEntity.velocity.X < 0.0f);
+                            bool valid = (CardinalDirection.Left == mRotation) != (platformingEntity.pVelocity.X < 0.0f);
 
                             if (valid)
                             {
-                                if (platformingEntity.grounded == false)
+                                if (platformingEntity.pGrounded == false)
                                 {
-                                    platformingEntity.velocity = new Vector2(-platformingEntity.velocity.X, platformingEntity.velocity.Y);
+                                    platformingEntity.pVelocity = new Vector2(-platformingEntity.pVelocity.X, platformingEntity.pVelocity.Y);
                                     platformingEntity.ReverseWalkDirection();
                                 }
                                 else
                                 {
-                                    platformingEntity.velocity = new Vector2(-platformingEntity.velocity.X, -minVel * alpha);
+                                    platformingEntity.pVelocity = new Vector2(-platformingEntity.pVelocity.X, -minVel * alpha);
                                     platformingEntity.ReverseWalkDirection();
                                 }
 
@@ -525,11 +754,11 @@
                         break;
                     case CardinalDirection.Down:
                         {
-                            if (platformingEntity.grounded == false)
+                            if (platformingEntity.pGrounded == false)
                             {
-                                if (platformingEntity.velocity.Y < 0.0f)
+                                if (platformingEntity.pVelocity.Y < 0.0f)
                                 {
-                                    platformingEntity.velocity = new Vector2(platformingEntity.velocity.X, -platformingEntity.velocity.Y * alpha);
+                                    platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -platformingEntity.pVelocity.Y * alpha);
                                     didBounce = true;
                                 }
                             }

@@ -1,26 +1,25 @@
 ﻿namespace AridArnold
 {
+    /// <summary>
+    /// Manager that updates and draws all entities.
+    /// </summary>
     internal class EntityManager : Singleton<EntityManager>
     {
-        private List<Entity> mRegisteredEntities = new List<Entity>();
+		#region rMembers
+
+		private List<Entity> mRegisteredEntities = new List<Entity>();
+
+        #endregion rMembers
 
 
-        public void RegisterEntity(Entity entity, ContentManager content)
-        {
-            mRegisteredEntities.Add(entity);
-            entity.LoadContent(content);
-        }
 
-        public void DeleteEntity(Entity entity)
-        {
-            mRegisteredEntities.Remove(entity);
-        }
 
-        public void ClearEntities()
-        {
-            mRegisteredEntities.Clear();
-        }
+        #region rUpdate
 
+        /// <summary>
+        /// Update all entities
+        /// </summary>
+        /// <param name="gameTime">Frame time</param>
         public void Update(GameTime gameTime)
         {
             foreach (Entity entity in mRegisteredEntities)
@@ -28,7 +27,7 @@
                 entity.Update(gameTime);
             }
 
-            for(int i = 0; i < mRegisteredEntities.Count - 1; i++)
+            for (int i = 0; i < mRegisteredEntities.Count - 1; i++)
             {
                 Entity iEntity = mRegisteredEntities[i];
 
@@ -40,7 +39,7 @@
 
                     Rect2f jRect = jEntity.ColliderBounds();
 
-                    if(Collision2D.BoxVsBox(iRect, jRect))
+                    if (Collision2D.BoxVsBox(iRect, jRect))
                     {
                         //Both react.
                         iEntity.CollideWithEntity(jEntity);
@@ -50,16 +49,58 @@
             }
         }
 
-        public int GetEntityNum()
+        #endregion rUpdate
+
+
+
+
+
+        #region rEntityRegistry
+
+        /// <summary>
+        /// Register entity to this manager.
+        /// </summary>
+        /// <param name="entity">Entity to be registered</param>
+        /// <param name="content">Monogame content manager</param>
+        public void RegisterEntity(Entity entity, ContentManager content)
         {
-            return mRegisteredEntities.Count;
+            mRegisteredEntities.Add(entity);
+            entity.LoadContent(content);
         }
 
-        public Entity GetEntity(int index)
+
+
+        /// <summary>
+        /// Remove entity from registry.
+        /// </summary>
+        /// <param name="entity">Entity to be removed</param>
+        public void DeleteEntity(Entity entity)
         {
-            return mRegisteredEntities[index];
+            mRegisteredEntities.Remove(entity);
         }
 
+
+
+        /// <summary>
+        /// Clear all entities.
+        /// </summary>
+        public void ClearEntities()
+        {
+            mRegisteredEntities.Clear();
+        }
+
+        #endregion rEntityRegistry
+
+
+
+
+
+        #region rDraw
+
+        /// <summary>
+        /// Draw all entities
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
         public void Draw(DrawInfo info)
         {
             foreach (Entity entity in mRegisteredEntities)
@@ -67,5 +108,36 @@
                 entity.Draw(info);
             }
         }
-    }
+
+		#endregion rDraw
+
+
+
+
+
+		#region rUtility
+
+        /// <summary>
+        /// Get total number of entities.
+        /// </summary>
+        /// <returns>Total number of entities.</returns>
+		public int GetEntityNum()
+        {
+            return mRegisteredEntities.Count;
+        }
+
+
+
+        /// <summary>
+        /// Get entity at specific index. Mostly used when iterating. Indices may change.
+        /// </summary>
+        /// <param name="index">Index of entity you want to access.</param>
+        /// <returns>Entity at specific index</returns>
+        public Entity GetEntity(int index)
+        {
+            return mRegisteredEntities[index];
+        }
+
+		#endregion rUtility
+	}
 }

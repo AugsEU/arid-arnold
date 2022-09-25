@@ -1,5 +1,8 @@
 ﻿namespace AridArnold
 {
+    /// <summary>
+    /// Comparison class to sort TileCollision results by their closeness to the entity
+    /// </summary>
     class TileCollisionResultsSorter : IComparer<TileCollisionResults>
     {
         public int Compare(TileCollisionResults a, TileCollisionResults b)
@@ -8,6 +11,13 @@
         }
     }
 
+
+
+
+
+    /// <summary>
+    /// Represents a collision point with a tile
+    /// </summary>
     class TileCollisionResults
     {
         public TileCollisionResults(Point p, CollisionResults r)
@@ -20,27 +30,88 @@
         public CollisionResults result;
     }
 
+
+
+
+
+    /// <summary>
+    /// Manages and stores the tile map.
+    /// </summary>
     internal class TileManager : Singleton<TileManager>
     {
-        //============================================
-        //  Members
-        //--------------------------------------------
-        Vector2 mTileMapPos;
+		#region rMembers
+
+		Vector2 mTileMapPos;
         float mTileSize;
 
         Tile[,] mTileMap = new Tile[32, 32];
         Tile mDummyTile;
 
-        //============================================
-        //  Initialisation
-        //--------------------------------------------
-        public void Init(Vector2 position, float tileSize)
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
+
+        /// <summary>
+        /// Initialise the tilemap at a point in space
+        /// </summary>
+        /// <param name="position">Top left corner of the tile map</param>
+        /// <param name="tileSize">Side length of each tile, which are squares</param>
+		public void Init(Vector2 position, float tileSize)
         {
             mTileMapPos = position;
             mTileSize = tileSize;
             mDummyTile = new AirTile();
         }
 
+
+
+        /// <summary>
+        /// Load a level from a name.
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
+        /// <param name="name">Name of the level</param>
+        public void LoadLevel(ContentManager content, string name)
+        {
+            EntityManager.I.ClearEntities();
+            CollectibleManager.I.ClearAllCollectibles();
+
+            Texture2D tileTexture = content.Load<Texture2D>(name);
+
+            mTileMap = new Tile[tileTexture.Width, tileTexture.Height];
+
+            Color[] colors1D = new Color[tileTexture.Width * tileTexture.Height];
+            tileTexture.GetData<Color>(colors1D);
+
+            for (int x = 0; x < tileTexture.Width; x++)
+            {
+                for (int y = 0; y < tileTexture.Height; y++)
+                {
+                    int index = x + y * tileTexture.Width;
+                    Color col = colors1D[index];
+
+                    mTileMap[x, y] = GetTileFromColour(colors1D[index]);
+                    mTileMap[x, y].LoadContent(content);
+
+                    Vector2 entityPos = new Vector2(x * mTileSize, y * mTileSize) + mTileMapPos;
+                    AddEntityFromColour(col, entityPos, content);
+                }
+            }
+
+            CalculateTileAdjacency();
+        }
+
+
+
+        /// <summary>
+        /// Translate from a colour to a tile instance.
+        /// Creates a new instance of that tile.
+        /// </summary>
+        /// <param name="col">Colour to translate</param>
+        /// <returns>Tile reference</returns>
         private Tile GetTileFromColour(Color col)
         {
             //Use alpha component as a parameter.
@@ -89,6 +160,15 @@
             return new AirTile();
         }
 
+
+
+        /// <summary>
+        /// Translate from a colour to an entity
+        /// Creates a new instance of the entity
+        /// </summary>
+        /// <param name="col">Colour you want to translate</param>
+        /// <param name="pos">Starting position of entity</param>
+        /// <param name="content">Monogame content manager</param>
         private void AddEntityFromColour(Color col, Vector2 pos, ContentManager content)
         {
             if (Util.CompareHEX(col, 0xDC143C))
@@ -101,36 +181,11 @@
             }
         }
 
-        public void LoadLevel(ContentManager content, string name)
-        {
-            EntityManager.I.ClearEntities();
-            CollectibleManager.I.ClearAllCollectibles();
 
-            Texture2D tileTexture = content.Load<Texture2D>(name);
 
-            mTileMap = new Tile[tileTexture.Width, tileTexture.Height];
-
-            Color[] colors1D = new Color[tileTexture.Width * tileTexture.Height];
-            tileTexture.GetData<Color>(colors1D);
-
-            for (int x = 0; x < tileTexture.Width; x++)
-            {
-                for (int y = 0; y < tileTexture.Height; y++)
-                {
-                    int index = x + y * tileTexture.Width;
-                    Color col = colors1D[index];
-
-                    mTileMap[x, y] = GetTileFromColour(colors1D[index]);
-                    mTileMap[x, y].LoadContent(content);
-
-                    Vector2 entityPos = new Vector2(x * mTileSize, y * mTileSize) + mTileMapPos;
-                    AddEntityFromColour(col, entityPos, content);
-                }
-            }
-
-            CalculateTileAdjacency();
-        }
-
+        /// <summary>
+        /// Tell which tiles are adjacent. Used for textures.
+        /// </summary>
         private void CalculateTileAdjacency()
         {
             for (int x = 0; x < mTileMap.GetLength(0); x++)
@@ -159,20 +214,44 @@
             }
         }
 
-        //============================================
-        //  Utility
-        //--------------------------------------------
-        public Tile GetTile(Vector2 pos)
+		#endregion rInitialisation
+
+
+
+
+
+		#region rUtility
+
+        /// <summary>
+        /// Get tile at a world position
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+		public Tile GetTile(Vector2 pos)
         {
             return GetTile(GetTileMapCoord(pos));
         }
 
+
+
+        /// <summary>
+        /// Get a tile from a coordinate in the tile map.
+        /// </summary>
+        /// <param name="coord">Coordinate of tile you want.</param>
+        /// <returns>Tile reference</returns>
         public Tile GetTile(Point coord)
         {
             return GetTile(coord.X, coord.Y);
         }
 
 
+
+        /// <summary>
+        /// Get a tile from a coordinate of the tile map
+        /// </summary>
+        /// <param name="x">Tile x-coordinate</param>
+        /// <param name="y">Tile y-coordinate</param>
+        /// <returns>Tile reference</returns>
         public Tile GetTile(int x, int y)
         {
             if (0 <= x && x < mTileMap.GetLength(0) &&
@@ -184,11 +263,28 @@
             return mDummyTile;
         }
 
+
+
+        /// <summary>
+        /// Get a tile at a world position with an offset in tiles
+        /// </summary>
+        /// <param name="pos">World position</param>
+        /// <param name="displacement">Number of tiles to offset by</param>
+        /// <returns>Tile reference</returns>
         public Tile GetRelativeTile(Vector2 pos, Point displacement)
         {
             return GetRelativeTile(pos, displacement.X, displacement.Y);
         }
 
+
+
+        /// <summary>
+        /// Get a tile at a world position with an offset in tiles
+        /// </summary>
+        /// <param name="pos">World position</param>
+        /// <param name="dx">Number of horizontal tiles to offset</param>
+        /// <param name="dy">Number of vertical tiles to offset</param>
+        /// <returns></returns>
         public Tile GetRelativeTile(Vector2 pos, int dx, int dy)
         {
             Point coord = GetTileMapCoord(pos);
@@ -196,18 +292,139 @@
             return GetTile(coord.X + dx, coord.Y + dy);
         }
 
+
+
+        /// <summary>
+        /// Get an N by N square of tiles
+        /// </summary>
+        /// <param name="pos">World space position of the middle of the square</param>
+        /// <param name="n">Side length(in tiles) of tile squares</param>
+        /// <returns>Rectangle of indices to tiles</returns>
+        public Rectangle GetNbyN(Vector2 pos, int n)
+        {
+            return GetNbyM(pos, n, n);
+        }
+
+
+
+        /// <summary>
+        /// Get an N by M rectangle of tiles
+        /// </summary>
+        /// <param name="pos">World space position of the middle of the rectangle</param>
+        /// <param name="n">Width(in tiles) of tile rectangle</param>
+        /// <param name="m">Height(in tiles) of tile rectangle</param>
+        /// <returns>Rectangle of indices to tiles</returns>
+        public Rectangle GetNbyM(Vector2 pos, int n, int m)
+        {
+            Vector2 tileSpacePos = (pos - mTileMapPos) / mTileSize;
+
+            Point point = new Point((int)tileSpacePos.X - (n - 1) / 2, (int)tileSpacePos.Y - (m - 1) / 2);
+            Point size = new Point(n, m);
+
+            if (point.X + size.X > mTileMap.GetLength(0))
+            {
+                size.X = mTileMap.GetLength(0) - point.X;
+            }
+
+            if (point.Y + size.Y > mTileMap.GetLength(1))
+            {
+                size.Y = mTileMap.GetLength(1) - point.Y;
+            }
+
+            return new Rectangle(point, size);
+        }
+
+
+
+        /// <summary>
+        /// Convert world space position to tile map
+        /// </summary>
+        /// <param name="pos">World space position</param>
+        /// <returns>Tile map index. Note that this may be out of bounds</returns>
+        public Point GetTileMapCoord(Vector2 pos)
+        {
+            pos = pos - mTileMapPos;
+            pos = pos / mTileSize;
+
+            return new Point((int)Math.Floor(pos.X), (int)MathF.Floor(pos.Y));
+        }
+
+
+
+        /// <summary>
+        /// Round a position to the centre of a tile
+        /// </summary>
+        /// <param name="pos">World space position</param>
+        /// <returns>World space position that is in the middle of a tile</returns>
+        public Vector2 RoundToTileCentre(Vector2 pos)
+        {
+            pos = pos - mTileMapPos;
+            pos = pos / mTileSize;
+
+            pos.X = (int)Math.Floor(pos.X) + 0.5f;
+            pos.Y = (int)Math.Floor(pos.Y) + 0.5f;
+
+            pos = pos * mTileSize;
+            pos = pos + mTileMapPos;
+
+            return pos;
+        }
+
+
+        /// <summary>
+        /// Get pixel width drawn
+        /// </summary>
+        /// <returns>Width of tile map in pixels</returns>
+        public int GetDrawWidth()
+        {
+            return (int)(mTileSize * mTileMap.GetLength(0));
+        }
+
+
+
+        /// <summary>
+        /// Get pixel height drawn
+        /// </summary>
+        /// <returns>Width of tile mpa in pixels</returns>
+        public int GetDrawHeight()
+        {
+            return (int)(mTileSize * mTileMap.GetLength(1));
+        }
+
+
+
+        /// <summary>
+        /// Get world-space rectangle of the tile map.
+        /// </summary>
+        /// <returns>World-space rectangle of tile map</returns>
         public Rect2f GetTileMapRectangle()
         {
             return new Rect2f(mTileMapPos, mTileMapPos + new Vector2(mTileSize * mTileMap.GetLength(0), mTileSize * mTileMap.GetLength(1)));
         }
 
+
+
+        /// <summary>
+        /// Get side length of the tiles
+        /// </summary>
+        /// <returns>Side length of the tiles</returns>
         public float GetTileSize()
         {
             return mTileSize;
         }
-        //============================================
-        //  Updates
-        //--------------------------------------------
+
+        #endregion rUtility
+
+
+
+
+
+        #region rUpdate
+
+        /// <summary>
+        /// Update tiles
+        /// </summary>
+        /// <param name="gameTime">Frame time</param>
         public void Update(GameTime gameTime)
         {
             Vector2 offset = new Vector2(mTileSize, mTileSize);
@@ -223,6 +440,12 @@
             }
         }
 
+
+
+        /// <summary>
+        /// Check if this entity has touched any tiles. Call tile if they have.
+        /// </summary>
+        /// <param name="entity">Entity to check</param>
         public void EntityTouchTiles(Entity entity)
         {
             Rectangle tileBounds = PossibleIntersectTiles(entity.ColliderBounds());
@@ -233,7 +456,7 @@
                 {
                     Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-                    if (mTileMap[x, y].Enabled && Collision2D.BoxVsBox(mTileMap[x,y].GetBounds(tileTopLeft, mTileSize), entity.ColliderBounds()))
+                    if (mTileMap[x, y].pEnabled && Collision2D.BoxVsBox(mTileMap[x,y].GetBounds(tileTopLeft, mTileSize), entity.ColliderBounds()))
                     {
                         Rect2f tileCollideBounds = mTileMap[x, y].GetBounds(tileTopLeft, mTileSize);
                         mTileMap[x, y].OnEntityIntersect(entity, tileCollideBounds);
@@ -242,31 +465,19 @@
             }
         }
 
-        public bool DoesRectTouchTiles(Rect2f rect)
-        {
-            Rectangle tileBounds = PossibleIntersectTiles(rect);
+		#endregion rUpdate
 
-            for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
-            {
-                for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
-                {
-                    Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-                    if (mTileMap[x, y].Enabled && mTileMap[x, y].IsSolid() && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(tileTopLeft, mTileSize), rect))
-                    {
-                        return true;
-                    }
-                }
-            }
 
-            return false;
-        }
-       
 
-        //============================================
-        //  Draw
-        //--------------------------------------------
-        public void Draw(DrawInfo info)
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw the tile map
+		/// </summary>
+		/// <param name="info">Info needed to draw</param>
+		public void Draw(DrawInfo info)
         {
             Point offset = new Point((int)mTileMapPos.X, (int)mTileMapPos.Y);
 
@@ -274,7 +485,7 @@
             {
                 for(int y= 0; y<mTileMap.GetLength(1); y++)
                 {
-                    if (mTileMap[x, y].Enabled)
+                    if (mTileMap[x, y].pEnabled)
                     {
                         Rectangle drawRectangle = new Rectangle(offset.X + x * (int)mTileSize, offset.Y + y * (int)mTileSize, (int)mTileSize, (int)mTileSize);
 
@@ -284,16 +495,13 @@
             }
         }
 
-        public int GetDrawWidth()
-        {
-            return (int)(mTileSize * mTileMap.GetLength(0));
-        }
-
-        public int GetDrawHeight()
-        {
-            return (int)(mTileSize * mTileMap.GetLength(1));
-        }
-
+        /// <summary>
+        /// Draw a single tile
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
+        /// <param name="drawDestination">Screen space of where to draw the tile</param>
+        /// <param name="tile">Reference of tile to draw</param>
+        /// <exception cref="Exception">Only textures of the correct dimensions can be used</exception>
         public void DrawTile(DrawInfo info, Rectangle drawDestination, Tile tile)
         {
             Texture2D tileTexture = tile.GetTexture();
@@ -343,6 +551,13 @@
             info.spriteBatch.Draw(tileTexture, drawDestination, sourceRectangle, Color.White, rotation, Util.CalcRotationOffset(rotation, tileHeight), effect, 1.0f);
         }
 
+
+
+        /// <summary>
+        /// Used for textures that have all 16 tile types
+        /// </summary>
+        /// <param name="adjacency">Adjacency type</param>
+        /// <param name="tileIndex">Output variable of which sub-section of the texture to use</param>
         private void SetupTileNoRotation(AdjacencyType adjacency, ref Point tileIndex)
         {
             switch (adjacency)
@@ -414,6 +629,15 @@
             }
         }
 
+
+
+        /// <summary>
+        /// Used for textures that only have 5 tile types
+        /// The rest are generated from rotations
+        /// </summary>
+        /// <param name="adjacency">Adjacency type</param>
+        /// <param name="rotation">Output variable of how far to rotate the texture</param>
+        /// <param name="tileIndex">Output variable of which sub-section of the texture to use</param>
         private void SetupTileWithRotation(AdjacencyType adjacency, ref float rotation, ref Point tileIndex)
         {
             const float PI2 = MathHelper.PiOver2;
@@ -489,6 +713,12 @@
             }
         }
 
+
+
+        /// <summary>
+        /// Centre the tile map in the screen.
+        /// </summary>
+        /// <param name="screenWidth">Width of the screen to centre it</param>
         public void CentreX(float screenWidth)
         {
             float ourWidth = GetDrawWidth();
@@ -497,10 +727,21 @@
             mTileMapPos.X = xOffset;
         }
 
-        //============================================
-        //  Collisions
-        //--------------------------------------------
-        public List<TileCollisionResults> ResolveCollisions(MovingEntity entity, GameTime gameTime)
+		#endregion rDraw
+
+
+
+
+
+		#region rCollisions
+
+        /// <summary>
+        /// Resolve all collisions with an entity
+        /// </summary>
+        /// <param name="entity">Entity to collide</param>
+        /// <param name="gameTime">Frame time</param>
+        /// <returns>List of all collisions. Note: it may contain dud collisions results. Check the t parameter first</returns>
+		public List<TileCollisionResults> ResolveCollisions(MovingEntity entity, GameTime gameTime)
         {
             List<TileCollisionResults> results = new List<TileCollisionResults>();
 
@@ -511,13 +752,13 @@
 
             Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
             
-            Util.Log(" Starting vel " + entity.velocity.ToString());
+            Util.Log(" Starting vel " + entity.pVelocity.ToString());
 
             for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
             {
                 for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
                 {
-                    if (mTileMap[x, y].Enabled == false)
+                    if (mTileMap[x, y].pEnabled == false)
                     {
                         continue;
                     }
@@ -547,21 +788,28 @@
 
                 if (collisionResults.Collided)
                 {
-                    Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.velocity.X), Math.Abs(entity.velocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
+                    Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.pVelocity.X), Math.Abs(entity.pVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
 
                     Util.Log("   " + point.ToString() + "Pushing by normal " + collisionResults.normal.ToString() + "(" + collisionResults.t.Value + ")");
 
-                    entity.velocity += pushVec;
+                    entity.pVelocity += pushVec;
                 }
 
                 results[i].result = collisionResults;
             }
 
-            Util.Log(" Final vel " + entity.velocity.X + ", " + entity.velocity.Y);
+            Util.Log(" Final vel " + entity.pVelocity.X + ", " + entity.pVelocity.Y);
 
             return results;
         }
 
+
+
+        /// <summary>
+        /// Find rectangle of tile coordinates that a box will lie in
+        /// </summary>
+        /// <param name="box">Box to check</param>
+        /// <returns>Rectangle of indices to tiles</returns>
         public Rectangle PossibleIntersectTiles(Rect2f box)
         {
             box.min = (box.min - mTileMapPos) / mTileSize;
@@ -573,51 +821,33 @@
             return new Rectangle(rMin, rMax - rMin);
         }
 
-        public Rectangle GetNbyN(Vector2 pos, int n)
+
+
+        /// <summary>
+        /// Check if a rectangle touches an solid tiles
+        /// </summary>
+        /// <param name="rect">Rectangle to check</param>
+        /// <returns>True if the rectangle touches any tiles marked as solid</returns>
+        public bool DoesRectTouchTiles(Rect2f rect)
         {
-            return GetNbyM(pos, n, n);
-        }
+            Rectangle tileBounds = PossibleIntersectTiles(rect);
 
-        public Rectangle GetNbyM(Vector2 pos, int n, int m)
-        {
-            Vector2 tileSpacePos = (pos - mTileMapPos) / mTileSize;
-
-            Point point = new Point((int)tileSpacePos.X - (n-1)/2, (int)tileSpacePos.Y - (m - 1) / 2);
-            Point size = new Point(n,m);
-
-            if(point.X + size.X > mTileMap.GetLength(0))
+            for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
             {
-                size.X = mTileMap.GetLength(0) - point.X;
+                for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
+                {
+                    Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
+
+                    if (mTileMap[x, y].pEnabled && mTileMap[x, y].IsSolid() && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(tileTopLeft, mTileSize), rect))
+                    {
+                        return true;
+                    }
+                }
             }
 
-            if(point.Y + size.Y > mTileMap.GetLength(1))
-            {
-                size.Y = mTileMap.GetLength(1) - point.Y;
-            }
-
-            return new Rectangle(point, size);
+            return false;
         }
 
-        public Point GetTileMapCoord(Vector2 pos)
-        {
-            pos = pos - mTileMapPos;
-            pos = pos / mTileSize;
-
-            return new Point((int)Math.Floor(pos.X), (int)MathF.Floor(pos.Y));
-        }
-
-        public Vector2 RoundToTileCentre(Vector2 pos)
-        {
-            pos = pos - mTileMapPos;
-            pos = pos / mTileSize;
-
-            pos.X = (int)Math.Floor(pos.X) + 0.5f;
-            pos.Y = (int)Math.Floor(pos.Y) + 0.5f;
-
-            pos = pos * mTileSize;
-            pos = pos + mTileMapPos;
-
-            return pos;
-        }
+        #endregion rCollision
     }
 }

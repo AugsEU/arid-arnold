@@ -2,18 +2,28 @@
 
 namespace AridArnold.Screens
 {
+    /// <summary>
+    /// Gameplay screen
+    /// </summary>
     internal class GameScreen : Screen
     {
-        //============================================
-        //  Members
-        //--------------------------------------------
-        public const int TILE_SIZE = 16;
+		#region rConstants
+
+		public const int TILE_SIZE = 16;
 
         private const double END_LEVEL_TIME = 1000.0;
         private const double END_LEVEL_FLASH_TIME = 100.0;
         private const int UI_PANEL_SIZE = 190;
 
-        private List<Level> mLevels;
+		#endregion rConstants
+
+
+
+
+
+		#region rMembers
+
+		private List<Level> mLevels;
 
         private RenderTarget2D mGameArea;
         private RenderTarget2D mLeftUI;
@@ -26,10 +36,20 @@ namespace AridArnold.Screens
 
         SpriteFont mPixelFont;
 
-        //============================================
-        //  Initialisation
-        //--------------------------------------------
-        public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
+
+        /// <summary>
+        /// Game screen constructor
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
+        /// <param name="graphics">Graphics device</param>
+		public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
             mLevelEndTimer = new PercentageTimer(END_LEVEL_TIME);
 
@@ -52,12 +72,23 @@ namespace AridArnold.Screens
             mRightUI = null;
         }
 
+
+
+        /// <summary>
+        /// Load a level from the list
+        /// </summary>
+        /// <param name="levelIndex">Level index to load</param>
         private void LoadLevel(int levelIndex)
         {
             FXManager.I.Clear();
             mLevels[levelIndex].Begin(mContentManager);
         }
 
+
+
+        /// <summary>
+        /// Called when the game screen is activated, sets up the tile manager.
+        /// </summary>
         public override void OnActivate()
         {
             TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
@@ -66,11 +97,12 @@ namespace AridArnold.Screens
             StartLevel();
         }
 
-        public override void OnDeactivate()
-        {
 
-        }
 
+        /// <summary>
+        /// Load content for UI elements
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
         public override void LoadContent(ContentManager content)
         {
             mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
@@ -78,14 +110,28 @@ namespace AridArnold.Screens
             mUIBG = content.Load<Texture2D>("UI/ui_bg");
         }
 
-        //============================================
-        //  Utility
-        //--------------------------------------------
-        public Level GetCurrentLevel()
+		#endregion
+
+
+
+
+
+		#region rUtility
+
+        /// <summary>
+        /// Get the level we are currently playing.
+        /// </summary>
+        /// <returns></returns>
+		private Level GetCurrentLevel()
         {
             return mLevels[ProgressManager.I.CurrentLevel];
         }
 
+
+
+        /// <summary>
+        /// Start the current level. Restarts if we have already started it.
+        /// </summary>
         private void StartLevel()
         {
             LoadLevel(ProgressManager.I.CurrentLevel);
@@ -93,9 +139,30 @@ namespace AridArnold.Screens
             GhostManager.I.StartLevel(mLevels[ProgressManager.I.CurrentLevel]);
         }
 
-        //============================================
-        //  Draw
-        //--------------------------------------------
+
+
+        /// <summary>
+        /// Area of the screen we actually play the game in
+        /// </summary>
+        /// <returns></returns>
+        private Rectangle GetGameAreaRect()
+        {
+            return new Rectangle((mScreenTarget.Width - mGameArea.Width) / 2, (mScreenTarget.Height - mGameArea.Height) / 2, mGameArea.Width, mGameArea.Height);
+        }
+
+        #endregion rUtility
+
+
+
+
+
+        #region rDraw
+
+        /// <summary>
+        /// Draw screen to render target
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
+        /// <returns>Render target with screen drawn on it</returns>
         public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
         {
             //Get game rendered as a texture & UI
@@ -125,16 +192,24 @@ namespace AridArnold.Screens
             return mScreenTarget;
         }
 
+
+
+        /// <summary>
+        /// Draw game area
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="destRect"></param>
         private void DrawGameArea(DrawInfo info, Rectangle destRect)
         {
             info.spriteBatch.Draw(mGameArea, destRect, Color.White);
         }
 
-        private Rectangle GetGameAreaRect()
-        {
-            return new Rectangle((mScreenTarget.Width - mGameArea.Width) / 2, (mScreenTarget.Height - mGameArea.Height) / 2, mGameArea.Width, mGameArea.Height);
-        }
 
+
+        /// <summary>
+        /// Render the main game to the render target
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
         private void RenderGameAreaToTarget(DrawInfo info)
         {
             if(mGameArea == null)
@@ -172,6 +247,13 @@ namespace AridArnold.Screens
             info.spriteBatch.End();
         }
 
+
+
+        /// <summary>
+        /// Draw UI next to the game area
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
+        /// <param name="gameAreaRect">Rectangle that represents the game area</param>
         private void DrawUI(DrawInfo info, Rectangle gameAreaRect)
         {
             Rectangle leftRectangle = new Rectangle((gameAreaRect.X - mLeftUI.Width) / 2, gameAreaRect.Y, mLeftUI.Width, mLeftUI.Height);
@@ -181,6 +263,12 @@ namespace AridArnold.Screens
             info.spriteBatch.Draw(mRightUI, rightRectangle, Color.White);
         }
 
+
+
+        /// <summary>
+        /// Draw the left and right UI to their render targets.
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
         private void DrawUIToTarget(DrawInfo info)
         {
             if (mLeftUI == null && mRightUI == null)
@@ -193,6 +281,12 @@ namespace AridArnold.Screens
             DrawRightUI(info);
         }
 
+
+
+        /// <summary>
+        /// Draw the left side of the UI
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
         private void DrawLeftUI(DrawInfo info)
         {
             info.device.SetRenderTarget(mLeftUI);
@@ -224,6 +318,12 @@ namespace AridArnold.Screens
             info.spriteBatch.End();
         }
 
+
+
+        /// <summary>
+        /// Draw the right side of the UI
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
         private void DrawRightUI(DrawInfo info)
         {
             info.device.SetRenderTarget(mRightUI);
@@ -249,9 +349,76 @@ namespace AridArnold.Screens
             info.spriteBatch.End();
         }
 
-        //============================================
-        //  Update
-        //--------------------------------------------
+
+
+        /// <summary>
+        /// Display text at the end of the level.
+        /// </summary>
+        private void DisplayLevelEndText()
+        {
+            for (int i = 0; i < EntityManager.I.GetEntityNum(); i++)
+            {
+                Entity e = EntityManager.I.GetEntity(i);
+                if (e is Arnold)
+                {
+                    DisplayLevelEndTextOnArnold((Arnold)e);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Display text on a specific instance of arnold
+        /// </summary>
+        /// <param name="arnold">Which arnold to draw the text over</param>
+        private void DisplayLevelEndTextOnArnold(Arnold arnold)
+        {
+            int? timeDiff = GhostManager.I.GetTimeDifference();
+
+            if (timeDiff.HasValue)
+            {
+                int frameDiff = timeDiff.Value;
+
+                Color textCol = Color.White;
+                string prefix = "+";
+
+                if (frameDiff > 0)
+                {
+                    prefix = "+";
+                    textCol = Color.Crimson;
+                }
+                else if (frameDiff < 0)
+                {
+                    prefix = "-";
+                    textCol = Color.DeepSkyBlue;
+                    frameDiff = -frameDiff;
+                }
+
+                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), textCol, arnold.position, prefix + GhostManager.I.FrameTimeToString(frameDiff));
+            }
+            else
+            {
+                string levelCompleteMsg = "Level complete";
+
+                if (GetCurrentLevel() is CollectFlagLevel)
+                {
+                    levelCompleteMsg = "Checkpoint!";
+                }
+                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.position, levelCompleteMsg);
+            }
+        }
+
+        #endregion rDraw
+
+
+
+
+        #region rUpdate
+
+        /// <summary>
+        /// Update the main gameplay screen
+        /// </summary>
+        /// <param name="gameTime">Frame time</param>
         public override void Update(GameTime gameTime)
         {
             FXManager.I.Update(gameTime);
@@ -291,6 +458,9 @@ namespace AridArnold.Screens
             }
         }
 
+        /// <summary>
+        /// Call to win the level. We will move to the next level shortly.
+        /// </summary>
         private void LevelWin()
         {
             mLevelEndTimer.Start();
@@ -298,6 +468,11 @@ namespace AridArnold.Screens
             GhostManager.I.EndLevel(true);
         }
 
+
+
+        /// <summary>
+        /// Move to the next level.
+        /// </summary>
         private void MoveToNextLevel()
         {
             ProgressManager.I.ReportLevelWin();
@@ -312,6 +487,11 @@ namespace AridArnold.Screens
             }
         }
 
+
+
+        /// <summary>
+        /// Call when the level is lost. Restart the level again.
+        /// </summary>
         private void LevelLose()
         {
             ProgressManager.I.ReportLevelLoss();
@@ -328,53 +508,6 @@ namespace AridArnold.Screens
             }
         }
 
-        private void DisplayLevelEndText()
-        {
-            for (int i = 0; i < EntityManager.I.GetEntityNum(); i++)
-            {
-                Entity e = EntityManager.I.GetEntity(i);
-                if(e is Arnold)
-                {
-                    DisplayLevelEndTextOnArnold((Arnold)e);
-                }
-            }
-        }
-
-        private void DisplayLevelEndTextOnArnold(Arnold arnold)
-        {
-            int? timeDiff = GhostManager.I.GetTimeDifference();
-
-            if(timeDiff.HasValue)
-            {
-                int frameDiff = timeDiff.Value;
-
-                Color textCol = Color.White;
-                string prefix = "+";
-                
-                if(frameDiff > 0)
-                {
-                    prefix = "+";
-                    textCol = Color.Crimson;
-                }
-                else if(frameDiff < 0)
-                {
-                    prefix = "-";
-                    textCol = Color.DeepSkyBlue;
-                    frameDiff = -frameDiff;
-                }
-
-                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), textCol, arnold.position, prefix + GhostManager.I.FrameTimeToString(frameDiff));
-            }
-            else
-            {
-                string levelCompleteMsg = "Level complete";
-
-                if(GetCurrentLevel() is CollectFlagLevel)
-                {
-                    levelCompleteMsg = "Checkpoint!";
-                }
-                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.position, levelCompleteMsg);
-            }
-        }
-    }
+		#endregion rUpdate
+	}
 }

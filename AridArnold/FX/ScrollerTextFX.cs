@@ -2,7 +2,9 @@
 {
     internal class ScrollerTextFX : FX
     {
-        SpriteFont mFont;
+		#region rMembers
+
+		SpriteFont mFont;
         Color mColor;
         Vector2 mStartPos;
         Vector2 mPos;
@@ -10,13 +12,30 @@
         float mSpeed;
         float mMaxHeight;
         float mTime;
-
         string mText;
 
-        public ScrollerTextFX(SpriteFont font, Color col, Vector2 pos, string text, float upSpeed, float maxHeight, float time)
+        #endregion rMembers
+
+
+
+
+
+        #region rInitialisation
+
+        /// <summary>
+        /// Add small piece of text that scrolls up.
+        /// </summary>
+        /// <param name="font">Font to draw text in</param>
+        /// <param name="colour">Colour of text</param>
+        /// <param name="pos">Starting position</param>
+        /// <param name="text">String to display</param>
+        /// <param name="upSpeed">Speed at which text goes up</param>
+        /// <param name="maxHeight">Maximum height difference reached by text</param>
+        /// <param name="time">Time that text shows up</param>
+        public ScrollerTextFX(SpriteFont font, Color colour, Vector2 pos, string text, float upSpeed, float maxHeight, float time)
         {
             mFont = font;
-            mColor = col;
+            mColor = colour;
             mPos = pos;
             mSpeed = upSpeed;
             mText = text;
@@ -28,11 +47,46 @@
             mShadowOffset = new Vector2(1.0f, 2.0f);
         }
 
-        public override void Update(GameTime gameTime)
+		#endregion rInitialisation
+
+
+
+
+
+		#region rUpdate
+
+        /// <summary>
+        /// Update text scroller
+        /// </summary>
+        /// <param name="gameTime">Frame time</param>
+		public override void Update(GameTime gameTime)
         {
             mPos.Y -= mSpeed * Util.GetDeltaT(gameTime);
         }
 
+        
+
+        /// <summary>
+        /// Are we finished?
+        /// </summary>
+        /// <returns>True if we are finished.</returns>
+        public override bool Finished()
+        {
+            return Math.Abs(mStartPos.Y - mPos.Y) > mTime + mMaxHeight;
+        }
+
+        #endregion rUpdate
+
+
+
+
+
+        #region rDraw
+
+        /// <summary>
+        /// Draw text scroller
+        /// </summary>
+        /// <param name="info">Info needed to draw</param>
         public override void Draw(DrawInfo info)
         {
             Vector2 drawPos = mPos;
@@ -45,9 +99,6 @@
 
         }
 
-        public override bool Finished()
-        {
-            return Math.Abs(mStartPos.Y - mPos.Y) > mTime + mMaxHeight;
-        }
+        #endregion rDraw
     }
 }

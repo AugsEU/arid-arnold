@@ -1,9 +1,16 @@
 ﻿namespace AridArnold
 {
+
+    /// <summary>
+    /// Generic class for an AI entity in the game.
+    /// </summary>
     internal abstract class AIEntity : PlatformingEntity
     {
+        #region rMembers
+
         private float mCWidthReduction;
         private float mCHeightReduction;
+
         protected WalkDirection mPrevDirection;
         protected Animator mRunningAnimation;
         protected Animator mStandAnimation;
@@ -15,7 +22,23 @@
         int mStartSeed;
         int mFrameNum;
 
-        public AIEntity(Vector2 pos, float walkSpeed, float jumpSpeed, float widthReduction, float heightReduction, int tileLook = 3) : base(pos, walkSpeed, jumpSpeed)
+        #endregion
+
+
+
+
+
+        #region rInitialise
+
+        /// <summary>
+        /// AIEntity constructor
+        /// </summary>
+        /// <param name="pos">Starting position of the entity</param>
+        /// <param name="walkSpeed">Walk speed of the entity</param>
+        /// <param name="jumpSpeed">Initial upwards velocity when jumping</param>
+        /// <param name="widthReduction">Hitbox width reduction compared to sprite size</param>
+        /// <param name="heightReduction">Hitbox height reduction compared to sprite size</param>
+        public AIEntity(Vector2 pos, float walkSpeed, float jumpSpeed, float widthReduction, float heightReduction) : base(pos, walkSpeed, jumpSpeed)
         {
             mRandom = new MonoRandom();
 
@@ -34,6 +57,18 @@
             mFrameNum = 0;
         }
 
+        #endregion rInitialise
+
+
+
+
+
+        #region rUpdate
+
+        /// <summary>
+        /// Update the AI Entity
+        /// </summary>
+        /// <param name="gameTime">Frame time.</param>
         public override void Update(GameTime gameTime)
         {
             mFrameNum++;
@@ -52,6 +87,11 @@
             base.Update(gameTime);
         }
 
+
+
+        /// <summary>
+        /// Calculate random seed value for this frame based on deterministic variables.
+        /// </summary>
         private void ChugRandom()
         {
             //Make random deterministic based on player movement.
@@ -74,19 +114,46 @@
             }
         }
 
-        protected Tile GetNearbyTile(int dx, int dy)
+
+
+        /// <summary>
+        /// React to collision with an entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        public override void CollideWithEntity(Entity entity)
         {
-            return TileManager.I.GetRelativeTile(mCentreOfMass, dx, dy);
+            if (entity is Arnold)
+            {
+                //Kill the player on touching.
+                EArgs args;
+                args.sender = this;
+
+                EventManager.I.SendEvent(EventType.KillPlayer, args);
+            }
+
+            base.CollideWithEntity(entity);
         }
 
-        protected bool CheckSolid(int dx, int dy)
-        {
-            return GetNearbyTile(dx,dy).IsSolid();
-        }
 
+
+        /// <summary>
+        /// Decide what to do.
+        /// </summary>
         protected abstract void DecideActions();
 
-        public override void Draw(DrawInfo info)
+		#endregion rUpdate
+
+
+
+
+
+		#region rDraw
+
+        /// <summary>
+        /// Draw the AI entity
+        /// </summary>
+        /// <param name="info">Information needed to draw.</param>
+		public override void Draw(DrawInfo info)
         {
             Texture2D texture = mTexture;
 
@@ -118,6 +185,18 @@
             info.spriteBatch.Draw(texture, mPosition, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, 0.0f);
         }
 
+        #endregion rDraw
+
+
+
+
+
+        #region rUtility
+
+        /// <summary>
+        /// Get the collider bounds of the AI entity
+        /// </summary>
+        /// <returns>Collider bounds of the AI entity</returns>
         public override Rect2f ColliderBounds()
         {
             float height = mTexture.Height - mCHeightReduction;
@@ -140,17 +219,32 @@
             return new Rect2f(effectivePosition, effectivePosition + effectiveSize);
         }
 
-        public override void CollideWithEntity(Entity entity)
+
+
+        /// <summary>
+        /// Get a tile relative to our centre of mass.
+        /// </summary>
+        /// <param name="dx">Number of horizontal tiles from CoM</param>
+        /// <param name="dy">Number of vertical tiles from CoM</param>
+        /// <returns>Tile reference</returns>
+        protected Tile GetNearbyTile(int dx, int dy)
         {
-            if(entity is Arnold)
-            {
-                EArgs args;
-                args.sender = this;
-
-                EventManager.I.SendEvent(EventType.KillPlayer, args);
-            }
-
-            base.CollideWithEntity(entity);
+            return TileManager.I.GetRelativeTile(mCentreOfMass, dx, dy);
         }
+
+
+
+        /// <summary>
+        /// Check if a tile is solid
+        /// </summary>
+        /// <param name="dx">Number of horizontal tiles from CoM</param>
+        /// <param name="dy">Number of horizontal tiles from CoM</param>
+        /// <returns>True if nearby tile is solid.</returns>
+        protected bool CheckSolid(int dx, int dy)
+        {
+            return GetNearbyTile(dx, dy).IsSolid();
+        }
+
+        #endregion rUtility
     }
 }

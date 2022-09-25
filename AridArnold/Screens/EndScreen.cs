@@ -1,27 +1,66 @@
 ﻿namespace AridArnold.Screens
 {
+    /// <summary>
+    /// [TEMP] Screen displayed at the end of the game.
+    /// </summary>
     internal class EndScreen : Screen
     {
-        public EndScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
-        {
+		#region rInitialisation
 
+        /// <summary>
+        /// End screen constructor
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
+        /// <param name="graphics">Graphics device</param>
+		public EndScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
+        {
         }
 
+
+
+        /// <summary>
+        /// Triggers on activation. 
+        /// </summary>
         public override void OnActivate()
         {
             ProgressManager.I.Init();
         }
 
-        public override void OnDeactivate()
-        {
+        #endregion rInitialisation
 
+
+
+
+
+        #region rUpdate
+
+        /// <summary>
+        /// Update end screen, check for inputs.
+        /// </summary>
+        /// <param name="gameTime">Frame time</param>
+        public override void Update(GameTime gameTime)
+        {
+            KeyboardState state = Keyboard.GetState();
+
+            if (state.IsKeyDown(Keys.Enter))
+            {
+                ScreenManager.I.ActivateScreen(ScreenType.Game);
+            }
         }
 
-        public override void LoadContent(ContentManager content)
-        {
+        #endregion rUpdate
 
-        }
 
+
+
+
+        #region rDraw
+
+        /// <summary>
+        /// Draw the end screen to the renter target
+        /// </summary>
+        /// <param name="info">Information</param>
+        /// <returns>Render target with screen on it</returns>
         public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
         {
             SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
@@ -45,14 +84,6 @@
             return mScreenTarget;
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            KeyboardState state = Keyboard.GetState();
-
-            if (state.IsKeyDown(Keys.Enter))
-            {
-                ScreenManager.I.ActivateScreen(ScreenType.Game);
-            }
-        }
-    }
+		#endregion rDraw
+	}
 }

@@ -1,5 +1,8 @@
 ﻿namespace AridArnold
 {
+    /// <summary>
+    /// Represents an effect that plays on screen.
+    /// </summary>
     abstract class FX
     {
         public abstract void Update(GameTime gameTime);

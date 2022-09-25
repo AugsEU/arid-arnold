@@ -1,8 +1,13 @@
 ﻿namespace AridArnold
 {
+    /// <summary>
+    /// Rat like creature with simple movement.
+    /// </summary>
     internal class Trundle : AIEntity
     {
-        enum State
+		#region rTypes
+
+		enum State
         {
             Wait,
             WalkRight,
@@ -11,18 +16,50 @@
             Jump
         }
 
+        #endregion rTypes
+
+
+
+
+
+        #region rConstants
+
         const float TRUNDLE_WIDTH_REDUCTION = 6.0f;
         const float TRUNDLE_HEIGHT_REDUCTION = 3.0f;
         const float TRUNDLE_JUMP_SPEED = 22.0f;
         const float TRUNDLE_WALK_SPEED = 4.5f;
 
-        StateMachine<State> mStateMachine;
+		#endregion rConstants
 
+
+
+
+
+		#region rMembers
+
+		StateMachine<State> mStateMachine;
+
+        #endregion rMembers
+
+
+
+
+
+        #region rInitialise
+
+        /// <summary>
+        /// Trundle constructor
+        /// </summary>
+        /// <param name="pos">Starting position</param>
         public Trundle(Vector2 pos) : base(pos + new Vector2(0.0f, 9.0f), TRUNDLE_WALK_SPEED, TRUNDLE_JUMP_SPEED, TRUNDLE_WIDTH_REDUCTION, TRUNDLE_HEIGHT_REDUCTION)
         {
             mStateMachine = new StateMachine<State>(State.Wait);
         }
 
+        /// <summary>
+        /// Load trundle textures and animations
+        /// </summary>
+        /// <param name="content">Monogame ContentManager</param>
         public override void LoadContent(ContentManager content)
         {
             mTexture = content.Load<Texture2D>("Enemies/trundle/trundle-stand");
@@ -47,121 +84,18 @@
             mPosition.Y -= 2.0f;
         }
 
-        bool CanWalkInDir(WalkDirection dir)
-        {
-            const float GRADIENT = 1.952342523523f;
+		#endregion rInitialise
 
-            if (mOnGround == false)
-            {
-                return false;
-            }
+		
 
-            Vector2 currentPosition = TileManager.I.RoundToTileCentre(mCentreOfMass);
-            Vector2 stepDir = Vector2.Zero;
 
-            switch (dir)
-            {
-                case WalkDirection.Left:
-                    if(CheckSolid(-1, 0))
-                    {
-                        return false;
-                    }
 
-                    if(CheckSolid(-1, 1))
-                    {
-                        return true;
-                    }
+		#region rAIDecide
 
-                    stepDir = new Vector2(-1.0f / GRADIENT, 1.0f);
-                    break;
-                case WalkDirection.Right:
-                    if(CheckSolid(1, 0))
-                    {
-                        return false;
-                    }
-
-                    if (CheckSolid(1, 1))
-                    {
-                        return true;
-                    }
-
-                    stepDir = new Vector2(1.0f / GRADIENT, 1.0f);
-                    break;
-                case WalkDirection.None:
-                    return true;
-            }
-
-            //Found air in front of us
-            stepDir = stepDir * TileManager.I.GetTileSize();
-            Rect2f tileMapRect = TileManager.I.GetTileMapRectangle();
-
-            while (Collision2D.BoxVsPoint(tileMapRect, currentPosition))
-            {
-                currentPosition += stepDir;
-
-                Point tilePoint = TileManager.I.GetTileMapCoord(currentPosition);
-                bool currentTileSolid = TileManager.I.GetTile(tilePoint).IsSolid();
-                bool aboveTileSolid = TileManager.I.GetTile(tilePoint.X, tilePoint.Y - 1).IsSolid();
-
-                if(currentTileSolid && !aboveTileSolid)
-                {
-                    return true;
-                }
-
-                if(currentTileSolid && aboveTileSolid)
-                {
-                    currentPosition.X -= stepDir.X;
-
-                    tilePoint = TileManager.I.GetTileMapCoord(currentPosition);
-                    currentTileSolid = TileManager.I.GetTile(tilePoint).IsSolid();
-                    aboveTileSolid = TileManager.I.GetTile(tilePoint.X, tilePoint.Y - 1).IsSolid();
-
-                    if (currentTileSolid && !aboveTileSolid)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        bool KeepWalking()
-        {
-            if(mOnGround == false)
-            {
-                return false;
-            }
-
-            if (mWalkDirection == WalkDirection.Right)
-            {
-                if (!CanWalkInDir(WalkDirection.Right))
-                {
-                    mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else if (mWalkDirection == WalkDirection.Left)
-            {
-                if (!CanWalkInDir(WalkDirection.Left))
-                {
-                    mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
-                    return true;
-                }
-                else 
-                {
-                    return false;
-                }
-            }
-
-            return false;
-        }
-
-        protected override void DecideActions()
+        /// <summary>
+        /// Decide what state to go in.
+        /// </summary>
+		protected override void DecideActions()
         {
             if(mOnGround)
             {
@@ -173,13 +107,18 @@
                 if (KeepWalking() == false)
                 {
                     TryJumpUp();
-                    WalkInRandomDirection();
+                    TryWalking();
                 }
             }
 
             EnforceState();
         }
 
+
+
+        /// <summary>
+        /// Check if we can enter the jump state.
+        /// </summary>
         void TryJumpUp()
         {
             if(mPrevDirection == WalkDirection.Left)
@@ -200,7 +139,12 @@
             }
         }
 
-        void WalkInRandomDirection()
+
+
+        /// <summary>
+        /// Decide which direction to walk in
+        /// </summary>
+        void TryWalking()
         {
             bool canWalkLeft = CanWalkInDir(WalkDirection.Left);
             bool canWalkRight = CanWalkInDir(WalkDirection.Right);
@@ -231,6 +175,145 @@
             }
         }
 
+
+
+        /// <summary>
+        /// Check if we can keep walking.
+        /// </summary>
+        /// <returns>True if we can keep walking.</returns>
+        bool KeepWalking()
+        {
+            if (mOnGround == false)
+            {
+                return false;
+            }
+
+            if (mWalkDirection == WalkDirection.Right)
+            {
+                if (!CanWalkInDir(WalkDirection.Right))
+                {
+                    mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (mWalkDirection == WalkDirection.Left)
+            {
+                if (!CanWalkInDir(WalkDirection.Left))
+                {
+                    mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
+
+
+        /// <summary>
+        /// Can we walk in a certain direction.
+        /// </summary>
+        /// <param name="dir">Walk direction we wish to check.</param>
+        /// <returns>True if we can walk in the given direction</returns>
+        bool CanWalkInDir(WalkDirection dir)
+        {
+            const float GRADIENT = 1.952342523523f;
+
+            if (mOnGround == false)
+            {
+                return false;
+            }
+
+            Vector2 currentPosition = TileManager.I.RoundToTileCentre(mCentreOfMass);
+            Vector2 stepDir = Vector2.Zero;
+
+            switch (dir)
+            {
+                case WalkDirection.Left:
+                    if (CheckSolid(-1, 0))
+                    {
+                        return false;
+                    }
+
+                    if (CheckSolid(-1, 1))
+                    {
+                        return true;
+                    }
+
+                    stepDir = new Vector2(-1.0f / GRADIENT, 1.0f);
+                    break;
+                case WalkDirection.Right:
+                    if (CheckSolid(1, 0))
+                    {
+                        return false;
+                    }
+
+                    if (CheckSolid(1, 1))
+                    {
+                        return true;
+                    }
+
+                    stepDir = new Vector2(1.0f / GRADIENT, 1.0f);
+                    break;
+                case WalkDirection.None:
+                    return true;
+            }
+
+            // Found air in front of us
+            stepDir = stepDir * TileManager.I.GetTileSize();
+            Rect2f tileMapRect = TileManager.I.GetTileMapRectangle();
+
+            // Step through the air and see if we will land safely. 
+            while (Collision2D.BoxVsPoint(tileMapRect, currentPosition))
+            {
+                currentPosition += stepDir;
+
+                Point tilePoint = TileManager.I.GetTileMapCoord(currentPosition);
+                bool currentTileSolid = TileManager.I.GetTile(tilePoint).IsSolid();
+                bool aboveTileSolid = TileManager.I.GetTile(tilePoint.X, tilePoint.Y - 1).IsSolid();
+
+                if (currentTileSolid && !aboveTileSolid)
+                {
+                    return true;
+                }
+
+                if (currentTileSolid && aboveTileSolid)
+                {
+                    currentPosition.X -= stepDir.X;
+
+                    tilePoint = TileManager.I.GetTileMapCoord(currentPosition);
+                    currentTileSolid = TileManager.I.GetTile(tilePoint).IsSolid();
+                    aboveTileSolid = TileManager.I.GetTile(tilePoint.X, tilePoint.Y - 1).IsSolid();
+
+                    if (currentTileSolid && !aboveTileSolid)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        #endregion rAIDecide
+
+
+
+
+
+        #region rPerformActions
+
+        /// <summary>
+        /// Perform action indicated by the state.
+        /// </summary>
         void EnforceState()
         {
             State currentState = mStateMachine.GetState();
@@ -257,6 +340,9 @@
             }
         }
 
+        /// <summary>
+        /// [NOT USED] Find the player and walk in their direction.
+        /// </summary>
         void ChargeAtPlayer()
         {
             int entityNum = EntityManager.I.GetEntityNum();
@@ -303,7 +389,9 @@
 
         }
 
-
+        /// <summary>
+        /// Jump and then get out of the jump state.
+        /// </summary>
         void HandleJumpState()
         {
             if(mOnGround)
@@ -312,5 +400,7 @@
                 mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0f);
             }    
         }
+
+        #endregion rPerformActions
     }
 }

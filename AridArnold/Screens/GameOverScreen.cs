@@ -1,27 +1,56 @@
 ﻿namespace AridArnold.Screens
 {
+    /// <summary>
+    /// Screen displayed on a game over
+    /// </summary>
     internal class GameOverScreen : Screen
     {
+        #region rInitialisation
+
+        /// <summary>
+        /// Game over constructor
+        /// </summary>
+        /// <param name="content">Monogame content manager</param>
+        /// <param name="graphics">Graphics device</param>
         public GameOverScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
         {
-
         }
 
-        public override void OnActivate()
+        #endregion rInitialisation
+
+
+
+
+
+        #region rUpdate
+
+        /// <summary>
+        /// Update game over screen, check for inputs.
+        /// </summary>
+        /// <param name="gameTime">Frame time</param>
+        public override void Update(GameTime gameTime)
         {
+            KeyboardState state = Keyboard.GetState();
 
+            if (state.IsKeyDown(Keys.Enter) || state.IsKeyDown(Keys.Space))
+            {
+                ScreenManager.I.ActivateScreen(ScreenType.Game);
+            }
         }
 
-        public override void OnDeactivate()
-        {
+        #endregion rUpdate
 
-        }
 
-        public override void LoadContent(ContentManager content)
-        {
 
-        }
 
+
+        #region rDraw
+
+        /// <summary>
+        /// Draw the game over screen to the renter target
+        /// </summary>
+        /// <param name="info">Information</param>
+        /// <returns>Render target with screen on it</returns>
         public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
         {
             SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
@@ -45,15 +74,6 @@
             return mScreenTarget;
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            KeyboardState state = Keyboard.GetState();
-
-            if(state.IsKeyDown(Keys.Enter) || state.IsKeyDown(Keys.Space))
-            {
-                ScreenManager.I.ActivateScreen(ScreenType.Game);
-            }
-        }
-
+        #endregion rDraw
     }
 }
