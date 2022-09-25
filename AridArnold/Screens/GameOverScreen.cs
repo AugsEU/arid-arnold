@@ -1,79 +1,79 @@
 ﻿namespace AridArnold.Screens
 {
-    /// <summary>
-    /// Screen displayed on a game over
-    /// </summary>
-    internal class GameOverScreen : Screen
-    {
-        #region rInitialisation
+	/// <summary>
+	/// Screen displayed on a game over
+	/// </summary>
+	internal class GameOverScreen : Screen
+	{
+		#region rInitialisation
 
-        /// <summary>
-        /// Game over constructor
-        /// </summary>
-        /// <param name="content">Monogame content manager</param>
-        /// <param name="graphics">Graphics device</param>
-        public GameOverScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
-        {
-        }
+		/// <summary>
+		/// Game over constructor
+		/// </summary>
+		/// <param name="content">Monogame content manager</param>
+		/// <param name="graphics">Graphics device</param>
+		public GameOverScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
+		{
+		}
 
-        #endregion rInitialisation
-
-
-
-
-
-        #region rUpdate
-
-        /// <summary>
-        /// Update game over screen, check for inputs.
-        /// </summary>
-        /// <param name="gameTime">Frame time</param>
-        public override void Update(GameTime gameTime)
-        {
-            KeyboardState state = Keyboard.GetState();
-
-            if (state.IsKeyDown(Keys.Enter) || state.IsKeyDown(Keys.Space))
-            {
-                ScreenManager.I.ActivateScreen(ScreenType.Game);
-            }
-        }
-
-        #endregion rUpdate
+		#endregion rInitialisation
 
 
 
 
 
-        #region rDraw
+		#region rUpdate
 
-        /// <summary>
-        /// Draw the game over screen to the renter target
-        /// </summary>
-        /// <param name="info">Information</param>
-        /// <returns>Render target with screen on it</returns>
-        public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
-        {
-            SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
+		/// <summary>
+		/// Update game over screen, check for inputs.
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
+		public override void Update(GameTime gameTime)
+		{
+			KeyboardState state = Keyboard.GetState();
 
-            Vector2 centre = new Vector2(mScreenTarget.Width/2, mScreenTarget.Height / 2);
+			if (state.IsKeyDown(Keys.Enter) || state.IsKeyDown(Keys.Space))
+			{
+				ScreenManager.I.ActivateScreen(ScreenType.Game);
+			}
+		}
 
-            //Draw out the game area
-            info.device.SetRenderTarget(mScreenTarget);
-            info.device.Clear(new Color(0, 0, 0));
+		#endregion rUpdate
 
-            info.spriteBatch.Begin(SpriteSortMode.Immediate,
-                                    BlendState.AlphaBlend,
-                                    SamplerState.PointClamp,
-                                    DepthStencilState.None,
-                                    RasterizerState.CullNone);
 
-            Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "GAME OVER");
 
-            info.spriteBatch.End();
 
-            return mScreenTarget;
-        }
 
-        #endregion rDraw
-    }
+		#region rDraw
+
+		/// <summary>
+		/// Draw the game over screen to the renter target
+		/// </summary>
+		/// <param name="info">Information</param>
+		/// <returns>Render target with screen on it</returns>
+		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
+		{
+			SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
+
+			Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
+
+			//Draw out the game area
+			info.device.SetRenderTarget(mScreenTarget);
+			info.device.Clear(new Color(0, 0, 0));
+
+			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+									BlendState.AlphaBlend,
+									SamplerState.PointClamp,
+									DepthStencilState.None,
+									RasterizerState.CullNone);
+
+			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "GAME OVER");
+
+			info.spriteBatch.End();
+
+			return mScreenTarget;
+		}
+
+		#endregion rDraw
+	}
 }

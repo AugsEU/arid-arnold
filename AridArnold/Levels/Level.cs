@@ -1,29 +1,29 @@
 ﻿namespace AridArnold.Levels
 {
-    /// <summary>
-    /// Win condition status of the level
-    /// </summary>
-    enum LevelStatus
-    {
-        Continue,
-        Win,
-        Loss,
-    }
+	/// <summary>
+	/// Win condition status of the level
+	/// </summary>
+	enum LevelStatus
+	{
+		Continue,
+		Win,
+		Loss,
+	}
 
 
 
 
 
-    /// <summary>
-    /// A level that can be played and has a win-condition
-    /// </summary>
-    abstract class Level
-    {
+	/// <summary>
+	/// A level that can be played and has a win-condition
+	/// </summary>
+	abstract class Level
+	{
 		#region rMembers
 
 		string mName;
 
-        protected LevelStatus mLevelStatus;
+		protected LevelStatus mLevelStatus;
 
 		#endregion rMembers
 
@@ -33,42 +33,42 @@
 
 		#region rInitialisation
 
-        /// <summary>
-        /// Level constructor
-        /// </summary>
-        /// <param name="levelName">Level's name</param>
+		/// <summary>
+		/// Level constructor
+		/// </summary>
+		/// <param name="levelName">Level's name</param>
 		public Level(string levelName)
-        {
-            mName = levelName;
-            EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
-        }
+		{
+			mName = levelName;
+			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
+		}
 
 
 
-        /// <summary>
-        /// Load tile map from content manager
-        /// </summary>
-        /// <param name="content">Monogame content manager</param>
+		/// <summary>
+		/// Load tile map from content manager
+		/// </summary>
+		/// <param name="content">Monogame content manager</param>
 		public void Begin(ContentManager content)
-        {
-            mLevelStatus = LevelStatus.Continue;
-            TileManager.I.LoadLevel(content, "Levels/" + mName);
-        }
+		{
+			mLevelStatus = LevelStatus.Continue;
+			TileManager.I.LoadLevel(content, "Levels/" + mName);
+		}
 
-        #endregion rInitialisation
-
-
+		#endregion rInitialisation
 
 
 
-        #region rUpdate
 
-        /// <summary>
-        /// Update level.
-        /// </summary>
-        /// <param name="gameTime">Frame time</param>
-        /// <returns>Win condition status</returns>
-        public abstract LevelStatus Update(GameTime gameTime);
+
+		#region rUpdate
+
+		/// <summary>
+		/// Update level.
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
+		/// <returns>Win condition status</returns>
+		public abstract LevelStatus Update(GameTime gameTime);
 
 		#endregion rUpdate
 
@@ -78,27 +78,27 @@
 
 		#region rUtility
 
-        /// <summary>
-        /// Handle player's death event.
-        /// </summary>
-        /// <param name="args">Event sender args</param>
+		/// <summary>
+		/// Handle player's death event.
+		/// </summary>
+		/// <param name="args">Event sender args</param>
 		public virtual void HandlePlayerDeath(EArgs args)
-        {
-            mLevelStatus = LevelStatus.Loss;
-        }
+		{
+			mLevelStatus = LevelStatus.Loss;
+		}
 
 
 
-        /// <summary>
-        /// Level name property
-        /// </summary>
-        public string pName
-        { 
-            get 
-            { 
-                return mName; 
-            } 
-        }
+		/// <summary>
+		/// Level name property
+		/// </summary>
+		public string pName
+		{
+			get
+			{
+				return mName;
+			}
+		}
 
 		#endregion rUtility
 	}

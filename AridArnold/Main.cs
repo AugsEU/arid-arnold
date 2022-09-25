@@ -2,200 +2,200 @@
 
 namespace AridArnold
 {
-    public class Main : Game
-    {
-        private const int FRAME_SLOWDOWN = 1;
-        private const double FRAME_RATE = 60d;
-        private const int MIN_HEIGHT = 550;
-        private const float ASPECT_RATIO = 1.77778f;
+	public class Main : Game
+	{
+		private const int FRAME_SLOWDOWN = 1;
+		private const double FRAME_RATE = 60d;
+		private const int MIN_HEIGHT = 550;
+		private const float ASPECT_RATIO = 1.77778f;
 
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
-        private Rectangle windowedRect;
-        private int mSlowDownCount;
+		private GraphicsDeviceManager _graphics;
+		private SpriteBatch _spriteBatch;
+		private Rectangle windowedRect;
+		private int mSlowDownCount;
 
 
-        public Main()
-        {
-            //XNA
-            _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-            IsMouseVisible = true;
-            //XNA
+		public Main()
+		{
+			//XNA
+			_graphics = new GraphicsDeviceManager(this);
+			Content.RootDirectory = "Content";
+			IsMouseVisible = true;
+			//XNA
 
-            // Fix to 60 fps.
-            IsFixedTimeStep = true;//false;
-            TargetElapsedTime = System.TimeSpan.FromSeconds(1d / FRAME_RATE);
+			// Fix to 60 fps.
+			IsFixedTimeStep = true;//false;
+			TargetElapsedTime = System.TimeSpan.FromSeconds(1d / FRAME_RATE);
 
-            Window.ClientSizeChanged += OnResize;
+			Window.ClientSizeChanged += OnResize;
 
-            mSlowDownCount = 0;
-        }
+			mSlowDownCount = 0;
+		}
 
-        protected override void Initialize()
-        {
-            SetWindowHeight(MIN_HEIGHT);
-            _graphics.IsFullScreen = false;
-            _graphics.ApplyChanges();
+		protected override void Initialize()
+		{
+			SetWindowHeight(MIN_HEIGHT);
+			_graphics.IsFullScreen = false;
+			_graphics.ApplyChanges();
 
-            Window.AllowUserResizing = true;
+			Window.AllowUserResizing = true;
 
-            base.Initialize();
-        }
+			base.Initialize();
+		}
 
-        protected override void LoadContent()
-        {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+		protected override void LoadContent()
+		{
+			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            FontManager.I.LoadAllFonts(Content);
-            ScreenManager.I.LoadAllScreens(Content, _graphics);
-            ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
-            GhostManager.I.Load(Content);
-        }
+			FontManager.I.LoadAllFonts(Content);
+			ScreenManager.I.LoadAllScreens(Content, _graphics);
+			ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
+			GhostManager.I.Load(Content);
+		}
 
-        protected override void Update(GameTime gameTime)
-        {
-            gameTime.ElapsedGameTime = TargetElapsedTime;
+		protected override void Update(GameTime gameTime)
+		{
+			gameTime.ElapsedGameTime = TargetElapsedTime;
 
-            mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
-            if (mSlowDownCount == 0)
-            {
-                //Record elapsed time
-                TimeManager.I.Update(gameTime);
+			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
+			if (mSlowDownCount == 0)
+			{
+				//Record elapsed time
+				TimeManager.I.Update(gameTime);
 
-                KeyboardState keyboardState = Keyboard.GetState();
-                foreach (Keys key in keyboardState.GetPressedKeys())
-                {
-                    HandleKeyPress(key);
-                }
+				KeyboardState keyboardState = Keyboard.GetState();
+				foreach (Keys key in keyboardState.GetPressedKeys())
+				{
+					HandleKeyPress(key);
+				}
 
-                const int updateSteps = 4;
-                System.TimeSpan timeInc = gameTime.ElapsedGameTime / updateSteps;
-                for (int i = 0; i < updateSteps; i++)
-                {
-                    GameTime stepTime = new GameTime(gameTime.TotalGameTime - (updateSteps - 1 - i) * timeInc, timeInc);
+				const int updateSteps = 4;
+				System.TimeSpan timeInc = gameTime.ElapsedGameTime / updateSteps;
+				for (int i = 0; i < updateSteps; i++)
+				{
+					GameTime stepTime = new GameTime(gameTime.TotalGameTime - (updateSteps - 1 - i) * timeInc, timeInc);
 
-                    GameUpdate(stepTime);
-                }
-            }
+					GameUpdate(stepTime);
+				}
+			}
 
-            base.Update(gameTime);
-        }
+			base.Update(gameTime);
+		}
 
-        private void OnResize(object sender, EventArgs eventArgs)
-        {
-            if (_graphics.IsFullScreen)
-            {
-                return;
-            }
+		private void OnResize(object sender, EventArgs eventArgs)
+		{
+			if (_graphics.IsFullScreen)
+			{
+				return;
+			}
 
-            int min_width = (int)(ASPECT_RATIO * MIN_HEIGHT);
+			int min_width = (int)(ASPECT_RATIO * MIN_HEIGHT);
 
-            if(Window.ClientBounds.Height >= MIN_HEIGHT && Window.ClientBounds.Width >= min_width)
-            {
-                return;
-            }
-            else
-            {
-                SetWindowHeight(MIN_HEIGHT);
-            }
-        }
+			if (Window.ClientBounds.Height >= MIN_HEIGHT && Window.ClientBounds.Width >= min_width)
+			{
+				return;
+			}
+			else
+			{
+				SetWindowHeight(MIN_HEIGHT);
+			}
+		}
 
-        private void SetWindowHeight(int height)
-        {
-            _graphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
-            _graphics.PreferredBackBufferHeight = height;
-            _graphics.ApplyChanges();
-        }
+		private void SetWindowHeight(int height)
+		{
+			_graphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
+			_graphics.PreferredBackBufferHeight = height;
+			_graphics.ApplyChanges();
+		}
 
-        private void GameUpdate(GameTime gameTime)
-        {
-            //Update Active screen
-            Screen screen = ScreenManager.I.GetActiveScreen();
+		private void GameUpdate(GameTime gameTime)
+		{
+			//Update Active screen
+			Screen screen = ScreenManager.I.GetActiveScreen();
 
-            if (screen != null)
-            {
-                screen.Update(gameTime);
-            }
-        }
+			if (screen != null)
+			{
+				screen.Update(gameTime);
+			}
+		}
 
-        private void HandleKeyPress(Keys key)
-        {
-            KeyboardState keyboardState = Keyboard.GetState();
+		private void HandleKeyPress(Keys key)
+		{
+			KeyboardState keyboardState = Keyboard.GetState();
 
-            bool alt = keyboardState.IsKeyDown(Keys.LeftAlt) || keyboardState.IsKeyDown(Keys.RightAlt);
-            if (key == Keys.Enter && alt)
-            {
-                ToggleFullscreen();
-            }
+			bool alt = keyboardState.IsKeyDown(Keys.LeftAlt) || keyboardState.IsKeyDown(Keys.RightAlt);
+			if (key == Keys.Enter && alt)
+			{
+				ToggleFullscreen();
+			}
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
-            {
-                Exit();
-            }
-        }
+			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
+			{
+				Exit();
+			}
+		}
 
-        private void ToggleFullscreen()
-        {
-            if (_graphics.IsFullScreen)
-            {
-                _graphics.IsFullScreen = false;
-                _graphics.PreferredBackBufferWidth = windowedRect.Width;
-                _graphics.PreferredBackBufferHeight = windowedRect.Height;
-            }
-            else
-            {
-                windowedRect = GraphicsDevice.PresentationParameters.Bounds;
-                _graphics.IsFullScreen = true;
-                
-                _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-                _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-            }
+		private void ToggleFullscreen()
+		{
+			if (_graphics.IsFullScreen)
+			{
+				_graphics.IsFullScreen = false;
+				_graphics.PreferredBackBufferWidth = windowedRect.Width;
+				_graphics.PreferredBackBufferHeight = windowedRect.Height;
+			}
+			else
+			{
+				windowedRect = GraphicsDevice.PresentationParameters.Bounds;
+				_graphics.IsFullScreen = true;
 
-            _graphics.ApplyChanges();
-        }
+				_graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+				_graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			}
 
-        protected override void Draw(GameTime gameTime)
-        {
-            DrawInfo frameInfo;
+			_graphics.ApplyChanges();
+		}
 
-            frameInfo.graphics = _graphics;
-            frameInfo.spriteBatch = _spriteBatch;
-            frameInfo.gameTime = gameTime;
-            frameInfo.device = GraphicsDevice;
+		protected override void Draw(GameTime gameTime)
+		{
+			DrawInfo frameInfo;
 
-            //Draw active screen.
-            Screen screen = ScreenManager.I.GetActiveScreen();
+			frameInfo.graphics = _graphics;
+			frameInfo.spriteBatch = _spriteBatch;
+			frameInfo.gameTime = gameTime;
+			frameInfo.device = GraphicsDevice;
 
-            if(screen != null)
-            {
-                RenderTarget2D screenTargetRef = screen.DrawToRenderTarget(frameInfo);
+			//Draw active screen.
+			Screen screen = ScreenManager.I.GetActiveScreen();
 
-                GraphicsDevice.SetRenderTarget(null);
-                _spriteBatch.Begin(SpriteSortMode.Immediate,
-                                    BlendState.AlphaBlend,
-                                    SamplerState.PointClamp,
-                                    DepthStencilState.None,
-                                    RasterizerState.CullNone);
-                DrawScreenPixelPerfect(frameInfo, screenTargetRef);
-                _spriteBatch.End();
-            }
+			if (screen != null)
+			{
+				RenderTarget2D screenTargetRef = screen.DrawToRenderTarget(frameInfo);
 
-            base.Draw(gameTime);
-        }
+				GraphicsDevice.SetRenderTarget(null);
+				_spriteBatch.Begin(SpriteSortMode.Immediate,
+									BlendState.AlphaBlend,
+									SamplerState.PointClamp,
+									DepthStencilState.None,
+									RasterizerState.CullNone);
+				DrawScreenPixelPerfect(frameInfo, screenTargetRef);
+				_spriteBatch.End();
+			}
 
-        private void DrawScreenPixelPerfect(DrawInfo info, RenderTarget2D screen)
-        {
-            Rectangle screenRect = info.device.PresentationParameters.Bounds;
+			base.Draw(gameTime);
+		}
 
-            int multiplier = (int)MathF.Min(screenRect.Width / screen.Width, screenRect.Height / screen.Height);
+		private void DrawScreenPixelPerfect(DrawInfo info, RenderTarget2D screen)
+		{
+			Rectangle screenRect = info.device.PresentationParameters.Bounds;
 
-            int finalWidth = screen.Width * multiplier;
-            int finalHeight = screen.Height * multiplier;
+			int multiplier = (int)MathF.Min(screenRect.Width / screen.Width, screenRect.Height / screen.Height);
 
-            Rectangle destRect = new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
+			int finalWidth = screen.Width * multiplier;
+			int finalHeight = screen.Height * multiplier;
 
-            info.spriteBatch.Draw(screen, destRect, Color.White);
-        }
-    }
+			Rectangle destRect = new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
+
+			info.spriteBatch.Draw(screen, destRect, Color.White);
+		}
+	}
 }

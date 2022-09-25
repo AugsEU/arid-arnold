@@ -1,51 +1,51 @@
 ﻿namespace AridArnold
 {
-    internal class ScrollerTextFX : FX
-    {
+	internal class ScrollerTextFX : FX
+	{
 		#region rMembers
 
 		SpriteFont mFont;
-        Color mColor;
-        Vector2 mStartPos;
-        Vector2 mPos;
-        Vector2 mShadowOffset;
-        float mSpeed;
-        float mMaxHeight;
-        float mTime;
-        string mText;
+		Color mColor;
+		Vector2 mStartPos;
+		Vector2 mPos;
+		Vector2 mShadowOffset;
+		float mSpeed;
+		float mMaxHeight;
+		float mTime;
+		string mText;
 
-        #endregion rMembers
-
-
+		#endregion rMembers
 
 
 
-        #region rInitialisation
 
-        /// <summary>
-        /// Add small piece of text that scrolls up.
-        /// </summary>
-        /// <param name="font">Font to draw text in</param>
-        /// <param name="colour">Colour of text</param>
-        /// <param name="pos">Starting position</param>
-        /// <param name="text">String to display</param>
-        /// <param name="upSpeed">Speed at which text goes up</param>
-        /// <param name="maxHeight">Maximum height difference reached by text</param>
-        /// <param name="time">Time that text shows up</param>
-        public ScrollerTextFX(SpriteFont font, Color colour, Vector2 pos, string text, float upSpeed, float maxHeight, float time)
-        {
-            mFont = font;
-            mColor = colour;
-            mPos = pos;
-            mSpeed = upSpeed;
-            mText = text;
-            mMaxHeight = maxHeight;
-            mTime = time;
 
-            mStartPos = pos;
+		#region rInitialisation
 
-            mShadowOffset = new Vector2(1.0f, 2.0f);
-        }
+		/// <summary>
+		/// Add small piece of text that scrolls up.
+		/// </summary>
+		/// <param name="font">Font to draw text in</param>
+		/// <param name="colour">Colour of text</param>
+		/// <param name="pos">Starting position</param>
+		/// <param name="text">String to display</param>
+		/// <param name="upSpeed">Speed at which text goes up</param>
+		/// <param name="maxHeight">Maximum height difference reached by text</param>
+		/// <param name="time">Time that text shows up</param>
+		public ScrollerTextFX(SpriteFont font, Color colour, Vector2 pos, string text, float upSpeed, float maxHeight, float time)
+		{
+			mFont = font;
+			mColor = colour;
+			mPos = pos;
+			mSpeed = upSpeed;
+			mText = text;
+			mMaxHeight = maxHeight;
+			mTime = time;
+
+			mStartPos = pos;
+
+			mShadowOffset = new Vector2(1.0f, 2.0f);
+		}
 
 		#endregion rInitialisation
 
@@ -55,50 +55,50 @@
 
 		#region rUpdate
 
-        /// <summary>
-        /// Update text scroller
-        /// </summary>
-        /// <param name="gameTime">Frame time</param>
+		/// <summary>
+		/// Update text scroller
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
-        {
-            mPos.Y -= mSpeed * Util.GetDeltaT(gameTime);
-        }
-
-        
-
-        /// <summary>
-        /// Are we finished?
-        /// </summary>
-        /// <returns>True if we are finished.</returns>
-        public override bool Finished()
-        {
-            return Math.Abs(mStartPos.Y - mPos.Y) > mTime + mMaxHeight;
-        }
-
-        #endregion rUpdate
+		{
+			mPos.Y -= mSpeed * Util.GetDeltaT(gameTime);
+		}
 
 
 
+		/// <summary>
+		/// Are we finished?
+		/// </summary>
+		/// <returns>True if we are finished.</returns>
+		public override bool Finished()
+		{
+			return Math.Abs(mStartPos.Y - mPos.Y) > mTime + mMaxHeight;
+		}
+
+		#endregion rUpdate
 
 
-        #region rDraw
 
-        /// <summary>
-        /// Draw text scroller
-        /// </summary>
-        /// <param name="info">Info needed to draw</param>
-        public override void Draw(DrawInfo info)
-        {
-            Vector2 drawPos = mPos;
-            drawPos.Y = Math.Max(drawPos.Y, mStartPos.Y - mMaxHeight);
 
-            Vector2 dropShadow = drawPos + mShadowOffset;
 
-            Util.DrawStringCentred(info.spriteBatch, mFont, dropShadow, Color.Black, mText);
-            Util.DrawStringCentred(info.spriteBatch, mFont, drawPos, mColor, mText);
+		#region rDraw
 
-        }
+		/// <summary>
+		/// Draw text scroller
+		/// </summary>
+		/// <param name="info">Info needed to draw</param>
+		public override void Draw(DrawInfo info)
+		{
+			Vector2 drawPos = mPos;
+			drawPos.Y = Math.Max(drawPos.Y, mStartPos.Y - mMaxHeight);
 
-        #endregion rDraw
-    }
+			Vector2 dropShadow = drawPos + mShadowOffset;
+
+			Util.DrawStringCentred(info.spriteBatch, mFont, dropShadow, Color.Black, mText);
+			Util.DrawStringCentred(info.spriteBatch, mFont, drawPos, mColor, mText);
+
+		}
+
+		#endregion rDraw
+	}
 }

@@ -1,88 +1,88 @@
 ﻿namespace AridArnold.Screens
 {
-    /// <summary>
-    /// [TEMP] Screen displayed at the end of the game.
-    /// </summary>
-    internal class EndScreen : Screen
-    {
+	/// <summary>
+	/// [TEMP] Screen displayed at the end of the game.
+	/// </summary>
+	internal class EndScreen : Screen
+	{
 		#region rInitialisation
 
-        /// <summary>
-        /// End screen constructor
-        /// </summary>
-        /// <param name="content">Monogame content manager</param>
-        /// <param name="graphics">Graphics device</param>
+		/// <summary>
+		/// End screen constructor
+		/// </summary>
+		/// <param name="content">Monogame content manager</param>
+		/// <param name="graphics">Graphics device</param>
 		public EndScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
-        {
-        }
+		{
+		}
 
 
 
-        /// <summary>
-        /// Triggers on activation. 
-        /// </summary>
-        public override void OnActivate()
-        {
-            ProgressManager.I.Init();
-        }
+		/// <summary>
+		/// Triggers on activation. 
+		/// </summary>
+		public override void OnActivate()
+		{
+			ProgressManager.I.Init();
+		}
 
-        #endregion rInitialisation
-
-
-
-
-
-        #region rUpdate
-
-        /// <summary>
-        /// Update end screen, check for inputs.
-        /// </summary>
-        /// <param name="gameTime">Frame time</param>
-        public override void Update(GameTime gameTime)
-        {
-            KeyboardState state = Keyboard.GetState();
-
-            if (state.IsKeyDown(Keys.Enter))
-            {
-                ScreenManager.I.ActivateScreen(ScreenType.Game);
-            }
-        }
-
-        #endregion rUpdate
+		#endregion rInitialisation
 
 
 
 
 
-        #region rDraw
+		#region rUpdate
 
-        /// <summary>
-        /// Draw the end screen to the renter target
-        /// </summary>
-        /// <param name="info">Information</param>
-        /// <returns>Render target with screen on it</returns>
-        public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
-        {
-            SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
+		/// <summary>
+		/// Update end screen, check for inputs.
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
+		public override void Update(GameTime gameTime)
+		{
+			KeyboardState state = Keyboard.GetState();
 
-            Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
+			if (state.IsKeyDown(Keys.Enter))
+			{
+				ScreenManager.I.ActivateScreen(ScreenType.Game);
+			}
+		}
 
-            //Draw out the game area
-            info.device.SetRenderTarget(mScreenTarget);
-            info.device.Clear(new Color(0, 0, 0));
+		#endregion rUpdate
 
-            info.spriteBatch.Begin(SpriteSortMode.Immediate,
-                                    BlendState.AlphaBlend,
-                                    SamplerState.PointClamp,
-                                    DepthStencilState.None,
-                                    RasterizerState.CullNone);
 
-            Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "YOU WIN");
 
-            info.spriteBatch.End();
 
-            return mScreenTarget;
-        }
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw the end screen to the renter target
+		/// </summary>
+		/// <param name="info">Information</param>
+		/// <returns>Render target with screen on it</returns>
+		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
+		{
+			SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
+
+			Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
+
+			//Draw out the game area
+			info.device.SetRenderTarget(mScreenTarget);
+			info.device.Clear(new Color(0, 0, 0));
+
+			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+									BlendState.AlphaBlend,
+									SamplerState.PointClamp,
+									DepthStencilState.None,
+									RasterizerState.CullNone);
+
+			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "YOU WIN");
+
+			info.spriteBatch.End();
+
+			return mScreenTarget;
+		}
 
 		#endregion rDraw
 	}

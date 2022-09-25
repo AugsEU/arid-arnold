@@ -1,380 +1,380 @@
 ﻿namespace AridArnold
 {
-    class Arnold : PlatformingEntity
-    {
-        const double DEATH_TIME = 500.0;
-        const double START_TIME = 500.0;
-        const double FLASH_TIME = 100.0;
-        const int COYOTE_TIME = 12;
+	class Arnold : PlatformingEntity
+	{
+		const double DEATH_TIME = 500.0;
+		const double START_TIME = 500.0;
+		const double FLASH_TIME = 100.0;
+		const int COYOTE_TIME = 12;
 
-        protected WalkDirection mPrevDirection;
-        protected Animator mRunningAnimation;
+		protected WalkDirection mPrevDirection;
+		protected Animator mRunningAnimation;
 
-        Texture2D mJumpUpTex;
-        Texture2D mJumpDownTex;
+		Texture2D mJumpUpTex;
+		Texture2D mJumpDownTex;
 
-        int mTimeSinceGrounded;
+		int mTimeSinceGrounded;
 
-        //Various timers.
-        PercentageTimer mTimerSinceDeath;
-        PercentageTimer mTimerSinceStart;
+		//Various timers.
+		PercentageTimer mTimerSinceDeath;
+		PercentageTimer mTimerSinceStart;
 
-        public Arnold(Vector2 pos) : base(pos)
-        {
-            mPrevDirection = WalkDirection.Right;
+		public Arnold(Vector2 pos) : base(pos)
+		{
+			mPrevDirection = WalkDirection.Right;
 
-            EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
+			EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
 
-            mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
-            mTimerSinceStart = new PercentageTimer(START_TIME);
+			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
+			mTimerSinceStart = new PercentageTimer(START_TIME);
 
-            mTimeSinceGrounded = int.MaxValue;
-        }
+			mTimeSinceGrounded = int.MaxValue;
+		}
 
-        public override void LoadContent(ContentManager content)
-        {
-            mTexture = content.Load<Texture2D>("Arnold/arnold-stand");
-            mJumpUpTex = content.Load<Texture2D>("Arnold/arnold-jump-up");
-            mJumpDownTex = content.Load<Texture2D>("Arnold/arnold-jump-down");
+		public override void LoadContent(ContentManager content)
+		{
+			mTexture = content.Load<Texture2D>("Arnold/arnold-stand");
+			mJumpUpTex = content.Load<Texture2D>("Arnold/arnold-jump-up");
+			mJumpDownTex = content.Load<Texture2D>("Arnold/arnold-jump-down");
 
-            mRunningAnimation = new Animator();
-            mRunningAnimation.LoadFrame(content, "Arnold/arnold-run0", 0.1f);
-            mRunningAnimation.LoadFrame(content, "Arnold/arnold-run1", 0.1f);
-            mRunningAnimation.LoadFrame(content, "Arnold/arnold-run2", 0.1f);
-            mRunningAnimation.LoadFrame(content, "Arnold/arnold-run3", 0.15f);
+			mRunningAnimation = new Animator();
+			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run0", 0.1f);
+			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run1", 0.1f);
+			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run2", 0.1f);
+			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run3", 0.15f);
 
-            mRunningAnimation.Play();
+			mRunningAnimation.Play();
 
-            //Botch position a bit. Not sure what's happening here.
-            mPosition.Y -= 2.0f;
+			//Botch position a bit. Not sure what's happening here.
+			mPosition.Y -= 2.0f;
 
-            mVelocity.Y = +0.01f;
-        }
+			mVelocity.Y = +0.01f;
+		}
 
-        public override void Update(GameTime gameTime)
-        {
-            //Start
-            if (mTimerSinceStart.IsPlaying() == false)
-            {
-                mTimerSinceStart.Start();
-            }
+		public override void Update(GameTime gameTime)
+		{
+			//Start
+			if (mTimerSinceStart.IsPlaying() == false)
+			{
+				mTimerSinceStart.Start();
+			}
 
-            if (mTimerSinceStart.GetPercentage() < 1.0)
-            {
-                return;
-            }
-            else if(mTimerSinceStart.GetPercentage() == 1.0)
-            {
-                mTimerSinceStart.Stop();
-            }
+			if (mTimerSinceStart.GetPercentage() < 1.0)
+			{
+				return;
+			}
+			else if (mTimerSinceStart.GetPercentage() == 1.0)
+			{
+				mTimerSinceStart.Stop();
+			}
 
-            //Death
-            if (mTimerSinceDeath.IsPlaying())
-            {
-                if(mTimerSinceDeath.GetPercentage() == 1.0)
-                {
-                    SendPlayerDeathEvent();
-                    mTimerSinceDeath.FullReset();
-                }
+			//Death
+			if (mTimerSinceDeath.IsPlaying())
+			{
+				if (mTimerSinceDeath.GetPercentage() == 1.0)
+				{
+					SendPlayerDeathEvent();
+					mTimerSinceDeath.FullReset();
+				}
 
-                return;
-            }
+				return;
+			}
 
-            if(mOnGround)
-            {
-                mTimeSinceGrounded = 0;
-            }
+			if (mOnGround)
+			{
+				mTimeSinceGrounded = 0;
+			}
 
-            //Anim
-            mRunningAnimation.Update(gameTime);
+			//Anim
+			mRunningAnimation.Update(gameTime);
 
-            if(mOnGround == false)
-            {
-                SetDirFromVelocity();
-            }
+			if (mOnGround == false)
+			{
+				SetDirFromVelocity();
+			}
 
-            //Input
-            KeyboardState state = Keyboard.GetState();
+			//Input
+			KeyboardState state = Keyboard.GetState();
 
-            if (state.IsKeyDown(Keys.Space) && state.IsKeyDown(GetFallthroughKey()))
-            {
-                if (!(mOnGround && mWalkDirection != WalkDirection.None))
-                {
-                    FallThroughPlatforms();
-                }
-            }
-            else if (mOnGround)
-            {
-                if (state.IsKeyDown(Keys.Space))
-                {
-                    Jump();
-                    mTimeSinceGrounded = int.MaxValue;
-                }
+			if (state.IsKeyDown(Keys.Space) && state.IsKeyDown(GetFallthroughKey()))
+			{
+				if (!(mOnGround && mWalkDirection != WalkDirection.None))
+				{
+					FallThroughPlatforms();
+				}
+			}
+			else if (mOnGround)
+			{
+				if (state.IsKeyDown(Keys.Space))
+				{
+					Jump();
+					mTimeSinceGrounded = int.MaxValue;
+				}
 
-                HandleWalkInput(state);
-            }
-            else if (mTimeSinceGrounded < COYOTE_TIME)
-            {
-                if (state.IsKeyDown(Keys.Space))
-                {
-                    Jump();
-                    mTimeSinceGrounded = int.MaxValue;
-                }
-            }
+				HandleWalkInput(state);
+			}
+			else if (mTimeSinceGrounded < COYOTE_TIME)
+			{
+				if (state.IsKeyDown(Keys.Space))
+				{
+					Jump();
+					mTimeSinceGrounded = int.MaxValue;
+				}
+			}
 
-            if(CheckOffScreenDeath())
-            {
-                Kill();
-            }
+			if (CheckOffScreenDeath())
+			{
+				Kill();
+			}
 
-            base.Update(gameTime);
+			base.Update(gameTime);
 
-            if(mTimeSinceGrounded != int.MaxValue)
-            {
-                mTimeSinceGrounded++;
-            }
-            
-        }
+			if (mTimeSinceGrounded != int.MaxValue)
+			{
+				mTimeSinceGrounded++;
+			}
 
-        private Keys GetFallthroughKey()
-        {
-            switch (GetGravityDir())
-            {
-                case CardinalDirection.Down:
-                    return Keys.Down;
-                case CardinalDirection.Up:
-                    return Keys.Up;
-                case CardinalDirection.Left:
-                    return Keys.Left;
-                case CardinalDirection.Right:
-                    return Keys.Right;
-            }
+		}
 
-            throw new NotImplementedException();
-        }
+		private Keys GetFallthroughKey()
+		{
+			switch (GetGravityDir())
+			{
+				case CardinalDirection.Down:
+					return Keys.Down;
+				case CardinalDirection.Up:
+					return Keys.Up;
+				case CardinalDirection.Left:
+					return Keys.Left;
+				case CardinalDirection.Right:
+					return Keys.Right;
+			}
 
-        private void HandleWalkInput(KeyboardState state)
-        {
-            CardinalDirection gravDir = GetGravityDir();
+			throw new NotImplementedException();
+		}
 
-            if(gravDir == CardinalDirection.Down || gravDir == CardinalDirection.Up)
-            {
-                if (state.IsKeyDown(Keys.Left))
-                {
-                    mWalkDirection = WalkDirection.Left;
-                    mPrevDirection = mWalkDirection;
-                }
-                else if (state.IsKeyDown(Keys.Right))
-                {
-                    mWalkDirection = WalkDirection.Right;
-                    mPrevDirection = mWalkDirection;
-                }
-                else
-                {
-                    mWalkDirection = WalkDirection.None;
-                }
-            }
-            else if(gravDir == CardinalDirection.Left || gravDir == CardinalDirection.Right)
-            {
-                if (state.IsKeyDown(Keys.Up))
-                {
-                    mWalkDirection = WalkDirection.Left;
-                    mPrevDirection = mWalkDirection;
+		private void HandleWalkInput(KeyboardState state)
+		{
+			CardinalDirection gravDir = GetGravityDir();
 
-                }
-                else if (state.IsKeyDown(Keys.Down))
-                {
-                    mWalkDirection = WalkDirection.Right;
-                    mPrevDirection = mWalkDirection;
-                }
-                else
-                {
-                    mWalkDirection = WalkDirection.None;
-                }
-            }
-        }
+			if (gravDir == CardinalDirection.Down || gravDir == CardinalDirection.Up)
+			{
+				if (state.IsKeyDown(Keys.Left))
+				{
+					mWalkDirection = WalkDirection.Left;
+					mPrevDirection = mWalkDirection;
+				}
+				else if (state.IsKeyDown(Keys.Right))
+				{
+					mWalkDirection = WalkDirection.Right;
+					mPrevDirection = mWalkDirection;
+				}
+				else
+				{
+					mWalkDirection = WalkDirection.None;
+				}
+			}
+			else if (gravDir == CardinalDirection.Left || gravDir == CardinalDirection.Right)
+			{
+				if (state.IsKeyDown(Keys.Up))
+				{
+					mWalkDirection = WalkDirection.Left;
+					mPrevDirection = mWalkDirection;
 
-        protected void SetDirFromVelocity()
-        {
-            const float AIR_DIR_THRESH = 0.25f; 
-            switch (GetGravityDir())
-            {
-                case CardinalDirection.Down:
-                case CardinalDirection.Up:
-                    if(mVelocity.X > AIR_DIR_THRESH)
-                    {
-                        mPrevDirection = WalkDirection.Right;
-                    }
-                    else if(mVelocity.X < -AIR_DIR_THRESH)
-                    {
-                        mPrevDirection = WalkDirection.Left;
-                    }
-                    break;
-                case CardinalDirection.Right:
-                case CardinalDirection.Left:
-                    if (mVelocity.Y > AIR_DIR_THRESH)
-                    {
-                        mPrevDirection = WalkDirection.Right;
-                    }
-                    else if (mVelocity.Y < -AIR_DIR_THRESH)
-                    {
-                        mPrevDirection = WalkDirection.Left;
-                    }
-                    break;
-            }
-        }
+				}
+				else if (state.IsKeyDown(Keys.Down))
+				{
+					mWalkDirection = WalkDirection.Right;
+					mPrevDirection = mWalkDirection;
+				}
+				else
+				{
+					mWalkDirection = WalkDirection.None;
+				}
+			}
+		}
 
-        private bool CheckOffScreenDeath()
-        {
-            switch (GetGravityDir())
-            {
-                case CardinalDirection.Up:
-                    return mPosition.Y < -mTexture.Height / 2.0f;
-                case CardinalDirection.Right:
-                    return mPosition.X > TileManager.I.GetDrawWidth() + 2.0f * mTexture.Width;
-                case CardinalDirection.Down:
-                    return mPosition.Y > TileManager.I.GetDrawHeight() + mTexture.Height / 2.0f;
-                case CardinalDirection.Left:
-                    return mPosition.X < -mTexture.Width / 2.0f;
-            }
+		protected void SetDirFromVelocity()
+		{
+			const float AIR_DIR_THRESH = 0.25f;
+			switch (GetGravityDir())
+			{
+				case CardinalDirection.Down:
+				case CardinalDirection.Up:
+					if (mVelocity.X > AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Right;
+					}
+					else if (mVelocity.X < -AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Left;
+					}
+					break;
+				case CardinalDirection.Right:
+				case CardinalDirection.Left:
+					if (mVelocity.Y > AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Right;
+					}
+					else if (mVelocity.Y < -AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Left;
+					}
+					break;
+			}
+		}
 
-            throw new NotImplementedException();
-        }
+		private bool CheckOffScreenDeath()
+		{
+			switch (GetGravityDir())
+			{
+				case CardinalDirection.Up:
+					return mPosition.Y < -mTexture.Height / 2.0f;
+				case CardinalDirection.Right:
+					return mPosition.X > TileManager.I.GetDrawWidth() + 2.0f * mTexture.Width;
+				case CardinalDirection.Down:
+					return mPosition.Y > TileManager.I.GetDrawHeight() + mTexture.Height / 2.0f;
+				case CardinalDirection.Left:
+					return mPosition.X < -mTexture.Width / 2.0f;
+			}
 
-        public override Rect2f ColliderBounds()
-        {
-            if(GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
-            {
-                return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));
-            }
+			throw new NotImplementedException();
+		}
 
-            return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height));
-        }
+		public override Rect2f ColliderBounds()
+		{
+			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
+			{
+				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));
+			}
 
-        public override void Draw(DrawInfo info)
-        {
-            SpriteEffects effect = SpriteEffects.None;
+			return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height));
+		}
 
-            if (mPrevDirection == WalkDirection.Left)
-            {
-                effect = SpriteEffects.FlipHorizontally;
-            }
+		public override void Draw(DrawInfo info)
+		{
+			SpriteEffects effect = SpriteEffects.None;
 
-            Texture2D texture = mTexture;
+			if (mPrevDirection == WalkDirection.Left)
+			{
+				effect = SpriteEffects.FlipHorizontally;
+			}
 
-            float vecAlongGrav = Vector2.Dot(GravityVecNorm(), mVelocity);
+			Texture2D texture = mTexture;
 
-            if (mOnGround)
-            {
-                if (mVelocity.LengthSquared() > 0.001f)
-                {
-                    texture = mRunningAnimation.GetCurrentTexture();
-                }
-            }
-            else
-            {
-                if (vecAlongGrav >= 0.0f)
-                {
-                    texture = mJumpDownTex;
-                }
-                else
-                {
-                    texture = mJumpUpTex;
-                }
-            }
+			float vecAlongGrav = Vector2.Dot(GravityVecNorm(), mVelocity);
 
-            int xDiff = texture.Width - mTexture.Width;
-            int yDiff = texture.Height - mTexture.Height;
+			if (mOnGround)
+			{
+				if (mVelocity.LengthSquared() > 0.001f)
+				{
+					texture = mRunningAnimation.GetCurrentTexture();
+				}
+			}
+			else
+			{
+				if (vecAlongGrav >= 0.0f)
+				{
+					texture = mJumpDownTex;
+				}
+				else
+				{
+					texture = mJumpUpTex;
+				}
+			}
 
-            float rotation = 0.0f;
+			int xDiff = texture.Width - mTexture.Width;
+			int yDiff = texture.Height - mTexture.Height;
 
-            switch (GetGravityDir())
-            {
-                case CardinalDirection.Down:
-                    rotation = 0.0f;
-                    xDiff = xDiff / 2;
-                    break;
-                case CardinalDirection.Up:
-                    rotation = MathHelper.Pi;
-                    yDiff = 1;
-                    xDiff = xDiff / 2;
-                    effect = effect ^ SpriteEffects.FlipHorizontally;
-                    break;
-                case CardinalDirection.Left:
-                    Util.Swap(ref xDiff, ref yDiff);
-                    xDiff = -2-xDiff/2;
-                    yDiff += 2;
+			float rotation = 0.0f;
 
-                    rotation = MathHelper.PiOver2;
-                    break;
-                case CardinalDirection.Right:
-                    rotation = MathHelper.PiOver2 * 3.0f;
-                    effect = effect ^ SpriteEffects.FlipHorizontally;
+			switch (GetGravityDir())
+			{
+				case CardinalDirection.Down:
+					rotation = 0.0f;
+					xDiff = xDiff / 2;
+					break;
+				case CardinalDirection.Up:
+					rotation = MathHelper.Pi;
+					yDiff = 1;
+					xDiff = xDiff / 2;
+					effect = effect ^ SpriteEffects.FlipHorizontally;
+					break;
+				case CardinalDirection.Left:
+					Util.Swap(ref xDiff, ref yDiff);
+					xDiff = -2 - xDiff / 2;
+					yDiff += 2;
 
-                    Util.Swap(ref xDiff, ref yDiff);
-                    xDiff = (int)(xDiff/1.5f)-1;
-                    yDiff += 2;
+					rotation = MathHelper.PiOver2;
+					break;
+				case CardinalDirection.Right:
+					rotation = MathHelper.PiOver2 * 3.0f;
+					effect = effect ^ SpriteEffects.FlipHorizontally;
 
-                    break;
-            }
+					Util.Swap(ref xDiff, ref yDiff);
+					xDiff = (int)(xDiff / 1.5f) - 1;
+					yDiff += 2;
 
-            Vector2 rotationOffset = Util.CalcRotationOffset(rotation, texture.Width, texture.Height);
+					break;
+			}
 
-            info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, 0.0f);
-        }
+			Vector2 rotationOffset = Util.CalcRotationOffset(rotation, texture.Width, texture.Height);
 
-        protected virtual Color GetDrawColour()
-        {
-            if (mTimerSinceDeath.IsPlaying())
-            {
-                double timeSinceDeath = mTimerSinceDeath.GetElapsedMs();
+			info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, 0.0f);
+		}
 
-                if ((int)(timeSinceDeath / FLASH_TIME) % 2 == 0)
-                {
-                    return new Color(255, 51, 33);
-                }
-                else
-                {
-                    return new Color(255, 128, 79);
-                }
-            }
-            else if(mTimerSinceStart.IsPlaying())
-            {
-                //TO DO
-                double timeSinceStart = mTimerSinceStart.GetElapsedMs();
+		protected virtual Color GetDrawColour()
+		{
+			if (mTimerSinceDeath.IsPlaying())
+			{
+				double timeSinceDeath = mTimerSinceDeath.GetElapsedMs();
 
-                if ((int)(timeSinceStart / FLASH_TIME) % 2 == 0)
-                {
-                    return new Color(100, 255, 100);
-                }
-                else
-                {
-                    return new Color(200, 255, 200);
-                }
-            }
+				if ((int)(timeSinceDeath / FLASH_TIME) % 2 == 0)
+				{
+					return new Color(255, 51, 33);
+				}
+				else
+				{
+					return new Color(255, 128, 79);
+				}
+			}
+			else if (mTimerSinceStart.IsPlaying())
+			{
+				//TO DO
+				double timeSinceStart = mTimerSinceStart.GetElapsedMs();
 
-            return Color.White;
-        }
+				if ((int)(timeSinceStart / FLASH_TIME) % 2 == 0)
+				{
+					return new Color(100, 255, 100);
+				}
+				else
+				{
+					return new Color(200, 255, 200);
+				}
+			}
+
+			return Color.White;
+		}
 
 
-        public override void Kill()
-        {
-            mTimerSinceDeath.Start();
-        }
+		public override void Kill()
+		{
+			mTimerSinceDeath.Start();
+		}
 
-        private void SendPlayerDeathEvent()
-        {
-            EArgs eArgs;
-            eArgs.sender = this;
+		private void SendPlayerDeathEvent()
+		{
+			EArgs eArgs;
+			eArgs.sender = this;
 
-            EventManager.I.SendEvent(EventType.PlayerDead, eArgs);
+			EventManager.I.SendEvent(EventType.PlayerDead, eArgs);
 
-            base.Kill();
-        }
+			base.Kill();
+		}
 
-        public virtual void SignalPlayerDead(EArgs args)
-        {
-            Kill();
-        }
-    }
+		public virtual void SignalPlayerDead(EArgs args)
+		{
+			Kill();
+		}
+	}
 }

@@ -1,18 +1,17 @@
-﻿using System.IO;
-
-using AridArnold.Levels;
+﻿using AridArnold.Levels;
+using System.IO;
 
 namespace AridArnold
 {
-    /// <summary>
-    /// A file that stores ghost information
-    /// </summary>
-    internal class GhostFile
-    {
+	/// <summary>
+	/// A file that stores ghost information
+	/// </summary>
+	internal class GhostFile
+	{
 		#region rConstants
 
 		const int MAX_FRAMES = 60 * 60 * 10;//10 minutes of recording.
-        readonly char[] FILE_MAGIC = { 'G', 'H', 'T' };
+		readonly char[] FILE_MAGIC = { 'G', 'H', 'T' };
 
 		#endregion rConstants
 
@@ -23,7 +22,7 @@ namespace AridArnold
 		#region rMembers
 
 		Level mLevel;
-        List<List<GhostInfo>> mGhostInfos;
+		List<List<GhostInfo>> mGhostInfos;
 
 		#endregion rMembers
 
@@ -34,10 +33,10 @@ namespace AridArnold
 		#region rInitialisation
 
 		public GhostFile(Level level)
-        {
-            mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
-            mLevel = level;
-        }
+		{
+			mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
+			mLevel = level;
+		}
 
 		#endregion rInitialisation
 
@@ -47,129 +46,129 @@ namespace AridArnold
 
 		#region rFileOperations
 
-        /// <summary>
-        /// Save data from buffer into the file.
-        /// </summary>
+		/// <summary>
+		/// Save data from buffer into the file.
+		/// </summary>
 		public void Save()
-        {
-            string filePath = GetFilename();
+		{
+			string filePath = GetFilename();
 
-            if(mGhostInfos.Count == MAX_FRAMES)
-            {
-                return;
-            }
+			if (mGhostInfos.Count == MAX_FRAMES)
+			{
+				return;
+			}
 
-            try
-            {
-                if (!Directory.Exists(GetFolder()))
-                {
-                    Directory.CreateDirectory(GetFolder());
-                }
-                if (!File.Exists(filePath))
-                {
-                    File.Create(filePath).Close();
-                }
-            }
-            catch (Exception)
-            {
-                return;
-            }
+			try
+			{
+				if (!Directory.Exists(GetFolder()))
+				{
+					Directory.CreateDirectory(GetFolder());
+				}
+				if (!File.Exists(filePath))
+				{
+					File.Create(filePath).Close();
+				}
+			}
+			catch (Exception)
+			{
+				return;
+			}
 
-            using (FileStream stream = File.OpenWrite(filePath))
-            {
-                using (BinaryWriter bw = new BinaryWriter(stream))
-                {
-                    //Write header.
-                    bw.Write(FILE_MAGIC);
-                    bw.Write((int)mGhostInfos.Count);
+			using (FileStream stream = File.OpenWrite(filePath))
+			{
+				using (BinaryWriter bw = new BinaryWriter(stream))
+				{
+					//Write header.
+					bw.Write(FILE_MAGIC);
+					bw.Write((int)mGhostInfos.Count);
 
-                    //Write data.
-                    for(int i = 0; i < mGhostInfos.Count; i++)
-                    {
-                        bw.Write((int)mGhostInfos[i].Count);
-                        foreach (GhostInfo info in mGhostInfos[i])
-                        {
-                            bw.Write(info.position.X); bw.Write(info.position.Y);
-                            bw.Write(info.velocity.X); bw.Write(info.velocity.Y);
-                            bw.Write(info.grounded);
-                            bw.Write((int)info.gravity);
-                        }
-                    }
-                }
-            }
-        }
-
-
-
-        /// <summary>
-        /// Load data from file into buffers
-        /// </summary>
-        public void Load()
-        {
-            string filePath = GetFilename();
-
-            if (!File.Exists(filePath))
-            {
-                return;
-            }
-
-            bool delFile = false;
-
-            using (FileStream stream = File.OpenRead(filePath))
-            {
-                using (BinaryReader br = new BinaryReader(stream))
-                {
-                    try
-                    {
-                        //Read header.
-                        br.ReadChars(FILE_MAGIC.Length);
-                        int count = br.ReadInt32();
-
-                        //Read data.
-                        for (int i = 0; i < count; i++)
-                        {
-                            int ghostNumber = br.ReadInt32();
-
-                            mGhostInfos.Add(new List<GhostInfo>());
-
-                            for (int j = 0; j < ghostNumber; j++)
-                            {
-                                GhostInfo info;
-
-                                info.position.X = br.ReadSingle(); info.position.Y = br.ReadSingle();
-                                info.velocity.X = br.ReadSingle(); info.velocity.Y = br.ReadSingle();
-                                info.grounded = br.ReadBoolean();
-                                info.gravity = (CardinalDirection)br.ReadInt32();
-
-                                mGhostInfos[i].Add(info);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        delFile = true;
-                        mGhostInfos.Clear();
-                        Util.Log("Exception: " + ex.ToString());
-                    }
-                }
-            }
-
-            if(delFile)
-            {
-                File.Delete(filePath);
-            }
-        }
+					//Write data.
+					for (int i = 0; i < mGhostInfos.Count; i++)
+					{
+						bw.Write((int)mGhostInfos[i].Count);
+						foreach (GhostInfo info in mGhostInfos[i])
+						{
+							bw.Write(info.position.X); bw.Write(info.position.Y);
+							bw.Write(info.velocity.X); bw.Write(info.velocity.Y);
+							bw.Write(info.grounded);
+							bw.Write((int)info.gravity);
+						}
+					}
+				}
+			}
+		}
 
 
 
-        /// <summary>
-        /// Close this file.
-        /// </summary>
-        public void Close()
-        {
-            mGhostInfos.Clear();
-            mLevel = null;
-        }
+		/// <summary>
+		/// Load data from file into buffers
+		/// </summary>
+		public void Load()
+		{
+			string filePath = GetFilename();
+
+			if (!File.Exists(filePath))
+			{
+				return;
+			}
+
+			bool delFile = false;
+
+			using (FileStream stream = File.OpenRead(filePath))
+			{
+				using (BinaryReader br = new BinaryReader(stream))
+				{
+					try
+					{
+						//Read header.
+						br.ReadChars(FILE_MAGIC.Length);
+						int count = br.ReadInt32();
+
+						//Read data.
+						for (int i = 0; i < count; i++)
+						{
+							int ghostNumber = br.ReadInt32();
+
+							mGhostInfos.Add(new List<GhostInfo>());
+
+							for (int j = 0; j < ghostNumber; j++)
+							{
+								GhostInfo info;
+
+								info.position.X = br.ReadSingle(); info.position.Y = br.ReadSingle();
+								info.velocity.X = br.ReadSingle(); info.velocity.Y = br.ReadSingle();
+								info.grounded = br.ReadBoolean();
+								info.gravity = (CardinalDirection)br.ReadInt32();
+
+								mGhostInfos[i].Add(info);
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						delFile = true;
+						mGhostInfos.Clear();
+						Util.Log("Exception: " + ex.ToString());
+					}
+				}
+			}
+
+			if (delFile)
+			{
+				File.Delete(filePath);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Close this file.
+		/// </summary>
+		public void Close()
+		{
+			mGhostInfos.Clear();
+			mLevel = null;
+		}
 
 		#endregion rFileOperations
 
@@ -179,42 +178,42 @@ namespace AridArnold
 
 		#region rReadWrite
 
-        /// <summary>
-        /// Record a frame into the buffer
-        /// </summary>
-        /// <param name="entity">Entity to record</param>
-        /// <param name="frame">Frame number</param>
+		/// <summary>
+		/// Record a frame into the buffer
+		/// </summary>
+		/// <param name="entity">Entity to record</param>
+		/// <param name="frame">Frame number</param>
 		public void RecordFrame(PlatformingEntity entity, int frame)
-        {
-            if (frame < MAX_FRAMES)
-            {
-                if (mGhostInfos.Count-1 < frame)
-                {
-                    mGhostInfos.Add(new List<GhostInfo>());
-                }
+		{
+			if (frame < MAX_FRAMES)
+			{
+				if (mGhostInfos.Count - 1 < frame)
+				{
+					mGhostInfos.Add(new List<GhostInfo>());
+				}
 
-                GhostInfo info;
-                info.position = entity.pPosition;
-                info.velocity = entity.pVelocity;
-                info.grounded = entity.pGrounded;
-                info.gravity = entity.GetGravityDir();
+				GhostInfo info;
+				info.position = entity.pPosition;
+				info.velocity = entity.pVelocity;
+				info.grounded = entity.pGrounded;
+				info.gravity = entity.GetGravityDir();
 
-                mGhostInfos[frame].Add(info);
-            }
-        }
+				mGhostInfos[frame].Add(info);
+			}
+		}
 
 
 
-        /// <summary>
-        /// Read a frame of information.
-        /// </summary>
-        /// <param name="frame">Frame number to read</param>
-        /// <returns>List of ghosts that were recorded on that frame</returns>
-        public List<GhostInfo> ReadFrame(int frame)
-        {
-            frame = Math.Min(frame, mGhostInfos.Count - 1);
-            return mGhostInfos[frame];
-        }
+		/// <summary>
+		/// Read a frame of information.
+		/// </summary>
+		/// <param name="frame">Frame number to read</param>
+		/// <returns>List of ghosts that were recorded on that frame</returns>
+		public List<GhostInfo> ReadFrame(int frame)
+		{
+			frame = Math.Min(frame, mGhostInfos.Count - 1);
+			return mGhostInfos[frame];
+		}
 
 		#endregion rReadWrite
 
@@ -224,47 +223,47 @@ namespace AridArnold
 
 		#region rUtility
 
-        /// <summary>
-        /// Is this file empty?
-        /// </summary>
-        /// <returns>True if file is empty</returns>
+		/// <summary>
+		/// Is this file empty?
+		/// </summary>
+		/// <returns>True if file is empty</returns>
 		public bool IsEmpty()
-        {
-            return mGhostInfos.Count == 0;
-        }
+		{
+			return mGhostInfos.Count == 0;
+		}
 
 
 
-        /// <summary>
-        /// Total frames in the buffer.
-        /// </summary>
-        /// <returns>Total frames in the buffer</returns>
-        public int GetFrameCount()
-        {
-            return mGhostInfos.Count;
-        }
+		/// <summary>
+		/// Total frames in the buffer.
+		/// </summary>
+		/// <returns>Total frames in the buffer</returns>
+		public int GetFrameCount()
+		{
+			return mGhostInfos.Count;
+		}
 
 
 
-        /// <summary>
-        /// Get file name
-        /// </summary>
-        /// <returns>Full file path</returns>
-        private string GetFilename()
-        {
-            return GetFolder() + mLevel.pName + ".ght";
-        }
+		/// <summary>
+		/// Get file name
+		/// </summary>
+		/// <returns>Full file path</returns>
+		private string GetFilename()
+		{
+			return GetFolder() + mLevel.pName + ".ght";
+		}
 
 
 
-        /// <summary>
-        /// Get folder which this is storred in
-        /// </summary>
-        /// <returns>Full folder directory</returns>
-        private string GetFolder()
-        {
-            return Directory.GetCurrentDirectory() + "\\ghostData\\";
-        }
+		/// <summary>
+		/// Get folder which this is storred in
+		/// </summary>
+		/// <returns>Full folder directory</returns>
+		private string GetFolder()
+		{
+			return Directory.GetCurrentDirectory() + "\\ghostData\\";
+		}
 
 		#endregion rUtility
 	}
