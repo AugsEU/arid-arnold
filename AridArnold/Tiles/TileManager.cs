@@ -129,7 +129,7 @@
                 }
                 else if (Util.CompareHEX(col, 0x0000FF))
                 {
-                    return new WaterTile();
+                    return new WaterBottleTile();
                 }
                 else if (Util.CompareHEX(col, 0xFF0000))
                 {
