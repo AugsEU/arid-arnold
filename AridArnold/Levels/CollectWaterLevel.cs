@@ -42,7 +42,7 @@
 		/// <returns>Level completion status</returns>
 		public override LevelStatus Update(GameTime gameTime)
 		{
-			if (CollectibleManager.I.GetCollected(CollectibleType.WaterBottle) >= mNumWaterNeeded)
+			if (CollectableManager.I.GetCollected(CollectableType.WaterBottle) >= mNumWaterNeeded)
 			{
 				mLevelStatus = LevelStatus.Win;
 			}

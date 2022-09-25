@@ -1,11 +1,24 @@
 ﻿namespace AridArnold
 {
+	/// <summary>
+	/// The playable character, our hero, our saviour, Arnold.
+	/// </summary>
 	class Arnold : PlatformingEntity
 	{
+		#region rConstants
+
 		const double DEATH_TIME = 500.0;
 		const double START_TIME = 500.0;
 		const double FLASH_TIME = 100.0;
 		const int COYOTE_TIME = 12;
+
+		#endregion rConstants
+
+
+
+
+
+		#region rMembers
 
 		protected WalkDirection mPrevDirection;
 		protected Animator mRunningAnimation;
@@ -19,6 +32,18 @@
 		PercentageTimer mTimerSinceDeath;
 		PercentageTimer mTimerSinceStart;
 
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
+
+		/// <summary>
+		/// Construct Arnold from position
+		/// </summary>
+		/// <param name="pos">Starting position</param>
 		public Arnold(Vector2 pos) : base(pos)
 		{
 			mPrevDirection = WalkDirection.Right;
@@ -31,6 +56,12 @@
 			mTimeSinceGrounded = int.MaxValue;
 		}
 
+
+
+		/// <summary>
+		/// Load textures and assets
+		/// </summary>
+		/// <param name="content">Monogame content manager</param>
 		public override void LoadContent(ContentManager content)
 		{
 			mTexture = content.Load<Texture2D>("Arnold/arnold-stand");
@@ -51,6 +82,18 @@
 			mVelocity.Y = +0.01f;
 		}
 
+		#endregion rInitialisation
+
+
+
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// Update Arnold
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
 			//Start
@@ -136,23 +179,12 @@
 
 		}
 
-		private Keys GetFallthroughKey()
-		{
-			switch (GetGravityDir())
-			{
-				case CardinalDirection.Down:
-					return Keys.Down;
-				case CardinalDirection.Up:
-					return Keys.Up;
-				case CardinalDirection.Left:
-					return Keys.Left;
-				case CardinalDirection.Right:
-					return Keys.Right;
-			}
 
-			throw new NotImplementedException();
-		}
 
+		/// <summary>
+		/// Check for walk inputs
+		/// </summary>
+		/// <param name="state">Keyboad state</param>
 		private void HandleWalkInput(KeyboardState state)
 		{
 			CardinalDirection gravDir = GetGravityDir();
@@ -194,6 +226,11 @@
 			}
 		}
 
+
+
+		/// <summary>
+		/// Set previous walk direction from the velocity we have. Prevents jumping backwards with mirrors.
+		/// </summary>
 		protected void SetDirFromVelocity()
 		{
 			const float AIR_DIR_THRESH = 0.25f;
@@ -224,6 +261,13 @@
 			}
 		}
 
+
+
+		/// <summary>
+		/// Check if we died from going off-screen
+		/// </summary>
+		/// <returns>True if we should die</returns>
+		/// <exception cref="NotImplementedException">Required valid cardinal direction</exception>
 		private bool CheckOffScreenDeath()
 		{
 			switch (GetGravityDir())
@@ -241,16 +285,18 @@
 			throw new NotImplementedException();
 		}
 
-		public override Rect2f ColliderBounds()
-		{
-			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
-			{
-				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));
-			}
+		#endregion rUpdate
 
-			return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height));
-		}
 
+
+
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw Arnold
+		/// </summary>
+		/// <param name="info">Info needed to draw</param>
 		public override void Draw(DrawInfo info)
 		{
 			SpriteEffects effect = SpriteEffects.None;
@@ -323,6 +369,12 @@
 			info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, 0.0f);
 		}
 
+
+
+		/// <summary>
+		/// Colour to draw Arnold as
+		/// </summary>
+		/// <returns>Draw Colour</returns>
 		protected virtual Color GetDrawColour()
 		{
 			if (mTimerSinceDeath.IsPlaying())
@@ -356,12 +408,27 @@
 			return Color.White;
 		}
 
+		#endregion rDraw
 
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Kill Arnold
+		/// </summary>
 		public override void Kill()
 		{
 			mTimerSinceDeath.Start();
 		}
 
+
+
+		/// <summary>
+		/// Send Death event. TO DO: I don't think this is needed, why not just call Kill() directly?
+		/// </summary>
 		private void SendPlayerDeathEvent()
 		{
 			EArgs eArgs;
@@ -372,9 +439,58 @@
 			base.Kill();
 		}
 
+
+
+		/// <summary>
+		/// Callback for the player death event.
+		/// </summary>
+		/// <param name="args">Event sender args</param>
 		public virtual void SignalPlayerDead(EArgs args)
 		{
 			Kill();
 		}
+
+
+
+		/// <summary>
+		/// Get collider bounds
+		/// </summary>
+		/// <returns>Collider bounds</returns>
+		public override Rect2f ColliderBounds()
+		{
+			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
+			{
+				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));
+			}
+
+			return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height));
+		}
+
+
+
+		/// <summary>
+		/// Get key needed to fall through platforms
+		/// TO DO: Use input manager
+		/// </summary>
+		/// <returns></returns>
+		/// <exception cref="NotImplementedException">Requires valid cardinal direction</exception>
+		private Keys GetFallthroughKey()
+		{
+			switch (GetGravityDir())
+			{
+				case CardinalDirection.Down:
+					return Keys.Down;
+				case CardinalDirection.Up:
+					return Keys.Up;
+				case CardinalDirection.Left:
+					return Keys.Left;
+				case CardinalDirection.Right:
+					return Keys.Right;
+			}
+
+			throw new NotImplementedException();
+		}
+
+		#endregion rUtility
 	}
 }

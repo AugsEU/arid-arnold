@@ -2,19 +2,41 @@
 
 namespace AridArnold
 {
+	/// <summary>
+	/// Program top level
+	/// </summary>
 	public class Main : Game
 	{
+		#region rConstants
+
 		private const int FRAME_SLOWDOWN = 1;
 		private const double FRAME_RATE = 60d;
 		private const int MIN_HEIGHT = 550;
 		private const float ASPECT_RATIO = 1.77778f;
+
+		#endregion rConstants
+
+
+
+
+
+		#region rMembers
 
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 		private Rectangle windowedRect;
 		private int mSlowDownCount;
 
+		#endregion rMembers
 
+
+
+
+		#region rInitialisation
+
+		/// <summary>
+		/// Program constructor
+		/// </summary>
 		public Main()
 		{
 			//XNA
@@ -32,6 +54,13 @@ namespace AridArnold
 			mSlowDownCount = 0;
 		}
 
+
+
+
+
+		/// <summary>
+		/// Init program
+		/// </summary>
 		protected override void Initialize()
 		{
 			SetWindowHeight(MIN_HEIGHT);
@@ -43,6 +72,11 @@ namespace AridArnold
 			base.Initialize();
 		}
 
+
+
+		/// <summary>
+		/// Load content for everything
+		/// </summary>
 		protected override void LoadContent()
 		{
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -53,6 +87,18 @@ namespace AridArnold
 			GhostManager.I.Load(Content);
 		}
 
+		#endregion rInitialisation
+
+
+
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// Update game. It updates in fixed intervals, even if the frame time was way longer.
+		/// </summary>
+		/// <param name="gameTime"></param>
 		protected override void Update(GameTime gameTime)
 		{
 			gameTime.ElapsedGameTime = TargetElapsedTime;
@@ -82,32 +128,12 @@ namespace AridArnold
 			base.Update(gameTime);
 		}
 
-		private void OnResize(object sender, EventArgs eventArgs)
-		{
-			if (_graphics.IsFullScreen)
-			{
-				return;
-			}
 
-			int min_width = (int)(ASPECT_RATIO * MIN_HEIGHT);
 
-			if (Window.ClientBounds.Height >= MIN_HEIGHT && Window.ClientBounds.Width >= min_width)
-			{
-				return;
-			}
-			else
-			{
-				SetWindowHeight(MIN_HEIGHT);
-			}
-		}
-
-		private void SetWindowHeight(int height)
-		{
-			_graphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
-			_graphics.PreferredBackBufferHeight = height;
-			_graphics.ApplyChanges();
-		}
-
+		/// <summary>
+		/// Update the main game. Everything happens within the active screen.
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
 		private void GameUpdate(GameTime gameTime)
 		{
 			//Update Active screen
@@ -119,6 +145,12 @@ namespace AridArnold
 			}
 		}
 
+
+
+		/// <summary>
+		/// Handle key press
+		/// </summary>
+		/// <param name="key">Keys pressed</param>
 		private void HandleKeyPress(Keys key)
 		{
 			KeyboardState keyboardState = Keyboard.GetState();
@@ -135,6 +167,11 @@ namespace AridArnold
 			}
 		}
 
+
+
+		/// <summary>
+		/// Enter/leave full screen
+		/// </summary>
 		private void ToggleFullscreen()
 		{
 			if (_graphics.IsFullScreen)
@@ -155,6 +192,16 @@ namespace AridArnold
 			_graphics.ApplyChanges();
 		}
 
+		#endregion rUpdate
+
+
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw main game with the largest possible integer scaling
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
 		protected override void Draw(GameTime gameTime)
 		{
 			DrawInfo frameInfo;
@@ -184,6 +231,13 @@ namespace AridArnold
 			base.Draw(gameTime);
 		}
 
+
+
+		/// <summary>
+		/// Draw render target with the largest possible integer scaling
+		/// </summary>
+		/// <param name="info">Info needed to draw</param>
+		/// <param name="screen">Screen to draw</param>
 		private void DrawScreenPixelPerfect(DrawInfo info, RenderTarget2D screen)
 		{
 			Rectangle screenRect = info.device.PresentationParameters.Bounds;
@@ -197,5 +251,45 @@ namespace AridArnold
 
 			info.spriteBatch.Draw(screen, destRect, Color.White);
 		}
+
+
+
+		/// <summary>
+		/// Callback for re-sizing the screen
+		/// </summary>
+		/// <param name="sender">Sender of this event</param>
+		/// <param name="eventArgs">Event args</param>
+		private void OnResize(object sender, EventArgs eventArgs)
+		{
+			if (_graphics.IsFullScreen)
+			{
+				return;
+			}
+
+			int min_width = (int)(ASPECT_RATIO * MIN_HEIGHT);
+
+			if (Window.ClientBounds.Height >= MIN_HEIGHT && Window.ClientBounds.Width >= min_width)
+			{
+				return;
+			}
+			else
+			{
+				SetWindowHeight(MIN_HEIGHT);
+			}
+		}
+
+
+		/// <summary>
+		/// Set window height so it keeps the aspect ratio
+		/// </summary>
+		/// <param name="height">New window height</param>
+		private void SetWindowHeight(int height)
+		{
+			_graphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
+			_graphics.PreferredBackBufferHeight = height;
+			_graphics.ApplyChanges();
+		}
+
+		#endregion rDraw
 	}
 }

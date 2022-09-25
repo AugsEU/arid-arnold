@@ -1,5 +1,9 @@
 ﻿namespace AridArnold
 {
+	/// <summary>
+	/// Simple singleton implementation. It uses lazy initialisation.
+	/// </summary>
+	/// <typeparam name="TClass">Use CRTP to make singleton of yourself</typeparam>
 	abstract class Singleton<TClass> where TClass : class, new()
 	{
 		protected Singleton()

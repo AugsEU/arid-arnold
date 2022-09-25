@@ -124,7 +124,7 @@ namespace AridArnold.Screens
 		/// <returns></returns>
 		private Level GetCurrentLevel()
 		{
-			return mLevels[ProgressManager.I.CurrentLevel];
+			return mLevels[ProgressManager.I.pCurrentLevel];
 		}
 
 
@@ -134,9 +134,9 @@ namespace AridArnold.Screens
 		/// </summary>
 		private void StartLevel()
 		{
-			LoadLevel(ProgressManager.I.CurrentLevel);
+			LoadLevel(ProgressManager.I.pCurrentLevel);
 			mLevelEndTimer.FullReset();
-			GhostManager.I.StartLevel(mLevels[ProgressManager.I.CurrentLevel]);
+			GhostManager.I.StartLevel(mLevels[ProgressManager.I.pCurrentLevel]);
 		}
 
 
@@ -298,7 +298,7 @@ namespace AridArnold.Screens
 						DepthStencilState.None,
 						RasterizerState.CullNone);
 
-			int lives = ProgressManager.I.Lives;
+			int lives = ProgressManager.I.pLives;
 
 			int texScale = 4;
 			int texWidth = mLifeTexture.Width * texScale;
@@ -313,7 +313,7 @@ namespace AridArnold.Screens
 			}
 
 			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetWorldData().name);
-			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + (ProgressManager.I.CurrentLevel + 1));
+			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + (ProgressManager.I.pCurrentLevel + 1));
 
 			info.spriteBatch.End();
 		}
@@ -477,7 +477,7 @@ namespace AridArnold.Screens
 		{
 			ProgressManager.I.ReportLevelWin();
 			FXManager.I.Clear();
-			if (ProgressManager.I.CurrentLevel >= mLevels.Count)
+			if (ProgressManager.I.pCurrentLevel >= mLevels.Count)
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.EndGame);
 			}
@@ -496,7 +496,7 @@ namespace AridArnold.Screens
 		{
 			ProgressManager.I.ReportLevelLoss();
 
-			if (ProgressManager.I.Lives == 0)
+			if (ProgressManager.I.pLives == 0)
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.GameOver);
 				ProgressManager.I.ResetGame();

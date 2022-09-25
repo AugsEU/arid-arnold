@@ -30,7 +30,7 @@
 		/// <returns></returns>
 		public override LevelStatus Update(GameTime gameTime)
 		{
-			if (CollectibleManager.I.GetCollected(CollectibleType.Flag) > 0)
+			if (CollectableManager.I.GetCollected(CollectableType.Flag) > 0)
 			{
 				mLevelStatus = LevelStatus.Win;
 			}

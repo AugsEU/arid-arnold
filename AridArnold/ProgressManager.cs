@@ -1,5 +1,8 @@
 ﻿namespace AridArnold
 {
+	/// <summary>
+	/// Data about the world(set of levels)
+	/// </summary>
 	struct WorldData
 	{
 		public int startLevel;
@@ -22,8 +25,17 @@
 		}
 	}
 
+
+
+
+
+	/// <summary>
+	/// Manage progress of Arnold
+	/// </summary>
 	internal class ProgressManager : Singleton<ProgressManager>
 	{
+		#region rConstants
+
 		const int START_LEVEL = 0;
 		const int START_LIVES = 4;
 		const int MAX_LIVES = 6;
@@ -35,22 +47,55 @@
 			new WorldData(8, "Buk's Cave", new Color(3, 3, 9), "cave", "cave-platform")
 		};
 
+		#endregion rConstants
+
+
+
+
+
+		#region rMembers
+
 		int mCurrentLevel = START_LEVEL;
 		int mLastCheckPoint = START_LEVEL;
 		int mLives = START_LIVES;
 
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
+
+		/// <summary>
+		/// Init progress manager
+		/// </summary>
 		public void Init()
 		{
 			mLastCheckPoint = START_LEVEL;
 			ResetGame();
 		}
 
+
+
+		/// <summary>
+		/// Reset progress manager after a game over.
+		/// </summary>
 		public void ResetGame()
 		{
 			mLives = START_LIVES;
 			mCurrentLevel = mLastCheckPoint;
 		}
 
+		#endregion rInitialisation
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Tell the progress manager we hit a checkpoint level.
+		/// </summary>
 		public void ReportCheckpoint()
 		{
 			mLastCheckPoint = mCurrentLevel + 1;
@@ -61,6 +106,11 @@
 			}
 		}
 
+
+
+		/// <summary>
+		/// Tell the progress manager we lost a level
+		/// </summary>
 		public void ReportLevelLoss()
 		{
 			//Don't lose lives on the checkpoint levels.
@@ -70,11 +120,21 @@
 			}
 		}
 
+
+
+		/// <summary>
+		/// Tell the progress manager we have won a level.
+		/// </summary>
 		public void ReportLevelWin()
 		{
 			mCurrentLevel++;
 		}
 
+
+
+		/// <summary>
+		/// Gain 1 life
+		/// </summary>
 		public void GiveLife()
 		{
 			if (mLives < MAX_LIVES)
@@ -83,22 +143,11 @@
 			}
 		}
 
-		public int Lives
-		{
-			get { return mLives; }
-			set { mLives = value; }
-		}
 
-		public int CurrentLevel
-		{
-			get { return mCurrentLevel; }
-		}
 
-		public int LastCheckPoint
-		{
-			get { return mLastCheckPoint; }
-		}
-
+		/// <summary>
+		/// Get world data. Member variables here break the style because they are effectively static variables(C++ style)
+		/// </summary>
 		int mPrevLevelQuery = -1;
 		int mPrevWorldIndex = -1;
 		public WorldData GetWorldData()
@@ -125,5 +174,38 @@
 
 			return mWorldData[mPrevWorldIndex];
 		}
+
+
+
+		/// <summary>
+		/// Lives remaining
+		/// </summary>
+		public int pLives
+		{
+			get { return mLives; }
+			set { mLives = value; }
+		}
+
+
+
+		/// <summary>
+		/// Current level index(out of all levels)
+		/// </summary>
+		public int pCurrentLevel
+		{
+			get { return mCurrentLevel; }
+		}
+
+
+
+		/// <summary>
+		/// Last checkpoint level index(out of all levels)
+		/// </summary>
+		public int pLastCheckPoint
+		{
+			get { return mLastCheckPoint; }
+		}
+
+		#endregion rUtility
 	}
 }

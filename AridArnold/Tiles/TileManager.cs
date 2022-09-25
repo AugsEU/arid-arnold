@@ -77,7 +77,7 @@
 		public void LoadLevel(ContentManager content, string name)
 		{
 			EntityManager.I.ClearEntities();
-			CollectibleManager.I.ClearAllCollectibles();
+			CollectableManager.I.ClearAllCollectables();
 
 			Texture2D tileTexture = content.Load<Texture2D>(name);
 

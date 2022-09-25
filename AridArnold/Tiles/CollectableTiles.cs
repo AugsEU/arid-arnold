@@ -5,13 +5,13 @@
 	/// </summary>
 	abstract class CollectableTile : InteractableTile
 	{
-		protected abstract CollectibleType GetCollectibleType();
+		protected abstract CollectableType GetCollectableType();
 
 		public override void OnEntityIntersect(Entity entity, Rect2f bounds)
 		{
 			if (entity is Arnold)
 			{
-				CollectibleManager.I.CollectItem(GetCollectibleType());
+				CollectableManager.I.CollectItem(GetCollectableType());
 				mEnabled = false;
 			}
 		}
@@ -44,9 +44,9 @@
 			base.OnEntityIntersect(entity, bounds);
 		}
 
-		protected override CollectibleType GetCollectibleType()
+		protected override CollectableType GetCollectableType()
 		{
-			return CollectibleType.Flag;
+			return CollectableType.Flag;
 		}
 	}
 
@@ -77,12 +77,12 @@
 		{
 			if (entity is Arnold)
 			{
-				int livesBefore = ProgressManager.I.Lives;
+				int livesBefore = ProgressManager.I.pLives;
 				ProgressManager.I.GiveLife();
 				mEnabled = false;
 
 				//If there is actually a life increase
-				if (livesBefore < ProgressManager.I.Lives)
+				if (livesBefore < ProgressManager.I.pLives)
 				{
 					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.pPosition, "+1 Life");
 				}
@@ -113,9 +113,9 @@
 			mTexture = content.Load<Texture2D>("Tiles/bottle");
 		}
 
-		protected override CollectibleType GetCollectibleType()
+		protected override CollectableType GetCollectableType()
 		{
-			return CollectibleType.WaterBottle;
+			return CollectableType.WaterBottle;
 		}
 	}
 }

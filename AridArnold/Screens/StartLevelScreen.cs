@@ -88,7 +88,7 @@
 
 			centre.Y += 25.0f;
 
-			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "Level " + (ProgressManager.I.CurrentLevel + 1));
+			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "Level " + (ProgressManager.I.pCurrentLevel + 1));
 
 			info.spriteBatch.End();
 
