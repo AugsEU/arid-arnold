@@ -3,6 +3,21 @@
 
 namespace AridArnold
 {
+	/// <summary>
+	/// Type of collision.
+	/// </summary>
+	enum CollisionType
+	{
+		Ground,
+		Wall,
+		Ceiling
+	}
+
+
+	/// <summary>
+	/// Represents a finite ray in world space.
+	/// Note it has a finite length
+	/// </summary>
 	struct Ray2f
 	{
 		public Ray2f(Vector2 _origin, Vector2 _direction)
@@ -15,6 +30,13 @@ namespace AridArnold
 		public Vector2 direction;
 	}
 
+
+
+
+
+	/// <summary>
+	/// Rectangle in world space used for colliders
+	/// </summary>
 	struct Rect2f
 	{
 		public Rect2f(Vector2 _min, Vector2 _max)
@@ -66,6 +88,13 @@ namespace AridArnold
 		public Vector2 max;
 	}
 
+
+
+
+
+	/// <summary>
+	/// Results of a ray collision
+	/// </summary>
 	struct CollisionResults
 	{
 		//t is our percentage of where it hit, null if not hit.
@@ -94,15 +123,20 @@ namespace AridArnold
 		}
 	}
 
-	enum CollisionType
-	{
-		Ground,
-		Wall,
-		Ceiling
-	}
 
+
+
+
+	/// <summary>
+	/// Utility methods for doing collisions
+	/// </summary>
 	static class Collision2D
 	{
+		/// <summary>
+		/// Classify angle of collision
+		/// </summary>
+		/// <param name="normal">Normal vector of collision</param>
+		/// <returns>Collision type(Wall, Ground or Ceiling</returns>
 		public static CollisionType GetCollisionType(Vector2 normal)
 		{
 			if (normal.Y == -1.0f && normal.X == 0.0f)
@@ -118,6 +152,15 @@ namespace AridArnold
 			return CollisionType.Wall;
 		}
 
+
+
+		/// <summary>
+		/// Compare if moving a rectangle will hit another rectangle
+		/// </summary>
+		/// <param name="movingRect">Rectangle that will be moving</param>
+		/// <param name="displacement">How far it is moving</param>
+		/// <param name="targetRect">Rectangle that is static</param>
+		/// <returns>Collision results of collision</returns>
 		public static CollisionResults MovingRectVsRect(Rect2f movingRect, Vector2 displacement, Rect2f targetRect)
 		{
 			//Expand target rect
@@ -129,6 +172,17 @@ namespace AridArnold
 			return RayVsBox(new Ray2f(movingRect.Centre, displacement), targetRect);
 		}
 
+
+
+		/// <summary>
+		/// Compare if moving a rectangle will hit a platform
+		/// </summary>
+		/// <param name="movingRect">Rectangle that will be moving</param>
+		/// <param name="displacement">How far it is moving</param>
+		/// <param name="platOrigin">Left corner of platform</param>
+		/// <param name="length">Length of platform</param>
+		/// <param name="dir">Orientation of the platform. Up is normal</param>
+		/// <returns>Collision result of rectangle and platform</returns>
 		public static CollisionResults MovingRectVsPlatform(Rect2f movingRect, Vector2 displacement, Vector2 platOrigin, float length, CardinalDirection dir)
 		{
 			//Expand target rect
@@ -181,6 +235,14 @@ namespace AridArnold
 			return CollisionResults.None;
 		}
 
+
+
+		/// <summary>
+		/// Check if two rays intersect
+		/// </summary>
+		/// <param name="checkRay">Ray to check</param>
+		/// <param name="targetRay">Second ray to check</param>
+		/// <returns>Collision results of their collision</returns>
 		public static CollisionResults RayVsRay(Ray2f checkRay, Ray2f targetRay)
 		{
 			CollisionResults results;
@@ -222,7 +284,14 @@ namespace AridArnold
 			return results;
 		}
 
-		//Checks if a 2d ray intersects a 2d box
+
+
+		/// <summary>
+		/// Check if a ray intersects a box
+		/// </summary>
+		/// <param name="ray">Ray to check</param>
+		/// <param name="rect">Box to check</param>
+		/// <returns>Collision results of their collision</returns>
 		public static CollisionResults RayVsBox(Ray2f ray, Rect2f rect)
 		{
 			CollisionResults results;
@@ -402,24 +471,57 @@ namespace AridArnold
 			return results;
 		}
 
+
+
+		/// <summary>
+		/// Check if two rectangles overlap
+		/// </summary>
+		/// <param name="rect1">First rectangle</param>
+		/// <param name="rect2">Second rectangle</param>
+		/// <returns>True if they overlap(inclusive)</returns>
 		public static bool BoxVsBox(Rect2f rect1, Rect2f rect2)
 		{
 			return rect1.min.X <= rect2.max.X && rect2.min.X <= rect1.max.X &&
 				rect1.min.Y <= rect2.max.Y && rect2.min.Y <= rect1.max.Y;
 		}
 
+
+
+		/// <summary>
+		/// Check if a point is within another rectangle as a closed set
+		/// </summary>
+		/// <param name="rect">Rectangle to check</param>
+		/// <param name="point">Point to check</param>
+		/// <returns>True if the point is within the rectangle(inclusive)</returns>
 		public static bool BoxVsPoint(Rect2f rect, Vector2 point)
 		{
 			return rect.min.X <= point.X && point.X <= rect.max.X &&
 				rect.min.Y <= point.Y && point.Y <= rect.max.Y;
 		}
 
+
+
+		/// <summary>
+		/// Check if a point is within another rectangle as an open set
+		/// </summary>
+		/// <param name="rect">Rectangle to check</param>
+		/// <param name="point">Point to check</param>
+		/// <returns>True if the point is within the rectangle(not inclusive)</returns>
 		public static bool BoxVsPointOpen(Rect2f rect, Vector2 point)
 		{
 			return rect.min.X < point.X && point.X < rect.max.X &&
 				rect.min.Y < point.Y && point.Y < rect.max.Y;
 		}
 
+
+
+		/// <summary>
+		/// Gets cardinal direction away from centre.
+		/// E.g. a point above the centre will yield an upwards vector
+		/// </summary>
+		/// <param name="rect">Rectangle to check</param>
+		/// <param name="point">Point to check</param>
+		/// <returns>Cardinal direction</returns>
 		public static Vector2 CardinalFromCentre(Rect2f rect, Vector2 point)
 		{
 			point -= rect.Centre;
