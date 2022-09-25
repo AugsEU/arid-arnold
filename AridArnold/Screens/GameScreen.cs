@@ -394,7 +394,7 @@ namespace AridArnold.Screens
                     frameDiff = -frameDiff;
                 }
 
-                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), textCol, arnold.position, prefix + GhostManager.I.FrameTimeToString(frameDiff));
+                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), textCol, arnold.pPosition, prefix + GhostManager.I.FrameTimeToString(frameDiff));
             }
             else
             {
@@ -404,7 +404,7 @@ namespace AridArnold.Screens
                 {
                     levelCompleteMsg = "Checkpoint!";
                 }
-                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.position, levelCompleteMsg);
+                FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.pPosition, levelCompleteMsg);
             }
         }
 

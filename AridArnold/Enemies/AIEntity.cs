@@ -106,7 +106,7 @@
 
                 if(entity is Arnold)
                 {
-                    Vector2 pos = entity.position;
+                    Vector2 pos = entity.pPosition;
 
                     mRandom.ChugNumber((int)(pos.X / 128.0f));
                     mRandom.ChugNumber((int)(pos.Y / 128.0f));
