@@ -6,7 +6,7 @@ namespace AridArnold
 	/// <summary>
 	/// A file that stores ghost information
 	/// </summary>
-	internal class GhostFile
+	internal class GhostFile : MonoFile
 	{
 		#region rConstants
 
@@ -32,7 +32,7 @@ namespace AridArnold
 
 		#region rInitialisation
 
-		public GhostFile(Level level)
+		public GhostFile(Level level) : base(level.pName + ".ght")
 		{
 			mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
 			mLevel = level;
@@ -47,53 +47,25 @@ namespace AridArnold
 		#region rFileOperations
 
 		/// <summary>
-		/// Save data from buffer into the file.
+		/// Write binary into file
 		/// </summary>
-		public void Save()
+		/// <param name="bw">Binary writer=</param>
+		protected override void WriteBinary(BinaryWriter bw)
 		{
-			string filePath = GetFilename();
+			//Write header.
+			bw.Write(FILE_MAGIC);
+			bw.Write((int)mGhostInfos.Count);
 
-			if (mGhostInfos.Count == MAX_FRAMES)
+			//Write data.
+			for (int i = 0; i < mGhostInfos.Count; i++)
 			{
-				return;
-			}
-
-			try
-			{
-				if (!Directory.Exists(GetFolder()))
+				bw.Write((int)mGhostInfos[i].Count);
+				foreach (GhostInfo info in mGhostInfos[i])
 				{
-					Directory.CreateDirectory(GetFolder());
-				}
-				if (!File.Exists(filePath))
-				{
-					File.Create(filePath).Close();
-				}
-			}
-			catch (Exception)
-			{
-				return;
-			}
-
-			using (FileStream stream = File.OpenWrite(filePath))
-			{
-				using (BinaryWriter bw = new BinaryWriter(stream))
-				{
-					//Write header.
-					bw.Write(FILE_MAGIC);
-					bw.Write((int)mGhostInfos.Count);
-
-					//Write data.
-					for (int i = 0; i < mGhostInfos.Count; i++)
-					{
-						bw.Write((int)mGhostInfos[i].Count);
-						foreach (GhostInfo info in mGhostInfos[i])
-						{
-							bw.Write(info.position.X); bw.Write(info.position.Y);
-							bw.Write(info.velocity.X); bw.Write(info.velocity.Y);
-							bw.Write(info.grounded);
-							bw.Write((int)info.gravity);
-						}
-					}
+					bw.Write(info.position.X); bw.Write(info.position.Y);
+					bw.Write(info.velocity.X); bw.Write(info.velocity.Y);
+					bw.Write(info.grounded);
+					bw.Write((int)info.gravity);
 				}
 			}
 		}
@@ -101,62 +73,44 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Load data from file into buffers
+		/// Write binary into file
 		/// </summary>
-		public void Load()
+		/// <param name="br">Binary reader</param>
+		protected override void ReadBinary(BinaryReader br)
 		{
-			string filePath = GetFilename();
+			//Read header.
+			br.ReadChars(FILE_MAGIC.Length);
+			int count = br.ReadInt32();
 
-			if (!File.Exists(filePath))
+			//Read data.
+			for (int i = 0; i < count; i++)
 			{
-				return;
-			}
+				int ghostNumber = br.ReadInt32();
 
-			bool delFile = false;
+				mGhostInfos.Add(new List<GhostInfo>());
 
-			using (FileStream stream = File.OpenRead(filePath))
-			{
-				using (BinaryReader br = new BinaryReader(stream))
+				for (int j = 0; j < ghostNumber; j++)
 				{
-					try
-					{
-						//Read header.
-						br.ReadChars(FILE_MAGIC.Length);
-						int count = br.ReadInt32();
+					GhostInfo info;
 
-						//Read data.
-						for (int i = 0; i < count; i++)
-						{
-							int ghostNumber = br.ReadInt32();
+					info.position.X = br.ReadSingle(); info.position.Y = br.ReadSingle();
+					info.velocity.X = br.ReadSingle(); info.velocity.Y = br.ReadSingle();
+					info.grounded = br.ReadBoolean();
+					info.gravity = (CardinalDirection)br.ReadInt32();
 
-							mGhostInfos.Add(new List<GhostInfo>());
-
-							for (int j = 0; j < ghostNumber; j++)
-							{
-								GhostInfo info;
-
-								info.position.X = br.ReadSingle(); info.position.Y = br.ReadSingle();
-								info.velocity.X = br.ReadSingle(); info.velocity.Y = br.ReadSingle();
-								info.grounded = br.ReadBoolean();
-								info.gravity = (CardinalDirection)br.ReadInt32();
-
-								mGhostInfos[i].Add(info);
-							}
-						}
-					}
-					catch (Exception ex)
-					{
-						delFile = true;
-						mGhostInfos.Clear();
-						Util.Log("Exception: " + ex.ToString());
-					}
+					mGhostInfos[i].Add(info);
 				}
 			}
+		}
 
-			if (delFile)
-			{
-				File.Delete(filePath);
-			}
+
+
+		/// <summary>
+		/// Called when read fails mid-way through
+		/// </summary>
+		protected override void AbortRead() 
+		{
+			mGhostInfos.Clear();
 		}
 
 
@@ -246,23 +200,12 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Get file name
+		/// Get relative folder which this is storred in
 		/// </summary>
-		/// <returns>Full file path</returns>
-		private string GetFilename()
+		/// <returns>Folder name</returns>
+		protected override string GetRelativeFolder()
 		{
-			return GetFolder() + mLevel.pName + ".ght";
-		}
-
-
-
-		/// <summary>
-		/// Get folder which this is storred in
-		/// </summary>
-		/// <returns>Full folder directory</returns>
-		private string GetFolder()
-		{
-			return Directory.GetCurrentDirectory() + "\\ghostData\\";
+			return "ghostData\\";
 		}
 
 		#endregion rUtility
