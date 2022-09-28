@@ -1,7 +1,4 @@
-﻿
-using AridArnold.Levels;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	struct GhostInfo
 	{

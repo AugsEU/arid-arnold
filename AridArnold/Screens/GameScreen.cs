@@ -1,6 +1,4 @@
-﻿using AridArnold.Levels;
-
-namespace AridArnold.Screens
+﻿namespace AridArnold.Screens
 {
 	/// <summary>
 	/// Gameplay screen
@@ -22,8 +20,6 @@ namespace AridArnold.Screens
 
 
 		#region rMembers
-
-		private List<Level> mLevels;
 
 		private RenderTarget2D mGameArea;
 		private RenderTarget2D mLeftUI;
@@ -53,20 +49,6 @@ namespace AridArnold.Screens
 		{
 			mLevelEndTimer = new PercentageTimer(END_LEVEL_TIME);
 
-			mLevels = new List<Level>();
-			mLevels.Add(new CollectWaterLevel("level1-1", 5));
-			mLevels.Add(new CollectWaterLevel("level1-2", 2));
-			mLevels.Add(new CollectWaterLevel("level1-3", 2));
-			mLevels.Add(new CollectFlagLevel("level1-4"));
-			mLevels.Add(new CollectWaterLevel("level2-1", 1));
-			mLevels.Add(new CollectWaterLevel("level2-2", 3));
-			mLevels.Add(new CollectWaterLevel("level2-3", 4));
-			mLevels.Add(new CollectFlagLevel("level2-4"));
-			mLevels.Add(new CollectWaterLevel("level3-1", 4));
-			mLevels.Add(new CollectWaterLevel("level3-2", 3));
-			mLevels.Add(new CollectWaterLevel("level3-3", 6));
-			mLevels.Add(new CollectWaterLevel("level3-4", 6));
-
 			mGameArea = null;
 			mLeftUI = null;
 			mRightUI = null;
@@ -75,13 +57,13 @@ namespace AridArnold.Screens
 
 
 		/// <summary>
-		/// Load a level from the list
+		/// Load level
 		/// </summary>
-		/// <param name="levelIndex">Level index to load</param>
-		private void LoadLevel(int levelIndex)
+		/// <param name="levelToBegin">Level object to begin</param>
+		private void LoadLevel(Level levelToBegin)
 		{
 			FXManager.I.Clear();
-			mLevels[levelIndex].Begin(mContentManager);
+			levelToBegin.Begin(mContentManager);
 		}
 
 
@@ -119,24 +101,14 @@ namespace AridArnold.Screens
 		#region rUtility
 
 		/// <summary>
-		/// Get the level we are currently playing.
-		/// </summary>
-		/// <returns></returns>
-		private Level GetCurrentLevel()
-		{
-			return mLevels[ProgressManager.I.pCurrentLevel];
-		}
-
-
-
-		/// <summary>
 		/// Start the current level. Restarts if we have already started it.
 		/// </summary>
 		private void StartLevel()
 		{
-			LoadLevel(ProgressManager.I.pCurrentLevel);
+			Level levelToStart = ProgressManager.I.GetCurrentLevel();
+			LoadLevel(levelToStart);
 			mLevelEndTimer.FullReset();
-			GhostManager.I.StartLevel(mLevels[ProgressManager.I.pCurrentLevel]);
+			GhostManager.I.StartLevel(levelToStart);
 		}
 
 
@@ -313,7 +285,7 @@ namespace AridArnold.Screens
 			}
 
 			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetWorldData().name);
-			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + (ProgressManager.I.pCurrentLevel + 1));
+			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + (ProgressManager.I.GetTotalLevelNumber()));
 
 			info.spriteBatch.End();
 		}
@@ -400,7 +372,7 @@ namespace AridArnold.Screens
 			{
 				string levelCompleteMsg = "Level complete";
 
-				if (GetCurrentLevel() is CollectFlagLevel)
+				if (ProgressManager.I.GetCurrentLevel() is CollectFlagLevel)
 				{
 					levelCompleteMsg = "Checkpoint!";
 				}
@@ -446,7 +418,7 @@ namespace AridArnold.Screens
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
 
-			LevelStatus status = GetCurrentLevel().Update(gameTime);
+			LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
 
 			if (status == LevelStatus.Win)
 			{
@@ -477,7 +449,7 @@ namespace AridArnold.Screens
 		{
 			ProgressManager.I.ReportLevelWin();
 			FXManager.I.Clear();
-			if (ProgressManager.I.pCurrentLevel >= mLevels.Count)
+			if (ProgressManager.I.HasFinishedGame())
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.EndGame);
 			}

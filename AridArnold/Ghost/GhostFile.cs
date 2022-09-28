@@ -1,5 +1,4 @@
-﻿using AridArnold.Levels;
-using System.IO;
+﻿using System.IO;
 
 namespace AridArnold
 {
@@ -189,9 +188,9 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Total frames in the buffer.
+		/// Get number of recorded frames
 		/// </summary>
-		/// <returns>Total frames in the buffer</returns>
+		/// <returns>Number of frames in the buffer</returns>
 		public int GetFrameCount()
 		{
 			return mGhostInfos.Count;

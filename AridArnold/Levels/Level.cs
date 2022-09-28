@@ -1,4 +1,4 @@
-﻿namespace AridArnold.Levels
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Win condition status of the level

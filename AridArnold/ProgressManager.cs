@@ -1,32 +1,22 @@
 ﻿namespace AridArnold
 {
-	/// <summary>
-	/// Data about the world(set of levels)
-	/// </summary>
-	struct WorldData
+	struct LevelPoint
 	{
-		public int startLevel;
-		public string name;
+		public int mWorldIndex;
+		public int mLevel;
 
-		//Style
-		public Color worldColor;
-		public string wallTexture;
-		public string platformTexture;
-
-		public WorldData(int _start, string _name, Color _worldColor, string _wallTexture, string _platformTexture)
+		public LevelPoint(int worldIndex, int level)
 		{
-			startLevel = _start;
-			name = _name;
-
-			//Style
-			worldColor = _worldColor;
-			wallTexture = _wallTexture;
-			platformTexture = _platformTexture;
+			mWorldIndex = worldIndex;
+			mLevel = level;
 		}
+
+		public static bool operator ==(LevelPoint a, LevelPoint b)
+		=> (a.mWorldIndex == b.mWorldIndex && a.mLevel == b.mLevel);
+
+		public static bool operator !=(LevelPoint a, LevelPoint b)
+		=> (!(a == b));
 	}
-
-
-
 
 
 	/// <summary>
@@ -36,15 +26,31 @@
 	{
 		#region rConstants
 
+		const int START_WORLD = 0;
 		const int START_LEVEL = 0;
 		const int START_LIVES = 4;
 		const int MAX_LIVES = 6;
 
 		WorldData[] mWorldData =
 		{
-			new WorldData(0, "Iron Works", new Color(0, 10,20), "steel", "platform"),
-			new WorldData(4, "Land of Mirrors", new Color(0, 24, 14), "cobble", "gold-platform"),
-			new WorldData(8, "Buk's Cave", new Color(3, 3, 9), "cave", "cave-platform")
+			new WorldData("Iron Works", new Color(0, 10,20), "steel", "platform", new Level[]
+							{new CollectWaterLevel("level1-1", 5),
+							 new CollectWaterLevel("level1-2", 2),
+							 new CollectWaterLevel("level1-3", 2),
+							 new CollectFlagLevel("level1-4")}
+							),
+			new WorldData("Land of Mirrors", new Color(0, 24, 14), "cobble", "gold-platform", new Level[]
+							{new CollectWaterLevel("level2-1", 1),
+							new CollectWaterLevel("level2-2", 3),
+							new CollectWaterLevel("level2-3", 4),
+							new CollectFlagLevel("level2-4")}
+							),
+			new WorldData("Buk's Cave", new Color(3, 3, 9), "cave", "cave-platform", new Level[]
+							{new CollectWaterLevel("level3-1", 4),
+							 new CollectWaterLevel("level3-2", 3),
+							 new CollectWaterLevel("level3-3", 6),
+							 new CollectWaterLevel("level3-4", 6)}
+							)
 		};
 
 		#endregion rConstants
@@ -55,8 +61,8 @@
 
 		#region rMembers
 
-		int mCurrentLevel = START_LEVEL;
-		int mLastCheckPoint = START_LEVEL;
+		LevelPoint mCurrentLevel;// = new LevelPoint(START_WORLD, START_LEVEL);
+		LevelPoint mLastCheckPoint;// = new LevelPoint(START_WORLD, START_LEVEL);
 		int mLives = START_LIVES;
 
 		#endregion rMembers
@@ -72,7 +78,8 @@
 		/// </summary>
 		public void Init()
 		{
-			mLastCheckPoint = START_LEVEL;
+			mCurrentLevel = new LevelPoint(START_WORLD, START_LEVEL);
+			mLastCheckPoint = new LevelPoint(START_WORLD, START_LEVEL);
 			ResetGame();
 		}
 
@@ -98,7 +105,7 @@
 		/// </summary>
 		public void ReportCheckpoint()
 		{
-			mLastCheckPoint = mCurrentLevel + 1;
+			mLastCheckPoint = GetNextLevelPoint(mCurrentLevel);
 
 			if (mLives < START_LIVES)
 			{
@@ -127,7 +134,7 @@
 		/// </summary>
 		public void ReportLevelWin()
 		{
-			mCurrentLevel++;
+			mCurrentLevel = GetNextLevelPoint(mCurrentLevel);
 		}
 
 
@@ -146,33 +153,70 @@
 
 
 		/// <summary>
-		/// Get world data. Member variables here break the style because they are effectively static variables(C++ style)
+		/// Get world data.
 		/// </summary>
-		int mPrevLevelQuery = -1;
-		int mPrevWorldIndex = -1;
 		public WorldData GetWorldData()
 		{
-			//Memoize 
-			if (mCurrentLevel == mPrevLevelQuery && mPrevWorldIndex != -1)
+			return mWorldData[mCurrentLevel.mWorldIndex];
+		}
+
+
+
+		/// <summary>
+		/// Get level object
+		/// </summary>
+		/// <returns>Get current level</returns>
+		public Level GetCurrentLevel()
+		{
+			return mWorldData[mCurrentLevel.mWorldIndex].mLevels[mCurrentLevel.mLevel];
+		}
+
+
+
+		/// <summary>
+		/// Get level number out of all levels
+		/// </summary>
+		/// <returns>Get current level</returns>
+		public int GetTotalLevelNumber()
+		{
+			int total = 0;
+			for(int w = 0; w < mCurrentLevel.mWorldIndex; w++)
 			{
-				return mWorldData[mPrevWorldIndex];
+				total += mWorldData[w].mLevels.Length;
 			}
 
-			mPrevLevelQuery = mCurrentLevel;
+			total += mCurrentLevel.mLevel;
+			return total + 1;
+		}
 
 
-			for (int i = 0; i < mWorldData.Length; i++)
+
+		/// <summary>
+		/// Have we finished the game?
+		/// </summary>
+		/// <returns>True if we have finished all the levels</returns>
+		public bool HasFinishedGame()
+		{
+			return mCurrentLevel.mWorldIndex >= mWorldData.Length;
+		}
+
+
+
+		/// <summary>
+		/// Advance a level forwards by one
+		/// </summary>
+		/// <param name="levelPoint">Starting level</param>
+		/// <returns>Level point 1 after the starting level</returns>
+		public LevelPoint GetNextLevelPoint(LevelPoint levelPoint)
+		{
+			levelPoint.mLevel += 1;
+			if(levelPoint.mLevel >= mWorldData[levelPoint.mWorldIndex].mLevels.Length)
 			{
-				mPrevWorldIndex = i;
-
-				if (mCurrentLevel < mWorldData[i].startLevel)
-				{
-					mPrevWorldIndex = i - 1;
-					break;
-				}
+				levelPoint.mLevel = 0;
+				levelPoint.mWorldIndex += 1;
 			}
 
-			return mWorldData[mPrevWorldIndex];
+			return levelPoint;
 		}
 
 
@@ -184,26 +228,6 @@
 		{
 			get { return mLives; }
 			set { mLives = value; }
-		}
-
-
-
-		/// <summary>
-		/// Current level index(out of all levels)
-		/// </summary>
-		public int pCurrentLevel
-		{
-			get { return mCurrentLevel; }
-		}
-
-
-
-		/// <summary>
-		/// Last checkpoint level index(out of all levels)
-		/// </summary>
-		public int pLastCheckPoint
-		{
-			get { return mLastCheckPoint; }
 		}
 
 		#endregion rUtility

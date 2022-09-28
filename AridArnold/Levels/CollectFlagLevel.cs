@@ -1,4 +1,4 @@
-﻿namespace AridArnold.Levels
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Level where you collect a flag to win.

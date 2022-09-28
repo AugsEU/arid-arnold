@@ -1,4 +1,4 @@
-﻿namespace AridArnold.Levels
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Level type where you have to collect water to win.
