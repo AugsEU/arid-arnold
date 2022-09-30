@@ -55,10 +55,10 @@
             mInputBindings.Add(AridArnoldKeys.Pause,        new InputBindSet( new KeyBinding(Keys.Escape)));
             mInputBindings.Add(AridArnoldKeys.RestartLevel, new InputBindSet( new KeyBinding(Keys.R)));
 
-            mInputBindings.Add(AridArnoldKeys.ArnoldLeft,   new InputBindSet( new KeyBinding(Keys.A)));
-            mInputBindings.Add(AridArnoldKeys.ArnoldRight,  new InputBindSet( new KeyBinding(Keys.D)));
-            mInputBindings.Add(AridArnoldKeys.ArnoldUp,     new InputBindSet( new KeyBinding(Keys.W)));
-            mInputBindings.Add(AridArnoldKeys.ArnoldDown,   new InputBindSet( new KeyBinding(Keys.S)));
+            mInputBindings.Add(AridArnoldKeys.ArnoldLeft,   new InputBindSet( new KeyBinding(Keys.Left)));
+            mInputBindings.Add(AridArnoldKeys.ArnoldRight,  new InputBindSet( new KeyBinding(Keys.Right)));
+            mInputBindings.Add(AridArnoldKeys.ArnoldUp,     new InputBindSet( new KeyBinding(Keys.Up)));
+            mInputBindings.Add(AridArnoldKeys.ArnoldDown,   new InputBindSet( new KeyBinding(Keys.Down)));
             mInputBindings.Add(AridArnoldKeys.ArnoldJump,   new InputBindSet( new KeyBinding(Keys.Space)));
         }
 
