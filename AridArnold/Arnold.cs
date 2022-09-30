@@ -137,33 +137,7 @@
 			}
 
 			//Input
-			KeyboardState state = Keyboard.GetState();
-
-			if (state.IsKeyDown(Keys.Space) && state.IsKeyDown(GetFallthroughKey()))
-			{
-				if (!(mOnGround && mWalkDirection != WalkDirection.None))
-				{
-					FallThroughPlatforms();
-				}
-			}
-			else if (mOnGround)
-			{
-				if (state.IsKeyDown(Keys.Space))
-				{
-					Jump();
-					mTimeSinceGrounded = int.MaxValue;
-				}
-
-				HandleWalkInput(state);
-			}
-			else if (mTimeSinceGrounded < COYOTE_TIME)
-			{
-				if (state.IsKeyDown(Keys.Space))
-				{
-					Jump();
-					mTimeSinceGrounded = int.MaxValue;
-				}
-			}
+			DoInputs(gameTime);
 
 			if (CheckOffScreenDeath())
 			{
@@ -176,7 +150,43 @@
 			{
 				mTimeSinceGrounded++;
 			}
+		}
 
+
+		/// <summary>
+		/// Handle inputs
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
+		private void DoInputs(GameTime gameTime)
+		{
+			bool jump = InputManager.I.KeyHeld(AridArnoldKeys.ArnoldJump);
+			bool fallthrough = InputManager.I.KeyHeld(GetFallthroughKey());
+
+			if (jump && fallthrough)
+			{
+				if (!(mOnGround && mWalkDirection != WalkDirection.None))
+				{
+					FallThroughPlatforms();
+				}
+			}
+			else if (mOnGround)
+			{
+				if (jump)
+				{
+					Jump();
+					mTimeSinceGrounded = int.MaxValue;
+				}
+
+				HandleWalkInput();
+			}
+			else if (mTimeSinceGrounded < COYOTE_TIME)
+			{
+				if (jump)
+				{
+					Jump();
+					mTimeSinceGrounded = int.MaxValue;
+				}
+			}
 		}
 
 
@@ -184,19 +194,18 @@
 		/// <summary>
 		/// Check for walk inputs
 		/// </summary>
-		/// <param name="state">Keyboad state</param>
-		private void HandleWalkInput(KeyboardState state)
+		private void HandleWalkInput()
 		{
 			CardinalDirection gravDir = GetGravityDir();
 
 			if (gravDir == CardinalDirection.Down || gravDir == CardinalDirection.Up)
 			{
-				if (state.IsKeyDown(Keys.Left))
+				if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldLeft))
 				{
 					mWalkDirection = WalkDirection.Left;
 					mPrevDirection = mWalkDirection;
 				}
-				else if (state.IsKeyDown(Keys.Right))
+				else if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldRight))
 				{
 					mWalkDirection = WalkDirection.Right;
 					mPrevDirection = mWalkDirection;
@@ -208,13 +217,12 @@
 			}
 			else if (gravDir == CardinalDirection.Left || gravDir == CardinalDirection.Right)
 			{
-				if (state.IsKeyDown(Keys.Up))
+				if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldUp))
 				{
 					mWalkDirection = WalkDirection.Left;
 					mPrevDirection = mWalkDirection;
-
 				}
-				else if (state.IsKeyDown(Keys.Down))
+				else if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldDown))
 				{
 					mWalkDirection = WalkDirection.Right;
 					mPrevDirection = mWalkDirection;
@@ -474,18 +482,18 @@
 		/// </summary>
 		/// <returns></returns>
 		/// <exception cref="NotImplementedException">Requires valid cardinal direction</exception>
-		private Keys GetFallthroughKey()
+		private AridArnoldKeys GetFallthroughKey()
 		{
 			switch (GetGravityDir())
 			{
 				case CardinalDirection.Down:
-					return Keys.Down;
+					return AridArnoldKeys.ArnoldDown;
 				case CardinalDirection.Up:
-					return Keys.Up;
+					return AridArnoldKeys.ArnoldUp;
 				case CardinalDirection.Left:
-					return Keys.Left;
+					return AridArnoldKeys.ArnoldLeft;
 				case CardinalDirection.Right:
-					return Keys.Right;
+					return AridArnoldKeys.ArnoldRight;
 			}
 
 			throw new NotImplementedException();

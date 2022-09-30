@@ -30,11 +30,9 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			KeyboardState state = Keyboard.GetState();
-
-			if (state.IsKeyDown(Keys.Enter) || state.IsKeyDown(Keys.Space))
+			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm) || InputManager.I.KeyPressed(AridArnoldKeys.ArnoldJump))
 			{
-				ScreenManager.I.ActivateScreen(ScreenType.Game);
+				ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
 			}
 		}
 

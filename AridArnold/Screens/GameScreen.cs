@@ -406,7 +406,7 @@
 
 			KeyboardState keyboardState = Keyboard.GetState();
 
-			if (keyboardState.IsKeyDown(Keys.R))
+			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
 			{
 				EArgs eArgs;
 				eArgs.sender = this;

@@ -40,9 +40,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			KeyboardState state = Keyboard.GetState();
-
-			if (state.IsKeyDown(Keys.Enter))
+			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
 			}

@@ -85,6 +85,8 @@ namespace AridArnold
 			ScreenManager.I.LoadAllScreens(Content, _graphics);
 			ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
 			GhostManager.I.Load(Content);
+			ProgressManager.I.Init();
+			InputManager.I.Init();
 		}
 
 		#endregion rInitialisation
@@ -138,6 +140,9 @@ namespace AridArnold
 		{
 			//Update Active screen
 			Screen screen = ScreenManager.I.GetActiveScreen();
+
+			//Always update every game update.
+			InputManager.I.Update(gameTime);
 
 			if (screen != null)
 			{

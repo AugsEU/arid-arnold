@@ -48,9 +48,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			KeyboardState state = Keyboard.GetState();
-
-			if (mTimer.GetElapsedMs() > 2000 || state.IsKeyDown(Keys.Enter) || state.IsKeyDown(Keys.Space))
+			if (mTimer.GetElapsedMs() > 2000 || InputManager.I.KeyPressed(AridArnoldKeys.Confirm) || InputManager.I.KeyPressed(AridArnoldKeys.ArnoldJump))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
 			}
