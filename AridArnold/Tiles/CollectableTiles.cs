@@ -5,9 +5,17 @@
 	/// </summary>
 	abstract class CollectableTile : InteractableTile
 	{
+		/// <summary>
+		/// Tile with start position
+		/// </summary>
+		/// <param name="position">Start position</param>
+		public CollectableTile(Vector2 position) : base(position)
+		{
+		}
+
 		protected abstract CollectableType GetCollectableType();
 
-		public override void OnEntityIntersect(Entity entity, Rect2f bounds)
+		public override void OnEntityIntersect(Entity entity)
 		{
 			if (entity is Arnold)
 			{
@@ -27,6 +35,14 @@
 	class FlagTile : CollectableTile
 	{
 		/// <summary>
+		/// Tile with start position
+		/// </summary>
+		/// <param name="position">Start position</param>
+		public FlagTile(Vector2 position) : base(position)
+		{
+		}
+
+		/// <summary>
 		/// Load all textures
 		/// </summary>
 		/// <param name="content">Monogame content manager</param>
@@ -35,13 +51,14 @@
 			mTexture = content.Load<Texture2D>("Tiles/flag");
 		}
 
-		public override void OnEntityIntersect(Entity entity, Rect2f bounds)
+		public override void OnEntityIntersect(Entity entity)
 		{
 			if (entity is Arnold)
 			{
 				ProgressManager.I.ReportCheckpoint();
 			}
-			base.OnEntityIntersect(entity, bounds);
+
+			base.OnEntityIntersect(entity);
 		}
 
 		protected override CollectableType GetCollectableType()
@@ -60,6 +77,16 @@
 	class HotDogTile : InteractableTile
 	{
 		/// <summary>
+		/// Tile with start position
+		/// </summary>
+		/// <param name="position">Start position</param>
+		public HotDogTile(Vector2 position) : base(position)
+		{
+		}
+
+
+
+		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
 		/// <param name="content">Monogame content manager</param>
@@ -73,7 +100,7 @@
 		/// <summary>
 		/// Give the player a life when intersecting this tile.
 		/// </summary>
-		public override void OnEntityIntersect(Entity entity, Rect2f bounds)
+		public override void OnEntityIntersect(Entity entity)
 		{
 			if (entity is Arnold)
 			{
@@ -91,7 +118,8 @@
 					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.pPosition, "+0 Lives");
 				}
 			}
-			base.OnEntityIntersect(entity, bounds);
+
+			base.OnEntityIntersect(entity);
 		}
 	}
 
@@ -104,6 +132,16 @@
 	/// </summary>
 	class WaterBottleTile : CollectableTile
 	{
+		/// <summary>
+		/// Tile with start position
+		/// </summary>
+		/// <param name="position">Start position</param>
+		public WaterBottleTile(Vector2 position) : base(position)
+		{
+		}
+
+
+
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>

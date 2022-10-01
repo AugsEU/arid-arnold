@@ -64,7 +64,8 @@
 		{
 			mTileMapPos = position;
 			mTileSize = tileSize;
-			mDummyTile = new AirTile();
+			Tile.sTILE_SIZE = tileSize;
+			mDummyTile = new AirTile(Vector2.Zero);
 		}
 
 
@@ -92,11 +93,11 @@
 				{
 					int index = x + y * tileTexture.Width;
 					Color col = colors1D[index];
+					Vector2 entityPos = new Vector2(x * mTileSize, y * mTileSize) + mTileMapPos;
 
-					mTileMap[x, y] = GetTileFromColour(colors1D[index]);
+					mTileMap[x, y] = GetTileFromColour(colors1D[index], entityPos);
 					mTileMap[x, y].LoadContent(content);
 
-					Vector2 entityPos = new Vector2(x * mTileSize, y * mTileSize) + mTileMapPos;
 					AddEntityFromColour(col, entityPos, content);
 				}
 			}
@@ -112,7 +113,7 @@
 		/// </summary>
 		/// <param name="col">Colour to translate</param>
 		/// <returns>Tile reference</returns>
-		private Tile GetTileFromColour(Color col)
+		private Tile GetTileFromColour(Color col, Vector2 position)
 		{
 			//Use alpha component as a parameter.
 			int param = 255 - col.A;
@@ -121,43 +122,43 @@
 			{
 				if (Util.CompareHEX(col, 0x000000))
 				{
-					return new WallTile();
+					return new WallTile(position);
 				}
 				else if (Util.CompareHEX(col, 0xA9A9A9))
 				{
-					return new PlatformTile((CardinalDirection)param);
+					return new PlatformTile((CardinalDirection)param, position);
 				}
 				else if (Util.CompareHEX(col, 0x0000FF))
 				{
-					return new WaterBottleTile();
+					return new WaterBottleTile(position);
 				}
 				else if (Util.CompareHEX(col, 0xFF0000))
 				{
-					return new FlagTile();
+					return new FlagTile(position);
 				}
 				else if (Util.CompareHEX(col, 0xEA301F))
 				{
-					return new HotDogTile();
+					return new HotDogTile(position);
 				}
 				else if (Util.CompareHEX(col, 0x404040))
 				{
-					return new SpikesTile((CardinalDirection)param);
+					return new SpikesTile((CardinalDirection)param, position);
 				}
 				else if (Util.CompareHEX(col, 0x2A3F50))
 				{
-					return new StalactiteTile();
+					return new StalactiteTile(position);
 				}
 				else if (Util.CompareHEX(col, 0xFFFF00))
 				{
-					return new MirrorTile((CardinalDirection)param);
+					return new MirrorTile((CardinalDirection)param, position);
 				}
 				else if (Util.CompareHEX(col, 0x00CDF9))
 				{
-					return new MushroomTile((CardinalDirection)param);
+					return new MushroomTile((CardinalDirection)param, position);
 				}
 			}
 
-			return new AirTile();
+			return new AirTile(position);
 		}
 
 
@@ -432,10 +433,7 @@
 			{
 				for (int y = 0; y < mTileMap.GetLength(1); y++)
 				{
-					Vector2 newMin = new Vector2(mTileSize * x, mTileSize * y);
-					Rect2f tileRect = new Rect2f(newMin, newMin + offset);
-
-					mTileMap[x, y].Update(gameTime, tileRect);
+					mTileMap[x, y].Update(gameTime);
 				}
 			}
 		}
@@ -456,10 +454,9 @@
 				{
 					Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-					if (mTileMap[x, y].pEnabled && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(tileTopLeft, mTileSize), entity.ColliderBounds()))
+					if (mTileMap[x, y].pEnabled && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(), entity.ColliderBounds()))
 					{
-						Rect2f tileCollideBounds = mTileMap[x, y].GetBounds(tileTopLeft, mTileSize);
-						mTileMap[x, y].OnEntityIntersect(entity, tileCollideBounds);
+						mTileMap[x, y].OnEntityIntersect(entity);
 					}
 				}
 			}
@@ -765,7 +762,7 @@
 
 					Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-					CollisionResults collisionResults = mTileMap[x, y].Collide(entity, tileTopLeft, mTileSize, gameTime);
+					CollisionResults collisionResults = mTileMap[x, y].Collide(entity, gameTime);
 
 					if (collisionResults.Collided)
 					{
@@ -784,7 +781,7 @@
 
 				Tile tile = mTileMap[point.X, point.Y];
 
-				CollisionResults collisionResults = tile.Collide(entity, tileTopLeft, mTileSize, gameTime);
+				CollisionResults collisionResults = tile.Collide(entity, gameTime);
 
 				if (collisionResults.Collided)
 				{
@@ -838,7 +835,7 @@
 				{
 					Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
 
-					if (mTileMap[x, y].pEnabled && mTileMap[x, y].IsSolid() && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(tileTopLeft, mTileSize), rect))
+					if (mTileMap[x, y].pEnabled && mTileMap[x, y].IsSolid() && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(), rect))
 					{
 						return true;
 					}

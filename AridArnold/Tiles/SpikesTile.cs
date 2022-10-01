@@ -8,7 +8,7 @@
 		/// Spike tile constructor
 		/// </summary>
 		/// <param name="rotation">Orientation of spikes</param>
-		public SpikesTile(CardinalDirection rotation) : base()
+		public SpikesTile(CardinalDirection rotation, Vector2 position) : base(position)
 		{
 			mRotation = rotation;
 		}
@@ -37,7 +37,7 @@
 		/// </summary>
 		/// <param name="entity">Entity that intersected us</param>
 		/// <param name="bounds">Our tile bounds</param>
-		public override void OnEntityIntersect(Entity entity, Rect2f bounds)
+		public override void OnEntityIntersect(Entity entity)
 		{
 			if (entity is Arnold)
 			{
@@ -57,31 +57,33 @@
 		/// <param name="topLeft">Top left position of tile.</param>
 		/// <param name="sideLength">Side length of tile</param>
 		/// <returns>Collision rectangle</returns>
-		public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+		public override Rect2f GetBounds()
 		{
-			const float smallerFactor = 7.0f;
+			const float smallerFactor = 6.2f;
+			float sideLength = sTILE_SIZE;
+			Vector2 position = mPosition;
 
 			switch (mRotation)
 			{
 				case CardinalDirection.Up:
-					topLeft.Y += smallerFactor;
-					topLeft.X += smallerFactor / 2.0f;
+					position.Y += smallerFactor;
+					position.X += smallerFactor / 2.0f;
 					break;
 				case CardinalDirection.Right:
-					topLeft.Y += smallerFactor / 2.0f;
+					position.Y += smallerFactor / 2.0f;
 					break;
 				case CardinalDirection.Left:
-					topLeft.X += smallerFactor;
-					topLeft.Y += smallerFactor / 2.0f;
+					position.X += smallerFactor;
+					position.Y += smallerFactor / 2.0f;
 					break;
 				case CardinalDirection.Down:
-					topLeft.X += smallerFactor / 2.0f;
+					position.X += smallerFactor / 2.0f;
 					break;
 			}
 
 			sideLength -= smallerFactor;
 
-			return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+			return new Rect2f(position, position + new Vector2(sideLength, sideLength));
 		}
 
 		#endregion rCollision

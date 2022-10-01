@@ -18,7 +18,7 @@
 		/// Mushroom tile constructor
 		/// </summary>
 		/// <param name="rotation">Rotation of mushroom</param>
-		public MushroomTile(CardinalDirection rotation) : base()
+		public MushroomTile(CardinalDirection rotation, Vector2 position) : base(position)
 		{
 			mRotation = rotation;
 		}
@@ -54,8 +54,7 @@
 		/// Update the tile
 		/// </summary>
 		/// <param name="gameTime">Frame time</param>
-		/// <param name="bounds">Bounds of the tile. TO DO: Store this in the tile</param>
-		public override void Update(GameTime gameTime, Rect2f bounds)
+		public override void Update(GameTime gameTime)
 		{
 			mBounceAnim.Update(gameTime);
 		}
@@ -93,8 +92,7 @@
 		/// Make the intersecting entity bounce.
 		/// </summary>
 		/// <param name="entity">Entity that intersected us</param>
-		/// <param name="bounds">Our tile bounds</param>
-		public override void OnEntityIntersect(Entity entity, Rect2f bounds)
+		public override void OnEntityIntersect(Entity entity)
 		{
 			const float alpha = 1.4f;
 			const float minVel = 19.5f;
@@ -103,6 +101,7 @@
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 				Rect2f entityBounds = platformingEntity.ColliderBounds();
+				Rect2f bounds = GetBounds();
 
 				bool didBounce = false;
 
@@ -185,20 +184,20 @@
 		/// <param name="sideLength">Side length of tile</param>
 		/// <returns>Collision rectangle</returns>
 		/// <exception cref="NotImplementedException">Requires a valid cardinal direction.</exception>
-		public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+		public override Rect2f GetBounds()
 		{
 			float heightReduction = 6.0f;
 
 			switch (mRotation)
 			{
 				case CardinalDirection.Up:
-					return new Rect2f(topLeft + new Vector2(0.0f, heightReduction), topLeft + new Vector2(sideLength, sideLength));
+					return new Rect2f(mPosition + new Vector2(0.0f, heightReduction), mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE));
 				case CardinalDirection.Right:
-					return new Rect2f(topLeft, topLeft + new Vector2(sideLength - heightReduction, sideLength));
+					return new Rect2f(mPosition, mPosition + new Vector2(sTILE_SIZE - heightReduction, sTILE_SIZE));
 				case CardinalDirection.Down:
-					return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength - heightReduction));
+					return new Rect2f(mPosition, mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE - heightReduction));
 				case CardinalDirection.Left:
-					return new Rect2f(topLeft + new Vector2(heightReduction, 0.0f), topLeft + new Vector2(sideLength, sideLength));
+					return new Rect2f(mPosition + new Vector2(heightReduction, 0.0f), mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE));
 			}
 
 			throw new NotImplementedException();

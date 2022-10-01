@@ -8,7 +8,7 @@
 		/// Mirror tile constructor
 		/// </summary>
 		/// <param name="rotation">Orientation of mirror</param>
-		public MirrorTile(CardinalDirection rotation) : base(rotation)
+		public MirrorTile(CardinalDirection rotation, Vector2 position) : base(rotation, position)
 		{
 		}
 
@@ -35,10 +35,12 @@
 		/// </summary>
 		/// <param name="entity">Entity that intersected us</param>
 		/// <param name="bounds">Our tile bounds</param>
-		public override void OnEntityIntersect(Entity entity, Rect2f bounds)
+		public override void OnEntityIntersect(Entity entity)
 		{
 			if (entity is PlatformingEntity)
 			{
+				Rect2f bounds = GetBounds();
+
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
 				switch (mRotation)
@@ -99,12 +101,10 @@
 		/// Resolve collision with an entity. Note: Only the top side of the mirror is solid.
 		/// </summary>
 		/// <param name="entity">Entity that is colliding with us</param>
-		/// <param name="topLeft">Top left position of this tile</param>
-		/// <param name="sideLength">Side length of this tile</param>
 		/// <param name="gameTime">Frame time</param>
-		public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
+		public override CollisionResults Collide(MovingEntity entity, GameTime gameTime)
 		{
-			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);
+			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), mPosition, sTILE_SIZE, mRotation);
 		}
 
 		#endregion rCollision

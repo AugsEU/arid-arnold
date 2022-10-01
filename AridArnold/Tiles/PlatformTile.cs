@@ -8,7 +8,7 @@
 		/// Platform tile constructor
 		/// </summary>
 		/// <param name="rotation"></param>
-		public PlatformTile(CardinalDirection rotation) : base()
+		public PlatformTile(CardinalDirection rotation, Vector2 position) : base(position)
 		{
 			mRotation = rotation;
 		}
@@ -36,11 +36,9 @@
 		/// Resolve collision with an entity. Note: Some entities can pass through us.
 		/// </summary>
 		/// <param name="entity">Entity that is colliding with us</param>
-		/// <param name="topLeft">Top left position of this tile</param>
-		/// <param name="sideLength">Side length of this tile</param>
 		/// <param name="gameTime">Frame time</param>
 		/// <returns></returns>
-		public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
+		public override CollisionResults Collide(MovingEntity entity, GameTime gameTime)
 		{
 			if (!entity.CollideWithPlatforms())
 			{
@@ -59,7 +57,7 @@
 				}
 			}
 
-			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), topLeft, sideLength, mRotation);
+			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), mPosition, sTILE_SIZE, mRotation);
 		}
 
 

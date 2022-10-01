@@ -3,9 +3,10 @@
 	class StalactiteTile : AirTile
 	{
 		/// <summary>
-		/// StalactiteTile constructor
+		/// Tile with start position
 		/// </summary>
-		public StalactiteTile() : base()
+		/// <param name="position">Start position</param>
+		public StalactiteTile(Vector2 position) : base(position)
 		{
 		}
 

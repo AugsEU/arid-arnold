@@ -32,11 +32,19 @@
 	/// </summary>
 	abstract class Tile
 	{
+		#region rConstants
+
+		public static float sTILE_SIZE;
+
+		#endregion rConstants
+
+
 		#region rMembers
 
 		protected Texture2D mTexture = null;
 		protected bool mEnabled = true;
 		protected AdjacencyType mAdjacency = AdjacencyType.None;
+		protected Vector2 mPosition;
 		protected CardinalDirection mRotation;
 
 		#endregion rMembers
@@ -48,11 +56,13 @@
 		#region rInitialisation 
 
 		/// <summary>
-		/// Tile constructor
+		/// Position
 		/// </summary>
-		public Tile()
+		/// <param name="position">mPosition</param>
+		public Tile(Vector2 position)
 		{
 			mRotation = CardinalDirection.Up;
+			mPosition = position;
 		}
 
 
@@ -78,8 +88,7 @@
 		/// Update the tile
 		/// </summary>
 		/// <param name="gameTime">Frame time</param>
-		/// <param name="bounds">Bounds of the tile. TO DO: Store this in the tile</param>
-		public virtual void Update(GameTime gameTime, Rect2f bounds) { }
+		public virtual void Update(GameTime gameTime) { }
 
 		#endregion rUpdate
 
@@ -202,11 +211,9 @@
 		/// Resolve collision with an entity
 		/// </summary>
 		/// <param name="entity">Entity that is colliding with us</param>
-		/// <param name="topLeft">Top left position of this tile</param>
-		/// <param name="sideLength">Side length of this tile</param>
 		/// <param name="gameTime">Frame time</param>
 		/// <returns></returns>
-		public abstract CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime);
+		public abstract CollisionResults Collide(MovingEntity entity, GameTime gameTime);
 
 
 
@@ -222,20 +229,17 @@
 		/// Called when an entity intersects us. E.g. Arnold passes through a water bottle
 		/// </summary>
 		/// <param name="entity">Entity that intersected us</param>
-		/// <param name="bounds">Our tile bounds</param>
-		public virtual void OnEntityIntersect(Entity entity, Rect2f bounds) { }
+		public virtual void OnEntityIntersect(Entity entity) { }
 
 
 
 		/// <summary>
 		/// Get bounds of this tile.
 		/// </summary>
-		/// <param name="topLeft">Top left position of tile.</param>
-		/// <param name="sideLength">Side length of tile</param>
 		/// <returns>Collision rectangle</returns>
-		public virtual Rect2f GetBounds(Vector2 topLeft, float sideLength)
+		public virtual Rect2f GetBounds()
 		{
-			return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+			return new Rect2f(mPosition, mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE));
 		}
 
 
@@ -262,16 +266,19 @@
 	/// </summary>
 	abstract class SquareTile : Tile
 	{
+		public SquareTile(Vector2 position) : base(position)
+		{
+		}
+
+
 		/// <summary>
 		/// Resolve collision with an entity
 		/// </summary>
 		/// <param name="entity">Entity that is colliding with us</param>
-		/// <param name="topLeft">Top left position of this tile</param>
-		/// <param name="sideLength">Side length of this tile</param>
 		/// <param name="gameTime">Frame time</param>
-		public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
+		public override CollisionResults Collide(MovingEntity entity, GameTime gameTime)
 		{
-			return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), GetBounds(topLeft, sideLength));
+			return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), GetBounds());
 		}
 
 
@@ -296,6 +303,14 @@
 	class AirTile : Tile
 	{
 		/// <summary>
+		/// Tile with start position
+		/// </summary>
+		/// <param name="position">Start position</param>
+		public AirTile(Vector2 position) : base(position)
+		{
+		}
+
+		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
 		/// <param name="content">Monogame content manager</param>
@@ -308,17 +323,21 @@
 		/// Do not collide with the entity.
 		/// </summary>
 		/// <param name="entity">Entity that is colliding with us</param>
-		/// <param name="topLeft">Top left position of this tile</param>
-		/// <param name="sideLength">Side length of this tile</param>
 		/// <param name="gameTime">Frame time</param>
 		/// <returns></returns>
-		public override CollisionResults Collide(MovingEntity entity, Vector2 topLeft, float sideLength, GameTime gameTime)
+		public override CollisionResults Collide(MovingEntity entity, GameTime gameTime)
 		{
 			// No collision.
 			return CollisionResults.None;
 		}
 
-		public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+
+
+		/// <summary>
+		/// Get empty bounds
+		/// </summary>
+		/// <returns>Zero bounds</returns>
+		public override Rect2f GetBounds()
 		{
 			return new Rect2f(Vector2.Zero, Vector2.Zero);
 		}
@@ -344,9 +363,22 @@
 	/// </summary>
 	class InteractableTile : AirTile
 	{
-		public override Rect2f GetBounds(Vector2 topLeft, float sideLength)
+		/// <summary>
+		/// Tile with start position
+		/// </summary>
+		/// <param name="position">Start position</param>
+		public InteractableTile(Vector2 position) : base(position)
 		{
-			return new Rect2f(topLeft, topLeft + new Vector2(sideLength, sideLength));
+		}
+
+
+		/// <summary>
+		/// Get normal bounds
+		/// </summary>
+		/// <returns>Square bounds</returns>
+		public override Rect2f GetBounds()
+		{
+			return new Rect2f(mPosition, mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE));
 		}
 	}
 
@@ -359,6 +391,16 @@
 	/// </summary>
 	class WallTile : SquareTile
 	{
+		/// <summary>
+		/// Tile with start position
+		/// </summary>
+		/// <param name="position">Start position</param>
+		public WallTile(Vector2 position) : base(position)
+		{
+		}
+
+
+
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
