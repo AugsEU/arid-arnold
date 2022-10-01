@@ -542,7 +542,12 @@
 		/// </summary>
 		protected void Jump()
 		{
-			mVelocity = -mJumpSpeed * GravityVecNorm();
+			float currentYVelocity = -Vector2.Dot(GravityVecNorm(), mVelocity);
+
+			if (currentYVelocity < mJumpSpeed)
+			{
+				mVelocity = -mJumpSpeed * GravityVecNorm();
+			}
 		}
 
 
