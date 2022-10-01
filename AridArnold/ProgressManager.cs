@@ -180,7 +180,7 @@
 		public int GetTotalLevelNumber()
 		{
 			int total = 0;
-			for(int w = 0; w < mCurrentLevel.mWorldIndex; w++)
+			for (int w = 0; w < mCurrentLevel.mWorldIndex; w++)
 			{
 				total += mWorldData[w].mLevels.Length;
 			}
@@ -210,7 +210,7 @@
 		public LevelPoint GetNextLevelPoint(LevelPoint levelPoint)
 		{
 			levelPoint.mLevel += 1;
-			if(levelPoint.mLevel >= mWorldData[levelPoint.mWorldIndex].mLevels.Length)
+			if (levelPoint.mLevel >= mWorldData[levelPoint.mWorldIndex].mLevels.Length)
 			{
 				levelPoint.mLevel = 0;
 				levelPoint.mWorldIndex += 1;

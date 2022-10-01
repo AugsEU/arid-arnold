@@ -123,7 +123,7 @@
 		{
 			int num = Next();
 
-			return (num * 1.0f) / (float)M;
+			return (num * 1.0f) / M;
 		}
 
 

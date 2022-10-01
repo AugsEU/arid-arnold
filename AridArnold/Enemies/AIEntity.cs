@@ -96,7 +96,7 @@
 		{
 			//Make random deterministic based on player movement.
 			mRandom.SetSeed(mStartSeed);
-			mRandom.ChugNumber((int)(mFrameNum / 15));
+			mRandom.ChugNumber(mFrameNum / 15);
 
 			int entityNum = EntityManager.I.GetEntityNum();
 

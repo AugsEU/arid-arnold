@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// A file that stores ghost information
@@ -53,12 +51,12 @@ namespace AridArnold
 		{
 			//Write header.
 			bw.Write(FILE_MAGIC);
-			bw.Write((int)mGhostInfos.Count);
+			bw.Write(mGhostInfos.Count);
 
 			//Write data.
 			for (int i = 0; i < mGhostInfos.Count; i++)
 			{
-				bw.Write((int)mGhostInfos[i].Count);
+				bw.Write(mGhostInfos[i].Count);
 				foreach (GhostInfo info in mGhostInfos[i])
 				{
 					bw.Write(info.position.X); bw.Write(info.position.Y);
@@ -107,7 +105,7 @@ namespace AridArnold
 		/// <summary>
 		/// Called when read fails mid-way through
 		/// </summary>
-		protected override void AbortRead() 
+		protected override void AbortRead()
 		{
 			mGhostInfos.Clear();
 		}

@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Simple class for file manipulation
@@ -129,17 +127,17 @@ namespace AridArnold
 		/// </summary>
 		protected virtual void AbortRead() { }
 
-	#endregion rReadWrite
+		#endregion rReadWrite
 
 
 
-	#region rFileSystem
+		#region rFileSystem
 
-	/// <summary>
-	/// Get file name
-	/// </summary>
-	/// <returns>Full file path</returns>
-	virtual protected string GetFilename()
+		/// <summary>
+		/// Get file name
+		/// </summary>
+		/// <returns>Full file path</returns>
+		virtual protected string GetFilename()
 		{
 			return mFileName;
 		}

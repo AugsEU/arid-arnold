@@ -175,7 +175,7 @@ namespace AridArnold
 		/// <returns>True if colour and hexcode match</returns>
 		public static bool CompareHEX(Color color, ulong hexCode)
 		{
-			ulong colourHex = (ulong)(color.B) + ((ulong)(color.G) << 8) + +((ulong)(color.R) << 16);
+			ulong colourHex = color.B + ((ulong)(color.G) << 8) + +((ulong)(color.R) << 16);
 
 			return colourHex == hexCode;
 		}

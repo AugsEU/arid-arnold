@@ -225,9 +225,9 @@
 		public string FrameTimeToString(int frame)
 		{
 			int ms = (int)(frame * (1000.0f / 60.0f));
-			int cs = (int)(ms / 10);
-			int s = (int)(cs / 100);
-			int m = (int)(s / 60);
+			int cs = ms / 10;
+			int s = cs / 100;
+			int m = s / 60;
 
 
 			if (m == 0)
