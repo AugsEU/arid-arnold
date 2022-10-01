@@ -452,8 +452,6 @@
 			{
 				for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
 				{
-					Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
-
 					if (mTileMap[x, y].pEnabled && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(), entity.ColliderBounds()))
 					{
 						mTileMap[x, y].OnEntityIntersect(entity);
@@ -760,8 +758,6 @@
 						continue;
 					}
 
-					Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
-
 					CollisionResults collisionResults = mTileMap[x, y].Collide(entity, gameTime);
 
 					if (collisionResults.Collided)
@@ -777,8 +773,6 @@
 			for (int i = 0; i < results.Count; i++)
 			{
 				Point point = results[i].coord;
-				Vector2 tileTopLeft = mTileMapPos + new Vector2(point.X, point.Y) * mTileSize;
-
 				Tile tile = mTileMap[point.X, point.Y];
 
 				CollisionResults collisionResults = tile.Collide(entity, gameTime);
@@ -833,8 +827,6 @@
 			{
 				for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
 				{
-					Vector2 tileTopLeft = mTileMapPos + new Vector2(x, y) * mTileSize;
-
 					if (mTileMap[x, y].pEnabled && mTileMap[x, y].IsSolid() && Collision2D.BoxVsBox(mTileMap[x, y].GetBounds(), rect))
 					{
 						return true;
