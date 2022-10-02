@@ -47,6 +47,8 @@
 		protected Vector2 mPosition;
 		protected CardinalDirection mRotation;
 
+		private Rect2f? mBoundsCache;
+
 		#endregion rMembers
 
 
@@ -63,6 +65,7 @@
 		{
 			mRotation = CardinalDirection.Up;
 			mPosition = position;
+			mBoundsCache = null;
 		}
 
 
@@ -237,7 +240,23 @@
 		/// Get bounds of this tile.
 		/// </summary>
 		/// <returns>Collision rectangle</returns>
-		public virtual Rect2f GetBounds()
+		public Rect2f GetBounds()
+		{
+			if(mBoundsCache == null)
+			{
+				mBoundsCache = CalculateBounds();
+			}
+
+			return mBoundsCache.Value;
+		}
+
+
+
+		/// <summary>
+		/// Get bounds of this tile.
+		/// </summary>
+		/// <returns>Collision rectangle</returns>
+		protected virtual Rect2f CalculateBounds()
 		{
 			return new Rect2f(mPosition, mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE));
 		}
@@ -337,7 +356,7 @@
 		/// Get empty bounds
 		/// </summary>
 		/// <returns>Zero bounds</returns>
-		public override Rect2f GetBounds()
+		protected override Rect2f CalculateBounds()
 		{
 			return new Rect2f(Vector2.Zero, Vector2.Zero);
 		}
@@ -376,7 +395,7 @@
 		/// Get normal bounds
 		/// </summary>
 		/// <returns>Square bounds</returns>
-		public override Rect2f GetBounds()
+		protected override Rect2f CalculateBounds()
 		{
 			return new Rect2f(mPosition, mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE));
 		}

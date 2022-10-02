@@ -184,7 +184,7 @@
 		/// <param name="sideLength">Side length of tile</param>
 		/// <returns>Collision rectangle</returns>
 		/// <exception cref="NotImplementedException">Requires a valid cardinal direction.</exception>
-		public override Rect2f GetBounds()
+		protected override Rect2f CalculateBounds()
 		{
 			float heightReduction = 6.0f;
 

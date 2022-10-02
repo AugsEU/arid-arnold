@@ -57,7 +57,7 @@
 		/// <param name="topLeft">Top left position of tile.</param>
 		/// <param name="sideLength">Side length of tile</param>
 		/// <returns>Collision rectangle</returns>
-		public override Rect2f GetBounds()
+		protected override Rect2f CalculateBounds()
 		{
 			const float smallerFactor = 6.2f;
 			float sideLength = sTILE_SIZE;
