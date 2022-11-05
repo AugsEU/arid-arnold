@@ -26,6 +26,10 @@ namespace AridArnold
 		private SpriteBatch _spriteBatch;
 		private Rectangle windowedRect;
 		private int mSlowDownCount;
+		private Texture2D mDummyTexture;
+
+		// Hack
+		private static Main _self;
 
 		#endregion rMembers
 
@@ -52,6 +56,8 @@ namespace AridArnold
 			Window.ClientSizeChanged += OnResize;
 
 			mSlowDownCount = 0;
+
+			_self = this;
 		}
 
 
@@ -87,6 +93,9 @@ namespace AridArnold
 			GhostManager.I.Load(Content);
 			ProgressManager.I.Init();
 			InputManager.I.Init();
+
+			mDummyTexture = new Texture2D(GraphicsDevice, 1, 1);
+			mDummyTexture.SetData(new Color[] { Color.White });
 		}
 
 		#endregion rInitialisation
@@ -201,6 +210,8 @@ namespace AridArnold
 
 
 
+
+
 		#region rDraw
 
 		/// <summary>
@@ -296,5 +307,28 @@ namespace AridArnold
 		}
 
 		#endregion rDraw
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Get the graphics device
+		/// </summary>
+		public static GraphicsDevice GetGraphicsDevice()
+		{
+			return _self.GraphicsDevice;
+		}
+
+
+		/// <summary>
+		/// Get a dummy white texture.
+		/// </summary>
+		public static Texture2D GetDummyTexture()
+		{
+			return _self.mDummyTexture;
+		}
+
+		#endregion rUtility
 	}
 }

@@ -210,19 +210,17 @@ namespace AridArnold
 			Point min = new Point((int)rect2f.min.X, (int)rect2f.min.Y);
 			Point max = new Point((int)rect2f.max.X, (int)rect2f.max.Y);
 
-			int width = max.X - min.X;
-			int height = max.Y - min.Y;
+			DrawRect(info, new Rectangle(min, max), col);
+		}
 
-			Texture2D rect = new Texture2D(info.device, width, height);
 
-			Color[] data = new Color[width * height];
-			for (int i = 0; i < data.Length; ++i)
-			{
-				data[i] = col;
-			}
-			rect.SetData(data);
 
-			info.spriteBatch.Draw(rect, rect2f.min, Color.White);
+		/// <summary>
+		/// Draw a simple rectangle. Used mostly for debugging
+		/// </summary>
+		public static void DrawRect(DrawInfo info, Rectangle rect, Color col)
+		{
+			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, col);
 		}
 
 

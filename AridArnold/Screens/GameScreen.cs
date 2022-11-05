@@ -32,6 +32,8 @@
 
 		SpriteFont mPixelFont;
 
+		SpeechBoxRenderer mSmartTextBlock;
+
 		#endregion rMembers
 
 
@@ -52,6 +54,9 @@
 			mGameArea = null;
 			mLeftUI = null;
 			mRightUI = null;
+
+
+			mSmartTextBlock = new SpeechBoxRenderer(new SmartTextBlock("Content\\Text\\EN\\test_text.txt", 20), 228.0f, 1.0f, new Vector2(300.0f, 300.0f), FontManager.I.GetFont("Pixica Micro-24"), 5.0f, -2.0f);
 		}
 
 
@@ -64,6 +69,8 @@
 		{
 			FXManager.I.Clear();
 			levelToBegin.Begin(mContentManager);
+
+
 		}
 
 
@@ -90,6 +97,8 @@
 			mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
 			mLifeTexture = content.Load<Texture2D>("UI/Arnold-Life");
 			mUIBG = content.Load<Texture2D>("UI/ui_bg");
+
+			mSmartTextBlock.LoadContent(content);
 		}
 
 		#endregion
@@ -215,6 +224,8 @@
 			EntityManager.I.Draw(info);
 			TileManager.I.Draw(info);
 			FXManager.I.Draw(info);
+
+			mSmartTextBlock.Draw(info);
 
 			info.spriteBatch.End();
 		}
@@ -417,6 +428,7 @@
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
+			mSmartTextBlock.Update(gameTime);
 
 			LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
 
