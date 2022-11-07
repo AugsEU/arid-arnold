@@ -1,8 +1,17 @@
 ﻿namespace AridArnold
 {
+	struct SpeechBoxStyle
+	{
+		public SpriteFont mFont;
+		public float mLeading;
+		public float mKerning;
+		public float mWidth;
+		public float mSpeed;
+	}
+
 	/// <summary>
 	/// Class for rendering speech boxes.
-	/// </summary>
+	/// </summary> 
 	internal class SpeechBoxRenderer
 	{
 		#region rConstants
@@ -21,21 +30,17 @@
 		// Text
 		SmartTextBlock mCurrentBlock;
 		List<SpeechBoxLetter> mLetters;
+		SpeechBoxStyle mStyle;
 
 		//Transform
-		float mWidth;
 		Vector2 mBottomLeft;
 		Vector2 mTopLeft;
-		float mLeading;
-		float mKerning;
-		float mSpeed;
 
 		//Internal Data
 		Vector2 mCharHead;
 		Vector2 mCharSize;
 
 		//Textures
-		SpriteFont mFont;
 		Texture2D mSpikeTexture;
 
 		#endregion rMembers
@@ -50,21 +55,17 @@
 		/// <summary>
 		/// Construct speech box renderer
 		/// </summary>
-		public SpeechBoxRenderer(SmartTextBlock textBlock, float width, float scrollSpeed, Vector2 bottomLeft, SpriteFont font, float leading, float kerning)
+		public SpeechBoxRenderer(string stringID, Vector2 bottomLeft, SpeechBoxStyle style)
 		{
-			mFont = font;
-			mCurrentBlock = textBlock;
-			mWidth = width;
+			mStyle = style;
+			mCurrentBlock = new SmartTextBlock(stringID, 20); //TO DO: Calculate text speed as a function of scroll speed.
 			mLetters = new List<SpeechBoxLetter>();
-			mSpeed = scrollSpeed;
 			mBottomLeft = bottomLeft;
 
-			mCharSize = font.MeasureString("M");
+			mCharSize = mStyle.mFont.MeasureString("M");
 			mCharSize.Y /= 2.0f;
 			mCharHead = new Vector2(0.0f , -GetNewLineSize());
 			mTopLeft = mBottomLeft + mCharHead;
-			mLeading = leading;
-			mKerning = kerning;
 		}
 
 
@@ -97,7 +98,7 @@
 				letter.Update(gameTime);
 			}
 
-			if ((mCharHead.Y + GetNewLineSize()) < 0.0f)
+			if (!IsStopped() && (mCharHead.Y + GetNewLineSize()) < 0.0f)
 			{
 				bool newLetter = mCurrentBlock.AdvanceTimeStep();
 
@@ -115,15 +116,39 @@
 		/// </summary>
 		void ScrollLettersUp(float dt)
 		{
-			foreach(SpeechBoxLetter letter in mLetters)
+			float dy = -dt * mStyle.mSpeed;
+			foreach (SpeechBoxLetter letter in mLetters)
 			{
-				letter.MoveUp(dt * mSpeed);
+				letter.MoveUp(-dy);
 			}
 
-			mCharHead.Y -= dt * mSpeed;
-			mTopLeft.Y -= dt * mSpeed;
+			mCharHead.Y += dy;
+			mTopLeft.Y += dy;
+
+			if(IsStopped())
+			{
+				mBottomLeft.Y += dy;
+			}
 		}
 
+
+		/// <summary>
+		/// Stops the text block
+		/// </summary>
+		public void Stop()
+		{
+			mCurrentBlock = null;
+		}
+
+
+
+		/// <summary>
+		/// Are we done with the text block?
+		/// </summary>
+		public bool IsStopped()
+		{
+			return mCurrentBlock is null;
+		}
 		#endregion
 
 
@@ -152,9 +177,9 @@
 		/// </summary>
 		public void DrawBox(DrawInfo info)
 		{
-			Point rectPosition = new Point((int)mTopLeft.X - PADDING, (int)mTopLeft.Y);
-			int height = (int)(mBottomLeft.Y - mTopLeft.Y);
-			int width = (int)mWidth + 2 * PADDING;
+			Point rectPosition = new Point((int)mTopLeft.X - PADDING, (int)mTopLeft.Y - PADDING);
+			int height = (int)(mBottomLeft.Y - mTopLeft.Y) + PADDING;
+			int width = (int)mStyle.mWidth + 2 * PADDING;
 			Rectangle bgRectangle = new Rectangle(rectPosition.X , rectPosition.Y, width, height);
 
 			// Draw bg
@@ -171,8 +196,11 @@
 			Util.DrawRect(info, leftRect, BORDER_COLOR);
 			Util.DrawRect(info, rightRect, BORDER_COLOR);
 
-			Vector2 spikePos = new Vector2(rectPosition.X + 30, rectPosition.Y + height);
-			info.spriteBatch.Draw(mSpikeTexture, spikePos, Color.White);
+			if (!IsStopped())
+			{
+				Vector2 spikePos = new Vector2(rectPosition.X + 30, rectPosition.Y + height);
+				info.spriteBatch.Draw(mSpikeTexture, spikePos, Color.White);
+			}
 		}
 
 		#endregion rDraw
@@ -190,6 +218,12 @@
 		{
 			char charToPrint = mCurrentBlock.GetCurrentChar();
 
+			if(charToPrint == '\0')
+			{
+				Stop();
+				return;
+			}
+
 			if (charToPrint == '\n')
 			{
 				CRLF();
@@ -198,7 +232,7 @@
 			{
 				if (ShouldDrawChar(charToPrint))
 				{
-					mLetters.Add(new SpeechBoxLetter(mFont, charToPrint, mCharHead + mBottomLeft, TEXT_COLOR));
+					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, mCharHead + mBottomLeft + new Vector2(0.0f, -GetNewLineSize() / 2.0f), TEXT_COLOR));
 					mCharHead.X += GetCharWidth();
 
 					if(charToPrint == ' ')
@@ -207,7 +241,7 @@
 						float endOfWordX = ScanToEndOfWord();
 						float wordWidth = endOfWordX - mCharHead.X;
 
-						if (endOfWordX > mWidth && wordWidth < mWidth)
+						if (endOfWordX > mStyle.mWidth && wordWidth < mStyle.mWidth)
 						{
 							CRLF();
 						}
@@ -242,7 +276,7 @@
 		/// </summary>
 		float GetNewLineSize()
 		{
-			return mCharSize.Y + mLeading;
+			return mCharSize.Y + mStyle.mLeading;
 		}
 
 
@@ -252,7 +286,7 @@
 		/// </summary>
 		float GetCharWidth()
 		{
-			return mCharSize.X + mKerning;
+			return mCharSize.X + mStyle.mKerning;
 		}
 
 
@@ -266,10 +300,16 @@
 			float endOfWordX = mCharHead.X;
 			char currentChar = mCurrentBlock.GetChar(charIndex);
 
-			while(currentChar != ' ' && currentChar != '\0')
+			while (currentChar != ' ' && currentChar != '\0')
 			{
 				charIndex++;
 				currentChar = mCurrentBlock.GetChar(charIndex);
+
+				if(currentChar == ' ' || currentChar == '\0')
+				{
+					break;
+				}
+
 				endOfWordX += GetCharWidth();
 			}
 
@@ -287,5 +327,23 @@
 		}
 
 		#endregion rPlacement
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Gets the mood of the block
+		/// </summary>
+		public SmartTextBlock.TextMood GetMood()
+		{
+			if(!IsStopped())
+			{
+				mCurrentBlock.GetMood();
+			}
+
+			return SmartTextBlock.TextMood.Normal;
+		}
+
+		#endregion rUtility
 	}
 }

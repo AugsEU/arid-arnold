@@ -37,9 +37,9 @@
 		/// <summary>
 		/// Initialise using a file path
 		/// </summary>
-		public SmartTextBlock(string path, int defaultLetterTime)
+		public SmartTextBlock(string stringID, int defaultLetterTime)
 		{
-			mText = File.ReadAllText(path);
+			mText = LanguageManager.GetText(stringID);
 			mCharHead = -1;
 			mLetterFrameCount = 0;
 			mDefaultFrameCount = defaultLetterTime;

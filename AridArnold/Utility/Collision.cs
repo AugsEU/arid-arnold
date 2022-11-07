@@ -51,6 +51,12 @@ namespace AridArnold
 			max = new Vector2(rect.X + rect.Width, rect.Y + rect.Height);
 		}
 
+		public Rect2f(Vector2 _min, Texture2D texture)
+		{
+			min = _min;
+			max = new Vector2(_min.X + texture.Width, _min.Y + texture.Height);
+		}
+
 		public float Width
 		{
 			get { return Math.Abs(max.X - min.X); }
