@@ -18,6 +18,7 @@
 	{
 		#region rConstants
 
+		//Define layer depths of objects.
 		public const float LAYER_DEFAULT = 0.0f;
 		
 		public const float LAYER_TILE = 0.19f;
@@ -25,6 +26,10 @@
 		public const float LAYER_TEXT_BOX = 0.27f;
 		public const float LAYER_TEXT_SHADOW = 0.28f;
 		public const float LAYER_TEXT = 0.29f;
+
+		//Add this constant to something to make it slightly infront of something within the same "layer".
+		public const float FRONT_EPSILON = 0.0001f;
+		public const float BACK_EPSILON = -FRONT_EPSILON;
 
 		#endregion rConstants
 

@@ -2,6 +2,12 @@
 {
 	internal class Barbara : NPC
 	{
+		#region rConstants
+
+		const float TALK_DISTANCE = 30.0f;
+
+		#endregion rConstants
+
 		#region rInitialisation
 
 		/// <summary>
@@ -37,7 +43,7 @@
 		{
 			if(!HasAnyBoxes())
 			{
-				if(EntityManager.I.AnyNearMe(123.0f, this, typeof(Arnold)))
+				if(EntityManager.I.AnyNearMe(TALK_DISTANCE, this, typeof(Arnold)))
 				{
 					AddDialogBox("test_text");
 				}

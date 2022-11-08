@@ -8,8 +8,13 @@
 		#region rConstants
 
 		const double MOUTH_OPEN_TIME = 400.0f;
+		static Vector2 DIALOG_OFFSET = new Vector2(-10.0f, 0.0f);
 
 		#endregion rConstants
+
+
+
+
 
 		#region rMembers
 
@@ -143,7 +148,7 @@
 				GetCurrentBlock().Stop();
 			}
 
-			mTextBlocks.Add(new SpeechBoxRenderer(stringID, mPosition, mStyle));
+			mTextBlocks.Add(new SpeechBoxRenderer(stringID, mPosition + DIALOG_OFFSET, mStyle));
 		}
 
 

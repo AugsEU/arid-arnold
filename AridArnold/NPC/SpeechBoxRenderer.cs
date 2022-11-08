@@ -17,7 +17,7 @@
 	{
 		#region rConstants
 
-		static Color BG_COLOR = new Color(0, 10, 20, 100);
+		static Color BG_COLOR = new Color(0, 10, 20, 200);
 		static Color BORDER_COLOR = new Color(56, 89, 122);
 		static Color TEXT_COLOR = Color.Wheat;
 
@@ -188,7 +188,7 @@
 			if (!IsStopped())
 			{
 				Vector2 spikePos = new Vector2(rectPosition.X + 30, rectPosition.Y + height);
-				MonoDraw.DrawTextureDepth(info, mStyle.mSpikeTexture, spikePos, MonoDraw.LAYER_TEXT_BOX);
+				MonoDraw.DrawTextureDepth(info, mStyle.mSpikeTexture, spikePos, MonoDraw.LAYER_TEXT_BOX + MonoDraw.FRONT_EPSILON);
 			}
 		}
 
