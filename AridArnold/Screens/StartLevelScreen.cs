@@ -77,18 +77,18 @@
 			info.device.SetRenderTarget(mScreenTarget);
 			info.device.Clear(new Color(0, 0, 0));
 
-			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
 									BlendState.AlphaBlend,
 									SamplerState.PointClamp,
-									DepthStencilState.None,
+									DepthStencilState.Default,
 									RasterizerState.CullNone);
-			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.Gold, (ProgressManager.I.GetWorldData().name));
+			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.Gold, ProgressManager.I.GetWorldData().name, MonoDraw.LAYER_TEXT);
 
 			centre.Y += 25.0f;
 
 			int levelNumber = ProgressManager.I.GetTotalLevelNumber();
 
-			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "Level " + levelNumber);
+			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "Level " + levelNumber, MonoDraw.LAYER_TEXT);
 
 			info.spriteBatch.End();
 

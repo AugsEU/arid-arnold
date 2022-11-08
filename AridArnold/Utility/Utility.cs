@@ -3,21 +3,6 @@
 namespace AridArnold
 {
 	/// <summary>
-	/// Info needed to draw
-	/// </summary>
-	struct DrawInfo
-	{
-		public GameTime gameTime;
-		public SpriteBatch spriteBatch;
-		public GraphicsDeviceManager graphics;
-		public GraphicsDevice device;
-	}
-
-
-
-
-
-	/// <summary>
 	/// Cardinal direciton enum
 	/// </summary>
 	enum CardinalDirection
@@ -183,49 +168,6 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Draw a string centred at a position
-		/// </summary>
-		/// <param name="sb">Sprite batch</param>
-		/// <param name="font">Font to draw text in</param>
-		/// <param name="position">Centre position</param>
-		/// <param name="color">Colour of text</param>
-		/// <param name="text">Text to draw</param>
-		public static void DrawStringCentred(SpriteBatch sb, SpriteFont font, Vector2 position, Color color, string text)
-		{
-			Vector2 size = font.MeasureString(text);
-
-			sb.DrawString(font, text, position - size / 2, color);
-		}
-
-
-
-		/// <summary>
-		/// Draw a simple rectangle. Used mostly for debugging
-		/// </summary>
-		/// <param name="info">Info needed to draw</param>
-		/// <param name="rect2f">Rectangle to draw</param>
-		/// <param name="col">Color to draw rectangle in</param>
-		public static void DrawRect(DrawInfo info, Rect2f rect2f, Color col)
-		{
-			Point min = new Point((int)rect2f.min.X, (int)rect2f.min.Y);
-			Point max = new Point((int)rect2f.max.X, (int)rect2f.max.Y);
-
-			DrawRect(info, new Rectangle(min, max), col);
-		}
-
-
-
-		/// <summary>
-		/// Draw a simple rectangle. Used mostly for debugging
-		/// </summary>
-		public static void DrawRect(DrawInfo info, Rectangle rect, Color col)
-		{
-			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, col);
-		}
-
-
-
-		/// <summary>
 		/// Brighten colour linearly
 		/// </summary>
 		/// <param name="col">Initial colour, output value</param>
@@ -235,39 +177,6 @@ namespace AridArnold
 			col.R = (byte)((col.R * (1 - bright)) + (255 * bright));
 			col.G = (byte)((col.G * (1 - bright)) + (255 * bright));
 			col.B = (byte)((col.B * (1 - bright)) + (255 * bright));
-		}
-
-
-
-		/// <summary>
-		/// Calculate rotation offset so we can rotate about the centre. For squares
-		/// </summary>
-		/// <param name="rotation">Rotation in rads</param>
-		/// <param name="height">Square height</param>
-		/// <returns>Rotation offset used in draw call</returns>
-		public static Vector2 CalcRotationOffset(float rotation, float height)
-		{
-			return CalcRotationOffset(rotation, height, height);
-		}
-
-
-
-		/// <summary>
-		/// Calculate rotation offset so we can rotate about the centre. For rectangles
-		/// </summary>
-		/// <param name="rotation">Rotation in rads</param>
-		/// <param name="width">Rectangle width</param>
-		/// <param name="height">Rectangle height</param>
-		/// <returns>Rotation offset used in draw call</returns>
-		public static Vector2 CalcRotationOffset(float rotation, float width, float height)
-		{
-			float c = MathF.Cos(rotation);
-			float s = MathF.Sin(-rotation);
-
-			Vector2 oldCentre = new Vector2(width / 2.0f, height / 2.0f);
-			Vector2 newCentre = new Vector2(oldCentre.X * c - oldCentre.Y * s, oldCentre.X * s + oldCentre.Y * c);
-
-			return oldCentre - newCentre;
 		}
 
 

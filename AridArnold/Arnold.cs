@@ -372,9 +372,9 @@
 					break;
 			}
 
-			Vector2 rotationOffset = Util.CalcRotationOffset(rotation, texture.Width, texture.Height);
+			Vector2 rotationOffset = MonoDraw.CalcRotationOffset(rotation, texture.Width, texture.Height);
 
-			info.spriteBatch.Draw(texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, 0.0f);
+			MonoDraw.DrawTexture(info, texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, MonoDraw.LAYER_DEFAULT);
 		}
 
 

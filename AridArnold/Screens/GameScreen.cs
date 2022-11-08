@@ -150,13 +150,13 @@
 			info.device.SetRenderTarget(mScreenTarget);
 			info.device.Clear(new Color(0, 0, 0));
 
-			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
 									BlendState.AlphaBlend,
 									SamplerState.PointClamp,
-									DepthStencilState.None,
+									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
-			info.spriteBatch.Draw(mUIBG, Vector2.Zero, Color.White);
+			MonoDraw.DrawTexture(info, mUIBG, Vector2.Zero);
 
 			Rectangle gameAreaRect = GetGameAreaRect();
 			DrawGameArea(info, gameAreaRect);
@@ -178,7 +178,7 @@
 		/// <param name="destRect"></param>
 		private void DrawGameArea(DrawInfo info, Rectangle destRect)
 		{
-			info.spriteBatch.Draw(mGameArea, destRect, Color.White);
+			MonoDraw.DrawTexture(info, mGameArea, destRect);
 		}
 
 
@@ -210,10 +210,10 @@
 
 			info.device.Clear(clearCol);
 
-			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
 									BlendState.AlphaBlend,
 									SamplerState.PointClamp,
-									DepthStencilState.None,
+									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
 			GhostManager.I.Draw(info);
@@ -236,8 +236,8 @@
 			Rectangle leftRectangle = new Rectangle((gameAreaRect.X - mLeftUI.Width) / 2, gameAreaRect.Y, mLeftUI.Width, mLeftUI.Height);
 			Rectangle rightRectangle = new Rectangle((mScreenTarget.Width + gameAreaRect.X + gameAreaRect.Width - mRightUI.Width) / 2, gameAreaRect.Y, mRightUI.Width, mRightUI.Height);
 
-			info.spriteBatch.Draw(mLeftUI, leftRectangle, Color.White);
-			info.spriteBatch.Draw(mRightUI, rightRectangle, Color.White);
+			MonoDraw.DrawTexture(info, mLeftUI, leftRectangle);
+			MonoDraw.DrawTexture(info, mRightUI, rightRectangle);
 		}
 
 
@@ -269,10 +269,10 @@
 			info.device.SetRenderTarget(mLeftUI);
 			info.device.Clear(Color.Transparent);
 
-			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
 						BlendState.AlphaBlend,
 						SamplerState.PointClamp,
-						DepthStencilState.None,
+						DepthStencilState.Default,
 						RasterizerState.CullNone);
 
 			int lives = ProgressManager.I.pLives;
@@ -285,12 +285,12 @@
 
 			for (int i = 0; i < lives; i++)
 			{
-				info.spriteBatch.Draw(mLifeTexture, lifeRect, Color.White);
+				MonoDraw.DrawTexture(info, mLifeTexture, lifeRect);
 				lifeRect.Y += texHeight + 10;
 			}
 
-			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetWorldData().name);
-			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + (ProgressManager.I.GetTotalLevelNumber()));
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetWorldData().name, MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + ProgressManager.I.GetTotalLevelNumber(), MonoDraw.LAYER_TEXT);
 
 			info.spriteBatch.End();
 		}
@@ -306,21 +306,21 @@
 			info.device.SetRenderTarget(mRightUI);
 			info.device.Clear(Color.Transparent);
 
-			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
 						BlendState.AlphaBlend,
 						SamplerState.PointClamp,
-						DepthStencilState.None,
+						DepthStencilState.Default,
 						RasterizerState.CullNone);
 
-			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 223.0f), Color.White, "Time");
-			Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 238.0f), Color.White, GhostManager.I.GetTime());
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 223.0f), Color.White, "Time", MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 238.0f), Color.White, GhostManager.I.GetTime(), MonoDraw.LAYER_TEXT);
 
 			string timeToBeat = GhostManager.I.GetTimeToBeat();
 
 			if (timeToBeat != "")
 			{
-				Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 283.0f), Color.DarkOliveGreen, "Time to beat");
-				Util.DrawStringCentred(info.spriteBatch, mPixelFont, new Vector2(mRightUI.Width / 2, 298.0f), Color.DarkOliveGreen, timeToBeat);
+				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 283.0f), Color.DarkOliveGreen, "Time to beat", MonoDraw.LAYER_TEXT);
+				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 298.0f), Color.DarkOliveGreen, timeToBeat, MonoDraw.LAYER_TEXT);
 			}
 
 			info.spriteBatch.End();

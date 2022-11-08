@@ -172,7 +172,7 @@
 			Rectangle bgRectangle = new Rectangle(rectPosition.X , rectPosition.Y, width, height);
 
 			// Draw bg
-			Util.DrawRect(info, bgRectangle, BG_COLOR);
+			MonoDraw.DrawRectDepth(info, bgRectangle, BG_COLOR, MonoDraw.LAYER_TEXT_BOX);
 
 			// Draw borders
 			Rectangle topRect = new Rectangle(rectPosition.X - BORDER_WIDTH / 2, rectPosition.Y - BORDER_WIDTH, width + BORDER_WIDTH, BORDER_WIDTH);
@@ -180,15 +180,15 @@
 			Rectangle leftRect = new Rectangle(rectPosition.X - BORDER_WIDTH, rectPosition.Y - BORDER_WIDTH / 2, BORDER_WIDTH, height + BORDER_WIDTH);
 			Rectangle rightRect = new Rectangle(rectPosition.X + width, rectPosition.Y - BORDER_WIDTH / 2, BORDER_WIDTH, height + BORDER_WIDTH);
 
-			Util.DrawRect(info, topRect, BORDER_COLOR);
-			Util.DrawRect(info, bottomRect, BORDER_COLOR);
-			Util.DrawRect(info, leftRect, BORDER_COLOR);
-			Util.DrawRect(info, rightRect, BORDER_COLOR);
+			MonoDraw.DrawRectDepth(info, topRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, bottomRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, leftRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, rightRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
 
 			if (!IsStopped())
 			{
 				Vector2 spikePos = new Vector2(rectPosition.X + 30, rectPosition.Y + height);
-				info.spriteBatch.Draw(mStyle.mSpikeTexture, spikePos, Color.White);
+				MonoDraw.DrawTextureDepth(info, mStyle.mSpikeTexture, spikePos, MonoDraw.LAYER_TEXT_BOX);
 			}
 		}
 

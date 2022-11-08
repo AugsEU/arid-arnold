@@ -69,13 +69,13 @@
 			info.device.SetRenderTarget(mScreenTarget);
 			info.device.Clear(new Color(0, 0, 0));
 
-			info.spriteBatch.Begin(SpriteSortMode.Immediate,
+			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
 									BlendState.AlphaBlend,
 									SamplerState.PointClamp,
-									DepthStencilState.None,
+									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
-			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, Color.White, "YOU WIN");
+			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "YOU WIN", MonoDraw.LAYER_TEXT);
 
 			info.spriteBatch.End();
 

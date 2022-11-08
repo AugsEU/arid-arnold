@@ -94,8 +94,8 @@
 
 			Vector2 dropShadow = drawPos + mShadowOffset;
 
-			Util.DrawStringCentred(info.spriteBatch, mFont, dropShadow, Color.Black, mText);
-			Util.DrawStringCentred(info.spriteBatch, mFont, drawPos, mColor, mText);
+			MonoDraw.DrawStringCentred(info, mFont, dropShadow, Color.Black, mText, MonoDraw.LAYER_TEXT_SHADOW);
+			MonoDraw.DrawStringCentred(info, mFont, drawPos, mColor, mText, MonoDraw.LAYER_TEXT);
 
 		}
 

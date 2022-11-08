@@ -182,7 +182,7 @@
 
 			SpriteEffects effect = mPrevDirection == WalkDirection.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-			info.spriteBatch.Draw(texture, mPosition, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, 0.0f);
+			MonoDraw.DrawTexture(info, texture, mPosition, effect);
 		}
 
 		#endregion rDraw

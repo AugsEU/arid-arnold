@@ -66,7 +66,7 @@
 		/// </summary>
 		public void Draw(DrawInfo drawInfo)
 		{
-			drawInfo.spriteBatch.DrawString(mFont, mCharacter.ToString(), mPosition + mAnimationDisplacement, mColor);
+			MonoDraw.DrawString(drawInfo, mFont, mCharacter.ToString(), mPosition + mAnimationDisplacement, mColor, MonoDraw.LAYER_TEXT);
 		}
 
 		#endregion rDraw

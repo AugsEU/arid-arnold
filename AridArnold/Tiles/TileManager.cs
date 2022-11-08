@@ -547,7 +547,7 @@
 
 			Rectangle sourceRectangle = new Rectangle(tileIndex.X * tileHeight, tileIndex.Y * tileHeight, tileHeight, tileHeight);
 
-			info.spriteBatch.Draw(tileTexture, drawDestination, sourceRectangle, Color.White, rotation, Util.CalcRotationOffset(rotation, tileHeight), effect, 1.0f);
+			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, rotation, MonoDraw.CalcRotationOffset(rotation, tileHeight), effect, MonoDraw.LAYER_TILE);
 		}
 
 

@@ -122,7 +122,7 @@
 				}
 			}
 
-			info.spriteBatch.Draw(textureToDraw, mPosition, Color.White);
+			MonoDraw.DrawTexture(info, textureToDraw, mPosition);
 		}
 
 		#endregion rDraw

@@ -235,10 +235,10 @@ namespace AridArnold
 				RenderTarget2D screenTargetRef = screen.DrawToRenderTarget(frameInfo);
 
 				GraphicsDevice.SetRenderTarget(null);
-				_spriteBatch.Begin(SpriteSortMode.Immediate,
+				_spriteBatch.Begin(SpriteSortMode.FrontToBack,
 									BlendState.AlphaBlend,
 									SamplerState.PointClamp,
-									DepthStencilState.None,
+									DepthStencilState.Default,
 									RasterizerState.CullNone);
 				DrawScreenPixelPerfect(frameInfo, screenTargetRef);
 				_spriteBatch.End();
@@ -265,7 +265,7 @@ namespace AridArnold
 
 			Rectangle destRect = new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
 
-			info.spriteBatch.Draw(screen, destRect, Color.White);
+			MonoDraw.DrawTexture(info, screen, destRect);
 		}
 
 
