@@ -37,7 +37,7 @@
 		public string GetTextPath(string ID)
 		{
 			ID = ID.Replace('.', '\\');
-			return "Content\\Text\\" + GetLanguageCode() + "\\" + ID;
+			return "Content\\Text\\" + GetLanguageCode() + "\\" + ID + ".txt";
 		}
 
 

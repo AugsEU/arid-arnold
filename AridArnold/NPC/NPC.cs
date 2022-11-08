@@ -36,12 +36,23 @@
 		{
 			mStyle = new SpeechBoxStyle();
 			mStyle.mFont = FontManager.I.GetFont("Pixica Micro-24");
-			mStyle.mWidth = 100.0f;
+			mStyle.mWidth = 230.1f;
 			mStyle.mLeading = 5.0f;
 			mStyle.mKerning = -2.0f;
-			mStyle.mSpeed = 10.0f;
+			mStyle.mSpeed = 1.0f;
 
 			mTextBlocks = new List<SpeechBoxRenderer>();
+			mAnimTimer = new MonoTimer();
+			mAnimTimer.Start();
+		}
+
+
+		/// <summary>
+		/// Load base NPC content.
+		/// </summary>
+		public override void LoadContent(ContentManager content)
+		{
+			mStyle.mSpikeTexture = content.Load<Texture2D>("NPC/Dialog/DialogSpike");
 		}
 
 		#endregion rInitialisation
@@ -72,12 +83,29 @@
 
 		#region rDraw
 
+		/// <summary>
+		/// Draw text boxes
+		/// </summary>
+		public override void Draw(DrawInfo info)
+		{
+			foreach (SpeechBoxRenderer renderer in mTextBlocks)
+			{
+				renderer.Draw(info);
+			}
+		}
+
+		/// <summary>
+		/// Draw the NPC talking.
+		/// </summary>
 		protected void DrawTalking(DrawInfo info)
 		{
 			SmartTextBlock.TextMood textMood = GetMood();
 
 			Texture2D textureToDraw = mIdleTexture;
-			if(mAnimTimer.GetElapsedMs() % MOUTH_OPEN_TIME < (MOUTH_OPEN_TIME / 2.0))
+
+			bool timerTalking = mAnimTimer.GetElapsedMs() % MOUTH_OPEN_TIME < (MOUTH_OPEN_TIME / 2.0);
+
+			if(timerTalking && IsTalking())
 			{
 				switch (textMood)
 				{
@@ -108,9 +136,9 @@
 		/// <summary>
 		/// Add a dialog box.(Make the NPC say something)
 		/// </summary>
-		void AddDialogBox(string stringID)
+		protected void AddDialogBox(string stringID)
 		{
-			if (mTextBlocks.Count > 0)
+			if (HasAnyBoxes())
 			{
 				GetCurrentBlock().Stop();
 			}
@@ -135,7 +163,37 @@
 		/// </summary>
 		SmartTextBlock.TextMood GetMood()
 		{
-			return GetCurrentBlock().GetMood();
+			if (HasAnyBoxes())
+			{
+				return GetCurrentBlock().GetMood();
+			}
+
+			return SmartTextBlock.TextMood.Normal;
+		}
+
+
+
+		/// <summary>
+		/// Are we currently saying something?
+		/// </summary>
+		protected bool IsTalking()
+		{
+			if(HasAnyBoxes())
+			{
+				return !GetCurrentBlock().IsStopped();
+			}
+
+			return false;
+		}
+
+
+
+		/// <summary>
+		/// Do we have any dialog boxes?
+		/// </summary>
+		protected bool HasAnyBoxes()
+		{
+			return mTextBlocks.Count > 0;
 		}
 		#endregion rDialog
 	}

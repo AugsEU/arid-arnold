@@ -138,6 +138,31 @@
 			return mRegisteredEntities[index];
 		}
 
+
+		/// <summary>
+		/// Are any entities of a certain type near this entity.
+		/// </summary>
+		public bool AnyNearMe(float distance, Entity nearEntity, Type type)
+		{
+			Vector2 nearEntityPos = nearEntity.GetCentrePos();
+			distance = distance * distance;
+
+			foreach(Entity entity in mRegisteredEntities)
+			{
+				if(entity.GetType() == type && !ReferenceEquals(nearEntity, entity))
+				{
+					float distanceToEntity = (nearEntityPos - entity.GetCentrePos()).LengthSquared();
+
+					if(distanceToEntity < distance)
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
 		#endregion rUtility
 	}
 }

@@ -141,6 +141,18 @@
 			set { mPosition = value; }
 		}
 
+
+
+		/// <summary>
+		/// Get the centre of this entity
+		/// </summary>
+		public Vector2 GetCentrePos()
+		{
+			Rect2f collider = ColliderBounds();
+
+			return (collider.min + collider.max) / 2.0f;
+		}
+
 		#endregion rUtility
 	}
 

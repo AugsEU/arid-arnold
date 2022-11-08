@@ -180,6 +180,10 @@
 			{
 				EntityManager.I.RegisterEntity(new Trundle(pos), content);
 			}
+			else if (Util.CompareHEX(col, 0x8E5CC4))
+			{
+				EntityManager.I.RegisterEntity(new Barbara(pos), content);
+			}
 		}
 
 

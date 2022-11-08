@@ -3,6 +3,7 @@
 	struct SpeechBoxStyle
 	{
 		public SpriteFont mFont;
+		public Texture2D mSpikeTexture;
 		public float mLeading;
 		public float mKerning;
 		public float mWidth;
@@ -40,9 +41,6 @@
 		Vector2 mCharHead;
 		Vector2 mCharSize;
 
-		//Textures
-		Texture2D mSpikeTexture;
-
 		#endregion rMembers
 
 
@@ -68,15 +66,6 @@
 			mTopLeft = mBottomLeft + mCharHead;
 		}
 
-
-
-		/// <summary>
-		/// Load content needed for speech box renderer
-		/// </summary>
-		public void LoadContent(ContentManager content)
-		{
-			mSpikeTexture = content.Load<Texture2D>("NPC/Dialog/DialogSpike");
-		}
 		#endregion rInitialisation
 
 
@@ -199,7 +188,7 @@
 			if (!IsStopped())
 			{
 				Vector2 spikePos = new Vector2(rectPosition.X + 30, rectPosition.Y + height);
-				info.spriteBatch.Draw(mSpikeTexture, spikePos, Color.White);
+				info.spriteBatch.Draw(mStyle.mSpikeTexture, spikePos, Color.White);
 			}
 		}
 
@@ -270,6 +259,22 @@
 		}
 
 
+		/// <summary>
+		/// Returns true if char ends word
+		/// </summary>
+		bool CharEndsWord(char charToPrint)
+		{
+			if (charToPrint == '\n' ||
+				charToPrint == ' ' ||
+				charToPrint == '\0')
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+
 
 		/// <summary>
 		/// Calculates size of new line.
@@ -300,12 +305,12 @@
 			float endOfWordX = mCharHead.X;
 			char currentChar = mCurrentBlock.GetChar(charIndex);
 
-			while (currentChar != ' ' && currentChar != '\0')
+			while (!CharEndsWord(currentChar))
 			{
 				charIndex++;
 				currentChar = mCurrentBlock.GetChar(charIndex);
 
-				if(currentChar == ' ' || currentChar == '\0')
+				if (CharEndsWord(currentChar))
 				{
 					break;
 				}
@@ -338,7 +343,7 @@
 		{
 			if(!IsStopped())
 			{
-				mCurrentBlock.GetMood();
+				return mCurrentBlock.GetMood();
 			}
 
 			return SmartTextBlock.TextMood.Normal;

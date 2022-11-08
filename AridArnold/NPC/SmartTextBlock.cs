@@ -39,11 +39,12 @@
 		/// </summary>
 		public SmartTextBlock(string stringID, int defaultLetterTime)
 		{
-			mText = LanguageManager.GetText(stringID);
+			mText = LanguageManager.I.GetText(stringID);
 			mCharHead = -1;
 			mLetterFrameCount = 0;
 			mDefaultFrameCount = defaultLetterTime;
 			mMood = TextMood.Undecided;
+			CalculateMood();
 		}
 
 		#endregion rInitialise
@@ -124,11 +125,6 @@
 		/// </summary>
 		public TextMood GetMood()
 		{
-			if(mMood==TextMood.Undecided)
-			{
-				throw new InvalidOperationException("Don't have a mood yet!");
-			}
-
 			return mMood;
 		}
 
@@ -182,13 +178,15 @@
 				char letterToAnalyse = mText[forwardHead];
 				
 				//Check for all caps.
-				if(!char.IsUpper(letterToAnalyse))
+				if(!char.IsUpper(letterToAnalyse) && char.IsLetter(letterToAnalyse))
 				{
 					allCaps = false;
 				}
 
 				forwardHead++;
 			}
+
+			forwardHead--;
 
 			if (analysis)
 			{
@@ -248,7 +246,7 @@
 		/// </summary>
 		bool IsDecisionLetter(char letter)
 		{
-			return letter == ' ';
+			return letter == ' ' || letter == '\n' || letter == '\0';
 		}
 
 		#endregion rAnalysis

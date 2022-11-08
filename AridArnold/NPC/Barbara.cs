@@ -21,12 +21,30 @@
 			mIdleTexture = content.Load<Texture2D>("NPC/Barbara/Idle1");
 			mTalkTexture = content.Load<Texture2D>("NPC/Barbara/Talk1");
 			mAngryTexture = content.Load<Texture2D>("NPC/Barbara/Angry1");
+
+			base.LoadContent(content);
 		}
 
 		#endregion rInitialisation
 
 
 		#region rUpdate
+
+		/// <summary>
+		/// Update
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			if(!HasAnyBoxes())
+			{
+				if(EntityManager.I.AnyNearMe(123.0f, this, typeof(Arnold)))
+				{
+					AddDialogBox("test_text");
+				}
+			}
+
+			base.Update(gameTime);
+		}
 
 		public override Rect2f ColliderBounds()
 		{
@@ -47,6 +65,8 @@
 		public override void Draw(DrawInfo info)
 		{
 			DrawTalking(info);
+
+			base.Draw(info);
 		}
 
 		#endregion rDraw
