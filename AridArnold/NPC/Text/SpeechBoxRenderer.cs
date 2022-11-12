@@ -67,7 +67,7 @@
 
 			mCharHeight = mStyle.mFont.MeasureString("M").Y;
 			mCharHeight /= 2.0f;
-			mCharHead = new Vector2(0.0f , -(int)GetNewLineSize());
+			mCharHead = new Vector2(0.0f, -(int)GetNewLineSize());
 			mTopLeft = mBottomLeft + mCharHead;
 
 			mLastDrawnCharHead = mCharHead;
@@ -122,11 +122,11 @@
 
 			mTopLeft.Y += dy;
 
-			if(IsStopped())
+			if (IsStopped())
 			{
 				mBottomLeft.Y += dy;
 
-				if(-mLastDrawnCharHead.Y > GetNewLineSize())
+				if (-mLastDrawnCharHead.Y > GetNewLineSize())
 				{
 					mBottomLeft.Y += dy;
 					mCharHead.Y -= dy;
@@ -200,7 +200,7 @@
 			Point rectPosition = new Point(Util.Round(mTopLeft.X) - PADDING, Util.Round(mTopLeft.Y) - PADDING);
 			int height = Util.Round(mBottomLeft.Y - mTopLeft.Y) + PADDING;
 			int width = (int)mStyle.mWidth + 2 * PADDING;
-			Rectangle bgRectangle = new Rectangle(rectPosition.X , rectPosition.Y, width, height);
+			Rectangle bgRectangle = new Rectangle(rectPosition.X, rectPosition.Y, width, height);
 
 			// Draw bg
 			MonoDraw.DrawRectDepth(info, bgRectangle, BG_COLOR, MonoDraw.LAYER_TEXT_BOX);
@@ -238,7 +238,7 @@
 		{
 			char charToPrint = mCurrentBlock.GetCurrentChar();
 
-			if(charToPrint == '\0')
+			if (charToPrint == '\0')
 			{
 				Stop();
 				return;
@@ -298,12 +298,12 @@
 		/// </summary>
 		bool ShouldDrawChar(char charToPrint)
 		{
-			if(mCharHead.X == 0.0f && charToPrint == ' ')
+			if (mCharHead.X == 0.0f && charToPrint == ' ')
 			{
 				return false;
 			}
 
-			if(charToPrint == '\n')
+			if (charToPrint == '\n')
 			{
 				return false;
 			}
@@ -397,7 +397,7 @@
 		/// </summary>
 		public SmartTextBlock.TextMood GetMood()
 		{
-			if(!IsStopped())
+			if (!IsStopped())
 			{
 				return mCurrentBlock.GetMood();
 			}

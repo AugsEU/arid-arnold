@@ -60,14 +60,14 @@
 		public override void Update(GameTime gameTime)
 		{
 			float talkDistance = TALK_DISTANCE;
-			if(mTalking)
+			if (mTalking)
 			{
 				talkDistance *= 2.0f;
 			}
 
-			if(EntityManager.I.AnyNearMe(talkDistance, this, typeof(Arnold)))
+			if (EntityManager.I.AnyNearMe(talkDistance, this, typeof(Arnold)))
 			{
-				if(!mTalking)
+				if (!mTalking)
 				{
 					DoNormalSpeak();
 				}
@@ -76,7 +76,7 @@
 			}
 			else
 			{
-				if(mTalking && IsTalking())
+				if (mTalking && IsTalking())
 				{
 					HecklePlayer();
 				}
@@ -124,7 +124,7 @@
 		{
 			LevelPoint curLevel = ProgressManager.I.GetLevelPoint();
 
-			if(curLevel.mWorldIndex == 0)
+			if (curLevel.mWorldIndex == 0)
 			{
 				switch (curLevel.mLevel)
 				{
@@ -135,7 +135,7 @@
 						throw new NotImplementedException();
 				}
 			}
-			
+
 		}
 
 

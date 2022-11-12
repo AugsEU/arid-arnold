@@ -242,7 +242,7 @@
 		/// <returns>Collision rectangle</returns>
 		public Rect2f GetBounds()
 		{
-			if(mBoundsCache == null)
+			if (mBoundsCache == null)
 			{
 				mBoundsCache = CalculateBounds();
 			}

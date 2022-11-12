@@ -12,6 +12,13 @@
 			Question
 		}
 
+		public enum TextAnimationRequest
+		{
+			None,
+			Bounce,
+			AngryShake
+		}
+
 		#endregion rTypes
 
 
@@ -110,7 +117,7 @@
 		/// </summary>
 		public char GetCurrentChar()
 		{
-			if(mCharHead < mText.Length)
+			if (mCharHead < mText.Length)
 			{
 				return mText[mCharHead];
 			}
@@ -142,12 +149,12 @@
 		void AdvanceCharacter()
 		{
 			mCharHead++;
-			if(mCharHead >= mText.Length)
+			if (mCharHead >= mText.Length)
 			{
 				mCharHead = mText.Length;
 			}
 
-			if(IsDecisionLetter(GetCurrentChar()))
+			if (IsDecisionLetter(GetCurrentChar()))
 			{
 				CalculateMood();
 			}
@@ -162,7 +169,7 @@
 		/// </summary>
 		void CalculateMood()
 		{
-			int forwardHead = mCharHead+1;
+			int forwardHead = mCharHead + 1;
 			TextMood textMood = TextMood.Normal;
 
 			//Assume all caps until proven otherwise
@@ -171,14 +178,14 @@
 			//Was there anything to analyse?
 			bool analysis = false;
 
-			while(forwardHead < mText.Length && !IsDecisionLetter(mText[forwardHead]))
+			while (forwardHead < mText.Length && !IsDecisionLetter(mText[forwardHead]))
 			{
 				//There is content to analyse
 				analysis = true;
 				char letterToAnalyse = mText[forwardHead];
-				
+
 				//Check for all caps.
-				if(!char.IsUpper(letterToAnalyse) && char.IsLetter(letterToAnalyse))
+				if (!char.IsUpper(letterToAnalyse) && char.IsLetter(letterToAnalyse))
 				{
 					allCaps = false;
 				}

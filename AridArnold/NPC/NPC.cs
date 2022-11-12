@@ -74,7 +74,7 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			foreach(SpeechBoxRenderer renderer in mTextBlocks)
+			foreach (SpeechBoxRenderer renderer in mTextBlocks)
 			{
 				renderer.Update(gameTime);
 			}
@@ -97,15 +97,15 @@
 			float untangleDisp = -mStyle.mSpeed * dt * 12.0f;
 			float totalDisp = 0.0f;
 
-			for(int i = mTextBlocks.Count - 1; i > 0; i--)
+			for (int i = mTextBlocks.Count - 1; i > 0; i--)
 			{
 				SpeechBoxRenderer lowRenderer = mTextBlocks[i];
-				SpeechBoxRenderer highRenderer = mTextBlocks[i-1];
+				SpeechBoxRenderer highRenderer = mTextBlocks[i - 1];
 
 				Rect2f lowRect = lowRenderer.GetRectBounds();
 				Rect2f highRect = highRenderer.GetRectBounds();
 
-				if(Collision2D.BoxVsBox(lowRect, highRect))
+				if (Collision2D.BoxVsBox(lowRect, highRect))
 				{
 					totalDisp += untangleDisp;
 					highRenderer.DisplaceVertically(totalDisp);
@@ -157,7 +157,7 @@
 
 			bool timerTalking = mAnimTimer.GetElapsedMs() % MOUTH_OPEN_TIME < (MOUTH_OPEN_TIME / 2.0);
 
-			if(timerTalking && IsTalking())
+			if (timerTalking && IsTalking())
 			{
 				switch (textMood)
 				{
@@ -230,7 +230,7 @@
 		/// </summary>
 		protected bool IsTalking()
 		{
-			if(HasAnyBoxes())
+			if (HasAnyBoxes())
 			{
 				return !GetCurrentBlock().IsStopped();
 			}

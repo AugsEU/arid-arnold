@@ -147,13 +147,13 @@
 			Vector2 nearEntityPos = nearEntity.GetCentrePos();
 			distance = distance * distance;
 
-			foreach(Entity entity in mRegisteredEntities)
+			foreach (Entity entity in mRegisteredEntities)
 			{
-				if(entity.GetType() == type && !ReferenceEquals(nearEntity, entity))
+				if (entity.GetType() == type && !ReferenceEquals(nearEntity, entity))
 				{
 					float distanceToEntity = (nearEntityPos - entity.GetCentrePos()).LengthSquared();
 
-					if(distanceToEntity < distance)
+					if (distanceToEntity < distance)
 					{
 						return true;
 					}

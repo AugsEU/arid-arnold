@@ -20,7 +20,7 @@
 
 		//Define layer depths of objects.
 		public const float LAYER_DEFAULT = 0.0f;
-		
+
 		public const float LAYER_TILE = 0.19f;
 
 		public const float LAYER_TEXT_BOX = 0.27f;
@@ -140,7 +140,7 @@
 			Point min = new Point((int)rect2f.min.X, (int)rect2f.min.Y);
 			Point max = new Point((int)rect2f.max.X, (int)rect2f.max.Y);
 
-			DrawRect(info, new Rectangle(min, max- min), col);
+			DrawRect(info, new Rectangle(min, max - min), col);
 		}
 
 
