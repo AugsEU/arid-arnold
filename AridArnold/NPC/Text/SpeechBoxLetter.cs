@@ -6,7 +6,6 @@
 
 		SpriteFont mFont;
 		Vector2 mPosition;
-		Vector2 mAnimationDisplacement;
 		char mCharacter;
 		Color mColor;
 
@@ -25,7 +24,6 @@
 		{
 			mFont = font;
 			mPosition = pos;
-			mAnimationDisplacement = Vector2.Zero;
 			mCharacter = character;
 			mColor = color;
 		}
@@ -80,6 +78,9 @@
 
 		#region rUtility
 
+		/// <summary>
+		/// Get base position of text
+		/// </summary>
 		public Vector2 GetPosition()
 		{
 			return mPosition;
