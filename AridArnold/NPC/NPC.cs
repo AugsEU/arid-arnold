@@ -40,16 +40,17 @@
 		public NPC(Vector2 pos) : base(pos)
 		{
 			mStyle = new SpeechBoxStyle();
-			mStyle.mFont = FontManager.I.GetFont("Pixica Micro-24");
+			mStyle.mFont = FontManager.I.GetFont("Pixica-12");
 			mStyle.mWidth = 230.1f;
 			mStyle.mLeading = 5.0f;
-			mStyle.mKerning = -2.0f;
+			mStyle.mKerning = 1.0f;
 			mStyle.mSpeed = 1.0f;
 
 			mTextBlocks = new List<SpeechBoxRenderer>();
 			mAnimTimer = new MonoTimer();
 			mAnimTimer.Start();
 		}
+
 
 
 		/// <summary>

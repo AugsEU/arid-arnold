@@ -24,6 +24,7 @@
 		public void LoadAllFonts(ContentManager content)
 		{
 			mFonts.Add("Pixica-24", content.Load<SpriteFont>("Fonts/Pixica"));
+			mFonts.Add("Pixica-12", content.Load<SpriteFont>("Fonts/Pixica-Medium"));
 			mFonts.Add("Pixica Micro-24", content.Load<SpriteFont>("Fonts/Pixica-Small"));
 		}
 

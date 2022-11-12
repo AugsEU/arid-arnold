@@ -248,7 +248,7 @@
 				if (ShouldDrawChar(charToPrint))
 				{
 					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, mCharHead + mBottomLeft + new Vector2(0.0f, -GetNewLineSize() / 2.0f), TEXT_COLOR));
-					mCharHead.X += GetCharWidth();
+					mCharHead.X += GetCharWidth(charToPrint);
 
 					if(charToPrint == ' ')
 					{
@@ -315,9 +315,9 @@
 		/// <summary>
 		/// Calculates size of new line.
 		/// </summary>
-		float GetCharWidth()
+		float GetCharWidth(char character)
 		{
-			return mCharSize.X + mStyle.mKerning;
+			return mStyle.mFont.MeasureString(character.ToString()).X + mStyle.mKerning;
 		}
 
 
@@ -341,7 +341,7 @@
 					break;
 				}
 
-				endOfWordX += GetCharWidth();
+				endOfWordX += GetCharWidth(currentChar);
 			}
 
 			return endOfWordX;
