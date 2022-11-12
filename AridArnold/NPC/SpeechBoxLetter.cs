@@ -72,5 +72,16 @@
 		#endregion rDraw
 
 
+
+
+
+		#region rUtility
+
+		public Vector2 GetPosition()
+		{
+			return mPosition;
+		}
+
+		#endregion rUtility
 	}
 }

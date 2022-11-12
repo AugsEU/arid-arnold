@@ -78,7 +78,53 @@
 				renderer.Update(gameTime);
 			}
 
+			UntangleTextBoxes(gameTime);
+
+			CheckForDeletion();
+
 			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// 
+		/// </summary>
+		void UntangleTextBoxes(GameTime gameTime)
+		{
+			float dt = Util.GetDeltaT(gameTime);
+			float untangleDisp = -mStyle.mSpeed * dt * 12.0f;
+			float totalDisp = 0.0f;
+
+			for(int i = mTextBlocks.Count - 1; i > 0; i--)
+			{
+				SpeechBoxRenderer lowRenderer = mTextBlocks[i];
+				SpeechBoxRenderer highRenderer = mTextBlocks[i-1];
+
+				Rect2f lowRect = lowRenderer.GetRectBounds();
+				Rect2f highRect = highRenderer.GetRectBounds();
+
+				if(Collision2D.BoxVsBox(lowRect, highRect))
+				{
+					totalDisp += untangleDisp;
+					highRenderer.DisplaceVertically(totalDisp);
+				}
+				else
+				{
+					totalDisp = 0.0f;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Scan our text boxes and delete them when they are above the top of the screen.
+		/// </summary>
+		void CheckForDeletion()
+		{
+			while (mTextBlocks.Count > 0 && mTextBlocks[0].GetRectBounds().max.Y < 0.0f)
+			{
+				mTextBlocks.RemoveAt(0);
+			}
 		}
 
 		#endregion rUpdate

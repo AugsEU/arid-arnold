@@ -435,6 +435,12 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Dialog/DialogSpike.png
 
+#begin Text/EN/NPC/Barbara/Heckle.txt
+/copy:Text/EN/NPC/Barbara/Heckle.txt
+
+#begin Text/EN/NPC/Barbara/Level0.txt
+/copy:Text/EN/NPC/Barbara/Level0.txt
+
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt
 

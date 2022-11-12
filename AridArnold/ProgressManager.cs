@@ -192,6 +192,16 @@
 
 
 		/// <summary>
+		/// Get the current level point
+		/// </summary>
+		public LevelPoint GetLevelPoint()
+		{
+			return mCurrentLevel;
+		}
+
+
+
+		/// <summary>
 		/// Have we finished the game?
 		/// </summary>
 		/// <returns>True if we have finished all the levels</returns>

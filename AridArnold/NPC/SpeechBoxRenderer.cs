@@ -26,6 +26,10 @@
 
 		#endregion rConstants
 
+
+
+
+
 		#region rMembers
 
 		// Text
@@ -96,6 +100,8 @@
 					PlaceNewLetter();
 				}
 			}
+
+			CheckForDeletion();
 		}
 
 
@@ -111,32 +117,52 @@
 				letter.MoveUp(-dy);
 			}
 
-			mCharHead.Y += dy;
 			mTopLeft.Y += dy;
 
 			if(IsStopped())
 			{
 				mBottomLeft.Y += dy;
+
+				if(-mCharHead.Y > GetNewLineSize())
+				{
+					mBottomLeft.Y += dy;
+					mCharHead.Y -= dy;
+				}
+			}
+			else
+			{
+				mCharHead.Y += dy;
 			}
 		}
 
 
+
 		/// <summary>
-		/// Stops the text block
+		/// Move everything up by a certain amount
 		/// </summary>
-		public void Stop()
+		public void DisplaceVertically(float dy)
 		{
-			mCurrentBlock = null;
+			foreach (SpeechBoxLetter letter in mLetters)
+			{
+				letter.MoveUp(-dy);
+			}
+
+			mTopLeft.Y += dy;
+			mBottomLeft.Y += dy;
 		}
 
 
-
 		/// <summary>
-		/// Are we done with the text block?
+		/// Scans letters and deletes any that aren't needed.
 		/// </summary>
-		public bool IsStopped()
+		void CheckForDeletion()
 		{
-			return mCurrentBlock is null;
+			float newLine = GetNewLineSize() + 20.0f;
+
+			while (mLetters.Count > 0 && mLetters[0].GetPosition().Y < -newLine)
+			{
+				mLetters.RemoveAt(0);
+			}
 		}
 		#endregion
 
@@ -349,6 +375,37 @@
 			return SmartTextBlock.TextMood.Normal;
 		}
 
+
+		/// <summary>
+		/// Get rectangle bounds
+		/// </summary>
+		/// <returns></returns>
+		public Rect2f GetRectBounds()
+		{
+			Vector2 min = mTopLeft - 2.0f * new Vector2(PADDING, PADDING);
+			Vector2 max = min + new Vector2(mStyle.mWidth + 4 * PADDING, mBottomLeft.Y - mTopLeft.Y + 3.0f * PADDING);
+			return new Rect2f(min, max);
+		}
+
+
+
+		/// <summary>
+		/// Stops the text block
+		/// </summary>
+		public void Stop()
+		{
+			mCurrentBlock = null;
+		}
+
+
+
+		/// <summary>
+		/// Are we done with the text block?
+		/// </summary>
+		public bool IsStopped()
+		{
+			return mCurrentBlock is null;
+		}
 		#endregion rUtility
 	}
 }

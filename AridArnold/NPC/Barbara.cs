@@ -8,6 +8,20 @@
 
 		#endregion rConstants
 
+
+
+
+
+		#region rMembers
+
+		bool mTalking;
+
+		#endregion rMembers
+
+
+
+
+
 		#region rInitialisation
 
 		/// <summary>
@@ -15,6 +29,7 @@
 		/// </summary>
 		public Barbara(Vector2 pos) : base(pos)
 		{
+			mTalking = false;
 		}
 
 
@@ -34,6 +49,9 @@
 		#endregion rInitialisation
 
 
+
+
+
 		#region rUpdate
 
 		/// <summary>
@@ -41,12 +59,28 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			if(!HasAnyBoxes())
+			float talkDistance = TALK_DISTANCE;
+			if(mTalking)
 			{
-				if(EntityManager.I.AnyNearMe(TALK_DISTANCE, this, typeof(Arnold)))
+				talkDistance *= 2.0f;
+			}
+
+			if(EntityManager.I.AnyNearMe(talkDistance, this, typeof(Arnold)))
+			{
+				if(!mTalking)
 				{
-					AddDialogBox("test_text");
+					DoNormalSpeak();
 				}
+
+				mTalking = true;
+			}
+			else
+			{
+				if(mTalking && IsTalking())
+				{
+					HecklePlayer();
+				}
+				mTalking = false;
 			}
 
 			base.Update(gameTime);
@@ -76,5 +110,43 @@
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rDialog
+
+		/// <summary>
+		/// Say something.
+		/// </summary>
+		void DoNormalSpeak()
+		{
+			LevelPoint curLevel = ProgressManager.I.GetLevelPoint();
+
+			if(curLevel.mWorldIndex == 0)
+			{
+				switch (curLevel.mLevel)
+				{
+					case 0:
+						AddDialogBox("NPC.Barbara.Level0");
+						break;
+					default:
+						throw new NotImplementedException();
+				}
+			}
+			
+		}
+
+
+		/// <summary>
+		/// Shout at the player for leaving early.
+		/// </summary>
+		void HecklePlayer()
+		{
+			AddDialogBox("NPC.Barbara.Heckle");
+		}
+
+		#endregion rDialog
 	}
 }

@@ -139,7 +139,7 @@
 			Point min = new Point((int)rect2f.min.X, (int)rect2f.min.Y);
 			Point max = new Point((int)rect2f.max.X, (int)rect2f.max.Y);
 
-			DrawRect(info, new Rectangle(min, max), col);
+			DrawRect(info, new Rectangle(min, max- min), col);
 		}
 
 
@@ -149,7 +149,7 @@
 		/// </summary>
 		public static void DrawRect(DrawInfo info, Rectangle rect, Color col)
 		{
-			DrawTexture(info, Main.GetDummyTexture(), rect);
+			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, col);
 		}
 
 
