@@ -43,7 +43,8 @@
 
 		//Internal Data
 		Vector2 mCharHead;
-		Vector2 mCharSize;
+		Vector2 mLastDrawnCharHead;
+		float mCharHeight;
 
 		#endregion rMembers
 
@@ -64,10 +65,12 @@
 			mLetters = new List<SpeechBoxLetter>();
 			mBottomLeft = bottomLeft;
 
-			mCharSize = mStyle.mFont.MeasureString("M");
-			mCharSize.Y /= 2.0f;
-			mCharHead = new Vector2(0.0f , -GetNewLineSize());
+			mCharHeight = mStyle.mFont.MeasureString("M").Y;
+			mCharHeight /= 2.0f;
+			mCharHead = new Vector2(0.0f , -(int)GetNewLineSize());
 			mTopLeft = mBottomLeft + mCharHead;
+
+			mLastDrawnCharHead = mCharHead;
 		}
 
 		#endregion rInitialisation
@@ -123,15 +126,17 @@
 			{
 				mBottomLeft.Y += dy;
 
-				if(-mCharHead.Y > GetNewLineSize())
+				if(-mLastDrawnCharHead.Y > GetNewLineSize())
 				{
 					mBottomLeft.Y += dy;
 					mCharHead.Y -= dy;
+					mLastDrawnCharHead.Y -= dy;
 				}
 			}
 			else
 			{
 				mCharHead.Y += dy;
+				mLastDrawnCharHead.Y += dy;
 			}
 		}
 
@@ -192,8 +197,8 @@
 		/// </summary>
 		public void DrawBox(DrawInfo info)
 		{
-			Point rectPosition = new Point((int)mTopLeft.X - PADDING, (int)mTopLeft.Y - PADDING);
-			int height = (int)(mBottomLeft.Y - mTopLeft.Y) + PADDING;
+			Point rectPosition = new Point(Util.Round(mTopLeft.X) - PADDING, Util.Round(mTopLeft.Y) - PADDING);
+			int height = Util.Round(mBottomLeft.Y - mTopLeft.Y) + PADDING;
 			int width = (int)mStyle.mWidth + 2 * PADDING;
 			Rectangle bgRectangle = new Rectangle(rectPosition.X , rectPosition.Y, width, height);
 
@@ -247,10 +252,11 @@
 			{
 				if (ShouldDrawChar(charToPrint))
 				{
-					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, mCharHead + mBottomLeft + new Vector2(0.0f, -GetNewLineSize() / 2.0f), TEXT_COLOR));
+					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, GetCharPlacementPos(), TEXT_COLOR));
+					mLastDrawnCharHead = mCharHead;
 					mCharHead.X += GetCharWidth(charToPrint);
 
-					if(charToPrint == ' ')
+					if (charToPrint == ' ')
 					{
 						//Move to next line if word overflows
 						float endOfWordX = ScanToEndOfWord();
@@ -264,6 +270,27 @@
 				}
 			}
 		}
+
+
+
+		/// <summary>
+		/// Where should we put the next letter?
+		/// </summary>
+		Vector2 GetCharPlacementPos()
+		{
+			return mCharHead + mBottomLeft + GetCharShift();
+		}
+
+
+
+		/// <summary>
+		/// Offset to make the characters place a bit better.
+		/// </summary>
+		Vector2 GetCharShift()
+		{
+			return new Vector2(0.0f, -Util.Round(GetNewLineSize() / 4.0f));
+		}
+
 
 
 		/// <summary>
@@ -307,7 +334,7 @@
 		/// </summary>
 		float GetNewLineSize()
 		{
-			return mCharSize.Y + mStyle.mLeading;
+			return mCharHeight + mStyle.mLeading;
 		}
 
 
@@ -358,6 +385,9 @@
 		}
 
 		#endregion rPlacement
+
+
+
 
 
 		#region rUtility

@@ -26,6 +26,7 @@
 		public const float LAYER_TEXT_BOX = 0.27f;
 		public const float LAYER_TEXT_SHADOW = 0.28f;
 		public const float LAYER_TEXT = 0.29f;
+		public const float LAYER_TOP = 1.00f;
 
 		//Add this constant to something to make it slightly infront of something within the same "layer".
 		public const float FRONT_EPSILON = 0.0001f;
@@ -161,6 +162,47 @@
 			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, null, col, 0.0f, Vector2.Zero, SpriteEffects.None, depth);
 		}
 
+
+
+		/// <summary>
+		/// Draw a dot at a position.
+		/// </summary>
+		public static void DrawDot(DrawInfo info, Vector2 point, Color col)
+		{
+			DrawDot(info, new Point((int)point.X, (int)point.Y), col);
+		}
+
+
+
+		/// <summary>
+		/// Draw a dot at a position
+		/// </summary>
+		public static void DrawDot(DrawInfo info, Point point, Color col)
+		{
+			Rectangle rectangle = new Rectangle(point.X, point.Y, 1, 1);
+			DrawRect(info, rectangle, col);
+		}
+
+
+
+		/// <summary>
+		/// Draw a dot at a position.
+		/// </summary>
+		public static void DrawDotDepth(DrawInfo info, Vector2 point, Color col, float depth)
+		{
+			DrawDotDepth(info, new Point((int)point.X, (int)point.Y), col, depth);
+		}
+
+
+
+		/// <summary>
+		/// Draw a dot at a position
+		/// </summary>
+		public static void DrawDotDepth(DrawInfo info, Point point, Color col, float depth)
+		{
+			Rectangle rectangle = new Rectangle(point.X, point.Y, 1, 1);
+			DrawRectDepth(info, rectangle, col, depth);
+		}
 		#endregion rRender
 
 

@@ -151,6 +151,11 @@ namespace AridArnold
 		}
 
 
+		public static int Round(float f)
+		{
+			return (int)MathF.Round(f);
+		}
+
 
 		/// <summary>
 		/// Compare colour to hex value. Does not look at alpha

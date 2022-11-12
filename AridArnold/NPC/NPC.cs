@@ -42,9 +42,9 @@
 			mStyle = new SpeechBoxStyle();
 			mStyle.mFont = FontManager.I.GetFont("Pixica-12");
 			mStyle.mWidth = 230.1f;
-			mStyle.mLeading = 5.0f;
+			mStyle.mLeading = 8.0f;
 			mStyle.mKerning = 1.0f;
-			mStyle.mSpeed = 1.0f;
+			mStyle.mSpeed = 0.6f;
 
 			mTextBlocks = new List<SpeechBoxRenderer>();
 			mAnimTimer = new MonoTimer();
