@@ -7,7 +7,8 @@
 		SpriteFont mFont;
 		Vector2 mPosition;
 		char mCharacter;
-		Color mColor;
+		LetterAnimation mAnimation;
+		MonoTimer mLifeTimer;
 
 		#endregion rMembers
 
@@ -20,12 +21,14 @@
 		/// <summary>
 		/// Speech box with a font
 		/// </summary>
-		public SpeechBoxLetter(SpriteFont font, char character, Vector2 pos, Color color)
+		public SpeechBoxLetter(SpriteFont font, char character, Vector2 pos, LetterAnimation anim)
 		{
 			mFont = font;
 			mPosition = pos;
 			mCharacter = character;
-			mColor = color;
+			mAnimation = anim;
+			mLifeTimer = new MonoTimer();
+			mLifeTimer.Start();
 		}
 
 		#endregion rInitialisation
@@ -41,7 +44,6 @@
 		/// </summary>
 		public void Update(GameTime gameTime)
 		{
-
 		}
 
 
@@ -67,7 +69,8 @@
 		/// </summary>
 		public void Draw(DrawInfo drawInfo)
 		{
-			MonoDraw.DrawString(drawInfo, mFont, mCharacter.ToString(), mPosition + mAnimationDisplacement, mColor, MonoDraw.LAYER_TEXT);
+			float lifeTime = (float)mLifeTimer.GetElapsedMs();
+			MonoDraw.DrawString(drawInfo, mFont, mCharacter.ToString(), mPosition + mAnimation.GetPosition(lifeTime), mAnimation.GetColor(lifeTime), MonoDraw.LAYER_TEXT);
 		}
 
 		#endregion rDraw

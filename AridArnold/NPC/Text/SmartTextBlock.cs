@@ -12,13 +12,6 @@
 			Question
 		}
 
-		public enum TextAnimationRequest
-		{
-			None,
-			Bounce,
-			AngryShake
-		}
-
 		#endregion rTypes
 
 
@@ -32,6 +25,7 @@
 		int mLetterFrameCount;
 		int mDefaultFrameCount;
 		TextMood mMood;
+		LetterAnimation mAnimation;
 
 		#endregion rMembers
 
@@ -51,6 +45,7 @@
 			mLetterFrameCount = 0;
 			mDefaultFrameCount = defaultLetterTime;
 			mMood = TextMood.Undecided;
+			mAnimation = new LetterAnimColor(Color.White);
 			CalculateMood();
 		}
 
@@ -154,6 +149,8 @@
 				mCharHead = mText.Length;
 			}
 
+			ParseControlCharacters();
+
 			if (IsDecisionLetter(GetCurrentChar()))
 			{
 				CalculateMood();
@@ -256,6 +253,102 @@
 			return letter == ' ' || letter == '\n' || letter == '\0';
 		}
 
+
+		/// <summary>
+		/// Gets animation.
+		/// </summary>
+		public LetterAnimation GetAnimation()
+		{
+			return mAnimation;
+		}
+
 		#endregion rAnalysis
+
+
+		#region rControlCharacters
+
+		/// <summary>
+		/// Check for control character and add text animations as needed.
+		/// </summary>
+		void ParseControlCharacters()
+		{
+			while(true)
+			{
+				if (mCharHead >= mText.Length)
+				{
+					mCharHead = mText.Length;
+					break;
+				}
+
+				char controlChar = mText[mCharHead];
+				Util.DLog("Parsing |"+controlChar+"|");
+
+				switch (controlChar)
+				{
+					case 'α':
+						mAnimation = new LetterAnimColor(ParseColor());
+						break;
+					case 'ψ':
+						mAnimation = new LetterAnimColor(Color.White);
+						mCharHead++;
+						break;
+					case 'γ':
+						mAnimation = new LetterAnimColor(Color.Yellow);
+						mCharHead++;
+						break;
+					case 'Σ':
+						ParseShaker();
+						break;
+					default:
+						return;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Parse the text at the char head as a color.
+		/// </summary>
+		Color ParseColor()
+		{
+			char magic = mText[mCharHead];
+			if(magic != 'α')
+			{
+				return Color.White;
+			}
+
+			mCharHead+=2;
+			int r = ParseNumber();
+			int g = ParseNumber();
+			int b = ParseNumber();
+			mCharHead++;
+			
+			return new Color(r, g, b);
+		}
+
+		/// <summary>
+		/// Parse the text at the char head as a 2-hexit number(little-endian).
+		/// </summary>
+		int ParseNumber()
+		{
+			string number = mText.Substring(mCharHead, 2);
+			mCharHead += 2;
+			return Convert.ToInt32(number, 16);
+		}
+
+		/// <summary>
+		/// Parse the text at the char head as a text shaker
+		/// </summary>
+		void ParseShaker()
+		{
+			mCharHead++;
+			Color col = ParseColor();
+
+			int intensity = ParseNumber();
+			int frame = ParseNumber();
+
+			mAnimation = new LetterAnimShaking(intensity, frame, col);
+		}
+
+		#endregion rControlCharacters
 	}
 }

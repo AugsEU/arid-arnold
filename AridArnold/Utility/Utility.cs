@@ -187,6 +187,26 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Returns true if the letter is a vowel.
+		/// </summary>
+		public static bool IsVowel(char character)
+		{
+			switch (char.ToLower(character))
+			{
+				case 'a':
+				case 'e':
+				case 'i':
+				case 'o':
+				case 'u':
+				case 'y':
+					return true;
+			}
+
+			return false;
+		}
+
+
+		/// <summary>
 		/// Log message to console. Only if debug is on.
 		/// </summary>
 		/// <param name="msg">Message to log</param>

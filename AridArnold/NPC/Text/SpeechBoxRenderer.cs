@@ -87,6 +87,13 @@
 		public void Update(GameTime gameTime)
 		{
 			float dt = Util.GetDeltaT(gameTime);
+
+			//Slowly increase speed when the tile is stopped.
+			if (IsStopped())
+			{
+				mStyle.mSpeed += 0.1f * dt;
+			}
+
 			ScrollLettersUp(dt);
 
 			foreach (SpeechBoxLetter letter in mLetters)
@@ -115,6 +122,7 @@
 		void ScrollLettersUp(float dt)
 		{
 			float dy = -dt * mStyle.mSpeed;
+
 			foreach (SpeechBoxLetter letter in mLetters)
 			{
 				letter.MoveUp(-dy);
@@ -252,7 +260,7 @@
 			{
 				if (ShouldDrawChar(charToPrint))
 				{
-					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, GetCharPlacementPos(), TEXT_COLOR));
+					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, GetCharPlacementPos(), mCurrentBlock.GetAnimation()));
 					mLastDrawnCharHead = mCharHead;
 					mCharHead.X += GetCharWidth(charToPrint);
 
@@ -344,6 +352,11 @@
 		/// </summary>
 		float GetCharWidth(char character)
 		{
+			if(!mStyle.mFont.GetGlyphs().ContainsKey(character))
+			{
+				return 0.0f;
+			}
+
 			return mStyle.mFont.MeasureString(character.ToString()).X + mStyle.mKerning;
 		}
 
@@ -435,6 +448,15 @@
 		public bool IsStopped()
 		{
 			return mCurrentBlock is null;
+		}
+
+
+		/// <summary>
+		/// Get current char.
+		/// </summary>
+		public char GetCurrentChar()
+		{
+			return mCurrentBlock.GetCurrentChar();
 		}
 		#endregion rUtility
 	}

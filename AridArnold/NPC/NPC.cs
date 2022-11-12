@@ -20,11 +20,11 @@
 
 		SpeechBoxStyle mStyle;
 		List<SpeechBoxRenderer> mTextBlocks;
-		MonoTimer mAnimTimer;
 
 		protected Texture2D mIdleTexture;
 		protected Texture2D mAngryTexture;
 		protected Texture2D mTalkTexture;
+		MonoTimer mMouthTimer;
 
 		#endregion rMembers
 
@@ -47,8 +47,7 @@
 			mStyle.mSpeed = 0.6f;
 
 			mTextBlocks = new List<SpeechBoxRenderer>();
-			mAnimTimer = new MonoTimer();
-			mAnimTimer.Start();
+			mMouthTimer = new MonoTimer();
 		}
 
 
@@ -133,6 +132,7 @@
 
 
 
+
 		#region rDraw
 
 		/// <summary>
@@ -155,9 +155,15 @@
 
 			Texture2D textureToDraw = mIdleTexture;
 
-			bool timerTalking = mAnimTimer.GetElapsedMs() % MOUTH_OPEN_TIME < (MOUTH_OPEN_TIME / 2.0);
+			bool mouthOpen = IsTalking() && Util.IsVowel(GetCurrentBlock().GetCurrentChar());
 
-			if (timerTalking && IsTalking())
+			if(mouthOpen)
+			{
+				mMouthTimer.FullReset();
+				mMouthTimer.Start();
+			}
+
+			if (mMouthTimer.IsPlaying() && mMouthTimer.GetElapsedMs() < 90.0)
 			{
 				switch (textMood)
 				{
