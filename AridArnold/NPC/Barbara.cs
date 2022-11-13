@@ -35,10 +35,10 @@
 			Animator idleAnim = new Animator();
 			idleAnim.LoadFrame(content, "NPC/Barbara/Idle1", 1.0f);
 
-			Animator blinkAnim = new Animator();
-			blinkAnim.LoadFrame(content, "NPC/Barbara/Idle2", 0.2f);
-			blinkAnim.LoadFrame(content, "NPC/Barbara/Idle1", 0.7f);
-			blinkAnim.LoadFrame(content, "NPC/Barbara/Idle2", 0.2f);
+			Animator lookUpAnim = new Animator();
+			lookUpAnim.LoadFrame(content, "NPC/Barbara/Idle5", 0.2f);
+			lookUpAnim.LoadFrame(content, "NPC/Barbara/Idle2", 1.2f);
+			lookUpAnim.LoadFrame(content, "NPC/Barbara/Idle5", 0.2f);
 
 			Animator footAnim = new Animator();
 			footAnim.LoadFrame(content, "NPC/Barbara/Idle3", 0.7f);
@@ -49,7 +49,7 @@
 			scratchAnim.LoadFrame(content, "NPC/Barbara/Idle4", 0.2f);
 
 			mIdleAnimation = new IdleAnimator(idleAnim, 29.0f);
-			mIdleAnimation.AddVariation(blinkAnim);
+			mIdleAnimation.AddVariation(lookUpAnim);
 			mIdleAnimation.AddVariation(footAnim);
 			mIdleAnimation.AddVariation(scratchAnim);
 
@@ -103,6 +103,11 @@
 		/// </summary>
 		protected override Texture2D GetIdleTexture()
 		{
+			if(IsTalking())
+			{
+				return mIdleAnimation.GetIdleTexture();
+			}
+
 			return mIdleAnimation.GetCurrentTexture();
 		}
 

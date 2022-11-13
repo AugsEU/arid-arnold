@@ -109,6 +109,9 @@
 
 		#region rDraw
 
+		/// <summary>
+		/// Get texture, can include variation animations.
+		/// </summary>
 		public Texture2D GetCurrentTexture()
 		{
 			if(mCurrentVariation != -1)
@@ -119,6 +122,20 @@
 			return mWaitAnim.GetCurrentTexture();
 		}
 
+
+
+		/// <summary>
+		/// Get texture of main idle animation.
+		/// </summary>
+		public Texture2D GetIdleTexture()
+		{
+			if(mWaitAnim.IsPlaying() == false)
+			{
+				mWaitAnim.Play();
+			}
+
+			return mWaitAnim.GetCurrentTexture();
+		}
 		#endregion rDraw
 	}
 }
