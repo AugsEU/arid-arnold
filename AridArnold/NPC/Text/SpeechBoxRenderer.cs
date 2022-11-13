@@ -91,7 +91,7 @@
 			//Slowly increase speed when the tile is stopped.
 			if (IsStopped())
 			{
-				mStyle.mSpeed += 0.1f * dt;
+				mStyle.mSpeed += 0.05f * dt;
 			}
 
 			ScrollLettersUp(dt);
