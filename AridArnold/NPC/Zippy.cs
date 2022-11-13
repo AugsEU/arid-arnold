@@ -1,6 +1,9 @@
 ﻿namespace AridArnold
 {
-	internal class Barbara : SimpleTalkNPC
+	/// <summary>
+	/// A racoon NPC
+	/// </summary>
+	internal class Zippy : SimpleTalkNPC
 	{
 
 		#region rMembers
@@ -18,41 +21,45 @@
 		#region rInitialisation
 
 		/// <summary>
-		/// Put Barbara at a position
+		/// Put Zippy at a position
 		/// </summary>
-		public Barbara(Vector2 pos) : base(pos)
+		public Zippy(Vector2 pos) : base(pos)
 		{
 		}
 
 
 
 		/// <summary>
-		/// Load barbara textures.
+		/// Load Zippy textures.
 		/// </summary>
 		public override void LoadContent(ContentManager content)
 		{
 			//Setup idle animation.
 			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
-												("NPC/Barbara/Idle1", 1.0f));
+												("NPC/Zippy/Idle1", 1.2f));
 
-			Animator lookUpAnim = new Animator(content, Animator.PlayType.OneShot,
-												("NPC/Barbara/Idle5", 0.2f),
-												("NPC/Barbara/Idle2", 1.2f),
-												("NPC/Barbara/Idle5", 0.2f));
+			Animator breatheOut = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Zippy/Idle2", 0.8f));
 
-			Animator footAnim = new Animator(content, Animator.PlayType.OneShot,
-												("NPC/Barbara/Idle3", 0.7f));
+			Animator sniffAnim = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Zippy/Idle3", 0.2f),
+												("NPC/Zippy/Idle1", 0.8f),
+												("NPC/Zippy/Idle3", 0.2f));
 
-			Animator scratchAnim = new Animator(content, Animator.PlayType.OneShot,
-													("NPC/Barbara/Idle4", 0.2f),
-													("NPC/Barbara/Idle1", 0.3f),
-													("NPC/Barbara/Idle4", 0.2f));
+			Animator tailAnim = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Zippy/Idle4", 0.3f),
+												("NPC/Zippy/Idle5", 0.4f),
+												("NPC/Zippy/Idle4", 0.2f),
+												("NPC/Zippy/Idle1", 0.8f),
+												("NPC/Zippy/Idle4", 0.25f),
+												("NPC/Zippy/Idle5", 0.3f),
+												("NPC/Zippy/Idle4", 0.2f));
 
-			mIdleAnimation = new IdleAnimator(idleAnim, 50.0f, lookUpAnim, footAnim, scratchAnim);
+			mIdleAnimation = new IdleAnimator(idleAnim, 90.0f, breatheOut, tailAnim, sniffAnim);
 
 			//Talk textures.
-			mTalkTexture = content.Load<Texture2D>("NPC/Barbara/Talk1");
-			mAngryTexture = content.Load<Texture2D>("NPC/Barbara/Angry1");
+			mTalkTexture = content.Load<Texture2D>("NPC/Zippy/Talk1");
+			mAngryTexture = content.Load<Texture2D>("NPC/Zippy/Angry1");
 
 			base.LoadContent(content);
 		}
@@ -66,7 +73,7 @@
 		#region rUpdate
 
 		/// <summary>
-		/// Update barbara animations.
+		/// Update Zippy animations.
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
@@ -84,7 +91,7 @@
 		#region rDraw
 
 		/// <summary>
-		/// Draw Barbara
+		/// Draw Zippy
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
@@ -100,7 +107,7 @@
 		/// </summary>
 		protected override Texture2D GetIdleTexture()
 		{
-			if(IsTalking())
+			if (IsTalking())
 			{
 				return mIdleAnimation.GetIdleTexture();
 			}
@@ -145,11 +152,8 @@
 
 			switch (curLevel)
 			{
-				case 0x0000:
-					AddDialogBox("NPC.Barbara.Level0");
-					break;
-				case 0x0100:
-					AddDialogBox("NPC.Barbara.Level10");
+				case 0x0001:
+					AddDialogBox("NPC.Zippy.Level1");
 					break;
 				default:
 					break;
@@ -162,7 +166,7 @@
 		/// </summary>
 		protected override void HecklePlayer()
 		{
-			AddDialogBox("NPC.Barbara.Heckle");
+			AddDialogBox("NPC.Zippy.Heckle");
 		}
 
 		#endregion rDialog

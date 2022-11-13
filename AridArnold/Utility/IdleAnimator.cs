@@ -21,7 +21,7 @@
 		/// <summary>
 		/// Declare an idle animation with a main animator
 		/// </summary>
-		public IdleAnimator(Animator waitAnim, float variationChance)
+		public IdleAnimator(Animator waitAnim, float variationChance, params Animator[] variationAnimators)
 		{
 			mWaitAnim = waitAnim;
 			mWaitAnim.SetType(Animator.PlayType.OneShot);
@@ -32,17 +32,12 @@
 			mCurrentVariation = -1;
 			
 			mRandom = new MonoRandom();
-		}
 
-
-
-		/// <summary>
-		/// Add a variation animation.
-		/// </summary>
-		public void AddVariation(Animator variation)
-		{
-			variation.SetType(Animator.PlayType.OneShot);
-			mVariationAnims.Add(variation);
+			foreach(Animator animator in variationAnimators)
+			{
+				animator.SetType(Animator.PlayType.OneShot);
+				mVariationAnims.Add(animator);
+			}
 		}
 
 		#endregion rInitialisation

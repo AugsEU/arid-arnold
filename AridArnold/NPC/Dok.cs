@@ -43,9 +43,7 @@
 												("NPC/Dok/Idle1", 0.8f),
 												("NPC/Dok/Idle3", 0.3f));
 
-			mIdleAnimation = new IdleAnimator(idleAnim, 90.0f);
-			mIdleAnimation.AddVariation(breatheOut);
-			mIdleAnimation.AddVariation(stickSmack);
+			mIdleAnimation = new IdleAnimator(idleAnim, 90.0f, breatheOut, stickSmack);
 
 			//Talk textures.
 			mTalkTexture = content.Load<Texture2D>("NPC/Dok/Talk1");
