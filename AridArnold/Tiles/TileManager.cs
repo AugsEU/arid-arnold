@@ -115,46 +115,39 @@
 		/// <returns>Tile reference</returns>
 		private Tile GetTileFromColour(Color col, Vector2 position)
 		{
-			//Use alpha component as a parameter.
-			int param = 255 - col.A;
-
 			if (col.A > 0)
 			{
-				if (Util.CompareHEX(col, 0x000000))
+				//Use alpha component as a parameter.
+				int param = 255 - col.A;
+				uint hexCode = Util.ColorToHEX(col);
+
+				switch (hexCode)
 				{
-					return new WallTile(position);
-				}
-				else if (Util.CompareHEX(col, 0xA9A9A9))
-				{
-					return new PlatformTile((CardinalDirection)param, position);
-				}
-				else if (Util.CompareHEX(col, 0x0000FF))
-				{
-					return new WaterBottleTile(position);
-				}
-				else if (Util.CompareHEX(col, 0xFF0000))
-				{
-					return new FlagTile(position);
-				}
-				else if (Util.CompareHEX(col, 0xEA301F))
-				{
-					return new HotDogTile(position);
-				}
-				else if (Util.CompareHEX(col, 0x404040))
-				{
-					return new SpikesTile((CardinalDirection)param, position);
-				}
-				else if (Util.CompareHEX(col, 0x2A3F50))
-				{
-					return new StalactiteTile(position);
-				}
-				else if (Util.CompareHEX(col, 0xFFFF00))
-				{
-					return new MirrorTile((CardinalDirection)param, position);
-				}
-				else if (Util.CompareHEX(col, 0x00CDF9))
-				{
-					return new MushroomTile((CardinalDirection)param, position);
+					//Basic
+					case 0xFFFFFFu:
+						return new AirTile(position);
+					case 0x000000u:
+						return new WallTile(position);
+					case 0xA9A9A9u:
+						return new PlatformTile((CardinalDirection)param, position);
+					//Collectable
+					case 0x0000FFu:
+						return new WaterBottleTile(position);
+					case 0xFF0000u:
+						return new FlagTile(position);
+					case 0xEA301Fu:
+						return new HotDogTile(position);
+					case 0x404040u:
+					//Special
+						return new SpikesTile((CardinalDirection)param, position);
+					case 0x2A3F50u:
+						return new StalactiteTile(position);
+					case 0xFFFF00u:
+						return new MirrorTile((CardinalDirection)param, position);
+					case 0x00CDF9u:
+						return new MushroomTile((CardinalDirection)param, position);
+					default:
+						break;
 				}
 			}
 
@@ -172,17 +165,21 @@
 		/// <param name="content">Monogame content manager</param>
 		private void AddEntityFromColour(Color col, Vector2 pos, ContentManager content)
 		{
-			if (Util.CompareHEX(col, 0xDC143C))
+			uint hexCode = Util.ColorToHEX(col);
+
+			switch (hexCode)
 			{
-				EntityManager.I.RegisterEntity(new Arnold(pos), content);
-			}
-			else if (Util.CompareHEX(col, 0x5B2C2C))
-			{
-				EntityManager.I.RegisterEntity(new Trundle(pos), content);
-			}
-			else if (Util.CompareHEX(col, 0x8E5CC4))
-			{
-				EntityManager.I.RegisterEntity(new Barbara(pos), content);
+				case 0xDC143Cu:
+					EntityManager.I.RegisterEntity(new Arnold(pos), content);
+					break;
+				case 0x5B2C2Cu:
+					EntityManager.I.RegisterEntity(new Trundle(pos), content);
+					break;
+				case 0x8E5CC4u:
+					EntityManager.I.RegisterEntity(new Barbara(pos), content);
+					break;
+				default:
+					break;
 			}
 		}
 

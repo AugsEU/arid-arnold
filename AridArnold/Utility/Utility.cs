@@ -151,23 +151,23 @@ namespace AridArnold
 		}
 
 
+
+		/// <summary>
+		/// Round a float to an int.
+		/// </summary>
 		public static int Round(float f)
 		{
 			return (int)MathF.Round(f);
 		}
 
 
-		/// <summary>
-		/// Compare colour to hex value. Does not look at alpha
-		/// </summary>
-		/// <param name="color">Colour to check</param>
-		/// <param name="hexCode">Hexcode to check</param>
-		/// <returns>True if colour and hexcode match</returns>
-		public static bool CompareHEX(Color color, ulong hexCode)
-		{
-			ulong colourHex = color.B + ((ulong)(color.G) << 8) + +((ulong)(color.R) << 16);
 
-			return colourHex == hexCode;
+		/// <summary>
+		/// Get ulong hex code from color.
+		/// </summary>
+		public static uint ColorToHEX(Color color)
+		{
+			return color.B + ((uint)(color.G) << 8) + +((uint)(color.R) << 16);
 		}
 
 
