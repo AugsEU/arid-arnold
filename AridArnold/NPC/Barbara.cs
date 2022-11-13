@@ -32,23 +32,23 @@
 		public override void LoadContent(ContentManager content)
 		{
 			//Setup idle animation.
-			Animator idleAnim = new Animator();
-			idleAnim.LoadFrame(content, "NPC/Barbara/Idle1", 1.0f);
+			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Barbara/Idle1", 1.0f));
 
-			Animator lookUpAnim = new Animator();
-			lookUpAnim.LoadFrame(content, "NPC/Barbara/Idle5", 0.2f);
-			lookUpAnim.LoadFrame(content, "NPC/Barbara/Idle2", 1.2f);
-			lookUpAnim.LoadFrame(content, "NPC/Barbara/Idle5", 0.2f);
+			Animator lookUpAnim = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Barbara/Idle5", 0.2f),
+												("NPC/Barbara/Idle2", 1.2f),
+												("NPC/Barbara/Idle5", 0.2f));
 
-			Animator footAnim = new Animator();
-			footAnim.LoadFrame(content, "NPC/Barbara/Idle3", 0.7f);
+			Animator footAnim = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Barbara/Idle3", 0.7f));
 
-			Animator scratchAnim = new Animator();
-			scratchAnim.LoadFrame(content, "NPC/Barbara/Idle4", 0.2f);
-			scratchAnim.LoadFrame(content, "NPC/Barbara/Idle1", 0.3f);
-			scratchAnim.LoadFrame(content, "NPC/Barbara/Idle4", 0.2f);
+			Animator scratchAnim = new Animator(content, Animator.PlayType.OneShot,
+													("NPC/Barbara/Idle4", 0.2f),
+													("NPC/Barbara/Idle1", 0.3f),
+													("NPC/Barbara/Idle4", 0.2f));
 
-			mIdleAnimation = new IdleAnimator(idleAnim, 29.0f);
+			mIdleAnimation = new IdleAnimator(idleAnim, 50.0f);
 			mIdleAnimation.AddVariation(lookUpAnim);
 			mIdleAnimation.AddVariation(footAnim);
 			mIdleAnimation.AddVariation(scratchAnim);
@@ -144,18 +144,18 @@
 		/// </summary>
 		protected override void DoNormalSpeak()
 		{
-			LevelPoint curLevel = ProgressManager.I.GetLevelPoint();
+			uint curLevel = ProgressManager.I.GetLevelPointHex();
 
-			if (curLevel.mWorldIndex == 0)
+			switch (curLevel)
 			{
-				switch (curLevel.mLevel)
-				{
-					case 0:
-						AddDialogBox("NPC.Barbara.Level0");
-						break;
-					default:
-						throw new NotImplementedException();
-				}
+				case 0x0000:
+					AddDialogBox("NPC.Barbara.Level0");
+					break;
+				case 0x0100:
+					AddDialogBox("NPC.Barbara.Level10");
+					break;
+				default:
+					break;
 			}
 		}
 

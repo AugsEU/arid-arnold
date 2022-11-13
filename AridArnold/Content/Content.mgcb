@@ -556,11 +556,14 @@
 #begin Text/EN/NPC/Barbara/Level0.txt
 /copy:Text/EN/NPC/Barbara/Level0.txt
 
+#begin Text/EN/NPC/Barbara/Level10.txt
+/copy:Text/EN/NPC/Barbara/Level10.txt
+
 #begin Text/EN/NPC/Dok/Heckle.txt
 /copy:Text/EN/NPC/Dok/Heckle.txt
 
-#begin Text/EN/NPC/Dok/Level0.txt
-/copy:Text/EN/NPC/Dok/Level0.txt
+#begin Text/EN/NPC/Dok/Level10.txt
+/copy:Text/EN/NPC/Dok/Level10.txt
 
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt

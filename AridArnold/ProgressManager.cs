@@ -200,6 +200,15 @@
 		}
 
 
+		/// <summary>
+		/// Get the current level point as a combined hex code.
+		/// </summary>
+		public uint GetLevelPointHex()
+		{
+			return ((uint)mCurrentLevel.mWorldIndex << 8) + (uint)mCurrentLevel.mLevel;
+		}
+
+
 
 		/// <summary>
 		/// Have we finished the game?

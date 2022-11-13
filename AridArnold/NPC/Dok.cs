@@ -32,16 +32,16 @@
 		public override void LoadContent(ContentManager content)
 		{
 			//Setup idle animation.
-			Animator idleAnim = new Animator();
-			idleAnim.LoadFrame(content, "NPC/Dok/Idle1", 0.8f);
+			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Dok/Idle1", 1.2f));
 
-			Animator breatheOut = new Animator();
-			breatheOut.LoadFrame(content, "NPC/Dok/Idle2", 0.8f);
+			Animator breatheOut = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Dok/Idle2", 0.8f));
 
-			Animator stickSmack = new Animator();
-			stickSmack.LoadFrame(content, "NPC/Dok/Idle3", 0.3f);
-			stickSmack.LoadFrame(content, "NPC/Dok/Idle1", 0.8f);
-			stickSmack.LoadFrame(content, "NPC/Dok/Idle3", 0.3f);
+			Animator stickSmack = new Animator(content, Animator.PlayType.OneShot,
+												("NPC/Dok/Idle3", 0.3f),
+												("NPC/Dok/Idle1", 0.8f),
+												("NPC/Dok/Idle3", 0.3f));
 
 			mIdleAnimation = new IdleAnimator(idleAnim, 90.0f);
 			mIdleAnimation.AddVariation(breatheOut);
@@ -138,18 +138,15 @@
 		/// </summary>
 		protected override void DoNormalSpeak()
 		{
-			LevelPoint curLevel = ProgressManager.I.GetLevelPoint();
+			uint curLevel = ProgressManager.I.GetLevelPointHex();
 
-			if (curLevel.mWorldIndex == 1)
+			switch (curLevel)
 			{
-				switch (curLevel.mLevel)
-				{
-					case 0:
-						AddDialogBox("NPC.Dok.Level10");
-						break;
-					default:
-						throw new NotImplementedException();
-				}
+				case 0x0100:
+					AddDialogBox("NPC.Dok.Level10");
+					break;
+				default:
+					break;
 			}
 		}
 

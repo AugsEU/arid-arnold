@@ -32,14 +32,13 @@
 		public override void LoadContent(ContentManager content)
 		{
 			mTexture = content.Load<Texture2D>("Tiles/mushroom");
-			mBounceAnim = new Animator(Animator.PlayType.OneShot);
-
-			mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce1", 0.05f);
-			mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce2", 0.1f);
-			mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce1", 0.05f);
-			mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce3", 0.05f);
-			mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce4", 0.05f);
-			mBounceAnim.LoadFrame(content, "Tiles/mushroom-bounce3", 0.05f);
+			mBounceAnim = new Animator(content, Animator.PlayType.OneShot,
+											("Tiles/mushroom-bounce1", 0.05f),
+											("Tiles/mushroom-bounce2", 0.1f),
+											("Tiles/mushroom-bounce1", 0.05f),
+											("Tiles/mushroom-bounce3", 0.05f),
+											("Tiles/mushroom-bounce4", 0.05f),
+											("Tiles/mushroom-bounce3", 0.05f));
 		}
 
 		#endregion rInitialisation

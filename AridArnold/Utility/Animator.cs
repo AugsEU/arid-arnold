@@ -58,27 +58,18 @@
 		/// Animator constructor
 		/// </summary>
 		/// <param name="playType">Play mode.(See enum for details)</param>
-		public Animator(PlayType playType = PlayType.Repeat)
+		public Animator(ContentManager content, PlayType playType, params (string, float)[] frameData)
 		{
 			mPlaying = false;
 			mTotalDuration = 0.0f;
 			mPlayHead = 0.0f;
 			mPlayType = playType;
-		}
 
-
-
-		/// <summary>
-		/// Add a frame to this animation.
-		/// Frames can only be added, not removed.
-		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		/// <param name="textureName">Texture path to load</param>
-		/// <param name="duration">Duration in seconds of this frame</param>
-		public void LoadFrame(ContentManager content, string textureName, float duration)
-		{
-			mTotalDuration += duration;
-			mFrames.Add(new AnimationFrame(content.Load<Texture2D>(textureName), duration));
+			for(int i = 0; i < frameData.Length; i++)
+			{
+				mTotalDuration += frameData[i].Item2;
+				mFrames.Add(new AnimationFrame(content.Load<Texture2D>(frameData[i].Item1), frameData[i].Item2));
+			}
 		}
 
 		#endregion rInitialisation

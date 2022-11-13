@@ -66,18 +66,18 @@
 			mJumpUpTex = content.Load<Texture2D>("Enemies/trundle/trundle-jump-up");
 			mJumpDownTex = content.Load<Texture2D>("Enemies/trundle/trundle-jump-down");
 
-			mRunningAnimation = new Animator();
-			mRunningAnimation.LoadFrame(content, "Enemies/trundle/trundle-walk1", 0.12f);
-			mRunningAnimation.LoadFrame(content, "Enemies/trundle/trundle-walk2", 0.15f);
-			mRunningAnimation.LoadFrame(content, "Enemies/trundle/trundle-walk3", 0.12f);
-			mRunningAnimation.LoadFrame(content, "Enemies/trundle/trundle-walk4", 0.12f);
+			mRunningAnimation = new Animator(content, Animator.PlayType.Repeat,
+												("Enemies/trundle/trundle-walk1", 0.12f),
+												("Enemies/trundle/trundle-walk2", 0.15f),
+												("Enemies/trundle/trundle-walk3", 0.12f),
+												("Enemies/trundle/trundle-walk4", 0.12f));
 			mRunningAnimation.Play();
 
-			mStandAnimation = new Animator();
-			mStandAnimation.LoadFrame(content, "Enemies/trundle/trundle-stand", 0.4f);
-			mStandAnimation.LoadFrame(content, "Enemies/trundle/trundle-stand2", 0.7f);
-			mStandAnimation.LoadFrame(content, "Enemies/trundle/trundle-stand4", 0.5f);
-			mStandAnimation.LoadFrame(content, "Enemies/trundle/trundle-stand3", 0.8f);
+			mStandAnimation = new Animator(content, Animator.PlayType.Repeat,
+											("Enemies/trundle/trundle-stand", 0.4f),
+											("Enemies/trundle/trundle-stand2", 0.7f),
+											("Enemies/trundle/trundle-stand4", 0.5f),
+											("Enemies/trundle/trundle-stand3", 0.8f));
 			mStandAnimation.Play();
 
 			//Botch position a bit. Not sure what's happening here.

@@ -68,11 +68,11 @@
 			mJumpUpTex = content.Load<Texture2D>("Arnold/arnold-jump-up");
 			mJumpDownTex = content.Load<Texture2D>("Arnold/arnold-jump-down");
 
-			mRunningAnimation = new Animator();
-			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run0", 0.1f);
-			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run1", 0.1f);
-			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run2", 0.1f);
-			mRunningAnimation.LoadFrame(content, "Arnold/arnold-run3", 0.15f);
+			mRunningAnimation = new Animator(content, Animator.PlayType.Repeat,
+												("Arnold/arnold-run0", 0.1f),
+												("Arnold/arnold-run1", 0.1f),
+												("Arnold/arnold-run2", 0.1f),
+												("Arnold/arnold-run3", 0.15f));
 
 			mRunningAnimation.Play();
 
