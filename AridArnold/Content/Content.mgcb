@@ -490,11 +490,77 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Dialog/DialogSpike.png
 
+#begin NPC/Dok/Angry1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Dok/Angry1.png
+
+#begin NPC/Dok/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Dok/Idle1.png
+
+#begin NPC/Dok/Idle2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Dok/Idle2.png
+
+#begin NPC/Dok/Idle3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Dok/Idle3.png
+
+#begin NPC/Dok/Talk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Dok/Talk1.png
+
 #begin Text/EN/NPC/Barbara/Heckle.txt
 /copy:Text/EN/NPC/Barbara/Heckle.txt
 
 #begin Text/EN/NPC/Barbara/Level0.txt
 /copy:Text/EN/NPC/Barbara/Level0.txt
+
+#begin Text/EN/NPC/Dok/Heckle.txt
+/copy:Text/EN/NPC/Dok/Heckle.txt
+
+#begin Text/EN/NPC/Dok/Level0.txt
+/copy:Text/EN/NPC/Dok/Level0.txt
 
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt

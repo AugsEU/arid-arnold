@@ -178,6 +178,9 @@
 				case 0x8E5CC4u:
 					EntityManager.I.RegisterEntity(new Barbara(pos), content);
 					break;
+				case 0x004406u:
+					EntityManager.I.RegisterEntity(new Dok(pos), content);
+					break;
 				default:
 					break;
 			}
