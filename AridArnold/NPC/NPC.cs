@@ -20,10 +20,6 @@
 
 		SpeechBoxStyle mStyle;
 		List<SpeechBoxRenderer> mTextBlocks;
-
-		protected Texture2D mIdleTexture;
-		protected Texture2D mAngryTexture;
-		protected Texture2D mTalkTexture;
 		MonoTimer mMouthTimer;
 
 		#endregion rMembers
@@ -116,6 +112,8 @@
 			}
 		}
 
+
+
 		/// <summary>
 		/// Scan our text boxes and delete them when they are above the top of the screen.
 		/// </summary>
@@ -125,6 +123,16 @@
 			{
 				mTextBlocks.RemoveAt(0);
 			}
+		}
+
+
+
+		/// <summary>
+		/// Default collider
+		/// </summary>
+		public override Rect2f ColliderBounds()
+		{
+			return new Rect2f(mPosition, GetNormalTalkTexture());
 		}
 
 		#endregion rUpdate
@@ -153,7 +161,7 @@
 		{
 			SmartTextBlock.TextMood textMood = GetMood();
 
-			Texture2D textureToDraw = mIdleTexture;
+			Texture2D textureToDraw = GetIdleTexture();
 
 			bool mouthOpen = IsTalking() && Util.IsVowel(GetCurrentBlock().GetCurrentChar());
 
@@ -169,19 +177,26 @@
 				{
 					default:
 					case SmartTextBlock.TextMood.Normal:
-						textureToDraw = mTalkTexture;
+						textureToDraw = GetNormalTalkTexture();
 						break;
 					case SmartTextBlock.TextMood.Exclaim:
-						textureToDraw = mAngryTexture;
+						textureToDraw = GetExclaimTalkTexture(); // TO DO: Add exclamation mark.
 						break;
 					case SmartTextBlock.TextMood.Question:
-						textureToDraw = mTalkTexture; // TO DO: Add question mark?
+						textureToDraw = GetQuestionTalkTexture(); // TO DO: Add question mark
 						break;
 				}
 			}
 
 			MonoDraw.DrawTexture(info, textureToDraw, mPosition);
 		}
+
+
+		/// Texture getters
+		protected abstract Texture2D GetIdleTexture();
+		protected abstract Texture2D GetNormalTalkTexture();
+		protected abstract Texture2D GetExclaimTalkTexture();
+		protected virtual Texture2D GetQuestionTalkTexture() { return GetNormalTalkTexture(); }
 
 		#endregion rDraw
 
@@ -253,6 +268,7 @@
 		{
 			return mTextBlocks.Count > 0;
 		}
+
 		#endregion rDialog
 	}
 }

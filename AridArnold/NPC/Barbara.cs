@@ -1,20 +1,13 @@
 ﻿namespace AridArnold
 {
-	internal class Barbara : NPC
+	internal class Barbara : SimpleTalkNPC
 	{
-		#region rConstants
-
-		const float TALK_DISTANCE = 30.0f;
-
-		#endregion rConstants
-
-
-
-
 
 		#region rMembers
 
-		bool mTalking;
+		IdleAnimator mIdleAnimation;
+		Texture2D mTalkTexture;
+		Texture2D mAngryTexture;
 
 		#endregion rMembers
 
@@ -29,7 +22,6 @@
 		/// </summary>
 		public Barbara(Vector2 pos) : base(pos)
 		{
-			mTalking = false;
 		}
 
 
@@ -39,7 +31,29 @@
 		/// </summary>
 		public override void LoadContent(ContentManager content)
 		{
-			mIdleTexture = content.Load<Texture2D>("NPC/Barbara/Idle1");
+			//Setup idle animation.
+			Animator idleAnim = new Animator();
+			idleAnim.LoadFrame(content, "NPC/Barbara/Idle1", 1.0f);
+
+			Animator blinkAnim = new Animator();
+			blinkAnim.LoadFrame(content, "NPC/Barbara/Idle2", 0.2f);
+			blinkAnim.LoadFrame(content, "NPC/Barbara/Idle1", 0.7f);
+			blinkAnim.LoadFrame(content, "NPC/Barbara/Idle2", 0.2f);
+
+			Animator footAnim = new Animator();
+			footAnim.LoadFrame(content, "NPC/Barbara/Idle3", 0.7f);
+
+			Animator scratchAnim = new Animator();
+			scratchAnim.LoadFrame(content, "NPC/Barbara/Idle4", 0.2f);
+			scratchAnim.LoadFrame(content, "NPC/Barbara/Idle1", 0.3f);
+			scratchAnim.LoadFrame(content, "NPC/Barbara/Idle4", 0.2f);
+
+			mIdleAnimation = new IdleAnimator(idleAnim, 29.0f);
+			mIdleAnimation.AddVariation(blinkAnim);
+			mIdleAnimation.AddVariation(footAnim);
+			mIdleAnimation.AddVariation(scratchAnim);
+
+			//Talk textures.
 			mTalkTexture = content.Load<Texture2D>("NPC/Barbara/Talk1");
 			mAngryTexture = content.Load<Texture2D>("NPC/Barbara/Angry1");
 
@@ -55,40 +69,13 @@
 		#region rUpdate
 
 		/// <summary>
-		/// Update
+		/// Update barbara animations.
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			float talkDistance = TALK_DISTANCE;
-			if (mTalking)
-			{
-				talkDistance *= 2.0f;
-			}
-
-			if (EntityManager.I.AnyNearMe(talkDistance, this, typeof(Arnold)))
-			{
-				if (!mTalking)
-				{
-					DoNormalSpeak();
-				}
-
-				mTalking = true;
-			}
-			else
-			{
-				if (mTalking && IsTalking())
-				{
-					HecklePlayer();
-				}
-				mTalking = false;
-			}
+			mIdleAnimation.Update(gameTime);
 
 			base.Update(gameTime);
-		}
-
-		public override Rect2f ColliderBounds()
-		{
-			return new Rect2f(mPosition, mIdleTexture);
 		}
 
 		#endregion rUpdate
@@ -109,6 +96,36 @@
 			base.Draw(info);
 		}
 
+
+
+		/// <summary>
+		/// Get idle texture
+		/// </summary>
+		protected override Texture2D GetIdleTexture()
+		{
+			return mIdleAnimation.GetCurrentTexture();
+		}
+
+
+
+		/// <summary>
+		/// Get normal texture for talking.
+		/// </summary>
+		protected override Texture2D GetNormalTalkTexture()
+		{
+			return mTalkTexture;
+		}
+
+
+
+		/// <summary>
+		/// Get exclaim texture.
+		/// </summary>
+		protected override Texture2D GetExclaimTalkTexture()
+		{
+			return mAngryTexture;
+		}
+
 		#endregion rDraw
 
 
@@ -120,7 +137,7 @@
 		/// <summary>
 		/// Say something.
 		/// </summary>
-		void DoNormalSpeak()
+		protected override void DoNormalSpeak()
 		{
 			LevelPoint curLevel = ProgressManager.I.GetLevelPoint();
 
@@ -135,14 +152,13 @@
 						throw new NotImplementedException();
 				}
 			}
-
 		}
 
 
 		/// <summary>
 		/// Shout at the player for leaving early.
 		/// </summary>
-		void HecklePlayer()
+		protected override void HecklePlayer()
 		{
 			AddDialogBox("NPC.Barbara.Heckle");
 		}

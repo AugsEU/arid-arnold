@@ -199,6 +199,16 @@
 			return mPlaying;
 		}
 
+
+
+		/// <summary>
+		/// Set type of animation play
+		/// </summary>
+		public void SetType(PlayType type)
+		{
+			mPlayType = type;
+		}
+
 		#endregion rUtility
 	}
 }
