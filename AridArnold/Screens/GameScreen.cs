@@ -26,6 +26,7 @@
 		private RenderTarget2D mRightUI;
 
 		private Texture2D mLifeTexture;
+		private Texture2D mEmptyLifeTexture;
 		private Texture2D mUIBG;
 
 		private PercentageTimer mLevelEndTimer;
@@ -68,7 +69,11 @@
 			FXManager.I.Clear();
 			levelToBegin.Begin(mContentManager);
 
-
+			if(ProgressManager.I.CanLoseLives() == false)
+			{
+				//Can't lose lives on this level, so we must reset the life count to the default.
+				ProgressManager.I.ResetLives();
+			}
 		}
 
 
@@ -94,6 +99,7 @@
 		{
 			mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
 			mLifeTexture = content.Load<Texture2D>("UI/Arnold-Life");
+			mEmptyLifeTexture = content.Load<Texture2D>("UI/Arnold-Life-Empty");
 			mUIBG = content.Load<Texture2D>("UI/ui_bg");
 		}
 
@@ -281,12 +287,25 @@
 			int texWidth = mLifeTexture.Width * texScale;
 			int texHeight = mLifeTexture.Height * texScale;
 
-			Rectangle lifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 32, texWidth, texHeight);
-
-			for (int i = 0; i < lives; i++)
+			if (ProgressManager.I.CanLoseLives())
 			{
-				MonoDraw.DrawTexture(info, mLifeTexture, lifeRect);
-				lifeRect.Y += texHeight + 10;
+				Rectangle lifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 32, texWidth, texHeight);
+				Rectangle emptyLifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 32, texWidth + 1, texHeight + 1);
+
+				for (int i = 0; i < ProgressManager.MAX_LIVES; i++)
+				{
+					if (i < lives)
+					{
+						MonoDraw.DrawTexture(info, mLifeTexture, lifeRect);
+					}
+					else
+					{
+						MonoDraw.DrawTexture(info, mEmptyLifeTexture, emptyLifeRect);
+					}
+
+					lifeRect.Y += texHeight + 10;
+					emptyLifeRect.Y += texHeight + 10;
+				}
 			}
 
 			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetWorldData().name, MonoDraw.LAYER_TEXT);

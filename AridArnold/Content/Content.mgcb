@@ -655,6 +655,12 @@
 #begin Text/EN/NPC/Zippy/Level1.txt
 /copy:Text/EN/NPC/Zippy/Level1.txt
 
+#begin Text/EN/NPC/Zippy/Level2.txt
+/copy:Text/EN/NPC/Zippy/Level2.txt
+
+#begin Text/EN/NPC/Zippy/Level3.txt
+/copy:Text/EN/NPC/Zippy/Level3.txt
+
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt
 
@@ -921,6 +927,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/Arnold-Life.png
+
+#begin UI/Arnold-Life-Empty.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Arnold-Life-Empty.png
 
 #begin UI/ui_bg.png
 /importer:TextureImporter

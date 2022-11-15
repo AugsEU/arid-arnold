@@ -155,6 +155,12 @@
 				case 0x0001:
 					AddDialogBox("NPC.Zippy.Level1");
 					break;
+				case 0x0002:
+					AddDialogBox("NPC.Zippy.Level2");
+					break;
+				case 0x0003:
+					AddDialogBox("NPC.Zippy.Level3");
+					break;
 				default:
 					break;
 			}

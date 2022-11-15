@@ -19,6 +19,7 @@
 	}
 
 
+
 	/// <summary>
 	/// Manage progress of Arnold
 	/// </summary>
@@ -27,9 +28,9 @@
 		#region rConstants
 
 		const int START_WORLD = 0;
-		const int START_LEVEL = 1;
+		const int START_LEVEL = 0;
 		const int START_LIVES = 4;
-		const int MAX_LIVES = 6;
+		public const int MAX_LIVES = 6;
 
 		WorldData[] mWorldData =
 		{
@@ -90,8 +91,17 @@
 		/// </summary>
 		public void ResetGame()
 		{
-			mLives = START_LIVES;
+			ResetLives();
 			mCurrentLevel = mLastCheckPoint;
+		}
+
+
+		/// <summary>
+		/// Reset lives to full.
+		/// </summary>
+		public void ResetLives()
+		{
+			mLives = START_LIVES;
 		}
 
 		#endregion rInitialisation
@@ -106,11 +116,6 @@
 		public void ReportCheckpoint()
 		{
 			mLastCheckPoint = GetNextLevelPoint(mCurrentLevel);
-
-			if (mLives < START_LIVES)
-			{
-				mLives = START_LIVES;
-			}
 		}
 
 
@@ -121,7 +126,7 @@
 		public void ReportLevelLoss()
 		{
 			//Don't lose lives on the checkpoint levels.
-			if (mCurrentLevel != mLastCheckPoint)
+			if (CanLoseLives())
 			{
 				mLives--;
 			}
@@ -150,6 +155,14 @@
 			}
 		}
 
+
+		/// <summary>
+		/// Can we lose lives on this level?
+		/// </summary>
+		public bool CanLoseLives()
+		{
+			return mCurrentLevel != mLastCheckPoint;
+		}
 
 
 		/// <summary>
