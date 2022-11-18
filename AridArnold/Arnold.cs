@@ -374,7 +374,7 @@
 
 			Vector2 rotationOffset = MonoDraw.CalcRotationOffset(rotation, texture.Width, texture.Height);
 
-			MonoDraw.DrawTexture(info, texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, MonoDraw.LAYER_DEFAULT);
+			MonoDraw.DrawTexture(info, texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, new Color(240,240,240), rotation, rotationOffset, effect, MonoDraw.LAYER_DEFAULT);
 		}
 
 

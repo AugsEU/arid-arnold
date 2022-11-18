@@ -55,6 +55,7 @@ namespace AridArnold
 
 			Window.ClientSizeChanged += OnResize;
 
+
 			mSlowDownCount = 0;
 
 			_self = this;
@@ -74,6 +75,7 @@ namespace AridArnold
 			_graphics.ApplyChanges();
 
 			Window.AllowUserResizing = true;
+			Window.Title = "Arid Arnold";
 
 			base.Initialize();
 		}

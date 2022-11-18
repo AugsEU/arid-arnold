@@ -19,13 +19,13 @@
 		#region rConstants
 
 		//Define layer depths of objects.
-		public const float LAYER_DEFAULT = 0.0f;
+		public const float LAYER_DEFAULT = 0.1f;
 
-		public const float LAYER_TILE = 0.19f;
+		public const float LAYER_TILE = 0.29f;
 
-		public const float LAYER_TEXT_BOX = 0.27f;
-		public const float LAYER_TEXT_SHADOW = 0.28f;
-		public const float LAYER_TEXT = 0.29f;
+		public const float LAYER_TEXT_BOX = 0.37f;
+		public const float LAYER_TEXT_SHADOW = 0.38f;
+		public const float LAYER_TEXT = 0.39f;
 		public const float LAYER_TOP = 1.00f;
 
 		//Add this constant to something to make it slightly infront of something within the same "layer".

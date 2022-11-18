@@ -27,7 +27,7 @@
 	{
 		#region rConstants
 
-		const int START_WORLD = 0;
+		const int START_WORLD = 3;
 		const int START_LEVEL = 0;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
@@ -51,6 +51,12 @@
 							 new CollectWaterLevel("level3-2", 3),
 							 new CollectWaterLevel("level3-3", 6),
 							 new CollectWaterLevel("level3-4", 6)}
+							),
+			new WorldData("The Lab", new Color(253, 253, 255), "labwall", "cave-platform", new Level[]
+							{new CollectWaterLevel("level4-1", 4),
+							 new CollectWaterLevel("level4-2", 3),
+							 new CollectWaterLevel("level4-3", 6),
+							 new CollectWaterLevel("level4-4", 6)}
 							)
 		};
 
