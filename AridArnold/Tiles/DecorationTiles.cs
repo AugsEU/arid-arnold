@@ -18,7 +18,7 @@
 		/// <param name="content">Monogame content manager</param>
 		public override void LoadContent(ContentManager content)
 		{
-			mTexture = content.Load<Texture2D>("Tiles/stalag-tile");
+			mTexture = content.Load<Texture2D>("Tiles/Buk/stalag-tile");
 		}
 	}
 }

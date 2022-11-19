@@ -19,7 +19,7 @@
 		/// <param name="content">Monogame content manager</param>
 		public override void LoadContent(ContentManager content)
 		{
-			mTexture = content.Load<Texture2D>("Tiles/mirror");
+			mTexture = content.Load<Texture2D>("Tiles/Mirror/mirror");
 		}
 
 		#endregion rInitialisation
