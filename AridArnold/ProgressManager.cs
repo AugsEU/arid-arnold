@@ -52,7 +52,7 @@
 							 new CollectWaterLevel("level3-3", 6),
 							 new CollectWaterLevel("level3-4", 6)}
 							),
-			new WorldData("The Lab", new Color(253, 253, 255), "labwall", "cave-platform", new Level[]
+			new WorldData("The Lab", new Color(173, 153, 155), "labwall", "labplat", new Level[]
 							{new CollectWaterLevel("level4-1", 4),
 							 new CollectWaterLevel("level4-2", 3),
 							 new CollectWaterLevel("level4-3", 6),
