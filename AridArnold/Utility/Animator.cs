@@ -114,12 +114,23 @@
 
 
 		/// <summary>
-		/// Begin/Resume playing
+		/// Begin playing
 		/// </summary>
 		public void Play()
 		{
 			mPlaying = true;
 			mPlayHead = 0.0f;
+		}
+
+
+
+		/// <summary>
+		/// Begin playing at a percent marker
+		/// </summary>
+		public void Play(float percentPlayed)
+		{
+			mPlaying = true;
+			mPlayHead = percentPlayed * mTotalDuration;
 		}
 
 

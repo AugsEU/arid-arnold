@@ -160,10 +160,16 @@
 	internal class RandomManager : Singleton<RandomManager>
 	{
 		MonoRandom mWorldRandom = new MonoRandom();
+		MonoRandom mDrawRandom = new MonoRandom();
 
 		public MonoRandom GetWorld()
 		{
 			return mWorldRandom;
+		}
+
+		public MonoRandom GetDraw()
+		{
+			return mDrawRandom;
 		}
 	}
 }

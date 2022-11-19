@@ -27,36 +27,36 @@
 	{
 		#region rConstants
 
-		const int START_WORLD = 3;
-		const int START_LEVEL = 0;
+		const int START_WORLD = 2;
+		const int START_LEVEL = 3;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
 
 		WorldData[] mWorldData =
 		{
-			new WorldData("Iron Works", new Color(0, 10,20), "IronWorks/steel", "IronWorks/platform", new Level[]
+			new WorldData("Iron Works", new Color(0, 10,20), new Level[]
 							{new CollectWaterLevel("level1-1", 5),
 							 new CollectWaterLevel("level1-2", 2),
 							 new CollectWaterLevel("level1-3", 2),
 							 new CollectFlagLevel("level1-4")}
 							),
-			new WorldData("Land of Mirrors", new Color(0, 24, 14), "Mirror/cobble", "Mirror/gold-platform", new Level[]
+			new WorldData("Land of Mirrors", new Color(0, 24, 14), new Level[]
 							{new CollectWaterLevel("level2-1", 1),
 							new CollectWaterLevel("level2-2", 3),
 							new CollectWaterLevel("level2-3", 4),
 							new CollectFlagLevel("level2-4")}
 							),
-			new WorldData("Buk's Cave", new Color(3, 3, 9), "Buk/cave", "Buk/cave-platform", new Level[]
+			new WorldData("Buk's Cave", new Color(3, 3, 9), new Level[]
 							{new CollectWaterLevel("level3-1", 4),
 							 new CollectWaterLevel("level3-2", 3),
 							 new CollectWaterLevel("level3-3", 6),
-							 new CollectWaterLevel("level3-4", 6)}
+							 new CollectFlagLevel("level3-4")}
 							),
-			new WorldData("The Lab", new Color(173, 153, 155), "Lab/labwall", "Lab/labplat", new Level[]
+			new WorldData("The Lab", new Color(173, 153, 155), new Level[]
 							{new CollectWaterLevel("level4-1", 4),
 							 new CollectWaterLevel("level4-2", 3),
 							 new CollectWaterLevel("level4-3", 6),
-							 new CollectWaterLevel("level4-4", 6)}
+							 new CollectFlagLevel("level4-4")}
 							)
 		};
 

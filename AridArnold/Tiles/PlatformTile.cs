@@ -16,13 +16,30 @@
 
 
 		/// <summary>
-		/// Load all textures and assets
+		/// Create an appropriate platform texture.
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public static PlatformTile InstantiatePlatformTile(Vector2 pos, int param)
 		{
-			mTexture = content.Load<Texture2D>("Tiles/" + ProgressManager.I.GetWorldData().platformTexture);
+			CardinalDirection rot = (CardinalDirection)param;
+			int worldIndex = ProgressManager.I.GetLevelPoint().mWorldIndex;
+
+			switch (worldIndex)
+			{
+				case 0: //Iron Works
+					return new StaticPlatformTile("IronWorks/platform", rot, pos);
+				case 1: //Land of mirrors
+					return new StaticPlatformTile("Mirror/gold-platform", rot, pos);
+				case 2: //Buk's Cave
+					return new StaticPlatformTile("Buk/cave-platform", rot, pos);
+				case 3: //The Lab
+					return new LabPlatform(rot, pos);
+				default:
+					break;
+			}
+
+			throw new NotImplementedException();
 		}
+
 
 		#endregion rInitialisation
 
@@ -72,5 +89,77 @@
 		}
 
 		#endregion rCollision
+	}
+
+
+
+	/// <summary>
+	/// Platform with static texture.
+	/// </summary>
+	class StaticPlatformTile : PlatformTile
+	{
+		string mTexturePath;
+
+		/// <summary>
+		/// Platform tile constructor
+		/// </summary>
+		/// <param name="rotation"></param>
+		public StaticPlatformTile(string texturePath, CardinalDirection rotation, Vector2 position) : base(rotation, position)
+		{
+			mRotation = rotation;
+			mTexturePath = texturePath;
+		}
+
+
+
+		/// <summary>
+		/// Load all textures and assets
+		/// </summary>
+		/// <param name="content">Monogame content manager</param>
+		public override void LoadContent(ContentManager content)
+		{
+			mTexture = content.Load<Texture2D>("Tiles/" + mTexturePath);
+		}
+	}
+
+
+
+	/// <summary>
+	/// Platform with static texture.
+	/// </summary>
+	class AnimPlatformTile : PlatformTile
+	{
+		protected Animator mAnimation;
+
+		/// <summary>
+		/// Platform tile constructor
+		/// </summary>
+		/// <param name="rotation"></param>
+		public AnimPlatformTile(CardinalDirection rotation, Vector2 position) : base(rotation, position)
+		{
+			mRotation = rotation;
+		}
+
+
+
+		/// <summary>
+		/// Update platform animations.
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			mAnimation.Update(gameTime);
+
+			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Get texture for this tile
+		/// </summary>
+		public override Texture2D GetTexture()
+		{
+			return mAnimation.GetCurrentTexture();
+		}
 	}
 }

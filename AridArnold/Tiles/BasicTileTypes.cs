@@ -401,32 +401,4 @@
 		}
 	}
 
-
-
-
-
-	/// <summary>
-	/// Tile for solid walls/floors
-	/// </summary>
-	class WallTile : SquareTile
-	{
-		/// <summary>
-		/// Tile with start position
-		/// </summary>
-		/// <param name="position">Start position</param>
-		public WallTile(Vector2 position) : base(position)
-		{
-		}
-
-
-
-		/// <summary>
-		/// Load all textures and assets
-		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
-		{
-			mTexture = content.Load<Texture2D>("Tiles/" + ProgressManager.I.GetWorldData().wallTexture);
-		}
-	}
 }
