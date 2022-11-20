@@ -45,6 +45,7 @@
 		protected bool mEnabled = true;
 		protected AdjacencyType mAdjacency = AdjacencyType.None;
 		protected Vector2 mPosition;
+		protected Point mTileMapIndex;
 		protected CardinalDirection mRotation;
 
 		private Rect2f? mBoundsCache;
@@ -66,6 +67,8 @@
 			mRotation = CardinalDirection.Up;
 			mPosition = position;
 			mBoundsCache = null;
+
+			mTileMapIndex = TileManager.I.GetTileMapCoord(position);
 		}
 
 
@@ -200,6 +203,42 @@
 		{
 			get { return mEnabled; }
 			set { mEnabled = value; }
+		}
+
+
+		/// <summary>
+		/// Get number of neighbours
+		/// </summary>
+		public int GetNumberOfNeighbours()
+		{
+			switch (mAdjacency)
+			{
+				case AdjacencyType.None:
+					return 0;
+				case AdjacencyType.Top:
+				case AdjacencyType.Bottom:
+				case AdjacencyType.Left:
+				case AdjacencyType.Right:
+					return 1;
+				case AdjacencyType.TopBottom:
+				case AdjacencyType.TopLeft:
+				case AdjacencyType.TopRight:
+				case AdjacencyType.LeftRight:
+				case AdjacencyType.BottomLeft:
+				case AdjacencyType.BottomRight:
+					return 2;
+				case AdjacencyType.TopBottomLeft:
+				case AdjacencyType.TopBottomRight:
+				case AdjacencyType.TopLeftRight:
+				case AdjacencyType.BottomLeftRight:
+					return 3;
+				case AdjacencyType.All:
+					return 4;
+				default:
+					break;
+			}
+
+			throw new NotImplementedException();
 		}
 
 		#endregion rUtility

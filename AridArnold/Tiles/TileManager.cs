@@ -45,6 +45,7 @@
 		float mTileSize;
 
 		Tile[,] mTileMap = new Tile[32, 32];
+		EMField mEMField;
 		Tile mDummyTile;
 
 		#endregion rMembers
@@ -66,6 +67,7 @@
 			mTileSize = tileSize;
 			Tile.sTILE_SIZE = tileSize;
 			mDummyTile = new AirTile(Vector2.Zero);
+			mEMField = new EMField(32);
 		}
 
 
@@ -137,15 +139,21 @@
 						return new FlagTile(position);
 					case 0xEA301Fu:
 						return new HotDogTile(position);
-					case 0x404040u:
 					//Special
+					case 0x404040u:
 						return new SpikesTile((CardinalDirection)param, position);
-					case 0x2A3F50u:
-						return new StalactiteTile(position);
 					case 0xFFFF00u:
 						return new MirrorTile((CardinalDirection)param, position);
 					case 0x00CDF9u:
 						return new MushroomTile((CardinalDirection)param, position);
+					//Electricity
+					case 0xFF6C7Cu:
+						return new ElectricButton(position);
+					case 0xFFC130u:
+						return new ElectricTile(position);
+					//Decoration
+					case 0x2A3F50u:
+						return new StalactiteTile(position);
 					default:
 						break;
 				}
@@ -421,6 +429,16 @@
 			return mTileSize;
 		}
 
+
+
+		/// <summary>
+		/// Get reference to EMField.
+		/// </summary>
+		public EMField GetEMField()
+		{
+			return mEMField;
+		}
+
 		#endregion rUtility
 
 
@@ -443,6 +461,8 @@
 					mTileMap[x, y].Update(gameTime);
 				}
 			}
+
+			mEMField.ProcessUpdate();
 		}
 
 

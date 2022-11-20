@@ -151,6 +151,11 @@ namespace AridArnold
 		}
 
 
+		public static float LERP(float min, float max, float t)
+		{
+			return min * (1.0f - t) + max * t ;
+		}
+
 
 		/// <summary>
 		/// Round a float to an int.
