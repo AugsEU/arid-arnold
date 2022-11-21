@@ -59,25 +59,12 @@
 			EMField emField = TileManager.I.GetEMField();
 			mCurrentElectricity = emField.GetValue(mTileMapIndex).mElectric;
 
-			float newElectricty = 0.0f;
-			int numToDivide = 0;
+			EMField.ScanResults scan = emField.ScanAdjacent(mTileMapIndex);
 
-			//Check surrounding tiles.
-			for (int i = 0; i < ADJACENT_COORDS.Length; i++)
+			if (scan.mTotalConductive > 0)
 			{
-				float elecAtPoint = emField.GetValue(mTileMapIndex, ADJACENT_COORDS[i]).mElectric;
-
-				if(emField.IsConductive(mTileMapIndex, ADJACENT_COORDS[i]))
-				{
-					newElectricty += elecAtPoint;
-					numToDivide++;
-				}
-			}
-
-			if (numToDivide > 0)
-			{
-				newElectricty /= numToDivide;
-				emField.SetElectricity(mTileMapIndex, newElectricty);
+				scan.mTotalElectric /= scan.mTotalConductive;
+				emField.SetElectricity(mTileMapIndex, scan.mTotalElectric);
 			}
 
 			base.Update(gameTime);

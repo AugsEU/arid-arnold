@@ -63,22 +63,14 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			//Electricity
-			EMField emField = TileManager.I.GetEMField();
-
 			//Check surrounding tiles.
-			float totalElectric = 0.0f;
+			EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);
 
-			for (int i = 0; i < ADJACENT_COORDS.Length; i++)
-			{
-				totalElectric += emField.GetValue(mTileMapIndex, ADJACENT_COORDS[i]).mElectric;
-			}
-
-			if(totalElectric > 0.75f)
+			if(scan.mTotalElectric > 0.75f)
 			{
 				mStatus = GateStatus.Open;
 			}
-			else if(totalElectric > 0.25f)
+			else if(scan.mTotalElectric > 0.25f)
 			{
 				mStatus = GateStatus.Mid;
 			}

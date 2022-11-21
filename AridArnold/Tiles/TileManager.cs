@@ -48,6 +48,8 @@
 		EMField mEMField;
 		Tile mDummyTile;
 
+		List<Point> mDeleteRequests;
+
 		#endregion rMembers
 
 
@@ -68,6 +70,8 @@
 			Tile.sTILE_SIZE = tileSize;
 			mDummyTile = new AirTile(Vector2.Zero);
 			mEMField = new EMField(32);
+
+			mDeleteRequests = new List<Point>();
 		}
 
 
@@ -155,6 +159,8 @@
 						return new ElectricTile(position);
 					case 0x0D4C92u:
 						return new ElectricGate(position);
+					case 0x363636u:
+						return new AndroldTile(position);
 					//Decoration
 					case 0x2A3F50u:
 						return new StalactiteTile(position);
@@ -391,6 +397,21 @@
 		}
 
 
+
+		/// <summary>
+		/// Convert tile index to position.
+		/// </summary>
+		public Vector2 RoundToTileCentre(Point index)
+		{
+			Vector2 result = mTileMapPos;
+
+			result.X = (index.X + 0.5f) * (mTileSize);
+			result.Y = (index.Y + 0.5f) * (mTileSize);
+
+			return result;
+		}
+
+
 		/// <summary>
 		/// Get pixel width drawn
 		/// </summary>
@@ -443,6 +464,30 @@
 			return mEMField;
 		}
 
+
+
+		/// <summary>
+		/// Effectively delete a tile by making it an Air tile..
+		/// </summary>
+		/// <param name="point"></param>
+		public void RequestDelete(Point point)
+		{
+			mDeleteRequests.Add(point);
+		}
+
+
+
+		/// <summary>
+		/// Effectively delete a tile by making it an Air tile..
+		/// </summary>
+		/// <param name="point"></param>
+		private void MakeTileIntoAir(Point point)
+		{
+			Vector2 pos = new Vector2(point.X * mTileSize, point.Y * mTileSize) + mTileMapPos;
+			mTileMap[point.X, point.Y] = new AirTile(pos);
+			mTileMap[point.X, point.Y].LoadContent(Main.GetMainContentManager());//To do: Don't load content here.
+		}
+
 		#endregion rUtility
 
 
@@ -465,6 +510,14 @@
 					mTileMap[x, y].Update(gameTime);
 				}
 			}
+
+			//Process delete requests
+			for(int p = 0; p < mDeleteRequests.Count; p++)
+			{
+				MakeTileIntoAir(mDeleteRequests[p]);
+			}
+
+			mDeleteRequests.Clear();
 
 			mEMField.ProcessUpdate();
 		}

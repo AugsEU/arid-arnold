@@ -32,7 +32,32 @@
 			}
 		}
 
+		/// <summary>
+		/// Used when scanning around for electricity.
+		/// </summary>
+		public struct ScanResults
+		{
+			public float mTotalElectric;
+			public int mTotalConductive;
+
+			public ScanResults(float elec, int cond)
+			{
+				mTotalElectric = elec;
+				mTotalConductive = cond;
+			}
+		}
+
 		#endregion rTypes
+
+
+
+
+
+		#region rConstants
+
+		static Point[] ADJACENT_COORDS = { new Point(1, 0), new Point(-1, 0), new Point(0, 1), new Point(0, -1) };
+
+		#endregion rConstants
 
 
 
@@ -51,6 +76,9 @@
 
 		#region rInitialisation
 
+		/// <summary>
+		/// Initialise EMField with N by N grid.
+		/// </summary>
 		public EMField(int size)
 		{
 			mCurrentField = new EMValue[size, size];
@@ -58,6 +86,9 @@
 		}
 
 		#endregion rInitialisation
+
+
+
 
 
 		#region rUpdate
@@ -172,6 +203,43 @@
 			}
 
 			return IsConductive(index);
+		}
+
+
+
+		/// <summary>
+		/// Scan tiles adjacent to the given point.
+		/// </summary>
+		public ScanResults ScanAdjacent(Point pointToScan)
+		{
+			//Check surrounding tiles.
+			float totalElec = 0.0f;
+			int totalConductive = 0;
+
+			for (int i = 0; i < ADJACENT_COORDS.Length; i++)
+			{
+				float elecAtPoint = GetValue(pointToScan, ADJACENT_COORDS[i]).mElectric;
+
+				if (IsConductive(pointToScan, ADJACENT_COORDS[i]))
+				{
+					totalElec += elecAtPoint;
+					totalConductive++;
+				}
+			}
+
+			return new ScanResults(totalElec, totalConductive);
+		}
+
+
+
+		/// <summary>
+		/// Scan tiles adjacent to the given point.
+		/// </summary>
+		public ScanResults ScanAdjacent(Vector2 pointToScan)
+		{
+			Point tileIndex = TileManager.I.GetTileMapCoord(pointToScan);
+
+			return ScanAdjacent(tileIndex);
 		}
 
 		#endregion rAccess

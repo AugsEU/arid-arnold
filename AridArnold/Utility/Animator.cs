@@ -169,6 +169,8 @@
 				}
 			}
 
+			i = Math.Min(i, mFrames.Count - 1);
+
 			return mFrames[i].mImage;
 		}
 

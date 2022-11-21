@@ -23,8 +23,8 @@
 		protected WalkDirection mPrevDirection;
 		protected Animator mRunningAnimation;
 
-		Texture2D mJumpUpTex;
-		Texture2D mJumpDownTex;
+		protected Texture2D mJumpUpTex;
+		protected Texture2D mJumpDownTex;
 
 		int mTimeSinceGrounded;
 

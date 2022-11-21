@@ -331,6 +331,15 @@ namespace AridArnold
 			return _self.mDummyTexture;
 		}
 
+
+		/// <summary>
+		/// Get content manager.
+		/// </summary>
+		public static ContentManager GetMainContentManager()
+		{
+			return _self.Content;
+		}
+
 		#endregion rUtility
 	}
 }
