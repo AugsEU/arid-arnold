@@ -147,10 +147,14 @@
 					case 0x00CDF9u:
 						return new MushroomTile((CardinalDirection)param, position);
 					//Electricity
+					case 0x61AD65u:
+						return new PermElectricButton(position);
 					case 0xFF6C7Cu:
 						return new ElectricButton(position);
 					case 0xFFC130u:
 						return new ElectricTile(position);
+					case 0x0D4C92u:
+						return new ElectricGate(position);
 					//Decoration
 					case 0x2A3F50u:
 						return new StalactiteTile(position);

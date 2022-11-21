@@ -35,6 +35,7 @@
 		#region rConstants
 
 		public static float sTILE_SIZE;
+		protected static Point[] ADJACENT_COORDS = { new Point(1, 0), new Point(-1, 0), new Point(0, 1), new Point(0, -1) };
 
 		#endregion rConstants
 

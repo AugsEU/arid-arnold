@@ -2,12 +2,6 @@
 {
 	class ElectricTile : SquareTile
 	{
-		#region rConstants
-
-		static Point[] POINTS_TO_CHECK = { new Point(1, 0), new Point(-1, 0), new Point(0, 1), new Point(0, -1) };
-
-		#endregion rConstants
-
 		#region rMembers
 
 		Animator mFullAnimation;
@@ -69,11 +63,11 @@
 			int numToDivide = 0;
 
 			//Check surrounding tiles.
-			for (int i = 0; i < POINTS_TO_CHECK.Length; i++)
+			for (int i = 0; i < ADJACENT_COORDS.Length; i++)
 			{
-				float elecAtPoint = emField.GetValue(mTileMapIndex, POINTS_TO_CHECK[i]).mElectric;
+				float elecAtPoint = emField.GetValue(mTileMapIndex, ADJACENT_COORDS[i]).mElectric;
 
-				if(emField.IsConductive(mTileMapIndex, POINTS_TO_CHECK[i]))
+				if(emField.IsConductive(mTileMapIndex, ADJACENT_COORDS[i]))
 				{
 					newElectricty += elecAtPoint;
 					numToDivide++;
