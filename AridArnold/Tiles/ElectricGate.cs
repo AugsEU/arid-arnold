@@ -66,11 +66,11 @@
 			//Check surrounding tiles.
 			EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);
 
-			if(scan.mTotalElectric > 0.75f)
+			if(scan.mTotalPositiveElectric > 0.75f)
 			{
 				mStatus = GateStatus.Open;
 			}
-			else if(scan.mTotalElectric > 0.25f)
+			else if(scan.mTotalPositiveElectric > 0.25f)
 			{
 				mStatus = GateStatus.Mid;
 			}

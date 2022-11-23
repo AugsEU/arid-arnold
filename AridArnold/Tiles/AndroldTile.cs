@@ -11,6 +11,16 @@ namespace AridArnold
 	/// </summary>
 	internal class AndroldTile : SquareTile
 	{
+		#region rConstants
+
+		static Vector2 SPAWN_OFFSET = new Vector2(8.0f, 11.0f);
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
 		bool mActivated;
@@ -65,7 +75,7 @@ namespace AridArnold
 				//Animation is finished, spawn Androld
 				if(mActivationAnim.IsPlaying() == false)
 				{
-					Vector2 position = TileManager.I.RoundToTileCentre(mTileMapIndex);
+					Vector2 position = TileManager.I.RoundToTileCentre(mTileMapIndex) + SPAWN_OFFSET;
 
 					// To do: Don't load content here!
 					EntityManager.I.RegisterEntity(new Androld(position), Main.GetMainContentManager());
@@ -78,7 +88,7 @@ namespace AridArnold
 			{
 				EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);
 
-				if (scan.mTotalElectric > 0.75f)
+				if (scan.mTotalPositiveElectric > 0.75f)
 				{
 					mActivated = true;
 					mActivationAnim.Play();

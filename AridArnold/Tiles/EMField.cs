@@ -38,13 +38,8 @@
 		public struct ScanResults
 		{
 			public float mTotalElectric;
+			public float mTotalPositiveElectric;//Total electricity considering positive electricity only.
 			public int mTotalConductive;
-
-			public ScanResults(float elec, int cond)
-			{
-				mTotalElectric = elec;
-				mTotalConductive = cond;
-			}
 		}
 
 		#endregion rTypes
@@ -213,21 +208,29 @@
 		public ScanResults ScanAdjacent(Point pointToScan)
 		{
 			//Check surrounding tiles.
-			float totalElec = 0.0f;
-			int totalConductive = 0;
+			ScanResults scanResults = new ScanResults();
+			scanResults.mTotalConductive = 0;
+			scanResults.mTotalPositiveElectric = 0.0f;
+			scanResults.mTotalElectric = 0.0f;
 
 			for (int i = 0; i < ADJACENT_COORDS.Length; i++)
 			{
 				float elecAtPoint = GetValue(pointToScan, ADJACENT_COORDS[i]).mElectric;
 
+				scanResults.mTotalElectric += elecAtPoint;
+
+				if(elecAtPoint > 0.0f)
+				{
+					scanResults.mTotalPositiveElectric += elecAtPoint;
+				}
+
 				if (IsConductive(pointToScan, ADJACENT_COORDS[i]))
 				{
-					totalElec += elecAtPoint;
-					totalConductive++;
+					scanResults.mTotalConductive++;
 				}
 			}
 
-			return new ScanResults(totalElec, totalConductive);
+			return scanResults;
 		}
 
 

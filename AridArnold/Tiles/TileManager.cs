@@ -69,8 +69,6 @@
 			mTileSize = tileSize;
 			Tile.sTILE_SIZE = tileSize;
 			mDummyTile = new AirTile(Vector2.Zero);
-			mEMField = new EMField(32);
-
 			mDeleteRequests = new List<Point>();
 		}
 
@@ -85,6 +83,7 @@
 		{
 			EntityManager.I.ClearEntities();
 			CollectableManager.I.ClearAllCollectables();
+			mEMField = new EMField(32);
 
 			Texture2D tileTexture = content.Load<Texture2D>(name);
 
