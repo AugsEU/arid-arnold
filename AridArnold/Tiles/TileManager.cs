@@ -151,9 +151,9 @@
 						return new MushroomTile((CardinalDirection)param, position);
 					//Electricity
 					case 0x61AD65u:
-						return new PermElectricButton(position);
+						return new PermElectricButton((CardinalDirection)param, position);
 					case 0xFF6C7Cu:
-						return new ElectricButton(position);
+						return new ElectricButton((CardinalDirection)param, position);
 					case 0xFFC130u:
 						return new ElectricTile(position);
 					case 0x0D4C92u:
@@ -182,27 +182,38 @@
 		/// <param name="content">Monogame content manager</param>
 		private void AddEntityFromColour(Color col, Vector2 pos, ContentManager content)
 		{
-			uint hexCode = Util.ColorToHEX(col);
-
-			switch (hexCode)
+			if (col.A > 0)
 			{
-				case 0xDC143Cu:
-					EntityManager.I.RegisterEntity(new Arnold(pos), content);
-					break;
-				case 0x5B2C2Cu:
-					EntityManager.I.RegisterEntity(new Trundle(pos), content);
-					break;
-				case 0x8E5CC4u:
-					EntityManager.I.RegisterEntity(new Barbara(pos), content);
-					break;
-				case 0x004406u:
-					EntityManager.I.RegisterEntity(new Dok(pos), content);
-					break;
-				case 0x7F7272u:
-					EntityManager.I.RegisterEntity(new Zippy(pos), content);
-					break;
-				default:
-					break;
+				//Use alpha component as a parameter.
+				int param = 255 - col.A;
+				uint hexCode = Util.ColorToHEX(col);
+
+				switch (hexCode)
+				{
+					//Arnold
+					case 0xDC143Cu:
+						EntityManager.I.RegisterEntity(new Arnold(pos), content);
+						break;
+					//Enemies
+					case 0x5B2C2Cu:
+						EntityManager.I.RegisterEntity(new Trundle(pos), content);
+						break;
+					case 0xAF2D50u:
+						EntityManager.I.RegisterEntity(new Roboto(pos, param), content);
+						break;
+					//NPCs
+					case 0x8E5CC4u:
+						EntityManager.I.RegisterEntity(new Barbara(pos), content);
+						break;
+					case 0x004406u:
+						EntityManager.I.RegisterEntity(new Dok(pos), content);
+						break;
+					case 0x7F7272u:
+						EntityManager.I.RegisterEntity(new Zippy(pos), content);
+						break;
+					default:
+						break;
+				}
 			}
 		}
 

@@ -14,8 +14,9 @@
 		/// <summary>
 		/// Construct button at position
 		/// </summary>
-		public ElectricButton(Vector2 position) : base(position)
+		public ElectricButton(CardinalDirection rot, Vector2 position) : base(position)
 		{
+			mRotation = rot;
 			mIsPressed = false;
 			mWasPressed = false;
 		}
@@ -112,8 +113,9 @@
 		/// <summary>
 		/// Construct button at position
 		/// </summary>
-		public PermElectricButton(Vector2 position) : base(position)
+		public PermElectricButton(CardinalDirection rot, Vector2 position) : base(position)
 		{
+			mRotation = rot;
 			mIsPressed = false;
 			mWasPressed = false;
 		}
@@ -161,7 +163,7 @@
 			}
 			else
 			{
-				TileManager.I.GetEMField().SetElectricity(mTileMapIndex, -2.0f);
+				TileManager.I.GetEMField().SetElectricity(mTileMapIndex, -1.0f);
 				mWasPressed = false;
 			}
 

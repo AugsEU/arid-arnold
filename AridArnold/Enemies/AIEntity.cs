@@ -155,34 +155,42 @@
 		/// <param name="info">Information needed to draw.</param>
 		public override void Draw(DrawInfo info)
 		{
-			Texture2D texture = mTexture;
+			Texture2D texture = GetDrawTexture();
 
+			SpriteEffects effect = mPrevDirection == WalkDirection.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+			MonoDraw.DrawTexture(info, texture, mPosition, effect);
+		}
+
+
+		/// <summary>
+		/// Get texture we should draw.
+		/// </summary>
+		/// <returns></returns>
+		protected virtual Texture2D GetDrawTexture()
+		{
 			if (mOnGround)
 			{
 				if (mWalkDirection == WalkDirection.None)
 				{
-					texture = mStandAnimation.GetCurrentTexture();
+					return mStandAnimation.GetCurrentTexture();
 				}
 				else
 				{
-					texture = mRunningAnimation.GetCurrentTexture();
+					return mRunningAnimation.GetCurrentTexture();
 				}
 			}
 			else
 			{
 				if (mVelocity.Y <= 0.0f)
 				{
-					texture = mJumpUpTex;
+					return mJumpUpTex;
 				}
 				else
 				{
-					texture = mJumpDownTex;
+					return mJumpDownTex;
 				}
 			}
-
-			SpriteEffects effect = mPrevDirection == WalkDirection.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-			MonoDraw.DrawTexture(info, texture, mPosition, effect);
 		}
 
 		#endregion rDraw

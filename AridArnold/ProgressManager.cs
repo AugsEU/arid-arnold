@@ -53,7 +53,7 @@
 							 new CollectFlagLevel("level3-4")}
 							),
 			new WorldData("The Lab", new Color(173, 153, 155), new Level[]
-							{new CollectWaterLevel("level4-1", 4),
+							{new CollectWaterLevel("level4-1", 3),
 							 new CollectWaterLevel("level4-2", 3),
 							 new CollectWaterLevel("level4-3", 6),
 							 new CollectFlagLevel("level4-4")}

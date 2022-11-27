@@ -95,6 +95,17 @@
 			return base.Collide(entity, gameTime);
 		}
 
+
+		public override bool IsSolid()
+		{
+			if(mStatus == GateStatus.Open)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		#endregion rUpdate
 
 

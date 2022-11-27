@@ -227,7 +227,7 @@
 					ReactToCollision(res.result.normal);
 				}
 
-				TileManager.I.GetTile(res.coord).OnTouch(this);
+				
 			}
 		}
 
