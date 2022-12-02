@@ -1,40 +1,6 @@
 ﻿namespace AridArnold
 {
 	/// <summary>
-	/// Comparison class to sort TileCollision results by their closeness to the entity
-	/// </summary>
-	class TileCollisionResultsSorter : IComparer<TileCollisionResults>
-	{
-		public int Compare(TileCollisionResults a, TileCollisionResults b)
-		{
-			return a.result.t.Value.CompareTo(b.result.t.Value);
-		}
-	}
-
-
-
-
-
-	/// <summary>
-	/// Represents a collision point with a tile
-	/// </summary>
-	class TileCollisionResults
-	{
-		public TileCollisionResults(Point p, CollisionResults r)
-		{
-			coord = p;
-			result = r;
-		}
-
-		public Point coord;
-		public CollisionResults result;
-	}
-
-
-
-
-
-	/// <summary>
 	/// Manages and stores the tile map.
 	/// </summary>
 	internal class TileManager : Singleton<TileManager>
@@ -830,18 +796,13 @@
 		/// <param name="entity">Entity to collide</param>
 		/// <param name="gameTime">Frame time</param>
 		/// <returns>List of all collisions. Note: it may contain dud collisions results. Check the t parameter first</returns>
-		public List<TileCollisionResults> ResolveCollisions(MovingEntity entity, GameTime gameTime)
+		public void GatherCollisions(GameTime gameTime, MovingEntity entity, ref List<EntityCollision> outputList)
 		{
-			List<TileCollisionResults> results = new List<TileCollisionResults>();
-
-			Util.Log("==Resolving==");
-
 			Rect2f playerBounds = entity.ColliderBounds();
 			Rect2f futurePlayerBounds = entity.ColliderBounds() + entity.VelocityToDisplacement(gameTime);
 
 			Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
 
-			Util.Log(" Starting vel " + entity.pVelocity.ToString());
 
 			for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
 			{
@@ -856,36 +817,10 @@
 
 					if (collisionResults.Collided)
 					{
-						results.Add(new TileCollisionResults(new Point(x, y), collisionResults));
+						outputList.Add(new TileEntityCollision(collisionResults, new Point(x, y)));
 					}
 				}
 			}
-			results.Sort(new TileCollisionResultsSorter());
-
-			Util.Log(" Resolving all " + results.Count + " collisions");
-
-			for (int i = 0; i < results.Count; i++)
-			{
-				Point point = results[i].coord;
-				Tile tile = mTileMap[point.X, point.Y];
-
-				CollisionResults collisionResults = tile.Collide(entity, gameTime);
-
-				if (collisionResults.Collided)
-				{
-					Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.pVelocity.X), Math.Abs(entity.pVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
-
-					Util.Log("   " + point.ToString() + "Pushing by normal " + collisionResults.normal.ToString() + "(" + collisionResults.t.Value + ")");
-
-					entity.pVelocity += pushVec;
-				}
-
-				results[i].result = collisionResults;
-			}
-
-			Util.Log(" Final vel " + entity.pVelocity.X + ", " + entity.pVelocity.Y);
-
-			return results;
 		}
 
 

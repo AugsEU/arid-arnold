@@ -5,9 +5,19 @@
 	/// </summary>
 	internal class EntityManager : Singleton<EntityManager>
 	{
+		#region rConstants
+
+		const int COLLISION_BUFFER_MAX_SIZE = 512; //Unused
+
+		#endregion rConstants
+
+
+
+
 		#region rMembers
 
-		private List<Entity> mRegisteredEntities = new List<Entity>();
+		List<Entity> mRegisteredEntities = new List<Entity>();
+		List<EntityCollision> mCollisionBuffer = new List<EntityCollision>();
 
 		#endregion rMembers
 
@@ -27,6 +37,23 @@
 				entity.Update(gameTime);
 			}
 
+			ResolveEntityTouching();
+		}
+
+		#endregion rUpdate
+
+
+
+
+
+		#region rCollision
+
+		/// <summary>
+		/// Resolve all CollideWithEntity
+		/// </summary>
+		void ResolveEntityTouching()
+		{
+			// Not the best but the number of entities is small enough for optimisations to not be needed.
 			for (int i = 0; i < mRegisteredEntities.Count - 1; i++)
 			{
 				Entity iEntity = mRegisteredEntities[i];
@@ -49,7 +76,50 @@
 			}
 		}
 
-		#endregion rUpdate
+
+
+		/// <summary>
+		/// Do physics for a single entity. Returns a list of collided normals for reactions.
+		/// </summary>
+		public List<Vector2> UpdateCollisionEntity(GameTime gameTime, MovingEntity entity)
+		{
+			List<Vector2> collidedNormals = new List<Vector2>();
+			while(GatherAllCollisions(gameTime, entity))
+			{
+				CollisionResults collisionResults = mCollisionBuffer[0].GetResult();
+
+				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.pVelocity.X), Math.Abs(entity.pVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
+				entity.pVelocity += pushVec;
+
+				mCollisionBuffer[0].PostCollisionReact(entity);
+				collidedNormals.Add(collisionResults.normal);
+			}
+
+			return collidedNormals;
+		}
+
+
+
+		/// <summary>
+		/// Gather collisions for an entity.
+		/// </summary>
+		public bool GatherAllCollisions(GameTime gameTime, MovingEntity entity)
+		{
+			mCollisionBuffer.Clear();
+
+			//Gather all collisions
+			TileManager.I.GatherCollisions(gameTime, entity, ref mCollisionBuffer);
+
+			if (mCollisionBuffer.Count > 0)
+			{
+				mCollisionBuffer.Sort(EntityCollision.COLLISION_SORTER);
+				return true;
+			}
+
+			return false;
+		}
+
+		#endregion rCollision
 
 
 

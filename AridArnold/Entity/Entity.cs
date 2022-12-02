@@ -200,35 +200,18 @@
 		/// <param name="gameTime">Frame time.</param>
 		public override void Update(GameTime gameTime)
 		{
-			ApplyCollisions(gameTime);
-
-			mFallthrough = false;
-
-			base.Update(gameTime);
-		}
-
-
-
-		/// <summary>
-		/// Apply tile collisions.
-		/// </summary>
-		/// <param name="gameTime">Frame time.</param>
-		private void ApplyCollisions(GameTime gameTime)
-		{
-			List<TileCollisionResults> tileResults = TileManager.I.ResolveCollisions(this, gameTime);
+			List<Vector2> collidedNormals = EntityManager.I.UpdateCollisionEntity(gameTime, this);
 
 			ApplyVelocity(gameTime);
 
-			//Post collision effects.
-			foreach (var res in tileResults)
-			{
-				if (res.result.Collided)
-				{
-					ReactToCollision(res.result.normal);
-				}
+			mFallthrough = false;
 
-				
+			foreach(Vector2 v in collidedNormals)
+			{
+				ReactToCollision(v);
 			}
+
+			base.Update(gameTime);
 		}
 
 
@@ -248,7 +231,7 @@
 		/// Resolve collision with specific normal.
 		/// </summary>
 		/// <param name="collisionNormal"></param>
-		protected abstract void ReactToCollision(Vector2 collisionNormal);
+		public abstract void ReactToCollision(Vector2 collisionNormal);
 
 		#endregion rUpdate
 
@@ -408,7 +391,7 @@
 		/// React to collision with a block.
 		/// </summary>
 		/// <param name="normal">Normal vector of collision.</param>
-		protected override void ReactToCollision(Vector2 normal)
+		public override void ReactToCollision(Vector2 normal)
 		{
 			CollisionType collisionType;
 
