@@ -81,6 +81,16 @@
 			//Default: Do nothing.
 		}
 
+
+
+		/// <summary>
+		/// Get collider submission for this frame. Entities that want to collide will have to submit one.
+		/// </summary>
+		public virtual ColliderSubmission GetColliderSubmission()
+		{
+			return null;
+		}
+
 		#endregion rUpdate
 
 

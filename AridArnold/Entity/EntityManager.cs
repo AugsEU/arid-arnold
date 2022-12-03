@@ -18,6 +18,7 @@
 
 		List<Entity> mRegisteredEntities = new List<Entity>();
 		List<EntityCollision> mCollisionBuffer = new List<EntityCollision>();
+		List<ColliderSubmission> mAuxiliaryColliders = new List<ColliderSubmission>();
 
 		#endregion rMembers
 
@@ -32,6 +33,8 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
+			GatherEntityColliders();
+
 			foreach (Entity entity in mRegisteredEntities)
 			{
 				entity.Update(gameTime);
@@ -47,6 +50,26 @@
 
 
 		#region rCollision
+
+		/// <summary>
+		/// Gather entity collider
+		/// </summary>
+		void GatherEntityColliders()
+		{
+			mAuxiliaryColliders.Clear();
+
+			foreach (Entity entity in mRegisteredEntities)
+			{
+				ColliderSubmission submission = entity.GetColliderSubmission();
+
+				if(submission != null)
+				{
+					mAuxiliaryColliders.Add(submission);
+				}
+			}
+		}
+
+
 
 		/// <summary>
 		/// Resolve all CollideWithEntity
@@ -109,6 +132,20 @@
 
 			//Gather all collisions
 			TileManager.I.GatherCollisions(gameTime, entity, ref mCollisionBuffer);
+
+			foreach(ColliderSubmission submission in mAuxiliaryColliders)
+			{
+				if(submission.CanCollideWith(entity))
+				{
+					EntityCollision collision = submission.GetEntityCollision(gameTime, entity);
+
+					if(collision != null)
+					{
+						mCollisionBuffer.Add(collision);
+					}
+				}
+			}
+			
 
 			if (mCollisionBuffer.Count > 0)
 			{

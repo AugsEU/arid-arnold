@@ -293,6 +293,15 @@
 			throw new NotImplementedException();
 		}
 
+
+		/// <summary>
+		/// Get collider submission for this frame. Entities that want to collide will have to submit one.
+		/// </summary>
+		public override ColliderSubmission GetColliderSubmission()
+		{
+			return new EntityColliderSubmission(this);
+		}
+
 		#endregion rUpdate
 
 

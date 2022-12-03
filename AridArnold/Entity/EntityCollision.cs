@@ -41,7 +41,7 @@
 
 
 	/// <summary>
-	/// Represents collision between tile and player.
+	/// Represents collision between tile and an entity.
 	/// </summary>
 	class TileEntityCollision : EntityCollision
 	{
@@ -55,6 +55,27 @@
 		public override void PostCollisionReact(MovingEntity entity)
 		{
 			TileManager.I.GetTile(mTileCoord).OnTouch(entity);
+		}
+	}
+
+
+
+	/// <summary>
+	/// Represents collision between an entity and an entity.
+	/// </summary>
+	class EntityEntityCollision : EntityCollision
+	{
+		// A bit confusing, but this represents the entity(treated like a static object) that collided with
+		// the entity calling UpdateCollisionEntity
+		Entity mEntity;
+
+		public EntityEntityCollision(CollisionResults result, Entity entity) : base(result)
+		{
+			mEntity = entity;
+		}
+
+		public override void PostCollisionReact(MovingEntity entity)
+		{
 		}
 	}
 }
