@@ -121,7 +121,7 @@
 			{
 				CollisionResults collisionResults = mCollisionBuffer[0].GetResult();
 
-				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.pVelocity.X), Math.Abs(entity.pVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.02f;
+				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.pVelocity.X), Math.Abs(entity.pVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.001f;
 				entity.pVelocity += pushVec;
 
 				mCollisionBuffer[0].PostCollisionReact(entity);

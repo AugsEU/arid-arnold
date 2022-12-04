@@ -329,7 +329,7 @@
 
 			if (mOnGround)
 			{
-				if (mVelocity.LengthSquared() > 0.001f)
+				if (mWalkDirection != WalkDirection.None && mVelocity.LengthSquared() >= mWalkSpeed * mWalkSpeed)
 				{
 					texture = mRunningAnimation.GetCurrentTexture();
 				}
@@ -346,8 +346,7 @@
 				}
 			}
 
-			int xDiff = texture.Width - mTexture.Width;
-			int yDiff = texture.Height - mTexture.Height;
+			Vector2 drawOffset = new Vector2((mTexture.Width - texture.Width)/2, mTexture.Height - texture.Height);
 
 			float rotation = 0.0f;
 
@@ -355,35 +354,34 @@
 			{
 				case CardinalDirection.Down:
 					rotation = 0.0f;
-					xDiff = xDiff / 2;
+
 					break;
 				case CardinalDirection.Up:
 					rotation = MathHelper.Pi;
-					yDiff = 1;
-					xDiff = xDiff / 2;
+					drawOffset.Y = mTexture.Height - drawOffset.Y;
+					drawOffset.X = mTexture.Width - drawOffset.X;
 					effect = effect ^ SpriteEffects.FlipHorizontally;
 					break;
 				case CardinalDirection.Left:
-					Util.Swap(ref xDiff, ref yDiff);
-					xDiff = -2 - xDiff / 2;
-					yDiff += 2;
+					Util.Swap(ref drawOffset.X, ref drawOffset.Y);
+					drawOffset.X = mTexture.Height- drawOffset.X;
 
 					rotation = MathHelper.PiOver2;
 					break;
 				case CardinalDirection.Right:
 					rotation = MathHelper.PiOver2 * 3.0f;
 					effect = effect ^ SpriteEffects.FlipHorizontally;
-
-					Util.Swap(ref xDiff, ref yDiff);
-					xDiff = (int)(xDiff / 1.5f) - 1;
-					yDiff += 2;
-
+					Util.Swap(ref drawOffset.X, ref drawOffset.Y);
+					drawOffset.Y =  mTexture.Width - drawOffset.Y;
 					break;
 			}
 
-			Vector2 rotationOffset = MonoDraw.CalcRotationOffset(rotation, texture.Width, texture.Height);
+			Vector2 drawPosition = mPosition + drawOffset;
 
-			MonoDraw.DrawTexture(info, texture, new Rectangle((int)MathF.Round(mPosition.X) - xDiff, (int)mPosition.Y + 1 - yDiff, texture.Width, texture.Height), null, GetDrawColour(), rotation, rotationOffset, effect, MonoDraw.LAYER_DEFAULT);
+			drawPosition.X = MathF.Round(drawPosition.X);
+			drawPosition.Y = MathF.Round(drawPosition.Y);
+
+			MonoDraw.DrawTexture(info, texture, drawPosition, null, GetDrawColour(), rotation, Vector2.Zero, 1.0f, effect, MonoDraw.LAYER_DEFAULT);
 		}
 
 
