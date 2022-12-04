@@ -12,6 +12,17 @@
 
 
 
+	/// <summary>
+	/// Comparison class to sort Entity for the OrderedUpdate
+	/// </summary>
+	class EntityUpdateSorter : IComparer<Entity>
+	{
+		public int Compare(Entity a, Entity b)
+		{
+			return b.GetUpdateOrder().CompareTo(a.GetUpdateOrder());
+		}
+	}
+
 
 
 	/// <summary>
@@ -24,6 +35,7 @@
 		protected Vector2 mPosition;
 		protected Vector2 mCentreOfMass;
 		protected Texture2D mTexture;
+		protected float mUpdateOrder;
 
 		#endregion rMembers
 
@@ -41,6 +53,7 @@
 		{
 			mPosition = pos;
 			mCentreOfMass = pos;
+			mUpdateOrder = 0.0f;
 		}
 
 
@@ -60,7 +73,7 @@
 		#region rUpdate
 
 		/// <summary>
-		/// Update entity
+		/// Update entity. No guarantees on order.
 		/// </summary>
 		/// <param name="gameTime">Frame time.</param>
 		public virtual void Update(GameTime gameTime)
@@ -68,6 +81,18 @@
 			TileManager.I.EntityTouchTiles(this);
 
 			mCentreOfMass = ColliderBounds().Centre;
+
+			//Calculate order for OrderedUpdate
+			CalculateUpdateOrder();
+		}
+
+
+		/// <summary>
+		/// Update entity with entity update order done by mUpdateOrder.
+		/// </summary>
+		public virtual void OrderedUpdate(GameTime gameTime)
+		{
+
 		}
 
 
@@ -90,6 +115,16 @@
 		{
 			return null;
 		}
+
+
+
+		/// <summary>
+		/// Calculate update order. This is supposed to be storred in mUpdateOrder
+		/// </summary>
+		protected virtual void CalculateUpdateOrder()
+		{
+		}
+
 
 		#endregion rUpdate
 
@@ -163,6 +198,16 @@
 			return (collider.min + collider.max) / 2.0f;
 		}
 
+
+
+		/// <summary>
+		/// Get the update ordering. Higher value means update will happen first.
+		/// </summary>
+		public float GetUpdateOrder()
+		{
+			return mUpdateOrder;
+		}
+
 		#endregion rUtility
 	}
 
@@ -205,10 +250,10 @@
 		#region rUpdate
 
 		/// <summary>
-		/// Update Moving Entity
+		/// Update Moving Entity. No guarantees on order.
 		/// </summary>
 		/// <param name="gameTime">Frame time.</param>
-		public override void Update(GameTime gameTime)
+		public override void OrderedUpdate(GameTime gameTime)
 		{
 			List<Vector2> collidedNormals = EntityManager.I.UpdateCollisionEntity(gameTime, this);
 
@@ -221,7 +266,7 @@
 				ReactToCollision(v);
 			}
 
-			base.Update(gameTime);
+			base.OrderedUpdate(gameTime);
 		}
 
 
@@ -356,6 +401,10 @@
 
 		#endregion
 
+
+
+
+
 		#region rUpdate
 
 		/// <summary>
@@ -456,6 +505,22 @@
 			}
 
 			mVelocity += deltaVec;
+		}
+
+
+
+		/// <summary>
+		/// Get the update ordering. Higher value means update will happen first.
+		/// </summary>
+		protected override void CalculateUpdateOrder()
+		{
+			// If one entity is standing on another, and they both jump on the same frame,
+			// we want the one who is standing on top to 
+			Vector2 gravityVec = GravityVecNorm();
+			Vector2 fallingVec = Vector2.Dot(gravityVec, mVelocity) * gravityVec;
+			fallingVec.Normalize();
+
+			mUpdateOrder = Vector2.Dot(mPosition, fallingVec);
 		}
 
 		#endregion rUpdate

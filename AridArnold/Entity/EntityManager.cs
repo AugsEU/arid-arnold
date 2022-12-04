@@ -19,6 +19,7 @@
 		List<Entity> mRegisteredEntities = new List<Entity>();
 		List<EntityCollision> mCollisionBuffer = new List<EntityCollision>();
 		List<ColliderSubmission> mAuxiliaryColliders = new List<ColliderSubmission>();
+		EntityUpdateSorter mUpdateSorter = new EntityUpdateSorter();
 
 		#endregion rMembers
 
@@ -35,9 +36,18 @@
 		{
 			GatherEntityColliders();
 
+			// Do unordered update. To do: Multi-threading if it turns out to be worth it.
 			foreach (Entity entity in mRegisteredEntities)
 			{
 				entity.Update(gameTime);
+			}
+
+			mRegisteredEntities.Sort(mUpdateSorter);
+
+			// Do ordered update.
+			foreach (Entity entity in mRegisteredEntities)
+			{
+				entity.OrderedUpdate(gameTime);
 			}
 
 			ResolveEntityTouching();
