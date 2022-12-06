@@ -13,6 +13,8 @@
 		/// <param name="pos">Starting position</param>
 		public Androld(Vector2 pos) : base(pos)
 		{
+			//Immediately complete this timer.
+			mTimerSinceStart.SetComplete();
 		}
 
 

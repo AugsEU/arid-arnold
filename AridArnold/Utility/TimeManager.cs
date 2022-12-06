@@ -9,7 +9,7 @@
 		#region rMembers
 
 		bool mPlaying;
-		double mElapsedTimeMs;
+		protected double mElapsedTimeMs;
 
 		#endregion rMembers
 
@@ -195,6 +195,15 @@
 		public float GetPercentageF()
 		{
 			return (float)GetPercentage();
+		}
+
+
+		/// <summary>
+		/// Immediately complete a timer.
+		/// </summary>
+		public void SetComplete()
+		{
+			mElapsedTimeMs = mTotalTime;
 		}
 
 		#endregion rUtility

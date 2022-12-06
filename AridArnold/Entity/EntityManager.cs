@@ -5,16 +5,6 @@
 	/// </summary>
 	internal class EntityManager : Singleton<EntityManager>
 	{
-		#region rConstants
-
-		//Maximum number of collisions before we abort and assume we are stuck in an infinite loop.
-		const int COLLISION_MAX_COUNT = 1024;
-
-		#endregion rConstants
-
-
-
-
 		#region rMembers
 
 		List<Entity> mRegisteredEntities = new List<Entity>();
@@ -63,7 +53,7 @@
 		#region rCollision
 
 		/// <summary>
-		/// Gather entity collider
+		/// Gather entity collider from entities.
 		/// </summary>
 		void GatherEntityColliders()
 		{
@@ -113,48 +103,9 @@
 
 
 		/// <summary>
-		/// Do physics for a single entity. Returns a list of collided normals for reactions.
+		/// Get the collision this entity will hit next. Returns null if no more collisions.
 		/// </summary>
-		public void UpdateCollisionEntity(GameTime gameTime, MovingEntity entity)
-		{
-			// List of all collisions that actually happened. A collision can be detected but
-			// never actually happen. E.g. if we were going to collide with a wall, but the ground
-			// is in the way.
-			List<EntityCollision> collisionList = new List<EntityCollision>();
-
-			while(GatherAllCollisions(gameTime, entity))
-			{
-				EntityCollision entityCollision = mCollisionBuffer[0];
-				CollisionResults collisionResults = entityCollision.GetResult();
-
-				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.pVelocity.X), Math.Abs(entity.pVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.001f;
-				entity.pVelocity += pushVec;
-
-				collisionList.Add(entityCollision);
-
-				if(collisionList.Count > COLLISION_MAX_COUNT)
-				{
-					// Fail-safe, don't move
-					entity.pVelocity = Vector2.Zero;
-
-					//Clear list of bogus
-					collisionList.Clear();
-					break;
-				}
-			}
-
-			foreach(EntityCollision entityCollision in collisionList)
-			{
-				entityCollision.PostCollisionReact(entity);
-			}
-		}
-
-
-
-		/// <summary>
-		/// Gather collisions for an entity.
-		/// </summary>
-		public bool GatherAllCollisions(GameTime gameTime, MovingEntity entity)
+		public EntityCollision GetNextCollision(GameTime gameTime, MovingEntity entity)
 		{
 			mCollisionBuffer.Clear();
 
@@ -174,14 +125,14 @@
 				}
 			}
 			
+			mCollisionBuffer.Sort(EntityCollision.COLLISION_SORTER);
 
 			if (mCollisionBuffer.Count > 0)
 			{
-				mCollisionBuffer.Sort(EntityCollision.COLLISION_SORTER);
-				return true;
+				return Util.GetMin(ref mCollisionBuffer, EntityCollision.COLLISION_SORTER);
 			}
 
-			return false;
+			return null;
 		}
 
 		#endregion rCollision

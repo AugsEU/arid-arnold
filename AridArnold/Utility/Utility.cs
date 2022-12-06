@@ -41,6 +41,48 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Finds the maximum in a list.
+		/// </summary>
+		public static T GetMax<T>(ref List<T> list, IComparer<T> comparer)
+		{
+			T maxValue = list[0];
+
+			for(int i = 1; i < list.Count; i++)
+			{
+				T temp = list[i];
+				if(comparer.Compare(temp, maxValue) > 0)
+				{
+					maxValue = temp;
+				}
+			}
+
+			return maxValue;
+		}
+
+
+
+		/// <summary>
+		/// Finds the maximum in a list.
+		/// </summary>
+		public static T GetMin<T>(ref List<T> list, IComparer<T> comparer)
+		{
+			T minValue = list[0];
+
+			for (int i = 1; i < list.Count; i++)
+			{
+				T temp = list[i];
+				if (comparer.Compare(temp, minValue) < 0)
+				{
+					minValue = temp;
+				}
+			}
+
+			return minValue;
+		}
+
+
+
+		/// <summary>
 		/// Convert cardinal direction enum to unit vector
 		/// </summary>
 		/// <param name="dir">Cardinal direction</param>
@@ -233,6 +275,9 @@ namespace AridArnold
 		{
 			Debug.WriteLine(msg);
 		}
+
+
+
 	}
 
 

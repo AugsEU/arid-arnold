@@ -30,7 +30,7 @@
 
 		//Various timers.
 		PercentageTimer mTimerSinceDeath;
-		PercentageTimer mTimerSinceStart;
+		protected PercentageTimer mTimerSinceStart;
 
 		#endregion rMembers
 
@@ -267,6 +267,22 @@
 					}
 					break;
 			}
+		}
+
+
+
+		/// <summary>
+		/// Don't update if the death timer is playing.
+		/// </summary>
+		/// <param name="gameTime"></param>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			if (mTimerSinceDeath.IsPlaying())
+			{
+				return;
+			}
+
+			base.OrderedUpdate(gameTime);
 		}
 
 

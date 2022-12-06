@@ -5,6 +5,17 @@
 	/// </summary>
 	abstract class MovingEntity : Entity
 	{
+		#region rConstants
+
+		//Maximum number of collisions before we abort and assume we are stuck in an infinite loop.
+		const int COLLISION_MAX_COUNT = 1024;
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
 		protected Vector2 mVelocity;
@@ -40,9 +51,7 @@
 		/// <param name="gameTime">Frame time.</param>
 		public override void OrderedUpdate(GameTime gameTime)
 		{
-			EntityManager.I.UpdateCollisionEntity(gameTime, this);
-
-			ApplyVelocity(gameTime);
+			UpdateCollision(gameTime);
 
 			mFallthrough = false;
 
@@ -50,6 +59,48 @@
 		}
 
 
+		/// <summary>
+		/// Handle all collisions and physics.
+		/// </summary>
+		/// <param name="gameTime"></param>
+		private void UpdateCollision(GameTime gameTime)
+		{
+			// List of all collisions that actually happened. A collision can be detected but
+			// never actually happen. E.g. if we were going to collide with a wall, but the ground
+			// is in the way.
+			List<EntityCollision> collisionList = new List<EntityCollision>();
+
+			EntityCollision currentCollision = EntityManager.I.GetNextCollision(gameTime, this);
+			while (currentCollision != null)
+			{
+				EntityCollision entityCollision = currentCollision;
+				CollisionResults collisionResults = entityCollision.GetResult();
+
+				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(mVelocity.X), Math.Abs(mVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.001f;
+				mVelocity += pushVec;
+
+				collisionList.Add(entityCollision);
+
+				if (collisionList.Count > COLLISION_MAX_COUNT)
+				{
+					// Fail-safe, don't move
+					mVelocity = Vector2.Zero;
+
+					//Clear list of bogus
+					collisionList.Clear();
+					break;
+				}
+
+				currentCollision = EntityManager.I.GetNextCollision(gameTime, this);
+			}
+
+			ApplyVelocity(gameTime);
+
+			foreach (EntityCollision entityCollision in collisionList)
+			{
+				entityCollision.PostCollisionReact(this);
+			}
+		}
 
 		/// <summary>
 		/// Move position by velocity
