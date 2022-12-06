@@ -7,7 +7,8 @@
 	{
 		#region rConstants
 
-		const int COLLISION_BUFFER_MAX_SIZE = 512; //Unused
+		//Maximum number of collisions before we abort and assume we are stuck in an infinite loop.
+		const int COLLISION_MAX_COUNT = 1024;
 
 		#endregion rConstants
 
@@ -114,21 +115,38 @@
 		/// <summary>
 		/// Do physics for a single entity. Returns a list of collided normals for reactions.
 		/// </summary>
-		public List<Vector2> UpdateCollisionEntity(GameTime gameTime, MovingEntity entity)
+		public void UpdateCollisionEntity(GameTime gameTime, MovingEntity entity)
 		{
-			List<Vector2> collidedNormals = new List<Vector2>();
+			// List of all collisions that actually happened. A collision can be detected but
+			// never actually happen. E.g. if we were going to collide with a wall, but the ground
+			// is in the way.
+			List<EntityCollision> collisionList = new List<EntityCollision>();
+
 			while(GatherAllCollisions(gameTime, entity))
 			{
-				CollisionResults collisionResults = mCollisionBuffer[0].GetResult();
+				EntityCollision entityCollision = mCollisionBuffer[0];
+				CollisionResults collisionResults = entityCollision.GetResult();
 
 				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(entity.pVelocity.X), Math.Abs(entity.pVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.001f;
 				entity.pVelocity += pushVec;
 
-				mCollisionBuffer[0].PostCollisionReact(entity);
-				collidedNormals.Add(collisionResults.normal);
+				collisionList.Add(entityCollision);
+
+				if(collisionList.Count > COLLISION_MAX_COUNT)
+				{
+					// Fail-safe, don't move
+					entity.pVelocity = Vector2.Zero;
+
+					//Clear list of bogus
+					collisionList.Clear();
+					break;
+				}
 			}
 
-			return collidedNormals;
+			foreach(EntityCollision entityCollision in collisionList)
+			{
+				entityCollision.PostCollisionReact(entity);
+			}
 		}
 
 

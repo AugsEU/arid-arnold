@@ -469,6 +469,11 @@ namespace AridArnold
 				}
 			}
 
+			if(nearest_t == 1.0f)
+			{
+				results.t = null;
+			}
+
 			if (nearest_t == -0.0f && Vector2.Dot(ray.direction, results.normal) > 0.0f)
 			{
 				results.t = null;

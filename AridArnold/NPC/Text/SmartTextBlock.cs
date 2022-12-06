@@ -281,7 +281,6 @@
 				}
 
 				char controlChar = mText[mCharHead];
-				Util.DLog("Parsing |"+controlChar+"|");
 
 				switch (controlChar)
 				{

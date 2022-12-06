@@ -329,7 +329,7 @@
 
 			if (mOnGround)
 			{
-				if (mWalkDirection != WalkDirection.None && mVelocity.LengthSquared() >= mWalkSpeed * mWalkSpeed)
+				if (mWalkDirection != WalkDirection.None && mVelocity.LengthSquared() >= mWalkSpeed)
 				{
 					texture = mRunningAnimation.GetCurrentTexture();
 				}

@@ -40,16 +40,11 @@
 		/// <param name="gameTime">Frame time.</param>
 		public override void OrderedUpdate(GameTime gameTime)
 		{
-			List<Vector2> collidedNormals = EntityManager.I.UpdateCollisionEntity(gameTime, this);
+			EntityManager.I.UpdateCollisionEntity(gameTime, this);
 
 			ApplyVelocity(gameTime);
 
 			mFallthrough = false;
-
-			foreach (Vector2 v in collidedNormals)
-			{
-				ReactToCollision(v);
-			}
 
 			base.OrderedUpdate(gameTime);
 		}

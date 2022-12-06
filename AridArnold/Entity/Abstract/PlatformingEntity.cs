@@ -133,7 +133,10 @@
 					mOnGround = true;
 					break;
 				case CollisionType.Ceiling:
-					mVelocity = GravityVecNorm() * mGravity;
+					if (mOnGround == false)
+					{
+						mVelocity = GravityVecNorm() * mGravity;
+					}
 					break;
 			}
 		}

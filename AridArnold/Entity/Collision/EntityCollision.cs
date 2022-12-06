@@ -19,8 +19,7 @@
 	class EntityCollision
 	{
 		public static EntityCollisionSorter COLLISION_SORTER = new EntityCollisionSorter();
-
-		CollisionResults mResult;
+		protected CollisionResults mResult;
 
 		public EntityCollision(CollisionResults result)
 		{
@@ -41,9 +40,26 @@
 
 
 	/// <summary>
+	/// Represents collision between tile and a solid hitbox.
+	/// </summary>
+	class SolidEntityCollision : EntityCollision
+	{
+		public SolidEntityCollision(CollisionResults result) : base(result)
+		{
+		}
+
+		public override void PostCollisionReact(MovingEntity entity)
+		{
+			entity.ReactToCollision(mResult.normal);
+		}
+	}
+
+
+
+	/// <summary>
 	/// Represents collision between tile and an entity.
 	/// </summary>
-	class TileEntityCollision : EntityCollision
+	class TileEntityCollision : SolidEntityCollision
 	{
 		Point mTileCoord;
 
@@ -55,27 +71,44 @@
 		public override void PostCollisionReact(MovingEntity entity)
 		{
 			TileManager.I.GetTile(mTileCoord).OnTouch(entity);
+
+			base.PostCollisionReact(entity);
 		}
 	}
 
 
 
 	/// <summary>
-	/// Represents collision between an entity and an entity.
+	/// Represents collision between a entity and an entity.
 	/// </summary>
-	class EntityEntityCollision : EntityCollision
+	class EntityEntityCollision : SolidEntityCollision
 	{
 		// A bit confusing, but this represents the entity(treated like a static object) that collided with
 		// the entity calling UpdateCollisionEntity
-		Entity mEntity;
+		MovingEntity mEntity;
 
-		public EntityEntityCollision(CollisionResults result, Entity entity) : base(result)
+		public EntityEntityCollision(CollisionResults result, MovingEntity entity) : base(result)
 		{
 			mEntity = entity;
 		}
 
 		public override void PostCollisionReact(MovingEntity entity)
 		{
+			//Only treat platforming entities as "solid" when grounded.
+			// TODO: Use polymorphism to avoid this dynamic cast.
+			if (mEntity is PlatformingEntity)
+			{
+				PlatformingEntity platformingEntity = (PlatformingEntity)mEntity;
+
+				if (platformingEntity.pGrounded)
+				{
+					base.PostCollisionReact(entity);
+				}
+			}
+			else
+			{
+				base.PostCollisionReact(entity);
+			}
 		}
 	}
 }
