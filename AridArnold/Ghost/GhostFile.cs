@@ -3,7 +3,7 @@
 	/// <summary>
 	/// A file that stores ghost information
 	/// </summary>
-	internal class GhostFile : MonoFile
+	internal class GhostFile : MonoReadWriteFile
 	{
 		#region rConstants
 
