@@ -10,11 +10,16 @@
 		Vector2 mTileMapPos;
 		float mTileSize;
 
+		//Tile map
 		Tile[,] mTileMap = new Tile[32, 32];
-		EMField mEMField;
 		Tile mDummyTile;
+		List<Point> mDeleteRequests; // Tiles we want deleted in the next update.
 
-		List<Point> mDeleteRequests;
+		//EM field
+		EMField mEMField;
+
+		//Aux Data
+		AuxData mAuxData;
 
 		#endregion rMembers
 
@@ -51,6 +56,18 @@
 			CollectableManager.I.ClearAllCollectables();
 			mEMField = new EMField(32);
 
+			//Load tile map.
+			LoadTilemap(content, name);
+
+			//Load aux data.
+			LoadAuxData(content, name);
+		}
+
+		/// <summary>
+		/// Load tilemap from image.
+		/// </summary>
+		public void LoadTilemap(ContentManager content, string name)
+		{
 			Texture2D tileTexture = content.Load<Texture2D>(name);
 
 			mTileMap = new Tile[tileTexture.Width, tileTexture.Height];
@@ -74,6 +91,30 @@
 			}
 
 			CalculateTileAdjacency();
+		}
+
+
+
+		/// <summary>
+		/// Load aux data.
+		/// </summary>
+		public void LoadAuxData(ContentManager content, string name)
+		{
+			// Load file
+			mAuxData = new AuxData(name);
+			mAuxData.Load();
+
+			List<LinearRailData> railList = mAuxData.GetRailsData();
+
+			// Create rails
+			for (int i = 0; i < railList.Count; i++)
+			{
+				LinearRailData railData = railList[i];
+				for(int j = 0; j < railData.GetCount(); j++)
+				{
+					RailPlatform.TryCreateRailPlatformAtNode(railData, i, content);
+				}
+			}
 		}
 
 
@@ -352,6 +393,20 @@
 		}
 
 
+		/// <summary>
+		/// Convert index to tile's top left..
+		/// </summary>
+		public Vector2 GetTileTopLeft(Point index)
+		{
+			Vector2 result = mTileMapPos;
+
+			result.X += (index.X) * (mTileSize);
+			result.Y += (index.Y) * (mTileSize);
+
+			return result;
+		}
+
+
 
 		/// <summary>
 		/// Round a position to the centre of a tile
@@ -381,8 +436,8 @@
 		{
 			Vector2 result = mTileMapPos;
 
-			result.X = (index.X + 0.5f) * (mTileSize);
-			result.Y = (index.Y + 0.5f) * (mTileSize);
+			result.X += (index.X + 0.5f) * (mTileSize);
+			result.Y += (index.Y + 0.5f) * (mTileSize);
 
 			return result;
 		}

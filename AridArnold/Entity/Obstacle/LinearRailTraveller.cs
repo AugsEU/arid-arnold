@@ -116,6 +116,7 @@
 		{
 			mPrevNode = startNode;
 			mCurrentWaitTime = 0.0f;
+			mPosition = GetNodePosition(data.GetNode(startNode));
 
 			mData = data;
 		}
@@ -193,7 +194,7 @@
 		/// </summary>
 		Vector2 GetNodePosition(RailNode node)
 		{
-			return TileManager.I.RoundToTileCentre(node.mPoint);
+			return TileManager.I.GetTileTopLeft(node.mPoint);
 		}
 
 
@@ -255,12 +256,7 @@
 
 		protected override int GetCurrentNodeIdx()
 		{
-			if(mGoingForwards)
-			{
-				return mPrevNode;
-			}
-
-			return Math.Max(mPrevNode + 1, mData.GetCount());
+			return mPrevNode;
 		}
 
 		protected override int GetNextNodeIdx()

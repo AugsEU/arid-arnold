@@ -23,25 +23,12 @@
 
 		#region rInit
 
-		public AuxData(string fileName) : base(fileName)
+		public AuxData(string fileName) : base(fileName + ".aux")
 		{
 			mRailDatas = new List<LinearRailData>();
 		}
 
 		#endregion rInit
-
-
-
-
-
-		#region rFile
-
-		protected override string GetRelativeFolder()
-		{
-			return "Content\\Levels\\";
-		}
-
-		#endregion rFile
 
 
 
@@ -159,9 +146,12 @@
 		#endregion rUtility
 
 
+
+
+
 		#region rAccess
 
-		List<LinearRailData> GetRailsData()
+		public List<LinearRailData> GetRailsData()
 		{
 			return mRailDatas;
 		}

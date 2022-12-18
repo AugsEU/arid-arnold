@@ -37,7 +37,7 @@
 		/// <summary>
 		/// Get file name
 		/// </summary>
-		/// <returns>Full file path</returns>
+		/// <returns>Relative file path</returns>
 		protected string GetFilename()
 		{
 			return mFileName;
@@ -58,7 +58,7 @@
 		/// <returns>Full folder directory</returns>
 		protected virtual string GetBaseFolder()
 		{
-			return Directory.GetCurrentDirectory();
+			return Directory.GetCurrentDirectory() + "\\";
 		}
 
 
@@ -117,7 +117,7 @@
 		/// </summary>
 		public void Load()
 		{
-			string filePath = GetFilename();
+			string filePath = GetFullFilePath();
 
 			if (!File.Exists(filePath))
 			{
@@ -165,6 +165,19 @@
 		protected virtual void AbortRead() { }
 
 		#endregion rRead
+
+
+
+
+
+		#region rFile
+
+		protected override string GetRelativeFolder()
+		{
+			return "Content\\";
+		}
+
+		#endregion rFile
 	}
 
 
@@ -199,7 +212,7 @@
 		/// </summary>
 		public void Save()
 		{
-			string filePath = GetFilename();
+			string filePath = GetFullFilePath();
 
 			try
 			{
