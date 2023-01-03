@@ -406,9 +406,6 @@
 /processorParam:TextureFormat=Color
 /build:Icon.ico
 
-#begin Levels/level1-1.aux
-/copy:Levels/level1-1.aux
-
 #begin Levels/level1-1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -432,6 +429,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Levels/level1-2.png
+
+#begin Levels/level1-3.aux
+/copy:Levels/level1-3.aux
 
 #begin Levels/level1-3.png
 /importer:TextureImporter

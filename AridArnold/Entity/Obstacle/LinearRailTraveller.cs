@@ -251,7 +251,7 @@
 
 		public BackAndForthLinearRailTraveller(int startNode, LinearRailData data) : base(startNode, data)
 		{
-			mGoingForwards = true;
+			mGoingForwards = startNode != (data.GetCount() - 1);
 		}
 
 		protected override int GetCurrentNodeIdx()

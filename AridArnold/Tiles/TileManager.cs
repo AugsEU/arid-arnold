@@ -112,7 +112,7 @@
 				LinearRailData railData = railList[i];
 				for(int j = 0; j < railData.GetCount(); j++)
 				{
-					RailPlatform.TryCreateRailPlatformAtNode(railData, i, content);
+					RailPlatform.TryCreateRailPlatformAtNode(railData, j, content);
 				}
 			}
 		}
