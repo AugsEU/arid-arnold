@@ -62,6 +62,7 @@
 		}
 
 
+
 		/// <summary>
 		/// Update entity with entity update order done by mUpdateOrder.
 		/// </summary>
@@ -79,16 +80,6 @@
 		public virtual void CollideWithEntity(Entity entity)
 		{
 			//Default: Do nothing.
-		}
-
-
-
-		/// <summary>
-		/// Get collider submission for this frame. Entities that want to collide will have to submit one.
-		/// </summary>
-		public virtual ColliderSubmission GetColliderSubmission()
-		{
-			return null;
 		}
 
 
@@ -128,16 +119,6 @@
 		/// </summary>
 		/// <returns></returns>
 		public abstract Rect2f ColliderBounds();
-
-
-
-		/// <summary>
-		/// Kill this entity.
-		/// </summary>
-		public virtual void Kill()
-		{
-
-		}
 
 
 

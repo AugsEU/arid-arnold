@@ -193,9 +193,21 @@ namespace AridArnold
 		}
 
 
-		public static float LERP(float min, float max, float t)
+		/// <summary>
+		/// Biject float into a fixed region.
+		/// </summary>
+		public static float SquashToRange(float value, float min, float max)
 		{
-			return min * (1.0f - t) + max * t ;
+			if(value > 0.0f)
+			{
+				value = 1.0f - 1.0f / (value + 2.0f);
+			}
+			else
+			{
+				value = -1.0f / (value - 2.0f);
+			}
+
+			return (max - min) * value + min;
 		}
 
 

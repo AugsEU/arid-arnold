@@ -5,6 +5,18 @@
 	/// </summary>
 	internal class EntityManager : Singleton<EntityManager>
 	{
+		#region rConstants
+
+		// Update order ranges. E.g. all moving entities fall between UPDATE_MENTITY_MIN and UPDATE_MENTITY_MAX
+		public const float UPDATE_MENTITY_MIN = 0.0f;
+		public const float UPDATE_MENTITY_MAX = 1.0f;
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
 		List<Entity> mRegisteredEntities = new List<Entity>();
@@ -25,7 +37,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
-			GatherEntityColliders();
+			mAuxiliaryColliders.Clear();
 
 			// Do unordered update. To do: Multi-threading if it turns out to be worth it.
 			foreach (Entity entity in mRegisteredEntities)
@@ -53,51 +65,11 @@
 		#region rCollision
 
 		/// <summary>
-		/// Gather entity collider from entities.
+		/// Add collider.
 		/// </summary>
-		void GatherEntityColliders()
+		public void AddColliderSubmission(ColliderSubmission colliderSubmission)
 		{
-			mAuxiliaryColliders.Clear();
-
-			foreach (Entity entity in mRegisteredEntities)
-			{
-				ColliderSubmission submission = entity.GetColliderSubmission();
-
-				if(submission != null)
-				{
-					mAuxiliaryColliders.Add(submission);
-				}
-			}
-		}
-
-
-
-		/// <summary>
-		/// Resolve all CollideWithEntity
-		/// </summary>
-		void ResolveEntityTouching()
-		{
-			// Not the best but the number of entities is small enough for optimisations to not be needed.
-			for (int i = 0; i < mRegisteredEntities.Count - 1; i++)
-			{
-				Entity iEntity = mRegisteredEntities[i];
-
-				Rect2f iRect = iEntity.ColliderBounds();
-
-				for (int j = i + 1; j < mRegisteredEntities.Count; j++)
-				{
-					Entity jEntity = mRegisteredEntities[j];
-
-					Rect2f jRect = jEntity.ColliderBounds();
-
-					if (Collision2D.BoxVsBox(iRect, jRect))
-					{
-						//Both react.
-						iEntity.CollideWithEntity(jEntity);
-						jEntity.CollideWithEntity(iEntity);
-					}
-				}
-			}
+			mAuxiliaryColliders.Add(colliderSubmission);
 		}
 
 
@@ -133,6 +105,36 @@
 			}
 
 			return null;
+		}
+
+
+
+		/// <summary>
+		/// Resolve all CollideWithEntity
+		/// </summary>
+		void ResolveEntityTouching()
+		{
+			// Not the best but the number of entities is small enough for optimisations to not be needed.
+			for (int i = 0; i < mRegisteredEntities.Count - 1; i++)
+			{
+				Entity iEntity = mRegisteredEntities[i];
+
+				Rect2f iRect = iEntity.ColliderBounds();
+
+				for (int j = i + 1; j < mRegisteredEntities.Count; j++)
+				{
+					Entity jEntity = mRegisteredEntities[j];
+
+					Rect2f jRect = jEntity.ColliderBounds();
+
+					if (Collision2D.BoxVsBox(iRect, jRect))
+					{
+						//Both react.
+						iEntity.CollideWithEntity(jEntity);
+						jEntity.CollideWithEntity(iEntity);
+					}
+				}
+			}
 		}
 
 		#endregion rCollision

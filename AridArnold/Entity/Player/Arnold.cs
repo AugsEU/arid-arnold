@@ -131,6 +131,9 @@
 			//Anim
 			mRunningAnimation.Update(gameTime);
 
+			//Collider
+			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
+
 			if (mOnGround == false)
 			{
 				SetDirFromVelocity();
@@ -309,15 +312,6 @@
 			throw new NotImplementedException();
 		}
 
-
-		/// <summary>
-		/// Get collider submission for this frame. Entities that want to collide will have to submit one.
-		/// </summary>
-		public override ColliderSubmission GetColliderSubmission()
-		{
-			return new EntityColliderSubmission(this);
-		}
-
 		#endregion rUpdate
 
 
@@ -450,7 +444,7 @@
 		/// <summary>
 		/// Kill Arnold
 		/// </summary>
-		public override void Kill()
+		public void Kill()
 		{
 			mTimerSinceDeath.Start();
 		}
@@ -466,8 +460,6 @@
 			eArgs.sender = this;
 
 			EventManager.I.SendEvent(EventType.PlayerDead, eArgs);
-
-			base.Kill();
 		}
 
 
@@ -476,7 +468,7 @@
 		/// Callback for the player death event.
 		/// </summary>
 		/// <param name="args">Event sender args</param>
-		public virtual void SignalPlayerDead(EArgs args)
+		public void SignalPlayerDead(EArgs args)
 		{
 			Kill();
 		}

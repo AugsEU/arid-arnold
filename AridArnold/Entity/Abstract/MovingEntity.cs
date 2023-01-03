@@ -79,6 +79,8 @@
 				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(mVelocity.X), Math.Abs(mVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.001f;
 				mVelocity += pushVec;
 
+				mVelocity += entityCollision.GetExtraVelocity();
+
 				collisionList.Add(entityCollision);
 
 				if (collisionList.Count > COLLISION_MAX_COUNT)

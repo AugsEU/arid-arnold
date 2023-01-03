@@ -86,4 +86,73 @@
 
 		#endregion rCollision
 	}
+
+
+
+	class PlatformColliderSubmission : ColliderSubmission
+	{
+		#region rMembers
+
+		Vector2 mVelocity;
+		Vector2 mPosition;
+		float mWidth;
+
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
+
+		/// <summary>
+		/// Init EntityColliderSubmission with a top left coord and the width of the platform.
+		/// </summary>
+		public PlatformColliderSubmission(Vector2 velocity, Vector2 leftPos, float width)
+		{
+			mVelocity = velocity;
+			mPosition = leftPos;
+			mWidth = width;
+		}
+
+		#endregion rInitialisation
+
+
+
+
+
+		#region rCollision
+
+		/// <summary>
+		/// Platforms can collide with all entities.
+		/// </summary>
+		public override bool CanCollideWith(MovingEntity entity)
+		{
+			return true;
+		}
+
+		/// <summary>
+		/// Collision check with other entity.
+		/// </summary>
+		private CollisionResults CollideWith(GameTime gameTime, MovingEntity entity)
+		{
+			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), mPosition, mWidth, CardinalDirection.Up);
+		}
+
+		public override EntityCollision GetEntityCollision(GameTime gameTime, MovingEntity entity)
+		{
+			CollisionResults results = CollideWith(gameTime, entity);
+
+			//Collision!
+			if (results.t.HasValue)
+			{
+				return new MovingPlatformCollision(results, mVelocity);
+			}
+
+			//No collision
+			return null;
+		}
+
+		#endregion rCollision
+	}
 }

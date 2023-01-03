@@ -77,6 +77,10 @@
 		{
 			mRail.Update(gameTime);
 
+			//Util.DLog("Velocity: " + mRail.GetVelocity(gameTime).ToString() + " | Position: " + mPosition.ToString());
+
+			EntityManager.I.AddColliderSubmission(new PlatformColliderSubmission(mRail.GetVelocity(gameTime), mPosition, mSize * Tile.sTILE_SIZE));
+
 			mPosition = mRail.GetPosition();
 
 			base.Update(gameTime);

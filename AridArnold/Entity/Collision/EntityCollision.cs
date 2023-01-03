@@ -35,6 +35,11 @@
 		{
 
 		}
+
+		public virtual Vector2 GetExtraVelocity()
+		{
+			return Vector2.Zero;
+		}
 	}
 
 
@@ -109,6 +114,25 @@
 			{
 				base.PostCollisionReact(entity);
 			}
+		}
+	}
+
+
+	/// <summary>
+	/// Represents collision between a moving platform and an entity.
+	/// </summary>
+	class MovingPlatformCollision : SolidEntityCollision
+	{
+		Vector2 mAddedVel;
+
+		public MovingPlatformCollision(CollisionResults result, Vector2 velocity) : base(result)
+		{
+			mAddedVel = velocity;
+		}
+
+		public override Vector2 GetExtraVelocity()
+		{
+			return mAddedVel;
 		}
 	}
 }

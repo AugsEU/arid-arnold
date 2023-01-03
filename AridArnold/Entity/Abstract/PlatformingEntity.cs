@@ -182,6 +182,7 @@
 			fallingVec.Normalize();
 
 			mUpdateOrder = Vector2.Dot(mPosition, fallingVec);
+			mUpdateOrder = Util.SquashToRange(mUpdateOrder, EntityManager.UPDATE_MENTITY_MIN, EntityManager.UPDATE_MENTITY_MAX);
 		}
 
 		#endregion rUpdate
