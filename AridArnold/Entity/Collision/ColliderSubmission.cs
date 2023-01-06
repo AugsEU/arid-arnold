@@ -131,6 +131,8 @@
 			return true;
 		}
 
+
+
 		/// <summary>
 		/// Collision check with other entity.
 		/// </summary>
@@ -141,6 +143,11 @@
 
 		public override EntityCollision GetEntityCollision(GameTime gameTime, MovingEntity entity)
 		{
+			if(entity.CollideWithPlatforms() == false)
+			{
+				return null;
+			}
+
 			CollisionResults results = CollideWith(gameTime, entity);
 
 			//Collision!
