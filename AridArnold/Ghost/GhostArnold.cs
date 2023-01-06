@@ -41,6 +41,7 @@
 		public override void Update(GameTime gameTime)
 		{
 			SetDirFromVelocity();
+			mWalkDirection = mPrevDirection;
 			mRunningAnimation.Update(gameTime);
 		}
 
