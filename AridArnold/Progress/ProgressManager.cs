@@ -25,10 +25,10 @@
 	/// </summary>
 	internal class ProgressManager : Singleton<ProgressManager>
 	{
-		#region rConstants
+		#region rConstants 
 
 		const int START_WORLD = 3;
-		const int START_LEVEL = 0;
+		const int START_LEVEL = 0   ;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
 
@@ -41,8 +41,8 @@
 		#region rMembers
 
 		Campaign mCampaign;
-		LevelPoint mCurrentLevel;// = new LevelPoint(START_WORLD, START_LEVEL);
-		LevelPoint mLastCheckPoint;// = new LevelPoint(START_WORLD, START_LEVEL);
+		LevelPoint mCurrentLevel;
+		LevelPoint mLastCheckPoint;
 		int mLives = START_LIVES;
 
 		#endregion rMembers

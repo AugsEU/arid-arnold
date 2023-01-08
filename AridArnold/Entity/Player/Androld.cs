@@ -15,6 +15,7 @@
 		{
 			//Immediately complete this timer.
 			mTimerSinceStart.SetComplete();
+			mPrevDirection = WalkDirection.Right;
 		}
 
 

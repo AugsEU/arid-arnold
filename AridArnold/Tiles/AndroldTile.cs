@@ -13,7 +13,7 @@ namespace AridArnold
 	{
 		#region rConstants
 
-		static Vector2 SPAWN_OFFSET = new Vector2(8.0f, 11.0f);
+		static Vector2 SPAWN_OFFSET = new Vector2(-5.0f, -5.0f);
 
 		#endregion rConstants
 
