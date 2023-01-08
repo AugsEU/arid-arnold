@@ -139,9 +139,9 @@
 					case 0xFFFFFFu:
 						return new AirTile(position);
 					case 0x000000u:
-						return WallTile.InstantiateWallTile(position, param);
+						return new WallTile(param, position);
 					case 0xA9A9A9u:
-						return PlatformTile.InstantiatePlatformTile(position, param);
+						return new AnimatedPlatformTile((CardinalDirection)param, position);
 					//Collectable
 					case 0x0000FFu:
 						return new WaterBottleTile(position);

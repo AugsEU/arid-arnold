@@ -13,34 +13,6 @@
 			mRotation = rotation;
 		}
 
-
-
-		/// <summary>
-		/// Create an appropriate platform texture.
-		/// </summary>
-		public static PlatformTile InstantiatePlatformTile(Vector2 pos, int param)
-		{
-			CardinalDirection rot = (CardinalDirection)param;
-			int worldIndex = ProgressManager.I.GetLevelPoint().mWorldIndex;
-
-			switch (worldIndex)
-			{
-				case 0: //Iron Works
-					return new StaticPlatformTile("IronWorks/platform", rot, pos);
-				case 1: //Land of mirrors
-					return new StaticPlatformTile("Mirror/gold-platform", rot, pos);
-				case 2: //Buk's Cave
-					return new StaticPlatformTile("Buk/cave-platform", rot, pos);
-				case 3: //The Lab
-					return new LabPlatform(rot, pos);
-				default:
-					break;
-			}
-
-			throw new NotImplementedException();
-		}
-
-
 		#endregion rInitialisation
 
 
@@ -89,58 +61,56 @@
 		}
 
 		#endregion rCollision
+
+
+
+
+
+
 	}
 
 
-
 	/// <summary>
-	/// Platform with static texture.
+	/// Platform tile that is animated.
 	/// </summary>
-	class StaticPlatformTile : PlatformTile
+	class AnimatedPlatformTile : PlatformTile
 	{
-		string mTexturePath;
+		#region rMembers
+
+		Animator mAnimation;
+
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
 
 		/// <summary>
-		/// Platform tile constructor
+		/// Init Animated platform with position and rotation.
 		/// </summary>
-		/// <param name="rotation"></param>
-		public StaticPlatformTile(string texturePath, CardinalDirection rotation, Vector2 position) : base(rotation, position)
+		public AnimatedPlatformTile(CardinalDirection rotation, Vector2 position) : base(rotation, position)
 		{
-			mRotation = rotation;
-			mTexturePath = texturePath;
+
 		}
 
-
-
 		/// <summary>
-		/// Load all textures and assets
+		/// Load assets for this tile.
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
 		public override void LoadContent(ContentManager content)
 		{
-			mTexture = content.Load<Texture2D>("Tiles/" + mTexturePath);
-		}
-	}
-
-
-
-	/// <summary>
-	/// Platform with static texture.
-	/// </summary>
-	class AnimPlatformTile : PlatformTile
-	{
-		protected Animator mAnimation;
-
-		/// <summary>
-		/// Platform tile constructor
-		/// </summary>
-		/// <param name="rotation"></param>
-		public AnimPlatformTile(CardinalDirection rotation, Vector2 position) : base(rotation, position)
-		{
-			mRotation = rotation;
+			mAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation(content);
+			base.LoadContent(content);
 		}
 
+		#endregion rIntialisation
 
+
+
+
+
+		#region rUpdate
 
 		/// <summary>
 		/// Update platform animations.
@@ -152,7 +122,13 @@
 			base.Update(gameTime);
 		}
 
+		#endregion rUpdate
 
+
+
+
+
+		#region rDraw
 
 		/// <summary>
 		/// Get texture for this tile
@@ -161,5 +137,7 @@
 		{
 			return mAnimation.GetCurrentTexture();
 		}
+
+		#endregion rDraw
 	}
 }

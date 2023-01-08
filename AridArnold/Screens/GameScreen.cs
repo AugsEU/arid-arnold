@@ -202,7 +202,7 @@
 
 			info.device.SetRenderTarget(mGameArea);
 
-			Color clearCol = Color.White;// ProgressManager.I.GetWorldData().worldColor;
+			Color clearCol = ProgressManager.I.GetCurrentWorld().GetTheme().GetBGColor();
 
 			if (mLevelEndTimer.IsPlaying())
 			{

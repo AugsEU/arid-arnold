@@ -27,7 +27,7 @@
 	{
 		#region rConstants
 
-		const int START_WORLD = 0;
+		const int START_WORLD = 3;
 		const int START_LEVEL = 0;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
@@ -136,6 +136,7 @@
 		}
 
 
+
 		/// <summary>
 		/// Can we lose lives on this level?
 		/// </summary>
@@ -145,12 +146,23 @@
 		}
 
 
+
 		/// <summary>
 		/// Get world data.
 		/// </summary>
 		public World GetCurrentWorld()
 		{
 			return mCampaign.GetWorld(mCurrentLevel.mWorldIndex);
+		}
+
+
+
+		/// <summary>
+		/// Get world at index.
+		/// </summary>
+		public World GetWorld(int i)
+		{
+			return mCampaign.GetWorld(i);
 		}
 
 

@@ -30,6 +30,9 @@ namespace AridArnold
 			mName = worldNode.SelectSingleNode("name").InnerText;
 
 			// Load theme
+			XmlNode themeNode = worldNode.SelectSingleNode("theme");
+
+			mTheme = new WorldTheme(themeNode, mID);
 
 			// Load levels
 			mLevels = new List<Level>();
@@ -113,6 +116,16 @@ namespace AridArnold
 		public int GetNumberOfLevels()
 		{
 			return mLevels.Count;
+		}
+
+
+
+		/// <summary>
+		/// Get themeing for this world.
+		/// </summary>
+		public WorldTheme GetTheme()
+		{
+			return mTheme;
 		}
 
 		#endregion rAccess

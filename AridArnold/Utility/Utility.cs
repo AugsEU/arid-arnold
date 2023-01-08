@@ -222,11 +222,28 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Get ulong hex code from color.
+		/// Get uint hex code from color.
 		/// </summary>
 		public static uint ColorToHEX(Color color)
 		{
 			return color.B + ((uint)(color.G) << 8) + +((uint)(color.R) << 16);
+		}
+
+
+
+		/// <summary>
+		/// Get color from string hex code.
+		/// </summary>
+		public static Color HEXToColor(string hex)
+		{
+			byte r, g, b, a;
+
+			r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+			g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+			b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+			a = 255;
+
+			return new Color(r, g, b, a);
 		}
 
 
