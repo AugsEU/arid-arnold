@@ -23,7 +23,7 @@
 		/// </summary>
 		public override void OnActivate()
 		{
-			ProgressManager.I.Init();
+			ProgressManager.I.Init("Content/Meta/Campaigns/mainCampaign.xml"); //FIX THIS!!
 		}
 
 		#endregion rInitialisation

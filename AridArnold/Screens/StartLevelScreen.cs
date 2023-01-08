@@ -82,7 +82,7 @@
 									SamplerState.PointClamp,
 									DepthStencilState.Default,
 									RasterizerState.CullNone);
-			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.Gold, ProgressManager.I.GetWorldData().name, MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.Gold, ProgressManager.I.GetCurrentWorld().GetName(), MonoDraw.LAYER_TEXT);
 
 			centre.Y += 25.0f;
 

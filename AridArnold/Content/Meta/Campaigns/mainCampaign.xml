@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+
+<campaign id="OriginalCampaign">
+
+	<name>Original Campaign</name>
+
+	<worlds>
+
+		<world id="IronWorks">
+			<name>Iron Works</name>
+
+			<theme>
+				<bgColor>000A14</bgColor>
+				<wallTexture>steel</wallTexture>
+				<platformTexture>platform</platformTexture>
+			</theme>
+
+			<levels>
+				<level id="level1-1">
+					<type>collectWater</type>
+					<waterNeeded>5</waterNeeded>
+				</level>
+				<level id="level1-2">
+					<type>collectWater</type>
+					<waterNeeded>2</waterNeeded>
+				</level>
+				<level id="level1-3">
+					<type>collectWater</type>
+					<waterNeeded>2</waterNeeded>
+				</level>
+				<level id="level1-4">
+					<type>collectFlag</type>
+				</level>
+			</levels>
+		</world>
+
+
+
+		<world id="Mirror">
+			<name>Land of Mirrors</name>
+
+			<theme>
+				<bgColor>00180E</bgColor>
+				<wallTexture>cobble</wallTexture>
+				<platformTexture>gold-platform</platformTexture>
+			</theme>
+
+			<levels>
+				<level id="level2-1">
+					<type>collectWater</type>
+					<waterNeeded>1</waterNeeded>
+				</level>
+				<level id="level2-2">
+					<type>collectWater</type>
+					<waterNeeded>3</waterNeeded>
+				</level>
+				<level id="level2-3">
+					<type>collectWater</type>
+					<waterNeeded>4</waterNeeded>
+				</level>
+				<level id="level2-4">
+					<type>collectFlag</type>
+				</level>
+			</levels>
+		</world>
+
+
+
+		<world id="Buk">
+			<name>Buk's Cave</name>
+
+			<theme>
+				<bgColor>030309</bgColor>
+				<wallTexture>cave</wallTexture>
+				<platformTexture>cave-platform</platformTexture>
+			</theme>
+
+			<levels>
+				<level id="level3-1">
+					<type>collectWater</type>
+					<waterNeeded>4</waterNeeded>
+					<name></name>
+				</level>
+				<level id="level3-2">
+					<type>collectWater</type>
+					<waterNeeded>3</waterNeeded>
+				</level>
+				<level id="level3-3">
+					<type>collectWater</type>
+					<waterNeeded>6</waterNeeded>
+				</level>
+				<level id="level3-4">
+					<type>collectFlag</type>
+				</level>
+			</levels>
+		</world>
+
+
+
+		<world id="Lab">
+			<name>The Lab</name>
+
+			<theme>
+				<bgColor>AD999B</bgColor>
+				<wallTexture time="0.454">lab-wall0</wallTexture>
+				<wallTexture time="0.392">lab-wall1</wallTexture>
+				<wallTexture time="0.421">lab-wall2</wallTexture>
+				<wallTexture time="0.478">lab-wall3</wallTexture>
+				<platformTexture time="0.350">lab-plat0</platformTexture>
+				<platformTexture time="0.300">lab-plat1</platformTexture>
+				<platformTexture time="0.350">lab-plat2</platformTexture>
+				<platformTexture time="0.350">lab-plat3</platformTexture>
+			</theme>
+
+			<levels>
+				<level id="level4-1">
+					<type>collectWater</type>
+					<waterNeeded>3</waterNeeded>
+				</level>
+				<level id="level4-2">
+					<type>collectWater</type>
+					<waterNeeded>3</waterNeeded>
+				</level>
+				<level id="level4-3">
+					<type>collectWater</type>
+					<waterNeeded>3</waterNeeded>
+				</level>
+				<level id="level4-4">
+					<type>collectFlag</type>
+					<waterNeeded>5</waterNeeded>
+				</level>
+			</levels>
+		</world>
+	</worlds>
+</campaign>

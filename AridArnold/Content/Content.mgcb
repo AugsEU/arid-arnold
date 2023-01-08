@@ -604,6 +604,9 @@
 /processorParam:TextureFormat=Color
 /build:Levels/level4-4.png
 
+#begin Meta/Campaigns/mainCampaign.xml
+/copy:Meta/Campaigns/mainCampaign.xml
+
 #begin NPC/Barbara/Angry1.png
 /importer:TextureImporter
 /processor:TextureProcessor

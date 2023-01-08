@@ -28,37 +28,9 @@
 		#region rConstants
 
 		const int START_WORLD = 0;
-		const int START_LEVEL = 3;
+		const int START_LEVEL = 0;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
-
-		WorldData[] mWorldData =
-		{
-			new WorldData("Iron Works", new Color(0, 10,20), new Level[]
-							{new CollectWaterLevel("level1-1", 5),
-							 new CollectWaterLevel("level1-2", 2),
-							 new CollectWaterLevel("level1-3", 2),
-							 new CollectFlagLevel("level1-4")}
-							),
-			new WorldData("Land of Mirrors", new Color(0, 24, 14), new Level[]
-							{new CollectWaterLevel("level2-1", 1),
-							new CollectWaterLevel("level2-2", 3),
-							new CollectWaterLevel("level2-3", 4),
-							new CollectFlagLevel("level2-4")}
-							),
-			new WorldData("Buk's Cave", new Color(3, 3, 9), new Level[]
-							{new CollectWaterLevel("level3-1", 4),
-							 new CollectWaterLevel("level3-2", 3),
-							 new CollectWaterLevel("level3-3", 6),
-							 new CollectFlagLevel("level3-4")}
-							),
-			new WorldData("The Lab", new Color(173, 153, 155), new Level[]
-							{new CollectWaterLevel("level4-1", 3),
-							 new CollectWaterLevel("level4-2", 3),
-							 new CollectWaterLevel("level4-3", 6),
-							 new CollectFlagLevel("level4-4")}
-							)
-		};
 
 		#endregion rConstants
 
@@ -68,6 +40,7 @@
 
 		#region rMembers
 
+		Campaign mCampaign;
 		LevelPoint mCurrentLevel;// = new LevelPoint(START_WORLD, START_LEVEL);
 		LevelPoint mLastCheckPoint;// = new LevelPoint(START_WORLD, START_LEVEL);
 		int mLives = START_LIVES;
@@ -83,10 +56,11 @@
 		/// <summary>
 		/// Init progress manager
 		/// </summary>
-		public void Init()
+		public void Init(string campaignXML)
 		{
 			mCurrentLevel = new LevelPoint(START_WORLD, START_LEVEL);
 			mLastCheckPoint = new LevelPoint(START_WORLD, START_LEVEL);
+			mCampaign = new Campaign(campaignXML);
 			ResetGame();
 		}
 
@@ -174,9 +148,9 @@
 		/// <summary>
 		/// Get world data.
 		/// </summary>
-		public WorldData GetWorldData()
+		public World GetCurrentWorld()
 		{
-			return mWorldData[mCurrentLevel.mWorldIndex];
+			return mCampaign.GetWorld(mCurrentLevel.mWorldIndex);
 		}
 
 
@@ -187,7 +161,7 @@
 		/// <returns>Get current level</returns>
 		public Level GetCurrentLevel()
 		{
-			return mWorldData[mCurrentLevel.mWorldIndex].mLevels[mCurrentLevel.mLevel];
+			return GetCurrentWorld().GetLevel(mCurrentLevel.mLevel);
 		}
 
 
@@ -201,7 +175,7 @@
 			int total = 0;
 			for (int w = 0; w < mCurrentLevel.mWorldIndex; w++)
 			{
-				total += mWorldData[w].mLevels.Length;
+				total += mCampaign.GetWorld(w).GetNumberOfLevels();
 			}
 
 			total += mCurrentLevel.mLevel;
@@ -235,7 +209,7 @@
 		/// <returns>True if we have finished all the levels</returns>
 		public bool HasFinishedGame()
 		{
-			return mCurrentLevel.mWorldIndex >= mWorldData.Length;
+			return mCurrentLevel.mWorldIndex >= mCampaign.GetNumberOfWorlds();
 		}
 
 
@@ -248,7 +222,7 @@
 		public LevelPoint GetNextLevelPoint(LevelPoint levelPoint)
 		{
 			levelPoint.mLevel += 1;
-			if (levelPoint.mLevel >= mWorldData[levelPoint.mWorldIndex].mLevels.Length)
+			if (levelPoint.mLevel >= GetCurrentWorld().GetNumberOfLevels())
 			{
 				levelPoint.mLevel = 0;
 				levelPoint.mWorldIndex += 1;
