@@ -4,6 +4,7 @@
 	{
 		#region rMembers
 
+		Animator mPlatformAnimation;
 		RailTraveller mRail;
 		int mSize;
 
@@ -61,8 +62,7 @@
 		/// </summary>
 		public override void LoadContent(ContentManager content)
 		{
-			// TO DO: Load appropriate texture.
-			mTexture = content.Load<Texture2D>("Tiles/IronWorks/platform");
+			mPlatformAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation(content);
 		}
 
 		#endregion rInitialisation
@@ -77,7 +77,7 @@
 		{
 			mRail.Update(gameTime);
 
-			//Util.DLog("Velocity: " + mRail.GetVelocity(gameTime).ToString() + " | Position: " + mPosition.ToString());
+			mPlatformAnimation.Update(gameTime);
 
 			EntityManager.I.AddColliderSubmission(new PlatformColliderSubmission(mRail.GetVelocity(gameTime), mPosition, mSize * Tile.sTILE_SIZE));
 
@@ -103,7 +103,7 @@
 			{
 				Vector2 pos = mPosition + new Vector2(i * Tile.sTILE_SIZE, 0.0f);
 
-				MonoDraw.DrawTexture(info, mTexture, pos);
+				MonoDraw.DrawTexture(info, mPlatformAnimation.GetCurrentTexture(), pos);
 			}
 		}
 
