@@ -15,6 +15,7 @@
 		public float mSpeed;
 		public float mWaitTime;
 		public NodeType mType;
+		public CardinalDirection mDirection;
 	}
 
 	/// <summary>

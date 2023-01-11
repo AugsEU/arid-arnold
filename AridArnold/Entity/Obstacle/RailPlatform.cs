@@ -7,6 +7,7 @@
 		Animator mPlatformAnimation;
 		RailTraveller mRail;
 		int mSize;
+		CardinalDirection mRotation;
 
 		#endregion rMembers
 
@@ -42,7 +43,7 @@
 					throw new NotImplementedException();
 			}
 
-			EntityManager.I.RegisterEntity(new RailPlatform(railTraveller, railData.GetSize()), content);
+			EntityManager.I.RegisterEntity(new RailPlatform(railTraveller, node.mDirection, railData.GetSize()), content);
 		}
 		
 
@@ -50,10 +51,11 @@
 		/// <summary>
 		/// Create rail platform that travels along a rail.
 		/// </summary>
-		public RailPlatform(RailTraveller rail, int size) : base(rail.GetPosition())
+		public RailPlatform(RailTraveller rail, CardinalDirection direction, int size) : base(rail.GetPosition())
 		{
 			mRail = rail;
 			mSize = size;
+			mRotation = direction;
 		}
 
 
@@ -79,7 +81,7 @@
 
 			mPlatformAnimation.Update(gameTime);
 
-			EntityManager.I.AddColliderSubmission(new PlatformColliderSubmission(mRail.GetVelocity(gameTime), mPosition, mSize * Tile.sTILE_SIZE));
+			EntityManager.I.AddColliderSubmission(new PlatformColliderSubmission(mRail.GetVelocity(gameTime), mPosition, mSize * Tile.sTILE_SIZE, mRotation));
 
 			mPosition = mRail.GetPosition();
 
@@ -99,11 +101,17 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			for(int i = 0; i < mSize; i++)
-			{
-				Vector2 pos = mPosition + new Vector2(i * Tile.sTILE_SIZE, 0.0f);
+			Vector2 directionVec = Util.Perpendicular(Util.GetNormal(mRotation)) * Tile.sTILE_SIZE;
+			directionVec.X = MathF.Abs(directionVec.X);
+			directionVec.Y = MathF.Abs(directionVec.Y);
 
-				MonoDraw.DrawTexture(info, mPlatformAnimation.GetCurrentTexture(), pos);
+			float rotation = Util.GetRotation(mRotation);
+
+			for (int i = 0; i < mSize; i++)
+			{
+				Vector2 pos = mPosition + i * directionVec;
+
+				MonoDraw.DrawTexture(info, mPlatformAnimation.GetCurrentTexture(), pos, rotation);
 			}
 		}
 

@@ -47,10 +47,10 @@ namespace AridArnold
 		{
 			T maxValue = list[0];
 
-			for(int i = 1; i < list.Count; i++)
+			for (int i = 1; i < list.Count; i++)
 			{
 				T temp = list[i];
-				if(comparer.Compare(temp, maxValue) > 0)
+				if (comparer.Compare(temp, maxValue) > 0)
 				{
 					maxValue = temp;
 				}
@@ -83,6 +83,19 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Take a subsection of an int.
+		/// </summary>
+		public static UInt32 IntSubString(UInt32 value, int start, int bits)
+		{
+			UInt32 result = value >> start;
+			UInt32 mask = (UInt32)(1 << bits) - 1;
+
+			return result & mask;
+		}
+
+
+
+		/// <summary>
 		/// Convert cardinal direction enum to unit vector
 		/// </summary>
 		/// <param name="dir">Cardinal direction</param>
@@ -105,14 +118,31 @@ namespace AridArnold
 			throw new NotImplementedException();
 		}
 
+		public static float GetRotation(CardinalDirection dir)
+		{
+			switch (dir)
+			{
+				case CardinalDirection.Up:
+					return 0.0f;
+				case CardinalDirection.Right:
+					return MathHelper.PiOver2;
+				case CardinalDirection.Down:
+					return MathHelper.Pi;
+				case CardinalDirection.Left:
+					return MathHelper.PiOver2 * 3.0f;
+			}
+
+			throw new NotImplementedException();
+		}
 
 
-		/// <summary>
-		/// Get delta T from gameTime object
-		/// </summary>
-		/// <param name="gameTime">Frame time</param>
-		/// <returns>Float in tens of seconds</returns>
-		public static float GetDeltaT(GameTime gameTime)
+
+	/// <summary>
+	/// Get delta T from gameTime object
+	/// </summary>
+	/// <param name="gameTime">Frame time</param>
+	/// <returns>Float in tens of seconds</returns>
+	public static float GetDeltaT(GameTime gameTime)
 		{
 			return (float)gameTime.ElapsedGameTime.TotalSeconds * 10.0f;
 		}

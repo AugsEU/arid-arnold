@@ -204,7 +204,7 @@ namespace AridArnold
 					platformRay = new Ray2f(platOrigin, new Vector2(length, 0.0f));
 					break;
 				case CardinalDirection.Right:
-					platOrigin.X += length + sizeVec.X;
+					platOrigin.X += Tile.sTILE_SIZE + sizeVec.X;
 					platOrigin.Y += -sizeVec.Y;
 
 					length += sizeVec.Y * 2.0f;
@@ -213,7 +213,7 @@ namespace AridArnold
 					break;
 				case CardinalDirection.Down:
 					platOrigin.X += -sizeVec.X;
-					platOrigin.Y += length + sizeVec.Y;
+					platOrigin.Y += Tile.sTILE_SIZE + sizeVec.Y;
 
 					length += sizeVec.X * 2.0f;
 

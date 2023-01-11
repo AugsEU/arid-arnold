@@ -85,7 +85,7 @@
 					
 					UInt32 nodeFlags = br.ReadUInt32();
 
-					node.mType = ParseNodeFlags(nodeFlags);
+					ParseNodeFlags(ref node, nodeFlags);
 
 					linearRailData.AddNode(node);
 				}
@@ -127,20 +127,46 @@
 			return LinearRailData.RailType.BackAndForth;
 		}
 
+
+
 		/// <summary>
 		/// Parse node flags.
 		/// </summary>
 		/// <returns>Node type</returns>
-		RailNode.NodeType ParseNodeFlags(UInt32 flags)
+		void ParseNodeFlags(ref RailNode node, UInt32 flags)
 		{
-			RailNode.NodeType retVal = RailNode.NodeType.None;
+			//ANATOMY OF THE FLAGS:
+			// bbbb_bbbb_bbbb_bbbb_bbbb_bbbb_bbbb_bbbb
+			// NNNN_NNNN_NNNN_NNNN_NNNN_RRRR_TTTT_TTTT
+			//   NOT SET                ROT   TYPE
+			
+
+			//Get type
+			node.mType = RailNode.NodeType.None;
 
 			if ((flags & 0x1) != 0)
 			{
-				retVal |= RailNode.NodeType.HasPlatform;
+				node.mType |= RailNode.NodeType.HasPlatform;
 			}
 
-			return retVal;
+			//Get direction
+			UInt32 direction = Util.IntSubString(flags, 8, 4);
+
+			switch(direction)
+			{
+				case 0:
+					node.mDirection = CardinalDirection.Up;
+					break;
+				case 1:
+					node.mDirection = CardinalDirection.Right;
+					break;
+				case 2:
+					node.mDirection = CardinalDirection.Down;
+					break;
+				case 3:
+					node.mDirection = CardinalDirection.Left;
+					break;
+			}
 		}
 
 		#endregion rUtility

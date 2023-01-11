@@ -138,19 +138,7 @@
 		/// <returns>Rotation in radians</returns>
 		public float GetRotation()
 		{
-			switch (mRotation)
-			{
-				case CardinalDirection.Up:
-					return 0.0f;
-				case CardinalDirection.Right:
-					return MathHelper.PiOver2;
-				case CardinalDirection.Down:
-					return MathHelper.Pi;
-				case CardinalDirection.Left:
-					return MathHelper.PiOver2 * 3.0f;
-			}
-
-			return 0.0f;
+			return Util.GetRotation(mRotation);
 		}
 
 

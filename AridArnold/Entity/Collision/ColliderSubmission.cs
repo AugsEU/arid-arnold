@@ -95,6 +95,7 @@
 
 		Vector2 mVelocity;
 		Vector2 mPosition;
+		CardinalDirection mRotation;
 		float mWidth;
 
 		#endregion rMembers
@@ -108,11 +109,12 @@
 		/// <summary>
 		/// Init EntityColliderSubmission with a top left coord and the width of the platform.
 		/// </summary>
-		public PlatformColliderSubmission(Vector2 velocity, Vector2 leftPos, float width)
+		public PlatformColliderSubmission(Vector2 velocity, Vector2 leftPos, float width, CardinalDirection rotation)
 		{
 			mVelocity = velocity;
 			mPosition = leftPos;
 			mWidth = width;
+			mRotation = rotation;
 		}
 
 		#endregion rInitialisation
@@ -138,16 +140,28 @@
 		/// </summary>
 		private CollisionResults CollideWith(GameTime gameTime, MovingEntity entity)
 		{
-			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), mPosition, mWidth, CardinalDirection.Up);
+			if (!entity.CollideWithPlatforms())
+			{
+				if (entity is PlatformingEntity)
+				{
+					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+
+					if (mRotation == Util.InvertDirection(platformingEntity.GetGravityDir()))
+					{
+						return CollisionResults.None;
+					}
+				}
+				else
+				{
+					return CollisionResults.None;
+				}
+			}
+
+			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), mPosition, mWidth, mRotation);
 		}
 
 		public override EntityCollision GetEntityCollision(GameTime gameTime, MovingEntity entity)
 		{
-			if(entity.CollideWithPlatforms() == false)
-			{
-				return null;
-			}
-
 			CollisionResults results = CollideWith(gameTime, entity);
 
 			//Collision!
