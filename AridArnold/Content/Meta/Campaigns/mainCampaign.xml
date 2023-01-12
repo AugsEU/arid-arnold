@@ -58,7 +58,7 @@
 				</level>
 				<level id="level2-3">
 					<type>collectWater</type>
-					<waterNeeded>4</waterNeeded>
+					<waterNeeded>1</waterNeeded>
 				</level>
 				<level id="level2-4">
 					<type>collectFlag</type>
