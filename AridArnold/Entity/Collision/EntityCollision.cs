@@ -36,7 +36,7 @@
 
 		}
 
-		public virtual Vector2 GetExtraVelocity()
+		public virtual Vector2 GetExtraVelocity(MovingEntity entity)
 		{
 			return Vector2.Zero;
 		}
@@ -130,9 +130,20 @@
 			mAddedVel = velocity;
 		}
 
-		public override Vector2 GetExtraVelocity()
+		public override Vector2 GetExtraVelocity(MovingEntity entity)
 		{
-			return mAddedVel;
+			if(entity is PlatformingEntity)
+			{
+				PlatformingEntity platformingEntity =(PlatformingEntity)entity;
+				Vector2 gravity = platformingEntity.GravityVecNorm();
+
+				if(Vector2.Dot(gravity, mResult.normal) < -0.001f)
+				{
+					return mAddedVel;
+				}
+			}
+			
+			return base.GetExtraVelocity(entity);
 		}
 	}
 }

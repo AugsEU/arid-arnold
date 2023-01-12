@@ -218,7 +218,7 @@
 		/// </summary>
 		/// <returns>Get vector along gravity direction</returns>
 		/// <exception cref="NotImplementedException">Must be a cardinal direction</exception>
-		protected Vector2 GravityVecNorm()
+		public Vector2 GravityVecNorm()
 		{
 			switch (GetGravityDir())
 			{
