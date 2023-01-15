@@ -2,6 +2,12 @@
 {
 	class MushroomTile : InteractableTile
 	{
+		#region rConstants
+
+		const float DOWN_VEL_THRESH = 0.5f;
+
+		#endregion rConstants
+
 		#region rMembers
 
 		Animator mBounceAnim;
@@ -115,7 +121,7 @@
 								platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -platformingEntity.pVelocity.Y * alpha);
 								didBounce = true;
 							}
-							else if (platformingEntity.pVelocity.Y > 0.0f)
+							else if (platformingEntity.pVelocity.Y > DOWN_VEL_THRESH)
 							{
 								platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -minVel * alpha);
 								didBounce = true;
