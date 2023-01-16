@@ -5,6 +5,8 @@
 	/// </summary>
 	abstract class ColliderSubmission
 	{
+		protected HashSet<MovingEntity> mCollidedEntities = new HashSet<MovingEntity>();
+
 		/// <summary>
 		/// Can we collide with this entity?
 		/// </summary>
@@ -13,9 +15,26 @@
 
 
 		/// <summary>
+		/// Do collision check and get entity collision result. Can return null 
+		/// </summary>
+		public EntityCollision GetEntityCollision(GameTime gameTime, MovingEntity entity)
+		{
+			EntityCollision entityCollision = GetEntityCollisionInternal(gameTime, entity);
+
+			if(entityCollision != null)
+			{
+				mCollidedEntities.Add(entity);
+			}
+
+			return entityCollision;
+		}
+
+
+
+		/// <summary>
 		/// Do collision check and get entity collision result. Can return null
 		/// </summary>
-		public abstract EntityCollision GetEntityCollision(GameTime gameTime, MovingEntity entity);
+		protected abstract EntityCollision GetEntityCollisionInternal(GameTime gameTime, MovingEntity entity);
 	}
 
 
@@ -70,14 +89,14 @@
 		/// <summary>
 		/// Do collision with other entity
 		/// </summary>
-		public override EntityCollision GetEntityCollision(GameTime gameTime, MovingEntity entity)
+		protected override EntityCollision GetEntityCollisionInternal(GameTime gameTime, MovingEntity entity)
 		{
 			CollisionResults results = CollideWith(gameTime, entity);
 
 			//Collision!
 			if(results.t.HasValue)
 			{
-				return new EntityEntityCollision(results, mEntity);
+				return new EntityEntityCollision(!mCollidedEntities.Contains(entity), results, mEntity);
 			}
 
 			//No collision
@@ -160,14 +179,14 @@
 			return Collision2D.MovingRectVsPlatform(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), mPosition, mWidth, mRotation);
 		}
 
-		public override EntityCollision GetEntityCollision(GameTime gameTime, MovingEntity entity)
+		protected override EntityCollision GetEntityCollisionInternal(GameTime gameTime, MovingEntity entity)
 		{
 			CollisionResults results = CollideWith(gameTime, entity);
 
 			//Collision!
 			if (results.t.HasValue)
 			{
-				return new MovingPlatformCollision(results, mVelocity);
+				return new MovingPlatformCollision(!mCollidedEntities.Contains(entity), results, mVelocity);
 			}
 
 			//No collision

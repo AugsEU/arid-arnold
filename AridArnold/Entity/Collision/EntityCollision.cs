@@ -19,11 +19,14 @@
 	class EntityCollision
 	{
 		public static EntityCollisionSorter COLLISION_SORTER = new EntityCollisionSorter();
+		protected ColliderSubmission mParentSubmission;
 		protected CollisionResults mResult;
+		protected bool mFirstTime;
 
-		public EntityCollision(CollisionResults result)
+		public EntityCollision(bool firstTime, CollisionResults result)
 		{
 			mResult = result;
+			mFirstTime = firstTime;
 		}
 
 		public CollisionResults GetResult()
@@ -36,7 +39,17 @@
 
 		}
 
-		public virtual Vector2 GetExtraVelocity(MovingEntity entity)
+		public Vector2 GetExtraVelocity(MovingEntity entity)
+		{
+			if(mFirstTime)
+			{
+				return GetExtraVelocityInternal(entity);
+			}
+
+			return Vector2.Zero;
+		}
+
+		protected virtual Vector2 GetExtraVelocityInternal(MovingEntity entity)
 		{
 			return Vector2.Zero;
 		}
@@ -49,7 +62,7 @@
 	/// </summary>
 	class SolidEntityCollision : EntityCollision
 	{
-		public SolidEntityCollision(CollisionResults result) : base(result)
+		public SolidEntityCollision(bool firstTime, CollisionResults result) : base(firstTime, result)
 		{
 		}
 
@@ -68,7 +81,7 @@
 	{
 		Point mTileCoord;
 
-		public TileEntityCollision(CollisionResults result, Point tileCoord) : base(result)
+		public TileEntityCollision(bool firstTime, CollisionResults result, Point tileCoord) : base(firstTime, result)
 		{
 			mTileCoord = tileCoord;
 		}
@@ -92,7 +105,7 @@
 		// the entity calling UpdateCollisionEntity
 		MovingEntity mEntity;
 
-		public EntityEntityCollision(CollisionResults result, MovingEntity entity) : base(result)
+		public EntityEntityCollision(bool firstTime, CollisionResults result, MovingEntity entity) : base(firstTime, result)
 		{
 			mEntity = entity;
 		}
@@ -101,11 +114,15 @@
 		{
 			//Only treat platforming entities as "solid" when grounded.
 			// TODO: Use polymorphism to avoid this dynamic cast.
-			if (mEntity is PlatformingEntity)
+			if (mEntity is PlatformingEntity && entity is PlatformingEntity)
 			{
-				PlatformingEntity platformingEntity = (PlatformingEntity)mEntity;
+				PlatformingEntity ourPlatEntity = (PlatformingEntity)mEntity;
+				PlatformingEntity theirPlatEntity = (PlatformingEntity)entity;
 
-				if (platformingEntity.pGrounded)
+				CardinalDirection ourGrav = ourPlatEntity.GetGravityDir();
+				CardinalDirection theirGrav = theirPlatEntity.GetGravityDir();
+
+				if (ourPlatEntity.pGrounded || ourGrav != theirGrav)
 				{
 					base.PostCollisionReact(entity);
 				}
@@ -115,7 +132,50 @@
 				base.PostCollisionReact(entity);
 			}
 		}
+
+
+
+		protected override Vector2 GetExtraVelocityInternal(MovingEntity entity)
+		{
+			if (entity is PlatformingEntity && mEntity is PlatformingEntity)
+			{
+				// Yeah I know... rtti bad
+				PlatformingEntity theirPlatEntity = (PlatformingEntity)entity;
+				PlatformingEntity ourPlatEntity = (PlatformingEntity)mEntity;
+
+				CardinalDirection ourGrav = ourPlatEntity.GetGravityDir();
+				CardinalDirection theirGrav = theirPlatEntity.GetGravityDir();
+
+				if(ourGrav != theirGrav)
+				{
+					return Vector2.Zero;
+				}
+
+				Vector2 gravity = theirPlatEntity.GravityVecNorm();
+
+				if (Vector2.Dot(gravity, mResult.normal) < -0.001f)
+				{
+					const float DRAG_FACTOR = 0.4f;
+					const float DRAG_THRESH = 4.0f;
+					Vector2 dir = Util.Perpendicular(gravity);
+					Vector2 ourVel = mEntity.pVelocity;
+					Vector2 addedVelocity = Vector2.Dot(dir, ourVel) * dir;
+
+					float len = addedVelocity.Length();
+					if(len > DRAG_THRESH)
+					{
+						Vector2 dragVec = (addedVelocity / len) * DRAG_THRESH;
+						addedVelocity = (addedVelocity - dragVec) * DRAG_FACTOR + dragVec;
+					}
+
+					return addedVelocity;
+				}
+			}
+
+			return base.GetExtraVelocityInternal(entity);
+		}
 	}
+
 
 
 	/// <summary>
@@ -125,12 +185,12 @@
 	{
 		Vector2 mAddedVel;
 
-		public MovingPlatformCollision(CollisionResults result, Vector2 velocity) : base(result)
+		public MovingPlatformCollision(bool firstTime, CollisionResults result, Vector2 velocity) : base(firstTime, result)
 		{
 			mAddedVel = velocity;
 		}
 
-		public override Vector2 GetExtraVelocity(MovingEntity entity)
+		protected override Vector2 GetExtraVelocityInternal(MovingEntity entity)
 		{
 			if(entity is PlatformingEntity)
 			{
@@ -143,7 +203,7 @@
 				}
 			}
 			
-			return base.GetExtraVelocity(entity);
+			return base.GetExtraVelocityInternal(entity);
 		}
 	}
 }

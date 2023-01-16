@@ -872,7 +872,7 @@
 
 					if (collisionResults.Collided)
 					{
-						outputList.Add(new TileEntityCollision(collisionResults, new Point(x, y)));
+						outputList.Add(new TileEntityCollision(true, collisionResults, new Point(x, y)));
 					}
 				}
 			}
