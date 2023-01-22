@@ -146,7 +146,7 @@
 				CardinalDirection ourGrav = ourPlatEntity.GetGravityDir();
 				CardinalDirection theirGrav = theirPlatEntity.GetGravityDir();
 
-				if(ourGrav != theirGrav)
+				if(ourGrav != theirGrav || ourPlatEntity.pGrounded == false)
 				{
 					return Vector2.Zero;
 				}
