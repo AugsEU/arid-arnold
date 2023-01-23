@@ -125,11 +125,10 @@
 				</level>
 				<level id="level4-3">
 					<type>collectWater</type>
-					<waterNeeded>1</waterNeeded>
+					<waterNeeded>5</waterNeeded>
 				</level>
 				<level id="level4-4">
 					<type>collectFlag</type>
-					<waterNeeded>5</waterNeeded>
 				</level>
 			</levels>
 		</world>
