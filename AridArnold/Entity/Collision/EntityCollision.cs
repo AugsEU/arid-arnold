@@ -19,7 +19,6 @@
 	class EntityCollision
 	{
 		public static EntityCollisionSorter COLLISION_SORTER = new EntityCollisionSorter();
-		protected ColliderSubmission mParentSubmission;
 		protected CollisionResults mResult;
 		protected bool mFirstTime;
 
@@ -112,6 +111,10 @@
 
 		public override void PostCollisionReact(MovingEntity entity)
 		{
+			//Both react.
+			entity.CollideWithEntity(mEntity);
+			mEntity.CollideWithEntity(entity);
+
 			//Only treat platforming entities as "solid" when grounded.
 			// TODO: Use polymorphism to avoid this dynamic cast.
 			if (mEntity is PlatformingEntity && entity is PlatformingEntity)

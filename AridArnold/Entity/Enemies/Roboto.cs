@@ -76,6 +76,17 @@
 
 		#region rUpdate
 
+		public override void Update(GameTime gameTime)
+		{
+			if(!mPoweredOn)
+			{
+				//Collider
+				EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
+			}
+
+			base.Update(gameTime);
+		}
+
 		/// <summary>
 		/// Decide actions.
 		/// </summary>
@@ -124,6 +135,19 @@
 						}
 					}
 				}
+			}
+		}
+
+
+		/// <summary>
+		/// Only kill the player if we are active.
+		/// </summary>
+		/// <param name="entity"></param>
+		public override void CollideWithEntity(Entity entity)
+		{
+			if(mPoweredOn)
+			{
+				base.CollideWithEntity(entity);
 			}
 		}
 
