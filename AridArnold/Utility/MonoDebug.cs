@@ -10,7 +10,7 @@ namespace AridArnold
 		/// Log message to console. Only if debug is on.
 		/// </summary>
 		/// <param name="msg">Message to log</param>
-		public static void Log(string msg)
+		public static void Log(string msg, params object[] args)
 		{
 			if (mDebugOn)
 			{
@@ -24,9 +24,9 @@ namespace AridArnold
 		/// Log a message to console.
 		/// </summary>
 		/// <param name="msg">Message to log</param>
-		public static void DLog(string msg)
+		public static void DLog(string msg, params object[] args)
 		{
-			Debug.WriteLine(msg);
+			Debug.WriteLine(msg, args);
 		}
 	}
 }
