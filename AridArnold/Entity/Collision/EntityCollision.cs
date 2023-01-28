@@ -125,7 +125,7 @@
 				CardinalDirection ourGrav = ourPlatEntity.GetGravityDir();
 				CardinalDirection theirGrav = theirPlatEntity.GetGravityDir();
 
-				if (ourPlatEntity.pGrounded || ourGrav != theirGrav)
+				if (ourPlatEntity.IsGroundedSince(1) || ourGrav != theirGrav)
 				{
 					base.PostCollisionReact(entity);
 				}

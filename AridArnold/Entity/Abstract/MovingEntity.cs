@@ -71,6 +71,8 @@
 			List<EntityCollision> collisionList = new List<EntityCollision>();
 
 			EntityCollision currentCollision = EntityManager.I.GetNextCollision(gameTime, this);
+			PlatformingEntity platformingEntity = (PlatformingEntity)this;
+
 			while (currentCollision != null)
 			{
 				EntityCollision entityCollision = currentCollision;

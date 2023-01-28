@@ -26,8 +26,6 @@
 		protected Texture2D mJumpUpTex;
 		protected Texture2D mJumpDownTex;
 
-		int mTimeSinceGrounded;
-
 		//Various timers.
 		PercentageTimer mTimerSinceDeath;
 		protected PercentageTimer mTimerSinceStart;
@@ -52,8 +50,6 @@
 
 			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
 			mTimerSinceStart = new PercentageTimer(START_TIME);
-
-			mTimeSinceGrounded = int.MaxValue;
 		}
 
 
@@ -123,11 +119,6 @@
 				return;
 			}
 
-			if (mOnGround)
-			{
-				mTimeSinceGrounded = 0;
-			}
-
 			//Anim
 			mRunningAnimation.Update(gameTime);
 
@@ -148,11 +139,6 @@
 			}
 
 			base.Update(gameTime);
-
-			if (mTimeSinceGrounded != int.MaxValue)
-			{
-				mTimeSinceGrounded++;
-			}
 		}
 
 
@@ -177,17 +163,15 @@
 				if (jump)
 				{
 					Jump();
-					mTimeSinceGrounded = int.MaxValue;
 				}
 
 				HandleWalkInput();
 			}
-			else if (mTimeSinceGrounded < COYOTE_TIME)
+			else if (IsGroundedSince(COYOTE_TIME))
 			{
-				if (jump)
+				if (jump && mVelocity.Y > 0.0f)
 				{
 					Jump();
-					mTimeSinceGrounded = int.MaxValue;
 				}
 			}
 		}

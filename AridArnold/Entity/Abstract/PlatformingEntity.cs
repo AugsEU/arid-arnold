@@ -27,6 +27,8 @@
 		protected float mJumpSpeed;
 		protected float mGravity;
 
+		int mUpdatesSinceGrounded;
+
 		private CardinalDirection mCardinalDirection;
 		protected WalkDirection mWalkDirection;
 
@@ -55,6 +57,8 @@
 			mGravity = gravity;
 
 			mCardinalDirection = CardinalDirection.Down;
+
+			mUpdatesSinceGrounded = int.MaxValue;
 		}
 
 		#endregion
@@ -92,6 +96,15 @@
 						mVelocity += component * sideVec;
 					}
 					break;
+			}
+
+			if (mOnGround)
+			{
+				mUpdatesSinceGrounded = 0;
+			}
+			else if(mUpdatesSinceGrounded != int.MaxValue)
+			{
+				mUpdatesSinceGrounded++;
 			}
 
 			ApplyGravity(gameTime);
@@ -280,6 +293,18 @@
 			{
 				mVelocity = -mJumpSpeed * GravityVecNorm();
 			}
+
+			mUpdatesSinceGrounded = int.MaxValue;
+		}
+
+
+
+		/// <summary>
+		/// Have we been grounded in the last x frames?
+		/// </summary>
+		public bool IsGroundedSince(int frames)
+		{
+			return mUpdatesSinceGrounded < frames;
 		}
 
 
