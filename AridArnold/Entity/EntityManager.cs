@@ -101,7 +101,7 @@
 
 			if (mCollisionBuffer.Count > 0)
 			{
-				return Util.GetMin(ref mCollisionBuffer, EntityCollision.COLLISION_SORTER);
+				return MonoAlg.GetMin(ref mCollisionBuffer, EntityCollision.COLLISION_SORTER);
 			}
 
 			return null;

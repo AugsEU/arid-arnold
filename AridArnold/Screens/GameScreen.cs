@@ -210,7 +210,7 @@
 
 				if ((int)(timeSinceDeath / END_LEVEL_FLASH_TIME) % 2 == 0)
 				{
-					Util.BrightenColour(ref clearCol, 0.05f);
+					MonoColor.BrightenColour(ref clearCol, 0.05f);
 				}
 			}
 

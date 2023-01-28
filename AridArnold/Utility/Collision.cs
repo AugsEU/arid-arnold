@@ -255,18 +255,18 @@ namespace AridArnold
 			results.t = null;
 			results.normal = Vector2.Zero;
 
-			float directionFactor = Util.Cross(checkRay.direction, targetRay.direction);
+			float directionFactor = MonoMath.Cross(checkRay.direction, targetRay.direction);
 
 			if (directionFactor != 0.0f)
 			{
-				float t = Util.Cross(targetRay.origin - checkRay.origin, targetRay.direction) / directionFactor;
-				float u = Util.Cross(targetRay.origin - checkRay.origin, checkRay.direction) / directionFactor;
+				float t = MonoMath.Cross(targetRay.origin - checkRay.origin, targetRay.direction) / directionFactor;
+				float u = MonoMath.Cross(targetRay.origin - checkRay.origin, checkRay.direction) / directionFactor;
 
 				if (1.00f >= t && t >= 0.0f && 1.00f >= u && u >= 0.0f)
 				{
 					//A hit
 					results.t = t;
-					results.normal = Util.Perpendicular(targetRay.direction);
+					results.normal = MonoMath.Perpendicular(targetRay.direction);
 
 					if (directionFactor > 0.0f)
 					{
@@ -417,12 +417,12 @@ namespace AridArnold
 
 			if (x_far < x_near)
 			{
-				Util.Swap(ref x_near, ref x_far);
+				MonoAlg.Swap(ref x_near, ref x_far);
 			}
 
 			if (y_far < y_near)
 			{
-				Util.Swap(ref y_near, ref y_far);
+				MonoAlg.Swap(ref y_near, ref y_far);
 			}
 
 

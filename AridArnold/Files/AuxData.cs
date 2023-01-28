@@ -150,7 +150,7 @@
 			}
 
 			//Get direction
-			UInt32 direction = Util.IntSubString(flags, 8, 4);
+			UInt32 direction = MonoAlg.IntSubString(flags, 8, 4);
 
 			switch(direction)
 			{

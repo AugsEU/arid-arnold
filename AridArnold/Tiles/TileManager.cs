@@ -131,7 +131,7 @@
 			{
 				//Use alpha component as a parameter.
 				int param = 255 - col.A;
-				uint hexCode = Util.ColorToHEX(col);
+				uint hexCode = MonoColor.ColorToHEX(col);
 
 				switch (hexCode)
 				{
@@ -193,7 +193,7 @@
 			{
 				//Use alpha component as a parameter.
 				int param = 255 - col.A;
-				uint hexCode = Util.ColorToHEX(col);
+				uint hexCode = MonoColor.ColorToHEX(col);
 
 				switch (hexCode)
 				{

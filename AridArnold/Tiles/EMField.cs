@@ -94,7 +94,7 @@
 		public void ProcessUpdate()
 		{
 			//Next field is now the current one.
-			Util.Swap(ref mCurrentField, ref mNextField);
+			MonoAlg.Swap(ref mCurrentField, ref mNextField);
 
 			//Zero out next field.
 			for(int x = 0; x < mNextField.GetLength(0); x++)

@@ -97,7 +97,7 @@
 			ApplyGravity(gameTime);
 			mOnGround = false;
 
-			mVelocity = new Vector2(Util.ClampAbs(mVelocity.X, MAX_VELOCITY), Util.ClampAbs(mVelocity.Y, MAX_VELOCITY));
+			mVelocity = new Vector2(MonoMath.ClampAbs(mVelocity.X, MAX_VELOCITY), MonoMath.ClampAbs(mVelocity.Y, MAX_VELOCITY));
 
 			base.Update(gameTime);
 		}
@@ -182,7 +182,7 @@
 			fallingVec.Normalize();
 
 			mUpdateOrder = Vector2.Dot(mPosition, fallingVec);
-			mUpdateOrder = Util.SquashToRange(mUpdateOrder, EntityManager.UPDATE_MENTITY_MIN, EntityManager.UPDATE_MENTITY_MAX);
+			mUpdateOrder = MonoMath.SquashToRange(mUpdateOrder, EntityManager.UPDATE_MENTITY_MIN, EntityManager.UPDATE_MENTITY_MAX);
 		}
 
 		#endregion rUpdate

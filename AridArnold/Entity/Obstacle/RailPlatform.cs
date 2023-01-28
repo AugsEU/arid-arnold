@@ -101,7 +101,7 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			Vector2 directionVec = Util.Perpendicular(Util.GetNormal(mRotation)) * Tile.sTILE_SIZE;
+			Vector2 directionVec = MonoMath.Perpendicular(Util.GetNormal(mRotation)) * Tile.sTILE_SIZE;
 			directionVec.X = MathF.Abs(directionVec.X);
 			directionVec.Y = MathF.Abs(directionVec.Y);
 

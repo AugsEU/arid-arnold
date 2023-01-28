@@ -205,8 +205,8 @@
 		/// </summary>
 		public void DrawBox(DrawInfo info)
 		{
-			Point rectPosition = new Point(Util.Round(mTopLeft.X) - PADDING, Util.Round(mTopLeft.Y) - PADDING);
-			int height = Util.Round(mBottomLeft.Y - mTopLeft.Y) + PADDING;
+			Point rectPosition = new Point(MonoMath.Round(mTopLeft.X) - PADDING, MonoMath.Round(mTopLeft.Y) - PADDING);
+			int height = MonoMath.Round(mBottomLeft.Y - mTopLeft.Y) + PADDING;
 			int width = (int)mStyle.mWidth + 2 * PADDING;
 			Rectangle bgRectangle = new Rectangle(rectPosition.X, rectPosition.Y, width, height);
 
@@ -296,7 +296,7 @@
 		/// </summary>
 		Vector2 GetCharShift()
 		{
-			return new Vector2(0.0f, -Util.Round(GetNewLineSize() / 4.0f));
+			return new Vector2(0.0f, -MonoMath.Round(GetNewLineSize() / 4.0f));
 		}
 
 

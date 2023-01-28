@@ -373,7 +373,7 @@
 					effect = effect ^ SpriteEffects.FlipHorizontally;
 					break;
 				case CardinalDirection.Left:
-					Util.Swap(ref drawOffset.X, ref drawOffset.Y);
+					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
 					drawOffset.X = mTexture.Height- drawOffset.X;
 
 					rotation = MathHelper.PiOver2;
@@ -381,7 +381,7 @@
 				case CardinalDirection.Right:
 					rotation = MathHelper.PiOver2 * 3.0f;
 					effect = effect ^ SpriteEffects.FlipHorizontally;
-					Util.Swap(ref drawOffset.X, ref drawOffset.Y);
+					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
 					drawOffset.Y =  mTexture.Width - drawOffset.Y;
 					break;
 			}

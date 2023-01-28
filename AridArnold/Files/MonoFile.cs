@@ -138,7 +138,7 @@
 					{
 						AbortRead();
 						delFile = true;
-						Util.Log("Exception: " + ex.ToString());
+						MonoDebug.Log("Exception: " + ex.ToString());
 					}
 				}
 			}
@@ -228,7 +228,7 @@
 			}
 			catch (Exception ex)
 			{
-				Util.Log("Exception: " + ex.ToString());
+				MonoDebug.Log("Exception: " + ex.ToString());
 				return;
 			}
 

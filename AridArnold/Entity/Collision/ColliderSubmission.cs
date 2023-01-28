@@ -108,6 +108,9 @@
 
 
 
+	/// <summary>
+	/// Platform submits itself for collision
+	/// </summary>
 	class PlatformColliderSubmission : ColliderSubmission
 	{
 		#region rMembers

@@ -63,7 +63,7 @@ namespace AridArnold
 
 		public WorldTheme(XmlNode themeNode, string id)
 		{
-			mBGColor = Util.HEXToColor(themeNode.SelectSingleNode("bgColor").InnerText);
+			mBGColor = MonoColor.HEXToColor(themeNode.SelectSingleNode("bgColor").InnerText);
 
 			mWallTheme = new TileTheme(themeNode.SelectNodes("wallTexture"), id);
 			mPlatformTheme = new TileTheme(themeNode.SelectNodes("platformTexture"), id);

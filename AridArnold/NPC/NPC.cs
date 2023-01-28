@@ -163,7 +163,7 @@
 
 			Texture2D textureToDraw = GetIdleTexture();
 
-			bool mouthOpen = IsTalking() && Util.IsVowel(GetCurrentBlock().GetCurrentChar());
+			bool mouthOpen = IsTalking() && MonoText.IsVowel(GetCurrentBlock().GetCurrentChar());
 
 			if(mouthOpen)
 			{

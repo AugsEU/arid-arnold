@@ -160,7 +160,7 @@
 				{
 					const float DRAG_FACTOR = 0.4f;
 					const float DRAG_THRESH = 4.0f;
-					Vector2 dir = Util.Perpendicular(gravity);
+					Vector2 dir = MonoMath.Perpendicular(gravity);
 					Vector2 ourVel = mEntity.pVelocity;
 					Vector2 addedVelocity = Vector2.Dot(dir, ourVel) * dir;
 

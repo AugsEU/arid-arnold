@@ -76,6 +76,10 @@
 
 		#region rUpdate
 
+		/// <summary>
+		/// Update roboto
+		/// </summary>
+		/// <param name="gameTime"></param>
 		public override void Update(GameTime gameTime)
 		{
 			if(!mPoweredOn)
@@ -86,6 +90,8 @@
 
 			base.Update(gameTime);
 		}
+
+
 
 		/// <summary>
 		/// Decide actions.

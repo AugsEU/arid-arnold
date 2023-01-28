@@ -27,8 +27,8 @@
 	{
 		#region rConstants 
 
-		const int START_WORLD = 3; 
-		const int START_LEVEL = 0;
+		const int START_WORLD = 1; 
+		const int START_LEVEL = 2;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
 
