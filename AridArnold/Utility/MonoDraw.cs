@@ -32,6 +32,10 @@
 		public const float FRONT_EPSILON = 0.0001f;
 		public const float BACK_EPSILON = -FRONT_EPSILON;
 
+		const float LAYER_MOVE_EPSILON = 0.0000001f;
+
+		static float sCurrentLayerDelta = 0.0f;
+
 		#endregion rConstants
 
 
@@ -45,7 +49,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position)
 		{
-			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, LAYER_DEFAULT);
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(LAYER_DEFAULT));
 		}
 
 
@@ -55,7 +59,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Rectangle rect)
 		{
-			info.spriteBatch.Draw(texture2D, rect, null, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, LAYER_DEFAULT);
+			info.spriteBatch.Draw(texture2D, rect, null, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, IncrementLayer(LAYER_DEFAULT));
 		}
 
 
@@ -66,7 +70,7 @@
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, float rotation)
 		{
 			Vector2 rotationOffset = CalcRotationOffset(rotation, texture2D.Width, texture2D.Height);
-			info.spriteBatch.Draw(texture2D, new Rectangle((int)position.X, (int)position.Y, texture2D.Width, texture2D.Height), null, Color.White, rotation, rotationOffset, SpriteEffects.None, LAYER_DEFAULT);
+			info.spriteBatch.Draw(texture2D, new Rectangle((int)position.X, (int)position.Y, texture2D.Width, texture2D.Height), null, Color.White, rotation, rotationOffset, SpriteEffects.None, IncrementLayer(LAYER_DEFAULT));
 		}
 
 
@@ -76,7 +80,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, SpriteEffects effect)
 		{
-			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, LAYER_DEFAULT);
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, IncrementLayer(LAYER_DEFAULT));
 		}
 
 
@@ -86,7 +90,7 @@
 		/// </summary>
 		public static void DrawTextureDepth(DrawInfo info, Texture2D texture2D, Vector2 position, float depth)
 		{
-			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, depth);
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
 		}
 
 		/// <summary>
@@ -94,7 +98,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, Rectangle? sourceRectange, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effect, float depth)
 		{
-			info.spriteBatch.Draw(texture2D, position, sourceRectange, color, rotation, origin, scale, effect, depth);
+			info.spriteBatch.Draw(texture2D, position, sourceRectange, color, rotation, origin, scale, effect, IncrementLayer(depth));
 		}
 
 
@@ -103,7 +107,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Rectangle destRect, Rectangle? sourceRectange, Color color, float rotation, Vector2 origin, SpriteEffects effect, float depth)
 		{
-			info.spriteBatch.Draw(texture2D, destRect, sourceRectange, color, rotation, origin, effect, depth);
+			info.spriteBatch.Draw(texture2D, destRect, sourceRectange, color, rotation, origin, effect, IncrementLayer(depth));
 		}
 
 
@@ -115,7 +119,7 @@
 		{
 			Vector2 size = font.MeasureString(text);
 
-			info.spriteBatch.DrawString(font, text, position - size / 2, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, depth);
+			info.spriteBatch.DrawString(font, text, position - size / 2, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
 		}
 
 
@@ -124,7 +128,7 @@
 		/// </summary>
 		public static void DrawString(DrawInfo info, SpriteFont font, string text, Vector2 position, Color color, float depth)
 		{
-			info.spriteBatch.DrawString(font, text, position, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, depth);
+			info.spriteBatch.DrawString(font, text, position, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
 		}
 
 
@@ -240,6 +244,25 @@
 			Vector2 newCentre = new Vector2(oldCentre.X * c - oldCentre.Y * s, oldCentre.X * s + oldCentre.Y * c);
 
 			return oldCentre - newCentre;
+		}
+
+
+		/// <summary>
+		/// Increment layer to avoid z-fighting.
+		/// </summary>
+		public static float IncrementLayer(float baseLayer)
+		{
+			sCurrentLayerDelta += LAYER_MOVE_EPSILON;
+			return baseLayer + sCurrentLayerDelta;
+		}
+
+
+		/// <summary>
+		/// Call this to clear out each frame.
+		/// </summary>
+		public static void FlushRender()
+		{
+			sCurrentLayerDelta = 0.0f;
 		}
 
 		#endregion rUtility

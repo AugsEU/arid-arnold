@@ -247,6 +247,8 @@ namespace AridArnold
 			}
 
 			base.Draw(gameTime);
+
+			MonoDraw.FlushRender();
 		}
 
 
