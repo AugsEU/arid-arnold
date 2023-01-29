@@ -273,6 +273,31 @@
 		}
 
 
+		/// <summary>
+		/// Deal with things touching us.
+		/// </summary>
+		public override void CollideWithEntity(Entity entity)
+		{
+			// HACK: Arnolds can collapse on themselves, so we add a force here to untangle them
+			if (entity is Arnold)
+			{
+				if (mHandle < entity.GetHandle())
+				{
+					const float UNTANGLE_DISTANCE = 5.0f;
+
+					Vector2 displacement = entity.pPosition - mPosition;
+
+					if (displacement.LengthSquared() < UNTANGLE_DISTANCE * UNTANGLE_DISTANCE)
+					{
+						mVelocity.Y -= 1.0f;
+					}
+				}
+			}
+
+			base.CollideWithEntity(entity);
+		}
+
+
 
 		/// <summary>
 		/// Check if we died from going off-screen

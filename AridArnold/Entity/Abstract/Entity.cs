@@ -7,6 +7,10 @@
 	{
 		#region rMembers
 
+		// Keep track for IDs. Might be problems if you spawn 2^64 entities in a single play session.
+		static UInt64 sHandleHead = 0;
+
+		protected UInt64 mHandle;
 		protected Vector2 mPosition;
 		protected Vector2 mCentreOfMass;
 		protected Texture2D mTexture;
@@ -29,6 +33,10 @@
 			mPosition = pos;
 			mCentreOfMass = pos;
 			mUpdateOrder = 0.0f;
+			mHandle = sHandleHead;
+
+			// To do: Make this atomic if we end up needing to spawn multiple entities on different threads.
+			sHandleHead++;
 		}
 
 
@@ -162,6 +170,15 @@
 		public float GetUpdateOrder()
 		{
 			return mUpdateOrder;
+		}
+
+
+		/// <summary>
+		/// Get unique handle for this entity.
+		/// </summary>
+		public UInt64 GetHandle()
+		{
+			return mHandle;
 		}
 
 		#endregion rUtility
