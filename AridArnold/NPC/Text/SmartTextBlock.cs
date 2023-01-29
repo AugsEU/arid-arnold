@@ -171,6 +171,7 @@
 
 			//Assume all caps until proven otherwise
 			bool allCaps = true;
+			int wordLength = 0;
 
 			//Was there anything to analyse?
 			bool analysis = false;
@@ -188,6 +189,7 @@
 				}
 
 				forwardHead++;
+				wordLength++;
 			}
 
 			forwardHead--;
@@ -195,7 +197,7 @@
 			if (analysis)
 			{
 				// All caps words are considered exclamations.
-				if (allCaps)
+				if (allCaps && wordLength > 1)
 				{
 					textMood = TextMood.Exclaim;
 				}
@@ -229,13 +231,15 @@
 			switch (letter)
 			{
 				case '?':
-					return mDefaultFrameCount + 140;
+					return mDefaultFrameCount * 8;
 				case '!':
-					return mDefaultFrameCount + 120;
+					return mDefaultFrameCount * 7;
 				case '.':
-					return mDefaultFrameCount + 100;
+					return mDefaultFrameCount * 6;
 				case ',':
-					return mDefaultFrameCount + 40;
+					return mDefaultFrameCount * 3;
+				case ' ':
+					return mDefaultFrameCount / 2;
 				default:
 					break;
 			}

@@ -22,6 +22,8 @@
 		/// </summary>
 		public Dok(Vector2 pos) : base(pos)
 		{
+			mStyle.mScrollSpeed = 0.5f;
+			mStyle.mFramesPerLetter = 22;
 		}
 
 

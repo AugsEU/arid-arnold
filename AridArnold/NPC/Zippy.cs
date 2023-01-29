@@ -25,6 +25,8 @@
 		/// </summary>
 		public Zippy(Vector2 pos) : base(pos)
 		{
+			mStyle.mScrollSpeed = 1.0f;
+			mStyle.mFramesPerLetter = 11;
 		}
 
 
@@ -36,7 +38,7 @@
 		{
 			//Setup idle animation.
 			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
-												("NPC/Zippy/Idle1", 1.2f));
+												("NPC/Zippy/Idle1", 0.3f));
 
 			Animator breatheOut = new Animator(content, Animator.PlayType.OneShot,
 												("NPC/Zippy/Idle2", 0.8f));

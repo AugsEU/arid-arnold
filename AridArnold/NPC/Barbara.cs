@@ -22,6 +22,8 @@
 		/// </summary>
 		public Barbara(Vector2 pos) : base(pos)
 		{
+			mStyle.mScrollSpeed = 0.9f;
+			mStyle.mFramesPerLetter = 14;
 		}
 
 

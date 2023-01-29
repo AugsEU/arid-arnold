@@ -18,7 +18,7 @@
 
 		#region rMembers
 
-		SpeechBoxStyle mStyle;
+		protected SpeechBoxStyle mStyle;
 		List<SpeechBoxRenderer> mTextBlocks;
 		MonoTimer mMouthTimer;
 
@@ -35,15 +35,16 @@
 		/// </summary>
 		public NPC(Vector2 pos) : base(pos)
 		{
+			mTextBlocks = new List<SpeechBoxRenderer>();
+			mMouthTimer = new MonoTimer();
+
 			mStyle = new SpeechBoxStyle();
 			mStyle.mFont = FontManager.I.GetFont("Pixica-12");
 			mStyle.mWidth = 230.1f;
 			mStyle.mLeading = 8.0f;
 			mStyle.mKerning = 1.0f;
-			mStyle.mSpeed = 0.6f;
-
-			mTextBlocks = new List<SpeechBoxRenderer>();
-			mMouthTimer = new MonoTimer();
+			mStyle.mScrollSpeed = 0.6f;
+			mStyle.mFramesPerLetter = 20;
 		}
 
 
@@ -89,7 +90,7 @@
 		void UntangleTextBoxes(GameTime gameTime)
 		{
 			float dt = Util.GetDeltaT(gameTime);
-			float untangleDisp = -mStyle.mSpeed * dt * 12.0f;
+			float untangleDisp = -mStyle.mScrollSpeed * dt * 12.0f;
 			float totalDisp = 0.0f;
 
 			for (int i = mTextBlocks.Count - 1; i > 0; i--)

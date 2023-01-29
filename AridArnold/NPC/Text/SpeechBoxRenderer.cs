@@ -7,7 +7,8 @@
 		public float mLeading;
 		public float mKerning;
 		public float mWidth;
-		public float mSpeed;
+		public float mScrollSpeed;
+		public int mFramesPerLetter;
 	}
 
 	/// <summary>
@@ -61,7 +62,7 @@
 		public SpeechBoxRenderer(string stringID, Vector2 bottomLeft, SpeechBoxStyle style)
 		{
 			mStyle = style;
-			mCurrentBlock = new SmartTextBlock(stringID, 20); //TO DO: Calculate text speed as a function of scroll speed.
+			mCurrentBlock = new SmartTextBlock(stringID, style.mFramesPerLetter);
 			mLetters = new List<SpeechBoxLetter>();
 			mBottomLeft = bottomLeft;
 
@@ -91,7 +92,7 @@
 			//Slowly increase speed when the tile is stopped.
 			if (IsStopped())
 			{
-				mStyle.mSpeed += 0.05f * dt;
+				mStyle.mScrollSpeed += 0.05f * dt;
 			}
 
 			ScrollLettersUp(dt);
@@ -121,7 +122,7 @@
 		/// </summary>
 		void ScrollLettersUp(float dt)
 		{
-			float dy = -dt * mStyle.mSpeed;
+			float dy = -dt * mStyle.mScrollSpeed;
 
 			foreach (SpeechBoxLetter letter in mLetters)
 			{
@@ -207,7 +208,7 @@
 		{
 			Point rectPosition = new Point(MonoMath.Round(mTopLeft.X) - PADDING, MonoMath.Round(mTopLeft.Y) - PADDING);
 			int height = MonoMath.Round(mBottomLeft.Y - mTopLeft.Y) + PADDING;
-			int width = (int)mStyle.mWidth + 2 * PADDING;
+			int width = (int)mStyle.mWidth + 2 * PADDING + 3;
 			Rectangle bgRectangle = new Rectangle(rectPosition.X, rectPosition.Y, width, height);
 
 			// Draw bg
