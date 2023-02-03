@@ -208,7 +208,7 @@
 		{
 			Point rectPosition = new Point(MonoMath.Round(mTopLeft.X) - PADDING, MonoMath.Round(mTopLeft.Y) - PADDING);
 			int height = MonoMath.Round(mBottomLeft.Y - mTopLeft.Y) + PADDING;
-			int width = (int)mStyle.mWidth + 2 * PADDING + 3;
+			int width = (int)mStyle.mWidth + 2 * PADDING + 5;
 			Rectangle bgRectangle = new Rectangle(rectPosition.X, rectPosition.Y, width, height);
 
 			// Draw bg
@@ -245,7 +245,7 @@
 		/// </summary>
 		void PlaceNewLetter()
 		{
-			char charToPrint = mCurrentBlock.GetCurrentChar();
+			char charToPrint = mCurrentBlock.GetCurrentTextChar();
 
 			if (charToPrint == '\0')
 			{
@@ -368,14 +368,14 @@
 		/// </summary>
 		float ScanToEndOfWord()
 		{
-			int charIndex = mCurrentBlock.GetHead() + 1;
+			int charIndex = mCurrentBlock.GetTextHead() + 1;
 			float endOfWordX = mCharHead.X;
-			char currentChar = mCurrentBlock.GetChar(charIndex);
+			char currentChar = mCurrentBlock.GetTextChar(charIndex);
 
 			while (!CharEndsWord(currentChar))
 			{
 				charIndex++;
-				currentChar = mCurrentBlock.GetChar(charIndex);
+				currentChar = mCurrentBlock.GetTextChar(charIndex);
 
 				if (CharEndsWord(currentChar))
 				{
@@ -457,7 +457,7 @@
 		/// </summary>
 		public char GetCurrentChar()
 		{
-			return mCurrentBlock.GetCurrentChar();
+			return mCurrentBlock.GetCurrentTextChar();
 		}
 		#endregion rUtility
 	}

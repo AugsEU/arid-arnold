@@ -20,8 +20,10 @@
 
 		#region rMembers
 
-		string mText;
-		int mCharHead;
+		string mText; // Raw text
+		string mSanitisedText; // Text without the control characters.
+		int mRawCharHead;
+		int mSanitisedCharHead;
 		int mLetterFrameCount;
 		int mDefaultFrameCount;
 		TextMood mMood;
@@ -41,12 +43,16 @@
 		public SmartTextBlock(string stringID, int defaultLetterTime)
 		{
 			mText = LanguageManager.I.GetText(stringID);
-			mCharHead = -1;
+			mRawCharHead = -1;
 			mLetterFrameCount = 0;
 			mDefaultFrameCount = defaultLetterTime;
 			mMood = TextMood.Undecided;
 			mAnimation = new LetterAnimColor(Color.White);
 			CalculateMood();
+
+			mSanitisedText = SanitiseText(ref mText);
+
+			mSanitisedCharHead = mRawCharHead;
 		}
 
 		#endregion rInitialise
@@ -82,24 +88,25 @@
 
 		#region rInterface
 
+
 		/// <summary>
-		/// Get head index.
+		/// Get char at index.(Ignoring control characters)
 		/// </summary>
-		public int GetHead()
+		public int GetTextHead()
 		{
-			return mCharHead;
+			return mSanitisedCharHead;
 		}
 
 
 
 		/// <summary>
-		/// Get char at index.
+		/// Get char at index.(Ignoring control characters)
 		/// </summary>
-		public char GetChar(int index)
+		public char GetTextChar(int index)
 		{
-			if (index < mText.Length)
+			if (index < mSanitisedText.Length)
 			{
-				return mText[index];
+				return mSanitisedText[index];
 			}
 
 			return '\0';
@@ -108,13 +115,13 @@
 
 
 		/// <summary>
-		/// Get the current character
+		/// Get the current character(Ignoring control characters)
 		/// </summary>
-		public char GetCurrentChar()
+		public char GetCurrentTextChar()
 		{
-			if (mCharHead < mText.Length)
+			if (mSanitisedCharHead < mSanitisedText.Length)
 			{
-				return mText[mCharHead];
+				return mSanitisedText[mSanitisedCharHead];
 			}
 
 			return '\0';
@@ -143,10 +150,16 @@
 		/// </summary>
 		void AdvanceCharacter()
 		{
-			mCharHead++;
-			if (mCharHead >= mText.Length)
+			mRawCharHead++;
+			if (mRawCharHead >= mText.Length)
 			{
-				mCharHead = mText.Length;
+				mRawCharHead = mText.Length;
+			}
+
+			mSanitisedCharHead++;
+			if(mSanitisedCharHead >= mSanitisedText.Length)
+			{
+				mSanitisedCharHead = mSanitisedText.Length;
 			}
 
 			ParseControlCharacters();
@@ -157,6 +170,12 @@
 			}
 
 			mLetterFrameCount = CalculateLetterTime(GetCurrentChar());
+
+			if(GetCurrentChar() != GetCurrentTextChar())
+			{
+				MonoDebug.DLog("DLOG: {0} vs {1}", GetCurrentChar(), GetCurrentTextChar());
+			}
+			System.Diagnostics.Debug.Assert(GetCurrentChar() == GetCurrentTextChar());
 		}
 
 
@@ -166,7 +185,7 @@
 		/// </summary>
 		void CalculateMood()
 		{
-			int forwardHead = mCharHead + 1;
+			int forwardHead = mRawCharHead + 1;
 			TextMood textMood = TextMood.Normal;
 
 			//Assume all caps until proven otherwise
@@ -269,6 +288,9 @@
 		#endregion rAnalysis
 
 
+
+
+
 		#region rControlCharacters
 
 		/// <summary>
@@ -278,32 +300,46 @@
 		{
 			while(true)
 			{
-				if (mCharHead >= mText.Length)
+				if (mRawCharHead >= mText.Length)
 				{
-					mCharHead = mText.Length;
+					mRawCharHead = mText.Length;
 					break;
 				}
 
-				char controlChar = mText[mCharHead];
-
-				switch (controlChar)
+				if (GetCurrentChar() == '<')
 				{
-					case 'α':
-						mAnimation = new LetterAnimColor(ParseColor());
-						break;
-					case 'ψ':
-						mAnimation = new LetterAnimColor(Color.White);
-						mCharHead++;
-						break;
-					case 'γ':
-						mAnimation = new LetterAnimColor(Color.Yellow);
-						mCharHead++;
-						break;
-					case 'Σ':
-						ParseShaker();
-						break;
-					default:
-						return;
+					mRawCharHead++;
+					char controlChar = GetCurrentChar();
+
+					switch (controlChar)
+					{
+						case 'α':
+							mAnimation = new LetterAnimColor(ParseColor());
+							break;
+						case 'ψ':
+							mAnimation = new LetterAnimColor(Color.White);
+							mRawCharHead++;
+							break;
+						case 'γ':
+							mAnimation = new LetterAnimColor(Color.Yellow);
+							mRawCharHead++;
+							break;
+						case 'Σ':
+							ParseShaker();
+							break;
+						default:
+							return;
+					}
+
+					if (GetCurrentChar() != '>')
+					{
+						throw new FormatException("INVALID TEXT FORMAT! DID NOT END CONTROL SEQUENCE!!");
+					}
+					mRawCharHead++;
+				}
+				else
+				{
+					break;
 				}
 			}
 		}
@@ -313,17 +349,17 @@
 		/// </summary>
 		Color ParseColor()
 		{
-			char magic = mText[mCharHead];
+			char magic = mText[mRawCharHead];
 			if(magic != 'α')
 			{
 				return Color.White;
 			}
 
-			mCharHead+=2;
+			mRawCharHead+=2;
 			int r = ParseNumber();
 			int g = ParseNumber();
 			int b = ParseNumber();
-			mCharHead++;
+			mRawCharHead++;
 			
 			return new Color(r, g, b);
 		}
@@ -333,8 +369,8 @@
 		/// </summary>
 		int ParseNumber()
 		{
-			string number = mText.Substring(mCharHead, 2);
-			mCharHead += 2;
+			string number = mText.Substring(mRawCharHead, 2);
+			mRawCharHead += 2;
 			return Convert.ToInt32(number, 16);
 		}
 
@@ -343,7 +379,7 @@
 		/// </summary>
 		void ParseShaker()
 		{
-			mCharHead++;
+			mRawCharHead++;
 			Color col = ParseColor();
 
 			int intensity = ParseNumber();
@@ -352,6 +388,73 @@
 			mAnimation = new LetterAnimShaking(intensity, frame, col);
 		}
 
+
+
+		/// <summary>
+		/// Take in raw text and remove control characters.
+		/// </summary>
+		string SanitiseText(ref string rawText)
+		{
+			string result = "";
+			bool inControlSequence = false;
+			for(int i = 0; i < rawText.Length; i++)
+			{
+				char currentChar = rawText[i];
+
+				if (currentChar == '<')
+				{
+					inControlSequence = true;
+				}
+
+				if(!inControlSequence)
+				{
+					result += currentChar;
+				}
+
+				if (currentChar == '>')
+				{
+					inControlSequence = false;
+				}
+			}
+
+			if(inControlSequence == true)
+			{
+				throw new FormatException("INVALID TEXT FORMAT! DID NOT END CONTROL SEQUENCE!!");
+			}
+
+			return result;
+		}
+
 		#endregion rControlCharacters
+
+
+
+
+
+		#region rUtility
+		/// <summary>
+		/// Get head index.
+		/// </summary>
+		private int GetHead()
+		{
+			return mRawCharHead;
+		}
+
+
+
+		/// <summary>
+		/// Get the current character
+		/// </summary>
+		private char GetCurrentChar()
+		{
+			if (mRawCharHead < mText.Length)
+			{
+				return mText[mRawCharHead];
+			}
+
+			return '\0';
+		}
+
+		#endregion rUtility
 	}
 }
