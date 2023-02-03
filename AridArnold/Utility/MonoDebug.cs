@@ -28,5 +28,15 @@ namespace AridArnold
 		{
 			Debug.WriteLine(msg, args);
 		}
+
+
+		public static void Break(string msg = "", params object[] args)
+		{
+			if (msg != "")
+			{
+				DLog(msg, args);
+			}
+			System.Diagnostics.Debugger.Break();
+		}
 	}
 }
