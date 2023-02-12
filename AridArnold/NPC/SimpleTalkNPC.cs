@@ -18,6 +18,9 @@
 		#region rMembers
 
 		bool mTalking;
+		protected IdleAnimator mIdleAnimation;
+		protected Texture2D mTalkTexture;
+		protected Texture2D mAngryTexture;
 
 		#endregion rMembers
 
@@ -72,6 +75,8 @@
 				mTalking = false;
 			}
 
+			mIdleAnimation.Update(gameTime);
+
 			base.Update(gameTime);
 		}
 
@@ -91,6 +96,41 @@
 			DrawTalking(info);
 
 			base.Draw(info);
+		}
+
+
+
+		/// <summary>
+		/// Get idle texture
+		/// </summary>
+		protected override Texture2D GetIdleTexture()
+		{
+			if (IsTalking())
+			{
+				return mIdleAnimation.GetIdleTexture();
+			}
+
+			return mIdleAnimation.GetCurrentTexture();
+		}
+
+
+
+		/// <summary>
+		/// Get normal texture for talking.
+		/// </summary>
+		protected override Texture2D GetNormalTalkTexture()
+		{
+			return mTalkTexture;
+		}
+
+
+
+		/// <summary>
+		/// Get exclaim texture.
+		/// </summary>
+		protected override Texture2D GetExclaimTalkTexture()
+		{
+			return mAngryTexture;
 		}
 
 		#endregion rDraw

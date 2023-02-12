@@ -5,19 +5,6 @@
 	/// </summary>
 	internal class Zippy : SimpleTalkNPC
 	{
-
-		#region rMembers
-
-		IdleAnimator mIdleAnimation;
-		Texture2D mTalkTexture;
-		Texture2D mAngryTexture;
-
-		#endregion rMembers
-
-
-
-
-
 		#region rInitialisation
 
 		/// <summary>
@@ -67,77 +54,6 @@
 		}
 
 		#endregion rInitialisation
-
-
-
-
-
-		#region rUpdate
-
-		/// <summary>
-		/// Update Zippy animations.
-		/// </summary>
-		public override void Update(GameTime gameTime)
-		{
-			mIdleAnimation.Update(gameTime);
-
-			base.Update(gameTime);
-		}
-
-		#endregion rUpdate
-
-
-
-
-
-		#region rDraw
-
-		/// <summary>
-		/// Draw Zippy
-		/// </summary>
-		public override void Draw(DrawInfo info)
-		{
-			DrawTalking(info);
-
-			base.Draw(info);
-		}
-
-
-
-		/// <summary>
-		/// Get idle texture
-		/// </summary>
-		protected override Texture2D GetIdleTexture()
-		{
-			if (IsTalking())
-			{
-				return mIdleAnimation.GetIdleTexture();
-			}
-
-			return mIdleAnimation.GetCurrentTexture();
-		}
-
-
-
-		/// <summary>
-		/// Get normal texture for talking.
-		/// </summary>
-		protected override Texture2D GetNormalTalkTexture()
-		{
-			return mTalkTexture;
-		}
-
-
-
-		/// <summary>
-		/// Get exclaim texture.
-		/// </summary>
-		protected override Texture2D GetExclaimTalkTexture()
-		{
-			return mAngryTexture;
-		}
-
-		#endregion rDraw
 
 
 
