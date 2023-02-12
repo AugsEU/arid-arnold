@@ -30,18 +30,9 @@
 		/// <summary>
 		/// Load content for roboto.
 		/// </summary>
-		public Roboto(Vector2 pos, int param) : base(pos, ROBOTO_WALK_SPEED, ROBOTO_JUMP_SPEED, ROBOTO_WIDTH_REDUCTION, ROBOTO_HEIGHT_REDUCTION)
+		public Roboto(Vector2 pos) : base(pos, ROBOTO_WALK_SPEED, ROBOTO_JUMP_SPEED, ROBOTO_WIDTH_REDUCTION, ROBOTO_HEIGHT_REDUCTION)
 		{
 			mPoweredOn = false;
-
-			if(param == 0)
-			{
-				mPrevDirection = WalkDirection.Right;
-			}
-			else
-			{
-				mPrevDirection = WalkDirection.Left;
-			}
 		}
 
 

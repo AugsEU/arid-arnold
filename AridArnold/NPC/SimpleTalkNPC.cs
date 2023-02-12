@@ -22,6 +22,9 @@
 		protected Texture2D mTalkTexture;
 		protected Texture2D mAngryTexture;
 
+		protected string mTalkText;
+		protected string mHeckleText;
+
 		#endregion rMembers
 
 
@@ -36,6 +39,8 @@
 		public SimpleTalkNPC(Vector2 pos) : base(pos)
 		{
 			mTalking = false;
+			mTalkText = "";
+			mHeckleText = "";
 		}
 
 		#endregion rInitialisation
@@ -142,15 +147,41 @@
 		#region rDialog
 
 		/// <summary>
+		/// Set text displayed when talking to the player.
+		/// </summary>
+		/// <param name="talkText">Talk text</param>
+		public void SetTalkText(string talkText)
+		{
+			mTalkText = talkText;
+		}
+
+
+
+		/// <summary>
+		/// Set's text that will be used to heckle the player
+		/// </summary>
+		/// <param name="heckleText">String ID of heckle text</param>
+		public void SetHeckleText(string heckleText)
+		{
+			mHeckleText = heckleText;
+		}
+
+		/// <summary>
 		/// Say something.
 		/// </summary>
-		protected abstract void DoNormalSpeak();
+		protected void DoNormalSpeak()
+		{
+			AddDialogBox(mTalkText);
+		}
 
 
 		/// <summary>
 		/// Shout at the player for leaving early.
 		/// </summary>
-		protected abstract void HecklePlayer();
+		protected void HecklePlayer()
+		{
+			AddDialogBox(mHeckleText);
+		}
 
 		#endregion rDialog
 	}

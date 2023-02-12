@@ -29,8 +29,9 @@
 
 		int mUpdatesSinceGrounded;
 
-		private CardinalDirection mCardinalDirection;
+		private CardinalDirection mGravityDirection;
 		protected WalkDirection mWalkDirection;
+		protected WalkDirection mPrevDirection;
 
 		#endregion rMembers
 
@@ -51,12 +52,13 @@
 		{
 			mVelocity = Vector2.Zero;
 			mWalkDirection = WalkDirection.None;
+			mPrevDirection = mWalkDirection;
 
 			mWalkSpeed = walkSpeed;
 			mJumpSpeed = jumpSpeed;
 			mGravity = gravity;
 
-			mCardinalDirection = CardinalDirection.Down;
+			mGravityDirection = CardinalDirection.Down;
 
 			mUpdatesSinceGrounded = int.MaxValue;
 		}
@@ -212,7 +214,7 @@
 		/// <param name="dir">New gravity direction</param>
 		public void SetGravity(CardinalDirection dir)
 		{
-			mCardinalDirection = dir;
+			mGravityDirection = dir;
 		}
 
 		/// <summary>
@@ -221,7 +223,7 @@
 		/// <returns>Current gravity direction</returns>
 		public CardinalDirection GetGravityDir()
 		{
-			return mCardinalDirection;
+			return mGravityDirection;
 		}
 
 
@@ -235,13 +237,13 @@
 		{
 			switch (GetGravityDir())
 			{
-				case AridArnold.CardinalDirection.Down:
+				case CardinalDirection.Down:
 					return new Vector2(0.0f, 1.0f);
-				case AridArnold.CardinalDirection.Up:
+				case CardinalDirection.Up:
 					return new Vector2(0.0f, -1.0f);
-				case AridArnold.CardinalDirection.Left:
+				case CardinalDirection.Left:
 					return new Vector2(-1.0f, 0.0f);
-				case AridArnold.CardinalDirection.Right:
+				case CardinalDirection.Right:
 					return new Vector2(1.0f, 0.0f);
 			}
 
@@ -257,6 +259,17 @@
 		public void SetWalkDirection(WalkDirection dir)
 		{
 			mWalkDirection = dir;
+		}
+
+
+
+		/// <summary>
+		/// Set the "previous" walk direction
+		/// </summary>
+		/// <param name="dir">New walk direction</param>
+		public void SetPrevWalkDirection(WalkDirection dir)
+		{
+			mPrevDirection = dir;
 		}
 
 

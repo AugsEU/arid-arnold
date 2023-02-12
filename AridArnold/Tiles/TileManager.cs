@@ -81,12 +81,12 @@
 				{
 					int index = x + y * tileTexture.Width;
 					Color col = colors1D[index];
-					Vector2 entityPos = new Vector2(x * mTileSize, y * mTileSize) + mTileMapPos;
+					Vector2 tileTopLeft = GetTileTopLeft(new Point(x,y));
 
-					mTileMap[x, y] = GetTileFromColour(colors1D[index], entityPos);
+					mTileMap[x, y] = GetTileFromColour(colors1D[index], tileTopLeft);
 					mTileMap[x, y].LoadContent(content);
 
-					AddEntityFromColour(col, entityPos, content);
+					AddEntityFromColour(col, tileTopLeft, content);
 				}
 			}
 
@@ -104,9 +104,9 @@
 			mAuxData = new AuxData(name);
 			mAuxData.Load();
 
+			// Create rails
 			List<LinearRailData> railList = mAuxData.GetRailsData();
 
-			// Create rails
 			for (int i = 0; i < railList.Count; i++)
 			{
 				LinearRailData railData = railList[i];
@@ -114,6 +114,15 @@
 				{
 					RailPlatform.TryCreateRailPlatformAtNode(railData, j, content);
 				}
+			}
+
+			// Create Entities
+			List<EntityData> entityList = mAuxData.GetEntityData();
+
+			for (int i = 0; i < entityList.Count; i++)
+			{
+				Entity newEntity = Entity.CreateEntityFromData(entityList[i]);
+				EntityManager.I.RegisterEntity(newEntity, content);
 			}
 		}
 
@@ -191,8 +200,6 @@
 		{
 			if (col.A > 0)
 			{
-				//Use alpha component as a parameter.
-				int param = 255 - col.A;
 				uint hexCode = MonoColor.ColorToHEX(col);
 
 				switch (hexCode)
@@ -206,7 +213,7 @@
 						EntityManager.I.RegisterEntity(new Trundle(pos), content);
 						break;
 					case 0xAF2D50u:
-						EntityManager.I.RegisterEntity(new Roboto(pos, param), content);
+						EntityManager.I.RegisterEntity(new Roboto(pos), content);
 						break;
 					//NPCs
 					case 0x8E5CC4u:

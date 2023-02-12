@@ -71,6 +71,11 @@
 		/// </summary>
 		public string GetText(string ID)
 		{
+			if(ID == "")
+			{
+				return "";
+			}
+
 			return File.ReadAllText(GetTextPath(ID));
 		}
 

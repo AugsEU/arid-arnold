@@ -47,41 +47,5 @@
 		}
 
 		#endregion rInitialisation
-
-
-
-
-		#region rDialog
-
-		/// <summary>
-		/// Say something.
-		/// </summary>
-		protected override void DoNormalSpeak()
-		{
-			uint curLevel = ProgressManager.I.GetLevelPointHex();
-
-			switch (curLevel)
-			{
-				case 0x0000:
-					AddDialogBox("NPC.Barbara.Level0");
-					break;
-				case 0x0100:
-					AddDialogBox("NPC.Barbara.Level10");
-					break;
-				default:
-					break;
-			}
-		}
-
-
-		/// <summary>
-		/// Shout at the player for leaving early.
-		/// </summary>
-		protected override void HecklePlayer()
-		{
-			AddDialogBox("NPC.Barbara.Heckle");
-		}
-
-		#endregion rDialog
 	}
 }

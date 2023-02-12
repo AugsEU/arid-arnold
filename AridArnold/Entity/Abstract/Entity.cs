@@ -182,5 +182,69 @@
 		}
 
 		#endregion rUtility
+
+
+		#region rFactory
+
+		public static Entity CreateEntityFromData(EntityData data)
+		{
+			Vector2 worldPosition = TileManager.I.GetTileTopLeft(data.mPosition);
+
+			Entity entity;
+
+			switch (data.mEntityClass)
+			{
+				// Player
+				case EntityData.EntityClass.kArnold:
+					entity = new Arnold(worldPosition);
+					break;
+				case EntityData.EntityClass.kAndrold:
+					entity = new Androld(worldPosition);
+					break;
+
+				// Enemy
+				case EntityData.EntityClass.kTrundle:
+					entity = new Trundle(worldPosition);
+					break;
+				case EntityData.EntityClass.kRoboto:
+					entity = new Roboto(worldPosition);
+					break;
+
+				// NPC
+				case EntityData.EntityClass.kBarbara:
+					entity = new Barbara(worldPosition);
+					break;
+				case EntityData.EntityClass.kZippy:
+					entity = new Zippy(worldPosition);
+					break;
+				case EntityData.EntityClass.kDok:
+					entity = new Dok(worldPosition);
+					break;
+				case EntityData.EntityClass.kBickDogel:
+					throw new NotImplementedException();
+				case EntityData.EntityClass.kElectrent:
+					throw new NotImplementedException();
+				default:
+					throw new NotImplementedException();
+			}
+
+			if(entity is PlatformingEntity)
+			{
+				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+				platformingEntity.SetGravity(data.mGravityDirection);
+				platformingEntity.SetPrevWalkDirection(data.mStartDirection);
+			}
+
+			if(entity is SimpleTalkNPC)
+			{
+				SimpleTalkNPC npc = (SimpleTalkNPC)entity;
+				npc.SetTalkText(data.mTalkText);
+				npc.SetHeckleText(data.mHeckleText);
+			}
+
+			return entity;
+		}
+
+		#endregion rFactory
 	}
 }

@@ -11,7 +11,7 @@
 		private float mCWidthReduction;
 		private float mCHeightReduction;
 
-		protected WalkDirection mPrevDirection;
+
 		protected Animator mRunningAnimation;
 		protected Animator mStandAnimation;
 

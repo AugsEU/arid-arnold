@@ -20,7 +20,6 @@
 
 		#region rMembers
 
-		protected WalkDirection mPrevDirection;
 		protected Animator mRunningAnimation;
 
 		protected Texture2D mJumpUpTex;

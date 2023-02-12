@@ -15,6 +15,7 @@
 		#region rMembers
 
 		List<LinearRailData> mRailDatas;
+		List<EntityData> mEntityDatas;
 
 		#endregion rMembers
 
@@ -26,6 +27,7 @@
 		public AuxData(string fileName) : base(fileName + ".aux")
 		{
 			mRailDatas = new List<LinearRailData>();
+			mEntityDatas = new List<EntityData>();
 		}
 
 		#endregion rInit
@@ -52,6 +54,14 @@
 
 			//Rails
 			ReadRails(br);
+
+			if(br.BaseStream.Position == br.BaseStream.Length)
+			{
+				return;
+			}
+
+			// Entities
+			ReadEntities(br);
 		}
 
 
@@ -91,6 +101,33 @@
 				}
 
 				mRailDatas.Add(linearRailData);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Read linear rail data.
+		/// </summary>
+		private void ReadEntities(BinaryReader br)
+		{
+			int entityCount = br.ReadInt32();
+			for (int i = 0; i < entityCount; i++)
+			{
+				EntityData entityData = new EntityData();
+				entityData.mPosition.X = br.ReadInt32();
+				entityData.mPosition.Y = br.ReadInt32();
+				entityData.mEntityClass = (EntityData.EntityClass)(br.ReadUInt32());
+				entityData.mStartDirection = (WalkDirection)(br.ReadUInt32());
+				entityData.mGravityDirection = (CardinalDirection)(br.ReadUInt32());
+
+				if(entityData.GetEntityType() == EntityData.EntityType.kSimpleNPC)
+				{
+					entityData.mTalkText = br.ReadString();
+					entityData.mHeckleText = br.ReadString();
+				}
+
+				mEntityDatas.Add(entityData);
 			}
 		}
 
@@ -180,6 +217,12 @@
 		public List<LinearRailData> GetRailsData()
 		{
 			return mRailDatas;
+		}
+
+
+		public List<EntityData> GetEntityData()
+		{
+			return mEntityDatas;
 		}
 
 		#endregion rAccess
