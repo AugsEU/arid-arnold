@@ -406,6 +406,9 @@
 /processorParam:TextureFormat=Color
 /build:Icon.ico
 
+#begin Levels/level1-1.aux
+/copy:Levels/level1-1.aux
+
 #begin Levels/level1-1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -417,6 +420,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Levels/level1-1.png
+
+#begin Levels/level1-2.aux
+/copy:Levels/level1-2.aux
 
 #begin Levels/level1-2.png
 /importer:TextureImporter
@@ -459,6 +465,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Levels/level1-4.png
+
+#begin Levels/level2-1.aux
+/copy:Levels/level2-1.aux
 
 #begin Levels/level2-1.png
 /importer:TextureImporter
@@ -865,29 +874,29 @@
 #begin Text/EN/NPC/Barbara/Heckle.txt
 /copy:Text/EN/NPC/Barbara/Heckle.txt
 
-#begin Text/EN/NPC/Barbara/Level0.txt
-/copy:Text/EN/NPC/Barbara/Level0.txt
+#begin Text/EN/NPC/Barbara/Intro.txt
+/copy:Text/EN/NPC/Barbara/Intro.txt
 
-#begin Text/EN/NPC/Barbara/Level10.txt
-/copy:Text/EN/NPC/Barbara/Level10.txt
+#begin Text/EN/NPC/Barbara/SecondWorld.txt
+/copy:Text/EN/NPC/Barbara/SecondWorld.txt
 
 #begin Text/EN/NPC/Dok/Heckle.txt
 /copy:Text/EN/NPC/Dok/Heckle.txt
 
-#begin Text/EN/NPC/Dok/Level10.txt
-/copy:Text/EN/NPC/Dok/Level10.txt
+#begin Text/EN/NPC/Dok/IntroLongTime.txt
+/copy:Text/EN/NPC/Dok/IntroLongTime.txt
+
+#begin Text/EN/NPC/Zippy/BufferJumps.txt
+/copy:Text/EN/NPC/Zippy/BufferJumps.txt
 
 #begin Text/EN/NPC/Zippy/Heckle.txt
 /copy:Text/EN/NPC/Zippy/Heckle.txt
 
-#begin Text/EN/NPC/Zippy/Level1.txt
-/copy:Text/EN/NPC/Zippy/Level1.txt
+#begin Text/EN/NPC/Zippy/Intro.txt
+/copy:Text/EN/NPC/Zippy/Intro.txt
 
-#begin Text/EN/NPC/Zippy/Level2.txt
-/copy:Text/EN/NPC/Zippy/Level2.txt
-
-#begin Text/EN/NPC/Zippy/Level3.txt
-/copy:Text/EN/NPC/Zippy/Level3.txt
+#begin Text/EN/NPC/Zippy/RacoonTime.txt
+/copy:Text/EN/NPC/Zippy/RacoonTime.txt
 
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt

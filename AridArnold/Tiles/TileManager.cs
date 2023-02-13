@@ -215,16 +215,6 @@
 					case 0xAF2D50u:
 						EntityManager.I.RegisterEntity(new Roboto(pos), content);
 						break;
-					//NPCs
-					case 0x8E5CC4u:
-						EntityManager.I.RegisterEntity(new Barbara(pos), content);
-						break;
-					case 0x004406u:
-						EntityManager.I.RegisterEntity(new Dok(pos), content);
-						break;
-					case 0x7F7272u:
-						EntityManager.I.RegisterEntity(new Zippy(pos), content);
-						break;
 					default:
 						break;
 				}
