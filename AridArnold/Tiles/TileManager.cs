@@ -208,15 +208,6 @@
 					case 0xDC143Cu:
 						EntityManager.I.RegisterEntity(new Arnold(pos), content);
 						break;
-					//Enemies
-					case 0x5B2C2Cu:
-						EntityManager.I.RegisterEntity(new Trundle(pos), content);
-						break;
-					case 0xAF2D50u:
-						EntityManager.I.RegisterEntity(new Roboto(pos), content);
-						break;
-					default:
-						break;
 				}
 			}
 		}

@@ -523,6 +523,9 @@
 /processorParam:TextureFormat=Color
 /build:Levels/level2-4.png
 
+#begin Levels/level3-1.aux
+/copy:Levels/level3-1.aux
+
 #begin Levels/level3-1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -534,6 +537,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Levels/level3-1.png
+
+#begin Levels/level3-2.aux
+/copy:Levels/level3-2.aux
 
 #begin Levels/level3-2.png
 /importer:TextureImporter
@@ -547,6 +553,9 @@
 /processorParam:TextureFormat=Color
 /build:Levels/level3-2.png
 
+#begin Levels/level3-3.aux
+/copy:Levels/level3-3.aux
+
 #begin Levels/level3-3.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -558,6 +567,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Levels/level3-3.png
+
+#begin Levels/level3-4.aux
+/copy:Levels/level3-4.aux
 
 #begin Levels/level3-4.png
 /importer:TextureImporter
@@ -615,6 +627,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Levels/level4-3.png
+
+#begin Levels/level4-4.aux
+/copy:Levels/level4-4.aux
 
 #begin Levels/level4-4.png
 /importer:TextureImporter
