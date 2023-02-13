@@ -189,7 +189,7 @@
 				}
 			}
 
-			MonoDraw.DrawTexture(info, textureToDraw, mPosition);
+			DrawPlatformer(info, textureToDraw, Color.White, MonoDraw.LAYER_DEFAULT);
 		}
 
 

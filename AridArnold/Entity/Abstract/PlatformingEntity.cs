@@ -204,6 +204,15 @@
 
 
 
+		#region rDraw
+
+		protected void DrawPlatformer(DrawInfo info, Texture2D texture, Color color, float layer)
+		{
+			MonoDraw.DrawPlatformer(info, ColliderBounds(), texture, mPosition, color, GetGravityDir(), mPrevDirection, MonoDraw.LAYER_DEFAULT);
+		}
+
+		#endregion rDraw
+
 
 
 		#region rUtility

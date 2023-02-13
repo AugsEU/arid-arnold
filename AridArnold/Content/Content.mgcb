@@ -481,6 +481,9 @@
 /processorParam:TextureFormat=Color
 /build:Levels/level2-1.png
 
+#begin Levels/level2-2.aux
+/copy:Levels/level2-2.aux
+
 #begin Levels/level2-2.png
 /importer:TextureImporter
 /processor:TextureProcessor

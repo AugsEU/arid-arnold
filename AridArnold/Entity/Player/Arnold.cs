@@ -334,13 +334,6 @@
 		/// <param name="info">Info needed to draw</param>
 		public override void Draw(DrawInfo info)
 		{
-			SpriteEffects effect = SpriteEffects.None;
-
-			if (mPrevDirection == WalkDirection.Left)
-			{
-				effect = SpriteEffects.FlipHorizontally;
-			}
-
 			Texture2D texture = mTexture;
 
 			float vecAlongGrav = Vector2.Dot(GravityVecNorm(), mVelocity);
@@ -364,42 +357,7 @@
 				}
 			}
 
-			Vector2 drawOffset = new Vector2((mTexture.Width - texture.Width)/2, mTexture.Height - texture.Height);
-
-			float rotation = 0.0f;
-
-			switch (GetGravityDir())
-			{
-				case CardinalDirection.Down:
-					rotation = 0.0f;
-
-					break;
-				case CardinalDirection.Up:
-					rotation = MathHelper.Pi;
-					drawOffset.Y = mTexture.Height - drawOffset.Y;
-					drawOffset.X = mTexture.Width - drawOffset.X;
-					effect = effect ^ SpriteEffects.FlipHorizontally;
-					break;
-				case CardinalDirection.Left:
-					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
-					drawOffset.X = mTexture.Height- drawOffset.X;
-
-					rotation = MathHelper.PiOver2;
-					break;
-				case CardinalDirection.Right:
-					rotation = MathHelper.PiOver2 * 3.0f;
-					effect = effect ^ SpriteEffects.FlipHorizontally;
-					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
-					drawOffset.Y =  mTexture.Width - drawOffset.Y;
-					break;
-			}
-
-			Vector2 drawPosition = mPosition + drawOffset;
-
-			drawPosition.X = MathF.Round(drawPosition.X);
-			drawPosition.Y = MathF.Round(drawPosition.Y);
-
-			MonoDraw.DrawTexture(info, texture, drawPosition, null, GetDrawColour(), rotation, Vector2.Zero, 1.0f, effect, MonoDraw.LAYER_DEFAULT);
+			DrawPlatformer(info, texture, GetDrawColour(), MonoDraw.LAYER_DEFAULT);
 		}
 
 

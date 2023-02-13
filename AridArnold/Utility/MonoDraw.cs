@@ -111,6 +111,56 @@
 		}
 
 
+		/// <summary>
+		/// Draw a texture to a rect(all options).
+		/// </summary>
+		public static void DrawPlatformer(DrawInfo info, Rect2f collider, Texture2D texture2D, Vector2 position, Color color, CardinalDirection gravityDir, WalkDirection walkDir, float depth)
+		{
+			Vector2 drawOffset = new Vector2((collider.Width - texture2D.Width) / 2, collider.Height - texture2D.Height);
+
+			float rotation = 0.0f;
+			SpriteEffects effect = SpriteEffects.None;
+
+			if (walkDir == WalkDirection.Left)
+			{
+				effect = SpriteEffects.FlipHorizontally;
+			}
+
+			switch (gravityDir)
+			{
+				case CardinalDirection.Down:
+					rotation = 0.0f;
+
+					break;
+				case CardinalDirection.Up:
+					rotation = MathHelper.Pi;
+					drawOffset.Y = collider.Height - drawOffset.Y;
+					drawOffset.X = collider.Width - drawOffset.X;
+					effect = effect ^ SpriteEffects.FlipHorizontally;
+					break;
+				case CardinalDirection.Left:
+					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
+					drawOffset.X = collider.Height - drawOffset.X;
+
+					rotation = MathHelper.PiOver2;
+					break;
+				case CardinalDirection.Right:
+					rotation = MathHelper.PiOver2 * 3.0f;
+					effect = effect ^ SpriteEffects.FlipHorizontally;
+					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
+					drawOffset.Y = collider.Width - drawOffset.Y;
+					break;
+			}
+
+			Vector2 drawPosition = position + drawOffset;
+
+			drawPosition.X = MathF.Round(drawPosition.X);
+			drawPosition.Y = MathF.Round(drawPosition.Y);
+
+			MonoDraw.DrawTexture(info, texture2D, drawPosition, null, color, rotation, Vector2.Zero, 1.0f, effect, depth);
+		}
+
+
 
 		/// <summary>
 		/// Draw a string centred at a position
