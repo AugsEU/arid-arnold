@@ -51,13 +51,20 @@
 
 				Vector2 entityCentre = entityBounds.Centre;
 				Vector2 ourCentre = ourBounds.Centre;
-				float xDiff = Math.Abs(entityCentre.X - ourCentre.X);
-				float yDiff = Math.Abs(entityCentre.Y - ourCentre.Y);
+
+				bool leftThresh = entityCentre.X > ourCentre.X - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Left) == (uint)AdjacencyType.Left);
+				bool rightThresh = entityCentre.X < ourCentre.X + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Right) == (uint)AdjacencyType.Right);
+
+				bool upThresh = entityCentre.Y > ourCentre.Y - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Top) == (uint)AdjacencyType.Top);
+				bool downThresh = entityCentre.Y < ourCentre.Y + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Bottom) == (uint)AdjacencyType.Bottom);
+
+				bool xThresh = leftThresh && rightThresh;
+				bool yThresh = downThresh && upThresh;
 
 				switch (mRotation)
 				{
 					case CardinalDirection.Up:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Down && xDiff < diffThresh)
+						if (platformingEntity.GetGravityDir() != CardinalDirection.Down && xThresh)
 						{
 							if (platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
 							{
@@ -68,7 +75,7 @@
 						}
 						break;
 					case CardinalDirection.Right:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Left && yDiff < diffThresh)
+						if (platformingEntity.GetGravityDir() != CardinalDirection.Left && yThresh)
 						{
 							if (platformingEntity.GetGravityDir() == CardinalDirection.Up || platformingEntity.GetGravityDir() == CardinalDirection.Down)
 							{
@@ -79,7 +86,7 @@
 						}
 						break;
 					case CardinalDirection.Down:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Up && xDiff < diffThresh)
+						if (platformingEntity.GetGravityDir() != CardinalDirection.Up && xThresh)
 						{
 							if (platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
 							{
@@ -90,7 +97,7 @@
 						}
 						break;
 					case CardinalDirection.Left:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Right && yDiff < diffThresh)
+						if (platformingEntity.GetGravityDir() != CardinalDirection.Right && yThresh)
 						{
 							if (platformingEntity.GetGravityDir() == CardinalDirection.Up || platformingEntity.GetGravityDir() == CardinalDirection.Down)
 							{
