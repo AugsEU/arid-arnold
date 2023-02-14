@@ -116,7 +116,7 @@
 		/// </summary>
 		public static void DrawPlatformer(DrawInfo info, Rect2f collider, Texture2D texture2D, Vector2 position, Color color, CardinalDirection gravityDir, WalkDirection walkDir, float depth)
 		{
-			Vector2 drawOffset = new Vector2((collider.Width - texture2D.Width) / 2, collider.Height - texture2D.Height);
+			Vector2 drawOffset = Vector2.Zero;
 
 			float rotation = 0.0f;
 			SpriteEffects effect = SpriteEffects.None;
@@ -129,26 +129,31 @@
 			switch (gravityDir)
 			{
 				case CardinalDirection.Down:
-					rotation = 0.0f;
+					drawOffset.X = (collider.Width - texture2D.Width) / 2.0f;
+					drawOffset.Y = collider.Height - texture2D.Height;
 
+					rotation = 0.0f;
 					break;
 				case CardinalDirection.Up:
 					rotation = MathHelper.Pi;
-					drawOffset.Y = collider.Height - drawOffset.Y;
-					drawOffset.X = collider.Width - drawOffset.X;
+
+					drawOffset.X = (collider.Width + texture2D.Width) / 2.0f;
+					drawOffset.Y = texture2D.Height;
+					
 					effect = effect ^ SpriteEffects.FlipHorizontally;
 					break;
 				case CardinalDirection.Left:
-					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
-					drawOffset.X = collider.Height - drawOffset.X;
+					drawOffset.X = texture2D.Height;
 
 					rotation = MathHelper.PiOver2;
 					break;
 				case CardinalDirection.Right:
 					rotation = MathHelper.PiOver2 * 3.0f;
+
+					drawOffset.X = collider.Width - texture2D.Height;
+					drawOffset.Y = texture2D.Width;
+
 					effect = effect ^ SpriteEffects.FlipHorizontally;
-					MonoAlg.Swap(ref drawOffset.X, ref drawOffset.Y);
-					drawOffset.Y = collider.Width - drawOffset.Y;
 					break;
 			}
 
