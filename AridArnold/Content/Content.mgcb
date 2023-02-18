@@ -910,6 +910,9 @@
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
 
+#begin Text/EN/NPC/Zippy/FallthroughMomentum.txt
+/copy:Text/EN/NPC/Zippy/FallthroughMomentum.txt
+
 #begin Text/EN/NPC/Zippy/Heckle.txt
 /copy:Text/EN/NPC/Zippy/Heckle.txt
 
