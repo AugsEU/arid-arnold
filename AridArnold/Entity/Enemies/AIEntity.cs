@@ -150,24 +150,10 @@
 		#region rDraw
 
 		/// <summary>
-		/// Draw the AI entity
-		/// </summary>
-		/// <param name="info">Information needed to draw.</param>
-		public override void Draw(DrawInfo info)
-		{
-			Texture2D texture = GetDrawTexture();
-
-			SpriteEffects effect = mPrevDirection == WalkDirection.Right ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-
-			MonoDraw.DrawTexture(info, texture, mPosition, effect);
-		}
-
-
-		/// <summary>
 		/// Get texture we should draw.
 		/// </summary>
 		/// <returns></returns>
-		protected virtual Texture2D GetDrawTexture()
+		protected override Texture2D GetDrawTexture()
 		{
 			if (mOnGround)
 			{

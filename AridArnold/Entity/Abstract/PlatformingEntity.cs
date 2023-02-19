@@ -204,14 +204,58 @@
 
 
 
+
+
 		#region rDraw
 
-		protected void DrawPlatformer(DrawInfo info, Texture2D texture, Color color, float layer)
+		/// <summary>
+		/// Draw the platformer.
+		/// </summary>
+		/// <param name="info">Info needed to draw</param>
+		public override void Draw(DrawInfo info)
 		{
-			MonoDraw.DrawPlatformer(info, ColliderBounds(), texture, mPosition, color, GetGravityDir(), mPrevDirection, MonoDraw.LAYER_DEFAULT);
+			Texture2D textureToDraw = GetDrawTexture();
+			Rect2f originalTextureRect = new Rect2f(mPosition, mTexture);
+			Color colorToDraw = GetDrawColor();
+			CardinalDirection gravityDir = GetGravityDir();
+			float drawLayer = GetDrawLayer();
+
+			MonoDraw.DrawPlatformer(info, originalTextureRect, textureToDraw, mPosition, colorToDraw, gravityDir, mPrevDirection, drawLayer);
+		}
+
+
+
+		/// <summary>
+		/// Get texture to draw for this platformer.
+		/// </summary>
+		protected virtual Texture2D GetDrawTexture()
+		{
+			return mTexture;
+		}
+
+
+
+		/// <summary>
+		/// Get color to apply when drawing.
+		/// </summary>
+		protected virtual Color GetDrawColor()
+		{
+			return Color.White;
+		}
+
+
+
+		/// <summary>
+		/// Get the layer that this platformer should be drawn on.
+		/// </summary>
+		protected virtual float GetDrawLayer()
+		{
+			return MonoDraw.LAYER_DEFAULT;
 		}
 
 		#endregion rDraw
+
+
 
 
 

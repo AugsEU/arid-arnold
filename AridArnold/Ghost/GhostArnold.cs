@@ -71,7 +71,7 @@
 		/// Get colour to draw this ghost as.
 		/// </summary>
 		/// <returns></returns>
-		protected override Color GetDrawColour()
+		protected override Color GetDrawColor()
 		{
 			//Slight green.
 			return new Color(0.0f, 0.4f, 0.0f, 0.9f);

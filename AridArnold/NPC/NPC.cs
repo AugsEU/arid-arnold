@@ -153,12 +153,16 @@
 			{
 				renderer.Draw(info);
 			}
+
+			base.Draw(info);
 		}
+
+
 
 		/// <summary>
 		/// Draw the NPC talking.
 		/// </summary>
-		protected void DrawTalking(DrawInfo info)
+		protected Texture2D GetTalkingDrawTexture()
 		{
 			SmartTextBlock.TextMood textMood = GetMood();
 
@@ -189,7 +193,7 @@
 				}
 			}
 
-			DrawPlatformer(info, textureToDraw, Color.White, MonoDraw.LAYER_DEFAULT);
+			return textureToDraw;
 		}
 
 

@@ -329,10 +329,9 @@
 		#region rDraw
 
 		/// <summary>
-		/// Draw Arnold
+		/// Get Arnold texture
 		/// </summary>
-		/// <param name="info">Info needed to draw</param>
-		public override void Draw(DrawInfo info)
+		protected override Texture2D GetDrawTexture()
 		{
 			Texture2D texture = mTexture;
 
@@ -357,7 +356,7 @@
 				}
 			}
 
-			DrawPlatformer(info, texture, GetDrawColour(), MonoDraw.LAYER_DEFAULT);
+			return texture;
 		}
 
 
@@ -366,7 +365,7 @@
 		/// Colour to draw Arnold as
 		/// </summary>
 		/// <returns>Draw Colour</returns>
-		protected virtual Color GetDrawColour()
+		protected override Color GetDrawColor()
 		{
 			if (mTimerSinceDeath.IsPlaying())
 			{

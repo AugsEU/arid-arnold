@@ -94,13 +94,11 @@
 		#region rDraw
 
 		/// <summary>
-		/// Draw Barbara
+		/// Just draw talking texture.
 		/// </summary>
-		public override void Draw(DrawInfo info)
+		protected override Texture2D GetDrawTexture()
 		{
-			DrawTalking(info);
-
-			base.Draw(info);
+			return GetTalkingDrawTexture();
 		}
 
 
