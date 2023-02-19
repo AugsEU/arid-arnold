@@ -16,6 +16,19 @@
 
 		public static bool operator !=(LevelPoint a, LevelPoint b)
 		=> (!(a == b));
+
+		public override bool Equals(object obj)
+		{
+			if (!(obj is LevelPoint))
+				return false;
+
+			return this == (LevelPoint)obj;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
 	}
 
 
@@ -28,7 +41,7 @@
 		#region rConstants 
 
 		const int START_WORLD = 3; 
-		const int START_LEVEL = 0;
+		const int START_LEVEL = 3;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
 
