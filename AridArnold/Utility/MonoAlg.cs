@@ -73,5 +73,24 @@
 
 			return result & mask;
 		}
+
+
+
+		/// <summary>
+		/// Shuffle a list
+		/// </summary>
+		public static void ShuffleList<T>(ref List<T> list, ref MonoRandom rng)
+		{
+			int n = list.Count;
+
+			while(n > 0)
+			{
+				n--;
+				int newIdx = rng.GetIntRange(0, n);
+				T temp = list[newIdx];
+				list[newIdx] = list[n];
+				list[n] = temp;
+			}
+		}
 	}
 }

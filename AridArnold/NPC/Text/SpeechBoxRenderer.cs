@@ -35,6 +35,7 @@
 
 		// Text
 		SmartTextBlock mCurrentBlock;
+		Queue<string> mPendingStringIDs;
 		List<SpeechBoxLetter> mLetters;
 		SpeechBoxStyle mStyle;
 
@@ -72,6 +73,8 @@
 			mTopLeft = mBottomLeft + mCharHead;
 
 			mLastDrawnCharHead = mCharHead;
+
+			mPendingStringIDs = new Queue<string>();
 		}
 
 		#endregion rInitialisation
@@ -201,6 +204,8 @@
 			}
 		}
 
+
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -208,7 +213,7 @@
 		{
 			Point rectPosition = new Point(MonoMath.Round(mTopLeft.X) - PADDING, MonoMath.Round(mTopLeft.Y) - PADDING);
 			int height = MonoMath.Round(mBottomLeft.Y - mTopLeft.Y) + PADDING;
-			int width = (int)mStyle.mWidth + 2 * PADDING + 5;
+			int width = (int)mStyle.mWidth + 2 * PADDING + 5 + (int)((mCharHeight - 7.0f)/2.0f);
 			Rectangle bgRectangle = new Rectangle(rectPosition.X, rectPosition.Y, width, height);
 
 			// Draw bg
@@ -249,7 +254,7 @@
 
 			if (charToPrint == '\0')
 			{
-				Stop();
+				EndOfStringReached();
 				return;
 			}
 
@@ -452,13 +457,53 @@
 		}
 
 
+
 		/// <summary>
 		/// Get current char.
 		/// </summary>
 		public char GetCurrentChar()
 		{
-			return mCurrentBlock.GetCurrentTextChar();
+			return mCurrentBlock.GetCurrentTextCharSafe();
 		}
+
+
+
+		/// <summary>
+		/// Called when the end of the string is reached.
+		/// </summary>
+		private void EndOfStringReached()
+		{
+			// Terminate current block
+			Stop();
+
+			// Queue up next string
+			if (GetNumStringsInQueue() > 0)
+			{
+				string stringID = mPendingStringIDs.Dequeue();
+				mCurrentBlock = new SmartTextBlock(stringID, mStyle.mFramesPerLetter);
+				CRLF(); // Line feed between blocks
+			}
+		}
+
+
+		/// <summary>
+		/// How many strings are pending?
+		/// </summary>
+		public int GetNumStringsInQueue()
+		{
+			return mPendingStringIDs.Count;
+		}
+
+
+
+		/// <summary>
+		/// Queue up string to be displayed.
+		/// </summary>
+		public void PushNewString(string stringID)
+		{
+			mPendingStringIDs.Enqueue(stringID);
+		}
+
 		#endregion rUtility
 	}
 }

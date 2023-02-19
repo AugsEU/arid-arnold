@@ -970,6 +970,78 @@
 #begin Text/EN/NPC/Dok/TempleSecrets.txt
 /copy:Text/EN/NPC/Dok/TempleSecrets.txt
 
+#begin Text/EN/NPC/GrillVogel/Inane0.txt
+/copy:Text/EN/NPC/GrillVogel/Inane0.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane1.txt
+/copy:Text/EN/NPC/GrillVogel/Inane1.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane10.txt
+/copy:Text/EN/NPC/GrillVogel/Inane10.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane11.txt
+/copy:Text/EN/NPC/GrillVogel/Inane11.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane12.txt
+/copy:Text/EN/NPC/GrillVogel/Inane12.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane13.txt
+/copy:Text/EN/NPC/GrillVogel/Inane13.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane14.txt
+/copy:Text/EN/NPC/GrillVogel/Inane14.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane15.txt
+/copy:Text/EN/NPC/GrillVogel/Inane15.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane2.txt
+/copy:Text/EN/NPC/GrillVogel/Inane2.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane3.txt
+/copy:Text/EN/NPC/GrillVogel/Inane3.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane4.txt
+/copy:Text/EN/NPC/GrillVogel/Inane4.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane5.txt
+/copy:Text/EN/NPC/GrillVogel/Inane5.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane6.txt
+/copy:Text/EN/NPC/GrillVogel/Inane6.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane7.txt
+/copy:Text/EN/NPC/GrillVogel/Inane7.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane8.txt
+/copy:Text/EN/NPC/GrillVogel/Inane8.txt
+
+#begin Text/EN/NPC/GrillVogel/Inane9.txt
+/copy:Text/EN/NPC/GrillVogel/Inane9.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro0.txt
+/copy:Text/EN/NPC/GrillVogel/Intro0.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro1.txt
+/copy:Text/EN/NPC/GrillVogel/Intro1.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro2.txt
+/copy:Text/EN/NPC/GrillVogel/Intro2.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro3.txt
+/copy:Text/EN/NPC/GrillVogel/Intro3.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro4.txt
+/copy:Text/EN/NPC/GrillVogel/Intro4.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro5.txt
+/copy:Text/EN/NPC/GrillVogel/Intro5.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro6.txt
+/copy:Text/EN/NPC/GrillVogel/Intro6.txt
+
+#begin Text/EN/NPC/GrillVogel/Intro7.txt
+/copy:Text/EN/NPC/GrillVogel/Intro7.txt
+
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
 

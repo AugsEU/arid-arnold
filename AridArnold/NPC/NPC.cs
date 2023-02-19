@@ -55,6 +55,7 @@
 		public override void LoadContent(ContentManager content)
 		{
 			mStyle.mSpikeTexture = content.Load<Texture2D>("NPC/Dialog/DialogSpike");
+			mTexture = GetIdleTexture();
 		}
 
 		#endregion rInitialisation
@@ -225,11 +226,27 @@
 		}
 
 
+		/// <summary>
+		/// Append a string to the current dialog box.
+		/// </summary>
+		protected void AppendToDialog(string stringID)
+		{
+			if(HasAnyBoxes())
+			{
+				GetCurrentBlock().PushNewString(stringID);
+			}
+			else
+			{
+				AddDialogBox(stringID);
+			}
+		}
+
+
 
 		/// <summary>
 		/// Get current block we are using.
 		/// </summary>
-		SpeechBoxRenderer GetCurrentBlock()
+		protected SpeechBoxRenderer GetCurrentBlock()
 		{
 			return mTextBlocks[mTextBlocks.Count - 1];
 		}

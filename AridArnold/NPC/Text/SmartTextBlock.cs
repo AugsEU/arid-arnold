@@ -128,6 +128,20 @@
 		}
 
 
+		/// <summary>
+		/// Get the current character
+		/// </summary>
+		public char GetCurrentTextCharSafe()
+		{
+			if (0 < mSanitisedCharHead && mSanitisedCharHead < mSanitisedText.Length)
+			{
+				return mSanitisedText[mSanitisedCharHead];
+			}
+
+			return '\0';
+		}
+
+
 
 		/// <summary>
 		/// Get the current mood of the text.
@@ -432,15 +446,6 @@
 
 
 		#region rUtility
-		/// <summary>
-		/// Get head index.
-		/// </summary>
-		private int GetHead()
-		{
-			return mRawCharHead;
-		}
-
-
 
 		/// <summary>
 		/// Get the current character

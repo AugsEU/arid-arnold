@@ -184,6 +184,9 @@
 		#endregion rUtility
 
 
+
+
+
 		#region rFactory
 
 		public static Entity CreateEntityFromData(EntityData data)
@@ -220,8 +223,9 @@
 				case EntityData.EntityClass.kDok:
 					entity = new Dok(worldPosition);
 					break;
-				case EntityData.EntityClass.kBickDogel:
-					throw new NotImplementedException();
+				case EntityData.EntityClass.kBickDogel: // Special NPC
+					entity = new GrillVogel(worldPosition);
+					break;
 				case EntityData.EntityClass.kElectrent:
 					throw new NotImplementedException();
 				default:

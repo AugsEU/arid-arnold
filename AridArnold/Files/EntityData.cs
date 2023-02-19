@@ -48,6 +48,12 @@
 		{
 			if ((int)mEntityClass >= kNPCClassStart)
 			{
+				if(mEntityClass == EntityClass.kBickDogel)
+				{
+					//Special exception
+					return EntityType.kBasic;
+				}
+
 				return EntityType.kSimpleNPC;
 			}
 			return EntityType.kBasic;

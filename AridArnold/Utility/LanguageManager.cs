@@ -76,7 +76,9 @@
 				return "";
 			}
 
-			return File.ReadAllText(GetTextPath(ID));
+			string rawText = File.ReadAllText(GetTextPath(ID));
+
+			return TextPreprocessor.Process(rawText);
 		}
 
 		#endregion rText
