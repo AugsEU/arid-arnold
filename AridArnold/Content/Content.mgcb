@@ -907,6 +907,9 @@
 #begin Text/EN/NPC/Dok/IntroLongTime.txt
 /copy:Text/EN/NPC/Dok/IntroLongTime.txt
 
+#begin Text/EN/NPC/Dok/TempleSecrets.txt
+/copy:Text/EN/NPC/Dok/TempleSecrets.txt
+
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
 

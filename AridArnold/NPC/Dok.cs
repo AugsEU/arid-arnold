@@ -9,8 +9,8 @@
 		/// </summary>
 		public Dok(Vector2 pos) : base(pos)
 		{
-			mStyle.mScrollSpeed = 0.5f;
-			mStyle.mFramesPerLetter = 22;
+			mStyle.mScrollSpeed = 0.55f;
+			mStyle.mFramesPerLetter = 21;
 		}
 
 
