@@ -219,6 +219,11 @@
 		/// </summary>
 		protected void AddDialogBox(string stringID)
 		{
+			if(stringID == "")
+			{
+				return;
+			}
+
 			if (HasAnyBoxes())
 			{
 				GetCurrentBlock().Stop();
