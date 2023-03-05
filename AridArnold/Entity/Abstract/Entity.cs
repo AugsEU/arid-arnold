@@ -227,7 +227,8 @@
 					entity = new GrillVogel(worldPosition);
 					break;
 				case EntityData.EntityClass.kElectrent:
-					throw new NotImplementedException();
+					entity = new Electrent(worldPosition);
+					break;
 				default:
 					throw new NotImplementedException();
 			}
