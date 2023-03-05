@@ -34,6 +34,8 @@
 	/// </summary>
 	class FlagTile : CollectableTile
 	{
+		IdleAnimator mIdleAnimator;
+
 		/// <summary>
 		/// Tile with start position
 		/// </summary>
@@ -48,7 +50,32 @@
 		/// <param name="content">Monogame content manager</param>
 		public override void LoadContent(ContentManager content)
 		{
-			mTexture = content.Load<Texture2D>("Tiles/flag");
+			Animator fallDownAnim = new Animator(content, Animator.PlayType.OneShot
+																		, ("Tiles/flag2", 0.3f)
+																		, ("Tiles/flag3", 1.2f)
+																		, ("Tiles/flag2", 0.3f)
+																		, ("Tiles/flag1", 0.3f));
+			Animator faulterAnim = new Animator(content, Animator.PlayType.OneShot
+																		, ("Tiles/flag2", 0.3f)
+																		, ("Tiles/flag1", 0.3f));
+			Animator wavesAnim = new Animator(content, Animator.PlayType.OneShot
+																		, ("Tiles/flag0", 0.3f)
+																		, ("Tiles/flag1", 0.3f)
+																		, ("Tiles/flag0", 0.3f)
+																		, ("Tiles/flag1", 0.3f));
+			mIdleAnimator = new IdleAnimator(wavesAnim, 40.0f, faulterAnim, fallDownAnim);
+		}
+
+		public override void Update(GameTime gameTime)
+		{
+			mIdleAnimator.Update(gameTime);
+
+			base.Update(gameTime);
+		}
+
+		public override Texture2D GetTexture()
+		{
+			return mIdleAnimator.GetCurrentTexture(); ;
 		}
 
 		public override void OnEntityIntersect(Entity entity)
