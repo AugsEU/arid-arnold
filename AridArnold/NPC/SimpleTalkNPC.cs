@@ -62,7 +62,7 @@
 				talkDistance *= 2.0f;
 			}
 
-			if (EntityManager.I.AnyNearMe(talkDistance, this, typeof(Arnold)))
+			if (EntityManager.I.AnyNearMe(talkDistance, this, typeof(Arnold), typeof(Androld)))
 			{
 				if (!mTalking)
 				{

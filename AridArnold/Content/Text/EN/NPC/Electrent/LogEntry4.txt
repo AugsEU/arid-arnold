@@ -1,0 +1,9 @@
+﻿<α[008E0E]>11-04-33
+--
+We have not been overrun by the killer robots. I did assure you they were perfectly safe.
+But it seems instead our water shortage will be the end of us.
+All that will be left are our creations.
+--
+Configuration:
+(p = 0.01) (E = 1.6066951524)
+(a = 0.5) (F = 4.6692016091)

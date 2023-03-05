@@ -230,20 +230,23 @@
 		/// <summary>
 		/// Are any entities of a certain type near this entity.
 		/// </summary>
-		public bool AnyNearMe(float distance, Entity nearEntity, Type type)
+		public bool AnyNearMe(float distance, Entity nearEntity, params Type[] types)
 		{
 			Vector2 nearEntityPos = nearEntity.GetCentrePos();
 			distance = distance * distance;
 
 			foreach (Entity entity in mRegisteredEntities)
 			{
-				if (entity.GetType() == type && !ReferenceEquals(nearEntity, entity))
+				foreach (Type type in types)
 				{
-					float distanceToEntity = (nearEntityPos - entity.GetCentrePos()).LengthSquared();
-
-					if (distanceToEntity < distance)
+					if (entity.GetType() == type && !ReferenceEquals(nearEntity, entity))
 					{
-						return true;
+						float distanceToEntity = (nearEntityPos - entity.GetCentrePos()).LengthSquared();
+
+						if (distanceToEntity < distance)
+						{
+							return true;
+						}
 					}
 				}
 			}

@@ -1156,6 +1156,15 @@
 #begin Text/EN/NPC/Electrent/LogEntry1.txt
 /copy:Text/EN/NPC/Electrent/LogEntry1.txt
 
+#begin Text/EN/NPC/Electrent/LogEntry2.txt
+/copy:Text/EN/NPC/Electrent/LogEntry2.txt
+
+#begin Text/EN/NPC/Electrent/LogEntry3.txt
+/copy:Text/EN/NPC/Electrent/LogEntry3.txt
+
+#begin Text/EN/NPC/Electrent/LogEntry4.txt
+/copy:Text/EN/NPC/Electrent/LogEntry4.txt
+
 #begin Text/EN/NPC/GrillVogel/Inane0.txt
 /copy:Text/EN/NPC/GrillVogel/Inane0.txt
 
