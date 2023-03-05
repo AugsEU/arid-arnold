@@ -733,7 +733,7 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/Talk1.png
 
-#begin NPC/Dialog/DialogSpike.png
+#begin NPC/Dialog/DialogSpikeBorder.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -743,7 +743,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Dialog/DialogSpike.png
+/build:NPC/Dialog/DialogSpikeBorder.png
+
+#begin NPC/Dialog/DialogSpikeInner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Dialog/DialogSpikeInner.png
 
 #begin NPC/Dok/Angry1.png
 /importer:TextureImporter
@@ -829,30 +841,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/Idle1.png
 
-#begin NPC/Electrent/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/Idle1.png
-
-#begin NPC/Electrent/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/Idle2.png
-
 #begin NPC/Electrent/Idle2.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -889,18 +877,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/TextScroll1.png
 
-#begin NPC/Electrent/TextScroll1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll1.png
-
 #begin NPC/Electrent/TextScroll10.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -912,30 +888,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/TextScroll10.png
-
-#begin NPC/Electrent/TextScroll10.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll10.png
-
-#begin NPC/Electrent/TextScroll2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll2.png
 
 #begin NPC/Electrent/TextScroll2.png
 /importer:TextureImporter
@@ -961,18 +913,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/TextScroll3.png
 
-#begin NPC/Electrent/TextScroll3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll3.png
-
 #begin NPC/Electrent/TextScroll4.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -984,30 +924,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/TextScroll4.png
-
-#begin NPC/Electrent/TextScroll4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll4.png
-
-#begin NPC/Electrent/TextScroll5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll5.png
 
 #begin NPC/Electrent/TextScroll5.png
 /importer:TextureImporter
@@ -1033,30 +949,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/TextScroll6.png
 
-#begin NPC/Electrent/TextScroll6.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll6.png
-
-#begin NPC/Electrent/TextScroll7.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll7.png
-
 #begin NPC/Electrent/TextScroll7.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1080,30 +972,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/TextScroll8.png
-
-#begin NPC/Electrent/TextScroll8.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll8.png
-
-#begin NPC/Electrent/TextScroll9.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Electrent/TextScroll9.png
 
 #begin NPC/Electrent/TextScroll9.png
 /importer:TextureImporter

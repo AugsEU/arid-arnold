@@ -3,12 +3,13 @@
 	struct SpeechBoxStyle
 	{
 		public SpriteFont mFont;
-		public Texture2D mSpikeTexture;
 		public float mLeading;
 		public float mKerning;
 		public float mWidth;
 		public float mScrollSpeed;
 		public int mFramesPerLetter;
+		public Color mBorderColor;
+		public Color mFillColor;
 	}
 
 	/// <summary>
@@ -17,10 +18,6 @@
 	internal class SpeechBoxRenderer
 	{
 		#region rConstants
-
-		static Color BG_COLOR = new Color(0, 10, 20, 200);
-		static Color BORDER_COLOR = new Color(56, 89, 122);
-		static Color TEXT_COLOR = Color.Wheat;
 
 		static int PADDING = 5;
 		static int BORDER_WIDTH = 2;
@@ -32,6 +29,10 @@
 
 
 		#region rMembers
+
+		// Static
+		static Texture2D sSpikeBorder;
+		static Texture2D sSpikeInner;
 
 		// Text
 		SmartTextBlock mCurrentBlock;
@@ -75,6 +76,17 @@
 			mLastDrawnCharHead = mCharHead;
 
 			mPendingStringIDs = new Queue<string>();
+		}
+
+
+
+		/// <summary>
+		/// Load content.
+		/// </summary>
+		public static void LoadContent(ContentManager content)
+		{
+			sSpikeBorder = content.Load<Texture2D>("NPC/Dialog/DialogSpikeBorder");
+			sSpikeInner = content.Load<Texture2D>("NPC/Dialog/DialogSpikeInner");
 		}
 
 		#endregion rInitialisation
@@ -207,7 +219,7 @@
 
 
 		/// <summary>
-		/// 
+		/// Draw box
 		/// </summary>
 		public void DrawBox(DrawInfo info)
 		{
@@ -217,7 +229,7 @@
 			Rectangle bgRectangle = new Rectangle(rectPosition.X, rectPosition.Y, width, height);
 
 			// Draw bg
-			MonoDraw.DrawRectDepth(info, bgRectangle, BG_COLOR, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, bgRectangle, mStyle.mFillColor, MonoDraw.LAYER_TEXT_BOX);
 
 			// Draw borders
 			Rectangle topRect = new Rectangle(rectPosition.X - BORDER_WIDTH / 2, rectPosition.Y - BORDER_WIDTH, width + BORDER_WIDTH, BORDER_WIDTH);
@@ -225,15 +237,16 @@
 			Rectangle leftRect = new Rectangle(rectPosition.X - BORDER_WIDTH, rectPosition.Y - BORDER_WIDTH / 2, BORDER_WIDTH, height + BORDER_WIDTH);
 			Rectangle rightRect = new Rectangle(rectPosition.X + width, rectPosition.Y - BORDER_WIDTH / 2, BORDER_WIDTH, height + BORDER_WIDTH);
 
-			MonoDraw.DrawRectDepth(info, topRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
-			MonoDraw.DrawRectDepth(info, bottomRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
-			MonoDraw.DrawRectDepth(info, leftRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
-			MonoDraw.DrawRectDepth(info, rightRect, BORDER_COLOR, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, topRect, mStyle.mBorderColor, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, bottomRect, mStyle.mBorderColor, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, leftRect, mStyle.mBorderColor, MonoDraw.LAYER_TEXT_BOX);
+			MonoDraw.DrawRectDepth(info, rightRect, mStyle.mBorderColor, MonoDraw.LAYER_TEXT_BOX);
 
 			if (!IsStopped())
 			{
 				Vector2 spikePos = new Vector2(rectPosition.X + 30, rectPosition.Y + height);
-				MonoDraw.DrawTextureDepth(info, mStyle.mSpikeTexture, spikePos, MonoDraw.LAYER_TEXT_BOX + MonoDraw.FRONT_EPSILON);
+				MonoDraw.DrawTextureDepthColor(info, sSpikeInner, spikePos, mStyle.mFillColor, MonoDraw.LAYER_TEXT_BOX);
+				MonoDraw.DrawTextureDepthColor(info, sSpikeBorder, spikePos, mStyle.mBorderColor, MonoDraw.LAYER_TEXT_BOX);
 			}
 		}
 

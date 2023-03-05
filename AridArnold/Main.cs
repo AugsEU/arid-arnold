@@ -98,6 +98,16 @@ namespace AridArnold
 
 			mDummyTexture = new Texture2D(GraphicsDevice, 1, 1);
 			mDummyTexture.SetData(new Color[] { Color.White });
+
+			LoadGlobalContent();
+		}
+
+		/// <summary>
+		/// Load content storred globally
+		/// </summary>
+		void LoadGlobalContent()
+		{
+			SpeechBoxRenderer.LoadContent(Content);
 		}
 
 		#endregion rInitialisation

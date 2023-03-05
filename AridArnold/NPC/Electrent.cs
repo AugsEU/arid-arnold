@@ -14,6 +14,9 @@
 		{
 			mStyle.mScrollSpeed = 1.1f;
 			mStyle.mFramesPerLetter = 11;
+
+			mStyle.mFillColor = new Color(0, 20, 5, 240);
+			mStyle.mBorderColor = new Color(56, 122, 89);
 		}
 
 

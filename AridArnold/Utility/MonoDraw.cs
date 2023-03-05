@@ -93,6 +93,18 @@
 			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
 		}
 
+
+
+		/// <summary>
+		/// Draw a texture at a position(with layer depth + color).
+		/// </summary>
+		public static void DrawTextureDepthColor(DrawInfo info, Texture2D texture2D, Vector2 position, Color color, float depth)
+		{
+			info.spriteBatch.Draw(texture2D, position, null, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
+		}
+
+
+
 		/// <summary>
 		/// Draw a texture at a position(all options).
 		/// </summary>
@@ -218,7 +230,7 @@
 		/// </summary>
 		public static void DrawRectDepth(DrawInfo info, Rectangle rect, Color col, float depth)
 		{
-			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, null, col, 0.0f, Vector2.Zero, SpriteEffects.None, depth);
+			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, null, col, 0.0f, Vector2.Zero, SpriteEffects.None, IncrementLayer(depth));
 		}
 
 
