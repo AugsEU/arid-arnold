@@ -215,7 +215,7 @@
 		public override void Draw(DrawInfo info)
 		{
 			Texture2D textureToDraw = GetDrawTexture();
-			Rect2f originalTextureRect = new Rect2f(mPosition, mTexture);
+			Rect2f originalTextureRect = ColliderBounds();
 			Color colorToDraw = GetDrawColor();
 			CardinalDirection gravityDir = GetGravityDir();
 			float drawLayer = GetDrawLayer();

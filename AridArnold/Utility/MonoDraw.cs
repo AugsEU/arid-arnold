@@ -174,6 +174,7 @@
 			drawPosition.X = MathF.Round(drawPosition.X);
 			drawPosition.Y = MathF.Round(drawPosition.Y);
 
+			MonoDraw.DrawRect(info, collider, Color.Red);
 			MonoDraw.DrawTexture(info, texture2D, drawPosition, null, color, rotation, Vector2.Zero, 1.0f, effect, depth);
 		}
 
