@@ -128,7 +128,7 @@
 		/// </summary>
 		public static void DrawPlatformer(DrawInfo info, Rect2f collider, Texture2D texture2D, Vector2 position, Color color, CardinalDirection gravityDir, WalkDirection walkDir, float depth)
 		{
-			Vector2 drawOffset = Vector2.Zero;
+			Vector2 drawPosition = Vector2.Zero;
 
 			float rotation = 0.0f;
 			SpriteEffects effect = SpriteEffects.None;
@@ -141,40 +141,38 @@
 			switch (gravityDir)
 			{
 				case CardinalDirection.Down:
-					drawOffset.X = (collider.Width - texture2D.Width) / 2.0f;
-					drawOffset.Y = collider.Height - texture2D.Height;
+					drawPosition.X = (collider.min.X + collider.max.X - texture2D.Width) / 2.0f;
+					drawPosition.Y = collider.max.Y - texture2D.Height;
 
 					rotation = 0.0f;
 					break;
 				case CardinalDirection.Up:
-					rotation = MathHelper.Pi;
+					drawPosition.X = (collider.min.X + collider.max.X + texture2D.Width) / 2.0f;
+					drawPosition.Y = collider.min.Y + texture2D.Height;
 
-					drawOffset.X = (collider.Width + texture2D.Width) / 2.0f;
-					drawOffset.Y = texture2D.Height;
-					
+					rotation = MathHelper.Pi;
 					effect = effect ^ SpriteEffects.FlipHorizontally;
 					break;
 				case CardinalDirection.Left:
-					drawOffset.X = texture2D.Height;
+					drawPosition.X = collider.min.X + texture2D.Height;
+					drawPosition.Y = (collider.min.Y + collider.max.Y - texture2D.Width) / 2.0f;
 
 					rotation = MathHelper.PiOver2;
 					break;
 				case CardinalDirection.Right:
+					drawPosition.X = collider.max.X - texture2D.Height;
+					drawPosition.Y = (collider.min.Y + collider.max.Y + texture2D.Width) / 2.0f;
+
 					rotation = MathHelper.PiOver2 * 3.0f;
-
-					drawOffset.X = collider.Width - texture2D.Height;
-					drawOffset.Y = texture2D.Width;
-
 					effect = effect ^ SpriteEffects.FlipHorizontally;
 					break;
 			}
 
-			Vector2 drawPosition = position + drawOffset;
-
 			drawPosition.X = MathF.Round(drawPosition.X);
 			drawPosition.Y = MathF.Round(drawPosition.Y);
 
-			MonoDraw.DrawRect(info, collider, Color.Red);
+			//MonoDraw.DrawRect(info, collider, Color.Red);
+			//MonoDraw.DrawRect(info, new Rectangle((int)position.X, (int)position.Y, 2, 2), Color.Green);
 			MonoDraw.DrawTexture(info, texture2D, drawPosition, null, color, rotation, Vector2.Zero, 1.0f, effect, depth);
 		}
 
