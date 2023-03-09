@@ -132,5 +132,35 @@
 				</level>
 			</levels>
 		</world>
+
+
+
+		<world id="WW7">
+			<name>World War VII</name>
+
+			<theme>
+				<bgColor>281068</bgColor>
+				<wallTexture >gravel</wallTexture>
+				<platformTexture>beam</platformTexture>
+			</theme>
+
+			<levels>
+				<level id="level5-1">
+					<type>collectWater</type>
+					<waterNeeded>3</waterNeeded>
+				</level>
+				<level id="level5-2">
+					<type>collectWater</type>
+					<waterNeeded>4</waterNeeded>
+				</level>
+				<level id="level5-3">
+					<type>collectWater</type>
+					<waterNeeded>4</waterNeeded>
+				</level>
+				<level id="level5-4">
+					<type>collectFlag</type>
+				</level>
+			</levels>
+		</world>
 	</worlds>
 </campaign>
