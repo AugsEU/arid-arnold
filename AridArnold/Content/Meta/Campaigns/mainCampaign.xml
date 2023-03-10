@@ -147,7 +147,7 @@
 			<levels>
 				<level id="level5-1">
 					<type>collectWater</type>
-					<waterNeeded>3</waterNeeded>
+					<waterNeeded>1</waterNeeded>
 				</level>
 				<level id="level5-2">
 					<type>collectWater</type>

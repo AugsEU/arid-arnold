@@ -12,6 +12,12 @@
 		const double FLASH_TIME = 100.0;
 		const int COYOTE_TIME = 12;
 
+
+		const float ARNOLD_WALK_SPEED = 9.0f;
+		const float ARNOLD_GRAVITY = 4.35f;
+		const float ARNOLD_JUMP_SPEED = 25.0f;
+		const float ARNOLD_AIR_SPEED_BOOST = 0.015f;
+
 		#endregion rConstants
 
 
@@ -41,7 +47,7 @@
 		/// Construct Arnold from position
 		/// </summary>
 		/// <param name="pos">Starting position</param>
-		public Arnold(Vector2 pos) : base(pos)
+		public Arnold(Vector2 pos) : base(pos, ARNOLD_WALK_SPEED, ARNOLD_JUMP_SPEED, ARNOLD_GRAVITY)
 		{
 			mPrevDirection = WalkDirection.Right;
 
@@ -127,6 +133,11 @@
 			if (mOnGround == false)
 			{
 				SetDirFromVelocity();
+				mWalkSpeed = ARNOLD_WALK_SPEED + ARNOLD_AIR_SPEED_BOOST;
+			}
+			else
+			{
+				mWalkSpeed = ARNOLD_WALK_SPEED;
 			}
 
 			//Input
