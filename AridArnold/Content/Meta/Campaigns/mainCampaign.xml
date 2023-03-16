@@ -139,7 +139,7 @@
 			<name>World War VII</name>
 
 			<theme>
-				<bgColor>281068</bgColor>
+				<bgColor>00000A</bgColor>
 				<wallTexture >gravel</wallTexture>
 				<platformTexture>beam</platformTexture>
 			</theme>
