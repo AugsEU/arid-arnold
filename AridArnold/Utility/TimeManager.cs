@@ -206,6 +206,16 @@
 			mElapsedTimeMs = mTotalTime;
 		}
 
+
+
+		/// <summary>
+		/// Set time as a percentage
+		/// </summary>
+		public void SetPercentTime(float timePercent)
+		{
+			mElapsedTimeMs = mTotalTime * timePercent;
+		}
+
 		#endregion rUtility
 	}
 

@@ -17,6 +17,8 @@
 			// Enemy
 			kTrundle = kEnemyClassStart,
 			kRoboto,
+			kFutronGun,
+			kFutronRocket,
 			kEnemyClassEnd,
 
 			//NPC
@@ -39,6 +41,8 @@
 		public EntityClass mEntityClass;
 		public WalkDirection mStartDirection;
 		public CardinalDirection mGravityDirection;
+		public float[] mFloatParams;
+		public int[] mIntParams;
 
 		// Only NPC data
 		public string mTalkText;

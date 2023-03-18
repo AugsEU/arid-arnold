@@ -15,6 +15,10 @@
 
 		#endregion rMembers
 
+
+
+
+
 		#region rInitialisation
 
 		/// <summary>
@@ -30,6 +34,9 @@
 		}
 
 		#endregion
+
+
+
 
 
 		#region rStateChanges
@@ -51,7 +58,7 @@
 		/// <returns>True if we are waiting in a state</returns>
 		public bool CanMoveState()
 		{
-			if (mTimer.GetElapsedMs() > mWaitTime)
+			if (mTimer.GetElapsedMs() >= mWaitTime)
 			{
 				mCanMoveState = true;
 			}

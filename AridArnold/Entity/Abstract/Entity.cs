@@ -212,6 +212,9 @@
 				case EntityData.EntityClass.kRoboto:
 					entity = new Roboto(worldPosition);
 					break;
+				case EntityData.EntityClass.kFutronGun:
+					entity = new FutronGun(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
+					break;
 
 				// NPC
 				case EntityData.EntityClass.kBarbara:

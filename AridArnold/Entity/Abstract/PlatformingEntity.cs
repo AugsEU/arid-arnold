@@ -376,6 +376,37 @@
 
 
 		/// <summary>
+		/// Get collider based on texture, but reduced.
+		/// Width is reduced centre-aligned
+		/// Height is reduced from the top
+		/// </summary>
+		/// <param name="widthReduction">Amount of width to reduce</param>
+		/// <param name="heightReduction">Amount of height to reduce</param>
+		protected Rect2f GetReducedTextureCollider(float widthReduction, float heightReduction)
+		{
+			float height = mTexture.Height - heightReduction;
+			float width = mTexture.Width - widthReduction;
+
+			Vector2 effectivePosition;
+			Vector2 effectiveSize;
+
+			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
+			{
+				effectivePosition = mPosition + new Vector2(widthReduction, heightReduction / 2.0f);
+				effectiveSize = new Vector2(height, width);
+			}
+			else
+			{
+				effectivePosition = mPosition + new Vector2(widthReduction / 2.0f, heightReduction);
+				effectiveSize = new Vector2(width, height);
+			}
+
+			return new Rect2f(effectivePosition, effectivePosition + effectiveSize);
+		}
+
+
+
+		/// <summary>
 		/// Grounded property. 
 		/// </summary>
 		public bool pGrounded

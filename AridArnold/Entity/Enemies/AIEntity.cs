@@ -193,24 +193,7 @@
 		/// <returns>Collider bounds of the AI entity</returns>
 		public override Rect2f ColliderBounds()
 		{
-			float height = mTexture.Height - mCHeightReduction;
-			float width = mTexture.Width - mCWidthReduction;
-
-			Vector2 effectivePosition;
-			Vector2 effectiveSize;
-
-			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
-			{
-				effectivePosition = mPosition + new Vector2(mCWidthReduction, mCHeightReduction / 2.0f);
-				effectiveSize = new Vector2(height, width);
-			}
-			else
-			{
-				effectivePosition = mPosition + new Vector2(mCWidthReduction / 2.0f, mCHeightReduction);
-				effectiveSize = new Vector2(width, height);
-			}
-
-			return new Rect2f(effectivePosition, effectivePosition + effectiveSize);
+			return GetReducedTextureCollider(mCWidthReduction, mCHeightReduction);
 		}
 
 

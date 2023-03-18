@@ -4,7 +4,8 @@
 	{
 		#region rConstants
 
-		const int FILE_VER = 1;
+		const int FILE_VER = 2;
+		const int NUM_ENTITY_PARAMS = 8;
 
 		#endregion rConstants
 
@@ -49,6 +50,7 @@
 			int version = br.ReadInt32();
 			if(version != FILE_VER)
 			{
+				MonoDebug.Break();
 				throw new Exception("File version doesn't match. Verify data integrity!");
 			}
 
@@ -121,7 +123,16 @@
 				entityData.mStartDirection = (WalkDirection)(br.ReadUInt32());
 				entityData.mGravityDirection = (CardinalDirection)(br.ReadUInt32());
 
-				if(entityData.GetEntityType() == EntityData.EntityType.kSimpleNPC)
+				entityData.mFloatParams = new float[NUM_ENTITY_PARAMS];
+				entityData.mIntParams = new int[NUM_ENTITY_PARAMS];
+
+				for(int j = 0; j < NUM_ENTITY_PARAMS; j++)
+				{
+					entityData.mFloatParams[j] = br.ReadSingle();
+					entityData.mIntParams[j] = br.ReadInt32();
+				}
+
+				if (entityData.GetEntityType() == EntityData.EntityType.kSimpleNPC)
 				{
 					entityData.mTalkText = br.ReadString();
 					entityData.mHeckleText = br.ReadString();
