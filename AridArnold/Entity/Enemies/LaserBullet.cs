@@ -110,6 +110,27 @@
 			return new Rect2f(mPosition, mTexture);
 		}
 
+
+
+		/// <summary>
+		/// React to collision with an entity.
+		/// </summary>
+		/// <param name="entity"></param>
+		public override void CollideWithEntity(Entity entity)
+		{
+			if (entity is Arnold)
+			{
+				//Kill the player on touching.
+				EArgs args;
+				args.sender = this;
+
+				EventManager.I.SendEvent(EventType.KillPlayer, args);
+				EntityManager.I.QueueDeleteEntity(this);
+			}
+
+			base.CollideWithEntity(entity);
+		}
+
 		#endregion rUpdate
 
 
