@@ -16,11 +16,22 @@
 
 
 
+		#region rConstants
+
+		static Vector2 BULLET_OFFSET = new Vector2(0.0f, 8.0f);
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
 		Animator mIdleAnim;
 		Animator mChargeGunAnim;
 		Animator mShootGunAnim;
+		Texture2D mBulletTexture;
 		PercentageTimer mShootTimer;
 		StateMachine<State> mStateMachine;
 
@@ -70,6 +81,7 @@
 																			 ("Enemies/Futron-Gun/Shoot4", 0.15f));
 
 			mTexture = content.Load<Texture2D>("Enemies/Futron-Gun/Idle1");
+			mBulletTexture = content.Load<Texture2D>("Enemies/Futron-Gun/bullet");
 
 			mIdleAnim.Play();
 			mShootTimer.Start();
@@ -131,7 +143,12 @@
 		/// </summary>
 		private void ShootGun()
 		{
-			// TO DO: Shoot bullet
+			// Spawn bullet
+			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
+			Vector2 spawnPos = mPosition + Util.GetNormal(bulletDirection) * 12.0f + BULLET_OFFSET;
+			LaserBullet bullet = new LaserBullet(spawnPos, bulletDirection, mBulletTexture);
+			EntityManager.I.QueueRegisterEntity(bullet);
+
 			mShootGunAnim.Play();
 
 			mStateMachine.SetState(State.Idle);

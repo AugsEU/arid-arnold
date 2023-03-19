@@ -24,6 +24,9 @@
 		List<ColliderSubmission> mAuxiliaryColliders = new List<ColliderSubmission>();
 		EntityUpdateSorter mUpdateSorter = new EntityUpdateSorter();
 
+		List<Entity> mQueuedRegisters = new List<Entity>();
+		List<Entity> mQueuedDeletes = new List<Entity>();
+
 		#endregion rMembers
 
 
@@ -54,6 +57,30 @@
 			}
 
 			ResolveEntityTouching();
+
+			// Add/Removed queued entities
+			FlushQueues();
+		}
+
+
+
+		/// <summary>
+		/// Flush add/delete queues.
+		/// </summary>
+		void FlushQueues()
+		{
+			foreach (Entity entity in mQueuedRegisters)
+			{
+				RegisterEntity(entity, Main.GetMainContentManager());
+			}
+
+			foreach(Entity entity in mQueuedDeletes)
+			{
+				DeleteEntity(entity);
+			}
+
+			mQueuedDeletes.Clear();
+			mQueuedRegisters.Clear();
 		}
 
 		#endregion rUpdate
@@ -175,6 +202,26 @@
 		public void ClearEntities()
 		{
 			mRegisteredEntities.Clear();
+			mQueuedRegisters.Clear();
+		}
+
+
+
+		/// <summary>
+		/// Call this when adding entities at runtime
+		/// </summary>
+		public void QueueRegisterEntity(Entity entity)
+		{
+			mQueuedRegisters.Add(entity);
+		}
+
+
+		/// <summary>
+		/// Call this when adding entities at runtime
+		/// </summary>
+		public void QueueDeleteEntity(Entity entity)
+		{
+			mQueuedDeletes.Add(entity);
 		}
 
 		#endregion rEntityRegistry

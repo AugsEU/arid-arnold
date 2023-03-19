@@ -79,5 +79,13 @@
 		{
 			return (int)MathF.Round(f);
 		}
+
+		/// <summary>
+		/// Round a float to an int.
+		/// </summary>
+		public static Vector2 Round(Vector2 v)
+		{
+			return new Vector2(MathF.Round(v.X), MathF.Round(v.Y));
+		}
 	}
 }

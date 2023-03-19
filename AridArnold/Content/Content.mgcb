@@ -193,6 +193,18 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/arnold-stand.png
 
+#begin Enemies/Futron-Gun/bullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Enemies/Futron-Gun/bullet.png
+
 #begin Enemies/Futron-Gun/Charge1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -264,18 +276,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Enemies/Futron-Gun/Charge6.png
-
-#begin Enemies/Futron-Gun/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Enemies/Futron-Gun/Idle1.png
 
 #begin Enemies/Futron-Gun/Idle1.png
 /importer:TextureImporter

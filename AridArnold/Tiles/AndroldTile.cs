@@ -77,8 +77,7 @@ namespace AridArnold
 				{
 					Vector2 position = TileManager.I.RoundToTileCentre(mTileMapIndex) + SPAWN_OFFSET;
 
-					// To do: Don't load content here!
-					EntityManager.I.RegisterEntity(new Androld(position), Main.GetMainContentManager());
+					EntityManager.I.QueueRegisterEntity(new Androld(position));
 
 					//Self delete.
 					TileManager.I.RequestDelete(mTileMapIndex);
