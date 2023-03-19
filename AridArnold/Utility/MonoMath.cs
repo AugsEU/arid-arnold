@@ -29,6 +29,44 @@
 		}
 
 
+		/// <summary>
+		/// Rotate vector clockwise
+		/// </summary>
+		public static Vector2 Rotate(Vector2 a, float angle)
+		{
+			float s = MathF.Sin(angle);
+			float c = MathF.Cos(angle);
+			return new Vector2(c * a.X - s * a.Y, s * a.X + c * a.Y);
+		}
+
+
+		/// <summary>
+		/// Rotate vector clockwise
+		/// </summary>
+		public static Vector2 RotateDeg(Vector2 a, float angle)
+		{
+			return Rotate(a, DegToRad(angle));
+		}
+
+
+		/// <summary>
+		/// Rotate vector clockwise
+		/// </summary>
+		public static float RadToDeg(float angle)
+		{
+			return (angle / (MathF.PI * 2.0f)) * 360.0f;
+		}
+
+
+		/// <summary>
+		/// Rotate vector clockwise
+		/// </summary>
+		public static float DegToRad(float angle)
+		{
+			return (angle / (360.0f)) * MathF.PI * 2.0f;
+		}
+
+
 
 		/// <summary>
 		/// Clamp number between -absLimit and absLimit
