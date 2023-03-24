@@ -6,8 +6,13 @@
 
 		const float LASER_BOMB_GRAVITY = 2.0f;
 		const float TRACE_LEN_INCREASE = 30.0f;
-		static Color TRACE_COLOR = new Color(150, 0, 10);
-		static Color TRACE_COLOR_SHADOW = new Color(50, 0, 10);
+
+		const float DEATH_RADIUS = 26.0f;
+		const double DEATH_TIME_START = 120.0;
+		const double DEATH_TIME_END = 380.0;
+
+		static Color TRACE_COLOR = new Color(100, 100, 100);
+		static Color TRACE_COLOR_SHADOW = new Color(30, 30, 30);
 
 		#endregion rConstants
 
@@ -19,6 +24,7 @@
 
 		Animator mBombAnim;
 		float mTraceLength;
+		MonoTimer mDeathTimer;
 
 		#endregion rMembers
 
@@ -35,6 +41,7 @@
 		{
 			mVelocity = velocity;
 			mTraceLength = 0.0f;
+			mDeathTimer = new MonoTimer();
 		}
 
 
@@ -84,6 +91,29 @@
 			//Draw
 			mTraceLength += dt * TRACE_LEN_INCREASE;
 			mBombAnim.Update(gameTime);
+
+			//Check death
+			if(mState == ProjectileState.Exploding)
+			{
+				mDeathTimer.Start();
+				double elapsedTime = mDeathTimer.GetElapsedMs();
+				if(DEATH_TIME_START < elapsedTime && elapsedTime < DEATH_TIME_END)
+				{
+					List<Entity> nearbyEntities = EntityManager.I.GetNearPos(DEATH_RADIUS, mExplosionCentre, typeof(Arnold), typeof(Androld));
+
+					foreach (Entity entity in nearbyEntities)
+					{
+						if(entity.pPosition.Y < mExplosionCentre.Y)
+						{
+							EArgs args;
+							args.sender = this;
+
+							EventManager.I.SendEvent(EventType.KillPlayer, args);
+							break;
+						}
+					}
+				}
+			}
 
 			// Base
 			base.Update(gameTime);

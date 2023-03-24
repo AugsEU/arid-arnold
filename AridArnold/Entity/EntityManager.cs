@@ -301,6 +301,35 @@
 			return false;
 		}
 
+
+
+		/// <summary>
+		/// Returns a list of all entities within a certain tdistance
+		/// </summary>
+		public List<Entity> GetNearPos(float distance, Vector2 pos, params Type[] types)
+		{
+			List<Entity> returnList = new List<Entity>();
+			distance = distance * distance;
+
+			foreach (Entity entity in mRegisteredEntities)
+			{
+				foreach (Type type in types)
+				{
+					if (entity.GetType() == type)
+					{
+						float distanceToEntity = (pos - entity.GetCentrePos()).LengthSquared();
+
+						if (distanceToEntity < distance)
+						{
+							returnList.Add(entity);
+						}
+					}
+				}
+			}
+
+			return returnList;
+		}
+
 		#endregion rUtility
 	}
 }
