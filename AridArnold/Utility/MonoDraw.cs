@@ -273,6 +273,46 @@
 			Rectangle rectangle = new Rectangle(point.X, point.Y, 1, 1);
 			DrawRectDepth(info, rectangle, col, depth);
 		}
+
+
+
+		/// <summary>
+		/// Draw a line from point A to B
+		/// </summary>
+		public static void DrawLine(DrawInfo info, Vector2 point1, Vector2 point2, Color color, float thickness = 1.0f, float depth = LAYER_DEFAULT)
+		{
+			float distance = Vector2.Distance(point1, point2);
+			float angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
+			DrawLine(info, point1, distance, angle, color, thickness);
+		}
+
+
+
+		/// <summary>
+		/// Draw a line from point A by an angle.
+		/// </summary>
+		public static void DrawLine(DrawInfo info, Vector2 point, float length, float angle, Color color, float thickness = 1.0f, float depth = LAYER_DEFAULT)
+		{
+			var origin = new Vector2(0f, 0.5f);
+			var scale = new Vector2(length, thickness);
+			info.spriteBatch.Draw(Main.GetDummyTexture(), point, null, color, angle, origin, scale, SpriteEffects.None, IncrementLayer(depth));
+		}
+
+
+
+		/// <summary>
+		/// Draw a line with drop shadow.
+		/// </summary>
+		public static void DrawLineShadow(DrawInfo info, Vector2 point1, Vector2 point2, Color color, Color shadowColor, float dropDistance, float thickness = 1.0f, float depth = LAYER_DEFAULT)
+		{
+			DrawLine(info, point1, point2, color, thickness, depth);
+
+			point1.Y += dropDistance;
+			point2.Y += dropDistance;
+
+			DrawLine(info, point1, point2, shadowColor, thickness, depth);
+		}
+
 		#endregion rRender
 
 

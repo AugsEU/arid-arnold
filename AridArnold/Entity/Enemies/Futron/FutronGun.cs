@@ -12,16 +12,6 @@
 
 
 
-		#region rMembers
-
-		Texture2D mBulletTexture;
-
-		#endregion rMembers
-
-
-
-
-
 		#region rInitialisation
 
 		/// <summary>
@@ -57,7 +47,6 @@
 																			 ("Enemies/Futron-Gun/Shoot4", 0.15f));
 
 			mTexture = content.Load<Texture2D>("Enemies/Futron-Gun/Idle1");
-			mBulletTexture = content.Load<Texture2D>("Enemies/Futron-Gun/bullet");
 
 			mIdleAnim.Play();
 			mShootTimer.Start();
@@ -78,7 +67,7 @@
 		{
 			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
 			Vector2 spawnPos = mPosition + Util.GetNormal(bulletDirection) * 12.0f + BULLET_OFFSET;
-			LaserBullet bullet = new LaserBullet(spawnPos, bulletDirection, mBulletTexture);
+			LaserBullet bullet = new LaserBullet(spawnPos, bulletDirection);
 			EntityManager.I.QueueRegisterEntity(bullet);
 		}
 

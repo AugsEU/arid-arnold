@@ -46,7 +46,7 @@
 		#region rUpdate
 
 		/// <summary>
-		/// Update Moving Entity. No guarantees on order.
+		/// Update Moving Entity.
 		/// </summary>
 		/// <param name="gameTime">Frame time.</param>
 		public override void OrderedUpdate(GameTime gameTime)

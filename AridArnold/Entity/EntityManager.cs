@@ -124,7 +124,7 @@
 				}
 			}
 			
-			mCollisionBuffer.Sort(EntityCollision.COLLISION_SORTER);
+			//mCollisionBuffer.Sort(EntityCollision.COLLISION_SORTER);
 
 			if (mCollisionBuffer.Count > 0)
 			{

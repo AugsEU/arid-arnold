@@ -39,10 +39,10 @@ namespace AridArnold
 	/// </summary>
 	struct Rect2f
 	{
-		public Rect2f(Vector2 _min, Vector2 _max)
+		public Rect2f(Vector2 vec1, Vector2 vec2)
 		{
-			min = _min;
-			max = _max;
+			min = new Vector2(MathF.Min(vec1.X, vec2.X), MathF.Min(vec1.Y, vec2.Y));
+			max = new Vector2(MathF.Max(vec1.X, vec2.X), MathF.Max(vec1.Y, vec2.Y));
 		}
 
 		public Rect2f(Rectangle rect)

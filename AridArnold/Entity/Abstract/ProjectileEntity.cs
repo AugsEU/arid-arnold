@@ -6,31 +6,107 @@ using System.Threading.Tasks;
 
 namespace AridArnold
 {
-	abstract class ProjectileEntity : Entity
+	abstract class ProjectileEntity : MovingEntity
 	{
-		public ProjectileEntity(Vector2 pos) : base(pos)
-		{
+		#region rTypes
 
+		protected enum ProjectileState
+		{
+			FreeMotion,
+			Exploding
 		}
 
+		#endregion rTypes
+
+
+
+
+
+		#region rMembers
+
+		protected ProjectileState mState;
+		protected Animator mExplodingAnim = null;
+		protected Vector2 mExplosionCentre;
+
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
+
 		/// <summary>
-		/// Update
+		/// Projectile at point
+		/// </summary>
+		/// <param name="pos"></param>
+		public ProjectileEntity(Vector2 pos) : base(pos)
+		{
+			mState = ProjectileState.FreeMotion;
+			mExplosionCentre = Vector2.Zero;
+		}
+
+		#endregion rInitialisation
+
+
+
+
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// Update projectile.
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			Rect2f collider = ColliderBounds();
-			bool shouldDelete = CheckHitSolid(ref collider) || CheckOffScreen(ref collider);
+			mExplodingAnim.Update(gameTime);
+
+			bool shouldDelete = CheckOffScreen() || (mState == ProjectileState.Exploding && mExplodingAnim.IsPlaying() == false);
 
 			base.Update(gameTime);
 
 			if (shouldDelete) EntityManager.I.QueueDeleteEntity(this);
 		}
 
+
+
+		/// <summary>
+		/// Update Projectile collision.
+		/// </summary>
+		/// <param name="gameTime">Frame time.</param>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			if(mState != ProjectileState.FreeMotion)
+			{
+				return;
+			}
+
+			List<EntityCollision> collisions = new List<EntityCollision>();
+			TileManager.I.GatherCollisions(gameTime, this, ref collisions);
+
+			if (collisions.Count > 0)
+			{
+				CollisionResults firstCollision = MonoAlg.GetMin(ref collisions, EntityCollision.COLLISION_SORTER).GetResult();
+				mExplosionCentre = mPosition + firstCollision.t.Value * VelocityToDisplacement(gameTime);
+				mState = ProjectileState.Exploding;
+				mExplodingAnim.Play();
+			}
+			else
+			{
+				ApplyVelocity(gameTime);
+			}
+		}
+
+
+
 		/// <summary>
 		/// Returns true if we are off screen.
 		/// </summary>
-		bool CheckOffScreen(ref Rect2f collider)
+		bool CheckOffScreen()
 		{
+			Rect2f collider = ColliderBounds();
+
 			// Check X
 			if (collider.max.X < -Tile.sTILE_SIZE || collider.min.X > TileManager.I.GetDrawWidth() + Tile.sTILE_SIZE * 4.0f)
 			{
@@ -49,11 +125,12 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Returns true if we are touching a solid tile.
+		/// React to collision.
 		/// </summary>
-		bool CheckHitSolid(ref Rect2f collider)
+		public override void ReactToCollision(Vector2 collisionNormal)
 		{
-			return TileManager.I.DoesRectTouchTiles(collider);
 		}
+
+		#endregion rUpdate
 	}
 }
