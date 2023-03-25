@@ -165,6 +165,8 @@
 						return new MirrorTile((CardinalDirection)param, position);
 					case 0x00CDF9u:
 						return new MushroomTile((CardinalDirection)param, position);
+					case 0x003D36u:
+						return new TeleportPipe(position);
 					//Electricity
 					case 0x61AD65u:
 						return new PermElectricButton((CardinalDirection)param, position);
