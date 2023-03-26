@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Math utility functions
@@ -29,6 +31,7 @@
 		}
 
 
+
 		/// <summary>
 		/// Rotate vector clockwise
 		/// </summary>
@@ -37,6 +40,12 @@
 			float s = MathF.Sin(angle);
 			float c = MathF.Cos(angle);
 			return new Vector2(c * a.X - s * a.Y, s * a.X + c * a.Y);
+		}
+
+
+		public static Vector2 Lerp(Vector2 p1, Vector2 p2, float t)
+		{
+			return (p1) * (1.0f - t) + (p2) * t;
 		}
 
 
@@ -118,12 +127,41 @@
 			return (int)MathF.Round(f);
 		}
 
+
+
 		/// <summary>
 		/// Round a float to an int.
 		/// </summary>
 		public static Vector2 Round(Vector2 v)
 		{
 			return new Vector2(MathF.Round(v.X), MathF.Round(v.Y));
+		}
+
+
+		/// <summary>
+		/// Counts the number of bits which are set
+		/// </summary>
+		public static UInt32 BitCountI32(UInt32 i)
+		{
+			i = i - ((i >> 1) & 0x55555555);				// add pairs of bits
+			i = (i & 0x33333333) + ((i >> 2) & 0x33333333);	// quads
+			i = (i + (i >> 4)) & 0x0F0F0F0F;				// groups of 8
+			return (i * 0x01010101) >> 24;					// horizontal sum of bytes
+		}
+
+
+
+		/// <summary>
+		/// Get adjacent points.
+		/// </summary>
+		public static List<Point> GetAdjacentPoints(Point point)
+		{
+			List<Point> returnVal = new List<Point>();
+			returnVal.Add(new Point(point.X + 1, point.Y));
+			returnVal.Add(new Point(point.X - 1, point.Y));
+			returnVal.Add(new Point(point.X, point.Y + 1));
+			returnVal.Add(new Point(point.X, point.Y - 1));
+			return returnVal;
 		}
 	}
 }

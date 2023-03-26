@@ -39,6 +39,9 @@
 		#endregion rConstants
 
 
+
+
+
 		#region rMembers
 
 		protected Texture2D mTexture = null;
@@ -80,6 +83,15 @@
 		public virtual void LoadContent(ContentManager content)
 		{
 			mTexture = content.Load<Texture2D>("Tiles/blank");
+		}
+
+
+		/// <summary>
+		/// Called once all initialisation has been completed.
+		/// </summary>
+		public virtual void FinishInit()
+		{
+
 		}
 
 		#endregion rInitialisation
@@ -185,48 +197,22 @@
 
 
 		/// <summary>
+		/// How many neighbours do we have?
+		/// </summary>
+		public int GetNumNeighbours()
+		{
+			return (int)MonoMath.BitCountI32((UInt32)(mAdjacency));
+		}
+
+
+
+		/// <summary>
 		/// Is this tile enabled?
 		/// </summary>
 		public bool pEnabled
 		{
 			get { return mEnabled; }
 			set { mEnabled = value; }
-		}
-
-
-		/// <summary>
-		/// Get number of neighbours
-		/// </summary>
-		public int GetNumberOfNeighbours()
-		{
-			switch (mAdjacency)
-			{
-				case AdjacencyType.None:
-					return 0;
-				case AdjacencyType.Top:
-				case AdjacencyType.Bottom:
-				case AdjacencyType.Left:
-				case AdjacencyType.Right:
-					return 1;
-				case AdjacencyType.TopBottom:
-				case AdjacencyType.TopLeft:
-				case AdjacencyType.TopRight:
-				case AdjacencyType.LeftRight:
-				case AdjacencyType.BottomLeft:
-				case AdjacencyType.BottomRight:
-					return 2;
-				case AdjacencyType.TopBottomLeft:
-				case AdjacencyType.TopBottomRight:
-				case AdjacencyType.TopLeftRight:
-				case AdjacencyType.BottomLeftRight:
-					return 3;
-				case AdjacencyType.All:
-					return 4;
-				default:
-					break;
-			}
-
-			throw new NotImplementedException();
 		}
 
 		#endregion rUtility

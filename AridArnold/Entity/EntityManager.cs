@@ -45,6 +45,7 @@
 			// Do unordered update. To do: Multi-threading if it turns out to be worth it.
 			foreach (Entity entity in mRegisteredEntities)
 			{
+				if (!entity.IsEnabled()) continue;
 				entity.Update(gameTime);
 			}
 
@@ -53,6 +54,7 @@
 			// Do ordered update.
 			foreach (Entity entity in mRegisteredEntities)
 			{
+				if (!entity.IsEnabled()) continue;
 				entity.OrderedUpdate(gameTime);
 			}
 
@@ -145,12 +147,14 @@
 			for (int i = 0; i < mRegisteredEntities.Count - 1; i++)
 			{
 				Entity iEntity = mRegisteredEntities[i];
+				if (!iEntity.IsEnabled()) continue;
 
 				Rect2f iRect = iEntity.ColliderBounds();
 
 				for (int j = i + 1; j < mRegisteredEntities.Count; j++)
 				{
 					Entity jEntity = mRegisteredEntities[j];
+					if (!jEntity.IsEnabled()) continue;
 
 					Rect2f jRect = jEntity.ColliderBounds();
 
@@ -240,6 +244,7 @@
 		{
 			foreach (Entity entity in mRegisteredEntities)
 			{
+				if (!entity.IsEnabled()) continue;
 				entity.Draw(info);
 			}
 		}

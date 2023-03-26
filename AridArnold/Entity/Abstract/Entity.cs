@@ -15,6 +15,7 @@
 		protected Vector2 mCentreOfMass;
 		protected Texture2D mTexture;
 		protected float mUpdateOrder;
+		private bool mEnabled;
 
 		#endregion rMembers
 
@@ -34,6 +35,7 @@
 			mCentreOfMass = pos;
 			mUpdateOrder = 0.0f;
 			mHandle = sHandleHead;
+			mEnabled = true;
 
 			// To do: Make this atomic if we end up needing to spawn multiple entities on different threads.
 			sHandleHead++;
@@ -165,6 +167,20 @@
 
 
 		/// <summary>
+		/// Set position relative to centre.
+		/// </summary>
+		public void SetCentrePos(Vector2 centrePos)
+		{
+			Rect2f collider = ColliderBounds();
+			centrePos.X -= collider.Width / 2.0f;
+			centrePos.Y -= collider.Height / 2.0f;
+
+			mPosition = centrePos;
+		}
+
+
+
+		/// <summary>
 		/// Get the update ordering. Higher value means update will happen first.
 		/// </summary>
 		public float GetUpdateOrder()
@@ -179,6 +195,26 @@
 		public UInt64 GetHandle()
 		{
 			return mHandle;
+		}
+
+
+
+		/// <summary>
+		/// Enable/Disable this entity. Disabled entities will not be drawn or updated.
+		/// </summary>
+		public void SetEnabled(bool enabled)
+		{
+			mEnabled = enabled;
+		}
+
+
+
+		/// <summary>
+		/// Is this enabled?
+		/// </summary>
+		public bool IsEnabled()
+		{
+			return mEnabled;
 		}
 
 		#endregion rUtility

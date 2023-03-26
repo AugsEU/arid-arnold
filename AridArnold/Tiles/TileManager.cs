@@ -91,6 +91,15 @@
 			}
 
 			CalculateTileAdjacency();
+
+			// Do any last initialisation once everything has been calculated.
+			for (int x = 0; x < tileTexture.Width; x++)
+			{
+				for (int y = 0; y < tileTexture.Height; y++)
+				{
+					mTileMap[x, y].FinishInit();
+				}
+			}
 		}
 
 
@@ -422,7 +431,7 @@
 		/// <summary>
 		/// Convert tile index to position.
 		/// </summary>
-		public Vector2 RoundToTileCentre(Point index)
+		public Vector2 GetTileCentre(Point index)
 		{
 			Vector2 result = mTileMapPos;
 

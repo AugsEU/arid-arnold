@@ -18,6 +18,7 @@
 
 		#region rMembers
 
+		protected Vector2 mPrevVelocity;
 		protected Vector2 mVelocity;
 		protected bool mFallthrough;
 
@@ -51,6 +52,7 @@
 		/// <param name="gameTime">Frame time.</param>
 		public override void OrderedUpdate(GameTime gameTime)
 		{
+			mPrevVelocity = mVelocity;
 			UpdateCollision(gameTime);
 
 			mFallthrough = false;
@@ -163,6 +165,14 @@
 		}
 
 
+
+		/// <summary>
+		/// Get velocity from previous frame
+		/// </summary>
+		public Vector2 GetPrevVelocity()
+		{
+			return mPrevVelocity;
+		}
 
 		/// <summary>
 		/// Velocity Property.

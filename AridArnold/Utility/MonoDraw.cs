@@ -23,6 +23,8 @@
 
 		public const float LAYER_TILE = 0.29f;
 
+		public const float LAYER_ABOVE_TILE = 0.35f;
+
 		public const float LAYER_TEXT_BOX = 0.37f;
 		public const float LAYER_TEXT_SHADOW = 0.38f;
 		public const float LAYER_TEXT = 0.39f;

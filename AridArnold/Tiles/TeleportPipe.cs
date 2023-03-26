@@ -4,8 +4,9 @@
 	{
 		#region rMembers
 
-		Entity mHoldingEntity;
-		CardinalDirection mArrivalDirection;
+		bool mIsEntry;
+
+		// Draw
 		Texture2D mBaseTexture;
 
 		#endregion rMembers
@@ -19,9 +20,8 @@
 		/// </summary>
 		public TeleportPipe(Vector2 position) : base(position)
 		{
-			mHoldingEntity = null;
-			mArrivalDirection = CardinalDirection.Down;
 		}
+
 
 
 		/// <summary>
@@ -34,6 +34,16 @@
 			base.LoadContent(content);
 		}
 
+
+
+		/// <summary>
+		/// Finish initialisation.
+		/// </summary>
+		public override void FinishInit()
+		{
+			mIsEntry = GetNumNeighbours() == 1;
+		}
+
 		#endregion rInitialisation
 
 
@@ -41,6 +51,34 @@
 
 
 		#region rUpdate
+
+		/// <summary>
+		/// Update teleport tile
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			base.Update(gameTime);
+		}
+
+
+		/// <summary>
+		/// When an Entity touches us.
+		/// </summary>
+		public override void OnTouch(MovingEntity entity)
+		{
+			if(!mIsEntry)
+			{
+				return;
+			}
+
+			// Spawn traveller
+			TeleportTransporter teleportTransporter = new TeleportTransporter(mTileMapIndex, entity);
+			EntityManager.I.QueueRegisterEntity(teleportTransporter);
+
+			// To do: Spawn FX
+
+			base.OnTouch(entity);
+		}
 
 		#endregion rUpdate
 

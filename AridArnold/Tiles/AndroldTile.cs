@@ -75,7 +75,7 @@ namespace AridArnold
 				//Animation is finished, spawn Androld
 				if(mActivationAnim.IsPlaying() == false)
 				{
-					Vector2 position = TileManager.I.RoundToTileCentre(mTileMapIndex) + SPAWN_OFFSET;
+					Vector2 position = TileManager.I.GetTileCentre(mTileMapIndex) + SPAWN_OFFSET;
 
 					EntityManager.I.QueueRegisterEntity(new Androld(position));
 
