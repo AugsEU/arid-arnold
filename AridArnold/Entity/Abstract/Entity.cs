@@ -142,14 +142,21 @@
 		}
 
 
+		/// <summary>
+		/// Get position of 
+		/// </summary>
+		public Vector2 GetPos()
+		{
+			return mPosition;
+		}
+
 
 		/// <summary>
-		/// Position property.
+		/// Set position.
 		/// </summary>
-		public Vector2 pPosition
+		public void SetPos(Vector2 pos)
 		{
-			get { return mPosition; }
-			set { mPosition = value; }
+			mPosition = pos;
 		}
 
 

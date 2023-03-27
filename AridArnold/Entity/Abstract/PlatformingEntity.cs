@@ -409,10 +409,19 @@
 		/// <summary>
 		/// Grounded property. 
 		/// </summary>
-		public bool pGrounded
+		public bool OnGround()
 		{
-			get => mOnGround;
-			set => mOnGround = value;
+			return mOnGround;
+		}
+
+
+
+		/// <summary>
+		/// Set grounded.
+		/// </summary>
+		public void SetGrounded(bool value)
+		{
+			mOnGround = value;
 		}
 
 		#endregion rUtility

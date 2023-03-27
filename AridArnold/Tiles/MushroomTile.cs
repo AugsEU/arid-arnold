@@ -108,30 +108,34 @@
 				Rect2f entityBounds = platformingEntity.ColliderBounds();
 				Rect2f bounds = GetBounds();
 
+				Vector2 entityVel = platformingEntity.GetVelocity();
+				Vector2 entityPos = platformingEntity.GetPos();
+
+				// TO DO: Make this nicer.
 				bool didBounce = false;
 
 				switch (mRotation)
 				{
 					case CardinalDirection.Up:
 					{
-						if (platformingEntity.pGrounded == false)
+						if (platformingEntity.OnGround() == false)
 						{
-							if (platformingEntity.pVelocity.Y > minVel)
+							if (entityVel.Y > minVel)
 							{
-								platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -platformingEntity.pVelocity.Y * alpha);
+								platformingEntity.SetVelocity(new Vector2(entityVel.X, -entityVel.Y * alpha));
 								didBounce = true;
 							}
-							else if (platformingEntity.pVelocity.Y > DOWN_VEL_THRESH)
+							else if (entityVel.Y > DOWN_VEL_THRESH)
 							{
-								platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -minVel * alpha);
+								platformingEntity.SetVelocity(new Vector2(entityVel.X, -minVel * alpha));
 								didBounce = true;
 							}
 
 							if (didBounce)
 							{
 								float newY = bounds.min.Y - entityBounds.Height;
-								platformingEntity.pPosition = new Vector2(platformingEntity.pPosition.X, newY);
-								platformingEntity.pGrounded = true;
+								platformingEntity.SetPos(new Vector2(entityPos.X, newY));
+								platformingEntity.SetGrounded(true); //HACK TO GET PLAYER TO BE ABLE TO CHANGE WALK DIRECTION
 							}
 						}
 					}
@@ -139,18 +143,18 @@
 					case CardinalDirection.Left:
 					case CardinalDirection.Right:
 					{
-						bool valid = (CardinalDirection.Left == mRotation) != (platformingEntity.pVelocity.X < 0.0f);
+						bool valid = (CardinalDirection.Left == mRotation) != (entityVel.X < 0.0f);
 
 						if (valid)
 						{
-							if (platformingEntity.pGrounded == false)
+							if (platformingEntity.OnGround() == false)
 							{
-								platformingEntity.pVelocity = new Vector2(-platformingEntity.pVelocity.X, platformingEntity.pVelocity.Y);
+								platformingEntity.SetVelocity(new Vector2(-entityVel.X, entityVel.Y));
 								platformingEntity.ReverseWalkDirection();
 							}
 							else
 							{
-								platformingEntity.pVelocity = new Vector2(-platformingEntity.pVelocity.X, -minVel * alpha);
+								platformingEntity.SetVelocity(new Vector2(-entityVel.X, -minVel * alpha));
 								platformingEntity.ReverseWalkDirection();
 							}
 
@@ -160,11 +164,11 @@
 					break;
 					case CardinalDirection.Down:
 					{
-						if (platformingEntity.pGrounded == false)
+						if (platformingEntity.OnGround() == false)
 						{
-							if (platformingEntity.pVelocity.Y < 0.0f)
+							if (entityVel.Y < 0.0f)
 							{
-								platformingEntity.pVelocity = new Vector2(platformingEntity.pVelocity.X, -platformingEntity.pVelocity.Y * alpha);
+								platformingEntity.SetVelocity(new Vector2(entityVel.X, -entityVel.Y * alpha));
 								didBounce = true;
 							}
 						}

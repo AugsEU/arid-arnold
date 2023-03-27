@@ -138,11 +138,11 @@
 				//If there is actually a life increase
 				if (livesBefore < ProgressManager.I.pLives)
 				{
-					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.pPosition, "+1 Life");
+					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.GetPos(), "+1 Life");
 				}
 				else
 				{
-					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.pPosition, "+0 Lives");
+					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.GetPos(), "+0 Lives");
 				}
 			}
 

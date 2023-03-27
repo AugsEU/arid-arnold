@@ -106,7 +106,7 @@
 
 					foreach (Entity entity in nearbyEntities)
 					{
-						if(entity.pPosition.Y < mExplosionCentre.Y)
+						if(entity.GetPos().Y < mExplosionCentre.Y)
 						{
 							EArgs args;
 							args.sender = this;
@@ -176,9 +176,9 @@
 			bool draw = false;
 			while(collisions.Count == 0 && traceLenRemaining > 0)
 			{
-				Vector2 v1 = freeBodyEntity.pPosition + TRACE_OFFSET;
+				Vector2 v1 = freeBodyEntity.GetPos() + TRACE_OFFSET;
 				freeBodyEntity.MoveTimeStep(timeStep);
-				Vector2 v2 = freeBodyEntity.pPosition + TRACE_OFFSET;
+				Vector2 v2 = freeBodyEntity.GetPos() + TRACE_OFFSET;
 
 				traceLenRemaining -= Vector2.Distance(v1, v2);
 

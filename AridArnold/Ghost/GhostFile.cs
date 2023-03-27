@@ -144,9 +144,9 @@
 				}
 
 				GhostInfo info;
-				info.position = entity.pPosition;
-				info.velocity = entity.pVelocity;
-				info.grounded = entity.pGrounded;
+				info.position = entity.GetPos();
+				info.velocity = entity.GetVelocity();
+				info.grounded = entity.OnGround();
 				info.gravity = entity.GetGravityDir();
 
 				mGhostInfos[frame].Add(info);

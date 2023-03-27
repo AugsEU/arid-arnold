@@ -362,7 +362,7 @@
 					}
 					else
 					{
-						float dist = (mPosition - entity.pPosition).LengthSquared();
+						float dist = (mPosition - entity.GetPos()).LengthSquared();
 						if (dist < closestDist)
 						{
 							closestDist = dist;
@@ -372,7 +372,7 @@
 				}
 			}
 
-			float dx = closestArnold.pPosition.X - mPosition.X;
+			float dx = closestArnold.GetPos().X - mPosition.X;
 
 			if (Math.Abs(dx) < 32.0f)
 			{

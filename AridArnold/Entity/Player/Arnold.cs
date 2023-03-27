@@ -295,7 +295,7 @@
 				{
 					const float UNTANGLE_DISTANCE = 5.0f;
 
-					Vector2 displacement = entity.pPosition - mPosition;
+					Vector2 displacement = entity.GetPos() - mPosition;
 
 					if (displacement.LengthSquared() < UNTANGLE_DISTANCE * UNTANGLE_DISTANCE)
 					{

@@ -149,7 +149,7 @@
 				CardinalDirection ourGrav = ourPlatEntity.GetGravityDir();
 				CardinalDirection theirGrav = theirPlatEntity.GetGravityDir();
 
-				if(ourGrav != theirGrav || ourPlatEntity.pGrounded == false)
+				if(ourGrav != theirGrav || ourPlatEntity.OnGround() == false)
 				{
 					return Vector2.Zero;
 				}
@@ -161,8 +161,7 @@
 					const float DRAG_FACTOR = 0.4f;
 					const float DRAG_THRESH = 4.0f;
 					Vector2 dir = MonoMath.Perpendicular(gravity);
-					Vector2 ourVel = mEntity.pVelocity;
-					Vector2 addedVelocity = Vector2.Dot(dir, ourVel) * dir;
+					Vector2 addedVelocity = Vector2.Dot(dir, mEntity.GetVelocity()) * dir;
 
 					float len = addedVelocity.Length();
 					if(len > DRAG_THRESH)

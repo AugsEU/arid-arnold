@@ -199,7 +199,7 @@
 			Vector2 output = segEnd + dir;
 
 			mTransportingEntity.SetCentrePos(output);
-			mTransportingEntity.pVelocity = dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length());
+			mTransportingEntity.SetVelocity(dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length()));
 
 			mTransportingEntity.SetEnabled(true);
 			mTransportingEntity = null;

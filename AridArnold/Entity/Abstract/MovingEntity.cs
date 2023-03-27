@@ -174,13 +174,24 @@
 			return mPrevVelocity;
 		}
 
+
+		
 		/// <summary>
-		/// Velocity Property.
+		/// Get current velocity
 		/// </summary>
-		public Vector2 pVelocity
+		public Vector2 GetVelocity()
 		{
-			get { return mVelocity; }
-			set { mVelocity = value; }
+			return mVelocity;
+		}
+
+
+
+		/// <summary>
+		/// Set velocity.
+		/// </summary>
+		public void SetVelocity(Vector2 vel)
+		{
+			mVelocity = vel;
 		}
 
 		#endregion rUtility
