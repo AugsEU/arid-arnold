@@ -78,7 +78,7 @@
 			mTransportingEntity = entityToTransport;
 			mTransportingEntity.SetEnabled(false); // Hide entity as it travels through the pipe
 			mInputSpeed = mTransportingEntity.GetPrevVelocity().Length();
-			mSegmentTotalTime = MathF.Min(10.0f / mInputSpeed, 2.0f);
+			mSegmentTotalTime = Math.Clamp(10.0f / mInputSpeed, 0.5f, 2.0f);
 
 			mSegmentTimer = -0.5f * mSegmentTotalTime;
 			mTraceHistory = new TraceInfo?[TRACE_NUMBER];

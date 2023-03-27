@@ -14,6 +14,8 @@
 		static Color TRACE_COLOR = new Color(100, 100, 100);
 		static Color TRACE_COLOR_SHADOW = new Color(30, 30, 30);
 
+		static Vector2 TRACE_OFFSET = new Vector2(1.0f, 1.0f);
+
 		#endregion rConstants
 
 
@@ -86,6 +88,7 @@
 			float dt = Util.GetDeltaT(gameTime);
 
 			// Free-body motion
+			mPrevVelocity = mVelocity;
 			mVelocity.Y += dt * LASER_BOMB_GRAVITY;
 
 			//Draw
@@ -165,7 +168,7 @@
 
 			float traceLenRemaining = mTraceLength;
 			GameTime timeStep = new GameTime(new TimeSpan(0), new TimeSpan(600000));
-			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition + new Vector2(1.0f, 2.0f), mVelocity, LASER_BOMB_GRAVITY, mTexture.Width);
+			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition, mVelocity, LASER_BOMB_GRAVITY, mTexture.Width);
 
 			List<EntityCollision> collisions = new List<EntityCollision>();
 			TileManager.I.GatherCollisions(timeStep, freeBodyEntity, ref collisions);
@@ -173,9 +176,9 @@
 			bool draw = false;
 			while(collisions.Count == 0 && traceLenRemaining > 0)
 			{
-				Vector2 v1 = freeBodyEntity.pPosition;
+				Vector2 v1 = freeBodyEntity.pPosition + TRACE_OFFSET;
 				freeBodyEntity.MoveTimeStep(timeStep);
-				Vector2 v2 = freeBodyEntity.pPosition;
+				Vector2 v2 = freeBodyEntity.pPosition + TRACE_OFFSET;
 
 				traceLenRemaining -= Vector2.Distance(v1, v2);
 
@@ -190,5 +193,27 @@
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Enable/Disable entity
+		/// </summary>
+		public override void SetEnabled(bool enabled)
+		{
+			// When disabling, recude trace size. This is so when it re-appears the trace doesn't suddenly appear.
+			if(enabled == false)
+			{
+				mTraceLength = 0.0f;
+			}
+
+			base.SetEnabled(enabled);
+		}
+
+		#endregion rUtility
 	}
 }

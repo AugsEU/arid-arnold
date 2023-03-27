@@ -202,7 +202,7 @@
 		/// <summary>
 		/// Enable/Disable this entity. Disabled entities will not be drawn or updated.
 		/// </summary>
-		public void SetEnabled(bool enabled)
+		public virtual void SetEnabled(bool enabled)
 		{
 			mEnabled = enabled;
 		}
