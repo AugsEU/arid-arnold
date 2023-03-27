@@ -64,9 +64,15 @@
 		/// <summary>
 		/// When an Entity touches us.
 		/// </summary>
-		public override void OnTouch(MovingEntity entity)
+		public override void OnTouch(MovingEntity entity, CollisionResults collisionResults)
 		{
 			if(!mIsEntry)
+			{
+				return;
+			}
+
+			Vector2 normal = GetEntryDirection();
+			if(normal != collisionResults.normal)
 			{
 				return;
 			}
@@ -77,7 +83,7 @@
 
 			// To do: Spawn FX
 
-			base.OnTouch(entity);
+			base.OnTouch(entity, collisionResults);
 		}
 
 		#endregion rUpdate
@@ -97,5 +103,41 @@
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Get normal of entry direction.
+		/// E.g. if we are entering from the top, this returns up.
+		/// </summary>
+		Vector2 GetEntryDirection()
+		{
+			if(!mIsEntry)
+			{
+				return Vector2.Zero;
+			}
+
+			switch (mAdjacency)
+			{
+				case AdjacencyType.Top:
+					return new Vector2(0.0f, 1.0f);
+				case AdjacencyType.Bottom:
+					return new Vector2(0.0f, -1.0f);
+				case AdjacencyType.Left:
+					return new Vector2(1.0f, 0.0f);
+				case AdjacencyType.Right:
+					return new Vector2(-1.0f, 0.0f);
+				default:
+					break;
+			}
+
+			throw new NotImplementedException();
+		}
+
+		#endregion rUtility
 	}
 }

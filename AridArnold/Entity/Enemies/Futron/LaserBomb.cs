@@ -158,9 +158,14 @@
 		/// </summary>
 		private void DrawProjectedLine(DrawInfo info)
 		{
+			if(mState != ProjectileState.FreeMotion)
+			{
+				return;
+			}
+
 			float traceLenRemaining = mTraceLength;
 			GameTime timeStep = new GameTime(new TimeSpan(0), new TimeSpan(600000));
-			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition, mVelocity, LASER_BOMB_GRAVITY, mTexture.Width);
+			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition + new Vector2(1.0f, 2.0f), mVelocity, LASER_BOMB_GRAVITY, mTexture.Width);
 
 			List<EntityCollision> collisions = new List<EntityCollision>();
 			TileManager.I.GatherCollisions(timeStep, freeBodyEntity, ref collisions);

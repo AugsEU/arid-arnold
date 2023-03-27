@@ -32,6 +32,8 @@
 			new Color(7,33,30)
 		};
 
+		const float SPEED_MULTIPLIER = 1.4f;
+
 		#endregion rConstants
 
 
@@ -197,7 +199,7 @@
 			Vector2 output = segEnd + dir;
 
 			mTransportingEntity.SetCentrePos(output);
-			mTransportingEntity.pVelocity = dir * mInputSpeed / dir.Length();
+			mTransportingEntity.pVelocity = dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length());
 
 			mTransportingEntity.SetEnabled(true);
 			mTransportingEntity = null;

@@ -87,7 +87,7 @@
 
 		public override void PostCollisionReact(MovingEntity entity)
 		{
-			TileManager.I.GetTile(mTileCoord).OnTouch(entity);
+			TileManager.I.GetTile(mTileCoord).OnTouch(entity, mResult);
 
 			base.PostCollisionReact(entity);
 		}

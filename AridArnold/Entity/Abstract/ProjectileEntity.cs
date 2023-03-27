@@ -87,10 +87,16 @@ namespace AridArnold
 
 			if (collisions.Count > 0)
 			{
-				CollisionResults firstCollision = MonoAlg.GetMin(ref collisions, EntityCollision.COLLISION_SORTER).GetResult();
-				mExplosionCentre = mPosition + firstCollision.t.Value * VelocityToDisplacement(gameTime);
-				mState = ProjectileState.Exploding;
-				mExplodingAnim.Play();
+				EntityCollision firstCollision = MonoAlg.GetMin(ref collisions, EntityCollision.COLLISION_SORTER);
+				firstCollision.PostCollisionReact(this);
+
+				// Collision reaction could change enabled status.
+				if (IsEnabled())
+				{
+					mExplosionCentre = mPosition + firstCollision.GetResult().t.Value * VelocityToDisplacement(gameTime);
+					mState = ProjectileState.Exploding;
+					mExplodingAnim.Play();
+				}
 			}
 			else
 			{

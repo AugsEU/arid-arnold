@@ -237,7 +237,7 @@
 		/// Called when an entity touches us. E.g. Arnold is standing on a tile
 		/// </summary>
 		/// <param name="entity">Entity that touched us</param>
-		public virtual void OnTouch(MovingEntity entity) { }
+		public virtual void OnTouch(MovingEntity entity, CollisionResults collisionResults) { }
 
 
 
