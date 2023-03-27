@@ -199,7 +199,7 @@
 			Vector2 output = segEnd + dir;
 
 			mTransportingEntity.SetCentrePos(output);
-			mTransportingEntity.SetVelocity(dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length()));
+			mTransportingEntity.OverrideVelocity(dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length()));
 
 			if(mTransportingEntity is PlatformingEntity)
 			{
