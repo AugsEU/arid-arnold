@@ -194,6 +194,16 @@
 			mVelocity = vel;
 		}
 
+
+
+		/// <summary>
+		/// Kind of like setting the velocity, but we override all other related to the velocity.
+		/// </summary>
+		public virtual void OverrideVelocity(Vector2 vel)
+		{
+			mVelocity = vel;
+		}
+
 		#endregion rUtility
 
 	}

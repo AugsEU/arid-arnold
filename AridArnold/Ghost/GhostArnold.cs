@@ -40,7 +40,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			SetDirFromVelocity();
+			SetPrevWalkDirFromVelocity();
 			mWalkDirection = mPrevDirection;
 			mRunningAnimation.Update(gameTime);
 		}

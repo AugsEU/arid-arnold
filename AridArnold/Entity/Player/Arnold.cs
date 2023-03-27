@@ -132,7 +132,7 @@
 
 			if (mOnGround == false)
 			{
-				SetDirFromVelocity();
+				SetPrevWalkDirFromVelocity();
 				mWalkSpeed = ARNOLD_WALK_SPEED + ARNOLD_AIR_SPEED_BOOST;
 			}
 			else
@@ -228,41 +228,6 @@
 				{
 					mWalkDirection = WalkDirection.None;
 				}
-			}
-		}
-
-
-
-		/// <summary>
-		/// Set previous walk direction from the velocity we have. Prevents jumping backwards with mirrors.
-		/// </summary>
-		protected void SetDirFromVelocity()
-		{
-			const float AIR_DIR_THRESH = 0.25f;
-			switch (GetGravityDir())
-			{
-				case CardinalDirection.Down:
-				case CardinalDirection.Up:
-					if (mVelocity.X > AIR_DIR_THRESH)
-					{
-						mPrevDirection = WalkDirection.Right;
-					}
-					else if (mVelocity.X < -AIR_DIR_THRESH)
-					{
-						mPrevDirection = WalkDirection.Left;
-					}
-					break;
-				case CardinalDirection.Right:
-				case CardinalDirection.Left:
-					if (mVelocity.Y > AIR_DIR_THRESH)
-					{
-						mPrevDirection = WalkDirection.Right;
-					}
-					else if (mVelocity.Y < -AIR_DIR_THRESH)
-					{
-						mPrevDirection = WalkDirection.Left;
-					}
-					break;
 			}
 		}
 

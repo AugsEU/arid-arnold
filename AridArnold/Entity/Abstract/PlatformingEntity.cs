@@ -347,6 +347,40 @@
 		}
 
 
+		/// <summary>
+		/// Set previous walk direction from the velocity we have. Prevents jumping backwards with mirrors.
+		/// </summary>
+		protected void SetPrevWalkDirFromVelocity()
+		{
+			const float AIR_DIR_THRESH = 0.25f;
+			switch (GetGravityDir())
+			{
+				case CardinalDirection.Down:
+				case CardinalDirection.Up:
+					if (mVelocity.X > AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Right;
+					}
+					else if (mVelocity.X < -AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Left;
+					}
+					break;
+				case CardinalDirection.Right:
+				case CardinalDirection.Left:
+					if (mVelocity.Y > AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Right;
+					}
+					else if (mVelocity.Y < -AIR_DIR_THRESH)
+					{
+						mPrevDirection = WalkDirection.Left;
+					}
+					break;
+			}
+		}
+
+
 
 		/// <summary>
 		/// Make entity jump.
@@ -422,6 +456,19 @@
 		public void SetGrounded(bool value)
 		{
 			mOnGround = value;
+		}
+
+
+
+		/// <summary>
+		/// Overriding the velocity should
+		/// </summary>
+		public override void OverrideVelocity(Vector2 vel)
+		{
+			base.OverrideVelocity(vel);
+
+			SetPrevWalkDirFromVelocity();
+			mWalkDirection = WalkDirection.None;
 		}
 
 		#endregion rUtility

@@ -201,6 +201,13 @@
 			mTransportingEntity.SetCentrePos(output);
 			mTransportingEntity.SetVelocity(dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length()));
 
+			if(mTransportingEntity is PlatformingEntity)
+			{
+				PlatformingEntity platformingEntity = (PlatformingEntity)mTransportingEntity;
+				platformingEntity.SetGrounded(dir.Y < 0.0f && MathF.Abs(dir.X) < 0.001f);
+			}
+
+			// Release to the world.
 			mTransportingEntity.SetEnabled(true);
 			mTransportingEntity = null;
 		}
