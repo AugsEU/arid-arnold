@@ -289,6 +289,7 @@
 
 			foreach (Entity entity in mRegisteredEntities)
 			{
+				if (!entity.IsEnabled()) continue;
 				foreach (Type type in types)
 				{
 					if (entity.GetType() == type && !ReferenceEquals(nearEntity, entity))
@@ -318,6 +319,7 @@
 
 			foreach (Entity entity in mRegisteredEntities)
 			{
+				if (!entity.IsEnabled()) continue;
 				foreach (Type type in types)
 				{
 					if (entity.GetType() == type)

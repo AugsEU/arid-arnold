@@ -184,7 +184,7 @@
 
 				if (draw)
 				{
-					MonoDraw.DrawLineShadow(info, v1, v2, TRACE_COLOR, TRACE_COLOR_SHADOW, 3.0f, 1.5f);
+					MonoDraw.DrawLineShadow(info, v1, v2, TRACE_COLOR, TRACE_COLOR_SHADOW, 3.0f, 2.0f);
 				}
 
 				draw = !draw;
