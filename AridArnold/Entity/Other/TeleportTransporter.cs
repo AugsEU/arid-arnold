@@ -29,10 +29,10 @@
 		{
 			new Color(0,81,72),
 			new Color(0,61,54),
-			new Color(7,33,30)
+			new Color(7,33,30) 
 		};
 
-		const float SPEED_MULTIPLIER = 1.4f;
+		const float SPEED_MULTIPLIER = 1.4025f;
 
 		#endregion rConstants
 

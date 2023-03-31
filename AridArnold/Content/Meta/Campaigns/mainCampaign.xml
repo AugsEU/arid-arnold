@@ -155,7 +155,7 @@
 				</level>
 				<level id="level5-3">
 					<type>collectWater</type>
-					<waterNeeded>4</waterNeeded>
+					<waterNeeded>5</waterNeeded>
 				</level>
 				<level id="level5-4">
 					<type>collectFlag</type>
