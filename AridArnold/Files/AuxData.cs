@@ -25,7 +25,7 @@
 
 		#region rInit
 
-		public AuxData(string fileName) : base(fileName + ".aux")
+		public AuxData(string fileName) : base(fileName + ".aux", false)
 		{
 			mRailDatas = new List<LinearRailData>();
 			mEntityDatas = new List<EntityData>();

@@ -29,7 +29,7 @@
 
 		#region rInitialisation
 
-		public GhostFile(Level level) : base(level.pName + ".ght")
+		public GhostFile(Level level) : base(level.pName + ".ght", true)
 		{
 			mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
 			mLevel = level;

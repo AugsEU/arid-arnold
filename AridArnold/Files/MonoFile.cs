@@ -1,4 +1,7 @@
-﻿namespace AridArnold
+﻿using System.IO;
+using System.IO.Compression;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Simple class for file manipulation
@@ -8,6 +11,7 @@
 		#region rMembers
 
 		protected string mFileName;
+		protected bool mIsCompressed;
 
 		#endregion rMembers
 
@@ -21,9 +25,10 @@
 		/// Create mono file from name
 		/// </summary>
 		/// <param name="mFilename">File name only(not path)</param>
-		public MonoFile(string fileName)
+		public MonoFile(string fileName, bool isCompressed)
 		{
 			mFileName = fileName;
+			mIsCompressed = isCompressed;
 		}
 
 		#endregion rInitialisation
@@ -83,6 +88,16 @@
 			return GetFullFolder() + GetFilename();
 		}
 
+
+
+		/// <summary>
+		/// Is this a compressed file?
+		/// </summary>
+		public bool IsCompressed()
+		{
+			return mIsCompressed;
+		}
+
 		#endregion rFileSystem
 	}
 
@@ -100,7 +115,7 @@
 		/// <summary>
 		/// Create mono file from name
 		/// </summary>
-		public MonoReadFile(string fileName) : base(fileName)
+		public MonoReadFile(string fileName, bool compressed) : base(fileName, compressed)
 		{
 		}
 
@@ -126,8 +141,27 @@
 
 			bool delFile = false;
 
-			using (FileStream stream = File.OpenRead(filePath))
+			if (mIsCompressed)
 			{
+				using (FileStream stream = File.OpenRead(filePath))
+				using (GZipStream decompressionStream = new GZipStream(stream, CompressionMode.Decompress))
+				using (BinaryReader br = new BinaryReader(decompressionStream))
+				{
+					try
+					{
+						ReadBinary(br);
+					}
+					catch (Exception ex)
+					{
+						AbortRead();
+						delFile = true;
+						MonoDebug.Log("Exception: " + ex.ToString());
+					}
+				}
+			}
+			else
+			{
+				using (FileStream stream = File.OpenRead(filePath))
 				using (BinaryReader br = new BinaryReader(stream))
 				{
 					try
@@ -195,7 +229,7 @@
 		/// Create mono file from name
 		/// </summary>
 		/// <param name="mFilename">File name only(not path)</param>
-		public MonoReadWriteFile(string fileName) : base (fileName)
+		public MonoReadWriteFile(string fileName, bool compressed) : base (fileName, compressed)
 		{
 		}
 
@@ -233,9 +267,19 @@
 			}
 
 
-			using (FileStream stream = File.OpenWrite(filePath))
+			if (mIsCompressed)
 			{
-				using (BinaryWriter bw = new BinaryWriter(stream))
+				using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+				using (GZipStream compressionStream = new GZipStream(fileStream, CompressionLevel.Optimal))
+				using (BinaryWriter bw = new BinaryWriter(compressionStream))
+				{
+					WriteBinary(bw);
+				}
+			}
+			else
+			{
+				using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+				using (BinaryWriter bw = new BinaryWriter(fileStream))
 				{
 					WriteBinary(bw);
 				}
