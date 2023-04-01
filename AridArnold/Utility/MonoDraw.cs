@@ -285,7 +285,7 @@
 		{
 			float distance = Vector2.Distance(point1, point2);
 			float angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
-			DrawLine(info, point1, distance, angle, color, thickness);
+			DrawLine(info, point1, distance, angle, color, thickness, depth);
 		}
 
 
@@ -312,7 +312,7 @@
 			point1.Y += dropDistance;
 			point2.Y += dropDistance;
 
-			DrawLine(info, point1, point2, shadowColor, thickness, depth);
+			DrawLine(info, point1, point2, shadowColor, thickness, depth + BACK_EPSILON);
 		}
 
 		#endregion rRender
