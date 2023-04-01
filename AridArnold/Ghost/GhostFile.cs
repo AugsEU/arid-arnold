@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		const int MAX_FRAMES = 60 * 60 * 10;//10 minutes of recording.
+		const int MAX_FRAMES = 60 * 60 * 20;//20 minutes of recording.
 		readonly char[] FILE_MAGIC = { 'G', 'H', 'T' };
 
 		#endregion rConstants
