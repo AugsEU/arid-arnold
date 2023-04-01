@@ -19,6 +19,7 @@
 		/// </summary>
 		public FutronGun(Vector2 pos, float shootPhase, float shootFreq) : base(pos, shootPhase, shootFreq)
 		{
+			mPosition.Y += 2.0f;
 		}
 
 
