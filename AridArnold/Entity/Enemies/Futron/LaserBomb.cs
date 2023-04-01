@@ -108,10 +108,7 @@
 					{
 						if(entity.GetPos().Y < mExplosionCentre.Y)
 						{
-							EArgs args;
-							args.sender = this;
-
-							EventManager.I.SendEvent(EventType.KillPlayer, args);
+							KillPlayer((MovingEntity)entity);
 							break;
 						}
 					}

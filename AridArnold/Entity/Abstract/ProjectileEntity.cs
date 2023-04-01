@@ -8,6 +8,16 @@ namespace AridArnold
 {
 	abstract class ProjectileEntity : MovingEntity
 	{
+		#region rConstants
+
+		const float SPEED_KILL_LIMIT = 32.0f;
+
+		#endregion rConstants
+
+
+
+
+
 		#region rTypes
 
 		protected enum ProjectileState
@@ -135,6 +145,27 @@ namespace AridArnold
 		/// </summary>
 		public override void ReactToCollision(Vector2 collisionNormal)
 		{
+		}
+
+
+
+		/// <summary>
+		/// Kill player.
+		/// </summary>
+		protected void KillPlayer(MovingEntity movingEntity)
+		{
+			if(movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
+			{
+				// Entity is travelling too fast. Not fair to kill them.
+				return;
+			}
+
+			//Kill the player on touching.
+			EArgs args;
+			args.sender = this;
+
+			EventManager.I.SendEvent(EventType.KillPlayer, args);
+			EntityManager.I.QueueDeleteEntity(this);
 		}
 
 		#endregion rUpdate

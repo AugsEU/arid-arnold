@@ -97,12 +97,7 @@ namespace AridArnold
 			{
 				if (entity is Arnold)
 				{
-					//Kill the player on touching.
-					EArgs args;
-					args.sender = this;
-
-					EventManager.I.SendEvent(EventType.KillPlayer, args);
-					EntityManager.I.QueueDeleteEntity(this);
+					KillPlayer((MovingEntity)entity);
 				}
 			}
 
