@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using Microsoft.Xna.Framework.Graphics;
+
+namespace AridArnold
 {
 	// Entity that travels through teleportation pipes
 	class TeleportTransporter : Entity
@@ -10,6 +12,7 @@
 			public Texture2D mTexture;
 			public Vector2 mPosition;
 			public float mRotation;
+			public SpriteEffects mSpriteEffects;
 		}
 
 		#endregion rTypes
@@ -123,20 +126,20 @@
 			float dt = Util.GetDeltaT(gameTime);
 			mSegmentTimer += dt;
 
-			// Make sure to call this after updating the segment timer
-			UpdateSegmentTraces(dt);
-
-			if(mSegmentTimer > mSegmentTotalTime)
+			if (mSegmentTimer > mSegmentTotalTime)
 			{
 				Point? next = GetNextSegment(mSegmentStart, mSegmentEnd);
-				
-				if(next != null)
+
+				if (next != null)
 				{
 					mSegmentTimer -= mSegmentTotalTime;
 					mSegmentStart = mSegmentEnd;
 					mSegmentEnd = next.Value;
 				}
 			}
+
+			// Make sure to call this after updating the segment timer
+			UpdateSegmentTraces(dt);
 
 			base.Update(gameTime);
 		}
@@ -164,15 +167,15 @@
 
 			Texture2D traceTex = mTraceTex1;
 
-			if (currIdx == -1 || currIdx == SEGMENT_DIVISIONS + 1)
+			if (currIdx == -1 || currIdx == SEGMENT_DIVISIONS)
 			{
 				traceTex = mTraceTex2;
 			}
-			else if(currIdx == SEGMENT_DIVISIONS + 2)
+			else if(currIdx == SEGMENT_DIVISIONS + 1)
 			{
 				traceTex = mTraceTex3;
 			}
-			else if(currIdx > SEGMENT_DIVISIONS + 2)
+			else if(currIdx > SEGMENT_DIVISIONS + 1)
 			{
 				mTraceHistory[0] = null;
 				ShootOutEntity();
@@ -245,7 +248,7 @@
 
 				TraceInfo tracer = mTraceHistory[i].Value;
 
-				MonoDraw.DrawTexture(info, tracer.mTexture, tracer.mPosition, null, TRACE_COLORS[i], tracer.mRotation, Vector2.Zero, 1.0f, SpriteEffects.None, MonoDraw.LAYER_ABOVE_TILE);
+				MonoDraw.DrawTexture(info, tracer.mTexture, tracer.mPosition, null, TRACE_COLORS[i], tracer.mRotation, Vector2.Zero, 1.0f, tracer.mSpriteEffects, MonoDraw.LAYER_ABOVE_TILE);
 			}
 		}
 
@@ -287,6 +290,7 @@
 		{
 			TraceInfo traceInfo = new TraceInfo();
 			traceInfo.mTexture = texture;
+			traceInfo.mSpriteEffects = SpriteEffects.None;
 
 			Vector2 segStartPos = TileManager.I.GetTileCentre(mSegmentStart);
 			Vector2 segEndPos = TileManager.I.GetTileCentre(mSegmentEnd);
@@ -298,9 +302,31 @@
 			{
 				mPosition.Y -= Tile.sTILE_SIZE / 2.0f;
 				traceInfo.mRotation = 0.0f;
+
+				bool left = (segStartPos.X > segEndPos.X);
+				if (left != (segIdx >= SEGMENT_DIVISIONS))
+				{
+					traceInfo.mSpriteEffects = SpriteEffects.FlipHorizontally;
+				}
+
+				if(left)
+				{
+					mPosition.X -= mTraceTex1.Width;
+				}
 			}
 			else
 			{
+				bool up = (segStartPos.Y > segEndPos.Y);
+				if (up != (segIdx >= SEGMENT_DIVISIONS))
+				{
+					traceInfo.mSpriteEffects = SpriteEffects.FlipHorizontally;
+				}
+
+				if (up)
+				{
+					mPosition.Y -= mTraceTex1.Width;
+				}
+
 				mPosition.X += Tile.sTILE_SIZE / 2.0f;
 				traceInfo.mRotation = MathF.PI / 2.0f;
 			}
