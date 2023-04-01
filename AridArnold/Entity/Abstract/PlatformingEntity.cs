@@ -309,9 +309,31 @@
 		/// Set walk direction
 		/// </summary>
 		/// <param name="dir">New walk direction</param>
+		public WalkDirection GetWalkDirection()
+		{
+			return mWalkDirection;
+		}
+
+
+
+		/// <summary>
+		/// Set walk direction
+		/// </summary>
+		/// <param name="dir">New walk direction</param>
 		public void SetWalkDirection(WalkDirection dir)
 		{
 			mWalkDirection = dir;
+		}
+
+
+
+		/// <summary>
+		/// Set the "previous" walk direction
+		/// </summary>
+		/// <param name="dir">New walk direction</param>
+		public WalkDirection GetPrevWalkDirection()
+		{
+			return mPrevDirection;
 		}
 
 

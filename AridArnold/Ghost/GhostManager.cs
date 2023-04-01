@@ -2,10 +2,13 @@
 {
 	struct GhostInfo
 	{
-		public Vector2 position;
-		public Vector2 velocity;
-		public bool grounded;
-		public CardinalDirection gravity;
+		public bool mEnabled;
+		public Vector2 mPosition;
+		public Vector2 mVelocity;
+		public bool mGrounded;
+		public CardinalDirection mGravity;
+		public WalkDirection mWalkDirection;
+		public WalkDirection mPrevWalkDirection;
 	}
 
 	/// <summary>
@@ -159,6 +162,7 @@
 
 				foreach (GhostInfo ghost in ghosts)
 				{
+					if (!ghost.mEnabled) continue;
 					mGhostArnold.SetGhostInfo(ghost);
 					mGhostArnold.Draw(info);
 				}

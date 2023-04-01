@@ -59,10 +59,13 @@
 				bw.Write(mGhostInfos[i].Count);
 				foreach (GhostInfo info in mGhostInfos[i])
 				{
-					bw.Write(info.position.X); bw.Write(info.position.Y);
-					bw.Write(info.velocity.X); bw.Write(info.velocity.Y);
-					bw.Write(info.grounded);
-					bw.Write((int)info.gravity);
+					bw.Write(info.mEnabled);
+					bw.Write(info.mPosition.X); bw.Write(info.mPosition.Y);
+					bw.Write(info.mVelocity.X); bw.Write(info.mVelocity.Y);
+					bw.Write(info.mGrounded);
+					bw.Write((int)info.mGravity);
+					bw.Write((int)info.mWalkDirection);
+					bw.Write((int)info.mPrevWalkDirection);
 				}
 			}
 		}
@@ -89,12 +92,13 @@
 				for (int j = 0; j < ghostNumber; j++)
 				{
 					GhostInfo info;
-
-					info.position.X = br.ReadSingle(); info.position.Y = br.ReadSingle();
-					info.velocity.X = br.ReadSingle(); info.velocity.Y = br.ReadSingle();
-					info.grounded = br.ReadBoolean();
-					info.gravity = (CardinalDirection)br.ReadInt32();
-
+					info.mEnabled = (bool)br.ReadBoolean();
+					info.mPosition.X = br.ReadSingle(); info.mPosition.Y = br.ReadSingle();
+					info.mVelocity.X = br.ReadSingle(); info.mVelocity.Y = br.ReadSingle();
+					info.mGrounded = br.ReadBoolean();
+					info.mGravity = (CardinalDirection)br.ReadInt32();
+					info.mWalkDirection = (WalkDirection)br.ReadInt32();
+					info.mPrevWalkDirection = (WalkDirection)br.ReadInt32();
 					mGhostInfos[i].Add(info);
 				}
 			}
@@ -144,10 +148,13 @@
 				}
 
 				GhostInfo info;
-				info.position = entity.GetPos();
-				info.velocity = entity.GetVelocity();
-				info.grounded = entity.OnGround();
-				info.gravity = entity.GetGravityDir();
+				info.mEnabled = entity.IsEnabled();
+				info.mPosition = entity.GetPos();
+				info.mVelocity = entity.GetVelocity();
+				info.mGrounded = entity.OnGround();
+				info.mGravity = entity.GetGravityDir();
+				info.mWalkDirection = entity.GetWalkDirection();
+				info.mPrevWalkDirection = entity.GetPrevWalkDirection();
 
 				mGhostInfos[frame].Add(info);
 			}

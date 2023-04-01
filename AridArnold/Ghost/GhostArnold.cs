@@ -40,8 +40,6 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			SetPrevWalkDirFromVelocity();
-			mWalkDirection = mPrevDirection;
 			mRunningAnimation.Update(gameTime);
 		}
 
@@ -59,10 +57,13 @@
 		/// <param name="info"></param>
 		public void SetGhostInfo(GhostInfo info)
 		{
-			mPosition = info.position;
-			mVelocity = info.velocity;
-			mOnGround = info.grounded;
-			SetGravity(info.gravity);
+			mPosition = info.mPosition;
+			mVelocity = info.mVelocity;
+			mOnGround = info.mGrounded;
+			SetWalkDirection(info.mWalkDirection);
+			SetPrevWalkDirection(info.mPrevWalkDirection);
+			SetGravity(info.mGravity);
+			SetEnabled(info.mEnabled);
 		}
 
 
