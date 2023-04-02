@@ -37,7 +37,7 @@ namespace AridArnold
 				}
 				case "max": // Mono Animation XML
 				{
-					LoadFromXML(filePath)
+					LoadFromXML(filePath);
 					break;
 				}
 				default:
