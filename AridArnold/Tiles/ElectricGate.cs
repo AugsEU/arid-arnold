@@ -43,11 +43,11 @@
 		/// <summary>
 		/// Load content for electric gate.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/Lab/gate-closed");
-			mMidTexture = content.Load<Texture2D>("Tiles/Lab/gate-mid");
-			mOpenTexture = content.Load<Texture2D>("Tiles/Lab/gate-open");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/gate-closed");
+			mMidTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/gate-mid");
+			mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/gate-open");
 		}
 
 		#endregion rInitialisation

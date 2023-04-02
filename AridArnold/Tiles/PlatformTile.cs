@@ -98,10 +98,10 @@
 		/// <summary>
 		/// Load assets for this tile.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation(content);
-			base.LoadContent(content);
+			mAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation();
+			base.LoadContent();
 		}
 
 		#endregion rIntialisation

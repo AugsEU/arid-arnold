@@ -73,7 +73,7 @@
 		{
 			foreach (Entity entity in mQueuedRegisters)
 			{
-				RegisterEntity(entity, Main.GetMainContentManager());
+				RegisterEntity(entity);
 			}
 
 			foreach(Entity entity in mQueuedDeletes)
@@ -180,11 +180,10 @@
 		/// Register entity to this manager.
 		/// </summary>
 		/// <param name="entity">Entity to be registered</param>
-		/// <param name="content">Monogame content manager</param>
-		public void RegisterEntity(Entity entity, ContentManager content)
+		public void RegisterEntity(Entity entity)
 		{
 			mRegisteredEntities.Add(entity);
-			entity.LoadContent(content);
+			entity.LoadContent();
 		}
 
 

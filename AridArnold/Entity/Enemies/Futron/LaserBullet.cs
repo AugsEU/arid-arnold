@@ -40,18 +40,18 @@ namespace AridArnold
 		/// <summary>
 		/// Load laser texture
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			const float EFT = 0.08f;
-			mExplodingAnim = new Animator(content, Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Explode1", EFT)
-																			, ("Enemies/Futron-Gun/Explode2", EFT)
-																			, ("Enemies/Futron-Gun/Explode3", EFT)
-																			, ("Enemies/Futron-Gun/Explode4", EFT)
-																			, ("Enemies/Futron-Gun/Explode5", EFT)
-																			, ("Enemies/Futron-Gun/Explode6", EFT)
-																			, ("Enemies/Futron-Gun/Explode7", EFT)
-																			, ("Enemies/Futron-Gun/Explode8", EFT));
-			mTexture = content.Load<Texture2D>("Enemies/Futron-Gun/bullet");
+			mExplodingAnim = new Animator(Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Explode1", EFT)
+																   , ("Enemies/Futron-Gun/Explode2", EFT)
+																   , ("Enemies/Futron-Gun/Explode3", EFT)
+																   , ("Enemies/Futron-Gun/Explode4", EFT)
+																   , ("Enemies/Futron-Gun/Explode5", EFT)
+																   , ("Enemies/Futron-Gun/Explode6", EFT)
+																   , ("Enemies/Futron-Gun/Explode7", EFT)
+																   , ("Enemies/Futron-Gun/Explode8", EFT));
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/bullet");
 
 			if (mDirection == CardinalDirection.Left)
 			{

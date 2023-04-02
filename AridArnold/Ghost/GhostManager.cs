@@ -50,11 +50,10 @@
 		/// <summary>
 		/// Load content such as textures
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public void Load(ContentManager content)
+		public void Load()
 		{
 			mGhostArnold = new GhostArnold(Vector2.Zero);
-			mGhostArnold.LoadContent(content);
+			mGhostArnold.LoadContent();
 		}
 
 

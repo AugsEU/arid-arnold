@@ -48,11 +48,10 @@
 		/// <summary>
 		/// Load tile map from content manager
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public void Begin(ContentManager content)
+		public void Begin()
 		{
 			mLevelStatus = LevelStatus.Continue;
-			TileManager.I.LoadLevel(content, "Levels/" + mName);
+			TileManager.I.LoadLevel("Levels/" + mName);
 		}
 
 		#endregion rInitialisation

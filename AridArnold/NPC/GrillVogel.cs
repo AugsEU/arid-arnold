@@ -52,13 +52,13 @@
 		/// <summary>
 		/// Load barbara textures.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			//Setup idle animation.
-			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator idleAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/GrillVogel/Idle1", 3.8f));
 
-			Animator blinkAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator blinkAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/GrillVogel/Idle2", 0.05f),
 												("NPC/GrillVogel/Idle3", 0.05f),
 												("NPC/GrillVogel/Idle2", 0.1f));
@@ -66,10 +66,10 @@
 			mIdleAnimation = new IdleAnimator(idleAnim, 70.0f, blinkAnim);
 
 			//Talk textures.
-			mTalkTexture = content.Load<Texture2D>("NPC/GrillVogel/Talk1");
-			mAngryTexture = content.Load<Texture2D>("NPC/GrillVogel/Angry1");
+			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/GrillVogel/Talk1");
+			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/GrillVogel/Angry1");
 
-			base.LoadContent(content);
+			base.LoadContent();
 		}
 
 		#endregion rInitialisation

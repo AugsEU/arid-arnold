@@ -31,7 +31,7 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 		}
 

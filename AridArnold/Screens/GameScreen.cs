@@ -44,9 +44,8 @@
 		/// <summary>
 		/// Game screen constructor
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
 		/// <param name="graphics">Graphics device</param>
-		public GameScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
+		public GameScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
 			mLevelEndTimer = new PercentageTimer(END_LEVEL_TIME);
 
@@ -67,7 +66,7 @@
 		private void LoadLevel(Level levelToBegin)
 		{
 			FXManager.I.Clear();
-			levelToBegin.Begin(mContentManager);
+			levelToBegin.Begin();
 
 			if(ProgressManager.I.CanLoseLives() == false)
 			{
@@ -94,13 +93,12 @@
 		/// <summary>
 		/// Load content for UI elements
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
-			mLifeTexture = content.Load<Texture2D>("UI/Arnold-Life");
-			mEmptyLifeTexture = content.Load<Texture2D>("UI/Arnold-Life-Empty");
-			mUIBG = content.Load<Texture2D>("UI/ui_bg");
+			mLifeTexture = MonoData.I.MonoGameLoad<Texture2D>("UI/Arnold-Life");
+			mEmptyLifeTexture = MonoData.I.MonoGameLoad<Texture2D>("UI/Arnold-Life-Empty");
+			mUIBG = MonoData.I.MonoGameLoad<Texture2D>("UI/ui_bg");
 		}
 
 		#endregion

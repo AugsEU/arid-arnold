@@ -40,18 +40,18 @@
 		/// <summary>
 		/// Load content for roboto.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Enemies/roboto/roboto-off");
-			mJumpUpTex = content.Load<Texture2D>("Enemies/roboto/roboto-walk0");
-			mJumpDownTex = content.Load<Texture2D>("Enemies/roboto/roboto-fall");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/roboto/roboto-off");
+			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/roboto/roboto-walk0");
+			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/roboto/roboto-fall");
 
-			mRunningAnimation = new Animator(content, Animator.PlayType.Repeat,
+			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
 												("Enemies/roboto/roboto-walk0", 0.17f),
 												("Enemies/roboto/roboto-walk1", 0.17f));
 			mRunningAnimation.Play();
 
-			mStandAnimation = new Animator(content, Animator.PlayType.OneShot,
+			mStandAnimation = new Animator(Animator.PlayType.OneShot,
 											("Enemies/roboto/roboto-walk0", 1.2f));
 			mStandAnimation.Play();
 

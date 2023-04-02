@@ -51,27 +51,27 @@
 		/// <summary>
 		/// Load laser texture
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mBombAnim = new Animator(content, Animator.PlayType.Repeat, ("Enemies/Futron-Rocket/Bomb1", 0.1f)
-																	  , ("Enemies/Futron-Rocket/Bomb2", 0.1f)
-																	  , ("Enemies/Futron-Rocket/Bomb3", 0.1f)
-																	  , ("Enemies/Futron-Rocket/Bomb4", 0.1f));
+			mBombAnim = new Animator(Animator.PlayType.Repeat, ("Enemies/Futron-Rocket/Bomb1", 0.1f)
+															 , ("Enemies/Futron-Rocket/Bomb2", 0.1f)
+															 , ("Enemies/Futron-Rocket/Bomb3", 0.1f)
+															 , ("Enemies/Futron-Rocket/Bomb4", 0.1f));
 			mBombAnim.Play();
 
 			const float EFT = 0.1f;
-			mExplodingAnim = new Animator(content, Animator.PlayType.OneShot, ("Enemies/Futron-Rocket/Explosion1", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion2", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion3", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion4", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion5", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion6", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion7", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion8", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion9", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion10", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion11", EFT)
-																			, ("Enemies/Futron-Rocket/Explosion12", EFT));
+			mExplodingAnim = new Animator(Animator.PlayType.OneShot, ("Enemies/Futron-Rocket/Explosion1", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion2", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion3", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion4", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion5", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion6", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion7", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion8", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion9", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion10", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion11", EFT)
+																   , ("Enemies/Futron-Rocket/Explosion12", EFT));
 			mTexture = mBombAnim.GetTexture(0);
 		}
 

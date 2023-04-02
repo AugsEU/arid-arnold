@@ -47,18 +47,17 @@
 		/// <summary>
 		/// Load all textures
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			Animator fallDownAnim = new Animator(content, Animator.PlayType.OneShot
+			Animator fallDownAnim = new Animator(Animator.PlayType.OneShot
 																		, ("Tiles/flag2", 0.3f)
 																		, ("Tiles/flag3", 1.2f)
 																		, ("Tiles/flag2", 0.3f)
 																		, ("Tiles/flag1", 0.3f));
-			Animator faulterAnim = new Animator(content, Animator.PlayType.OneShot
+			Animator faulterAnim = new Animator(Animator.PlayType.OneShot
 																		, ("Tiles/flag2", 0.3f)
 																		, ("Tiles/flag1", 0.3f));
-			Animator wavesAnim = new Animator(content, Animator.PlayType.OneShot
+			Animator wavesAnim = new Animator(Animator.PlayType.OneShot
 																		, ("Tiles/flag0", 0.3f)
 																		, ("Tiles/flag1", 0.3f)
 																		, ("Tiles/flag0", 0.3f)
@@ -116,10 +115,9 @@
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/hotdog");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/hotdog");
 		}
 
 
@@ -172,10 +170,9 @@
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/bottle");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/bottle");
 		}
 
 		protected override CollectableType GetCollectableType()

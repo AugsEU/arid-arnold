@@ -47,10 +47,10 @@ namespace AridArnold
 		/// <summary>
 		/// Load Androld content.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/Lab/androld-tile0");
-			mActivationAnim = new Animator(content, Animator.PlayType.OneShot,
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/androld-tile0");
+			mActivationAnim = new Animator(Animator.PlayType.OneShot,
 											("Tiles/Lab/androld-tile1", 0.5f),
 											("Tiles/Lab/androld-tile2", 0.5f));
 		}

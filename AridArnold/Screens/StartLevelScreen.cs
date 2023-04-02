@@ -16,9 +16,8 @@
 		/// <summary>
 		/// Start level constructor
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
 		/// <param name="graphics">Graphics device manager</param>
-		public StartLevelScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
+		public StartLevelScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
 			mTimer = new MonoTimer();
 		}

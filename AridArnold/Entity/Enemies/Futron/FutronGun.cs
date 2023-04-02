@@ -27,27 +27,27 @@
 		/// <summary>
 		/// Load textures for futron-gun
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			const float FT = 0.2f;
-			mIdleAnim = new Animator(content, Animator.PlayType.Repeat, ("Enemies/Futron-Gun/Idle1", FT),
-																		("Enemies/Futron-Gun/Idle2", FT));
+			mIdleAnim = new Animator(Animator.PlayType.Repeat, ("Enemies/Futron-Gun/Idle1", FT),
+															   ("Enemies/Futron-Gun/Idle2", FT));
 
-			mChargeGunAnim = new Animator(content, Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Charge1", FT),
-																			  ("Enemies/Futron-Gun/Charge2", FT),
-																			  ("Enemies/Futron-Gun/Charge3", FT),
-																			  ("Enemies/Futron-Gun/Charge4", FT),
-																			  ("Enemies/Futron-Gun/Charge5", FT),
-																			  ("Enemies/Futron-Gun/Charge6", FT),
-																			  ("Enemies/Futron-Gun/Charge5", FT),
-																			  ("Enemies/Futron-Gun/Charge6", FT));
+			mChargeGunAnim = new Animator(Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Charge1", FT),
+																	 ("Enemies/Futron-Gun/Charge2", FT),
+																	 ("Enemies/Futron-Gun/Charge3", FT),
+																	 ("Enemies/Futron-Gun/Charge4", FT),
+																	 ("Enemies/Futron-Gun/Charge5", FT),
+																	 ("Enemies/Futron-Gun/Charge6", FT),
+																	 ("Enemies/Futron-Gun/Charge5", FT),
+																	 ("Enemies/Futron-Gun/Charge6", FT));
 
-			mShootGunAnim = new Animator(content, Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Shoot1", 0.15f),
-																			 ("Enemies/Futron-Gun/Shoot2", 0.15f),
-																			 ("Enemies/Futron-Gun/Shoot3", 0.15f),
-																			 ("Enemies/Futron-Gun/Shoot4", 0.15f));
+			mShootGunAnim = new Animator(Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Shoot1", 0.15f),
+																	("Enemies/Futron-Gun/Shoot2", 0.15f),
+																	("Enemies/Futron-Gun/Shoot3", 0.15f),
+																	("Enemies/Futron-Gun/Shoot4", 0.15f));
 
-			mTexture = content.Load<Texture2D>("Enemies/Futron-Gun/Idle1");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/Idle1");
 
 			mIdleAnim.Play();
 			mShootTimer.Start();

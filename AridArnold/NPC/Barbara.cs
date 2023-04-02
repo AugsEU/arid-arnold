@@ -18,21 +18,21 @@
 		/// <summary>
 		/// Load barbara textures.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			//Setup idle animation.
-			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator idleAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Barbara/Idle1", 1.0f));
 
-			Animator lookUpAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator lookUpAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Barbara/Idle5", 0.2f),
 												("NPC/Barbara/Idle2", 1.2f),
 												("NPC/Barbara/Idle5", 0.2f));
 
-			Animator footAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator footAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Barbara/Idle3", 0.7f));
 
-			Animator scratchAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator scratchAnim = new Animator(Animator.PlayType.OneShot,
 													("NPC/Barbara/Idle4", 0.2f),
 													("NPC/Barbara/Idle1", 0.3f),
 													("NPC/Barbara/Idle4", 0.2f));
@@ -40,10 +40,10 @@
 			mIdleAnimation = new IdleAnimator(idleAnim, 50.0f, lookUpAnim, footAnim, scratchAnim);
 
 			//Talk textures.
-			mTalkTexture = content.Load<Texture2D>("NPC/Barbara/Talk1");
-			mAngryTexture = content.Load<Texture2D>("NPC/Barbara/Angry1");
+			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Barbara/Talk1");
+			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Barbara/Angry1");
 
-			base.LoadContent(content);
+			base.LoadContent();
 		}
 
 		#endregion rInitialisation

@@ -24,14 +24,14 @@
 		/// <summary>
 		/// Load Zippy textures.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			//Setup idle animation.
-			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator idleAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Electrent/Idle1", 0.3f),
 												("NPC/Electrent/Idle2", 0.3f));
 
-			Animator textScroll = new Animator(content, Animator.PlayType.OneShot,
+			Animator textScroll = new Animator(Animator.PlayType.OneShot,
 												("NPC/Electrent/TextScroll1", 0.1f),
 												("NPC/Electrent/TextScroll2", 0.1f),
 												("NPC/Electrent/TextScroll3", 0.1f),
@@ -47,10 +47,10 @@
 			mIdleAnimation = new IdleAnimator(idleAnim, 10.0f, textScroll);
 
 			//Talk textures.
-			mTalkTexture = content.Load<Texture2D>("NPC/Electrent/Talk1");
-			mAngryTexture = content.Load<Texture2D>("NPC/Electrent/Angry1");
+			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Talk1");
+			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Angry1");
 
-			base.LoadContent(content);
+			base.LoadContent();
 		}
 
 		#endregion rInitialisation

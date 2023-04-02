@@ -34,16 +34,15 @@
 		/// <summary>
 		/// Load all the screens, but don't start them.
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
 		/// <param name="deviceManager">Graphics device</param>
-		public void LoadAllScreens(ContentManager content, GraphicsDeviceManager deviceManager)
+		public void LoadAllScreens(GraphicsDeviceManager deviceManager)
 		{
 			mScreens.Clear();
 
-			LoadScreen(ScreenType.Game, new GameScreen(content, deviceManager), content);
-			LoadScreen(ScreenType.GameOver, new GameOverScreen(content, deviceManager), content);
-			LoadScreen(ScreenType.LevelStart, new StartLevelScreen(content, deviceManager), content);
-			LoadScreen(ScreenType.EndGame, new EndScreen(content, deviceManager), content);
+			LoadScreen(ScreenType.Game, new GameScreen( deviceManager));
+			LoadScreen(ScreenType.GameOver, new GameOverScreen(deviceManager));
+			LoadScreen(ScreenType.LevelStart, new StartLevelScreen(deviceManager));
+			LoadScreen(ScreenType.EndGame, new EndScreen(deviceManager));
 		}
 
 
@@ -53,11 +52,10 @@
 		/// </summary>
 		/// <param name="type"></param>
 		/// <param name="screen"></param>
-		/// <param name="content"></param>
-		private void LoadScreen(ScreenType type, Screen screen, ContentManager content)
+		private void LoadScreen(ScreenType type, Screen screen)
 		{
 			mScreens.Add(type, screen);
-			screen.LoadContent(content);
+			screen.LoadContent();
 		}
 
 		#endregion rInitialise
@@ -140,7 +138,6 @@
 
 		#region rMembers
 
-		protected ContentManager mContentManager;
 		protected GraphicsDeviceManager mGraphics;
 		protected RenderTarget2D mScreenTarget;
 
@@ -155,13 +152,10 @@
 		/// <summary>
 		/// Screen constructor
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
 		/// <param name="graphics">Graphics device manager</param>
-		public Screen(ContentManager content, GraphicsDeviceManager graphics)
+		public Screen(GraphicsDeviceManager graphics)
 		{
-			mContentManager = content;
 			mGraphics = graphics;
-
 			mScreenTarget = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
 
@@ -170,8 +164,7 @@
 		/// <summary>
 		/// Load content for this screen
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public virtual void LoadContent(ContentManager content) { }
+		public virtual void LoadContent() { }
 
 
 

@@ -29,9 +29,9 @@ namespace AridArnold
 			}
 		}
 
-		public Animator GenerateAnimator(ContentManager content)
+		public Animator GenerateAnimator()
 		{
-			Animator newAnimator = new Animator(content, Animator.PlayType.Repeat, mTextures);
+			Animator newAnimator = new Animator(Animator.PlayType.Repeat, mTextures);
 			newAnimator.Play(RandomManager.I.GetDraw().GetUnitFloat());
 
 			return newAnimator;
@@ -80,9 +80,9 @@ namespace AridArnold
 		/// <summary>
 		/// Generate an animation object for a wall.
 		/// </summary>
-		public Animator GenerateWallAnimation(ContentManager content)
+		public Animator GenerateWallAnimation()
 		{
-			return mWallTheme.GenerateAnimator(content);
+			return mWallTheme.GenerateAnimator();
 		}
 
 
@@ -90,11 +90,9 @@ namespace AridArnold
 		/// <summary>
 		/// Generate an animation object for a platform.
 		/// </summary>
-		/// <param name="content"></param>
-		/// <returns></returns>
-		public Animator GeneratePlatformAnimation(ContentManager content)
+		public Animator GeneratePlatformAnimation()
 		{
-			return mPlatformTheme.GenerateAnimator(content);
+			return mPlatformTheme.GenerateAnimator();
 		}
 
 

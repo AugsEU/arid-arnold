@@ -83,10 +83,10 @@
 		/// <summary>
 		/// Load content.
 		/// </summary>
-		public static void LoadContent(ContentManager content)
+		public static void LoadContent()
 		{
-			sSpikeBorder = content.Load<Texture2D>("NPC/Dialog/DialogSpikeBorder");
-			sSpikeInner = content.Load<Texture2D>("NPC/Dialog/DialogSpikeInner");
+			sSpikeBorder = MonoData.I.MonoGameLoad<Texture2D>("NPC/Dialog/DialogSpikeBorder");
+			sSpikeInner = MonoData.I.MonoGameLoad<Texture2D>("NPC/Dialog/DialogSpikeInner");
 		}
 
 		#endregion rInitialisation

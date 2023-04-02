@@ -18,16 +18,16 @@
 		/// <summary>
 		/// Load Dok textures.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			//Setup idle animation.
-			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator idleAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Dok/Idle1", 1.2f));
 
-			Animator breatheOut = new Animator(content, Animator.PlayType.OneShot,
+			Animator breatheOut = new Animator(Animator.PlayType.OneShot,
 												("NPC/Dok/Idle2", 0.8f));
 
-			Animator stickSmack = new Animator(content, Animator.PlayType.OneShot,
+			Animator stickSmack = new Animator(Animator.PlayType.OneShot,
 												("NPC/Dok/Idle3", 0.3f),
 												("NPC/Dok/Idle1", 0.8f),
 												("NPC/Dok/Idle3", 0.3f));
@@ -35,10 +35,10 @@
 			mIdleAnimation = new IdleAnimator(idleAnim, 90.0f, breatheOut, stickSmack);
 
 			//Talk textures.
-			mTalkTexture = content.Load<Texture2D>("NPC/Dok/Talk1");
-			mAngryTexture = content.Load<Texture2D>("NPC/Dok/Angry1");
+			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Dok/Talk1");
+			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Dok/Angry1");
 
-			base.LoadContent(content);
+			base.LoadContent();
 		}
 
 		#endregion rInitialisation

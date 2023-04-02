@@ -55,7 +55,7 @@
 		/// <summary>
 		/// Load base NPC content.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			mTexture = GetIdleTexture();
 		}

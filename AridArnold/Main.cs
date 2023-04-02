@@ -87,12 +87,13 @@ namespace AridArnold
 		/// </summary>
 		protected override void LoadContent()
 		{
+			MonoData.I.Init(Content);
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			FontManager.I.LoadAllFonts(Content);
-			ScreenManager.I.LoadAllScreens(Content, _graphics);
+			FontManager.I.LoadAllFonts();
+			ScreenManager.I.LoadAllScreens(_graphics);
 			ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
-			GhostManager.I.Load(Content);
+			GhostManager.I.Load();
 			ProgressManager.I.Init("Content/Meta/Campaigns/mainCampaign.xml");
 			InputManager.I.Init();
 
@@ -107,7 +108,7 @@ namespace AridArnold
 		/// </summary>
 		void LoadGlobalContent()
 		{
-			SpeechBoxRenderer.LoadContent(Content);
+			SpeechBoxRenderer.LoadContent();
 		}
 
 		#endregion rInitialisation

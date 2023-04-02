@@ -21,11 +21,11 @@
 		/// Loads all fonts
 		/// </summary>
 		/// <param name="content">Monogame content manager</param>
-		public void LoadAllFonts(ContentManager content)
+		public void LoadAllFonts()
 		{
-			mFonts.Add("Pixica-24", content.Load<SpriteFont>("Fonts/Pixica"));
-			mFonts.Add("Pixica-12", content.Load<SpriteFont>("Fonts/Pixica-Medium"));
-			mFonts.Add("Pixica Micro-24", content.Load<SpriteFont>("Fonts/Pixica-Small"));
+			mFonts.Add("Pixica-24", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica"));
+			mFonts.Add("Pixica-12", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica-Medium"));
+			mFonts.Add("Pixica Micro-24", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica-Small"));
 		}
 
 

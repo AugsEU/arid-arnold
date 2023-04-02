@@ -21,21 +21,21 @@
 		/// <summary>
 		/// Load Zippy textures.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
 			//Setup idle animation.
-			Animator idleAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator idleAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Zippy/Idle1", 0.3f));
 
-			Animator breatheOut = new Animator(content, Animator.PlayType.OneShot,
+			Animator breatheOut = new Animator(Animator.PlayType.OneShot,
 												("NPC/Zippy/Idle2", 0.8f));
 
-			Animator sniffAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator sniffAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Zippy/Idle3", 0.2f),
 												("NPC/Zippy/Idle1", 0.8f),
 												("NPC/Zippy/Idle3", 0.2f));
 
-			Animator tailAnim = new Animator(content, Animator.PlayType.OneShot,
+			Animator tailAnim = new Animator(Animator.PlayType.OneShot,
 												("NPC/Zippy/Idle4", 0.3f),
 												("NPC/Zippy/Idle5", 0.4f),
 												("NPC/Zippy/Idle4", 0.2f),
@@ -47,10 +47,10 @@
 			mIdleAnimation = new IdleAnimator(idleAnim, 90.0f, breatheOut, tailAnim, sniffAnim);
 
 			//Talk textures.
-			mTalkTexture = content.Load<Texture2D>("NPC/Zippy/Talk1");
-			mAngryTexture = content.Load<Texture2D>("NPC/Zippy/Angry1");
+			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Zippy/Talk1");
+			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Zippy/Angry1");
 
-			base.LoadContent(content);
+			base.LoadContent();
 		}
 
 		#endregion rInitialisation

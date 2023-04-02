@@ -13,13 +13,13 @@
 		}
 
 
+
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/Mirror/mirror");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mirror/mirror");
 		}
 
 		#endregion rInitialisation

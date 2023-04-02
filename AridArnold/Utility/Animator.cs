@@ -58,7 +58,7 @@
 		/// Animator constructor
 		/// </summary>
 		/// <param name="playType">Play mode.(See enum for details)</param>
-		public Animator(ContentManager content, PlayType playType, params (string, float)[] frameData)
+		public Animator(PlayType playType, params (string, float)[] frameData)
 		{
 			mPlaying = false;
 			mTotalDuration = 0.0f;
@@ -68,7 +68,7 @@
 			for(int i = 0; i < frameData.Length; i++)
 			{
 				mTotalDuration += frameData[i].Item2;
-				mFrames.Add(new AnimationFrame(content.Load<Texture2D>(frameData[i].Item1), frameData[i].Item2));
+				mFrames.Add(new AnimationFrame(MonoData.I.MonoGameLoad<Texture2D>(frameData[i].Item1), frameData[i].Item2));
 			}
 		}
 

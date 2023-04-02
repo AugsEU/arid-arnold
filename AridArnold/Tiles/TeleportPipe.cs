@@ -27,11 +27,11 @@
 		/// <summary>
 		/// Load textures for teleportation pipe
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mBaseTexture = content.Load<Texture2D>("Tiles/WW7/TeleportPipe");
+			mBaseTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/WW7/TeleportPipe");
 
-			base.LoadContent(content);
+			base.LoadContent();
 		}
 
 

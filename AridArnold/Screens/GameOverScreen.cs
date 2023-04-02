@@ -10,9 +10,8 @@
 		/// <summary>
 		/// Game over constructor
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
 		/// <param name="graphics">Graphics device</param>
-		public GameOverScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
+		public GameOverScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
 		}
 

@@ -34,11 +34,10 @@
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/buk/mushroom");
-			mBounceAnim = new Animator(content, Animator.PlayType.OneShot,
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/buk/mushroom");
+			mBounceAnim = new Animator(Animator.PlayType.OneShot,
 											("Tiles/buk/mushroom-bounce1", 0.05f),
 											("Tiles/buk/mushroom-bounce2", 0.1f),
 											("Tiles/buk/mushroom-bounce1", 0.05f),

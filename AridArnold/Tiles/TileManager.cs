@@ -50,25 +50,25 @@
 		/// </summary>
 		/// <param name="content">Monogame content manager</param>
 		/// <param name="name">Name of the level</param>
-		public void LoadLevel(ContentManager content, string name)
+		public void LoadLevel(string name)
 		{
 			EntityManager.I.ClearEntities();
 			CollectableManager.I.ClearAllCollectables();
 			mEMField = new EMField(32);
 
 			//Load tile map.
-			LoadTilemap(content, name);
+			LoadTilemap(name);
 
 			//Load aux data.
-			LoadAuxData(content, name);
+			LoadAuxData(name);
 		}
 
 		/// <summary>
 		/// Load tilemap from image.
 		/// </summary>
-		public void LoadTilemap(ContentManager content, string name)
+		public void LoadTilemap(string name)
 		{
-			Texture2D tileTexture = content.Load<Texture2D>(name);
+			Texture2D tileTexture = MonoData.I.MonoGameLoad<Texture2D>(name);
 
 			mTileMap = new Tile[tileTexture.Width, tileTexture.Height];
 
@@ -84,9 +84,9 @@
 					Vector2 tileTopLeft = GetTileTopLeft(new Point(x,y));
 
 					mTileMap[x, y] = GetTileFromColour(colors1D[index], tileTopLeft);
-					mTileMap[x, y].LoadContent(content);
+					mTileMap[x, y].LoadContent();
 
-					AddEntityFromColour(col, tileTopLeft, content);
+					AddEntityFromColour(col, tileTopLeft);
 				}
 			}
 
@@ -107,7 +107,7 @@
 		/// <summary>
 		/// Load aux data.
 		/// </summary>
-		public void LoadAuxData(ContentManager content, string name)
+		public void LoadAuxData(string name)
 		{
 			// Load file
 			mAuxData = new AuxData(name);
@@ -121,7 +121,7 @@
 				LinearRailData railData = railList[i];
 				for(int j = 0; j < railData.GetCount(); j++)
 				{
-					RailPlatform.TryCreateRailPlatformAtNode(railData, j, content);
+					RailPlatform.TryCreateRailPlatformAtNode(railData, j);
 				}
 			}
 
@@ -131,7 +131,7 @@
 			for (int i = 0; i < entityList.Count; i++)
 			{
 				Entity newEntity = Entity.CreateEntityFromData(entityList[i]);
-				EntityManager.I.RegisterEntity(newEntity, content);
+				EntityManager.I.RegisterEntity(newEntity);
 			}
 		}
 
@@ -207,7 +207,7 @@
 		/// <param name="col">Colour you want to translate</param>
 		/// <param name="pos">Starting position of entity</param>
 		/// <param name="content">Monogame content manager</param>
-		private void AddEntityFromColour(Color col, Vector2 pos, ContentManager content)
+		private void AddEntityFromColour(Color col, Vector2 pos)
 		{
 			if (col.A > 0)
 			{
@@ -217,7 +217,7 @@
 				{
 					//Arnold
 					case 0xDC143Cu:
-						EntityManager.I.RegisterEntity(new Arnold(pos), content);
+						EntityManager.I.RegisterEntity(new Arnold(pos));
 						break;
 				}
 			}
@@ -515,7 +515,7 @@
 		{
 			Vector2 pos = new Vector2(point.X * mTileSize, point.Y * mTileSize) + mTileMapPos;
 			mTileMap[point.X, point.Y] = new AirTile(pos);
-			mTileMap[point.X, point.Y].LoadContent(Main.GetMainContentManager());//To do: Don't load content here.
+			mTileMap[point.X, point.Y].LoadContent();
 		}
 
 		#endregion rUtility

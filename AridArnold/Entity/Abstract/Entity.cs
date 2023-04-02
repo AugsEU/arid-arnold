@@ -46,8 +46,7 @@
 		/// <summary>
 		/// LoadContent for entity such as textures
 		/// </summary>
-		/// <param name="content">Monogame Content Manager</param>
-		public abstract void LoadContent(ContentManager content);
+		public abstract void LoadContent();
 
 		#endregion rInitialisation
 

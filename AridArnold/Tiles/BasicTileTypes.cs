@@ -79,10 +79,9 @@
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public virtual void LoadContent(ContentManager content)
+		public virtual void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/blank");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/blank");
 		}
 
 
@@ -345,10 +344,9 @@
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Tiles/air");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/air");
 		}
 
 		/// <summary>

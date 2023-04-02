@@ -29,16 +29,15 @@
 		/// <summary>
 		/// Load electric textures.
 		/// </summary>
-		/// <param name="content"></param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mFullAnimation = new Animator(content, Animator.PlayType.Repeat,
+			mFullAnimation = new Animator(Animator.PlayType.Repeat,
 									("Tiles/Lab/electric-full0", 0.154f),
 									("Tiles/Lab/electric-full1", 0.154f));
 			mFullAnimation.Play();
 
-			mMidTexture = content.Load<Texture2D>("Tiles/Lab/electric-mid");
-			mTexture = content.Load<Texture2D>("Tiles/Lab/electric-none");
+			mMidTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/electric-mid");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/electric-none");
 
 			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
 		}

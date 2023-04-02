@@ -101,11 +101,11 @@ namespace AridArnold
 		/// <summary>
 		/// Load content for TeleportTransporter.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTraceTex1 = content.Load<Texture2D>("Tiles/WW7/TeleportTrace1");
-			mTraceTex2 = content.Load<Texture2D>("Tiles/WW7/TeleportTrace2");
-			mTraceTex3 = content.Load<Texture2D>("Tiles/WW7/TeleportTrace3");
+			mTraceTex1 = MonoData.I.MonoGameLoad<Texture2D>("Tiles/WW7/TeleportTrace1");
+			mTraceTex2 = MonoData.I.MonoGameLoad<Texture2D>("Tiles/WW7/TeleportTrace2");
+			mTraceTex3 = MonoData.I.MonoGameLoad<Texture2D>("Tiles/WW7/TeleportTrace3");
 
 			mTraceHistory[0] = GenerateTraceAtHead(-2, mTraceTex3);
 		}

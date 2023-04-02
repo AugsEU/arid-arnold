@@ -10,9 +10,8 @@
 		/// <summary>
 		/// End screen constructor
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
 		/// <param name="graphics">Graphics device</param>
-		public EndScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
+		public EndScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
 		}
 

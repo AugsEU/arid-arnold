@@ -20,7 +20,7 @@
 		/// <summary>
 		/// Factory to create a rail platform from a rail node and register it.
 		/// </summary>
-		public static void TryCreateRailPlatformAtNode(LinearRailData railData, int idx, ContentManager content)
+		public static void TryCreateRailPlatformAtNode(LinearRailData railData, int idx)
 		{
 			RailNode node = railData.GetNode(idx);
 
@@ -43,7 +43,7 @@
 					throw new NotImplementedException();
 			}
 
-			EntityManager.I.RegisterEntity(new RailPlatform(railTraveller, node.mDirection, railData.GetSize()), content);
+			EntityManager.I.RegisterEntity(new RailPlatform(railTraveller, node.mDirection, railData.GetSize()));
 		}
 		
 
@@ -62,9 +62,9 @@
 		/// <summary>
 		/// Load content texture.
 		/// </summary>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mPlatformAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation(content);
+			mPlatformAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation();
 		}
 
 		#endregion rInitialisation

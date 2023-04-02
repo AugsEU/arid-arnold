@@ -62,14 +62,13 @@
 		/// <summary>
 		/// Load textures and assets
 		/// </summary>
-		/// <param name="content">Monogame content manager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Arnold/arnold-stand");
-			mJumpUpTex = content.Load<Texture2D>("Arnold/arnold-jump-up");
-			mJumpDownTex = content.Load<Texture2D>("Arnold/arnold-jump-down");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arnold/arnold-stand");
+			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/arnold-jump-up");
+			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/arnold-jump-down");
 
-			mRunningAnimation = new Animator(content, Animator.PlayType.Repeat,
+			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
 												("Arnold/arnold-run0", 0.1f),
 												("Arnold/arnold-run1", 0.1f),
 												("Arnold/arnold-run2", 0.1f),

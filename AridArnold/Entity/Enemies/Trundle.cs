@@ -59,21 +59,20 @@
 		/// <summary>
 		/// Load trundle textures and animations
 		/// </summary>
-		/// <param name="content">Monogame ContentManager</param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mTexture = content.Load<Texture2D>("Enemies/trundle/trundle-stand");
-			mJumpUpTex = content.Load<Texture2D>("Enemies/trundle/trundle-jump-up");
-			mJumpDownTex = content.Load<Texture2D>("Enemies/trundle/trundle-jump-down");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/trundle/trundle-stand");
+			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/trundle/trundle-jump-up");
+			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/trundle/trundle-jump-down");
 
-			mRunningAnimation = new Animator(content, Animator.PlayType.Repeat,
+			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
 												("Enemies/trundle/trundle-walk1", 0.12f),
 												("Enemies/trundle/trundle-walk2", 0.15f),
 												("Enemies/trundle/trundle-walk3", 0.12f),
 												("Enemies/trundle/trundle-walk4", 0.12f));
 			mRunningAnimation.Play();
 
-			mStandAnimation = new Animator(content, Animator.PlayType.Repeat,
+			mStandAnimation = new Animator(Animator.PlayType.Repeat,
 											("Enemies/trundle/trundle-stand", 0.4f),
 											("Enemies/trundle/trundle-stand2", 0.7f),
 											("Enemies/trundle/trundle-stand4", 0.5f),

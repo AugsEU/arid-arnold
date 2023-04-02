@@ -22,11 +22,11 @@
 		/// Load content for a wall tile.
 		/// </summary>
 		/// <param name="content"></param>
-		public override void LoadContent(ContentManager content)
+		public override void LoadContent()
 		{
-			mAnimation = ProgressManager.I.GetWorld(mWorldIdx).GetTheme().GenerateWallAnimation(content);
+			mAnimation = ProgressManager.I.GetWorld(mWorldIdx).GetTheme().GenerateWallAnimation();
 
-			base.LoadContent(content);
+			base.LoadContent();
 		}
 
 
