@@ -40,8 +40,8 @@
 	{
 		#region rConstants 
 
-		const int START_WORLD = 4; 
-		const int START_LEVEL = 1;
+		const int START_WORLD = 0; 
+		const int START_LEVEL = 0;
 		const int START_LIVES = 4;
 		public const int MAX_LIVES = 6;
 
@@ -95,6 +95,17 @@
 		public void ResetLives()
 		{
 			mLives = START_LIVES;
+		}
+
+
+
+		/// <summary>
+		/// Load the next level.
+		/// </summary>
+		public void LoadNextLevel()
+		{
+			// Set the world index, campaign manager handles the loading.
+			mCampaign.SetCurrentWorldIdx(mCurrentLevel.mWorldIndex);
 		}
 
 		#endregion rInitialisation
@@ -167,17 +178,7 @@
 		/// </summary>
 		public World GetCurrentWorld()
 		{
-			return mCampaign.GetWorld(mCurrentLevel.mWorldIndex);
-		}
-
-
-
-		/// <summary>
-		/// Get world at index.
-		/// </summary>
-		public World GetWorld(int i)
-		{
-			return mCampaign.GetWorld(i);
+			return mCampaign.GetCurrentWorld();
 		}
 
 
@@ -197,16 +198,10 @@
 		/// Get level number out of all levels
 		/// </summary>
 		/// <returns>Get current level</returns>
-		public int GetTotalLevelNumber()
+		public int GetLevelNumber()
 		{
-			int total = 0;
-			for (int w = 0; w < mCurrentLevel.mWorldIndex; w++)
-			{
-				total += mCampaign.GetWorld(w).GetNumberOfLevels();
-			}
-
-			total += mCurrentLevel.mLevel;
-			return total + 1;
+			int total = mCampaign.GetLevelNumber(mCurrentLevel);
+			return total;
 		}
 
 

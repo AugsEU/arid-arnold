@@ -92,7 +92,6 @@ namespace AridArnold
 
 			FontManager.I.LoadAllFonts();
 			ScreenManager.I.LoadAllScreens(_graphics);
-			ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
 			GhostManager.I.Load();
 			ProgressManager.I.Init("Content/Meta/Campaigns/mainCampaign.xml");
 			InputManager.I.Init();
@@ -101,6 +100,8 @@ namespace AridArnold
 			mDummyTexture.SetData(new Color[] { Color.White });
 
 			LoadGlobalContent();
+
+			ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
 		}
 
 		/// <summary>

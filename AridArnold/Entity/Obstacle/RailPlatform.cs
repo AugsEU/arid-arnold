@@ -64,7 +64,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mPlatformAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation();
+			mPlatformAnimation = MonoData.I.LoadAnimator("platform");
 		}
 
 		#endregion rInitialisation

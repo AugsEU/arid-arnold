@@ -157,7 +157,7 @@
 					case 0xFFFFFFu:
 						return new AirTile(position);
 					case 0x000000u:
-						return new WallTile(param, position);
+						return new WallTile(position);
 					case 0xA9A9A9u:
 						return new AnimatedPlatformTile((CardinalDirection)param, position);
 					//Collectable

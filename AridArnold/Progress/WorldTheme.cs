@@ -3,46 +3,6 @@
 namespace AridArnold
 {
 	/// <summary>
-	/// A skin for a specific tile.
-	/// </summary>
-	class TileTheme
-	{
-		(string, float)[] mTextures;
-
-		public TileTheme(XmlNodeList textureNodeList, string id)
-		{
-			mTextures = new (string, float)[textureNodeList.Count];
-
-			int idx = 0;
-			foreach (XmlNode textureNode in textureNodeList)
-			{
-				XmlAttribute timeAttrib = textureNode.Attributes["time"];
-
-				float time = 1.0f;
-
-				if (textureNode.Attributes["time"] != null)
-				{
-					time = float.Parse(timeAttrib.Value);
-				}
-
-				mTextures[idx++] = ("Tiles/" + id + "/" + textureNode.InnerText, time);
-			}
-		}
-
-		public Animator GenerateAnimator()
-		{
-			Animator newAnimator = new Animator(Animator.PlayType.Repeat, mTextures);
-			newAnimator.Play(RandomManager.I.GetDraw().GetUnitFloat());
-
-			return newAnimator;
-		}
-	}
-
-
-
-
-
-	/// <summary>
 	/// World theming, such as a background and tile texture swaps.
 	/// </summary>
 	internal class WorldTheme
@@ -50,8 +10,7 @@ namespace AridArnold
 		#region rMembers
 
 		Color mBGColor;
-		TileTheme mWallTheme;
-		TileTheme mPlatformTheme;
+		List<(string, string)> mRemappedTextures;
 
 		#endregion rMembers
 
@@ -61,12 +20,48 @@ namespace AridArnold
 
 		#region rInitialisation
 
+		/// <summary>
+		/// Load theme
+		/// </summary>
 		public WorldTheme(XmlNode themeNode, string id)
 		{
 			mBGColor = MonoColor.HEXToColor(themeNode.SelectSingleNode("bgColor").InnerText);
+			mRemappedTextures = new List<(string, string)>();
 
-			mWallTheme = new TileTheme(themeNode.SelectNodes("wallTexture"), id);
-			mPlatformTheme = new TileTheme(themeNode.SelectNodes("platformTexture"), id);
+			XmlNodeList remapNodes = themeNode.SelectNodes("path");
+			foreach(XmlNode remapNode in remapNodes)
+			{
+				string from = remapNode.Attributes["from"].Value;
+				string to = "Tiles/" + id + "/" + remapNode.InnerText;
+
+				mRemappedTextures.Add((from, to));
+			}
+		}
+
+
+
+		/// <summary>
+		/// Load the theme
+		/// </summary>
+		public void Load()
+		{
+			foreach((string, string) path in mRemappedTextures)
+			{
+				MonoData.I.AddPathRemap(path.Item1, path.Item2);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Unload theme.
+		/// </summary>
+		public void Unload()
+		{
+			foreach ((string, string) path in mRemappedTextures)
+			{
+				MonoData.I.RemovePathRemap(path.Item1);
+			}
 		}
 
 		#endregion rIntialisation
@@ -76,26 +71,6 @@ namespace AridArnold
 
 
 		#region rAccess
-
-		/// <summary>
-		/// Generate an animation object for a wall.
-		/// </summary>
-		public Animator GenerateWallAnimation()
-		{
-			return mWallTheme.GenerateAnimator();
-		}
-
-
-
-		/// <summary>
-		/// Generate an animation object for a platform.
-		/// </summary>
-		public Animator GeneratePlatformAnimation()
-		{
-			return mPlatformTheme.GenerateAnimator();
-		}
-
-
 
 		/// <summary>
 		/// Get the background color.

@@ -2107,7 +2107,7 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/hotdog.png
 
-#begin Tiles/IronWorks/platform.png
+#begin Tiles/IronWorks/girder.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2117,7 +2117,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/IronWorks/platform.png
+/build:Tiles/IronWorks/girder.png
 
 #begin Tiles/IronWorks/steel.png
 /importer:TextureImporter
@@ -2275,6 +2275,9 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Lab/gate-open.png
 
+#begin Tiles/Lab/lab-plat.max
+/copy:Tiles/Lab/lab-plat.max
+
 #begin Tiles/Lab/lab-plat0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2322,6 +2325,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Lab/lab-plat3.png
+
+#begin Tiles/Lab/lab-wall.max
+/copy:Tiles/Lab/lab-wall.max
 
 #begin Tiles/Lab/lab-wall0.png
 /importer:TextureImporter
@@ -2407,18 +2413,6 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Mirror/cobble.png
 
-#begin Tiles/Mirror/gold-platform.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Tiles/Mirror/gold-platform.png
-
 #begin Tiles/Mirror/mirror.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2430,6 +2424,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Mirror/mirror.png
+
+#begin Tiles/Mirror/tree-platform.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mirror/tree-platform.png
+
+#begin Tiles/platform.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/platform.png
 
 #begin Tiles/spikes.png
 /importer:TextureImporter

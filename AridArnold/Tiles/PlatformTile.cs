@@ -100,7 +100,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mAnimation = ProgressManager.I.GetCurrentWorld().GetTheme().GeneratePlatformAnimation();
+			mAnimation = MonoData.I.LoadAnimator("platform");
 			base.LoadContent();
 		}
 

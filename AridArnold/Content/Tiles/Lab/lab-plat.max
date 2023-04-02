@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.350">Tiles\Lab\lab-plat0</texture>
+	<texture time="0.300">Tiles\Lab\lab-plat1</texture>
+	<texture time="0.350">Tiles\Lab\lab-plat2</texture>
+	<texture time="0.350">Tiles\Lab\lab-plat3</texture>
+</animation>

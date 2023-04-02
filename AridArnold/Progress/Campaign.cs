@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 
 namespace AridArnold
 {
@@ -15,6 +16,7 @@ namespace AridArnold
 		string mID;
 		string mName;
 		List<World> mWorlds;
+		int mCurrentWorld;
 
 		#endregion rMembers
 
@@ -42,6 +44,8 @@ namespace AridArnold
 			{
 				mWorlds.Add(new World(worldNode));
 			}
+
+			mCurrentWorld = -1;
 		}
 
 		#endregion rInitialisation
@@ -55,9 +59,30 @@ namespace AridArnold
 		/// <summary>
 		/// Get world at index.
 		/// </summary>
-		public World GetWorld(int idx)
+		public World GetCurrentWorld()
 		{
-			return mWorlds[idx];
+			return mWorlds[mCurrentWorld];
+		}
+
+
+
+		/// <summary>
+		/// Set the world.
+		/// </summary>
+		public void SetCurrentWorldIdx(int idx)
+		{
+			if(mCurrentWorld != idx)
+			{
+				if(mCurrentWorld != -1)
+				{
+					// Unload previous world
+					mWorlds[mCurrentWorld].UnloadWorld();
+				}
+
+				mWorlds[idx].LoadWorld();
+			}
+
+			mCurrentWorld = idx;
 		}
 
 
@@ -68,6 +93,37 @@ namespace AridArnold
 		public int GetNumberOfWorlds()
 		{
 			return mWorlds.Count;
+		}
+
+
+
+		/// <summary>
+		/// Get total number of levels.
+		/// </summary>
+		/// <returns></returns>
+		public int GetTotalNumberOfLevels()
+		{
+			int total = 0;
+			foreach (World world in mWorlds)
+			{
+				total += world.GetNumberOfLevels();
+			}
+			return total;
+		}
+
+
+		/// <summary>
+		/// Get total number of levels before level point.
+		/// </summary>
+		/// <returns></returns>
+		public int GetLevelNumber(LevelPoint point)
+		{
+			int total = 0;
+			for(int i = 0; i < point.mWorldIndex; i++)
+			{
+				total += mWorlds[i].GetNumberOfLevels();
+			}
+			return total + 1;
 		}
 
 		#endregion rAccess

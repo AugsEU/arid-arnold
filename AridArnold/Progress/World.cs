@@ -72,6 +72,28 @@ namespace AridArnold
 			mLevels.Add(levelToAdd);
 		}
 
+
+
+		/// <summary>
+		/// Load into the world.
+		/// Including manifests
+		/// </summary>
+		public void LoadWorld()
+		{
+			mTheme.Load();
+		}
+
+
+
+		/// <summary>
+		/// Unload the world.
+		/// Including manifests
+		/// </summary>
+		public void UnloadWorld()
+		{
+			mTheme.Unload();
+		}
+
 		#endregion rInitialisation
 
 

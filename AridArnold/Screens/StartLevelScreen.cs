@@ -31,6 +31,9 @@
 		{
 			mTimer.FullReset();
 			mTimer.Start();
+
+			// Load the next level.
+			ProgressManager.I.LoadNextLevel();
 		}
 
 		#endregion rInitialise
@@ -85,7 +88,7 @@
 
 			centre.Y += 25.0f;
 
-			int levelNumber = ProgressManager.I.GetTotalLevelNumber();
+			int levelNumber = ProgressManager.I.GetLevelNumber();
 
 			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "Level " + levelNumber, MonoDraw.LAYER_TEXT);
 

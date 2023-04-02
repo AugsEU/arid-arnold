@@ -31,13 +31,13 @@ namespace AridArnold
 				case "":
 				{
 					// Load as single texture
-					mTextures = new (string, float)[] { (filePath.Substring(0, filePath.Length - 4), 1.0f) };
+					mTextures = new (string, float)[] { (filePath, 1.0f) };
 					mPlayType = Animator.PlayType.OneShot;
 					break;
 				}
-				case "max": // Mono Animation XML
+				case ".max": // Mono Animation XML
 				{
-					LoadFromXML(filePath);
+					LoadFromXML("Content/" + filePath);
 					break;
 				}
 				default:
@@ -62,7 +62,7 @@ namespace AridArnold
 			int idx = 0;
 			foreach (XmlNode textureNode in textureNodes)
 			{
-				XmlAttribute timeAttrib = textureNode.Attributes["t"];
+				XmlAttribute timeAttrib = textureNode.Attributes["time"];
 				float time = timeAttrib is not null ? float.Parse(timeAttrib.Value) : 1.0f;
 				mTextures[idx++] = (textureNode.InnerText, time);
 			}
@@ -97,6 +97,7 @@ namespace AridArnold
 		{
 			mContentManager = content;
 			mPathRemappings = new Dictionary<string, string>();
+			mAnimationDataCache = new Dictionary<string, AnimationData>();
 		}
 
 		#endregion rInit
@@ -121,7 +122,7 @@ namespace AridArnold
 		/// <summary>
 		/// Generates a new animator from an XML file.
 		/// </summary>
-		Animator LoadAnimator(string path)
+		public Animator LoadAnimator(string path)
 		{
 			path = GetRemappedPath(path);
 
@@ -183,6 +184,27 @@ namespace AridArnold
 			}
 
 			return path;
+		}
+
+
+
+		/// <summary>
+		/// Add remapping.
+		/// Throws exception if it's already been remapped.
+		/// </summary>
+		public void AddPathRemap(string from, string to)
+		{
+			mPathRemappings.Add(from, to);
+		}
+
+
+
+		/// <summary>
+		/// Remove a remapping.
+		/// </summary>
+		public void RemovePathRemap(string from)
+		{
+			mPathRemappings.Remove(from);
 		}
 
 		#endregion rPaths

@@ -307,7 +307,7 @@
 			}
 
 			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetCurrentWorld().GetName(), MonoDraw.LAYER_TEXT);
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + ProgressManager.I.GetTotalLevelNumber(), MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + ProgressManager.I.GetLevelNumber(), MonoDraw.LAYER_TEXT);
 
 			info.spriteBatch.End();
 		}

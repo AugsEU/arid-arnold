@@ -13,8 +13,8 @@
 
 			<theme>
 				<bgColor>000A14</bgColor>
-				<wallTexture>steel</wallTexture>
-				<platformTexture>platform</platformTexture>
+				<path from="wall">steel</path>
+				<path from="platform">girder</path>
 			</theme>
 
 			<levels>
@@ -43,8 +43,8 @@
 
 			<theme>
 				<bgColor>00180E</bgColor>
-				<wallTexture>cobble</wallTexture>
-				<platformTexture>gold-platform</platformTexture>
+				<path from="wall">cobble</path>
+				<path from="platform">tree-platform</path>
 			</theme>
 
 			<levels>
@@ -73,8 +73,8 @@
 
 			<theme>
 				<bgColor>030309</bgColor>
-				<wallTexture>cave</wallTexture>
-				<platformTexture>cave-platform</platformTexture>
+				<path from="wall">cave</path>
+				<path from="platform">cave-platform</path>
 			</theme>
 
 			<levels>
@@ -104,14 +104,8 @@
 
 			<theme>
 				<bgColor>AD999B</bgColor>
-				<wallTexture time="0.454">lab-wall0</wallTexture>
-				<wallTexture time="0.392">lab-wall1</wallTexture>
-				<wallTexture time="0.421">lab-wall2</wallTexture>
-				<wallTexture time="0.478">lab-wall3</wallTexture>
-				<platformTexture time="0.350">lab-plat0</platformTexture>
-				<platformTexture time="0.300">lab-plat1</platformTexture>
-				<platformTexture time="0.350">lab-plat2</platformTexture>
-				<platformTexture time="0.350">lab-plat3</platformTexture>
+				<path from="wall">lab-wall.max</path>
+				<path from="platform">lab-plat.max</path>
 			</theme>
 
 			<levels>
@@ -140,8 +134,8 @@
 
 			<theme>
 				<bgColor>00000A</bgColor>
-				<wallTexture >gravel</wallTexture>
-				<platformTexture>beam</platformTexture>
+				<path from="wall">gravel</path>
+				<path from="platform">beam</path>
 			</theme>
 
 			<levels>

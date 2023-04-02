@@ -6,15 +6,13 @@
 	class WallTile : SquareTile
 	{
 		Animator mAnimation;
-		int mWorldIdx;
 
 		/// <summary>
 		/// Tile with start position
 		/// </summary>
 		/// <param name="position">Start position</param>
-		public WallTile(int param, Vector2 position) : base(position)
+		public WallTile(Vector2 position) : base(position)
 		{
-			mWorldIdx = ProgressManager.I.GetLevelPoint().mWorldIndex - param;
 		}
 
 
@@ -24,7 +22,8 @@
 		/// <param name="content"></param>
 		public override void LoadContent()
 		{
-			mAnimation = ProgressManager.I.GetWorld(mWorldIdx).GetTheme().GenerateWallAnimation();
+			mAnimation = MonoData.I.LoadAnimator("wall");
+			mAnimation.Play(RandomManager.I.GetDraw().GetUnitFloat());
 
 			base.LoadContent();
 		}
