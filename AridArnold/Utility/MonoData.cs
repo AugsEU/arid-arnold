@@ -1,34 +1,78 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using System.Security.Cryptography;
 using System.Xml;
 
 namespace AridArnold
 {
-	//class AnimationData
-	//{
-	//	Animator.PlayType mPlayType;
-	//	(string, float)[] mTextures;
+	/// <summary>
+	/// Utility class for loading animations from data
+	/// </summary>
+	class AnimationData
+	{
+		Animator.PlayType mPlayType;
+		(string, float)[] mTextures;
 
-	//	public AnimationData()
-	//	{
-	//		mPlayType = Animator.PlayType.Repeat;
-	//		mTextures = null;
-	//	}
+		public AnimationData()
+		{
+			mPlayType = Animator.PlayType.Repeat;
+			mTextures = null;
+		}
 
-	//	public AnimationData(string XMLPath)
-	//	{
-	//		LoadFromXML(XMLPath);
-	//	}
+		public AnimationData(string filePath)
+		{
+			LoadFromFile(filePath);
+		}
 
-	//	private void LoadFromXML(string XMLPath)
-	//	{
+		private void LoadFromFile(string filePath)
+		{
+			string extention = Path.GetExtension(filePath);
+			switch (extention)
+			{
+				case "":
+				{
+					// Load as single texture
+					mTextures = new (string, float)[] { (filePath.Substring(0, filePath.Length - 4), 1.0f) };
+					mPlayType = Animator.PlayType.OneShot;
+					break;
+				}
+				case "max": // Mono Animation XML
+				{
+					LoadFromXML(filePath)
+					break;
+				}
+				default:
+					throw new NotImplementedException();
+			}
+		}
 
-	//	}
+		private void LoadFromXML(string XMLPath)
+		{
+			XmlDocument xmlDoc = new XmlDocument();
+			xmlDoc.Load(XMLPath);
+			XmlNode rootNode = xmlDoc.LastChild;
 
-	//	public Animator GenerateAnimator()
-	//	{
-	//		return new Animator();
-	//	}
-	//}
+			string type = rootNode.Attributes["type"].Value.ToLower();
+
+			mPlayType = type == "repeat" ? Animator.PlayType.Repeat : Animator.PlayType.OneShot;
+
+			XmlNodeList textureNodes = rootNode.ChildNodes;
+
+			mTextures = new (string, float)[textureNodes.Count];
+
+			int idx = 0;
+			foreach (XmlNode textureNode in textureNodes)
+			{
+				XmlAttribute timeAttrib = textureNode.Attributes["t"];
+				float time = timeAttrib is not null ? float.Parse(timeAttrib.Value) : 1.0f;
+				mTextures[idx++] = (textureNode.InnerText, time);
+			}
+		}
+
+		public Animator GenerateAnimator()
+		{
+			return new Animator(mPlayType, mTextures);
+		}
+	}
 
 	/// <summary>
 	/// Handles data mappings.
@@ -39,7 +83,7 @@ namespace AridArnold
 
 		ContentManager mContentManager;
 		Dictionary<string, string> mPathRemappings;
-		//Dictionary<string, AnimationData> mAnimationDataCache;
+		Dictionary<string, AnimationData> mAnimationDataCache;
 
 		#endregion rMembers
 
@@ -77,39 +121,26 @@ namespace AridArnold
 		/// <summary>
 		/// Generates a new animator from an XML file.
 		/// </summary>
-		//Animator LoadAnimator(string path)
-		//{
-		//	path = GetRemappedPath(path);
+		Animator LoadAnimator(string path)
+		{
+			path = GetRemappedPath(path);
 
-		//	AnimationData animData = new AnimationData();
+			AnimationData animData = null;
 
-		//	if(mAnimationDataCache.TryGetValue(path, out animData))
-		//	{
-		//		// Loaded anim data easily.
-		//	}
-		//	else
-		//	{
+			if (mAnimationDataCache.TryGetValue(path, out animData))
+			{
+				// Loaded anim data easily.
+			}
+			else
+			{
+				animData = new AnimationData(path);
 
-		//	}
+				// Add to the cache
+				mAnimationDataCache.Add(path, animData);
+			}
 
-		//	(string, float)[] mTextures;
-		//	mTextures = new (string, float)[textureNodeList.Count];
-
-		//	int idx = 0;
-		//	foreach (XmlNode textureNode in textureNodeList)
-		//	{
-		//		XmlAttribute timeAttrib = textureNode.Attributes["time"];
-
-		//		float time = 1.0f;
-
-		//		if (textureNode.Attributes["time"] != null)
-		//		{
-		//			time = float.Parse(timeAttrib.Value);
-		//		}
-
-		//		mTextures[idx++] = ("Tiles/" + id + "/" + textureNode.InnerText, time);
-		//	}
-		//}
+			return animData.GenerateAnimator();
+		}
 
 		#endregion rLoading
 
@@ -134,6 +165,17 @@ namespace AridArnold
 		/// </summary>
 		string GetRemappedPath(string path)
 		{
+			if(path.StartsWith("Content"))
+			{
+				path = path.Substring(8);
+			}
+#if DEBUG
+			else if(path.Contains(":"))
+			{
+				throw new Exception("Trying to access path |" + path + "| is not valid. Make relative to the game.");
+			}
+#endif
+
 			string newPath = path;
 			while(mPathRemappings.TryGetValue(path, out newPath))
 			{
