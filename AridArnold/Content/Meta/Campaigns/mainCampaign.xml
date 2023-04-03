@@ -12,7 +12,7 @@
 			<name>Iron Works</name>
 
 			<theme>
-				<bgColor>000A14</bgColor>
+				<bg>SteamPlant</bg>
 				<path from="wall">steel</path>
 				<path from="platform">girder</path>
 			</theme>
@@ -42,7 +42,8 @@
 			<name>Land of Mirrors</name>
 
 			<theme>
-				<bgColor>00180E</bgColor>
+				<!--<bgColor>00180E</bgColor>-->
+				<bg>Forrest</bg>
 				<path from="wall">cobble</path>
 				<path from="platform">tree-platform</path>
 			</theme>
@@ -72,7 +73,8 @@
 			<name>Buk's Cave</name>
 
 			<theme>
-				<bgColor>030309</bgColor>
+				<!--<bgColor>030309</bgColor>-->
+				<bg>Cave</bg>
 				<path from="wall">cave</path>
 				<path from="platform">cave-platform</path>
 			</theme>
@@ -103,7 +105,8 @@
 			<name>The Lab</name>
 
 			<theme>
-				<bgColor>AD999B</bgColor>
+				<!--<bgColor>AD999B</bgColor>-->
+				<bg>Lab</bg>
 				<path from="wall">lab-wall.max</path>
 				<path from="platform">lab-plat.max</path>
 			</theme>
@@ -133,7 +136,8 @@
 			<name>World War VII</name>
 
 			<theme>
-				<bgColor>00000A</bgColor>
+				<!--<bgColor>00000A</bgColor>-->
+				<bg>City</bg>
 				<path from="wall">gravel</path>
 				<path from="platform">beam</path>
 			</theme>

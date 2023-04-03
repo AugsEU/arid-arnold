@@ -9,7 +9,7 @@ namespace AridArnold
 	{
 		#region rMembers
 
-		Color mBGColor;
+		string mBGName = "";
 		List<(string, string)> mRemappedTextures;
 
 		#endregion rMembers
@@ -25,7 +25,7 @@ namespace AridArnold
 		/// </summary>
 		public WorldTheme(XmlNode themeNode, string id)
 		{
-			mBGColor = MonoColor.HEXToColor(themeNode.SelectSingleNode("bgColor").InnerText);
+			mBGName = themeNode.SelectSingleNode("bg").InnerText;
 			mRemappedTextures = new List<(string, string)>();
 
 			XmlNodeList remapNodes = themeNode.SelectNodes("path");
@@ -64,22 +64,16 @@ namespace AridArnold
 			}
 		}
 
-		#endregion rIntialisation
 
-
-
-
-
-		#region rAccess
 
 		/// <summary>
-		/// Get the background color.
+		/// Get the BG name
 		/// </summary>
-		public Color GetBGColor()
+		public string GetBGName()
 		{
-			return mBGColor;
+			return mBGName;
 		}
 
-		#endregion rAccess
+		#endregion rIntialisation
 	}
 }

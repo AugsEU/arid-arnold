@@ -28,6 +28,7 @@
 		private Texture2D mLifeTexture;
 		private Texture2D mEmptyLifeTexture;
 		private Texture2D mUIBG;
+		private BGRenderer mBGRenderer;
 
 		private PercentageTimer mLevelEndTimer;
 
@@ -52,9 +53,6 @@
 			mGameArea = null;
 			mLeftUI = null;
 			mRightUI = null;
-
-
-			//mSmartTextBlock = new SpeechBoxRenderer(new SmartTextBlock("Content\\Text\\EN\\test_text.txt", 20), 229.0f, 1.0f, new Vector2(300.0f, 300.0f), FontManager.I.GetFont("Pixica Micro-24"), 5.0f, -2.0f);
 		}
 
 
@@ -73,6 +71,10 @@
 				//Can't lose lives on this level, so we must reset the life count to the default.
 				ProgressManager.I.ResetLives();
 			}
+
+			string bgName = ProgressManager.I.GetCurrentWorld().GetTheme().GetBGName();
+
+			mBGRenderer = BGRenderer.GetRenderer(bgName);
 		}
 
 
@@ -200,19 +202,18 @@
 
 			info.device.SetRenderTarget(mGameArea);
 
-			Color clearCol = ProgressManager.I.GetCurrentWorld().GetTheme().GetBGColor();
-
 			if (mLevelEndTimer.IsPlaying())
 			{
 				double timeSinceDeath = mLevelEndTimer.GetElapsedMs();
 
 				if ((int)(timeSinceDeath / END_LEVEL_FLASH_TIME) % 2 == 0)
 				{
-					MonoColor.BrightenColour(ref clearCol, 0.05f);
+					// TO DO: ADD FLASHING!!
+					//MonoColor.BrightenColour(ref clearCol, 0.05f);
 				}
 			}
 
-			info.device.Clear(clearCol);
+			info.device.Clear(Color.Black);
 
 			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
 									BlendState.AlphaBlend,
@@ -224,6 +225,8 @@
 			EntityManager.I.Draw(info);
 			TileManager.I.Draw(info);
 			FXManager.I.Draw(info);
+
+			mBGRenderer.Draw(info);
 
 			info.spriteBatch.End();
 		}
@@ -361,6 +364,7 @@
 		}
 
 
+
 		/// <summary>
 		/// Display text on a specific instance of arnold
 		/// </summary>
@@ -403,6 +407,7 @@
 		}
 
 		#endregion rDraw
+
 
 
 
@@ -451,6 +456,8 @@
 				LevelLose();
 			}
 		}
+
+
 
 		/// <summary>
 		/// Call to win the level. We will move to the next level shortly.

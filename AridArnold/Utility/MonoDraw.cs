@@ -19,6 +19,8 @@
 		#region rConstants
 
 		//Define layer depths of objects.
+		public const float LAYER_BG = 0.01f;
+
 		public const float LAYER_DEFAULT = 0.1f;
 
 		public const float LAYER_TILE = 0.29f;
