@@ -274,6 +274,9 @@
 #begin BG/SteamPlant/DialIdle.mia
 /copy:BG/SteamPlant/DialIdle.mia
 
+#begin BG/SteamPlant/SteamPlant.mlo
+/copy:BG/SteamPlant/SteamPlant.mlo
+
 #begin BG/SteamPlant/Valve1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -327,6 +330,9 @@
 
 #begin BG/SteamPlant/ValveCW.max
 /copy:BG/SteamPlant/ValveCW.max
+
+#begin BG/SteamPlant/ValveIdle.mia
+/copy:BG/SteamPlant/ValveIdle.mia
 
 #begin Enemies/Futron-Gun/bullet.png
 /importer:TextureImporter

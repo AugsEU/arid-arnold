@@ -3,13 +3,12 @@
 namespace AridArnold
 {
 	/// <summary>
-	/// World theming, such as a background and tile texture swaps.
+	/// World theming: tile texture swaps.
 	/// </summary>
 	internal class WorldTheme
 	{
 		#region rMembers
 
-		string mBGName = "";
 		List<(string, string)> mRemappedTextures;
 
 		#endregion rMembers
@@ -25,7 +24,6 @@ namespace AridArnold
 		/// </summary>
 		public WorldTheme(XmlNode themeNode, string id)
 		{
-			mBGName = themeNode.SelectSingleNode("bg").InnerText;
 			mRemappedTextures = new List<(string, string)>();
 
 			XmlNodeList remapNodes = themeNode.SelectNodes("path");
@@ -62,16 +60,6 @@ namespace AridArnold
 			{
 				MonoData.I.RemovePathRemap(path.Item1);
 			}
-		}
-
-
-
-		/// <summary>
-		/// Get the BG name
-		/// </summary>
-		public string GetBGName()
-		{
-			return mBGName;
 		}
 
 		#endregion rIntialisation

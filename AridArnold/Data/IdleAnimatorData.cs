@@ -1,6 +1,4 @@
-﻿using System.Xml;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class IdleAnimatorData
 	{
@@ -21,7 +19,7 @@ namespace AridArnold
 			xmlDoc.Load(filePath);
 			XmlNode rootNode = xmlDoc.LastChild;
 
-			string varChance = rootNode.Attributes["variation"].Value.ToLower();
+			string varChance = rootNode.Attributes["variation"].Value;
 
 			mVariationChance = float.Parse(varChance);
 

@@ -69,6 +69,13 @@ namespace AridArnold
 					throw new NotImplementedException();
 			}
 
+			XmlNode bgLayoutNode = levelNode.SelectSingleNode("bg");
+
+			if(bgLayoutNode is not null)
+			{
+				levelToAdd.SetBGLayoutPath(bgLayoutNode.InnerText);
+			}
+
 			mLevels.Add(levelToAdd);
 		}
 

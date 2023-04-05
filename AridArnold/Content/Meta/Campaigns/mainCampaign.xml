@@ -12,7 +12,7 @@
 			<name>Iron Works</name>
 
 			<theme>
-				<bg>SteamPlant</bg>
+				
 				<path from="wall">steel</path>
 				<path from="platform">girder</path>
 			</theme>
@@ -21,17 +21,21 @@
 				<level id="level1-1">
 					<type>collectWater</type>
 					<waterNeeded>5</waterNeeded>
+					<bg>BG/SteamPlant/SteamPlant.mlo</bg>
 				</level>
 				<level id="level1-2">
 					<type>collectWater</type>
 					<waterNeeded>2</waterNeeded>
+					<bg>BG/SteamPlant/SteamPlant.mlo</bg>
 				</level>
 				<level id="level1-3">
 					<type>collectWater</type>
 					<waterNeeded>2</waterNeeded>
+					<bg>BG/SteamPlant/SteamPlant.mlo</bg>
 				</level>
 				<level id="level1-4">
 					<type>collectFlag</type>
+					<bg>BG/SteamPlant/SteamPlant.mlo</bg>
 				</level>
 			</levels>
 		</world>

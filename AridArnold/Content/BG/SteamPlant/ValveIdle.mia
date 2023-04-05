@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation variation="35.0">
+	<main>BG/SteamPlant/Valve1</main>
+	<alt>BG/SteamPlant/ValveCCW.max</alt>
+	<alt>BG/SteamPlant/ValveCW.max</alt>
+</animation>

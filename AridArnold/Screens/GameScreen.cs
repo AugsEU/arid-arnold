@@ -28,7 +28,7 @@
 		private Texture2D mLifeTexture;
 		private Texture2D mEmptyLifeTexture;
 		private Texture2D mUIBG;
-		private BGRenderer mBGRenderer;
+		private Layout mBGRenderer;
 
 		private PercentageTimer mLevelEndTimer;
 
@@ -72,9 +72,7 @@
 				ProgressManager.I.ResetLives();
 			}
 
-			string bgName = ProgressManager.I.GetCurrentWorld().GetTheme().GetBGName();
-
-			mBGRenderer = BGRenderer.GetRenderer(bgName);
+			mBGRenderer = new Layout(levelToBegin.GetBGLayoutPath());
 		}
 
 

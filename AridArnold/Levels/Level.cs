@@ -22,7 +22,7 @@
 		#region rMembers
 
 		string mName;
-
+		string mBGLayoutPath;
 		protected LevelStatus mLevelStatus;
 
 		#endregion rMembers
@@ -41,6 +41,7 @@
 		{
 			mName = levelName;
 			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
+			mBGLayoutPath = "";
 		}
 
 
@@ -91,14 +92,30 @@
 		/// <summary>
 		/// Level name property
 		/// </summary>
-		public string pName
+		public string GetName()
 		{
-			get
-			{
-				return mName;
-			}
+			return mName;
 		}
 
+
+
+		/// <summary>
+		/// Get path to layout file
+		/// </summary>
+		public string GetBGLayoutPath()
+		{
+			return mBGLayoutPath;
+		}
+
+
+
+		/// <summary>
+		/// Set path to layout to use.
+		/// </summary>
+		public void SetBGLayoutPath(string path)
+		{
+			mBGLayoutPath = path;
+		}
 		#endregion rUtility
 	}
 
