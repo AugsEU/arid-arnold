@@ -30,4 +30,10 @@
 		<depth>0.02</depth>
 		<anim>BG/SteamPlant/ValveIdle.mia</anim>
 	</element>
+	<element type="IdleAnim">
+		<x>350.0</x>
+		<y>50.0</y>
+		<depth>0.02</depth>
+		<anim>BG/SteamPlant/SteamIdle.mia</anim>
+	</element>
 </root>

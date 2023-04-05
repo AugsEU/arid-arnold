@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.083">BG\SteamPlant\Steam1</texture>
+	<texture time="0.083">BG\SteamPlant\Steam2</texture>
+	<texture time="0.083">BG\SteamPlant\Steam3</texture>
+	<texture time="0.083">BG\SteamPlant\Steam4</texture>
+	<texture time="0.083">BG\SteamPlant\Steam5</texture>
+	<texture time="0.083">BG\SteamPlant\Steam6</texture>
+	<texture time="0.083">BG\SteamPlant\Steam7</texture>
+</animation>
