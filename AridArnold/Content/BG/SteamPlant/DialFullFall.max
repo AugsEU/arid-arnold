@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.080">BG\SteamPlant\Dial2</texture>
+	<texture time="0.080">BG\SteamPlant\Dial3</texture>
+	<texture time="0.080">BG\SteamPlant\Dial4</texture>
+	<texture time="2.100">BG\SteamPlant\Dial5</texture>
+	<texture time="0.280">BG\SteamPlant\Dial4</texture>
+	<texture time="0.280">BG\SteamPlant\Dial3</texture>
+	<texture time="0.280">BG\SteamPlant\Dial2</texture>
+</animation>

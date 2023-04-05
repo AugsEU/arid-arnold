@@ -444,6 +444,7 @@
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
+			mBGRenderer.Update(gameTime);
 
 			LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
 

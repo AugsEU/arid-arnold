@@ -38,5 +38,16 @@ namespace AridArnold
 			}
 			System.Diagnostics.Debugger.Break();
 		}
+
+
+		public static void Assert(bool condition)
+		{
+#if DEBUG
+			if(!condition)
+			{
+				Break("Assertion failed.");
+			}
+#endif
+		}
 	}
 }

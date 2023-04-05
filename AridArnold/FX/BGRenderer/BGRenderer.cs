@@ -5,9 +5,28 @@
 	/// </summary>
 	abstract class BGRenderer
 	{
-		public abstract void Update(GameTime gameTime);
+		protected List<BGElement> mElements;
 
-		public abstract void Draw(DrawInfo drawInfo);
+		public BGRenderer()
+		{
+			mElements = new List<BGElement>();
+		}
+
+		public virtual void Update(GameTime gameTime)
+		{
+			foreach (BGElement element in mElements)
+			{
+				element.Update(gameTime);
+			}
+		}
+
+		public virtual void Draw(DrawInfo info)
+		{
+			foreach (BGElement element in mElements)
+			{
+				element.Draw(info);
+			}
+		}
 
 		
 		/// <summary>
@@ -39,14 +58,40 @@
 		}
 
 
-		public override void Draw(DrawInfo drawInfo)
+		public override void Draw(DrawInfo info)
 		{
-			MonoDraw.DrawTextureDepth(drawInfo, mAnimator.GetCurrentTexture(), Vector2.Zero, MonoDraw.LAYER_BG);
+			MonoDraw.DrawTextureDepth(info, mAnimator.GetCurrentTexture(), Vector2.Zero, MonoDraw.LAYER_BG);
+
+			base.Draw(info);
 		}
 
 		public override void Update(GameTime gameTime)
 		{
 			mAnimator.Update(gameTime);
+
+			base.Update(gameTime);
+		}
+	}
+
+	/// <summary>
+	/// Element in the background.
+	/// </summary>
+	abstract class BGElement
+	{
+		Vector2 mPos;
+
+		public BGElement(Vector2 pos)
+		{
+			mPos = pos;
+		}
+
+		public abstract void Update(GameTime gameTime);
+
+		protected abstract Texture2D GetDrawTexture();
+
+		public void Draw(DrawInfo info)
+		{
+			MonoDraw.DrawTextureDepth(info, GetDrawTexture(), mPos, MonoDraw.LAYER_BG_ELEMENT);
 		}
 	}
 }

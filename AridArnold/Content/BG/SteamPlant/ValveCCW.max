@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.300">BG\SteamPlant\Valve4</texture>
+	<texture time="0.300">BG\SteamPlant\Valve3</texture>
+	<texture time="0.300">BG\SteamPlant\Valve2</texture>
+	<texture time="0.300">BG\SteamPlant\Valve1</texture>
+</animation>

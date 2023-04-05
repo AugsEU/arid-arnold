@@ -19,7 +19,9 @@
 		#region rConstants
 
 		//Define layer depths of objects.
+		// TO DO: SORT THIS MESS
 		public const float LAYER_BG = 0.01f;
+		public const float LAYER_BG_ELEMENT = 0.05f;
 
 		public const float LAYER_DEFAULT = 0.1f;
 

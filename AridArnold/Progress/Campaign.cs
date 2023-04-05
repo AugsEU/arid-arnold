@@ -118,7 +118,7 @@ namespace AridArnold
 		/// <returns></returns>
 		public int GetLevelNumber(LevelPoint point)
 		{
-			int total = 0;
+			int total = point.mLevel;
 			for(int i = 0; i < point.mWorldIndex; i++)
 			{
 				total += mWorlds[i].GetNumberOfLevels();
