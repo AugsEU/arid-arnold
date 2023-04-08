@@ -83,6 +83,15 @@
 		}
 
 
+		/// <summary>
+		/// Adds a water drop
+		/// </summary>
+		public void AddDrop(Vector2 pos, float distance, Color mainColor, Color secondColor)
+		{
+			mFXList.Add(new WaterDrop(pos, distance, mainColor, secondColor));
+		}
+
+
 
 		/// <summary>
 		/// Clear all effects

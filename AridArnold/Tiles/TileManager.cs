@@ -441,6 +441,19 @@
 			return result;
 		}
 
+		/// <summary>
+		/// Query if tile at position is solid.
+		/// </summary>
+		public bool IsTileSolid(Point coord)
+		{
+			Tile tile = GetTile(coord);
+
+			if (tile is null) return false;
+
+
+			return tile.IsSolid();
+		}
+
 
 		/// <summary>
 		/// Get pixel width drawn
