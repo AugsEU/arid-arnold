@@ -59,6 +59,7 @@
 		{
 			string nodeType = node.Attributes["type"].Value.ToLower();
 
+			// Maybe use reflection instead?
 			switch (nodeType)
 			{
 				case "idleanim":
@@ -67,6 +68,8 @@
 					return new TextureElement(node);
 				case "animator":
 					return new AnimatorElement(node);
+				case "mirrorbg":
+					return new MirrorBG(node);
 			}
 
 			throw new Exception("Do not recognise layout element: " + nodeType);
@@ -90,5 +93,7 @@
 		public virtual void Update(GameTime gameTime) { }
 
 		public virtual void Draw(DrawInfo info) { }
+
+		public float GetDepth() { return mDepth; }
 	}
 }

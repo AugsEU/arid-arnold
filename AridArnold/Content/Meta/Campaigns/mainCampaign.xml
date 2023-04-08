@@ -8,8 +8,8 @@
 
 	<worlds>
 
-		<world id="IronWorks">
-			<name>Iron Works</name>
+		<world id="SteamPlant">
+			<name>Steam Plant</name>
 
 			<theme>
 				
@@ -46,7 +46,6 @@
 			<name>Land of Mirrors</name>
 
 			<theme>
-				<!--<bgColor>00180E</bgColor>-->
 				<bg>Forrest</bg>
 				<path from="wall">cobble</path>
 				<path from="platform">tree-platform</path>
@@ -56,17 +55,21 @@
 				<level id="level2-1">
 					<type>collectWater</type>
 					<waterNeeded>1</waterNeeded>
+					<bg>BG/Mirror/Mirror1.mlo</bg>
 				</level>
 				<level id="level2-2">
 					<type>collectWater</type>
 					<waterNeeded>3</waterNeeded>
+					<bg>BG/Mirror/Mirror2.mlo</bg>
 				</level>
 				<level id="level2-3">
 					<type>collectWater</type>
 					<waterNeeded>1</waterNeeded>
+					<bg>BG/Mirror/Mirror3.mlo</bg>
 				</level>
 				<level id="level2-4">
 					<type>collectFlag</type>
+					<bg>BG/Mirror/Mirror4.mlo</bg>
 				</level>
 			</levels>
 		</world>

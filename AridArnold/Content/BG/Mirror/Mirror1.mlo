@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>0.01</depth>
+		<texture>BG/Mirror/BG</texture>
+	</element>
+	<element type="mirrorbg">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>0.01</depth>
+	</element>
+	<!--Bushes-->
+	<element type="texture">
+		<x>70.0</x>
+		<y>360.0</y>
+		<depth>0.01</depth>
+		<texture>BG/Mirror/BushFace</texture>
+	</element>
+	<element type="texture">
+		<x>380.0</x>
+		<y>100.0</y>
+		<depth>0.01</depth>
+		<texture>BG/Mirror/BushMother</texture>
+	</element>
+</root>

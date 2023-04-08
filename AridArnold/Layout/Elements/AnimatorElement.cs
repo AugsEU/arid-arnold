@@ -8,6 +8,7 @@
 		{
 			string animPath = node["anim"].InnerText;
 			mAnim = MonoData.I.LoadAnimator(animPath);
+			mAnim.Play();
 		}
 
 		public override void Update(GameTime gameTime)
