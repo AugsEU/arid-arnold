@@ -12,7 +12,6 @@
 			<name>Steam Plant</name>
 
 			<theme>
-				
 				<path from="wall">steel</path>
 				<path from="platform">girder</path>
 			</theme>
@@ -46,7 +45,6 @@
 			<name>Land of Mirrors</name>
 
 			<theme>
-				<bg>Forrest</bg>
 				<path from="wall">cobble</path>
 				<path from="platform">tree-platform</path>
 			</theme>
@@ -81,27 +79,28 @@
 
 			<theme>
 				<!--<bgColor>030309</bgColor>-->
-				<bg>Cave</bg>
 				<path from="wall">cave</path>
 				<path from="platform">cave-platform</path>
 			</theme>
-
 			<levels>
 				<level id="level3-1">
 					<type>collectWater</type>
 					<waterNeeded>4</waterNeeded>
-					<name></name>
+					<bg>BG/Buk/Buk.mlo</bg>
 				</level>
 				<level id="level3-2">
 					<type>collectWater</type>
 					<waterNeeded>3</waterNeeded>
+					<bg>BG/Buk/Buk.mlo</bg>
 				</level>
 				<level id="level3-3">
 					<type>collectWater</type>
 					<waterNeeded>6</waterNeeded>
+					<bg>BG/Buk/Buk.mlo</bg>
 				</level>
 				<level id="level3-4">
 					<type>collectFlag</type>
+					<bg>BG/Buk/Buk.mlo</bg>
 				</level>
 			</levels>
 		</world>

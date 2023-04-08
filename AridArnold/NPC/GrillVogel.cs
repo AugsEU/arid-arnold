@@ -8,7 +8,7 @@
 		#region rConstants
 
 		const float TALK_DISTANCE = 30.0f;
-		const int NUM_STORIES = 17;
+		const int NUM_STORIES = 16;
 		const int NUM_GREETINGS = 8;
 
 		#endregion rConstants
