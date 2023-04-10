@@ -138,7 +138,7 @@ namespace AridArnold
 
 			drawPos = MonoMath.Round(drawPos);
 
-			MonoDraw.DrawTexture(info, texToDraw, drawPos, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, MonoDraw.LAYER_TILE );
+			MonoDraw.DrawTexture(info, texToDraw, drawPos, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, DrawLayer.Tile);
 		}
 
 		#endregion rDraw

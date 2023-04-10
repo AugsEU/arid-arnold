@@ -11,6 +11,18 @@
 		public GraphicsDevice device;
 	}
 
+	enum DrawLayer
+	{
+		Background = 0,
+		BackgroundElement,
+		Default,
+		Player,
+		Tile,
+		TileEffects,
+		Text,
+		NumLayers
+	}
+
 	/// <summary>
 	/// Simple rendering methods.
 	/// </summary>
@@ -18,27 +30,8 @@
 	{
 		#region rConstants
 
-		//Define layer depths of objects.
-		// TO DO: SORT THIS MESS
-		public const float LAYER_BG = 0.01f;
-		public const float LAYER_BG_ELEMENT = 0.05f;
-
-		public const float LAYER_DEFAULT = 0.1f;
-
-		public const float LAYER_TILE = 0.29f;
-
-		public const float LAYER_ABOVE_TILE = 0.35f;
-
-		public const float LAYER_TEXT_BOX = 0.37f;
-		public const float LAYER_TEXT_SHADOW = 0.38f;
-		public const float LAYER_TEXT = 0.39f;
-		public const float LAYER_TOP = 1.00f;
-
-		//Add this constant to something to make it slightly infront of something within the same "layer".
-		public const float FRONT_EPSILON = 0.0001f;
-		public const float BACK_EPSILON = -FRONT_EPSILON;
-
-		const float LAYER_MOVE_EPSILON = 0.0000001f;
+		const float TOTAL_LAYERS = (float)DrawLayer.NumLayers;
+		const float LAYER_MOVE_EPSILON = 0.000001f;
 
 		static float sCurrentLayerDelta = 0.0f;
 
@@ -55,7 +48,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position)
 		{
-			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(LAYER_DEFAULT));
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(DrawLayer.Default));
 		}
 
 
@@ -65,7 +58,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Rectangle rect)
 		{
-			info.spriteBatch.Draw(texture2D, rect, null, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, IncrementLayer(LAYER_DEFAULT));
+			info.spriteBatch.Draw(texture2D, rect, null, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, GetDepth(DrawLayer.Default));
 		}
 
 
@@ -76,7 +69,7 @@
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, float rotation)
 		{
 			Vector2 rotationOffset = CalcRotationOffset(rotation, texture2D.Width, texture2D.Height);
-			info.spriteBatch.Draw(texture2D, new Rectangle((int)position.X, (int)position.Y, texture2D.Width, texture2D.Height), null, Color.White, rotation, rotationOffset, SpriteEffects.None, IncrementLayer(LAYER_DEFAULT));
+			info.spriteBatch.Draw(texture2D, new Rectangle((int)position.X, (int)position.Y, texture2D.Width, texture2D.Height), null, Color.White, rotation, rotationOffset, SpriteEffects.None, GetDepth(DrawLayer.Default));
 		}
 
 
@@ -86,7 +79,7 @@
 		/// </summary>
 		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, SpriteEffects effect)
 		{
-			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, IncrementLayer(LAYER_DEFAULT));
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, GetDepth(DrawLayer.Default));
 		}
 
 
@@ -94,9 +87,9 @@
 		/// <summary>
 		/// Draw a texture at a position(with layer depth).
 		/// </summary>
-		public static void DrawTextureDepth(DrawInfo info, Texture2D texture2D, Vector2 position, float depth)
+		public static void DrawTextureDepth(DrawInfo info, Texture2D texture2D, Vector2 position, DrawLayer depth)
 		{
-			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
 
@@ -104,9 +97,9 @@
 		/// <summary>
 		/// Draw a texture at a position(with layer depth + color).
 		/// </summary>
-		public static void DrawTextureDepthColor(DrawInfo info, Texture2D texture2D, Vector2 position, Color color, float depth)
+		public static void DrawTextureDepthColor(DrawInfo info, Texture2D texture2D, Vector2 position, Color color, DrawLayer depth)
 		{
-			info.spriteBatch.Draw(texture2D, position, null, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
+			info.spriteBatch.Draw(texture2D, position, null, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
 
@@ -114,25 +107,25 @@
 		/// <summary>
 		/// Draw a texture at a position(all options).
 		/// </summary>
-		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, Rectangle? sourceRectange, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effect, float depth)
+		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, Rectangle? sourceRectange, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effect, DrawLayer depth)
 		{
-			info.spriteBatch.Draw(texture2D, position, sourceRectange, color, rotation, origin, scale, effect, IncrementLayer(depth));
+			info.spriteBatch.Draw(texture2D, position, sourceRectange, color, rotation, origin, scale, effect, GetDepth(depth));
 		}
 
 
 		/// <summary>
 		/// Draw a texture to a rect(all options).
 		/// </summary>
-		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Rectangle destRect, Rectangle? sourceRectange, Color color, float rotation, Vector2 origin, SpriteEffects effect, float depth)
+		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Rectangle destRect, Rectangle? sourceRectange, Color color, float rotation, Vector2 origin, SpriteEffects effect, DrawLayer depth)
 		{
-			info.spriteBatch.Draw(texture2D, destRect, sourceRectange, color, rotation, origin, effect, IncrementLayer(depth));
+			info.spriteBatch.Draw(texture2D, destRect, sourceRectange, color, rotation, origin, effect, GetDepth(depth));
 		}
 
 
 		/// <summary>
 		/// Draw a texture to a rect(all options).
 		/// </summary>
-		public static void DrawPlatformer(DrawInfo info, Rect2f collider, Texture2D texture2D, Vector2 position, Color color, CardinalDirection gravityDir, WalkDirection walkDir, float depth)
+		public static void DrawPlatformer(DrawInfo info, Rect2f collider, Texture2D texture2D, Vector2 position, Color color, CardinalDirection gravityDir, WalkDirection walkDir, DrawLayer depth)
 		{
 			Vector2 drawPosition = Vector2.Zero;
 
@@ -187,20 +180,20 @@
 		/// <summary>
 		/// Draw a string centred at a position
 		/// </summary>
-		public static void DrawStringCentred(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, float depth)
+		public static void DrawStringCentred(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, DrawLayer depth = DrawLayer.Text)
 		{
 			Vector2 size = font.MeasureString(text);
 
-			info.spriteBatch.DrawString(font, text, position - size / 2, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
+			info.spriteBatch.DrawString(font, text, position - size / 2, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
 
 		/// <summary>
 		/// Draw a string at a position
 		/// </summary>
-		public static void DrawString(DrawInfo info, SpriteFont font, string text, Vector2 position, Color color, float depth)
+		public static void DrawString(DrawInfo info, SpriteFont font, string text, Vector2 position, Color color, DrawLayer depth)
 		{
-			info.spriteBatch.DrawString(font, text, position, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, IncrementLayer(depth));
+			info.spriteBatch.DrawString(font, text, position, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
 
@@ -233,9 +226,9 @@
 		/// <summary>
 		/// Draw a simple rectangle. Used mostly for debugging
 		/// </summary>
-		public static void DrawRectDepth(DrawInfo info, Rectangle rect, Color col, float depth)
+		public static void DrawRectDepth(DrawInfo info, Rectangle rect, Color col, DrawLayer depth)
 		{
-			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, null, col, 0.0f, Vector2.Zero, SpriteEffects.None, IncrementLayer(depth));
+			info.spriteBatch.Draw(Main.GetDummyTexture(), rect, null, col, 0.0f, Vector2.Zero, SpriteEffects.None, GetDepth(depth));
 		}
 
 
@@ -264,7 +257,7 @@
 		/// <summary>
 		/// Draw a dot at a position.
 		/// </summary>
-		public static void DrawDotDepth(DrawInfo info, Vector2 point, Color col, float depth)
+		public static void DrawDotDepth(DrawInfo info, Vector2 point, Color col, DrawLayer depth)
 		{
 			DrawDotDepth(info, new Point((int)point.X, (int)point.Y), col, depth);
 		}
@@ -274,7 +267,7 @@
 		/// <summary>
 		/// Draw a dot at a position
 		/// </summary>
-		public static void DrawDotDepth(DrawInfo info, Point point, Color col, float depth)
+		public static void DrawDotDepth(DrawInfo info, Point point, Color col, DrawLayer depth)
 		{
 			Rectangle rectangle = new Rectangle(point.X, point.Y, 1, 1);
 			DrawRectDepth(info, rectangle, col, depth);
@@ -285,7 +278,7 @@
 		/// <summary>
 		/// Draw a line from point A to B
 		/// </summary>
-		public static void DrawLine(DrawInfo info, Vector2 point1, Vector2 point2, Color color, float thickness = 1.0f, float depth = LAYER_DEFAULT)
+		public static void DrawLine(DrawInfo info, Vector2 point1, Vector2 point2, Color color, float thickness = 1.0f, DrawLayer depth = DrawLayer.Default)
 		{
 			float distance = Vector2.Distance(point1, point2);
 			float angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
@@ -297,11 +290,11 @@
 		/// <summary>
 		/// Draw a line from point A by an angle.
 		/// </summary>
-		public static void DrawLine(DrawInfo info, Vector2 point, float length, float angle, Color color, float thickness = 1.0f, float depth = LAYER_DEFAULT)
+		public static void DrawLine(DrawInfo info, Vector2 point, float length, float angle, Color color, float thickness = 1.0f, DrawLayer depth = DrawLayer.Default)
 		{
 			var origin = new Vector2(0f, 0.5f);
 			var scale = new Vector2(length, thickness);
-			info.spriteBatch.Draw(Main.GetDummyTexture(), point, null, color, angle, origin, scale, SpriteEffects.None, IncrementLayer(depth));
+			info.spriteBatch.Draw(Main.GetDummyTexture(), point, null, color, angle, origin, scale, SpriteEffects.None, GetDepth(depth));
 		}
 
 
@@ -309,14 +302,16 @@
 		/// <summary>
 		/// Draw a line with drop shadow.
 		/// </summary>
-		public static void DrawLineShadow(DrawInfo info, Vector2 point1, Vector2 point2, Color color, Color shadowColor, float dropDistance, float thickness = 1.0f, float depth = LAYER_DEFAULT)
+		public static void DrawLineShadow(DrawInfo info, Vector2 point1, Vector2 point2, Color color, Color shadowColor, float dropDistance, float thickness = 1.0f, DrawLayer depth = DrawLayer.Default)
 		{
+			Vector2 shadowPt1 = point1;
+			Vector2 shadowPt2 = point2;
+
+			shadowPt1.Y += dropDistance;
+			shadowPt2.Y += dropDistance;
+
+			DrawLine(info, shadowPt1, shadowPt2, shadowColor, thickness, depth);
 			DrawLine(info, point1, point2, color, thickness, depth);
-
-			point1.Y += dropDistance;
-			point2.Y += dropDistance;
-
-			DrawLine(info, point1, point2, shadowColor, thickness, depth + BACK_EPSILON);
 		}
 
 		#endregion rRender
@@ -359,13 +354,25 @@
 		}
 
 
+
+		/// <summary>
+		/// Get draw layer from string. Exception if not a valid name.
+		/// </summary>
+		static public DrawLayer GetDrawLayer(string drawLayer)
+		{
+			return MonoAlg.GetEnumFromString<DrawLayer>(drawLayer);
+		}
+
+
 		/// <summary>
 		/// Increment layer to avoid z-fighting.
 		/// </summary>
-		public static float IncrementLayer(float baseLayer)
+		static float GetDepth(DrawLayer layer)
 		{
+			float layerNum = (float)layer;
+
 			sCurrentLayerDelta += LAYER_MOVE_EPSILON;
-			return baseLayer + sCurrentLayerDelta;
+			return layerNum / TOTAL_LAYERS + sCurrentLayerDelta;
 		}
 
 

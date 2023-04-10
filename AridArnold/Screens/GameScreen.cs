@@ -307,8 +307,8 @@
 				}
 			}
 
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetCurrentWorld().GetName(), MonoDraw.LAYER_TEXT);
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + ProgressManager.I.GetLevelNumber(), MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetCurrentWorld().GetName(), DrawLayer.Text);
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + ProgressManager.I.GetLevelNumber(), DrawLayer.Text);
 
 			info.spriteBatch.End();
 		}
@@ -330,15 +330,15 @@
 						DepthStencilState.Default,
 						RasterizerState.CullNone);
 
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 223.0f), Color.White, "Time", MonoDraw.LAYER_TEXT);
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 238.0f), Color.White, GhostManager.I.GetTime(), MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 223.0f), Color.White, "Time", DrawLayer.Text);
+			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 238.0f), Color.White, GhostManager.I.GetTime(), DrawLayer.Text);
 
 			string timeToBeat = GhostManager.I.GetTimeToBeat();
 
 			if (timeToBeat != "")
 			{
-				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 283.0f), Color.DarkOliveGreen, "Time to beat", MonoDraw.LAYER_TEXT);
-				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 298.0f), Color.DarkOliveGreen, timeToBeat, MonoDraw.LAYER_TEXT);
+				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 283.0f), Color.DarkOliveGreen, "Time to beat", DrawLayer.Text);
+				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 298.0f), Color.DarkOliveGreen, timeToBeat, DrawLayer.Text);
 			}
 
 			info.spriteBatch.End();

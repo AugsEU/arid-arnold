@@ -115,8 +115,8 @@
 			Rectangle mainRect = new Rectangle((int)mainPos.X, (int)mainPos.Y, (int)dropSize, (int)dropSize);
 			Rectangle secondRect = new Rectangle((int)secondPos.X, (int)secondPos.Y - 1, (int)dropSize, (int)dropSize);
 
-			MonoDraw.DrawRectDepth(info, secondRect, mSecondColor, 0.2f);
-			MonoDraw.DrawRectDepth(info, mainRect, mMainColor, 0.2f);
+			MonoDraw.DrawRectDepth(info, secondRect, mSecondColor, DrawLayer.BackgroundElement);
+			MonoDraw.DrawRectDepth(info, mainRect, mMainColor, DrawLayer.BackgroundElement);
 		}
 
 		float GetDropSize()

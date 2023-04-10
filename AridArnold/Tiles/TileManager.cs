@@ -670,7 +670,7 @@
 
 			Rectangle sourceRectangle = new Rectangle(tileIndex.X * tileHeight, tileIndex.Y * tileHeight, tileHeight, tileHeight);
 
-			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, rotation, MonoDraw.CalcRotationOffset(rotation, tileHeight), effect, MonoDraw.LAYER_TILE);
+			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, rotation, MonoDraw.CalcRotationOffset(rotation, tileHeight), effect, DrawLayer.Tile);
 		}
 
 

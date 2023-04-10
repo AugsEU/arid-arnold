@@ -218,7 +218,7 @@
 			Rect2f originalTextureRect = ColliderBounds();
 			Color colorToDraw = GetDrawColor();
 			CardinalDirection gravityDir = GetGravityDir();
-			float drawLayer = GetDrawLayer();
+			DrawLayer drawLayer = GetDrawLayer();
 
 			MonoDraw.DrawPlatformer(info, originalTextureRect, textureToDraw, mPosition, colorToDraw, gravityDir, mPrevDirection, drawLayer);
 		}
@@ -248,9 +248,9 @@
 		/// <summary>
 		/// Get the layer that this platformer should be drawn on.
 		/// </summary>
-		protected virtual float GetDrawLayer()
+		protected virtual DrawLayer GetDrawLayer()
 		{
-			return MonoDraw.LAYER_DEFAULT;
+			return DrawLayer.Default;
 		}
 
 		#endregion rDraw

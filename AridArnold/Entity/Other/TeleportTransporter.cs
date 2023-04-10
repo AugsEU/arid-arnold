@@ -248,7 +248,7 @@ namespace AridArnold
 
 				TraceInfo tracer = mTraceHistory[i].Value;
 
-				MonoDraw.DrawTexture(info, tracer.mTexture, tracer.mPosition, null, TRACE_COLORS[i], tracer.mRotation, Vector2.Zero, 1.0f, tracer.mSpriteEffects, MonoDraw.LAYER_ABOVE_TILE);
+				MonoDraw.DrawTexture(info, tracer.mTexture, tracer.mPosition, null, TRACE_COLORS[i], tracer.mRotation, Vector2.Zero, 1.0f, tracer.mSpriteEffects, DrawLayer.TileEffects);
 			}
 		}
 

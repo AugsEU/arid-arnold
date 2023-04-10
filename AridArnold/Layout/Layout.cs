@@ -82,18 +82,18 @@
 	abstract class LayElement
 	{
 		protected Vector2 mPos;
-		protected float mDepth;
+		protected DrawLayer mDepth;
 
 		public LayElement(XmlNode rootNode)
 		{
 			mPos = MonoParse.GetVector(rootNode);
-			mDepth = MonoParse.GetFloat(rootNode["depth"]);
+			mDepth = MonoDraw.GetDrawLayer(rootNode["depth"].InnerText);
 		}
 
 		public virtual void Update(GameTime gameTime) { }
 
 		public virtual void Draw(DrawInfo info) { }
 
-		public float GetDepth() { return mDepth; }
+		public DrawLayer GetDepth() { return mDepth; }
 	}
 }

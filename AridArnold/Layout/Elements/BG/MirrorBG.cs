@@ -106,14 +106,14 @@ namespace AridArnold
 		Vector2 mVelocity;
 		Texture2D mLateralTexture;
 		Texture2D mVerticalTexture;
-		float mDepth;
+		DrawLayer mDepth;
 
 		// Movement
 		float mAngle;
 		float mAmplitude;
 		float mAngularVelocity;
 
-		public FallingLeaf(Vector2 pos, float velocity, Texture2D lateral, Texture2D vertical, float depth)
+		public FallingLeaf(Vector2 pos, float velocity, Texture2D lateral, Texture2D vertical, DrawLayer depth)
 		{
 			mPos = pos;
 			mLateralTexture = lateral;

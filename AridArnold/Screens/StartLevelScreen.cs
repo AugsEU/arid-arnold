@@ -84,13 +84,13 @@
 									SamplerState.PointClamp,
 									DepthStencilState.Default,
 									RasterizerState.CullNone);
-			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.Gold, ProgressManager.I.GetCurrentWorld().GetName(), MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.Gold, ProgressManager.I.GetCurrentWorld().GetName());
 
 			centre.Y += 25.0f;
 
 			int levelNumber = ProgressManager.I.GetLevelNumber();
 
-			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "Level " + levelNumber, MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "Level " + levelNumber);
 
 			info.spriteBatch.End();
 

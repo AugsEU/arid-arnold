@@ -373,6 +373,16 @@
 			return Color.White;
 		}
 
+
+
+		/// <summary>
+		/// Get draw layer for Arnold.
+		/// </summary>
+		protected override DrawLayer GetDrawLayer()
+		{
+			return DrawLayer.Player;
+		}
+
 		#endregion rDraw
 
 

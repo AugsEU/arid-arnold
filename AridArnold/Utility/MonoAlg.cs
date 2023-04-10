@@ -92,5 +92,14 @@
 				list[n] = temp;
 			}
 		}
+
+
+		/// <summary>
+		/// Get an enum from a string
+		/// </summary>
+		static public T GetEnumFromString<T>(string value)
+		{
+			return (T)Enum.Parse(typeof(T), value);
+		}
 	}
 }

@@ -19,7 +19,7 @@
 			mTimer = new MonoTimer();
 			mTimer.Start();
 
-			SetDropTime();
+			mDropTime = RandomManager.I.GetDraw().GetFloatRange(0.0f, 5500.0f);
 		}
 
 		public override void FinishInit()

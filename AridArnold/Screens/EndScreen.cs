@@ -74,7 +74,7 @@
 									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
-			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "YOU WIN", MonoDraw.LAYER_TEXT);
+			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "YOU WIN", DrawLayer.Text);
 
 			info.spriteBatch.End();
 

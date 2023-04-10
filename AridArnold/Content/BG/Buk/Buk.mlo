@@ -3,7 +3,7 @@
 	<element type="texture">
 		<x>0.0</x>
 		<y>0.0</y>
-		<depth>0.01</depth>
+		<depth>Background</depth>
 		<texture>BG/Buk/BG</texture>
 	</element>
 </root>
