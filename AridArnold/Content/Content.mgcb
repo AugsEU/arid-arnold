@@ -208,6 +208,66 @@
 #begin BG/Buk/Buk.mlo
 /copy:BG/Buk/Buk.mlo
 
+#begin BG/Lab/BG1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Lab/BG1.png
+
+#begin BG/Lab/BG2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Lab/BG2.png
+
+#begin BG/Lab/BG3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Lab/BG3.png
+
+#begin BG/Lab/BG4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Lab/BG4.png
+
+#begin BG/Lab/Lab1.mlo
+/copy:BG/Lab/Lab1.mlo
+
+#begin BG/Lab/Lab2.mlo
+/copy:BG/Lab/Lab2.mlo
+
+#begin BG/Lab/Lab3.mlo
+/copy:BG/Lab/Lab3.mlo
+
+#begin BG/Lab/Lab4.mlo
+/copy:BG/Lab/Lab4.mlo
+
 #begin BG/Mirror/BG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -534,6 +594,21 @@
 
 #begin BG/SteamPlant/ValveIdle.mia
 /copy:BG/SteamPlant/ValveIdle.mia
+
+#begin BG/WW7/BG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/WW7/BG.png
+
+#begin BG/WW7/WW7.mlo
+/copy:BG/WW7/WW7.mlo
 
 #begin Enemies/Futron-Gun/bullet.png
 /importer:TextureImporter
@@ -2838,6 +2913,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/WW7/beam.png
+
+#begin Tiles/WW7/concrete.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/WW7/concrete.png
 
 #begin Tiles/WW7/gravel.png
 /importer:TextureImporter

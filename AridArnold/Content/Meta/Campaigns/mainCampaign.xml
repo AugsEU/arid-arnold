@@ -111,8 +111,6 @@
 			<name>The Lab</name>
 
 			<theme>
-				<!--<bgColor>AD999B</bgColor>-->
-				<bg>Lab</bg>
 				<path from="wall">lab-wall.max</path>
 				<path from="platform">lab-plat.max</path>
 			</theme>
@@ -121,17 +119,21 @@
 				<level id="level4-1">
 					<type>collectWater</type>
 					<waterNeeded>3</waterNeeded>
+					<bg>BG/Lab/Lab1.mlo</bg>
 				</level>
 				<level id="level4-2">
 					<type>collectWater</type>
 					<waterNeeded>4</waterNeeded>
+					<bg>BG/Lab/Lab2.mlo</bg>
 				</level>
 				<level id="level4-3">
 					<type>collectWater</type>
 					<waterNeeded>4</waterNeeded>
+					<bg>BG/Lab/Lab3.mlo</bg>
 				</level>
 				<level id="level4-4">
 					<type>collectFlag</type>
+					<bg>BG/Lab/Lab4.mlo</bg>
 				</level>
 			</levels>
 		</world>
@@ -145,6 +147,7 @@
 				<!--<bgColor>00000A</bgColor>-->
 				<bg>City</bg>
 				<path from="wall">gravel</path>
+				<path from="wallSecondary">concrete</path>
 				<path from="platform">beam</path>
 			</theme>
 
@@ -152,17 +155,21 @@
 				<level id="level5-1">
 					<type>collectWater</type>
 					<waterNeeded>5</waterNeeded>
+					<bg>BG/WW7/WW7.mlo</bg>
 				</level>
 				<level id="level5-2">
 					<type>collectWater</type>
 					<waterNeeded>5</waterNeeded>
+					<bg>BG/WW7/WW7.mlo</bg>
 				</level>
 				<level id="level5-3">
 					<type>collectWater</type>
 					<waterNeeded>4</waterNeeded>
+					<bg>BG/WW7/WW7.mlo</bg>
 				</level>
 				<level id="level5-4">
 					<type>collectFlag</type>
+					<bg>BG/WW7/WW7.mlo</bg>
 				</level>
 			</levels>
 		</world>

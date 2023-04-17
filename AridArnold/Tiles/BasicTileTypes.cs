@@ -206,6 +206,15 @@
 
 
 		/// <summary>
+		/// Is the other tile a type capable of being a neighbour.
+		/// </summary>
+		public virtual bool IsNeighbourType(Tile other)
+		{
+			return other.GetType() == this.GetType();
+		}
+
+
+		/// <summary>
 		/// Is this tile enabled?
 		/// </summary>
 		public bool pEnabled

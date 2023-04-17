@@ -157,7 +157,9 @@
 					case 0xFFFFFFu:
 						return new AirTile(position);
 					case 0x000000u:
-						return new WallTile(position);
+						return new WallTile(position, "wall");
+					case 0x101010u:
+						return new WallTile(position, "wallSecondary");
 					case 0xA9A9A9u:
 						return new AnimatedPlatformTile((CardinalDirection)param, position);
 					//Collectable
@@ -236,10 +238,7 @@
 				{
 					if (x + 1 < mTileMap.GetLength(0))
 					{
-						Type type1 = mTileMap[x, y].GetType();
-						Type type2 = mTileMap[x + 1, y].GetType();
-
-						if (mTileMap[x, y].GetType() == mTileMap[x + 1, y].GetType())
+						if (mTileMap[x, y].IsNeighbourType(mTileMap[x + 1, y]))
 						{
 							mTileMap[x, y].SetRightAdjacent(mTileMap[x + 1, y]);
 						}
@@ -247,7 +246,7 @@
 
 					if (y + 1 < mTileMap.GetLength(1))
 					{
-						if (mTileMap[x, y].GetType() == mTileMap[x, y + 1].GetType())
+						if (mTileMap[x, y].IsNeighbourType(mTileMap[x, y + 1]))
 						{
 							mTileMap[x, y].SetBottomAdjacent(mTileMap[x, y + 1]);
 						}
