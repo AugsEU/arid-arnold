@@ -2356,6 +2356,33 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/bottle.png
 
+#begin Tiles/bottleFade.max
+/copy:Tiles/bottleFade.max
+
+#begin Tiles/bottleFade1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/bottleFade1.png
+
+#begin Tiles/bottleFade2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/bottleFade2.png
+
 #begin Tiles/Buk/cave.png
 /importer:TextureImporter
 /processor:TextureProcessor

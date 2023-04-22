@@ -21,7 +21,15 @@
 			{
 				CollectableManager.I.CollectItem(GetCollectableType());
 				mEnabled = false;
+				OnCollect();
 			}
+		}
+
+		/// <summary>
+		/// Called when the tile is collected.
+		/// </summary>
+		public virtual void OnCollect()
+		{
 		}
 	}
 
@@ -178,6 +186,11 @@
 		protected override CollectableType GetCollectableType()
 		{
 			return CollectableType.WaterBottle;
+		}
+
+		public override void OnCollect()
+		{
+			FXManager.I.AddAnimator(mPosition, "Tiles/bottleFade.max", DrawLayer.TileEffects);
 		}
 	}
 }

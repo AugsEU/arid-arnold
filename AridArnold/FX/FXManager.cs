@@ -94,6 +94,25 @@
 
 
 		/// <summary>
+		/// Add animtion
+		/// </summary>
+		public void AddAnimator(Vector2 pos, Animator anim, DrawLayer drawLayer)
+		{
+			mFXList.Add(new AnimationFX(pos, anim, drawLayer));
+		}
+
+
+
+		/// <summary>
+		/// Add animation
+		/// </summary>
+		public void AddAnimator(Vector2 pos, string anim, DrawLayer drawLayer)
+		{
+			mFXList.Add(new AnimationFX(pos, anim, drawLayer));
+		}
+
+
+		/// <summary>
 		/// Clear all effects
 		/// </summary>
 		public void Clear()
