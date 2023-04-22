@@ -41,6 +41,7 @@
 		{
 			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
 			{
+				ProgressManager.I.GoToStart();
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
 			}
 		}
