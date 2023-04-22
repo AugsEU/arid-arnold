@@ -4,7 +4,7 @@
 	{
 		#region rConstants
 
-		const int FILE_VER = 2;
+		const int FILE_VER = 3;
 		const int NUM_ENTITY_PARAMS = 8;
 
 		#endregion rConstants

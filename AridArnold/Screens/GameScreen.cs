@@ -9,9 +9,14 @@
 
 		public const int TILE_SIZE = 16;
 
-		private const double END_LEVEL_TIME = 1000.0;
-		private const double END_LEVEL_FLASH_TIME = 100.0;
-		private const int UI_PANEL_SIZE = 190;
+		const double END_LEVEL_TIME = 1000.0;
+		const double END_LEVEL_FLASH_TIME = 100.0;
+		const int UI_PANEL_SIZE = 190;
+
+		const int GAME_AREA_WIDTH = 544;
+		const int GAME_AREA_HEIGHT = 528;
+		const int GAME_AREA_X = 208;
+		const int GAME_AREA_Y = 6;
 
 		#endregion rConstants
 
@@ -82,8 +87,7 @@
 		/// </summary>
 		public override void OnActivate()
 		{
-			TileManager.I.Init(new Vector2(0.0f, TILE_SIZE), TILE_SIZE);
-			TileManager.I.CentreX(TileManager.I.GetDrawWidth() + 2 * TILE_SIZE);
+			TileManager.I.Init(new Vector2(-TILE_SIZE, -TILE_SIZE), TILE_SIZE);
 
 			StartLevel();
 		}
@@ -128,7 +132,7 @@
 		/// <returns></returns>
 		private Rectangle GetGameAreaRect()
 		{
-			return new Rectangle((mScreenTarget.Width - mGameArea.Width) / 2, (mScreenTarget.Height - mGameArea.Height) / 2, mGameArea.Width, mGameArea.Height);
+			return new Rectangle(GAME_AREA_X, GAME_AREA_Y, GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 		}
 
 		#endregion rUtility
@@ -195,7 +199,7 @@
 		{
 			if (mGameArea == null)
 			{
-				mGameArea = new RenderTarget2D(info.device, TileManager.I.GetDrawWidth() + 2 * TILE_SIZE, TileManager.I.GetDrawHeight() + TILE_SIZE);
+				mGameArea = new RenderTarget2D(info.device, GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			}
 
 			info.device.SetRenderTarget(mGameArea);

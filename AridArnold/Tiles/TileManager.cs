@@ -5,13 +5,23 @@
 	/// </summary>
 	internal class TileManager : Singleton<TileManager>
 	{
+		#region rConstants
+
+		const int TILE_MAP_SIZE = 36;
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
 		Vector2 mTileMapPos;
 		float mTileSize;
 
 		//Tile map
-		Tile[,] mTileMap = new Tile[32, 32];
+		Tile[,] mTileMap = new Tile[TILE_MAP_SIZE, TILE_MAP_SIZE];
 		Tile mDummyTile;
 		List<Point> mDeleteRequests; // Tiles we want deleted in the next update.
 
@@ -54,7 +64,7 @@
 		{
 			EntityManager.I.ClearEntities();
 			CollectableManager.I.ClearAllCollectables();
-			mEMField = new EMField(32);
+			mEMField = new EMField(TILE_MAP_SIZE);
 
 			//Load tile map.
 			LoadTilemap(name);
@@ -832,20 +842,6 @@
 					rotation = 0.0f;
 					break;
 			}
-		}
-
-
-
-		/// <summary>
-		/// Centre the tile map in the screen.
-		/// </summary>
-		/// <param name="screenWidth">Width of the screen to centre it</param>
-		public void CentreX(float screenWidth)
-		{
-			float ourWidth = GetDrawWidth();
-			float xOffset = (screenWidth - ourWidth) / 2.0f;
-
-			mTileMapPos.X = xOffset;
 		}
 
 		#endregion rDraw
