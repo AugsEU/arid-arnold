@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<animation variation="45.0">
+<animation variation="55.0">
 	<main>BG/SteamPlant/Dial1</main>
 	<alt>BG/SteamPlant/DialFall.max</alt>
 	<alt>BG/SteamPlant/DialFullFall.max</alt>
