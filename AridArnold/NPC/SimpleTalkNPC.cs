@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		const float TALK_DISTANCE = 30.0f;
+		const float TALK_DISTANCE = 29.0f;
 
 		#endregion rConstants
 
