@@ -132,6 +132,15 @@
 		/// <returns>Sprite effect</returns>
 		public virtual SpriteEffects GetEffect()
 		{
+			// Flipping the tile keeps light direction consistent
+			switch (mRotation)
+			{
+				case CardinalDirection.Down:
+				case CardinalDirection.Left:
+					return SpriteEffects.FlipHorizontally;
+				default:
+					break;
+			}
 			return SpriteEffects.None;
 		}
 
