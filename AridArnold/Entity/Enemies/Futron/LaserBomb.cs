@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using Microsoft.Xna.Framework;
+
+namespace AridArnold
 {
 	internal class LaserBomb : ProjectileEntity
 	{
@@ -16,6 +18,8 @@
 
 		static Vector2 TRACE_OFFSET = new Vector2(1.0f, 1.0f);
 
+		const float TRACE_SEGMENT_LENGTH = 6.0f;
+
 		#endregion rConstants
 
 
@@ -27,6 +31,11 @@
 		Animator mBombAnim;
 		float mTraceLength;
 		MonoTimer mDeathTimer;
+
+		Vector2 mPrevPosition;
+		float mDistanceTravelled;
+
+		Texture2D mReticuleTexture;
 
 		#endregion rMembers
 
@@ -43,7 +52,10 @@
 		{
 			mVelocity = velocity;
 			mTraceLength = 0.0f;
+			mDistanceTravelled = 0.0f;
 			mDeathTimer = new MonoTimer();
+
+			mPrevPosition = position;
 		}
 
 
@@ -73,6 +85,8 @@
 																   , ("Enemies/Futron-Rocket/Explosion11", EFT)
 																   , ("Enemies/Futron-Rocket/Explosion12", EFT));
 			mTexture = mBombAnim.GetTexture(0);
+
+			mReticuleTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Rocket/Reticule");
 		}
 
 		#endregion rInitialiation
@@ -86,6 +100,8 @@
 		public override void Update(GameTime gameTime)
 		{
 			float dt = Util.GetDeltaT(gameTime);
+
+			Vector2 prevPos = mPosition;
 
 			// Free-body motion
 			mPrevVelocity = mVelocity;
@@ -117,6 +133,9 @@
 
 			// Base
 			base.Update(gameTime);
+
+			mDistanceTravelled += Vector2.Distance(mPrevPosition, mPosition);
+			mPrevPosition = mPosition;
 		}
 
 
@@ -164,28 +183,61 @@
 			}
 
 			float traceLenRemaining = mTraceLength;
-			GameTime timeStep = new GameTime(new TimeSpan(0), new TimeSpan(600000));
+			GameTime timeStep = new GameTime(new TimeSpan(0), new TimeSpan(100000));
 			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition, mVelocity, LASER_BOMB_GRAVITY, mTexture.Width);
 
 			List<EntityCollision> collisions = new List<EntityCollision>();
 			TileManager.I.GatherCollisions(timeStep, freeBodyEntity, ref collisions);
 
-			bool draw = false;
-			while(collisions.Count == 0 && traceLenRemaining > 0)
+			float tracerDistanceTravelled = mDistanceTravelled;
+			Vector2 startPoint = freeBodyEntity.GetPos() + TRACE_OFFSET;
+
+			while (collisions.Count == 0 && traceLenRemaining > 0)
 			{
+				int tracerSegmentPrev = (int)(tracerDistanceTravelled / TRACE_SEGMENT_LENGTH);
+
 				Vector2 v1 = freeBodyEntity.GetPos() + TRACE_OFFSET;
 				freeBodyEntity.MoveTimeStep(timeStep);
 				Vector2 v2 = freeBodyEntity.GetPos() + TRACE_OFFSET;
 
-				traceLenRemaining -= Vector2.Distance(v1, v2);
+				float tracerMoveDelta = Vector2.Distance(v1, v2);
+				tracerDistanceTravelled += tracerMoveDelta;
+				traceLenRemaining -= tracerMoveDelta;
 
-				if (draw)
+				int tracerSegmentNew = (int)(tracerDistanceTravelled / TRACE_SEGMENT_LENGTH);
+
+				if(tracerSegmentNew > tracerSegmentPrev)
 				{
-					MonoDraw.DrawLineShadow(info, v1, v2, TRACE_COLOR, TRACE_COLOR_SHADOW, 3.0f, 2.0f);
+					if(tracerSegmentNew % 2 == 1)
+					{
+						// Calculate end point and draw
+						float lerpT = 1.0f + (tracerSegmentNew * TRACE_SEGMENT_LENGTH - tracerDistanceTravelled) / tracerMoveDelta;
+						Vector2 endPoint = MonoMath.Lerp(v1, v2, lerpT);
+
+						MonoDraw.DrawLineShadow(info, startPoint, endPoint, TRACE_COLOR, TRACE_COLOR_SHADOW, 2.0f, 2.0f, DrawLayer.SubEntity);
+					}
+					else
+					{
+						// Calculate start point
+						float lerpT = 1.0f + (tracerSegmentNew * TRACE_SEGMENT_LENGTH - tracerDistanceTravelled) / tracerMoveDelta;
+						startPoint = MonoMath.Lerp(v1, v2, lerpT);
+					}
 				}
 
-				draw = !draw;
 				TileManager.I.GatherCollisions(timeStep, freeBodyEntity, ref collisions);
+			}
+
+			if (collisions.Count != 0)
+			{
+
+				EntityCollision firstCollision = MonoAlg.GetMin(ref collisions, EntityCollision.COLLISION_SORTER);
+
+				Vector2 target = freeBodyEntity.GetPos() + firstCollision.GetResult().t.Value * freeBodyEntity.VelocityToDisplacement(timeStep);
+
+				target.X -= mReticuleTexture.Width / 2.0f;
+				//target.Y -= mReticuleTexture.Height / 2.0f;
+
+				MonoDraw.DrawTextureDepth(info, mReticuleTexture, target, DrawLayer.SubEntity);
 			}
 		}
 

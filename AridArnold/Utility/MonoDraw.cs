@@ -15,6 +15,7 @@
 	{
 		Background = 0,
 		BackgroundElement,
+		SubEntity,
 		Default,
 		Player,
 		Tile,
