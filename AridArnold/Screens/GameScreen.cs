@@ -58,6 +58,8 @@
 			mGameArea = null;
 			mLeftUI = null;
 			mRightUI = null;
+
+			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 		}
 
 
@@ -69,6 +71,7 @@
 		private void LoadLevel(Level levelToBegin)
 		{
 			FXManager.I.Clear();
+
 			levelToBegin.Begin();
 
 			if(ProgressManager.I.CanLoseLives() == false)
@@ -433,15 +436,7 @@
 				return;
 			}
 
-			KeyboardState keyboardState = Keyboard.GetState();
-
-			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
-			{
-				EArgs eArgs;
-				eArgs.sender = this;
-
-				EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
-			}
+			HandleInput();
 
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
@@ -457,6 +452,26 @@
 			else if (status == LevelStatus.Loss)
 			{
 				LevelLose();
+			}
+		}
+
+
+
+		/// <summary>
+		/// Handle any system-wide input
+		/// </summary>
+		void HandleInput()
+		{
+			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
+			{
+				EArgs eArgs;
+				eArgs.sender = this;
+
+				EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+			}
+			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
+			{
+				LevelWin();
 			}
 		}
 

@@ -9,6 +9,7 @@
 		Confirm,
 		Pause,
 		RestartLevel,
+		SkipLevel,
 
 		//Arnold
 		ArnoldLeft,
@@ -54,6 +55,7 @@
 			mInputBindings.Add(AridArnoldKeys.Confirm, new InputBindSet(new KeyBinding(Keys.Enter)));
 			mInputBindings.Add(AridArnoldKeys.Pause, new InputBindSet(new KeyBinding(Keys.Escape)));
 			mInputBindings.Add(AridArnoldKeys.RestartLevel, new InputBindSet(new KeyBinding(Keys.R)));
+			mInputBindings.Add(AridArnoldKeys.SkipLevel, new InputBindSet(new KeyBinding(Keys.P)));
 
 			mInputBindings.Add(AridArnoldKeys.ArnoldLeft, new InputBindSet(new KeyBinding(Keys.Left)));
 			mInputBindings.Add(AridArnoldKeys.ArnoldRight, new InputBindSet(new KeyBinding(Keys.Right)));
