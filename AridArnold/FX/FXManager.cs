@@ -8,8 +8,27 @@
 		#region rMembers
 
 		List<FX> mFXList = new List<FX>();
+		int mScreenWidth = 0;
+		int mScreenHeight = 0;
 
 		#endregion
+
+
+
+
+
+		#region rInitialisation
+
+		/// <summary>
+		/// Initialise the FXManager with a screen width and height
+		/// </summary>
+		public void Init(int screenWidth, int screenHeight)
+		{
+			mScreenHeight = screenHeight;
+			mScreenWidth = screenWidth;
+		}
+
+		#endregion rInitialisation
 
 
 
@@ -121,5 +140,21 @@
 		}
 
 		#endregion rAddEffects
+
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Get the size we can draw
+		/// </summary>
+		public Point GetDrawableSize()
+		{
+			return new Point(mScreenWidth, mScreenHeight);
+		}
+
+		#endregion rUtility
 	}
 }
