@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>Steam Plant</name>
+	<path from="wall">lab-wall.max</path>
+	<path from="platform">lab-plat.max</path>
+</theme>
