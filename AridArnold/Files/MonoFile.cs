@@ -43,7 +43,7 @@ namespace AridArnold
 		/// Get file name
 		/// </summary>
 		/// <returns>Relative file path</returns>
-		protected string GetFilename()
+		public string GetFilename()
 		{
 			return mFileName;
 		}

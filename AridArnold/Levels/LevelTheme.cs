@@ -1,11 +1,6 @@
-﻿using System.Xml;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-	/// <summary>
-	/// World theming: tile texture swaps.
-	/// </summary>
-	internal class WorldTheme
+	internal class LevelTheme
 	{
 		#region rMembers
 
@@ -22,12 +17,18 @@ namespace AridArnold
 		/// <summary>
 		/// Load theme
 		/// </summary>
-		public WorldTheme(XmlNode themeNode, string id)
+		public LevelTheme(string xmlPath)
 		{
+			XmlDocument xmlDoc = new XmlDocument();
+			xmlDoc.Load(xmlPath);
+			XmlNode rootNode = xmlDoc.LastChild;
+
+			string id = rootNode.Attributes["id"].Value;
+
 			mRemappedTextures = new List<(string, string)>();
 
-			XmlNodeList remapNodes = themeNode.SelectNodes("path");
-			foreach(XmlNode remapNode in remapNodes)
+			XmlNodeList remapNodes = rootNode.SelectNodes("path");
+			foreach (XmlNode remapNode in remapNodes)
 			{
 				string from = remapNode.Attributes["from"].Value;
 				string to = "Tiles/" + id + "/" + remapNode.InnerText;
@@ -43,7 +44,7 @@ namespace AridArnold
 		/// </summary>
 		public void Load()
 		{
-			foreach((string, string) path in mRemappedTextures)
+			foreach ((string, string) path in mRemappedTextures)
 			{
 				MonoData.I.AddPathRemap(path.Item1, path.Item2);
 			}

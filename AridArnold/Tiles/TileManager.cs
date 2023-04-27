@@ -28,9 +28,6 @@
 		//EM field
 		EMField mEMField;
 
-		//Aux Data
-		AuxData mAuxData;
-
 		#endregion rMembers
 
 
@@ -62,15 +59,10 @@
 		/// <param name="name">Name of the level</param>
 		public void LoadLevel(string name)
 		{
-			EntityManager.I.ClearEntities();
-			CollectableManager.I.ClearAllCollectables();
 			mEMField = new EMField(TILE_MAP_SIZE);
 
 			//Load tile map.
 			LoadTilemap(name);
-
-			//Load aux data.
-			LoadAuxData(name);
 		}
 
 		/// <summary>
@@ -109,39 +101,6 @@
 				{
 					mTileMap[x, y].FinishInit();
 				}
-			}
-		}
-
-
-
-		/// <summary>
-		/// Load aux data.
-		/// </summary>
-		public void LoadAuxData(string name)
-		{
-			// Load file
-			mAuxData = new AuxData(name);
-			mAuxData.Load();
-
-			// Create rails
-			List<LinearRailData> railList = mAuxData.GetRailsData();
-
-			for (int i = 0; i < railList.Count; i++)
-			{
-				LinearRailData railData = railList[i];
-				for(int j = 0; j < railData.GetCount(); j++)
-				{
-					RailPlatform.TryCreateRailPlatformAtNode(railData, j);
-				}
-			}
-
-			// Create Entities
-			List<EntityData> entityList = mAuxData.GetEntityData();
-
-			for (int i = 0; i < entityList.Count; i++)
-			{
-				Entity newEntity = Entity.CreateEntityFromData(entityList[i]);
-				EntityManager.I.RegisterEntity(newEntity);
 			}
 		}
 

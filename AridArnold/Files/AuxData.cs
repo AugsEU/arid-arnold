@@ -2,10 +2,24 @@
 {
 	class AuxData : MonoReadFile
 	{
+		#region rTypes
+
+		public enum LevelType
+		{
+			CollectWater,
+			CollectFlag
+		}
+
+		#endregion rTypes
+
+
+
+
+
 		#region rConstants
 
-		const int FILE_VER = 3;
-		const int NUM_ENTITY_PARAMS = 8;
+		const int FILE_VER = 4;
+		const int NUM_PARAMS = 8;
 
 		#endregion rConstants
 
@@ -15,6 +29,15 @@
 
 		#region rMembers
 
+		// Meta
+		string mName;
+		string mSubName;
+		LevelType mLevelType;
+		string mThemePath;
+		string mOther;
+		int[] mIntParams;
+
+		// Entity
 		List<LinearRailData> mRailDatas;
 		List<EntityData> mEntityDatas;
 
@@ -27,6 +50,15 @@
 
 		public AuxData(string fileName) : base(fileName + ".aux", false)
 		{
+			// Meta
+			mName = "";
+			mSubName = "";
+			mLevelType = LevelType.CollectWater;
+			mThemePath = "";
+			mOther = "";
+			mIntParams = new int[NUM_PARAMS];
+
+			// Entity
 			mRailDatas = new List<LinearRailData>();
 			mEntityDatas = new List<EntityData>();
 		}
@@ -54,6 +86,9 @@
 				throw new Exception("File version doesn't match. Verify data integrity!");
 			}
 
+			//Meta
+			ReadMetadata(br);
+
 			//Rails
 			ReadRails(br);
 
@@ -64,6 +99,24 @@
 
 			// Entities
 			ReadEntities(br);
+		}
+
+
+
+		/// <summary>
+		/// Read the meta data
+		/// </summary>
+		private void ReadMetadata(BinaryReader br)
+		{
+			mName = br.ReadString();
+			mSubName = br.ReadString();
+			mLevelType = (LevelType)br.ReadUInt32();
+			mThemePath = br.ReadString();
+			mOther = br.ReadString();
+			for(int i = 0; i < NUM_PARAMS; i++)
+			{
+				mIntParams[i] = br.ReadInt32();
+			}
 		}
 
 
@@ -123,10 +176,10 @@
 				entityData.mStartDirection = (WalkDirection)(br.ReadUInt32());
 				entityData.mGravityDirection = (CardinalDirection)(br.ReadUInt32());
 
-				entityData.mFloatParams = new float[NUM_ENTITY_PARAMS];
-				entityData.mIntParams = new int[NUM_ENTITY_PARAMS];
+				entityData.mFloatParams = new float[NUM_PARAMS];
+				entityData.mIntParams = new int[NUM_PARAMS];
 
-				for(int j = 0; j < NUM_ENTITY_PARAMS; j++)
+				for(int j = 0; j < NUM_PARAMS; j++)
 				{
 					entityData.mFloatParams[j] = br.ReadSingle();
 					entityData.mIntParams[j] = br.ReadInt32();
@@ -224,6 +277,76 @@
 
 
 		#region rAccess
+
+		/// <summary>
+		/// Get the mName member.
+		/// </summary>
+		public string GetName()
+		{
+			return mName;
+		}
+
+
+
+
+
+		/// <summary>
+		/// Get the mSubName member.
+		/// </summary>
+		public string GetSubName()
+		{
+			return mSubName;
+		}
+
+
+
+
+
+		/// <summary>
+		/// Get the mLevelType member.
+		/// </summary>
+		public LevelType GetLevelType()
+		{
+			return mLevelType;
+		}
+
+
+
+
+
+		/// <summary>
+		/// Get the mThemePath member.
+		/// </summary>
+		public string GetThemePath()
+		{
+			return mThemePath;
+		}
+
+
+
+
+
+		/// <summary>
+		/// Get the mOther member.
+		/// </summary>
+		public string GetOther()
+		{
+			return mOther;
+		}
+
+
+
+
+
+		/// <summary>
+		/// Get the mIntParams member.
+		/// </summary>
+		public int[] GetIntParams()
+		{
+			return mIntParams;
+		}
+
+
 
 		public List<LinearRailData> GetRailsData()
 		{

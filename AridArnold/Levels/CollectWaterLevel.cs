@@ -20,11 +20,10 @@
 		/// <summary>
 		/// Collect water level constructor
 		/// </summary>
-		/// <param name="levelName">Name of the level</param>
 		/// <param name="numNeeded">Number of water bottles needed to win</param>
-		public CollectWaterLevel(string levelName, int numNeeded) : base(levelName)
+		public CollectWaterLevel(AuxData auxData) : base(auxData)
 		{
-			mNumWaterNeeded = numNeeded;
+			mNumWaterNeeded = auxData.GetIntParams()[0];
 		}
 
 		#endregion rInitialisation

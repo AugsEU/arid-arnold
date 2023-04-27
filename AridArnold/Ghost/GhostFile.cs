@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		const int MAX_FRAMES = 60 * 60 * 20;//20 minutes of recording.
+		const int MAX_FRAMES = 60 * 60 * 20; // 20 minutes of recording.
 		readonly char[] FILE_MAGIC = { 'G', 'H', 'T' };
 
 		#endregion rConstants
@@ -29,7 +29,7 @@
 
 		#region rInitialisation
 
-		public GhostFile(Level level) : base(level.GetName() + ".ght", true)
+		public GhostFile(Level level) : base(level.GetImagePath() + ".ght", true)
 		{
 			mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
 			mLevel = level;

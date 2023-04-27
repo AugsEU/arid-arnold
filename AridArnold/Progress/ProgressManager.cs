@@ -1,38 +1,5 @@
 ﻿namespace AridArnold
 {
-	struct LevelPoint
-	{
-		public int mWorldIndex;
-		public int mLevel;
-
-		public LevelPoint(int worldIndex, int level)
-		{
-			mWorldIndex = worldIndex;
-			mLevel = level;
-		}
-
-		public static bool operator ==(LevelPoint a, LevelPoint b)
-		=> (a.mWorldIndex == b.mWorldIndex && a.mLevel == b.mLevel);
-
-		public static bool operator !=(LevelPoint a, LevelPoint b)
-		=> (!(a == b));
-
-		public override bool Equals(object obj)
-		{
-			if (!(obj is LevelPoint))
-				return false;
-
-			return this == (LevelPoint)obj;
-		}
-
-		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
-	}
-
-
- 
 	/// <summary>
 	/// Manage progress of Arnold
 	/// </summary>
@@ -40,8 +7,6 @@
 	{
 		#region rConstants 
 
-		const int START_WORLD = 0; 
-		const int START_LEVEL = 0;
 		const int START_LIVES = 5;
 		public const int MAX_LIVES = 7;
 
@@ -53,10 +18,10 @@
 
 		#region rMembers
 
-		Campaign mCampaign;
-		LevelPoint mCurrentLevel;
-		LevelPoint mLastCheckPoint;
 		int mLives = START_LIVES;
+
+		List<Level> mLoadedLevels;
+		int mCurrentLevel;
 
 		#endregion rMembers
 
@@ -69,43 +34,10 @@
 		/// <summary>
 		/// Init progress manager
 		/// </summary>
-		public void Init(string campaignXML)
+		public void Init()
 		{
-			mCurrentLevel = new LevelPoint(START_WORLD, START_LEVEL);
-			mLastCheckPoint = new LevelPoint(START_WORLD, START_LEVEL);
-			mCampaign = new Campaign(campaignXML);
-			ResetGame();
-		}
-
-
-
-		/// <summary>
-		/// Reset progress manager after a game over.
-		/// </summary>
-		public void ResetGame()
-		{
-			ResetLives();
-			mCurrentLevel = mLastCheckPoint;
-		}
-
-
-		/// <summary>
-		/// Reset lives to full.
-		/// </summary>
-		public void ResetLives()
-		{
-			mLives = START_LIVES;
-		}
-
-
-
-		/// <summary>
-		/// Load the next level.
-		/// </summary>
-		public void LoadNextLevel()
-		{
-			// Set the world index, campaign manager handles the loading.
-			mCampaign.SetCurrentWorldIdx(mCurrentLevel.mWorldIndex);
+			mLoadedLevels = new List<Level>();
+			mCurrentLevel = 0;
 		}
 
 		#endregion rInitialisation
@@ -115,16 +47,6 @@
 
 
 		#region rUtility
-
-		/// <summary>
-		/// Tell the progress manager we hit a checkpoint level.
-		/// </summary>
-		public void ReportCheckpoint()
-		{
-			mLastCheckPoint = GetNextLevelPoint(mCurrentLevel);
-		}
-
-
 
 		/// <summary>
 		/// Tell the progress manager we lost a level
@@ -145,7 +67,8 @@
 		/// </summary>
 		public void ReportLevelWin()
 		{
-			mCurrentLevel = GetNextLevelPoint(mCurrentLevel);
+			// To do: Load next level?
+			GetCurrentLevel().End();
 		}
 
 
@@ -162,11 +85,13 @@
 		}
 
 
-		public void GoToStart()
+
+		/// <summary>
+		/// Reset lives to default.
+		/// </summary>
+		public void ResetLives()
 		{
-			mCurrentLevel = new LevelPoint(0, 0);
-			mLastCheckPoint = mCurrentLevel;
-			mCampaign.SetCurrentWorldIdx(0);
+			mLives = 3; // To do
 		}
 
 
@@ -176,17 +101,7 @@
 		/// </summary>
 		public bool CanLoseLives()
 		{
-			return mCurrentLevel != mLastCheckPoint;
-		}
-
-
-
-		/// <summary>
-		/// Get world data.
-		/// </summary>
-		public World GetCurrentWorld()
-		{
-			return mCampaign.GetCurrentWorld();
+			return mCurrentLevel != 0;
 		}
 
 
@@ -197,7 +112,12 @@
 		/// <returns>Get current level</returns>
 		public Level GetCurrentLevel()
 		{
-			return GetCurrentWorld().GetLevel(mCurrentLevel.mLevel);
+			if(mLoadedLevels.Count == 0)
+			{
+				throw new Exception("No current level");
+			}
+
+			return mLoadedLevels[mCurrentLevel];
 		}
 
 
@@ -208,57 +128,7 @@
 		/// <returns>Get current level</returns>
 		public int GetLevelNumber()
 		{
-			int total = mCampaign.GetLevelNumber(mCurrentLevel);
-			return total;
-		}
-
-
-
-		/// <summary>
-		/// Get the current level point
-		/// </summary>
-		public LevelPoint GetLevelPoint()
-		{
-			return mCurrentLevel;
-		}
-
-
-		/// <summary>
-		/// Get the current level point as a combined hex code.
-		/// </summary>
-		public uint GetLevelPointHex()
-		{
-			return ((uint)mCurrentLevel.mWorldIndex << 8) + (uint)mCurrentLevel.mLevel;
-		}
-
-
-
-		/// <summary>
-		/// Have we finished the game?
-		/// </summary>
-		/// <returns>True if we have finished all the levels</returns>
-		public bool HasFinishedGame()
-		{
-			return mCurrentLevel.mWorldIndex >= mCampaign.GetNumberOfWorlds();
-		}
-
-
-
-		/// <summary>
-		/// Advance a level forwards by one
-		/// </summary>
-		/// <param name="levelPoint">Starting level</param>
-		/// <returns>Level point 1 after the starting level</returns>
-		public LevelPoint GetNextLevelPoint(LevelPoint levelPoint)
-		{
-			levelPoint.mLevel += 1;
-			if (levelPoint.mLevel >= GetCurrentWorld().GetNumberOfLevels())
-			{
-				levelPoint.mLevel = 0;
-				levelPoint.mWorldIndex += 1;
-			}
-
-			return levelPoint;
+			return mCurrentLevel + 1;
 		}
 
 
@@ -266,10 +136,9 @@
 		/// <summary>
 		/// Lives remaining
 		/// </summary>
-		public int pLives
+		public int GetNumLives()
 		{
-			get { return mLives; }
-			set { mLives = value; }
+			return mLives;
 		}
 
 		#endregion rUtility

@@ -93,7 +93,7 @@ namespace AridArnold
 			FontManager.I.LoadAllFonts();
 			ScreenManager.I.LoadAllScreens(_graphics);
 			GhostManager.I.Load();
-			ProgressManager.I.Init("Content/Meta/Campaigns/mainCampaign.xml");
+			ProgressManager.I.Init();
 			InputManager.I.Init();
 
 			mDummyTexture = new Texture2D(GraphicsDevice, 1, 1);

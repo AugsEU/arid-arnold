@@ -10,8 +10,7 @@
 		/// <summary>
 		/// Collect flag level construct
 		/// </summary>
-		/// <param name="levelName">Name of the level</param>
-		public CollectFlagLevel(string levelName) : base(levelName)
+		public CollectFlagLevel(AuxData auxData) : base(auxData)
 		{
 		}
 

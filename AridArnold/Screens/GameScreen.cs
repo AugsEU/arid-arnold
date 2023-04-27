@@ -33,7 +33,7 @@
 		private Texture2D mLifeTexture;
 		private Texture2D mEmptyLifeTexture;
 		private Texture2D mUIBG;
-		private Layout mBGRenderer;
+		// To do:private Layout mBGRenderer;
 
 		private PercentageTimer mLevelEndTimer;
 
@@ -70,8 +70,6 @@
 		/// <param name="levelToBegin">Level object to begin</param>
 		private void LoadLevel(Level levelToBegin)
 		{
-			FXManager.I.Clear();
-
 			levelToBegin.Begin();
 
 			if(ProgressManager.I.CanLoseLives() == false)
@@ -80,7 +78,7 @@
 				ProgressManager.I.ResetLives();
 			}
 
-			mBGRenderer = new Layout(levelToBegin.GetBGLayoutPath());
+			// To do: mBGRenderer = new Layout(levelToBegin.GetBGLayoutPath());
 		}
 
 
@@ -231,7 +229,7 @@
 			TileManager.I.Draw(info);
 			FXManager.I.Draw(info);
 
-			mBGRenderer.Draw(info);
+			// To do:mBGRenderer.Draw(info);
 
 			info.spriteBatch.End();
 		}
@@ -287,7 +285,7 @@
 						DepthStencilState.Default,
 						RasterizerState.CullNone);
 
-			int lives = ProgressManager.I.pLives;
+			int lives = ProgressManager.I.GetNumLives();
 
 			int texScale = 4;
 			int texWidth = mLifeTexture.Width * texScale;
@@ -313,9 +311,6 @@
 					emptyLifeRect.Y += texHeight + 10;
 				}
 			}
-
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 485.0f), Color.Yellow, ProgressManager.I.GetCurrentWorld().GetName(), DrawLayer.Text);
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mLeftUI.Width / 2, 505.0f), Color.White, "Level " + ProgressManager.I.GetLevelNumber(), DrawLayer.Text);
 
 			info.spriteBatch.End();
 		}
@@ -441,7 +436,7 @@
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
-			mBGRenderer.Update(gameTime);
+			// To do:mBGRenderer.Update(gameTime);
 
 			LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
 
@@ -496,14 +491,6 @@
 		{
 			ProgressManager.I.ReportLevelWin();
 			FXManager.I.Clear();
-			if (ProgressManager.I.HasFinishedGame())
-			{
-				ScreenManager.I.ActivateScreen(ScreenType.EndGame);
-			}
-			else
-			{
-				ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
-			}
 		}
 
 
@@ -515,10 +502,9 @@
 		{
 			ProgressManager.I.ReportLevelLoss();
 
-			if (ProgressManager.I.pLives == 0)
+			if (ProgressManager.I.GetNumLives() == 0)
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.GameOver);
-				ProgressManager.I.ResetGame();
 			}
 			else
 			{

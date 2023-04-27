@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.IO;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Win condition status of the level
@@ -21,8 +23,9 @@
 	{
 		#region rMembers
 
-		string mName;
-		string mBGLayoutPath;
+		AuxData mAuxData;
+		LevelTheme mTheme;
+		string mImagePath;
 		protected LevelStatus mLevelStatus;
 
 		#endregion rMembers
@@ -36,23 +39,64 @@
 		/// <summary>
 		/// Level constructor
 		/// </summary>
-		/// <param name="levelName">Level's name</param>
-		public Level(string levelName)
+		public Level(AuxData data)
 		{
-			mName = levelName;
+			mAuxData = data;
+
+			mImagePath = System.IO.Path.GetFileNameWithoutExtension(mAuxData.GetFilename());
+
+			mTheme = new LevelTheme(data.GetThemePath()); // To do: Ammend campaign path here?
 			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
-			mBGLayoutPath = "";
 		}
 
 
 
 		/// <summary>
-		/// Load tile map from content manager
+		/// Begin level
 		/// </summary>
 		public void Begin()
 		{
 			mLevelStatus = LevelStatus.Continue;
-			TileManager.I.LoadLevel("Levels/" + mName);
+
+			TileManager.I.LoadLevel(mImagePath);
+
+			// Create rails
+			List<LinearRailData> railList = mAuxData.GetRailsData();
+
+			for (int i = 0; i < railList.Count; i++)
+			{
+				LinearRailData railData = railList[i];
+				for (int j = 0; j < railData.GetCount(); j++)
+				{
+					RailPlatform.TryCreateRailPlatformAtNode(railData, j);
+				}
+			}
+
+			// Create Entities
+			List<EntityData> entityList = mAuxData.GetEntityData();
+
+			for (int i = 0; i < entityList.Count; i++)
+			{
+				Entity newEntity = Entity.CreateEntityFromData(entityList[i]);
+				EntityManager.I.RegisterEntity(newEntity);
+			}
+
+			// Clear state
+			EntityManager.I.ClearEntities();
+			CollectableManager.I.ClearAllCollectables();
+			FXManager.I.Clear();
+
+			// Load theme
+			mTheme.Load();
+		}
+
+
+		/// <summary>
+		/// Unload all stuff
+		/// </summary>
+		public void End()
+		{
+			mTheme.Unload();
 		}
 
 		#endregion rInitialisation
@@ -90,33 +134,41 @@
 
 
 		/// <summary>
-		/// Level name property
+		/// Get the image path for this level
 		/// </summary>
-		public string GetName()
+		public string GetImagePath()
 		{
-			return mName;
+			return mImagePath;
 		}
 
-
-
-		/// <summary>
-		/// Get path to layout file
-		/// </summary>
-		public string GetBGLayoutPath()
-		{
-			return mBGLayoutPath;
-		}
-
-
-
-		/// <summary>
-		/// Set path to layout to use.
-		/// </summary>
-		public void SetBGLayoutPath(string path)
-		{
-			mBGLayoutPath = path;
-		}
 		#endregion rUtility
+
+
+
+
+
+		#region rFactory
+
+		/// <summary>
+		/// Load a level from a an aux file path.
+		/// </summary>
+		static Level LoadFromFile(string auxFilePath)
+		{
+			// Load file
+			AuxData auxData = new AuxData(auxFilePath);
+
+			switch (auxData.GetLevelType())
+			{
+				case AuxData.LevelType.CollectWater:
+					return new CollectWaterLevel(auxData);
+				case AuxData.LevelType.CollectFlag:
+					return new CollectFlagLevel(auxData);
+			}
+
+			throw new NotImplementedException();
+		}
+
+		#endregion rFactory
 	}
 
 
