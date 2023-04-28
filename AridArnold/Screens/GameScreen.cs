@@ -26,15 +26,9 @@
 
 		#region rMembers
 
-		private RenderTarget2D mGameArea;
-		private RenderTarget2D mLeftUI;
-		private RenderTarget2D mRightUI;
-
-		private Texture2D mLifeTexture;
-		private Texture2D mEmptyLifeTexture;
-		private Texture2D mUIBG;
-		// To do:private Layout mBGRenderer;
-
+		RenderTarget2D mGameArea;
+		Texture2D mUIBG;
+		Level mActiveLevel;
 		private PercentageTimer mLevelEndTimer;
 
 		SpriteFont mPixelFont;
@@ -56,29 +50,9 @@
 			mLevelEndTimer = new PercentageTimer(END_LEVEL_TIME);
 
 			mGameArea = null;
-			mLeftUI = null;
-			mRightUI = null;
 
 			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
-		}
-
-
-
-		/// <summary>
-		/// Load level
-		/// </summary>
-		/// <param name="levelToBegin">Level object to begin</param>
-		private void LoadLevel(Level levelToBegin)
-		{
-			levelToBegin.Begin();
-
-			if(ProgressManager.I.CanLoseLives() == false)
-			{
-				//Can't lose lives on this level, so we must reset the life count to the default.
-				ProgressManager.I.ResetLives();
-			}
-
-			// To do: mBGRenderer = new Layout(levelToBegin.GetBGLayoutPath());
+			TileManager.I.Init(new Vector2(-TILE_SIZE, -TILE_SIZE), TILE_SIZE);
 		}
 
 
@@ -88,9 +62,6 @@
 		/// </summary>
 		public override void OnActivate()
 		{
-			TileManager.I.Init(new Vector2(-TILE_SIZE, -TILE_SIZE), TILE_SIZE);
-
-			StartLevel();
 		}
 
 
@@ -101,8 +72,6 @@
 		public override void LoadContent()
 		{
 			mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
-			mLifeTexture = MonoData.I.MonoGameLoad<Texture2D>("UI/Arnold-Life");
-			mEmptyLifeTexture = MonoData.I.MonoGameLoad<Texture2D>("UI/Arnold-Life-Empty");
 			mUIBG = MonoData.I.MonoGameLoad<Texture2D>("UI/ui_bg");
 		}
 
@@ -113,19 +82,6 @@
 
 
 		#region rUtility
-
-		/// <summary>
-		/// Start the current level. Restarts if we have already started it.
-		/// </summary>
-		private void StartLevel()
-		{
-			Level levelToStart = ProgressManager.I.GetCurrentLevel();
-			LoadLevel(levelToStart);
-			mLevelEndTimer.FullReset();
-			GhostManager.I.StartLevel(levelToStart);
-		}
-
-
 
 		/// <summary>
 		/// Area of the screen we actually play the game in
@@ -142,6 +98,120 @@
 
 
 
+		#region rUpdate
+
+		/// <summary>
+		/// Update the main gameplay screen
+		/// </summary>
+		/// <param name="gameTime">Frame time</param>
+		public override void Update(GameTime gameTime)
+		{
+			CheckForLevelChange();
+
+			if(mActiveLevel == null)
+			{
+				return;
+			}
+
+			FXManager.I.Update(gameTime);
+			if (mLevelEndTimer.IsPlaying())
+			{
+				if (mLevelEndTimer.GetPercentage() == 1.0)
+				{
+					MoveToNextLevel();
+				}
+
+				return;
+			}
+
+			HandleInput();
+
+			GhostManager.I.Update(gameTime);
+			EntityManager.I.Update(gameTime);
+			TileManager.I.Update(gameTime);
+
+			// To do: Level status?
+			//LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
+
+			//if (status == LevelStatus.Win)
+			//{
+			//	LevelWin();
+			//}
+			//else if (status == LevelStatus.Loss)
+			//{
+			//	LevelLose();
+			//}
+		}
+
+
+
+		/// <summary>
+		/// Handle any system-wide input
+		/// </summary>
+		void HandleInput()
+		{
+			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
+			{
+				EArgs eArgs;
+				eArgs.sender = this;
+
+				EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+			}
+			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
+			{
+				LevelWin();
+			}
+		}
+
+
+
+		/// <summary>
+		/// Call to win the level. We will move to the next level shortly.
+		/// </summary>
+		private void LevelWin()
+		{
+			mLevelEndTimer.Start();
+			DisplayLevelEndText();
+			GhostManager.I.EndLevel(true);
+		}
+
+
+
+		/// <summary>
+		/// Query the CampaignManager for a level change.
+		/// </summary>
+		private void CheckForLevelChange()
+		{
+			Level prevLevel = mActiveLevel;
+			Level campLevel = CampaignManager.I.GetCurrentLevel();
+
+			if (Object.ReferenceEquals(prevLevel, campLevel) == false)
+			{
+				if(prevLevel is not null) prevLevel.End();
+				if (campLevel is not null) campLevel.Begin();
+
+				mActiveLevel = campLevel;
+			}
+		}
+
+
+		/// <summary>
+		/// Move to next level
+		/// </summary>
+		private void MoveToNextLevel()
+		{
+
+
+			// To do: Move to the next level in the sequence
+			throw new NotImplementedException();
+		}
+
+		#endregion rUpdate
+
+
+
+
+
 		#region rDraw
 
 		/// <summary>
@@ -151,9 +221,8 @@
 		/// <returns>Render target with screen drawn on it</returns>
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
-			//Get game rendered as a texture & UI
+			//Get game rendered as a texture
 			RenderGameAreaToTarget(info);
-			DrawUIToTarget(info);
 
 			//Draw out the game area
 			info.device.SetRenderTarget(mScreenTarget);
@@ -169,9 +238,6 @@
 
 			Rectangle gameAreaRect = GetGameAreaRect();
 			DrawGameArea(info, gameAreaRect);
-			DrawUI(info, gameAreaRect);
-
-
 
 			info.spriteBatch.End();
 
@@ -205,17 +271,6 @@
 
 			info.device.SetRenderTarget(mGameArea);
 
-			if (mLevelEndTimer.IsPlaying())
-			{
-				double timeSinceDeath = mLevelEndTimer.GetElapsedMs();
-
-				if ((int)(timeSinceDeath / END_LEVEL_FLASH_TIME) % 2 == 0)
-				{
-					// TO DO: ADD FLASHING!!
-					//MonoColor.BrightenColour(ref clearCol, 0.05f);
-				}
-			}
-
 			info.device.Clear(Color.Black);
 
 			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
@@ -228,120 +283,6 @@
 			EntityManager.I.Draw(info);
 			TileManager.I.Draw(info);
 			FXManager.I.Draw(info);
-
-			// To do:mBGRenderer.Draw(info);
-
-			info.spriteBatch.End();
-		}
-
-
-
-		/// <summary>
-		/// Draw UI next to the game area
-		/// </summary>
-		/// <param name="info">Info needed to draw</param>
-		/// <param name="gameAreaRect">Rectangle that represents the game area</param>
-		private void DrawUI(DrawInfo info, Rectangle gameAreaRect)
-		{
-			Rectangle leftRectangle = new Rectangle((gameAreaRect.X - mLeftUI.Width) / 2, gameAreaRect.Y, mLeftUI.Width, mLeftUI.Height);
-			Rectangle rightRectangle = new Rectangle((mScreenTarget.Width + gameAreaRect.X + gameAreaRect.Width - mRightUI.Width) / 2, gameAreaRect.Y, mRightUI.Width, mRightUI.Height);
-
-			MonoDraw.DrawTexture(info, mLeftUI, leftRectangle);
-			MonoDraw.DrawTexture(info, mRightUI, rightRectangle);
-		}
-
-
-
-		/// <summary>
-		/// Draw the left and right UI to their render targets.
-		/// </summary>
-		/// <param name="info">Info needed to draw</param>
-		private void DrawUIToTarget(DrawInfo info)
-		{
-			if (mLeftUI == null && mRightUI == null)
-			{
-				mLeftUI = new RenderTarget2D(info.device, UI_PANEL_SIZE, mGameArea.Height);
-				mRightUI = new RenderTarget2D(info.device, UI_PANEL_SIZE, mGameArea.Height);
-			}
-
-			DrawLeftUI(info);
-			DrawRightUI(info);
-		}
-
-
-
-		/// <summary>
-		/// Draw the left side of the UI
-		/// </summary>
-		/// <param name="info">Info needed to draw</param>
-		private void DrawLeftUI(DrawInfo info)
-		{
-			info.device.SetRenderTarget(mLeftUI);
-			info.device.Clear(Color.Transparent);
-
-			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
-						BlendState.AlphaBlend,
-						SamplerState.PointClamp,
-						DepthStencilState.Default,
-						RasterizerState.CullNone);
-
-			int lives = ProgressManager.I.GetNumLives();
-
-			int texScale = 4;
-			int texWidth = mLifeTexture.Width * texScale;
-			int texHeight = mLifeTexture.Height * texScale;
-
-			if (ProgressManager.I.CanLoseLives())
-			{
-				Rectangle lifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 32, texWidth, texHeight);
-				Rectangle emptyLifeRect = new Rectangle((mLeftUI.Width - texWidth) / 2, 32, texWidth + 1, texHeight + 1);
-
-				for (int i = 0; i < ProgressManager.MAX_LIVES; i++)
-				{
-					if (i < lives)
-					{
-						MonoDraw.DrawTexture(info, mLifeTexture, lifeRect);
-					}
-					else
-					{
-						MonoDraw.DrawTexture(info, mEmptyLifeTexture, emptyLifeRect);
-					}
-
-					lifeRect.Y += texHeight + 10;
-					emptyLifeRect.Y += texHeight + 10;
-				}
-			}
-
-			info.spriteBatch.End();
-		}
-
-
-
-		/// <summary>
-		/// Draw the right side of the UI
-		/// </summary>
-		/// <param name="info">Info needed to draw</param>
-		private void DrawRightUI(DrawInfo info)
-		{
-			info.device.SetRenderTarget(mRightUI);
-			info.device.Clear(Color.Transparent);
-
-			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
-						BlendState.AlphaBlend,
-						SamplerState.PointClamp,
-						DepthStencilState.Default,
-						RasterizerState.CullNone);
-
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 223.0f), Color.White, "Time", DrawLayer.Text);
-			MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 238.0f), Color.White, GhostManager.I.GetTime(), DrawLayer.Text);
-
-			string timeToBeat = GhostManager.I.GetTimeToBeat();
-
-			if (timeToBeat != "")
-			{
-				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 283.0f), Color.DarkOliveGreen, "Time to beat", DrawLayer.Text);
-				MonoDraw.DrawStringCentred(info, mPixelFont, new Vector2(mRightUI.Width / 2, 298.0f), Color.DarkOliveGreen, timeToBeat, DrawLayer.Text);
-			}
 
 			info.spriteBatch.End();
 		}
@@ -398,121 +339,15 @@
 			{
 				string levelCompleteMsg = "Level complete";
 
-				if (ProgressManager.I.GetCurrentLevel() is CollectFlagLevel)
-				{
-					levelCompleteMsg = "Checkpoint!";
-				}
+				// To do: Do we need checkpoints?
+				//if (ProgressManager.I.GetCurrentLevel() is CollectFlagLevel)
+				//{
+				//	levelCompleteMsg = "Checkpoint!";
+				//}
 				FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.Wheat, arnold.GetPos(), levelCompleteMsg);
 			}
 		}
 
 		#endregion rDraw
-
-
-
-
-
-		#region rUpdate
-
-		/// <summary>
-		/// Update the main gameplay screen
-		/// </summary>
-		/// <param name="gameTime">Frame time</param>
-		public override void Update(GameTime gameTime)
-		{
-			FXManager.I.Update(gameTime);
-			if (mLevelEndTimer.IsPlaying())
-			{
-				if (mLevelEndTimer.GetPercentage() == 1.0)
-				{
-					MoveToNextLevel();
-				}
-
-				return;
-			}
-
-			HandleInput();
-
-			GhostManager.I.Update(gameTime);
-			EntityManager.I.Update(gameTime);
-			TileManager.I.Update(gameTime);
-			// To do:mBGRenderer.Update(gameTime);
-
-			LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
-
-			if (status == LevelStatus.Win)
-			{
-				LevelWin();
-			}
-			else if (status == LevelStatus.Loss)
-			{
-				LevelLose();
-			}
-		}
-
-
-
-		/// <summary>
-		/// Handle any system-wide input
-		/// </summary>
-		void HandleInput()
-		{
-			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
-			{
-				EArgs eArgs;
-				eArgs.sender = this;
-
-				EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
-			}
-			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
-			{
-				LevelWin();
-			}
-		}
-
-
-
-		/// <summary>
-		/// Call to win the level. We will move to the next level shortly.
-		/// </summary>
-		private void LevelWin()
-		{
-			mLevelEndTimer.Start();
-			DisplayLevelEndText();
-			GhostManager.I.EndLevel(true);
-		}
-
-
-
-		/// <summary>
-		/// Move to the next level.
-		/// </summary>
-		private void MoveToNextLevel()
-		{
-			ProgressManager.I.ReportLevelWin();
-			FXManager.I.Clear();
-		}
-
-
-
-		/// <summary>
-		/// Call when the level is lost. Restart the level again.
-		/// </summary>
-		private void LevelLose()
-		{
-			ProgressManager.I.ReportLevelLoss();
-
-			if (ProgressManager.I.GetNumLives() == 0)
-			{
-				ScreenManager.I.ActivateScreen(ScreenType.GameOver);
-			}
-			else
-			{
-				//Start the level again
-				StartLevel();
-			}
-		}
-
-		#endregion rUpdate
 	}
 }

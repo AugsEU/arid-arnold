@@ -93,7 +93,6 @@ namespace AridArnold
 			FontManager.I.LoadAllFonts();
 			ScreenManager.I.LoadAllScreens(_graphics);
 			GhostManager.I.Load();
-			ProgressManager.I.Init();
 			InputManager.I.Init();
 
 			mDummyTexture = new Texture2D(GraphicsDevice, 1, 1);
@@ -101,6 +100,8 @@ namespace AridArnold
 
 			LoadGlobalContent();
 
+			// Temp
+			CampaignManager.I.LoadCampaign("MainCampaign");
 			ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
 		}
 

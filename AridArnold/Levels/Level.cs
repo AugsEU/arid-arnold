@@ -26,6 +26,7 @@ namespace AridArnold
 		AuxData mAuxData;
 		LevelTheme mTheme;
 		string mImagePath;
+		bool mActive;
 		protected LevelStatus mLevelStatus;
 
 		#endregion rMembers
@@ -43,10 +44,15 @@ namespace AridArnold
 		{
 			mAuxData = data;
 
-			mImagePath = System.IO.Path.GetFileNameWithoutExtension(mAuxData.GetFilename());
+			mImagePath = mAuxData.GetFilename();
+			mImagePath = mImagePath.Substring(0, mImagePath.Length - 4);
 
-			mTheme = new LevelTheme(data.GetThemePath()); // To do: Ammend campaign path here?
+			string themeFilePath = CampaignManager.I.GetThemePath(data.GetThemePath());
+			mTheme = new LevelTheme(themeFilePath);
 			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
+
+			// Level loaded but not playing.
+			mActive = false;
 		}
 
 
@@ -57,6 +63,15 @@ namespace AridArnold
 		public void Begin()
 		{
 			mLevelStatus = LevelStatus.Continue;
+			mActive = true;
+
+			// Clear state
+			EntityManager.I.ClearEntities();
+			CollectableManager.I.ClearAllCollectables();
+			FXManager.I.Clear();
+
+			// Load theme
+			mTheme.Load();
 
 			TileManager.I.LoadLevel(mImagePath);
 
@@ -81,13 +96,7 @@ namespace AridArnold
 				EntityManager.I.RegisterEntity(newEntity);
 			}
 
-			// Clear state
-			EntityManager.I.ClearEntities();
-			CollectableManager.I.ClearAllCollectables();
-			FXManager.I.Clear();
-
-			// Load theme
-			mTheme.Load();
+			GhostManager.I.StartLevel(this);
 		}
 
 
@@ -96,6 +105,7 @@ namespace AridArnold
 		/// </summary>
 		public void End()
 		{
+			mActive = false;
 			mTheme.Unload();
 		}
 
@@ -112,7 +122,20 @@ namespace AridArnold
 		/// </summary>
 		/// <param name="gameTime">Frame time</param>
 		/// <returns>Win condition status</returns>
-		public abstract LevelStatus Update(GameTime gameTime);
+		public LevelStatus Update(GameTime gameTime)
+		{
+			if(mActive == false)
+			{
+				throw new Exception("Cannot update inactive level. Did you forget to start it?");
+			}
+
+			return UpdateInternal(gameTime);
+		}
+
+		/// <summary>
+		/// Internal level update
+		/// </summary>
+		protected abstract LevelStatus UpdateInternal(GameTime gameTime);
 
 		#endregion rUpdate
 
@@ -128,6 +151,7 @@ namespace AridArnold
 		/// <param name="args">Event sender args</param>
 		public virtual void HandlePlayerDeath(EArgs args)
 		{
+			if (!mActive) return;
 			mLevelStatus = LevelStatus.Loss;
 		}
 
@@ -152,10 +176,11 @@ namespace AridArnold
 		/// <summary>
 		/// Load a level from a an aux file path.
 		/// </summary>
-		static Level LoadFromFile(string auxFilePath)
+		public static Level LoadFromFile(string auxFilePath)
 		{
 			// Load file
 			AuxData auxData = new AuxData(auxFilePath);
+			auxData.Load();
 
 			switch (auxData.GetLevelType())
 			{

@@ -27,7 +27,7 @@
 		/// </summary>
 		/// <param name="gameTime"></param>
 		/// <returns></returns>
-		public override LevelStatus Update(GameTime gameTime)
+		protected override LevelStatus UpdateInternal(GameTime gameTime)
 		{
 			if (CollectableManager.I.GetCollected(CollectableType.Flag) > 0)
 			{
