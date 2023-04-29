@@ -17,13 +17,12 @@
 		/// <summary>
 		/// Load theme
 		/// </summary>
-		public LevelTheme(string xmlPath)
+		public LevelTheme(string xmlPath, string root)
 		{
+			xmlPath = "Content/" + xmlPath;
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(xmlPath);
 			XmlNode rootNode = xmlDoc.LastChild;
-
-			string id = rootNode.Attributes["id"].Value;
 
 			mRemappedTextures = new List<(string, string)>();
 
@@ -31,7 +30,7 @@
 			foreach (XmlNode remapNode in remapNodes)
 			{
 				string from = remapNode.Attributes["from"].Value;
-				string to = "Tiles/" + id + "/" + remapNode.InnerText;
+				string to = "Tiles/" + root + "/" + remapNode.InnerText;
 
 				mRemappedTextures.Add((from, to));
 			}

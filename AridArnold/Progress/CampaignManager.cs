@@ -95,7 +95,7 @@ namespace AridArnold
 
 		public string GetThemePath(string fileName)
 		{
-			return "Content/" + mRootPath + "/Themes/" + fileName + ".xml";
+			return mRootPath + "/Themes/" + fileName + ".xml";
 		}
 
 		#endregion rPath

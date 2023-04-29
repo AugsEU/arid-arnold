@@ -283,6 +283,7 @@
 			EntityManager.I.Draw(info);
 			TileManager.I.Draw(info);
 			FXManager.I.Draw(info);
+			if(mActiveLevel is not null) mActiveLevel.Draw(info);
 
 			info.spriteBatch.End();
 		}

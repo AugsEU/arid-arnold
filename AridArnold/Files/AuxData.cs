@@ -7,7 +7,9 @@
 		public enum LevelType
 		{
 			CollectWater,
-			CollectFlag
+			CollectFlag,
+			Shop,
+			Hub
 		}
 
 		#endregion rTypes
@@ -31,10 +33,10 @@
 
 		// Meta
 		string mName;
-		string mSubName;
+		string mRoot;
 		LevelType mLevelType;
 		string mThemePath;
-		string mOther;
+		string mBGPath;
 		int[] mIntParams;
 
 		// Entity
@@ -52,10 +54,10 @@
 		{
 			// Meta
 			mName = "";
-			mSubName = "";
+			mRoot = "";
 			mLevelType = LevelType.CollectWater;
 			mThemePath = "";
-			mOther = "";
+			mBGPath = "";
 			mIntParams = new int[NUM_PARAMS];
 
 			// Entity
@@ -109,10 +111,10 @@
 		private void ReadMetadata(BinaryReader br)
 		{
 			mName = br.ReadString();
-			mSubName = br.ReadString();
+			mRoot = br.ReadString();
 			mLevelType = (LevelType)br.ReadUInt32();
 			mThemePath = br.ReadString();
-			mOther = br.ReadString();
+			mBGPath = br.ReadString();
 			for(int i = 0; i < NUM_PARAMS; i++)
 			{
 				mIntParams[i] = br.ReadInt32();
@@ -291,11 +293,11 @@
 
 
 		/// <summary>
-		/// Get the mSubName member.
+		/// Get the mRoot member.
 		/// </summary>
-		public string GetSubName()
+		public string GetRoot()
 		{
-			return mSubName;
+			return mRoot;
 		}
 
 
@@ -327,11 +329,11 @@
 
 
 		/// <summary>
-		/// Get the mOther member.
+		/// Get the mBGPath member.
 		/// </summary>
-		public string GetOther()
+		public string GetBGPath()
 		{
-			return mOther;
+			return mBGPath;
 		}
 
 

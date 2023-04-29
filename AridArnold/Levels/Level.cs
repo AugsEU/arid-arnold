@@ -25,6 +25,7 @@ namespace AridArnold
 
 		AuxData mAuxData;
 		LevelTheme mTheme;
+		Layout mBGLayout;
 		string mImagePath;
 		bool mActive;
 		protected LevelStatus mLevelStatus;
@@ -48,8 +49,10 @@ namespace AridArnold
 			mImagePath = mImagePath.Substring(0, mImagePath.Length - 4);
 
 			string themeFilePath = CampaignManager.I.GetThemePath(data.GetThemePath());
-			mTheme = new LevelTheme(themeFilePath);
+			mTheme = new LevelTheme(themeFilePath, data.GetRoot());
 			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
+
+			mBGLayout = new Layout("BG/" + data.GetRoot() + "/" + data.GetBGPath() + ".mlo");
 
 			// Level loaded but not playing.
 			mActive = false;
@@ -129,6 +132,8 @@ namespace AridArnold
 				throw new Exception("Cannot update inactive level. Did you forget to start it?");
 			}
 
+			mBGLayout.Update(gameTime);
+
 			return UpdateInternal(gameTime);
 		}
 
@@ -138,6 +143,22 @@ namespace AridArnold
 		protected abstract LevelStatus UpdateInternal(GameTime gameTime);
 
 		#endregion rUpdate
+
+
+
+
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw level BG and other elements
+		/// </summary>
+		public void Draw(DrawInfo info)
+		{
+			mBGLayout.Draw(info);
+		}
+
+		#endregion rDraw
 
 
 
@@ -188,6 +209,8 @@ namespace AridArnold
 					return new CollectWaterLevel(auxData);
 				case AuxData.LevelType.CollectFlag:
 					return new CollectFlagLevel(auxData);
+				case AuxData.LevelType.Hub:
+					return new HubLevel(auxData);
 			}
 
 			throw new NotImplementedException();

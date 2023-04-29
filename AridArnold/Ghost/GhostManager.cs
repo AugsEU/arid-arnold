@@ -29,8 +29,6 @@
 
 		#region rMembers
 
-		Level mCurrentLevel;
-
 		int mCurrentFrame;
 		int mRecordFrame;
 
@@ -64,7 +62,6 @@
 		/// <param name="level">Level we are starting</param>
 		public void StartLevel(Level level)
 		{
-			mCurrentLevel = level;
 			mCurrentFrame = 0;
 			mRecordFrame = 0;
 
