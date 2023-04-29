@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<theme id="SteamPlant">
+<theme>
 	<name>Steam Plant</name>
 	<path from="wall">steel</path>
 	<path from="platform">girder</path>
