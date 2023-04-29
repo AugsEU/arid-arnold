@@ -2,6 +2,13 @@
 
 namespace AridArnold
 {
+	struct HubTransitionData
+	{
+		CardinalDirection mArriveFromDirection;
+		List<Entity> mPersistentEntities;
+		int mLevelIDTransitionTo;
+	}
+
 	class CampaignManager : Singleton<CampaignManager>
 	{
 		#region rTypes

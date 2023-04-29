@@ -111,7 +111,7 @@
 			{
 				Vector2 pos = mPosition + i * directionVec;
 
-				MonoDraw.DrawTexture(info, mPlatformAnimation.GetCurrentTexture(), pos, rotation);
+				MonoDraw.DrawTextureRotCent(info, mPlatformAnimation.GetCurrentTexture(), pos, rotation);
 			}
 		}
 

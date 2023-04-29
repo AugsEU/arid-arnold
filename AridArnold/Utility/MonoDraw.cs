@@ -64,15 +64,6 @@
 
 
 
-		/// <summary>
-		/// Draw a texture at position(rotated about the centre).
-		/// </summary>
-		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, float rotation)
-		{
-			Vector2 rotationOffset = CalcRotationOffset(rotation, texture2D.Width, texture2D.Height);
-			info.spriteBatch.Draw(texture2D, new Rectangle((int)position.X, (int)position.Y, texture2D.Width, texture2D.Height), null, Color.White, rotation, rotationOffset, SpriteEffects.None, GetDepth(DrawLayer.Default));
-		}
-
 
 
 		/// <summary>
@@ -82,6 +73,27 @@
 		{
 			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, GetDepth(DrawLayer.Default));
 		}
+
+
+		/// <summary>
+		/// Draw a texture at position(rotated about the centre).
+		/// </summary>
+		public static void DrawTexture(DrawInfo info, Texture2D texture2D, Vector2 position, float rotation)
+		{
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, rotation, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(DrawLayer.Default));
+		}
+
+
+		/// <summary>
+		/// Draw a texture at position(rotated about the centre).
+		/// </summary>
+		public static void DrawTextureRotCent(DrawInfo info, Texture2D texture2D, Vector2 position, float rotation)
+		{
+			Vector2 rotationOffset = CalcRotationOffset(rotation, texture2D.Width, texture2D.Height);
+			info.spriteBatch.Draw(texture2D, new Rectangle((int)position.X, (int)position.Y, texture2D.Width, texture2D.Height), null, Color.White, rotation, rotationOffset, SpriteEffects.None, GetDepth(DrawLayer.Default));
+		}
+
+
 
 
 

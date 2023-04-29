@@ -13,8 +13,8 @@
 		const double END_LEVEL_FLASH_TIME = 100.0;
 		const int UI_PANEL_SIZE = 190;
 
-		const int GAME_AREA_WIDTH = 544;
-		const int GAME_AREA_HEIGHT = 528;
+		public const int GAME_AREA_WIDTH = 544;
+		public const int GAME_AREA_HEIGHT = 528;
 		const int GAME_AREA_X = 208;
 		const int GAME_AREA_Y = 6;
 

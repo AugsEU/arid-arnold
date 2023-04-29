@@ -153,7 +153,7 @@ namespace AridArnold
 		/// <summary>
 		/// Draw level BG and other elements
 		/// </summary>
-		public void Draw(DrawInfo info)
+		public virtual void Draw(DrawInfo info)
 		{
 			mBGLayout.Draw(info);
 		}
