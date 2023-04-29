@@ -6,6 +6,7 @@
 		public const int kPlayerClassStart = 0 * kClassSpacing;
 		public const int kEnemyClassStart = 1 * kClassSpacing;
 		public const int kNPCClassStart = 2 * kClassSpacing;
+		public const int kUtilityClassStart = 3 * kClassSpacing;
 
 		public enum EntityClass
 		{
@@ -28,6 +29,10 @@
 			kBickDogel,
 			kElectrent,
 			kNPCClassEnd,
+
+			// Utility
+			kArnoldSpawner = kUtilityClassStart,
+			kUtilityClassEnd
 		}
 
 		public enum EntityType

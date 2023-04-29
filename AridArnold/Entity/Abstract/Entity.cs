@@ -277,6 +277,12 @@
 				case EntityData.EntityClass.kElectrent:
 					entity = new Electrent(worldPosition);
 					break;
+
+				// Utility
+				case EntityData.EntityClass.kArnoldSpawner:
+					entity = new ArnoldRespawn(worldPosition, data.mGravityDirection, data.mStartDirection);
+					break;
+
 				default:
 					throw new NotImplementedException();
 			}
