@@ -125,7 +125,7 @@
 			}
 
 			HandleInput();
-
+			mActiveLevel.Update(gameTime);
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
@@ -183,6 +183,14 @@
 		private void CheckForLevelChange()
 		{
 			Level prevLevel = mActiveLevel;
+
+			// Check for hub transition
+			HubTransitionData? transData = CampaignManager.I.PopHubTransition();
+			if(transData is not null)
+			{
+				CampaignManager.I.LoadHubLevel(transData.Value.mLevelIDTransitionTo);
+			}
+
 			Level campLevel = CampaignManager.I.GetCurrentLevel();
 
 			if (Object.ReferenceEquals(prevLevel, campLevel) == false)
@@ -191,6 +199,14 @@
 				if (campLevel is not null) campLevel.Begin();
 
 				mActiveLevel = campLevel;
+
+				if(transData is not null)
+				{
+					foreach(Entity entity in transData.Value.mPersistentEntities)
+					{
+						EntityManager.I.RegisterEntity(entity);
+					}
+				}
 			}
 		}
 

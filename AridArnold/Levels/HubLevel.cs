@@ -4,6 +4,8 @@ namespace AridArnold
 {
 	class HubLevel : Level
 	{
+		const float TRANSITION_BORDER = 10.0f;
+
 		Texture2D mTransitionArrows;
 
 		int mTopID;
@@ -52,7 +54,38 @@ namespace AridArnold
 		/// </summary>
 		void CheckRoomTransition(Arnold arnold)
 		{
+			Vector2 pos = arnold.GetPos();
+			Rect2f collider = arnold.ColliderBounds();
 
+			HubTransitionData data;
+			data.mArriveFromDirection = CardinalDirection.Up;
+			data.mLevelIDTransitionTo = 0;
+
+			if (mRightID != 0 )
+			{
+				if(arnold.GetCentrePos().X > GameScreen.GAME_AREA_WIDTH - TRANSITION_BORDER)
+				{
+					data.mArriveFromDirection = CardinalDirection.Left;
+					data.mLevelIDTransitionTo = mRightID;
+					arnold.SetPos(new Vector2(TRANSITION_BORDER * 1.5f, pos.Y));
+				}
+			}
+
+			if (mLeftID != 0)
+			{
+				if (arnold.GetCentrePos().X < TRANSITION_BORDER)
+				{
+					data.mArriveFromDirection = CardinalDirection.Right;
+					data.mLevelIDTransitionTo = mLeftID;
+					arnold.SetPos(new Vector2(GameScreen.GAME_AREA_WIDTH - TRANSITION_BORDER * 1.5f - collider.Width, pos.Y));
+				}
+			}
+
+			if (data.mLevelIDTransitionTo != 0)
+			{
+				data.mPersistentEntities = new List<Entity> { arnold };
+				CampaignManager.I.QueueHubTransition(data);
+			}
 		}
 
 		/// <summary>

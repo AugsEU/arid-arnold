@@ -4,9 +4,9 @@ namespace AridArnold
 {
 	struct HubTransitionData
 	{
-		CardinalDirection mArriveFromDirection;
-		List<Entity> mPersistentEntities;
-		int mLevelIDTransitionTo;
+		public CardinalDirection mArriveFromDirection;
+		public List<Entity> mPersistentEntities;
+		public int mLevelIDTransitionTo;
 	}
 
 	class CampaignManager : Singleton<CampaignManager>
@@ -33,6 +33,8 @@ namespace AridArnold
 		GameplayState mGameplayState;
 		Level mCurrentLevel;
 		List<Level> mLevelSequence;
+
+		HubTransitionData? mQueuedTransition;
 
 		#endregion rMembers
 
@@ -118,7 +120,7 @@ namespace AridArnold
 		/// </summary>
 		public Level LoadHubLevel(int roomId)
 		{
-			string startLevelPath = GetHubRoomPath(mMetaData.GetStartRoomID());
+			string startLevelPath = GetHubRoomPath(roomId);
 			mCurrentLevel = Level.LoadFromFile(startLevelPath);
 			return mCurrentLevel;
 		}
@@ -130,6 +132,29 @@ namespace AridArnold
 		public Level GetCurrentLevel()
 		{
 			return mCurrentLevel;
+		}
+
+
+
+		/// <summary>
+		/// Queue a transition
+		/// </summary>
+		public void QueueHubTransition(HubTransitionData? data)
+		{
+			mQueuedTransition = data;
+		}
+
+
+
+		/// <summary>
+		/// Get hub transition that's queued.
+		/// </summary>
+		/// <returns>Null if no transition</returns>
+		public HubTransitionData? PopHubTransition()
+		{
+			HubTransitionData? retVal = mQueuedTransition;
+			mQueuedTransition = null;
+			return retVal;
 		}
 
 		#endregion rLevel
