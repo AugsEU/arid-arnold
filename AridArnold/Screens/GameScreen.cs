@@ -1,4 +1,8 @@
-﻿namespace AridArnold.Screens
+﻿using AridArnold.Screens.Fade;
+using Microsoft.Xna.Framework;
+using System.Linq.Expressions;
+
+namespace AridArnold.Screens
 {
 	/// <summary>
 	/// Gameplay screen
@@ -18,7 +22,25 @@
 		const int GAME_AREA_X = 208;
 		const int GAME_AREA_Y = 6;
 
+		const float FADE_SPEED = 0.9f;
+
 		#endregion rConstants
+
+
+
+
+
+		#region rTypes
+
+		enum LoadingState
+		{
+			Playing,
+			FadeOut,
+			LoadingLevel,
+			FadeIn
+		}
+
+		#endregion rTypes
 
 
 
@@ -31,7 +53,11 @@
 		Level mActiveLevel;
 		private PercentageTimer mLevelEndTimer;
 
-		SpriteFont mPixelFont;
+		HubTransitionData? mPrevTransData;
+		LoadingState mLoadState;
+
+		ScreenFade mFadeOut;
+		ScreenFade mFadeIn;
 
 		#endregion rMembers
 
@@ -50,6 +76,8 @@
 			mLevelEndTimer = new PercentageTimer(END_LEVEL_TIME);
 
 			mGameArea = null;
+			mLoadState = LoadingState.Playing;
+			mPrevTransData = null;
 
 			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			TileManager.I.Init(new Vector2(-TILE_SIZE, -TILE_SIZE), TILE_SIZE);
@@ -62,6 +90,11 @@
 		/// </summary>
 		public override void OnActivate()
 		{
+			mPrevTransData = null;
+
+			CheckForLevelChange();
+			mLoadState = LoadingState.LoadingLevel;
+			mFadeIn = new ScreenWipe(CardinalDirection.Down, FADE_SPEED, false);
 		}
 
 
@@ -71,7 +104,6 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mPixelFont = FontManager.I.GetFont("Pixica Micro-24");
 			mUIBG = MonoData.I.MonoGameLoad<Texture2D>("UI/ui_bg");
 		}
 
@@ -106,9 +138,30 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			switch (mLoadState)
+			{
+				case LoadingState.Playing:
+					GameUpdate(gameTime);
+					break;
+				case LoadingState.FadeOut:
+					FadeOutUpdate(gameTime);
+					break;
+				case LoadingState.LoadingLevel:
+					LoadCurrentLevel();
+					break;
+				case LoadingState.FadeIn:
+					FadeInUpdate(gameTime);
+					break;
+				default:
+					break;
+			}
+		}
+
+		void GameUpdate(GameTime gameTime)
+		{
 			CheckForLevelChange();
 
-			if(mActiveLevel == null)
+			if (mActiveLevel == null)
 			{
 				return;
 			}
@@ -185,30 +238,80 @@
 			Level prevLevel = mActiveLevel;
 
 			// Check for hub transition
-			HubTransitionData? transData = CampaignManager.I.PopHubTransition();
-			if(transData is not null)
+			mPrevTransData = CampaignManager.I.PopHubTransition();
+			if(mPrevTransData.HasValue)
 			{
-				CampaignManager.I.LoadHubLevel(transData.Value.mLevelIDTransitionTo);
+				CampaignManager.I.LoadHubLevel(mPrevTransData.Value.mLevelIDTransitionTo);
 			}
 
 			Level campLevel = CampaignManager.I.GetCurrentLevel();
 
 			if (Object.ReferenceEquals(prevLevel, campLevel) == false)
 			{
-				if(prevLevel is not null) prevLevel.End();
-				if (campLevel is not null) campLevel.Begin();
-
-				mActiveLevel = campLevel;
-
-				if(transData is not null)
+				if (mPrevTransData.HasValue)
 				{
-					foreach(Entity entity in transData.Value.mPersistentEntities)
-					{
-						EntityManager.I.RegisterEntity(entity);
-					}
+					mLoadState = LoadingState.FadeOut;
+					mFadeIn = new ScreenWipe(mPrevTransData.Value.mArriveFromDirection, FADE_SPEED, false);
+
+					CardinalDirection opposite = Util.InvertDirection(mPrevTransData.Value.mArriveFromDirection);
+					mFadeOut = new ScreenWipe(opposite, FADE_SPEED, true);
 				}
 			}
 		}
+
+
+
+		/// <summary>
+		/// Update fade out.
+		/// </summary>
+		private void FadeOutUpdate(GameTime gameTime)
+		{
+			mFadeOut.Update(gameTime);
+			if(mFadeOut.Finished())
+			{
+				mLoadState = LoadingState.LoadingLevel;
+			}
+		}
+
+
+
+		/// <summary>
+		/// Load current level from the campaign manager.
+		/// </summary>
+		private void LoadCurrentLevel()
+		{
+			Level campLevel = CampaignManager.I.GetCurrentLevel();
+
+			if (mActiveLevel is not null) mActiveLevel.End();
+			if (campLevel is not null) campLevel.Begin();
+
+			mActiveLevel = campLevel;
+
+			if (mPrevTransData.HasValue)
+			{
+				foreach (Entity entity in mPrevTransData.Value.mPersistentEntities)
+				{
+					EntityManager.I.RegisterEntity(entity);
+				}
+			}
+
+			mLoadState = LoadingState.FadeIn;
+		}
+
+
+
+		/// <summary>
+		/// Update fade out.
+		/// </summary>
+		private void FadeInUpdate(GameTime gameTime)
+		{
+			mFadeIn.Update(gameTime);
+			if (mFadeIn.Finished())
+			{
+				mLoadState = LoadingState.Playing;
+			}
+		}
+
 
 
 		/// <summary>
@@ -295,13 +398,41 @@
 									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
+			switch (mLoadState)
+			{
+				case LoadingState.FadeIn:
+					mFadeIn.Draw(info);
+					break;
+				case LoadingState.FadeOut:
+					mFadeOut.Draw(info);
+					break;
+				case LoadingState.LoadingLevel:
+					MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, GAME_AREA_WIDTH, GAME_AREA_HEIGHT), Color.Black, DrawLayer.Front);
+					break;
+			}
+
+			DrawGamePlay(info);
+
+			info.spriteBatch.End();
+		}
+
+
+
+		/// <summary>
+		/// Draw gameplay
+		/// </summary>
+		private void DrawGamePlay(DrawInfo info)
+		{
+			if (mActiveLevel is null || mActiveLevel.IsActive() == false)
+			{
+				return;
+			}
+
 			GhostManager.I.Draw(info);
 			EntityManager.I.Draw(info);
 			TileManager.I.Draw(info);
 			FXManager.I.Draw(info);
-			if(mActiveLevel is not null) mActiveLevel.Draw(info);
-
-			info.spriteBatch.End();
+			mActiveLevel.Draw(info);
 		}
 
 

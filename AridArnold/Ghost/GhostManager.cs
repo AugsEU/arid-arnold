@@ -152,7 +152,7 @@
 		/// <param name="info">Info needed to draw</param>
 		public void Draw(DrawInfo info)
 		{
-			if (mInputFile.IsEmpty() == false)
+			if (mInputFile is not null && mInputFile.IsEmpty() == false)
 			{
 				List<GhostInfo> ghosts = mInputFile.ReadFrame(mRecordFrame);
 

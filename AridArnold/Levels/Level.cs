@@ -186,6 +186,16 @@ namespace AridArnold
 			return mImagePath;
 		}
 
+
+
+		/// <summary>
+		/// Active
+		/// </summary>
+		public bool IsActive()
+		{
+			return mActive;
+		}
+
 		#endregion rUtility
 
 

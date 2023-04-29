@@ -21,6 +21,7 @@
 		Tile,
 		TileEffects,
 		Text,
+		Front,
 		NumLayers
 	}
 
