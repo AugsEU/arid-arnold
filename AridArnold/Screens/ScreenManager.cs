@@ -1,4 +1,4 @@
-﻿namespace AridArnold.Screens
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Enumerator to store the screen type. Each screen needs a new entry into this

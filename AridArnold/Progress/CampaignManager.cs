@@ -2,13 +2,6 @@
 
 namespace AridArnold
 {
-	struct HubTransitionData
-	{
-		public CardinalDirection mArriveFromDirection;
-		public List<Entity> mPersistentEntities;
-		public int mLevelIDTransitionTo;
-	}
-
 	class CampaignManager : Singleton<CampaignManager>
 	{
 		#region rTypes
@@ -34,7 +27,7 @@ namespace AridArnold
 		Level mCurrentLevel;
 		List<Level> mLevelSequence;
 
-		HubTransitionData? mQueuedTransition;
+		LoadingSequence mQueuedLoad;
 
 		#endregion rMembers
 
@@ -52,10 +45,9 @@ namespace AridArnold
 			mMetaData = new CampaignMetaData("Content/" + mRootPath + "Meta.xml");
 
 			mLevelSequence = new List<Level>();
-
 			mGameplayState = GameplayState.HubWorld;
 
-			LoadHubLevel(mMetaData.GetStartRoomID());
+			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 		}
 
 		#endregion rInit
@@ -118,9 +110,21 @@ namespace AridArnold
 		/// <summary>
 		/// Load a level from the hub world and set it as the current level.
 		/// </summary>
-		public Level LoadHubLevel(int roomId)
+		public Level LoadHubRoom(int roomId)
 		{
 			string startLevelPath = GetHubRoomPath(roomId);
+			mCurrentLevel = Level.LoadFromFile(startLevelPath);
+			return mCurrentLevel;
+		}
+
+
+
+		/// <summary>
+		/// Load a level from the game and set it as the current level.
+		/// </summary>
+		public Level LoadGameLevel(int roomId)
+		{
+			string startLevelPath = GetLevelPath(roomId);
 			mCurrentLevel = Level.LoadFromFile(startLevelPath);
 			return mCurrentLevel;
 		}
@@ -139,9 +143,9 @@ namespace AridArnold
 		/// <summary>
 		/// Queue a transition
 		/// </summary>
-		public void QueueHubTransition(HubTransitionData? data)
+		public void QueueLoadSequence(LoadingSequence loadingSequence)
 		{
-			mQueuedTransition = data;
+			mQueuedLoad = loadingSequence;
 		}
 
 
@@ -150,10 +154,10 @@ namespace AridArnold
 		/// Get hub transition that's queued.
 		/// </summary>
 		/// <returns>Null if no transition</returns>
-		public HubTransitionData? PopHubTransition()
+		public LoadingSequence PopLoadSequence()
 		{
-			HubTransitionData? retVal = mQueuedTransition;
-			mQueuedTransition = null;
+			LoadingSequence retVal = mQueuedLoad;
+			mQueuedLoad = null;
 			return retVal;
 		}
 

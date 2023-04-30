@@ -187,6 +187,15 @@
 		}
 
 
+		/// <summary>
+		/// Insert entity without reloading it
+		/// </summary>
+		public void InsertEntity(Entity entity)
+		{
+			mRegisteredEntities.Add(entity);
+		}
+
+
 
 		/// <summary>
 		/// Remove entity from registry.

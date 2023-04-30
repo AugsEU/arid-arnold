@@ -1,4 +1,4 @@
-﻿namespace AridArnold.Screens
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Screen displayed on a game over

@@ -1,6 +1,4 @@
-﻿using AridArnold.Screens;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	class HubLevel : Level
 	{
@@ -54,20 +52,14 @@ namespace AridArnold
 		/// </summary>
 		void CheckRoomTransition(Arnold arnold)
 		{
-			Vector2 pos = arnold.GetPos();
 			Rect2f collider = arnold.ColliderBounds();
-
-			HubTransitionData data;
-			data.mArriveFromDirection = CardinalDirection.Up;
-			data.mLevelIDTransitionTo = 0;
 
 			if (mRightID != 0 )
 			{
 				if(arnold.GetCentrePos().X > GameScreen.GAME_AREA_WIDTH - TRANSITION_BORDER)
 				{
-					data.mArriveFromDirection = CardinalDirection.Left;
-					data.mLevelIDTransitionTo = mRightID;
-					arnold.SetPos(new Vector2(TRANSITION_BORDER * 1.5f, pos.Y));
+					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mRightID, CardinalDirection.Left, new Entity[]{ arnold }));
+					return;
 				}
 			}
 
@@ -75,16 +67,9 @@ namespace AridArnold
 			{
 				if (arnold.GetCentrePos().X < TRANSITION_BORDER)
 				{
-					data.mArriveFromDirection = CardinalDirection.Right;
-					data.mLevelIDTransitionTo = mLeftID;
-					arnold.SetPos(new Vector2(GameScreen.GAME_AREA_WIDTH - TRANSITION_BORDER * 1.5f - collider.Width, pos.Y));
+					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mLeftID, CardinalDirection.Right, new Entity[] { arnold }));
+					return;
 				}
-			}
-
-			if (data.mLevelIDTransitionTo != 0)
-			{
-				data.mPersistentEntities = new List<Entity> { arnold };
-				CampaignManager.I.QueueHubTransition(data);
 			}
 		}
 

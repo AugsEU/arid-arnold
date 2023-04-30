@@ -1,4 +1,4 @@
-﻿namespace AridArnold.Screens
+﻿namespace AridArnold
 {
 	internal class StartLevelScreen : Screen
 	{

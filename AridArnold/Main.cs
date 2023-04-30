@@ -1,6 +1,4 @@
-﻿using AridArnold.Screens;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Program top level

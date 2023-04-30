@@ -1,8 +1,4 @@
-﻿using AridArnold.Screens.Fade;
-using Microsoft.Xna.Framework;
-using System.Linq.Expressions;
-
-namespace AridArnold.Screens
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Gameplay screen
@@ -22,25 +18,7 @@ namespace AridArnold.Screens
 		const int GAME_AREA_X = 208;
 		const int GAME_AREA_Y = 6;
 
-		const float FADE_SPEED = 0.9f;
-
 		#endregion rConstants
-
-
-
-
-
-		#region rTypes
-
-		enum LoadingState
-		{
-			Playing,
-			FadeOut,
-			LoadingLevel,
-			FadeIn
-		}
-
-		#endregion rTypes
 
 
 
@@ -50,11 +28,9 @@ namespace AridArnold.Screens
 
 		RenderTarget2D mGameArea;
 		Texture2D mUIBG;
-		Level mActiveLevel;
 		private PercentageTimer mLevelEndTimer;
 
-		HubTransitionData? mPrevTransData;
-		LoadingState mLoadState;
+		LoadingSequence mLoadSequence;
 
 		ScreenFade mFadeOut;
 		ScreenFade mFadeIn;
@@ -76,8 +52,7 @@ namespace AridArnold.Screens
 			mLevelEndTimer = new PercentageTimer(END_LEVEL_TIME);
 
 			mGameArea = null;
-			mLoadState = LoadingState.Playing;
-			mPrevTransData = null;
+			mLoadSequence = null;
 
 			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			TileManager.I.Init(new Vector2(-TILE_SIZE, -TILE_SIZE), TILE_SIZE);
@@ -90,11 +65,6 @@ namespace AridArnold.Screens
 		/// </summary>
 		public override void OnActivate()
 		{
-			mPrevTransData = null;
-
-			CheckForLevelChange();
-			mLoadState = LoadingState.LoadingLevel;
-			mFadeIn = new ScreenWipe(CardinalDirection.Down, FADE_SPEED, false);
 		}
 
 
@@ -138,30 +108,32 @@ namespace AridArnold.Screens
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			switch (mLoadState)
+			if(mLoadSequence is not null)
 			{
-				case LoadingState.Playing:
-					GameUpdate(gameTime);
-					break;
-				case LoadingState.FadeOut:
-					FadeOutUpdate(gameTime);
-					break;
-				case LoadingState.LoadingLevel:
-					LoadCurrentLevel();
-					break;
-				case LoadingState.FadeIn:
-					FadeInUpdate(gameTime);
-					break;
-				default:
-					break;
+				mLoadSequence.Update(gameTime);
+
+				if(mLoadSequence.Finished())
+				{
+					mLoadSequence = null;
+				}
+			}
+			else
+			{
+				GameUpdate(gameTime);
 			}
 		}
 
+
+
+		/// <summary>
+		/// Update gameplay elements
+		/// </summary>
 		void GameUpdate(GameTime gameTime)
 		{
-			CheckForLevelChange();
+			CheckForLoadSequence();
 
-			if (mActiveLevel == null)
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
+			if (currLevel is null || mLoadSequence is not null)
 			{
 				return;
 			}
@@ -178,10 +150,10 @@ namespace AridArnold.Screens
 			}
 
 			HandleInput();
-			mActiveLevel.Update(gameTime);
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
+			currLevel.Update(gameTime);
 
 			// To do: Level status?
 			//LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
@@ -223,6 +195,7 @@ namespace AridArnold.Screens
 		/// </summary>
 		private void LevelWin()
 		{
+			// To do: fix this
 			mLevelEndTimer.Start();
 			DisplayLevelEndText();
 			GhostManager.I.EndLevel(true);
@@ -233,83 +206,9 @@ namespace AridArnold.Screens
 		/// <summary>
 		/// Query the CampaignManager for a level change.
 		/// </summary>
-		private void CheckForLevelChange()
+		private void CheckForLoadSequence()
 		{
-			Level prevLevel = mActiveLevel;
-
-			// Check for hub transition
-			mPrevTransData = CampaignManager.I.PopHubTransition();
-			if(mPrevTransData.HasValue)
-			{
-				CampaignManager.I.LoadHubLevel(mPrevTransData.Value.mLevelIDTransitionTo);
-			}
-
-			Level campLevel = CampaignManager.I.GetCurrentLevel();
-
-			if (Object.ReferenceEquals(prevLevel, campLevel) == false)
-			{
-				if (mPrevTransData.HasValue)
-				{
-					mLoadState = LoadingState.FadeOut;
-					mFadeIn = new ScreenWipe(mPrevTransData.Value.mArriveFromDirection, FADE_SPEED, false);
-
-					CardinalDirection opposite = Util.InvertDirection(mPrevTransData.Value.mArriveFromDirection);
-					mFadeOut = new ScreenWipe(opposite, FADE_SPEED, true);
-				}
-			}
-		}
-
-
-
-		/// <summary>
-		/// Update fade out.
-		/// </summary>
-		private void FadeOutUpdate(GameTime gameTime)
-		{
-			mFadeOut.Update(gameTime);
-			if(mFadeOut.Finished())
-			{
-				mLoadState = LoadingState.LoadingLevel;
-			}
-		}
-
-
-
-		/// <summary>
-		/// Load current level from the campaign manager.
-		/// </summary>
-		private void LoadCurrentLevel()
-		{
-			Level campLevel = CampaignManager.I.GetCurrentLevel();
-
-			if (mActiveLevel is not null) mActiveLevel.End();
-			if (campLevel is not null) campLevel.Begin();
-
-			mActiveLevel = campLevel;
-
-			if (mPrevTransData.HasValue)
-			{
-				foreach (Entity entity in mPrevTransData.Value.mPersistentEntities)
-				{
-					EntityManager.I.RegisterEntity(entity);
-				}
-			}
-
-			mLoadState = LoadingState.FadeIn;
-		}
-
-
-
-		/// <summary>
-		/// Update fade out.
-		/// </summary>
-		private void FadeInUpdate(GameTime gameTime)
-		{
-			mFadeIn.Update(gameTime);
-			if (mFadeIn.Finished())
-			{
-				mLoadState = LoadingState.Playing;
-			}
+			mLoadSequence = CampaignManager.I.PopLoadSequence();
 		}
 
 
@@ -398,17 +297,9 @@ namespace AridArnold.Screens
 									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
-			switch (mLoadState)
+			if(mLoadSequence is not null)
 			{
-				case LoadingState.FadeIn:
-					mFadeIn.Draw(info);
-					break;
-				case LoadingState.FadeOut:
-					mFadeOut.Draw(info);
-					break;
-				case LoadingState.LoadingLevel:
-					MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, GAME_AREA_WIDTH, GAME_AREA_HEIGHT), Color.Black, DrawLayer.Front);
-					break;
+				mLoadSequence.Draw(info);
 			}
 
 			DrawGamePlay(info);
@@ -423,7 +314,8 @@ namespace AridArnold.Screens
 		/// </summary>
 		private void DrawGamePlay(DrawInfo info)
 		{
-			if (mActiveLevel is null || mActiveLevel.IsActive() == false)
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
+			if (currLevel is null || currLevel.IsActive() == false)
 			{
 				return;
 			}
@@ -432,7 +324,7 @@ namespace AridArnold.Screens
 			EntityManager.I.Draw(info);
 			TileManager.I.Draw(info);
 			FXManager.I.Draw(info);
-			mActiveLevel.Draw(info);
+			currLevel.Draw(info);
 		}
 
 
