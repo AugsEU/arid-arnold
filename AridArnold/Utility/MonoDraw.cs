@@ -20,7 +20,7 @@
 		Player,
 		Tile,
 		TileEffects,
-		Text,
+		Bubble,
 		Front,
 		NumLayers
 	}
@@ -194,7 +194,7 @@
 		/// <summary>
 		/// Draw a string centred at a position
 		/// </summary>
-		public static void DrawStringCentred(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, DrawLayer depth = DrawLayer.Text)
+		public static void DrawStringCentred(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, DrawLayer depth = DrawLayer.Bubble)
 		{
 			Vector2 size = font.MeasureString(text);
 

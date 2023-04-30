@@ -91,7 +91,7 @@ namespace AridArnold
 		/// React to collision with an entity.
 		/// </summary>
 		/// <param name="entity"></param>
-		public override void CollideWithEntity(Entity entity)
+		public override void OnCollideEntity(Entity entity)
 		{
 			if (mState == ProjectileState.FreeMotion)
 			{
@@ -101,7 +101,7 @@ namespace AridArnold
 				}
 			}
 
-			base.CollideWithEntity(entity);
+			base.OnCollideEntity(entity);
 		}
 
 		#endregion rUpdate

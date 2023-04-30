@@ -250,7 +250,7 @@
 		/// <summary>
 		/// Deal with things touching us.
 		/// </summary>
-		public override void CollideWithEntity(Entity entity)
+		public override void OnCollideEntity(Entity entity)
 		{
 			// HACK: Arnolds can collapse on themselves, so we add a force here to untangle them
 			if (entity is Arnold)
@@ -268,7 +268,7 @@
 				}
 			}
 
-			base.CollideWithEntity(entity);
+			base.OnCollideEntity(entity);
 		}
 
 

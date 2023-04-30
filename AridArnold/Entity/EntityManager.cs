@@ -161,8 +161,8 @@
 					if (Collision2D.BoxVsBox(iRect, jRect))
 					{
 						//Both react.
-						iEntity.CollideWithEntity(jEntity);
-						jEntity.CollideWithEntity(iEntity);
+						iEntity.OnCollideEntity(jEntity);
+						jEntity.OnCollideEntity(iEntity);
 					}
 				}
 			}

@@ -86,7 +86,7 @@
 		/// React to a collision with this entity.
 		/// </summary>
 		/// <param name="entity"></param>
-		public virtual void CollideWithEntity(Entity entity)
+		public virtual void OnCollideEntity(Entity entity)
 		{
 			//Default: Do nothing.
 		}

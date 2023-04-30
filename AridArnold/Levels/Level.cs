@@ -196,6 +196,16 @@ namespace AridArnold
 			return mActive;
 		}
 
+
+
+		/// <summary>
+		/// Get the aux data
+		/// </summary>
+		public AuxData GetAuxData()
+		{
+			return mAuxData;
+		}
+
 		#endregion rUtility
 
 

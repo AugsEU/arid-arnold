@@ -120,7 +120,7 @@
 		/// React to collision with an entity.
 		/// </summary>
 		/// <param name="entity"></param>
-		public override void CollideWithEntity(Entity entity)
+		public override void OnCollideEntity(Entity entity)
 		{
 			if (entity is Arnold)
 			{
@@ -131,7 +131,7 @@
 				EventManager.I.SendEvent(EventType.KillPlayer, args);
 			}
 
-			base.CollideWithEntity(entity);
+			base.OnCollideEntity(entity);
 		}
 
 

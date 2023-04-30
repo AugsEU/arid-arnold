@@ -19,7 +19,7 @@
 		Texture2D mClosedTexture;
 		Texture2D[] mNumberTextures;
 		
-		List<int> mLevelIDSequence;
+		List<Level> mLevelSequence;
 
 		#endregion rMembers
 
@@ -29,20 +29,31 @@
 
 		#region rInitialisation
 
+		/// <summary>
+		/// Create sequence door
+		/// </summary>
+		/// <param name="levelSequence">List of level IDs</param>
 		public SequenceDoor(Vector2 pos, int[] levelSequence) : base(pos)
 		{
-			mLevelIDSequence = new List<int>();
+			mLevelSequence = new List<Level>();
 			for (int i = 0; i < levelSequence.Length; i++)
 			{
-				if(levelSequence[i] != 0)
+				int lvlID = levelSequence[i];
+				if(lvlID != 0)
 				{
-					mLevelIDSequence.Add(i);
+					string path = CampaignManager.I.GetLevelPath(lvlID);
+					mLevelSequence.Add(Level.LoadFromFile(path));
 				}
 			}
 
-			MonoDebug.Assert(mLevelIDSequence.Count > 0 && mLevelIDSequence.Count < 10);
+			MonoDebug.Assert(mLevelSequence.Count > 0 && mLevelSequence.Count < 10);
 		}
 
+
+
+		/// <summary>
+		/// Load door content
+		/// </summary>
 		public override void LoadContent()
 		{
 			mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorOpen");
@@ -71,6 +82,9 @@
 
 		#region rUpdate
 
+		/// <summary>
+		/// Update
+		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
 
@@ -78,6 +92,23 @@
 			base.Update(gameTime);
 		}
 
+
+
+		/// <summary>
+		/// Handle collision.
+		/// </summary>
+		public override void OnCollideEntity(Entity entity)
+		{
+
+
+			base.OnCollideEntity(entity);
+		}
+
+
+
+		/// <summary>
+		/// Activation area.
+		/// </summary>
 		public override Rect2f ColliderBounds()
 		{
 			return new Rect2f(mPosition, HITBOX_WIDTH, HITBOX_HEIGHT);
@@ -90,10 +121,13 @@
 
 		#region rDraw
 
+		/// <summary>
+		/// Draw door
+		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
 			MonoDraw.DrawTextureDepth(info, mClosedTexture, mPosition, DrawLayer.Default);
-			MonoDraw.DrawTextureDepth(info, mNumberTextures[mLevelIDSequence.Count], mPosition, DrawLayer.Default);
+			MonoDraw.DrawTextureDepth(info, mNumberTextures[mLevelSequence.Count], mPosition, DrawLayer.Default);
 		}
 
 		#endregion rDraw

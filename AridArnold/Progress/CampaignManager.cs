@@ -88,7 +88,7 @@ namespace AridArnold
 		/// <summary>
 		/// Get level path from id
 		/// </summary>
-		string GetLevelPath(int roomId)
+		public string GetLevelPath(int roomId)
 		{
 			return mRootPath + "Levels/" + roomId.ToString().PadLeft(4, '0');
 		}

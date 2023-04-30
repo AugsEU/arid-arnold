@@ -140,11 +140,11 @@
 		/// Only kill the player if we are active.
 		/// </summary>
 		/// <param name="entity"></param>
-		public override void CollideWithEntity(Entity entity)
+		public override void OnCollideEntity(Entity entity)
 		{
 			if(mPoweredOn)
 			{
-				base.CollideWithEntity(entity);
+				base.OnCollideEntity(entity);
 			}
 		}
 

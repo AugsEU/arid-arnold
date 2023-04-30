@@ -112,8 +112,8 @@
 		public override void PostCollisionReact(MovingEntity entity)
 		{
 			//Both react.
-			entity.CollideWithEntity(mEntity);
-			mEntity.CollideWithEntity(entity);
+			entity.OnCollideEntity(mEntity);
+			mEntity.OnCollideEntity(entity);
 
 			//Only treat platforming entities as "solid" when grounded.
 			// TODO: Use polymorphism to avoid this dynamic cast.

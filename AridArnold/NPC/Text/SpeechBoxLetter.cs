@@ -70,7 +70,7 @@
 		public void Draw(DrawInfo drawInfo)
 		{
 			float lifeTime = (float)mLifeTimer.GetElapsedMs();
-			MonoDraw.DrawString(drawInfo, mFont, mCharacter.ToString(), mPosition + mAnimation.GetPosition(lifeTime), mAnimation.GetColor(lifeTime), DrawLayer.Text);
+			MonoDraw.DrawString(drawInfo, mFont, mCharacter.ToString(), mPosition + mAnimation.GetPosition(lifeTime), mAnimation.GetColor(lifeTime), DrawLayer.Bubble);
 		}
 
 		#endregion rDraw

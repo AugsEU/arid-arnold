@@ -113,8 +113,8 @@
 
 			Vector2 dropShadow = drawPos + mShadowOffset;
 
-			MonoDraw.DrawStringCentred(info, mFont, dropShadow, Color.Black, mText, DrawLayer.Text);
-			MonoDraw.DrawStringCentred(info, mFont, drawPos, mColor, mText, DrawLayer.Text);
+			MonoDraw.DrawStringCentred(info, mFont, dropShadow, Color.Black, mText, DrawLayer.Bubble);
+			MonoDraw.DrawStringCentred(info, mFont, drawPos, mColor, mText, DrawLayer.Bubble);
 
 		}
 
