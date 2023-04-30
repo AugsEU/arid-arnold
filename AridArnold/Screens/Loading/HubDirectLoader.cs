@@ -5,7 +5,7 @@
 		public HubDirectLoader(int levelID) : base(levelID)
 		{
 			mFadeOut = null;
-			mFadeIn = new ScreenWipe(CardinalDirection.Up, 0.05f, false);
+			mFadeIn = new ScreenStars(10.0f, 0.1f, false);
 		}
 	}
 }

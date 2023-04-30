@@ -282,6 +282,9 @@
 				case EntityData.EntityClass.kArnoldSpawner:
 					entity = new ArnoldRespawn(worldPosition, data.mGravityDirection, data.mStartDirection);
 					break;
+				case EntityData.EntityClass.kSequenceDoor:
+					entity = new SequenceDoor(worldPosition, data.mIntParams);
+					break;
 
 				default:
 					throw new NotImplementedException();

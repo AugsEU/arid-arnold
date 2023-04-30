@@ -2,7 +2,7 @@
 {
 	internal class HubRoomEdgeLoader : HubTransitionLoader
 	{
-		const float FADE_SPEED = 0.9f;
+		const float FADE_SPEED = 0.5f;
 		const float SPAWN_BORDER = 15.0f;
 
 		Entity[] mPersistentEntities;

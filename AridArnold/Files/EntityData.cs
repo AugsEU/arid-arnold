@@ -32,6 +32,7 @@
 
 			// Utility
 			kArnoldSpawner = kUtilityClassStart,
+			kSequenceDoor,
 			kUtilityClassEnd
 		}
 
@@ -55,7 +56,7 @@
 
 		public EntityType GetEntityType()
 		{
-			if ((int)mEntityClass >= kNPCClassStart)
+			if ((int)mEntityClass >= kNPCClassStart && (int)mEntityClass <= (int)EntityClass.kNPCClassEnd)
 			{
 				if(mEntityClass == EntityClass.kBickDogel)
 				{
