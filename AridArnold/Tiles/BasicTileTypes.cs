@@ -81,7 +81,7 @@
 		/// </summary>
 		public virtual void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/blank");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Blank");
 		}
 
 
@@ -364,7 +364,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/air");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Air");
 		}
 
 		/// <summary>

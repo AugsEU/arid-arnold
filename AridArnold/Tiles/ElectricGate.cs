@@ -45,9 +45,9 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/gate-closed");
-			mMidTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/gate-mid");
-			mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/gate-open");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/GateClosed");
+			mMidTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/GateMid");
+			mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/GateOpen");
 		}
 
 		#endregion rInitialisation

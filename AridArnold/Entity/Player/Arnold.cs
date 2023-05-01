@@ -64,15 +64,15 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arnold/arnold-stand");
-			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/arnold-jump-up");
-			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/arnold-jump-down");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldStand");
+			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldJumpUp");
+			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldJumpDown");
 
 			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
-												("Arnold/arnold-run0", 0.1f),
-												("Arnold/arnold-run1", 0.1f),
-												("Arnold/arnold-run2", 0.1f),
-												("Arnold/arnold-run3", 0.15f));
+												("Arnold/ArnoldRun1", 0.1f),
+												("Arnold/ArnoldRun2", 0.1f),
+												("Arnold/ArnoldRun3", 0.1f),
+												("Arnold/ArnoldRun4", 0.15f));
 
 			mRunningAnimation.Play();
 

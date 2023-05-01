@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Land Of Mirrors</name>
-	<path from="wall">cave</path>
-	<path from="platform">cave-platform</path>
+	<path from="Wall">Cave</path>
+	<path from="Platform">CavePlatform</path>
 </theme>

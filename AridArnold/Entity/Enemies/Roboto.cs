@@ -42,17 +42,17 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/roboto/roboto-off");
-			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/roboto/roboto-walk0");
-			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/roboto/roboto-fall");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Roboto/RobotoOff");
+			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Roboto/RobotoWalk1");
+			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Roboto/RobotoFall");
 
 			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
-												("Enemies/roboto/roboto-walk0", 0.17f),
-												("Enemies/roboto/roboto-walk1", 0.17f));
+												("Enemies/Roboto/RobotoWalk1", 0.17f),
+												("Enemies/Roboto/RobotoWalk2", 0.17f));
 			mRunningAnimation.Play();
 
 			mStandAnimation = new Animator(Animator.PlayType.OneShot,
-											("Enemies/roboto/roboto-walk0", 1.2f));
+											("Enemies/roboto/RobotoWalk1", 1.2f));
 			mStandAnimation.Play();
 
 			//Botch position a bit. Not sure what's happening here.

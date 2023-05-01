@@ -61,22 +61,22 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/trundle/trundle-stand");
-			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/trundle/trundle-jump-up");
-			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/trundle/trundle-jump-down");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/Trundlestand");
+			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/TrundleJumpUp");
+			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/TrundleJumpDown");
 
 			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
-												("Enemies/trundle/trundle-walk1", 0.12f),
-												("Enemies/trundle/trundle-walk2", 0.15f),
-												("Enemies/trundle/trundle-walk3", 0.12f),
-												("Enemies/trundle/trundle-walk4", 0.12f));
+												("Enemies/trundle/Trundlewalk1", 0.12f),
+												("Enemies/trundle/Trundlewalk2", 0.15f),
+												("Enemies/trundle/Trundlewalk3", 0.12f),
+												("Enemies/trundle/Trundlewalk4", 0.12f));
 			mRunningAnimation.Play();
 
 			mStandAnimation = new Animator(Animator.PlayType.Repeat,
-											("Enemies/trundle/trundle-stand", 0.4f),
-											("Enemies/trundle/trundle-stand2", 0.7f),
-											("Enemies/trundle/trundle-stand4", 0.5f),
-											("Enemies/trundle/trundle-stand3", 0.8f));
+											("Enemies/trundle/TrundleStand1", 0.4f),
+											("Enemies/trundle/TrundleStand2", 0.7f),
+											("Enemies/trundle/TrundleStand4", 0.5f),
+											("Enemies/trundle/TrundleStand3", 0.8f));
 			mStandAnimation.Play();
 
 			//Botch position a bit. Not sure what's happening here.

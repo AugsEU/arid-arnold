@@ -74,7 +74,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mUIBG = MonoData.I.MonoGameLoad<Texture2D>("UI/ui_bg");
+			mUIBG = MonoData.I.MonoGameLoad<Texture2D>("UI/UIBG");
 		}
 
 		#endregion

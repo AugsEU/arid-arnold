@@ -21,7 +21,7 @@
 		/// <param name="content">Monogame content manager</param>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/spikes");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Spikes");
 		}
 
 		#endregion rInitialisation

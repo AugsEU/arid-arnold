@@ -49,10 +49,10 @@ namespace AridArnold
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/androld-tile0");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/AndroldTile1");
 			mActivationAnim = new Animator(Animator.PlayType.OneShot,
-											("Tiles/Lab/androld-tile1", 0.5f),
-											("Tiles/Lab/androld-tile2", 0.5f));
+											("Tiles/Lab/AndroldTile2", 0.5f),
+											("Tiles/Lab/AndroldTile3", 0.5f));
 		}
 
 		#endregion rInitialisation

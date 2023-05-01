@@ -87,7 +87,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Buk/stalag-tile");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Buk/StalagTile");
 		}
 	}
 }

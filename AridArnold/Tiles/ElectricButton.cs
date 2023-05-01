@@ -26,8 +26,8 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/button-up");
-			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/button-down");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonUp");
+			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonDown");
 
 			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
 		}
@@ -124,8 +124,8 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/perma-up");
-			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/perma-down");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/PermaUp");
+			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/PermaDown");
 
 			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
 		}

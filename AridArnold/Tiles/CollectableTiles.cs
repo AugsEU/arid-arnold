@@ -125,7 +125,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/hotdog");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/HotDog");
 		}
 
 
@@ -181,7 +181,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/bottle");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Bottle");
 		}
 
 		protected override CollectableType GetCollectableType()
@@ -191,7 +191,7 @@
 
 		public override void OnCollect()
 		{
-			FXManager.I.AddAnimator(mPosition, "Tiles/bottleFade.max", DrawLayer.TileEffects);
+			FXManager.I.AddAnimator(mPosition, "Tiles/BottleFade.max", DrawLayer.TileEffects);
 		}
 	}
 }

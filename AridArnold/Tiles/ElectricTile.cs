@@ -32,12 +32,12 @@
 		public override void LoadContent()
 		{
 			mFullAnimation = new Animator(Animator.PlayType.Repeat,
-									("Tiles/Lab/electric-full0", 0.154f),
-									("Tiles/Lab/electric-full1", 0.154f));
+									("Tiles/Lab/ElectricFull1", 0.154f),
+									("Tiles/Lab/ElectricFull2", 0.154f));
 			mFullAnimation.Play();
 
-			mMidTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/electric-mid");
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/electric-none");
+			mMidTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ElectricMid");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ElectricNone");
 
 			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
 		}

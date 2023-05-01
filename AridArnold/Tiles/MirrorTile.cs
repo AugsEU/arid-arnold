@@ -19,7 +19,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mirror/mirror");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mirror/Mirror");
 		}
 
 		#endregion rInitialisation

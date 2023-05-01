@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Arnold/androld-jump-down.png
+#begin Arnold/AndroldJumpDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,9 +23,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-jump-down.png
+/build:Arnold/AndroldJumpDown.png
 
-#begin Arnold/androld-jump-up.png
+#begin Arnold/AndroldJumpUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -35,9 +35,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-jump-up.png
+/build:Arnold/AndroldJumpUp.png
 
-#begin Arnold/androld-run0.png
+#begin Arnold/AndroldRun1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -47,9 +47,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-run0.png
+/build:Arnold/AndroldRun1.png
 
-#begin Arnold/androld-run1.png
+#begin Arnold/AndroldRun2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,9 +59,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-run1.png
+/build:Arnold/AndroldRun2.png
 
-#begin Arnold/androld-run2.png
+#begin Arnold/AndroldRun3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -71,9 +71,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-run2.png
+/build:Arnold/AndroldRun3.png
 
-#begin Arnold/androld-run3.png
+#begin Arnold/AndroldRun4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -83,9 +83,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-run3.png
+/build:Arnold/AndroldRun4.png
 
-#begin Arnold/androld-stand.png
+#begin Arnold/AndroldStand.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -95,9 +95,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-stand.png
+/build:Arnold/AndroldStand.png
 
-#begin Arnold/androld-stand-off.png
+#begin Arnold/AndroldStandOff.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,9 +107,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/androld-stand-off.png
+/build:Arnold/AndroldStandOff.png
 
-#begin Arnold/arnold-jump-down.png
+#begin Arnold/ArnoldJumpDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,9 +119,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/arnold-jump-down.png
+/build:Arnold/ArnoldJumpDown.png
 
-#begin Arnold/arnold-jump-up.png
+#begin Arnold/ArnoldJumpUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -131,9 +131,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/arnold-jump-up.png
+/build:Arnold/ArnoldJumpUp.png
 
-#begin Arnold/arnold-run0.png
+#begin Arnold/ArnoldRun1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -143,9 +143,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/arnold-run0.png
+/build:Arnold/ArnoldRun1.png
 
-#begin Arnold/arnold-run1.png
+#begin Arnold/ArnoldRun2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -155,9 +155,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/arnold-run1.png
+/build:Arnold/ArnoldRun2.png
 
-#begin Arnold/arnold-run2.png
+#begin Arnold/ArnoldRun3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -167,9 +167,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/arnold-run2.png
+/build:Arnold/ArnoldRun3.png
 
-#begin Arnold/arnold-run3.png
+#begin Arnold/ArnoldRun4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -179,9 +179,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/arnold-run3.png
+/build:Arnold/ArnoldRun4.png
 
-#begin Arnold/arnold-stand.png
+#begin Arnold/ArnoldStand.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -191,7 +191,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Arnold/arnold-stand.png
+/build:Arnold/ArnoldStand.png
 
 #begin BG/Buk/BG.png
 /importer:TextureImporter
@@ -973,7 +973,7 @@
 #begin Campaigns/MainCampaign/Themes/WW7Level.xml
 /copy:Campaigns/MainCampaign/Themes/WW7Level.xml
 
-#begin Enemies/Futron-Gun/bullet.png
+#begin Enemies/Futron-Gun/Bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -983,7 +983,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Futron-Gun/bullet.png
+/build:Enemies/Futron-Gun/Bullet.png
 
 #begin Enemies/Futron-Gun/Charge1.png
 /importer:TextureImporter
@@ -1573,7 +1573,7 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/Futron-Rocket/Shoot4.png
 
-#begin Enemies/roboto/roboto-fall.png
+#begin Enemies/Roboto/RobotoFall.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1583,9 +1583,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/roboto/roboto-fall.png
+/build:Enemies/Roboto/RobotoFall.png
 
-#begin Enemies/roboto/roboto-off.png
+#begin Enemies/Roboto/RobotoOff.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1595,9 +1595,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/roboto/roboto-off.png
+/build:Enemies/Roboto/RobotoOff.png
 
-#begin Enemies/roboto/roboto-walk0.png
+#begin Enemies/Roboto/RobotoWalk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1607,9 +1607,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/roboto/roboto-walk0.png
+/build:Enemies/Roboto/RobotoWalk1.png
 
-#begin Enemies/roboto/roboto-walk1.png
+#begin Enemies/Roboto/RobotoWalk2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1619,9 +1619,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/roboto/roboto-walk1.png
+/build:Enemies/Roboto/RobotoWalk2.png
 
-#begin Enemies/trundle/trundle-jump-down.png
+#begin Enemies/Trundle/TrundleJumpDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1631,9 +1631,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-jump-down.png
+/build:Enemies/Trundle/TrundleJumpDown.png
 
-#begin Enemies/trundle/trundle-jump-mid.png
+#begin Enemies/Trundle/TrundleJumpMid.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1643,9 +1643,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-jump-mid.png
+/build:Enemies/Trundle/TrundleJumpMid.png
 
-#begin Enemies/trundle/trundle-jump-up.png
+#begin Enemies/Trundle/TrundleJumpUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1655,9 +1655,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-jump-up.png
+/build:Enemies/Trundle/TrundleJumpUp.png
 
-#begin Enemies/trundle/trundle-stand.png
+#begin Enemies/Trundle/TrundleStand1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1667,9 +1667,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-stand.png
+/build:Enemies/Trundle/TrundleStand1.png
 
-#begin Enemies/trundle/trundle-stand2.png
+#begin Enemies/Trundle/TrundleStand2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1679,9 +1679,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-stand2.png
+/build:Enemies/Trundle/TrundleStand2.png
 
-#begin Enemies/trundle/trundle-stand3.png
+#begin Enemies/Trundle/TrundleStand3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1691,9 +1691,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-stand3.png
+/build:Enemies/Trundle/TrundleStand3.png
 
-#begin Enemies/trundle/trundle-stand4.png
+#begin Enemies/Trundle/TrundleStand4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1703,9 +1703,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-stand4.png
+/build:Enemies/Trundle/TrundleStand4.png
 
-#begin Enemies/trundle/trundle-walk1.png
+#begin Enemies/Trundle/TrundleWalk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1715,9 +1715,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-walk1.png
+/build:Enemies/Trundle/TrundleWalk1.png
 
-#begin Enemies/trundle/trundle-walk2.png
+#begin Enemies/Trundle/TrundleWalk2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1727,9 +1727,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-walk2.png
+/build:Enemies/Trundle/TrundleWalk2.png
 
-#begin Enemies/trundle/trundle-walk3.png
+#begin Enemies/Trundle/TrundleWalk3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1739,9 +1739,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-walk3.png
+/build:Enemies/Trundle/TrundleWalk3.png
 
-#begin Enemies/trundle/trundle-walk4.png
+#begin Enemies/Trundle/TrundleWalk4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1751,7 +1751,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/trundle/trundle-walk4.png
+/build:Enemies/Trundle/TrundleWalk4.png
 
 #begin Fonts/Pixica.spritefont
 /importer:FontDescriptionImporter
@@ -1760,19 +1760,19 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Pixica.spritefont
 
-#begin Fonts/Pixica-Medium.spritefont
+#begin Fonts/PixicaMedium.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/Pixica-Medium.spritefont
+/build:Fonts/PixicaMedium.spritefont
 
-#begin Fonts/Pixica-Small.spritefont
+#begin Fonts/PixicaSmall.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/Pixica-Small.spritefont
+/build:Fonts/PixicaSmall.spritefont
 
 #begin Icon.ico
 /importer:TextureImporter
@@ -2596,7 +2596,7 @@
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt
 
-#begin Tiles/air.png
+#begin Tiles/Air.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2606,9 +2606,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/air.png
+/build:Tiles/Air.png
 
-#begin Tiles/blank.png
+#begin Tiles/Blank.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2618,9 +2618,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/blank.png
+/build:Tiles/Blank.png
 
-#begin Tiles/bottle.png
+#begin Tiles/Bottle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2630,12 +2630,12 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/bottle.png
+/build:Tiles/Bottle.png
 
-#begin Tiles/bottleFade.max
-/copy:Tiles/bottleFade.max
+#begin Tiles/BottleFade.max
+/copy:Tiles/BottleFade.max
 
-#begin Tiles/bottleFade1.png
+#begin Tiles/BottleFade1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2645,9 +2645,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/bottleFade1.png
+/build:Tiles/BottleFade1.png
 
-#begin Tiles/bottleFade2.png
+#begin Tiles/BottleFade2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2657,9 +2657,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/bottleFade2.png
+/build:Tiles/BottleFade2.png
 
-#begin Tiles/Buk/cave.png
+#begin Tiles/Buk/Cave.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2669,9 +2669,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/cave.png
+/build:Tiles/Buk/Cave.png
 
-#begin Tiles/Buk/cave-platform.png
+#begin Tiles/Buk/CavePlatform.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2681,9 +2681,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/cave-platform.png
+/build:Tiles/Buk/CavePlatform.png
 
-#begin Tiles/Buk/cave-test.png
+#begin Tiles/Buk/CaveTest.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2693,9 +2693,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/cave-test.png
+/build:Tiles/Buk/CaveTest.png
 
-#begin Tiles/Buk/mushroom.png
+#begin Tiles/Buk/Mushroom.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2705,9 +2705,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/mushroom.png
+/build:Tiles/Buk/Mushroom.png
 
-#begin Tiles/Buk/mushroom-bounce1.png
+#begin Tiles/Buk/MushroomBounce1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2717,9 +2717,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/mushroom-bounce1.png
+/build:Tiles/Buk/MushroomBounce1.png
 
-#begin Tiles/Buk/mushroom-bounce2.png
+#begin Tiles/Buk/MushroomBounce2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2729,9 +2729,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/mushroom-bounce2.png
+/build:Tiles/Buk/MushroomBounce2.png
 
-#begin Tiles/Buk/mushroom-bounce3.png
+#begin Tiles/Buk/MushroomBounce3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2741,9 +2741,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/mushroom-bounce3.png
+/build:Tiles/Buk/MushroomBounce3.png
 
-#begin Tiles/Buk/mushroom-bounce4.png
+#begin Tiles/Buk/MushroomBounce4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2753,9 +2753,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/mushroom-bounce4.png
+/build:Tiles/Buk/MushroomBounce4.png
 
-#begin Tiles/Buk/stalag-tile.png
+#begin Tiles/Buk/StalagTile.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2765,9 +2765,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/stalag-tile.png
+/build:Tiles/Buk/StalagTile.png
 
-#begin Tiles/flag0.png
+#begin Tiles/Flag1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2777,9 +2777,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/flag0.png
+/build:Tiles/Flag1.png
 
-#begin Tiles/flag1.png
+#begin Tiles/Flag2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2789,9 +2789,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/flag1.png
+/build:Tiles/Flag2.png
 
-#begin Tiles/flag2.png
+#begin Tiles/Flag3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2801,9 +2801,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/flag2.png
+/build:Tiles/Flag3.png
 
-#begin Tiles/flag3.png
+#begin Tiles/Flag4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2813,9 +2813,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/flag3.png
+/build:Tiles/Flag4.png
 
-#begin Tiles/hotdog.png
+#begin Tiles/HotDog.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2825,9 +2825,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/hotdog.png
+/build:Tiles/HotDog.png
 
-#begin Tiles/Lab/androld-tile0.png
+#begin Tiles/Lab/AndroldTile1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2837,9 +2837,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/androld-tile0.png
+/build:Tiles/Lab/AndroldTile1.png
 
-#begin Tiles/Lab/androld-tile1.png
+#begin Tiles/Lab/AndroldTile2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2849,9 +2849,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/androld-tile1.png
+/build:Tiles/Lab/AndroldTile2.png
 
-#begin Tiles/Lab/androld-tile2.png
+#begin Tiles/Lab/AndroldTile3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2861,9 +2861,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/androld-tile2.png
+/build:Tiles/Lab/AndroldTile3.png
 
-#begin Tiles/Lab/button-down.png
+#begin Tiles/Lab/ButtonDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2873,9 +2873,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/button-down.png
+/build:Tiles/Lab/ButtonDown.png
 
-#begin Tiles/Lab/button-up.png
+#begin Tiles/Lab/ButtonUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2885,9 +2885,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/button-up.png
+/build:Tiles/Lab/ButtonUp.png
 
-#begin Tiles/Lab/electric-full0.png
+#begin Tiles/Lab/ElectricFull1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2897,9 +2897,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/electric-full0.png
+/build:Tiles/Lab/ElectricFull1.png
 
-#begin Tiles/Lab/electric-full1.png
+#begin Tiles/Lab/ElectricFull2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2909,9 +2909,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/electric-full1.png
+/build:Tiles/Lab/ElectricFull2.png
 
-#begin Tiles/Lab/electric-mid.png
+#begin Tiles/Lab/ElectricMid.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2921,9 +2921,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/electric-mid.png
+/build:Tiles/Lab/ElectricMid.png
 
-#begin Tiles/Lab/electric-none.png
+#begin Tiles/Lab/ElectrictNone.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2933,9 +2933,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/electric-none.png
+/build:Tiles/Lab/ElectrictNone.png
 
-#begin Tiles/Lab/gate-closed.png
+#begin Tiles/Lab/GateClosed.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2945,9 +2945,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/gate-closed.png
+/build:Tiles/Lab/GateClosed.png
 
-#begin Tiles/Lab/gate-mid.png
+#begin Tiles/Lab/GateMid.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2957,9 +2957,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/gate-mid.png
+/build:Tiles/Lab/GateMid.png
 
-#begin Tiles/Lab/gate-open.png
+#begin Tiles/Lab/GateOpen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2969,12 +2969,12 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/gate-open.png
+/build:Tiles/Lab/GateOpen.png
 
-#begin Tiles/Lab/lab-plat.max
-/copy:Tiles/Lab/lab-plat.max
+#begin Tiles/Lab/LabPlat.max
+/copy:Tiles/Lab/LabPlat.max
 
-#begin Tiles/Lab/lab-plat0.png
+#begin Tiles/Lab/LabPlat1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2984,9 +2984,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-plat0.png
+/build:Tiles/Lab/LabPlat1.png
 
-#begin Tiles/Lab/lab-plat1.png
+#begin Tiles/Lab/LabPlat2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2996,9 +2996,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-plat1.png
+/build:Tiles/Lab/LabPlat2.png
 
-#begin Tiles/Lab/lab-plat2.png
+#begin Tiles/Lab/LabPlat3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3008,9 +3008,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-plat2.png
+/build:Tiles/Lab/LabPlat3.png
 
-#begin Tiles/Lab/lab-plat3.png
+#begin Tiles/Lab/LabPlat4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3020,12 +3020,12 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-plat3.png
+/build:Tiles/Lab/LabPlat4.png
 
-#begin Tiles/Lab/lab-wall.max
-/copy:Tiles/Lab/lab-wall.max
+#begin Tiles/Lab/LabWall.max
+/copy:Tiles/Lab/LabWall.max
 
-#begin Tiles/Lab/lab-wall0.png
+#begin Tiles/Lab/LabWall1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3035,9 +3035,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-wall0.png
+/build:Tiles/Lab/LabWall1.png
 
-#begin Tiles/Lab/lab-wall1.png
+#begin Tiles/Lab/LabWall2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3047,9 +3047,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-wall1.png
+/build:Tiles/Lab/LabWall2.png
 
-#begin Tiles/Lab/lab-wall2.png
+#begin Tiles/Lab/LabWall3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3059,9 +3059,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-wall2.png
+/build:Tiles/Lab/LabWall3.png
 
-#begin Tiles/Lab/lab-wall3.png
+#begin Tiles/Lab/LabWall4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3071,9 +3071,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/lab-wall3.png
+/build:Tiles/Lab/LabWall4.png
 
-#begin Tiles/Lab/perma-down.png
+#begin Tiles/Lab/PermaDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3083,9 +3083,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/perma-down.png
+/build:Tiles/Lab/PermaDown.png
 
-#begin Tiles/Lab/perma-up.png
+#begin Tiles/Lab/PermaUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3095,9 +3095,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/perma-up.png
+/build:Tiles/Lab/PermaUp.png
 
-#begin Tiles/Mirror/cobble.png
+#begin Tiles/Mirror/Cobble.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3107,9 +3107,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Mirror/cobble.png
+/build:Tiles/Mirror/Cobble.png
 
-#begin Tiles/Mirror/mirror.png
+#begin Tiles/Mirror/Mirror.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3119,9 +3119,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Mirror/mirror.png
+/build:Tiles/Mirror/Mirror.png
 
-#begin Tiles/Mirror/tree-platform.png
+#begin Tiles/Mirror/TreePlatform.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3131,9 +3131,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Mirror/tree-platform.png
+/build:Tiles/Mirror/TreePlatform.png
 
-#begin Tiles/platform.png
+#begin Tiles/Platform.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3143,9 +3143,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/platform.png
+/build:Tiles/Platform.png
 
-#begin Tiles/spikes.png
+#begin Tiles/Spikes.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3155,9 +3155,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/spikes.png
+/build:Tiles/Spikes.png
 
-#begin Tiles/SteamPlant/girder.png
+#begin Tiles/SteamPlant/Girder.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3167,9 +3167,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/SteamPlant/girder.png
+/build:Tiles/SteamPlant/Girder.png
 
-#begin Tiles/SteamPlant/steel.png
+#begin Tiles/SteamPlant/Steel.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3179,9 +3179,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/SteamPlant/steel.png
+/build:Tiles/SteamPlant/Steel.png
 
-#begin Tiles/wall.png
+#begin Tiles/Wall.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3191,9 +3191,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/wall.png
+/build:Tiles/Wall.png
 
-#begin Tiles/wall4.png
+#begin Tiles/Wall4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3203,9 +3203,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/wall4.png
+/build:Tiles/Wall4.png
 
-#begin Tiles/WW7/beam.png
+#begin Tiles/WW7/Beam.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3215,9 +3215,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/WW7/beam.png
+/build:Tiles/WW7/Beam.png
 
-#begin Tiles/WW7/concrete.png
+#begin Tiles/WW7/Concrete.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3227,9 +3227,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/WW7/concrete.png
+/build:Tiles/WW7/Concrete.png
 
-#begin Tiles/WW7/gravel.png
+#begin Tiles/WW7/Gravel.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3239,7 +3239,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/WW7/gravel.png
+/build:Tiles/WW7/Gravel.png
 
 #begin Tiles/WW7/TeleportPipe.png
 /importer:TextureImporter
@@ -3289,7 +3289,7 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/WW7/TeleportTrace3.png
 
-#begin UI/Arnold-Life.png
+#begin UI/ArnoldLife.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3299,9 +3299,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:UI/Arnold-Life.png
+/build:UI/ArnoldLife.png
 
-#begin UI/Arnold-Life-Empty.png
+#begin UI/ArnoldLifeEmpty.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3311,9 +3311,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:UI/Arnold-Life-Empty.png
+/build:UI/ArnoldLifeEmpty.png
 
-#begin UI/ui_bg.png
+#begin UI/UIBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3323,5 +3323,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:UI/ui_bg.png
+/build:UI/UIBG.png
 
