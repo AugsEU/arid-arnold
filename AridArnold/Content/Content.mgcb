@@ -640,6 +640,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0102.png
 
+#begin Campaigns/MainCampaign/Hub/0103.aux
+/copy:Campaigns/MainCampaign/Hub/0103.aux
+
+#begin Campaigns/MainCampaign/Hub/0103.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0103.png
+
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
 
@@ -2419,18 +2434,6 @@
 /processorParam:TextureFormat=Color
 /build:Shared/Icons/LevelFlag.png
 
-#begin Shared/Icons/LevelFlag.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Shared/Icons/LevelFlag.png
-
 #begin Shared/Icons/LevelShop.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2442,18 +2445,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shared/Icons/LevelShop.png
-
-#begin Shared/Icons/LevelWater.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Shared/Icons/LevelWater.png
 
 #begin Shared/Icons/LevelWater.png
 /importer:TextureImporter
