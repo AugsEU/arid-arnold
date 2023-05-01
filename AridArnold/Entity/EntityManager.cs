@@ -345,6 +345,26 @@
 			return returnList;
 		}
 
+
+
+		/// <summary>
+		/// Get persistent entities.
+		/// </summary>
+		public List<Entity> GetAllPersistent()
+		{
+			List<Entity> returnList = new List<Entity>();
+
+			foreach(Entity entity in mRegisteredEntities)
+			{
+				if(entity.PersistLevelEntry())
+				{
+					returnList.Add(entity);
+				}
+			}
+
+			return returnList;
+		}
+
 		#endregion rUtility
 	}
 }

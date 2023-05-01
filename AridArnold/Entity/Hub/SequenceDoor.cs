@@ -136,6 +136,7 @@
 		}
 
 
+
 		/// <summary>
 		/// Open the door
 		/// </summary>
@@ -144,8 +145,10 @@
 			mDoorOpen = true;
 			mTexture = mOpenTexture;
 
-			CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader(mLevelSequence));
+			CampaignManager.I.PushLevelSequence(mLevelSequence);
+			CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader());
 		}
+
 
 
 		/// <summary>

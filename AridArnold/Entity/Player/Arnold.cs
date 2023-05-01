@@ -88,6 +88,22 @@
 
 
 
+		#region rProperties
+
+		/// <summary>
+		/// Should this entity persist after we come back from a door
+		/// </summary>
+		public override bool PersistLevelEntry()
+		{
+			return true;
+		}
+
+		#endregion rProperties
+
+
+
+
+
 		#region rUpdate
 
 		/// <summary>

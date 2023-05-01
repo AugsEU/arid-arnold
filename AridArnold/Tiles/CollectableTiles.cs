@@ -58,18 +58,18 @@
 		public override void LoadContent()
 		{
 			Animator fallDownAnim = new Animator(Animator.PlayType.OneShot
-																		, ("Tiles/flag2", 0.3f)
-																		, ("Tiles/flag3", 1.2f)
-																		, ("Tiles/flag2", 0.3f)
-																		, ("Tiles/flag1", 0.3f));
+																		, ("Tiles/Flag3", 0.3f)
+																		, ("Tiles/Flag4", 1.2f)
+																		, ("Tiles/Flag3", 0.3f)
+																		, ("Tiles/Flag2", 0.3f));
 			Animator faulterAnim = new Animator(Animator.PlayType.OneShot
-																		, ("Tiles/flag2", 0.3f)
-																		, ("Tiles/flag1", 0.3f));
+																		, ("Tiles/Flag3", 0.3f)
+																		, ("Tiles/Flag2", 0.3f));
 			Animator wavesAnim = new Animator(Animator.PlayType.OneShot
-																		, ("Tiles/flag0", 0.3f)
-																		, ("Tiles/flag1", 0.3f)
-																		, ("Tiles/flag0", 0.3f)
-																		, ("Tiles/flag1", 0.3f));
+																		, ("Tiles/Flag1", 0.3f)
+																		, ("Tiles/Flag2", 0.3f)
+																		, ("Tiles/Flag1", 0.3f)
+																		, ("Tiles/Flag2", 0.3f));
 			mIdleAnimator = new IdleAnimator(wavesAnim, 40.0f, faulterAnim, fallDownAnim);
 		}
 

@@ -64,6 +64,24 @@
 
 
 		/// <summary>
+		/// Find index of item in list
+		/// </summary>
+		public static int GetIndex<T>(List<T> list, T toFind)
+		{
+			for(int i =0; i < list.Count; ++i)
+			{
+				if (object.ReferenceEquals(list[i], toFind))
+				{
+					return i;
+				}
+			}
+
+			return -1;
+		}
+
+
+
+		/// <summary>
 		/// Take a subsection of an int.
 		/// </summary>
 		public static UInt32 IntSubString(UInt32 value, int start, int bits)

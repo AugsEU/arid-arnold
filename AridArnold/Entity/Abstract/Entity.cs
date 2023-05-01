@@ -54,6 +54,22 @@
 
 
 
+		#region rProperties
+
+		/// <summary>
+		/// Should this entity persist after we come back from a door
+		/// </summary>
+		public virtual bool PersistLevelEntry()
+		{
+			return false;
+		}
+
+		#endregion rProperties
+
+
+
+
+
 		#region rUpdate
 
 		/// <summary>

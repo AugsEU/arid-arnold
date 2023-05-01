@@ -54,6 +54,8 @@
 					break;
 
 				case LoadingState.LoadingLevel:
+					// Good time to collect garbage
+					GC.Collect();
 					LevelLoadUpdate(gameTime);
 					break;
 

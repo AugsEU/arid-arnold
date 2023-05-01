@@ -153,19 +153,17 @@
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
-			currLevel.Update(gameTime);
 
-			// To do: Level status?
-			//LevelStatus status = ProgressManager.I.GetCurrentLevel().Update(gameTime);
+			LevelStatus status = currLevel.Update(gameTime);
 
-			//if (status == LevelStatus.Win)
-			//{
-			//	LevelWin();
-			//}
-			//else if (status == LevelStatus.Loss)
-			//{
-			//	LevelLose();
-			//}
+			if (status == LevelStatus.Win)
+			{
+				LevelWin();
+			}
+			else if (status == LevelStatus.Loss)
+			{
+				LevelLose();
+			}
 		}
 
 
@@ -195,10 +193,20 @@
 		/// </summary>
 		private void LevelWin()
 		{
-			// To do: fix this
 			mLevelEndTimer.Start();
 			DisplayLevelEndText();
 			GhostManager.I.EndLevel(true);
+		}
+
+
+
+		/// <summary>
+		/// Call to win the level. We will move to the next level shortly.
+		/// </summary>
+		private void LevelLose()
+		{
+			// To do: Lives
+			CampaignManager.I.RestartCurrentLevel();
 		}
 
 
@@ -218,10 +226,15 @@
 		/// </summary>
 		private void MoveToNextLevel()
 		{
-
-
-			// To do: Move to the next level in the sequence
-			throw new NotImplementedException();
+			if (CampaignManager.I.GetNextLevelInSequence() is not null)
+			{
+				CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader());
+			}
+			else
+			{
+				CampaignManager.I.QueueLoadSequence(new ReturnToHubSuccessLoader());
+			}
+			mLevelEndTimer.FullReset();
 		}
 
 		#endregion rUpdate

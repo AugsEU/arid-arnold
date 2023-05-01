@@ -2,6 +2,12 @@
 
 namespace AridArnold
 {
+	struct HubReturnInfo
+	{
+		public List<Entity> mPersistentEntities;
+		public Level mHubRoom;
+	}
+
 	class CampaignManager : Singleton<CampaignManager>
 	{
 		#region rTypes
@@ -28,6 +34,7 @@ namespace AridArnold
 		List<Level> mLevelSequence;
 
 		LoadingSequence mQueuedLoad;
+		HubReturnInfo? mHubReturnInfo;
 
 		#endregion rMembers
 
@@ -46,6 +53,8 @@ namespace AridArnold
 
 			mLevelSequence = new List<Level>();
 			mGameplayState = GameplayState.HubWorld;
+
+			mHubReturnInfo = null;
 
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 		}
@@ -145,6 +154,14 @@ namespace AridArnold
 		/// </summary>
 		public void SetCurrentLevel(Level level)
 		{
+			if(level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub)
+			{
+				SetGameplayState(GameplayState.HubWorld);
+			}
+			else
+			{
+				SetGameplayState(GameplayState.LevelSequence);
+			}
 			mCurrentLevel = level;
 		}
 
@@ -172,15 +189,87 @@ namespace AridArnold
 		}
 
 
+
+		/// <summary>
+		/// Restart the current level
+		/// </summary>
+		public void RestartCurrentLevel()
+		{
+			mCurrentLevel.End();
+			mCurrentLevel.Begin();
+		}
+
+
+
+		/// <summary>
+		/// Set the gameplay state
+		/// </summary>
+		void SetGameplayState(GameplayState newState)
+		{
+			if(mGameplayState != newState)
+			{
+				if(newState == GameplayState.LevelSequence)
+				{
+					// Remember this info for later.
+					HubReturnInfo retInfo = new HubReturnInfo();
+					retInfo.mPersistentEntities = EntityManager.I.GetAllPersistent();
+					retInfo.mHubRoom = mCurrentLevel;
+					mHubReturnInfo = retInfo;
+				}
+				else if(newState == GameplayState.HubWorld)
+				{
+					// Forget about it
+					mHubReturnInfo = null;
+				}
+			}
+
+			mGameplayState = newState;
+		}
+
+		#endregion rLevel
+
+
+
+
+
+		#region rLevelSequence
+
 		/// <summary>
 		/// Add a level sequence to play.
 		/// </summary>
 		public void PushLevelSequence(List<Level> sequence)
 		{
-			mGameplayState = GameplayState.LevelSequence;
 			mLevelSequence = sequence;
+
+			SetGameplayState(GameplayState.LevelSequence);
 		}
 
-		#endregion rLevel
+
+
+		/// <summary>
+		/// Get infor for returning to the hub.
+		/// </summary>
+		public HubReturnInfo? GetReturnInfo()
+		{
+			return mHubReturnInfo;
+		}
+
+
+
+		/// <summary>
+		/// Get next level in the sequence
+		/// </summary>
+		public Level GetNextLevelInSequence()
+		{
+			int currIdx = MonoAlg.GetIndex(mLevelSequence, mCurrentLevel);
+			if(currIdx == mLevelSequence.Count - 1)
+			{
+				return null;
+			}
+
+			return mLevelSequence[currIdx + 1];
+		}
+
+		#endregion rLevelSequence
 	}
 }
