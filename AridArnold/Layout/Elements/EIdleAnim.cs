@@ -1,10 +1,10 @@
 ﻿namespace AridArnold
 {
-	internal class IdleAnimElement : DrawTextureElement
+	internal class EIdleAnim : EDrawTexture
 	{
 		IdleAnimator mIdleAnim;
 
-		public IdleAnimElement(XmlNode node) : base(node)
+		public EIdleAnim(XmlNode node) : base(node)
 		{
 			string idleAnimPath = node["anim"].InnerText;
 			mIdleAnim = MonoData.I.LoadIdleAnimator(idleAnimPath);

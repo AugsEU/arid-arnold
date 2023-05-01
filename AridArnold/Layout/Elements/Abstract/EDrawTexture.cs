@@ -3,9 +3,9 @@
 	/// <summary>
 	/// Element that just displays a texture
 	/// </summary>
-	abstract class DrawTextureElement : LayElement
+	abstract class EDrawTexture : LayElement
 	{
-		public DrawTextureElement(XmlNode node) : base(node)
+		public EDrawTexture(XmlNode node) : base(node)
 		{
 		}
 

@@ -1,10 +1,10 @@
 ﻿namespace AridArnold
 {
-	internal class AnimatorElement : DrawTextureElement
+	internal class EAnimator : EDrawTexture
 	{
 		Animator mAnim;
 
-		public AnimatorElement(XmlNode node) : base(node)
+		public EAnimator(XmlNode node) : base(node)
 		{
 			string animPath = node["anim"].InnerText;
 			mAnim = MonoData.I.LoadAnimator(animPath);

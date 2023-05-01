@@ -5,7 +5,7 @@ namespace AridArnold
 	/// <summary>
 	/// BG for mirror world. A bit bodge but it's contained so who cares?
 	/// </summary>
-	internal class MirrorBG : LayElement
+	internal class EMirrorBG : LayElement
 	{
 		const float WIND_DECREASE = 0.02f;
 		const float GUST_CHANCE = 15.0f;
@@ -18,7 +18,7 @@ namespace AridArnold
 		List<FallingLeaf> mFallingLeaves;
 		float mWindDirection;
 
-		public MirrorBG(XmlNode rootNode) : base(rootNode)
+		public EMirrorBG(XmlNode rootNode) : base(rootNode)
 		{
 			mLeafLateralTex = MonoData.I.MonoGameLoad<Texture2D>("BG/Mirror/LeafLat");
 			mLeafVerticalTex = MonoData.I.MonoGameLoad<Texture2D>("BG/Mirror/LeafVert");

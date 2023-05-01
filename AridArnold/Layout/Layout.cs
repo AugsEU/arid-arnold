@@ -1,10 +1,16 @@
-﻿namespace AridArnold
+﻿using System.Reflection;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Represents a layout of elements
 	/// </summary>
 	internal class Layout
 	{
+		static Dictionary<string, Type> sElementNameMapping = new Dictionary<string, Type>();
+
 		List<LayElement> mElements;
 
 		public Layout(string layoutFile)
@@ -57,22 +63,32 @@
 		// Factory
 		private static LayElement GenerateElement(XmlNode node)
 		{
-			string nodeType = node.Attributes["type"].Value.ToLower();
-
-			// Maybe use reflection instead?
-			switch (nodeType)
+			if(sElementNameMapping.Count == 0)
 			{
-				case "idleanim":
-					return new IdleAnimElement(node);
-				case "texture":
-					return new TextureElement(node);
-				case "animator":
-					return new AnimatorElement(node);
-				case "mirrorbg":
-					return new MirrorBG(node);
+				GenerateClassNameMap();
 			}
 
-			throw new Exception("Do not recognise layout element: " + nodeType);
+			string nodeType = "e" + node.Attributes["type"].Value.ToLower();
+
+			if (!sElementNameMapping.TryGetValue(nodeType, out Type elementType))
+			{
+				throw new Exception("Do not recognise UI element: " + nodeType);
+			}
+
+			return (LayElement)Activator.CreateInstance(elementType, node);
+		}
+
+		static void GenerateClassNameMap()
+		{
+			Assembly assembly = Assembly.GetExecutingAssembly();
+			Type elementType = typeof(LayElement);
+			IEnumerable <Type> types = assembly.GetTypes().Where(t => elementType.IsAssignableFrom(t) && !t.IsAbstract);
+
+			foreach (Type type in types)
+			{
+				string typeName = type.Name;
+				sElementNameMapping[typeName.ToLower()] = type;
+			}
 		}
 	}
 
