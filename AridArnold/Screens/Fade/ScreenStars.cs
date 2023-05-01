@@ -16,7 +16,7 @@
 			{
 				for (float y = 0.0f; y < GameScreen.GAME_AREA_HEIGHT; y += mSpacing)
 				{
-					MonoDraw.DrawTexture(info, dummy, new Vector2(x, y), null, Color.Black, MathF.PI * 0.25f, Vector2.Zero, time * mSpacing * 2.0f, SpriteEffects.None, DrawLayer.Front);
+					MonoDraw.DrawTexture(info, dummy, new Vector2(x, y - time * mSpacing), null, Color.Black, MathF.PI * 0.25f, Vector2.Zero, time * mSpacing * 2.0f, SpriteEffects.None, DrawLayer.Front);
 				}
 			}
 		}
