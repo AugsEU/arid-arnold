@@ -141,6 +141,16 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Set the current level directly
+		/// </summary>
+		public void SetCurrentLevel(Level level)
+		{
+			mCurrentLevel = level;
+		}
+
+
+
+		/// <summary>
 		/// Queue a transition
 		/// </summary>
 		public void QueueLoadSequence(LoadingSequence loadingSequence)
@@ -159,6 +169,16 @@ namespace AridArnold
 			LoadingSequence retVal = mQueuedLoad;
 			mQueuedLoad = null;
 			return retVal;
+		}
+
+
+		/// <summary>
+		/// Add a level sequence to play.
+		/// </summary>
+		public void PushLevelSequence(List<Level> sequence)
+		{
+			mGameplayState = GameplayState.LevelSequence;
+			mLevelSequence = sequence;
 		}
 
 		#endregion rLevel

@@ -22,6 +22,7 @@
 
 		LevelSequenceInfoBubble mHelpBubble;
 		bool mPlayerNear;
+		bool mDoorOpen;
 
 		List<Level> mLevelSequence;
 
@@ -58,6 +59,7 @@
 			mHelpBubble = new LevelSequenceInfoBubble(mLevelSequence, mPosition + BUBBLE_OFFSET, bubbleStyle);
 
 			mPlayerNear = false;
+			mDoorOpen = false;
 		}
 
 
@@ -108,10 +110,42 @@
 			}
 			mHelpBubble.Update(gameTime);
 
+			HandleInput();
+
 			base.Update(gameTime);
 			mPlayerNear = false;
 		}
 
+		/// <summary>
+		/// Handle any inputs
+		/// </summary>
+		void HandleInput()
+		{
+			if(mPlayerNear == false || mDoorOpen == true)
+			{
+				// Player can't interact
+				return;
+			}
+
+			bool activate = InputManager.I.KeyHeld(AridArnoldKeys.Confirm);
+
+			if(activate)
+			{
+				OpenDoor();
+			}
+		}
+
+
+		/// <summary>
+		/// Open the door
+		/// </summary>
+		void OpenDoor()
+		{
+			mDoorOpen = true;
+			mTexture = mOpenTexture;
+
+			CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader(mLevelSequence));
+		}
 
 
 		/// <summary>
@@ -149,7 +183,7 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			MonoDraw.DrawTextureDepth(info, mClosedTexture, mPosition, DrawLayer.Default);
+			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.Default);
 			MonoDraw.DrawTextureDepth(info, mNumberTextures[mLevelSequence.Count], mPosition, DrawLayer.Default);
 
 			mHelpBubble.Draw(info);

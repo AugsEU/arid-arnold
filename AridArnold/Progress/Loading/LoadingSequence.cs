@@ -42,6 +42,19 @@
 			PostLevelLoad();
 		}
 
+		protected void LoadLevel(Level level)
+		{
+			Level prevLevel = CampaignManager.I.GetCurrentLevel();
+
+			if (prevLevel is not null) prevLevel.End();
+
+			CampaignManager.I.SetCurrentLevel(level);
+
+			level.Begin();
+
+			PostLevelLoad();
+		}
+
 		protected virtual void PostLevelLoad()
 		{
 		}
