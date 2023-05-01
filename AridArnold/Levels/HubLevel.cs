@@ -71,6 +71,24 @@
 					return;
 				}
 			}
+
+			if (mTopID != 0)
+			{
+				if (arnold.GetCentrePos().Y < TRANSITION_BORDER)
+				{
+					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mTopID, CardinalDirection.Down, new Entity[] { arnold }));
+					return;
+				}
+			}
+
+			if (mBottomID != 0)
+			{
+				if (arnold.GetCentrePos().Y > GameScreen.GAME_AREA_HEIGHT - TRANSITION_BORDER)
+				{
+					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mBottomID, CardinalDirection.Up, new Entity[] { arnold }));
+					return;
+				}
+			}
 		}
 
 		/// <summary>

@@ -33,6 +33,7 @@
 		ScreenFade mFadeIn;
 
 		Layout mHubUI;
+		Layout mLoadingUI;
 		Layout mLevelUI;
 
 		#endregion rMembers
@@ -76,6 +77,7 @@
 		{
 			mHubUI = new Layout("Layouts/MainHub.mlo");
 			mLevelUI = new Layout("Layouts/MainLevel.mlo");
+			mLoadingUI = new Layout("Layouts/MainLoading.mlo");
 		}
 
 		#endregion
@@ -406,6 +408,11 @@
 		/// </summary>
 		private Layout GetCurrentUI()
 		{
+			if(mLoadSequence is not null)
+			{
+				return mLoadingUI;
+			}
+
 			CampaignManager.GameplayState state = CampaignManager.I.GetGameplayState();
 
 			switch (state)

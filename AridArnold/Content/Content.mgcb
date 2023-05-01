@@ -1792,6 +1792,9 @@
 #begin Layouts/MainLevel.mlo
 /copy:Layouts/MainLevel.mlo
 
+#begin Layouts/MainLoading.mlo
+/copy:Layouts/MainLoading.mlo
+
 #begin NPC/Barbara/Angry1.png
 /importer:TextureImporter
 /processor:TextureProcessor
