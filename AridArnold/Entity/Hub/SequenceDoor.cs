@@ -6,6 +6,7 @@
 
 		const float HITBOX_WIDTH = 16.0f;
 		const float HITBOX_HEIGHT = 16.0f;
+		static Vector2 BUBBLE_OFFSET = new Vector2(8.0f, -10.0f);
 
 		#endregion rConstant
 
@@ -18,7 +19,10 @@
 		Texture2D mOpenTexture;
 		Texture2D mClosedTexture;
 		Texture2D[] mNumberTextures;
-		
+
+		LevelSequenceInfoBubble mHelpBubble;
+		bool mPlayerNear;
+
 		List<Level> mLevelSequence;
 
 		#endregion rMembers
@@ -47,6 +51,13 @@
 			}
 
 			MonoDebug.Assert(mLevelSequence.Count > 0 && mLevelSequence.Count < 10);
+
+			InfoBubble.BubbleStyle bubbleStyle = new InfoBubble.BubbleStyle();
+			bubbleStyle.mInnerColor = new Color(50, 50, 50, 50);
+			bubbleStyle.mBorderColor = new Color(150, 150, 150, 100);
+			mHelpBubble = new LevelSequenceInfoBubble(mLevelSequence, mPosition + BUBBLE_OFFSET, bubbleStyle);
+
+			mPlayerNear = false;
 		}
 
 
@@ -87,9 +98,18 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-
+			if(mPlayerNear)
+			{
+				mHelpBubble.Open();
+			}
+			else
+			{
+				mHelpBubble.Close();
+			}
+			mHelpBubble.Update(gameTime);
 
 			base.Update(gameTime);
+			mPlayerNear = false;
 		}
 
 
@@ -99,7 +119,10 @@
 		/// </summary>
 		public override void OnCollideEntity(Entity entity)
 		{
-
+			if(entity is Arnold)
+			{
+				mPlayerNear = true;
+			}
 
 			base.OnCollideEntity(entity);
 		}
@@ -128,6 +151,8 @@
 		{
 			MonoDraw.DrawTextureDepth(info, mClosedTexture, mPosition, DrawLayer.Default);
 			MonoDraw.DrawTextureDepth(info, mNumberTextures[mLevelSequence.Count], mPosition, DrawLayer.Default);
+
+			mHelpBubble.Draw(info);
 		}
 
 		#endregion rDraw

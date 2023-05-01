@@ -7,9 +7,9 @@ namespace AridArnold
 	{
 		#region rConstants
 
-		const float MOVE_SPEED = 0.1f;
-		const float ANGULAR_SPEED = 0.1f;
-		const float AMPLITUDE = 4.0f;
+		const float MOVE_SPEED = 30.1f;
+		const float ANGULAR_SPEED = 0.7f;
+		const float AMPLITUDE = 1.5f;
 		const int BORDER_WIDTH = 2;
 
 		#endregion rConstants
@@ -69,6 +69,8 @@ namespace AridArnold
 			mCurrentSize = Vector2.Zero;
 			mOffset = Vector2.Zero;
 			mStyle = style;
+			mBotCentre = botCentre;
+			mState = BubbleState.Closed;
 		}
 
 		protected void SetTargetSize(int width, int height)
@@ -117,7 +119,7 @@ namespace AridArnold
 					{
 						mCurrentSize.Y -= MOVE_SPEED * dt;
 					}
-					else if (mCurrentSize.X < mTargetSize.X)
+					else if (mCurrentSize.X > 0.0f)
 					{
 						mCurrentSize.X -= MOVE_SPEED * dt;
 					}
@@ -143,6 +145,11 @@ namespace AridArnold
 
 		public void Draw(DrawInfo info)
 		{
+			if(mState == BubbleState.Closed)
+			{
+				return;
+			}
+
 			Vector2 pos = mBotCentre + mOffset;
 			Point innerOrigin = new Point((int)(pos.X - mCurrentSize.X / 2), (int)(pos.Y - mCurrentSize.Y));
 			Rectangle innerRect = new Rectangle((int)innerOrigin.X, (int)innerOrigin.Y, (int)mCurrentSize.X, (int)mCurrentSize.Y);
@@ -175,6 +182,18 @@ namespace AridArnold
 
 
 		#region rUtil
+
+		/// <summary>
+		/// Open this bubble
+		/// </summary>
+		public void Open()
+		{
+			if (mState != BubbleState.Open)
+			{
+				mState = BubbleState.Opening;
+			}
+		}
+
 
 		/// <summary>
 		/// Close this bubble
