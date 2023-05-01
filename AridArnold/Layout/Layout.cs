@@ -9,10 +9,28 @@ namespace AridArnold
 	/// </summary>
 	internal class Layout
 	{
+		#region rStatic
+
 		static Dictionary<string, Type> sElementNameMapping = new Dictionary<string, Type>();
+
+		#endregion rStatic
+
+
+
+
+
+		#region rMembers
 
 		List<LayElement> mElements;
 
+		#endregion rMembers
+
+
+		#region rInit
+
+		/// <summary>
+		/// Create a layout from xml file path
+		/// </summary>
 		public Layout(string layoutFile)
 		{
 			layoutFile = "Content/" + layoutFile;
@@ -28,6 +46,9 @@ namespace AridArnold
 			LoadSubElements(rootNode);
 		}
 
+		/// <summary>
+		/// Load a tag
+		/// </summary>
 		private void LoadSubElements(XmlNode rootNode)
 		{
 			foreach (XmlNode node in rootNode.ChildNodes)
@@ -44,6 +65,17 @@ namespace AridArnold
 			}
 		}
 
+		#endregion rInit
+
+
+
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// Update all elements in layout
+		/// </summary>
 		public void Update(GameTime gameTime)
 		{
 			foreach (LayElement element in mElements)
@@ -52,6 +84,15 @@ namespace AridArnold
 			}
 		}
 
+		#endregion rUpdate
+
+
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw all elements in layout
+		/// </summary>
 		public void Draw(DrawInfo info)
 		{
 			foreach (LayElement element in mElements)
@@ -60,7 +101,14 @@ namespace AridArnold
 			}
 		}
 
-		// Factory
+		#endregion rDraw
+
+
+		#region rFactory
+
+		/// <summary>
+		/// Element factory from node
+		/// </summary>
 		private static LayElement GenerateElement(XmlNode node)
 		{
 			if(sElementNameMapping.Count == 0)
@@ -78,6 +126,10 @@ namespace AridArnold
 			return (LayElement)Activator.CreateInstance(elementType, node);
 		}
 
+		/// <summary>
+		/// Called once per program, generate string -> type mapping using reflection
+		/// Note: Not threadsafe.
+		/// </summary>
 		static void GenerateClassNameMap()
 		{
 			Assembly assembly = Assembly.GetExecutingAssembly();
@@ -90,6 +142,8 @@ namespace AridArnold
 				sElementNameMapping[typeName.ToLower()] = type;
 			}
 		}
+
+		#endregion rFactory
 	}
 
 	/// <summary>
