@@ -10,8 +10,6 @@
 		public const int TILE_SIZE = 16;
 
 		const double END_LEVEL_TIME = 1000.0;
-		const double END_LEVEL_FLASH_TIME = 100.0;
-		const int UI_PANEL_SIZE = 190;
 
 		public const int GAME_AREA_WIDTH = 544;
 		public const int GAME_AREA_HEIGHT = 528;
@@ -27,13 +25,15 @@
 		#region rMembers
 
 		RenderTarget2D mGameArea;
-		Texture2D mUIBG;
 		private PercentageTimer mLevelEndTimer;
 
 		LoadingSequence mLoadSequence;
 
 		ScreenFade mFadeOut;
 		ScreenFade mFadeIn;
+
+		Layout mHubUI;
+		Layout mLevelUI;
 
 		#endregion rMembers
 
@@ -74,27 +74,11 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mUIBG = MonoData.I.MonoGameLoad<Texture2D>("UI/UIBG");
+			mHubUI = new Layout("Layouts/MainHub.mlo");
+			mLevelUI = new Layout("Layouts/MainLevel.mlo");
 		}
 
 		#endregion
-
-
-
-
-
-		#region rUtility
-
-		/// <summary>
-		/// Area of the screen we actually play the game in
-		/// </summary>
-		/// <returns></returns>
-		private Rectangle GetGameAreaRect()
-		{
-			return new Rectangle(GAME_AREA_X, GAME_AREA_Y, GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
-		}
-
-		#endregion rUtility
 
 
 
@@ -108,17 +92,18 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			if(mLoadSequence is not null)
+			if (mLoadSequence is not null)
 			{
 				mLoadSequence.Update(gameTime);
 
-				if(mLoadSequence.Finished())
+				if (mLoadSequence.Finished())
 				{
 					mLoadSequence = null;
 				}
 			}
 			else
 			{
+				GetCurrentUI().Update(gameTime);
 				GameUpdate(gameTime);
 			}
 		}
@@ -205,8 +190,16 @@
 		/// </summary>
 		private void LevelLose()
 		{
-			// To do: Lives
-			CampaignManager.I.RestartCurrentLevel();
+			CampaignManager.I.LoseLife();
+
+			if (CampaignManager.I.IsGameover())
+			{
+				CampaignManager.I.QueueLoadSequence(new ReturnToHubFailureLoader());
+			}
+			else
+			{
+				CampaignManager.I.RestartCurrentLevel();
+			}
 		}
 
 
@@ -265,8 +258,7 @@
 									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
-			MonoDraw.DrawTexture(info, mUIBG, Vector2.Zero);
-
+			GetCurrentUI().Draw(info);
 			Rectangle gameAreaRect = GetGameAreaRect();
 			DrawGameArea(info, gameAreaRect);
 
@@ -310,7 +302,7 @@
 									DepthStencilState.Default,
 									RasterizerState.CullNone);
 
-			if(mLoadSequence is not null)
+			if (mLoadSequence is not null)
 			{
 				mLoadSequence.Draw(info);
 			}
@@ -402,5 +394,40 @@
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rUtil
+
+		/// <summary>
+		/// Get current layout
+		/// </summary>
+		private Layout GetCurrentUI()
+		{
+			CampaignManager.GameplayState state = CampaignManager.I.GetGameplayState();
+
+			switch (state)
+			{
+				case CampaignManager.GameplayState.HubWorld:
+					return mHubUI;
+				case CampaignManager.GameplayState.LevelSequence:
+					return mLevelUI;
+			}
+
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// Area of the screen we actually play the game in
+		/// </summary>
+		/// <returns></returns>
+		private Rectangle GetGameAreaRect()
+		{
+			return new Rectangle(GAME_AREA_X, GAME_AREA_Y, GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
+		}
+
+		#endregion rUtil
 	}
 }

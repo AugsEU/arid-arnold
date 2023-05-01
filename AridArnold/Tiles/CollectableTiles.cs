@@ -137,20 +137,19 @@
 		{
 			if (entity is Arnold)
 			{
-				// To do: Give lives
-				//int livesBefore = ProgressManager.I.GetNumLives();
-				//ProgressManager.I.GiveLife();
-				//mEnabled = false;
+				int livesBefore = CampaignManager.I.GetLives();
+				CampaignManager.I.GainLife();
+				mEnabled = false;
 
-				////If there is actually a life increase
-				//if (livesBefore < ProgressManager.I.GetNumLives())
-				//{
-				//	FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.GetPos(), "+1 Life");
-				//}
-				//else
-				//{
-				//	FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.GetPos(), "+0 Lives");
-				//}
+				//If there is actually a life increase
+				if (livesBefore < CampaignManager.I.GetLives())
+				{
+					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.GetPos(), "+1 Life");
+				}
+				else
+				{
+					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.GetPos(), "+0 Lives");
+				}
 			}
 
 			base.OnEntityIntersect(entity);

@@ -10,6 +10,17 @@ namespace AridArnold
 
 	class CampaignManager : Singleton<CampaignManager>
 	{
+		#region rConstants
+
+		const int START_LIVES = 3;
+		public const int MAX_LIVES = 7;
+
+		#endregion rConstants
+
+
+
+
+
 		#region rTypes
 
 		public enum GameplayState
@@ -32,6 +43,7 @@ namespace AridArnold
 		GameplayState mGameplayState;
 		Level mCurrentLevel;
 		List<Level> mLevelSequence;
+		int mCurrLives;
 
 		LoadingSequence mQueuedLoad;
 		HubReturnInfo? mHubReturnInfo;
@@ -55,7 +67,7 @@ namespace AridArnold
 			mGameplayState = GameplayState.HubWorld;
 
 			mHubReturnInfo = null;
-
+			mCurrLives = START_LIVES;
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 		}
 
@@ -71,7 +83,7 @@ namespace AridArnold
 		/// Get current gameplay state
 		/// </summary>
 		/// <returns></returns>
-		GameplayState GetGameplayState()
+		public GameplayState GetGameplayState()
 		{
 			return mGameplayState;
 		}
@@ -215,6 +227,9 @@ namespace AridArnold
 					retInfo.mPersistentEntities = EntityManager.I.GetAllPersistent();
 					retInfo.mHubRoom = mCurrentLevel;
 					mHubReturnInfo = retInfo;
+
+					// Set lives
+					mCurrLives = START_LIVES;
 				}
 				else if(newState == GameplayState.HubWorld)
 				{
@@ -271,5 +286,66 @@ namespace AridArnold
 		}
 
 		#endregion rLevelSequence
+
+
+		#region rLives
+
+		/// <summary>
+		/// Get how many lives we have.
+		/// </summary>
+		public int GetLives()
+		{
+			return mCurrLives;
+		}
+
+
+
+		/// <summary>
+		/// Can we lose lives at the moment?
+		/// </summary>
+		public bool CanLoseLives()
+		{
+			if(mGameplayState == GameplayState.HubWorld || mLevelSequence.Count == 0)
+			{
+				return false;
+			}
+
+			//Can't lose lives on the first level
+			return !object.ReferenceEquals(mCurrentLevel, mLevelSequence[0]);
+		}
+
+
+
+		/// <summary>
+		/// Are we in a gameover?
+		/// </summary>
+		public bool IsGameover()
+		{
+			return mCurrLives <= 0;
+		}
+
+
+
+		/// <summary>
+		/// Lose a life
+		/// </summary>
+		public int LoseLife()
+		{
+			return mCurrLives--;
+		}
+
+
+
+		/// <summary>
+		/// Gain a life
+		/// </summary>
+		public void GainLife()
+		{
+			if(mCurrLives < MAX_LIVES)
+			{
+				mCurrLives++;
+			}
+		}
+		#endregion rLives
 	}
 }

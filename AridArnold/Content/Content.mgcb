@@ -1786,6 +1786,12 @@
 /processorParam:TextureFormat=Color
 /build:Icon.ico
 
+#begin Layouts/MainHub.mlo
+/copy:Layouts/MainHub.mlo
+
+#begin Layouts/MainLevel.mlo
+/copy:Layouts/MainLevel.mlo
+
 #begin NPC/Barbara/Angry1.png
 /importer:TextureImporter
 /processor:TextureProcessor
