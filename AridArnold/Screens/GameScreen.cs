@@ -182,7 +182,6 @@
 		{
 			mLevelEndTimer.Start();
 			DisplayLevelEndText();
-			GhostManager.I.EndLevel(true);
 		}
 
 

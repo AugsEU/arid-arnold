@@ -108,6 +108,7 @@ namespace AridArnold
 		/// </summary>
 		public void End()
 		{
+			GhostManager.I.EndLevel(mLevelStatus == LevelStatus.Win);
 			mActive = false;
 			mTheme.Unload();
 		}

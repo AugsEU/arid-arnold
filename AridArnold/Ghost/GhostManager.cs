@@ -37,6 +37,8 @@
 		GhostFile mInputFile;
 		GhostFile mOutputFile;
 
+		bool mRecording;
+
 		#endregion rMembers
 
 
@@ -52,6 +54,8 @@
 		{
 			mGhostArnold = new GhostArnold(Vector2.Zero);
 			mGhostArnold.LoadContent();
+
+			mRecording = false;
 		}
 
 
@@ -62,6 +66,12 @@
 		/// <param name="level">Level we are starting</param>
 		public void StartLevel(Level level)
 		{
+			if (level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub || level.GetAuxData().GetLevelType() == AuxData.LevelType.Shop)
+			{
+				return;
+			}
+
+			mRecording = true;
 			mCurrentFrame = 0;
 			mRecordFrame = 0;
 
@@ -89,6 +99,8 @@
 					mOutputFile.Save();
 				}
 			}
+
+			mRecording = false;
 		}
 
 		#endregion rInitialisation
@@ -105,6 +117,11 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
+			if(!mRecording)
+			{
+				return;
+			}
+
 			mCurrentFrame++;
 
 			if (mRecordFrame < mInputFile.GetFrameCount())

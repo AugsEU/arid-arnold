@@ -250,9 +250,11 @@ namespace AridArnold
 
 			try
 			{
-				if (!Directory.Exists(GetFullFolder()))
+				string directoryPath = Path.GetDirectoryName(filePath);
+
+				if (!Directory.Exists(directoryPath))
 				{
-					Directory.CreateDirectory(GetFullFolder());
+					Directory.CreateDirectory(directoryPath);
 				}
 
 				if (!File.Exists(filePath))
