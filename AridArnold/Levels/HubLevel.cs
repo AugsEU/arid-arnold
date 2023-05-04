@@ -14,7 +14,7 @@
 		/// <summary>
 		/// Create a "level" in the hub world.
 		/// </summary>
-		public HubLevel(AuxData data) : base(data)
+		public HubLevel(AuxData data, int id) : base(data, id)
 		{
 			// Strange order is to make editor UI make more sense.
 			mTopID = data.GetIntParams()[0];

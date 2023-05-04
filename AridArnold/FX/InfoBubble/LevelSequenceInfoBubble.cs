@@ -21,7 +21,7 @@
 			mLevelIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelDefault");
 			mShopIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelShop");
 			mWaterIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelWater");
-			mFlagIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelFlag");
+			mFlagIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelKey");
 
 		}
 
@@ -46,7 +46,7 @@
 			{
 				case AuxData.LevelType.CollectWater:
 					return mWaterIcon;
-				case AuxData.LevelType.CollectFlag:
+				case AuxData.LevelType.CollectKey:
 					return mFlagIcon;
 				case AuxData.LevelType.Shop:
 					return mShopIcon;

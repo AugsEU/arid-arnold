@@ -138,6 +138,8 @@
 						return new FlagTile(position);
 					case 0xEA301Fu:
 						return new HotDogTile(position);
+					case 0xE0A021u:
+						return new KeyTile(position);
 					//Special
 					case 0x404040u:
 						return new SpikesTile((CardinalDirection)param, position);

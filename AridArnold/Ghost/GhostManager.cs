@@ -68,6 +68,7 @@
 		{
 			if (level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub || level.GetAuxData().GetLevelType() == AuxData.LevelType.Shop)
 			{
+				mRecording = false;
 				return;
 			}
 
@@ -169,6 +170,11 @@
 		/// <param name="info">Info needed to draw</param>
 		public void Draw(DrawInfo info)
 		{
+			if(mRecording == false)
+			{
+				return;
+			}
+
 			if (mInputFile is not null && mInputFile.IsEmpty() == false)
 			{
 				List<GhostInfo> ghosts = mInputFile.ReadFrame(mRecordFrame);

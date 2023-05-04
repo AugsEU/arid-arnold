@@ -134,7 +134,7 @@ namespace AridArnold
 		public Level LoadHubRoom(int roomId)
 		{
 			string startLevelPath = GetHubRoomPath(roomId);
-			mCurrentLevel = Level.LoadFromFile(startLevelPath);
+			mCurrentLevel = Level.LoadFromFile(startLevelPath, roomId);
 			return mCurrentLevel;
 		}
 
@@ -146,7 +146,7 @@ namespace AridArnold
 		public Level LoadGameLevel(int roomId)
 		{
 			string startLevelPath = GetLevelPath(roomId);
-			mCurrentLevel = Level.LoadFromFile(startLevelPath);
+			mCurrentLevel = Level.LoadFromFile(startLevelPath, roomId);
 			return mCurrentLevel;
 		}
 

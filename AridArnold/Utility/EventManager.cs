@@ -28,7 +28,8 @@
 	enum EventType
 	{
 		PlayerDead,
-		KillPlayer
+		KillPlayer,
+		KeyCollect
 	}
 
 

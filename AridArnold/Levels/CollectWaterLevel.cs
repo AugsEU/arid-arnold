@@ -21,7 +21,7 @@
 		/// Collect water level constructor
 		/// </summary>
 		/// <param name="numNeeded">Number of water bottles needed to win</param>
-		public CollectWaterLevel(AuxData auxData) : base(auxData)
+		public CollectWaterLevel(AuxData auxData, int id) : base(auxData, id)
 		{
 			mNumWaterNeeded = auxData.GetIntParams()[0];
 		}
@@ -41,7 +41,7 @@
 		/// <returns>Level completion status</returns>
 		protected override LevelStatus UpdateInternal(GameTime gameTime)
 		{
-			if (CollectableManager.I.GetCollected(CollectableType.WaterBottle) >= mNumWaterNeeded)
+			if (CollectableManager.I.GetCollected(TransientCollectable.WaterBottle) >= mNumWaterNeeded)
 			{
 				mLevelStatus = LevelStatus.Win;
 			}

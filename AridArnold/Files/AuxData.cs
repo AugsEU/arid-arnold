@@ -7,7 +7,7 @@
 		public enum LevelType
 		{
 			CollectWater,
-			CollectFlag,
+			CollectKey,
 			Shop,
 			Hub
 		}

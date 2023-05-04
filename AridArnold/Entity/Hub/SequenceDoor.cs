@@ -47,7 +47,7 @@
 				if(lvlID != 0)
 				{
 					string path = CampaignManager.I.GetLevelPath(lvlID);
-					mLevelSequence.Add(Level.LoadFromFile(path));
+					mLevelSequence.Add(Level.LoadFromFile(path, lvlID));
 				}
 			}
 

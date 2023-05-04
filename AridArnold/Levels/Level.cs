@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Security.Cryptography;
 
 namespace AridArnold
 {
@@ -23,6 +24,7 @@ namespace AridArnold
 	{
 		#region rMembers
 
+		int mID;
 		AuxData mAuxData;
 		LevelTheme mTheme;
 		Layout mBGLayout;
@@ -30,19 +32,21 @@ namespace AridArnold
 		bool mActive;
 		protected LevelStatus mLevelStatus;
 
+
+
+
+
+
+
 		#endregion rMembers
-
-
-
-
-
 		#region rInitialisation
-
 		/// <summary>
 		/// Level constructor
 		/// </summary>
-		public Level(AuxData data)
+		public Level(AuxData data, int id)
 		{
+			mID = id;
+
 			mAuxData = data;
 
 			mImagePath = mAuxData.GetFilename();
@@ -70,7 +74,7 @@ namespace AridArnold
 
 			// Clear state
 			EntityManager.I.ClearEntities();
-			CollectableManager.I.ClearAllCollectables();
+			CollectableManager.I.ClearTransient();
 			FXManager.I.Clear();
 
 			// Load theme
@@ -207,6 +211,16 @@ namespace AridArnold
 			return mAuxData;
 		}
 
+
+
+		/// <summary>
+		/// Get the level ID
+		/// </summary>
+		public int GetID()
+		{
+			return mID;
+		}
+
 		#endregion rUtility
 
 
@@ -218,7 +232,7 @@ namespace AridArnold
 		/// <summary>
 		/// Load a level from a an aux file path.
 		/// </summary>
-		public static Level LoadFromFile(string auxFilePath)
+		public static Level LoadFromFile(string auxFilePath, int id)
 		{
 			// Load file
 			AuxData auxData = new AuxData(auxFilePath);
@@ -227,11 +241,11 @@ namespace AridArnold
 			switch (auxData.GetLevelType())
 			{
 				case AuxData.LevelType.CollectWater:
-					return new CollectWaterLevel(auxData);
-				case AuxData.LevelType.CollectFlag:
-					return new CollectFlagLevel(auxData);
+					return new CollectWaterLevel(auxData, id);
+				case AuxData.LevelType.CollectKey:
+					return new CollectKeyLevel(auxData, id);
 				case AuxData.LevelType.Hub:
-					return new HubLevel(auxData);
+					return new HubLevel(auxData, id);
 			}
 
 			throw new NotImplementedException();

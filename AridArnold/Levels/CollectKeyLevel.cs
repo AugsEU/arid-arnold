@@ -3,15 +3,16 @@
 	/// <summary>
 	/// Level where you collect a flag to win.
 	/// </summary>
-	class CollectFlagLevel : Level
+	class CollectKeyLevel : Level
 	{
 		#region rInitialisation
 
 		/// <summary>
 		/// Collect flag level construct
 		/// </summary>
-		public CollectFlagLevel(AuxData auxData) : base(auxData)
+		public CollectKeyLevel(AuxData auxData, int id) : base(auxData, id)
 		{
+			EventManager.I.AddListener(EventType.KeyCollect, KeyCollectCallback);
 		}
 
 		#endregion rInitialisation
@@ -29,12 +30,17 @@
 		/// <returns></returns>
 		protected override LevelStatus UpdateInternal(GameTime gameTime)
 		{
-			if (CollectableManager.I.GetCollected(CollectableType.Flag) > 0)
-			{
-				mLevelStatus = LevelStatus.Win;
-			}
-
 			return mLevelStatus;
+		}
+
+
+
+		/// <summary>
+		/// Called when a key is collected
+		/// </summary>
+		void KeyCollectCallback(EArgs eventArgs)
+		{
+			mLevelStatus = LevelStatus.Win;
 		}
 
 		#endregion rUpdate
