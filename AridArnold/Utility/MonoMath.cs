@@ -163,5 +163,29 @@ namespace AridArnold
 			returnVal.Add(new Point(point.X, point.Y - 1));
 			return returnVal;
 		}
+
+
+		/// <summary>
+		/// Get digits of a number as a list
+		/// </summary>
+		public static int[] GetDigits(int num)
+		{
+			if (num == 0)
+			{
+				return new int[] { 0 };
+			}
+
+			int count = (int)Math.Log10(num) + 1;
+			int[] digits = new int[count];
+
+			// Extract digits
+			for (int i = count - 1; i >= 0; --i)
+			{
+				digits[i] = num % 10;
+				num /= 10;
+			}
+
+			return digits;
+		}
 	}
 }

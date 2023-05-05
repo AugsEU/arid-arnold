@@ -9,12 +9,12 @@
 
 		public PermanentCollectableTile(Vector2 pos) : base(pos)
 		{
-			mIsGhost = CollectableManager.I.HasSpecific(CalculateSpecificID());
+			mIsGhost = CollectableManager.I.HasSpecific(mTileMapIndex, GetItemType());
 		}
 
 		protected abstract PermanentCollectable GetCollectableType();
 
-		protected virtual byte GetImplByte() { return (byte)((mTileMapIndex.X + mTileMapIndex.Y) >> 8); }
+		protected virtual byte GetImplByte() { return 0; }
 
 		private UInt16 GetItemType()
 		{
@@ -26,33 +26,13 @@
 			return ret;
 		}
 
-		private UInt32 GetLevelID()
-		{
-			return (UInt32)(CampaignManager.I.GetCurrentLevel().GetID());
-		}
-
-		protected UInt64 CalculateSpecificID()
-		{
-			byte xPos = (byte)mTileMapIndex.X;
-			byte yPos = (byte)mTileMapIndex.Y;
-			UInt32 levelID = GetLevelID();
-			UInt16 item = GetItemType();
-
-			UInt64 ret = ((UInt64)xPos << 56) |
-						 ((UInt64)yPos << 48) |
-						 ((UInt64)levelID << 16) |
-						 item;
-
-			return ret;
-		}
-
 		public override void OnEntityIntersect(Entity entity)
 		{
 			if (entity is Arnold)
 			{
 				if (mIsGhost == false)
 				{
-					CollectableManager.I.CollectPermanentItem(GetItemType(), CalculateSpecificID());
+					CollectableManager.I.CollectPermanentItem(mTileMapIndex, GetItemType());
 				}
 				mEnabled = false;
 				OnCollect();

@@ -33,6 +33,7 @@
 			// Utility
 			kArnoldSpawner = kUtilityClassStart,
 			kSequenceDoor,
+			kLevelLock,
 			kUtilityClassEnd
 		}
 

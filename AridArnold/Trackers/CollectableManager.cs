@@ -12,6 +12,8 @@
 	enum PermanentCollectable : byte
 	{
 		Key,
+		Door,
+		LevelLock
 	}
 
 
@@ -63,7 +65,7 @@
 		/// <summary>
 		/// Collect an item of a certain type
 		/// </summary>
-		public void CollectPermanentItem(UInt16 type, UInt64 specific)
+		public void CollectPermanentItem(Point pos, UInt16 type)
 		{
 			if (mPermanentCollectables.TryGetValue(type, out uint currentCount))
 			{
@@ -74,7 +76,7 @@
 				mPermanentCollectables.Add(type, 1);
 			}
 
-			mSpecificCollected.Add(specific);
+			mSpecificCollected.Add(CalculateSpecificID(pos, type));
 		}
 
 
@@ -110,9 +112,9 @@
 		/// <summary>
 		/// Do we have a specific collectable?
 		/// </summary>
-		public bool HasSpecific(UInt64 specific)
+		public bool HasSpecific(Point pos, UInt16 type)
 		{
-			return mSpecificCollected.Contains(specific);
+			return mSpecificCollected.Contains(CalculateSpecificID(pos, type));
 		}
 
 
@@ -123,6 +125,25 @@
 		public void ClearTransient()
 		{
 			mTransientCollectables.Clear();
+		}
+
+
+
+		/// <summary>
+		/// Calculate hash of sorts.
+		/// </summary>
+		UInt64 CalculateSpecificID(Point pos, UInt16 type)
+		{
+			byte xPos = (byte)pos.X;
+			byte yPos = (byte)pos.Y;
+			UInt32 levelID = (UInt32)(CampaignManager.I.GetCurrentLevel().GetID());
+
+			UInt64 ret = ((UInt64)xPos << 56) |
+						 ((UInt64)yPos << 48) |
+						 ((UInt64)levelID << 16) |
+						 type;
+
+			return ret;
 		}
 
 		#endregion rCollection

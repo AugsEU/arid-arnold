@@ -102,9 +102,9 @@
 	{
 		// A bit confusing, but this represents the entity(treated like a static object) that collided with
 		// the entity calling UpdateCollisionEntity
-		MovingEntity mEntity;
+		Entity mEntity;
 
-		public EntityEntityCollision(bool firstTime, CollisionResults result, MovingEntity entity) : base(firstTime, result)
+		public EntityEntityCollision(bool firstTime, CollisionResults result, Entity entity) : base(firstTime, result)
 		{
 			mEntity = entity;
 		}
@@ -161,7 +161,7 @@
 					const float DRAG_FACTOR = 0.4f;
 					const float DRAG_THRESH = 4.0f;
 					Vector2 dir = MonoMath.Perpendicular(gravity);
-					Vector2 addedVelocity = Vector2.Dot(dir, mEntity.GetVelocity()) * dir;
+					Vector2 addedVelocity = Vector2.Dot(dir, ourPlatEntity.GetVelocity()) * dir;
 
 					float len = addedVelocity.Length();
 					if(len > DRAG_THRESH)

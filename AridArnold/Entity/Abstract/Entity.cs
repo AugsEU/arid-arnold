@@ -301,6 +301,9 @@
 				case EntityData.EntityClass.kSequenceDoor:
 					entity = new SequenceDoor(worldPosition, data.mIntParams);
 					break;
+				case EntityData.EntityClass.kLevelLock:
+					entity = new KeyDoor(worldPosition, data.mIntParams[0]);
+					break;
 
 				default:
 					throw new NotImplementedException();

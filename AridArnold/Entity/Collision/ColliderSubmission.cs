@@ -46,7 +46,7 @@
 	{
 		#region rMembers
 
-		MovingEntity mEntity;
+		Entity mEntity;
 
 		#endregion rMembers
 
@@ -57,7 +57,7 @@
 		/// <summary>
 		/// Init EntityColliderSubmission with an entity.
 		/// </summary>
-		public EntityColliderSubmission(MovingEntity entity)
+		public EntityColliderSubmission(Entity entity)
 		{
 			mEntity = entity;
 		}
