@@ -201,6 +201,14 @@
 			info.spriteBatch.DrawString(font, text, position - size / 2, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
+		/// <summary>
+		/// Draw a string at position(top left)
+		/// </summary>
+		public static void DrawString(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, DrawLayer depth = DrawLayer.Bubble)
+		{
+			info.spriteBatch.DrawString(font, text, position, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
+		}
+
 
 		/// <summary>
 		/// Draw a string at a position

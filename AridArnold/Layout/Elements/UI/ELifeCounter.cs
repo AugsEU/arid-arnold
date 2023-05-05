@@ -2,7 +2,7 @@
 {
 	class ELifeCounter : LayElement
 	{
-		const float SPACING = 30.0f;
+		const float SPACING = 50.0f;
 
 		Texture2D mLifeTexture;
 		Texture2D mEmptyTexture;
@@ -27,14 +27,8 @@
 
 			for(int i = 0; i < maxLives; i++)
 			{
-				if(i < currLives)
-				{
-					MonoDraw.DrawTextureDepth(info, mLifeTexture, position, mDepth);
-				}
-				else
-				{
-					MonoDraw.DrawTextureDepth(info, mEmptyTexture, position, mDepth);
-				}
+				Texture2D toDraw = i < currLives ? mLifeTexture : mEmptyTexture;
+				MonoDraw.DrawTexture(info, toDraw, position, null, Color.White, 0.0f, Vector2.Zero, 2.0f, SpriteEffects.None, mDepth);
 
 				position.Y += SPACING;
 			}

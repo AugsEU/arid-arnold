@@ -5,12 +5,24 @@
 	/// </summary>
 	internal class KeyDoor : Entity
 	{
+		#region rConstants
+
+		const float INFO_DISTANCE = 29.0f;
+		const float UNLOCK_DISTANCE = 20.0f;
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
-		int mNumKeysRequired;
+		bool mHasKeysRequired;
 		int[] mDisplayDigits;
 		Texture2D[] mNumberTextures;
 		Point mTileCoord;
+		LevelLockInfoBubble mHelpBubble;
 
 		#endregion rMembers
 
@@ -19,22 +31,25 @@
 
 
 		#region rInitialisation
-		
+
 		/// <summary>
 		/// Create door at position.
 		/// </summary>
 		public KeyDoor(Vector2 pos, int numRequired) : base(pos)
 		{
-			mNumKeysRequired = numRequired;
+			mHasKeysRequired = CollectableManager.I.GetCollected((UInt16)PermanentCollectable.Key) >= numRequired;
 			mDisplayDigits = MonoMath.GetDigits(numRequired);
+
+			InfoBubble.BubbleStyle bubbleStyle = new InfoBubble.BubbleStyle();
+			bubbleStyle.mInnerColor = new Color(20, 20, 20, 150);
+			bubbleStyle.mBorderColor = new Color(150, 150, 150, 200);
+			mHelpBubble = new LevelLockInfoBubble(pos + new Vector2(8.0f, -4.0f), bubbleStyle);
 
 			// Can't display more than 3 digits
 			MonoDebug.Assert(mDisplayDigits.Length <= 3);
 
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
-
 			MonoDebug.Assert(mTileCoord.X >= 0 && mTileCoord.Y >= 0);
-
 			SetEnabled(!CollectableManager.I.HasSpecific(mTileCoord, GetCollectType()));
 		}
 
@@ -74,6 +89,28 @@
 			// Collision
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
+			// Near check
+			if(mHasKeysRequired)
+			{
+				if (EntityManager.I.AnyNearMe(UNLOCK_DISTANCE, this, typeof(Arnold), typeof(Androld)))
+				{
+					UnlockDoor();
+				}
+			}
+			else
+			{
+				mHelpBubble.Update(gameTime);
+				if (EntityManager.I.AnyNearMe(INFO_DISTANCE, this, typeof(Arnold), typeof(Androld)))
+				{
+					mHelpBubble.Open();
+				}
+				else
+				{
+					mHelpBubble.Close();
+				}
+			}
+			
+
 			base.Update(gameTime);
 		}
 
@@ -85,6 +122,17 @@
 		public override Rect2f ColliderBounds()
 		{
 			return new Rect2f(mPosition, Tile.sTILE_SIZE, Tile.sTILE_SIZE);
+		}
+
+
+		/// <summary>
+		/// Unlock the door
+		/// </summary>
+		void UnlockDoor()
+		{
+			// To do: Something more complicated that looks cool.
+			SetEnabled(false);
+			CollectableManager.I.CollectPermanentItem(mTileCoord, GetCollectType());
 		}
 
 		#endregion rUpdate
@@ -118,6 +166,8 @@
 
 				offset.X += 5.0f;
 			}
+
+			mHelpBubble.Draw(info);
 		}
 
 		#endregion rDraw

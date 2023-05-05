@@ -1,0 +1,40 @@
+﻿namespace AridArnold
+{
+	class ECollectableCounter : LayElement
+	{
+		const float SPACING = 50.0f;
+		SpriteFont mFont;
+		Texture2D mKeyTexture;
+
+		public ECollectableCounter(XmlNode rootNode) : base(rootNode)
+		{
+			mFont = FontManager.I.GetFont("Pixica-24");
+			mKeyTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/KeyFull");
+		}
+
+		public override void Draw(DrawInfo info)
+		{
+			int numKeys = (int)CollectableManager.I.GetCollected((UInt16)PermanentCollectable.Key);
+			Vector2 position = mPos;
+
+			DrawCollectable(info, position, mKeyTexture, numKeys);
+			position.Y += SPACING;
+
+			base.Draw(info);
+		}
+
+		void DrawCollectable(DrawInfo info, Vector2 position, Texture2D icon, int number)
+		{
+			const float SCALE = 4.0f;
+			string displayText = " x " + number.ToString();
+			Vector2 textureSize = mFont.MeasureString(displayText);
+			Vector2 offset = new Vector2(5.0f, 0.0f);
+			offset.X = icon.Width * SCALE;
+			offset.Y = (icon.Height * SCALE - textureSize.Y) / 2.0f;
+			
+
+			MonoDraw.DrawTexture(info, icon, position, null, Color.White, 0.0f, Vector2.Zero, SCALE, SpriteEffects.None, mDepth);
+			MonoDraw.DrawString(info, mFont, displayText, position + offset, Color.Wheat, DrawLayer.Default);
+		}
+	}
+}

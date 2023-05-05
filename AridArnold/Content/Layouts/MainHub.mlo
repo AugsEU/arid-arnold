@@ -6,4 +6,10 @@
 		<depth>Background</depth>
 		<texture>UI/UIBG</texture>
 	</element>
+	<element type="collectableCounter">
+		<x>790.0</x>
+		<y>20.0</y>
+		<depth>Background</depth>
+		<texture>UI/UIBG</texture>
+	</element>
 </root>
