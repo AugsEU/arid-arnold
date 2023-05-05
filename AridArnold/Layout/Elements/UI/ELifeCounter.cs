@@ -28,7 +28,7 @@
 			for(int i = 0; i < maxLives; i++)
 			{
 				Texture2D toDraw = i < currLives ? mLifeTexture : mEmptyTexture;
-				MonoDraw.DrawTexture(info, toDraw, position, null, Color.White, 0.0f, Vector2.Zero, 2.0f, SpriteEffects.None, mDepth);
+				MonoDraw.DrawTexture(info, toDraw, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, mDepth);
 
 				position.Y += SPACING;
 			}
