@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Steam Plant</name>
-	<path from="wall">Steel</path>
-	<path from="platform">Girder</path>
+	<path from="Wall">Steel</path>
+	<path from="Platform">Girder</path>
+	<path from="CoinFull">BoltFull</path>
+	<path from="CoinGhost">BoltGhost</path>
 </theme>

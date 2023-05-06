@@ -100,7 +100,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mAnimation = MonoData.I.LoadAnimator("platform");
+			mAnimation = MonoData.I.LoadAnimator("Platform");
 			base.LoadContent();
 		}
 

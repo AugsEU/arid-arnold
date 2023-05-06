@@ -13,7 +13,8 @@
 	{
 		Key,
 		Door,
-		LevelLock
+		LevelLock,
+		Coin
 	}
 
 

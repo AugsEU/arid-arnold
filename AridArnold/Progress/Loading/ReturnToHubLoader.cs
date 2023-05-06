@@ -40,6 +40,7 @@
 		{
 			// To do: make this more complicated
 			ReturnToHubLoad();
+			CampaignManager.I.EndSequence(true);
 		}
 	}
 
@@ -54,6 +55,7 @@
 		{
 			// To do: make this more complicated
 			ReturnToHubLoad();
+			CampaignManager.I.EndSequence(false);
 		}
 	}
 }

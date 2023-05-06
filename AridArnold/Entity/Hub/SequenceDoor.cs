@@ -23,6 +23,8 @@
 		LevelSequenceInfoBubble mHelpBubble;
 		bool mPlayerNear;
 		bool mDoorOpen;
+		bool mAlreadyCompleted;
+		Point mTileCoord;
 
 		List<Level> mLevelSequence;
 
@@ -60,6 +62,7 @@
 
 			mPlayerNear = false;
 			mDoorOpen = false;
+			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
 		}
 
 
@@ -100,7 +103,8 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			if(mPlayerNear)
+			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)PermanentCollectable.Door);
+			if (mPlayerNear)
 			{
 				mHelpBubble.Open();
 			}
@@ -115,6 +119,8 @@
 			base.Update(gameTime);
 			mPlayerNear = false;
 		}
+
+
 
 		/// <summary>
 		/// Handle any inputs
@@ -145,7 +151,7 @@
 			mDoorOpen = true;
 			mTexture = mOpenTexture;
 
-			CampaignManager.I.PushLevelSequence(mLevelSequence);
+			CampaignManager.I.PushLevelSequence(mLevelSequence, mTileCoord);
 			CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader());
 		}
 
@@ -187,7 +193,12 @@
 		public override void Draw(DrawInfo info)
 		{
 			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.Default);
-			MonoDraw.DrawTextureDepth(info, mNumberTextures[mLevelSequence.Count], mPosition, DrawLayer.Default);
+
+			if (mDoorOpen == false)
+			{
+				Color numberCol = mAlreadyCompleted ? Color.Gray : Color.White;
+				MonoDraw.DrawTextureDepthColor(info, mNumberTextures[mLevelSequence.Count], mPosition, numberCol, DrawLayer.Default);
+			}
 
 			mHelpBubble.Draw(info);
 		}

@@ -3349,6 +3349,30 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Spikes.png
 
+#begin Tiles/SteamPlant/BoltFull.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/SteamPlant/BoltFull.png
+
+#begin Tiles/SteamPlant/BoltGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/SteamPlant/BoltGhost.png
+
 #begin Tiles/SteamPlant/Girder.png
 /importer:TextureImporter
 /processor:TextureProcessor

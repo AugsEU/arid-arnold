@@ -49,7 +49,6 @@
 			MonoDebug.Assert(mDisplayDigits.Length <= 3);
 
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
-			MonoDebug.Assert(mTileCoord.X >= 0 && mTileCoord.Y >= 0);
 			SetEnabled(!CollectableManager.I.HasSpecific(mTileCoord, GetCollectType()));
 		}
 

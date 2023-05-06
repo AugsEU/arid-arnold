@@ -126,9 +126,9 @@
 					case 0xFFFFFFu:
 						return new AirTile(position);
 					case 0x000000u:
-						return new WallTile(position, "wall");
+						return new WallTile(position, "Wall");
 					case 0x101010u:
-						return new WallTile(position, "wallSecondary");
+						return new WallTile(position, "WallSecondary");
 					case 0xA9A9A9u:
 						return new AnimatedPlatformTile((CardinalDirection)param, position);
 					//Collectable
@@ -140,6 +140,8 @@
 						return new HotDogTile(position);
 					case 0xE0A021u:
 						return new KeyTile(position);
+					case 0xFE00FEu:
+						return new CoinTile(position);
 					//Special
 					case 0x404040u:
 						return new SpikesTile((CardinalDirection)param, position);
@@ -358,7 +360,10 @@
 			pos = pos - mTileMapPos;
 			pos = pos / mTileSize;
 
-			return new Point((int)Math.Floor(pos.X), (int)MathF.Floor(pos.Y));
+			Point ret = new Point((int)Math.Floor(pos.X), (int)MathF.Floor(pos.Y));
+
+			MonoDebug.Assert(ret.X >= 0 && ret.Y >= 0);
+			return ret;
 		}
 
 

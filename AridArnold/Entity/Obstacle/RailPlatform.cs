@@ -64,7 +64,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mPlatformAnimation = MonoData.I.LoadAnimator("platform");
+			mPlatformAnimation = MonoData.I.LoadAnimator("Platform");
 		}
 
 		#endregion rInitialisation

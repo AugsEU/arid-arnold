@@ -2,4 +2,7 @@
 <campaign id="OriginalCampaign">
 	<name>Original Campaign</name>
 	<start>0101</start>
+	<coins>
+		<type root="SteamPlant">0</type>
+	</coins>
 </campaign>

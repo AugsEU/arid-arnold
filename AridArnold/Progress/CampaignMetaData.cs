@@ -5,6 +5,7 @@
 		string mCampaignName;
 		string mCampaignId;
 		int mStartRoomID;
+		Dictionary<string, byte> mCoinTypeIDs;
 
 		public CampaignMetaData(string xmlPath)
 		{
@@ -23,6 +24,17 @@
 			// Load start room ID
 			XmlNode startNode = rootNode.SelectSingleNode("start");
 			mStartRoomID = int.Parse(startNode.InnerText);
+
+			// Load coin IDs
+			mCoinTypeIDs = new Dictionary<string, byte>();
+			XmlNode coinsNode = rootNode.SelectSingleNode("coins");
+			XmlNodeList coinTypeNodes = coinsNode.ChildNodes;
+			foreach (XmlNode coinTypeNode in coinTypeNodes)
+			{
+				string worldRoot = coinTypeNode.Attributes["root"].Value;
+				byte coindTypeID = byte.Parse(coinTypeNode.InnerText);
+				mCoinTypeIDs.Add(worldRoot, coindTypeID);
+			}
 		}
 
 		public string GetCampaignName()
@@ -38,6 +50,11 @@
 		public int GetStartRoomID()
 		{
 			return mStartRoomID;
+		}
+
+		public byte GetCoinTypeID(string worldRoot)
+		{
+			return mCoinTypeIDs[worldRoot];
 		}
 	}
 }

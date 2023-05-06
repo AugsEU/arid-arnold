@@ -47,6 +47,7 @@ namespace AridArnold
 
 		LoadingSequence mQueuedLoad;
 		HubReturnInfo? mHubReturnInfo;
+		Point mPrevDoorPos;
 
 		#endregion rMembers
 
@@ -69,6 +70,7 @@ namespace AridArnold
 			mHubReturnInfo = null;
 			mCurrLives = START_LIVES;
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
+			mPrevDoorPos = Point.Zero;
 		}
 
 		#endregion rInit
@@ -252,10 +254,10 @@ namespace AridArnold
 		/// <summary>
 		/// Add a level sequence to play.
 		/// </summary>
-		public void PushLevelSequence(List<Level> sequence)
+		public void PushLevelSequence(List<Level> sequence, Point entryPoint)
 		{
 			mLevelSequence = sequence;
-
+			mPrevDoorPos = entryPoint;
 			SetGameplayState(GameplayState.LevelSequence);
 		}
 
@@ -285,7 +287,24 @@ namespace AridArnold
 			return mLevelSequence[currIdx + 1];
 		}
 
+
+
+		/// <summary>
+		/// Called when the sequence ends
+		/// </summary>
+		public void EndSequence(bool success)
+		{
+			if (success)
+			{
+				// Collect "door"
+				CollectableManager.I.CollectPermanentItem(mPrevDoorPos, (UInt16)PermanentCollectable.Door);
+			}
+		}
+
 		#endregion rLevelSequence
+
+
+
 
 
 		#region rLives
@@ -329,9 +348,12 @@ namespace AridArnold
 		/// <summary>
 		/// Lose a life
 		/// </summary>
-		public int LoseLife()
+		public void LoseLife()
 		{
-			return mCurrLives--;
+			if (CanLoseLives())
+			{
+				mCurrLives--;
+			}
 		}
 
 
@@ -346,6 +368,24 @@ namespace AridArnold
 				mCurrLives++;
 			}
 		}
+
 		#endregion rLives
+
+
+
+
+
+		#region rCoins
+
+		/// <summary>
+		/// Get coin ID byte for this level
+		/// </summary>
+		public byte GetCurrCoinID()
+		{
+			string root = GetCurrentLevel().GetAuxData().GetRoot();
+			return mMetaData.GetCoinTypeID(root);
+		}
+
+		#endregion rCoins
 	}
 }
