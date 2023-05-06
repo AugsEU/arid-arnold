@@ -1,4 +1,4 @@
-﻿using static AridArnold.CampaignManager;
+﻿#define DEBUG_LOADER
 
 namespace AridArnold
 {
@@ -69,7 +69,11 @@ namespace AridArnold
 
 			mHubReturnInfo = null;
 			mCurrLives = START_LIVES;
+#if DEBUG_LOADER
+			QueueLoadSequence(new HubDirectLoader(102));
+#else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
+#endif
 			mPrevDoorPos = Point.Zero;
 		}
 
