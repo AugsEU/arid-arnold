@@ -422,10 +422,7 @@
 		/// </summary>
 		private void SendPlayerDeathEvent()
 		{
-			EArgs eArgs;
-			eArgs.sender = this;
-
-			EventManager.I.SendEvent(EventType.PlayerDead, eArgs);
+			EventManager.I.SendEvent(EventType.PlayerDead, new EArgs(this));
 		}
 
 

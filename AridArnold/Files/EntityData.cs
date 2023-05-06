@@ -34,6 +34,7 @@
 			kArnoldSpawner = kUtilityClassStart,
 			kSequenceDoor,
 			kLevelLock,
+			kShopDoor,
 			kUtilityClassEnd
 		}
 

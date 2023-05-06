@@ -161,10 +161,7 @@ namespace AridArnold
 			}
 
 			//Kill the player on touching.
-			EArgs args;
-			args.sender = this;
-
-			EventManager.I.SendEvent(EventType.KillPlayer, args);
+			EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
 			EntityManager.I.QueueDeleteEntity(this);
 		}
 

@@ -730,6 +730,81 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0105.png
 
+#begin Campaigns/MainCampaign/Levels/0106.aux
+/copy:Campaigns/MainCampaign/Levels/0106.aux
+
+#begin Campaigns/MainCampaign/Levels/0106.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0106.png
+
+#begin Campaigns/MainCampaign/Levels/0107.aux
+/copy:Campaigns/MainCampaign/Levels/0107.aux
+
+#begin Campaigns/MainCampaign/Levels/0107.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0107.png
+
+#begin Campaigns/MainCampaign/Levels/0108.aux
+/copy:Campaigns/MainCampaign/Levels/0108.aux
+
+#begin Campaigns/MainCampaign/Levels/0108.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0108.png
+
+#begin Campaigns/MainCampaign/Levels/0109.aux
+/copy:Campaigns/MainCampaign/Levels/0109.aux
+
+#begin Campaigns/MainCampaign/Levels/0109.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0109.png
+
+#begin Campaigns/MainCampaign/Levels/0110.aux
+/copy:Campaigns/MainCampaign/Levels/0110.aux
+
+#begin Campaigns/MainCampaign/Levels/0110.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0110.png
+
 #begin Campaigns/MainCampaign/Levels/0201.aux
 /copy:Campaigns/MainCampaign/Levels/0201.aux
 
@@ -2289,6 +2364,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Zippy/Talk1.png
+
+#begin Shared/Door/DoorArrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/Door/DoorArrow.png
 
 #begin Shared/Door/DoorClosed.png
 /importer:TextureImporter

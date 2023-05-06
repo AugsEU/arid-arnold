@@ -66,7 +66,8 @@
 		/// <param name="level">Level we are starting</param>
 		public void StartLevel(Level level)
 		{
-			if (level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub || level.GetAuxData().GetLevelType() == AuxData.LevelType.Shop)
+			AuxData.LevelType levelType = AuxData.LevelType.Shop;
+			if (levelType == AuxData.LevelType.Hub || levelType == AuxData.LevelType.Shop)
 			{
 				mRecording = false;
 				return;

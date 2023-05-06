@@ -162,10 +162,7 @@
 		{
 			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
 			{
-				EArgs eArgs;
-				eArgs.sender = this;
-
-				EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+				EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
 			}
 			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
 			{

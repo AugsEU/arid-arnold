@@ -15,7 +15,9 @@
 	/// </summary>
 	struct EArgs
 	{
-		public object sender;
+		public EArgs(object sender) { mSender = sender; }
+
+		public object mSender;
 	}
 
 
@@ -29,7 +31,8 @@
 	{
 		PlayerDead,
 		KillPlayer,
-		KeyCollect
+		KeyCollect,
+		ShopDoorOpen
 	}
 
 

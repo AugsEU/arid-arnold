@@ -41,11 +41,8 @@
 		{
 			if (entity is Arnold)
 			{
-				EArgs eArgs;
-				eArgs.sender = this;
-
 				//TO DO: Is an event needed here?
-				EventManager.I.SendEvent(EventType.KillPlayer, eArgs);
+				EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
 			}
 		}
 

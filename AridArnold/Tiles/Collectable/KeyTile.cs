@@ -20,9 +20,7 @@
 
 		protected override void OnCollect()
 		{
-			EArgs eArgs;
-			eArgs.sender = this;
-			EventManager.I.SendEvent(EventType.KeyCollect, eArgs);
+			EventManager.I.SendEvent(EventType.KeyCollect, new EArgs(this));
 		}
 	}
 }

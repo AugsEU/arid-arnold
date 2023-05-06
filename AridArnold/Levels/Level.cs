@@ -244,6 +244,8 @@ namespace AridArnold
 					return new CollectWaterLevel(auxData, id);
 				case AuxData.LevelType.CollectKey:
 					return new CollectKeyLevel(auxData, id);
+				case AuxData.LevelType.Shop:
+					return new ShopLevel(auxData, id);
 				case AuxData.LevelType.Hub:
 					return new HubLevel(auxData, id);
 			}

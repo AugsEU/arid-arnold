@@ -304,6 +304,9 @@
 				case EntityData.EntityClass.kLevelLock:
 					entity = new KeyDoor(worldPosition, data.mIntParams[0]);
 					break;
+				case EntityData.EntityClass.kShopDoor:
+					entity = new ShopDoor(worldPosition);
+					break;
 
 				default:
 					throw new NotImplementedException();
