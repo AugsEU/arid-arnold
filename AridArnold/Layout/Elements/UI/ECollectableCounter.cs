@@ -5,11 +5,35 @@
 		const float SPACING = 50.0f;
 		SpriteFont mFont;
 		Texture2D mKeyTexture;
+		Level mCurrLevel;
+		Animator mCoinAnim;
 
 		public ECollectableCounter(XmlNode rootNode) : base(rootNode)
 		{
 			mFont = FontManager.I.GetFont("Pixica-24");
 			mKeyTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/KeyFull");
+			mCurrLevel = null;
+		}
+
+		public override void Update(GameTime gameTime)
+		{
+			// Check for new coin texture
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
+			if (object.ReferenceEquals(currLevel, mCurrLevel) == false)
+			{
+				if (currLevel is null)
+				{
+					// Unload coin anim
+					mCoinAnim = null;
+				}
+				else
+				{
+					// Level changed, reload coin animation
+					mCoinAnim = MonoData.I.LoadAnimator("CoinFull");
+				}
+				mCurrLevel = currLevel;
+			}
+			base.Update(gameTime);
 		}
 
 		public override void Draw(DrawInfo info)
@@ -19,6 +43,13 @@
 
 			DrawCollectable(info, position, mKeyTexture, numKeys);
 			position.Y += SPACING;
+			if(mCoinAnim != null)
+			{
+				int numCoins = (int)CollectableManager.I.GetCollected(CampaignManager.I.GetCurrCoinID());
+				DrawCollectable(info, position, mCoinAnim.GetCurrentTexture(), numCoins);
+				position.Y += SPACING;
+			}
+			
 
 			base.Draw(info);
 		}

@@ -380,11 +380,21 @@ namespace AridArnold
 		/// <summary>
 		/// Get coin ID byte for this level
 		/// </summary>
-		public byte GetCurrCoinID()
+		public byte GetCurrCoinImpl()
 		{
 			string root = GetCurrentLevel().GetAuxData().GetRoot();
 			return mMetaData.GetCoinTypeID(root);
 		}
+
+
+		/// <summary>
+		/// Get coin ID uint16 for this level
+		/// </summary>
+		public UInt16 GetCurrCoinID()
+		{
+			return (UInt16)(((UInt16)PermanentCollectable.Coin << 8) | GetCurrCoinImpl());
+		}
+
 
 		#endregion rCoins
 	}

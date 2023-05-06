@@ -20,7 +20,7 @@
 
 		protected override byte GetImplByte()
 		{
-			return base.GetImplByte();
+			return CampaignManager.I.GetCurrCoinImpl();
 		}
 	}
 }
