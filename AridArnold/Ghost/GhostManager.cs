@@ -66,7 +66,7 @@
 		/// <param name="level">Level we are starting</param>
 		public void StartLevel(Level level)
 		{
-			AuxData.LevelType levelType = AuxData.LevelType.Shop;
+			AuxData.LevelType levelType = level.GetAuxData().GetLevelType();
 			if (levelType == AuxData.LevelType.Hub || levelType == AuxData.LevelType.Shop)
 			{
 				mRecording = false;
@@ -230,7 +230,7 @@
 		/// <returns>Integer frame count between output and input file times</returns>
 		public int? GetTimeDifference()
 		{
-			if (mInputFile.IsEmpty() || mOutputFile.IsEmpty())
+			if (mInputFile.IsEmpty() || mOutputFile.IsEmpty() || mRecording == false)
 			{
 				return null;
 			}
