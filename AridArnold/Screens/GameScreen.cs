@@ -140,6 +140,7 @@
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
+			ItemManager.I.Update(gameTime);
 
 			LevelStatus status = currLevel.Update(gameTime);
 

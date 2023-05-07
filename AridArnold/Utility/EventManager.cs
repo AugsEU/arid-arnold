@@ -32,7 +32,8 @@
 		PlayerDead,
 		KillPlayer,
 		KeyCollect,
-		ShopDoorOpen
+		ShopDoorOpen,
+		RedKeyUsed
 	}
 
 

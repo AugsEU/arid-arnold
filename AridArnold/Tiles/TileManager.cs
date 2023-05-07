@@ -143,6 +143,8 @@
 					case 0xFE00FEu:
 						return new CoinTile(position);
 					//Special
+					case 0xA51D18u:
+						return new RedLockTile(position);
 					case 0x404040u:
 						return new SpikesTile((CardinalDirection)param, position);
 					case 0xFFFF00u:

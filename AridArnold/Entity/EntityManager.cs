@@ -346,6 +346,31 @@
 		}
 
 
+		/// <summary>
+		/// Returns a list of all entities of a certain types
+		/// </summary>
+		public List<Entity> GetAllOfType(params Type[] types)
+		{
+			List<Entity> returnList = new List<Entity>();
+			
+			foreach (Entity entity in mRegisteredEntities)
+			{
+				if (!entity.IsEnabled()) continue;
+
+				foreach (Type type in types)
+				{
+					if (entity.GetType() == type)
+					{
+						returnList.Add(entity);
+						break;
+					}
+				}
+			}
+
+			return returnList;
+		}
+
+
 
 		/// <summary>
 		/// Get persistent entities.
