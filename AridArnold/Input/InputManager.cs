@@ -16,7 +16,10 @@
 		ArnoldRight,
 		ArnoldUp,
 		ArnoldDown,
-		ArnoldJump
+		ArnoldJump,
+		
+		//Game
+		UseItem
 	}
 
 	/// <summary>
@@ -62,6 +65,8 @@
 			mInputBindings.Add(AridArnoldKeys.ArnoldUp, new InputBindSet(new KeyBinding(Keys.Up)));
 			mInputBindings.Add(AridArnoldKeys.ArnoldDown, new InputBindSet(new KeyBinding(Keys.Down)));
 			mInputBindings.Add(AridArnoldKeys.ArnoldJump, new InputBindSet(new KeyBinding(Keys.Space)));
+
+			mInputBindings.Add(AridArnoldKeys.UseItem, new InputBindSet(new KeyBinding(Keys.LeftShift)));
 		}
 
 		#endregion rInitialisation

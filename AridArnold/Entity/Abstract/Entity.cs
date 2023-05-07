@@ -307,7 +307,9 @@
 				case EntityData.EntityClass.kShopDoor:
 					entity = new ShopDoor(worldPosition);
 					break;
-
+				case EntityData.EntityClass.kItemStand:
+					entity = new ItemStand(worldPosition, data.mIntParams[0]);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

@@ -71,7 +71,7 @@ namespace AridArnold
 			mCurrLives = START_LIVES;
 #if DEBUG_LOADER
 			QueueLoadSequence(new HubDirectLoader(102));
-			//QueueLoadSequence(new LevelDirectLoader(107));
+			//QueueLoadSequence(new LevelDirectLoader(100));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 #endif
@@ -264,6 +264,7 @@ namespace AridArnold
 			mLevelSequence = sequence;
 			mPrevDoorPos = entryPoint;
 			SetGameplayState(GameplayState.LevelSequence);
+			ItemManager.I.SequenceBegin();
 		}
 
 
@@ -299,6 +300,7 @@ namespace AridArnold
 		/// </summary>
 		public void EndSequence(bool success)
 		{
+			ItemManager.I.SequenceEnd(success);
 			if (success)
 			{
 				// Collect "door"

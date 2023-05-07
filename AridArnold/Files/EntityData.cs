@@ -35,6 +35,7 @@
 			kSequenceDoor,
 			kLevelLock,
 			kShopDoor,
+			kItemStand,
 			kUtilityClassEnd
 		}
 

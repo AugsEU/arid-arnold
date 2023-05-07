@@ -82,6 +82,23 @@
 
 
 
+		/// <summary>
+		/// Gain or remove from permanent count
+		/// </summary>
+		public void ChangePermanentItem(UInt16 type, int delta)
+		{
+			if (mPermanentCollectables.TryGetValue(type, out uint currentCount))
+			{
+				MonoDebug.Assert(currentCount >= -delta);
+				mPermanentCollectables[type] = (uint)(currentCount + delta);
+			}
+			else
+			{
+				MonoDebug.Assert(delta >= 0);
+				mPermanentCollectables.Add(type, (uint)delta);
+			}
+		}
+
 
 
 		/// <summary>
