@@ -376,6 +376,16 @@ namespace AridArnold
 			}
 		}
 
+
+		/// <summary>
+		/// Gain multiple lives.
+		/// </summary>
+		/// <param name="numLives"></param>
+		public void GainLives(int numLives)
+		{
+			mCurrLives = Math.Min(mCurrLives + numLives, MAX_LIVES);
+		}
+
 		#endregion rLives
 
 

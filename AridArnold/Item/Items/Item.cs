@@ -8,7 +8,10 @@
 		public enum ItemType
 		{
 			RedKey,
+			HotDogPlant
 		}
+
+		protected  Texture2D mTexture;
 
 		public abstract void UseItem();
 
@@ -24,7 +27,10 @@
 
 		}
 
-		public abstract Animator GenerateAnimator();
+		public Texture2D GetTexture()
+		{
+			return mTexture;
+		}
 
 		public static Item CreateItem(ItemType type)
 		{
@@ -32,6 +38,8 @@
 			{
 				case ItemType.RedKey:
 					return new RedKey();
+				case ItemType.HotDogPlant:
+					return new HotDogPlant();
 			}
 
 			throw new NotImplementedException();

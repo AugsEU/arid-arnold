@@ -19,7 +19,6 @@
 		#region rMembers
 
 		Item mItem;
-		Animator mItemAnimator;
 		float mAngle;
 		bool mPlayerNear;
 		SpriteFont mFont;
@@ -47,7 +46,6 @@
 		public override void LoadContent()
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/ItemStand");
-			mItemAnimator = mItem.GenerateAnimator();
 			mFont = FontManager.I.GetFont("Pixica Micro-24");
 		}
 
@@ -66,7 +64,6 @@
 		public override void Update(GameTime gameTime)
 		{
 			float dt = Util.GetDeltaT(gameTime);
-			mItemAnimator.Update(gameTime);
 			mAngle += ANGULAR_SPEED * dt;
 
 			HandleInput();
@@ -82,14 +79,27 @@
 		/// </summary>
 		void HandleInput()
 		{
-			bool activate = InputManager.I.KeyHeld(AridArnoldKeys.Confirm);
+			bool activate = InputManager.I.KeyPressed(AridArnoldKeys.Confirm);
 
-			if (activate)
+			if (activate && mPlayerNear)
 			{
 				ItemManager.I.PurchaseItem(mItem);
 			}
 		}
 
+
+		/// <summary>
+		/// Deal with entity collisions.
+		/// </summary>
+		public override void OnCollideEntity(Entity entity)
+		{
+			if(entity is Arnold)
+			{
+				mPlayerNear = true;
+			}
+
+			base.OnCollideEntity(entity);
+		}
 
 
 		/// <summary>
@@ -116,7 +126,7 @@
 			MonoDraw.DrawTexture(info, mTexture, mPosition);
 
 			Vector2 itemPos = mPosition;
-			Texture2D itemTex = mItemAnimator.GetCurrentTexture();
+			Texture2D itemTex = mItem.GetTexture();
 			itemPos.Y -= itemTex.Height + AMPLITUDE * MathF.Sin(mAngle) - 7.0f;
 			itemPos.X += (mTexture.Width - itemTex.Width) / 2.0f;
 			MonoDraw.DrawTexture(info, itemTex, itemPos);

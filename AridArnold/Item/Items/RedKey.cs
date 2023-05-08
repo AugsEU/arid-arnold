@@ -4,11 +4,7 @@
 	{
 		public RedKey()
 		{
-		}
-
-		public override Animator GenerateAnimator()
-		{
-			return MonoData.I.LoadAnimator("Items/RedKey/Key");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/RedKey/Key");
 		}
 
 		public override int GetPrice()

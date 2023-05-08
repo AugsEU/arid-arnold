@@ -32,7 +32,11 @@ namespace AridArnold
 		/// </summary>
 		public void SequenceEnd(bool success)
 		{
-			RefundMoney(mCoinsOwed);
+			if(success == false)
+			{
+				RefundMoney(mCoinsOwed);
+			}
+
 			mActiveItem = null;
 		}
 
@@ -97,7 +101,7 @@ namespace AridArnold
 
 			if (mActiveItem is not null)
 			{
-				RefundItem(item);
+				RefundItem(mActiveItem);
 			}
 
 			mActiveItem = item;
@@ -137,7 +141,6 @@ namespace AridArnold
 
 				if (useItem && CanUseItem() && mActiveItem.CanUseItem())
 				{
-					mCoinsOwed -= mActiveItem.GetPrice();
 					mActiveItem.UseItem();
 					mActiveItem = null;
 				}
