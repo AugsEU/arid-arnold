@@ -104,6 +104,7 @@ namespace AridArnold
 			}
 
 			GhostManager.I.StartLevel(this);
+			ItemManager.I.LevelBegin();
 		}
 
 
@@ -112,7 +113,9 @@ namespace AridArnold
 		/// </summary>
 		public void End()
 		{
-			GhostManager.I.EndLevel(mLevelStatus == LevelStatus.Win);
+			bool success = mLevelStatus == LevelStatus.Win;
+			GhostManager.I.EndLevel(success);
+			ItemManager.I.LevelEnd(success);
 			mActive = false;
 			mTheme.Unload();
 		}

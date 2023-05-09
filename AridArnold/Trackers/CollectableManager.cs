@@ -102,6 +102,16 @@
 
 
 		/// <summary>
+		/// Set permanent count
+		/// </summary>
+		public void SetPermanentItem(UInt16 type, uint num)
+		{
+			mPermanentCollectables[type] = num;
+		}
+
+
+
+		/// <summary>
 		/// Get number of collected items of type
 		/// </summary>
 		/// <param name="type">Type to check</param>

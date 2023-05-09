@@ -6,6 +6,7 @@ namespace AridArnold
 	{
 		#region rMembers
 
+		Item mRegenItem;
 		Item mActiveItem;
 		int mCoinsOwed;
 
@@ -32,12 +33,34 @@ namespace AridArnold
 		/// </summary>
 		public void SequenceEnd(bool success)
 		{
-			if(success == false)
-			{
-				RefundMoney(mCoinsOwed);
-			}
-
+			RefundMoney(mCoinsOwed);
 			mActiveItem = null;
+		}
+
+
+		/// <summary>
+		/// Called when a level begins
+		/// </summary>
+		public void LevelBegin()
+		{
+			mRegenItem = mActiveItem;
+		}
+
+
+
+		/// <summary>
+		/// Called when a level is over
+		/// </summary>
+		public void LevelEnd(bool success)
+		{
+			if (mRegenItem is not null && mRegenItem.RegenerateAfterDeath())
+			{
+				// Regenerate the item
+				if (!success)
+				{
+					mActiveItem = mRegenItem;
+				}
+			}
 		}
 
 		#endregion rInit

@@ -32,6 +32,11 @@
 			return mTexture;
 		}
 
+		public virtual bool RegenerateAfterDeath()
+		{
+			return true;
+		}
+
 		public static Item CreateItem(ItemType type)
 		{
 			switch (type)

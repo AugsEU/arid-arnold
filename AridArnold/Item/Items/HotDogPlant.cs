@@ -49,5 +49,10 @@
 		{
 			return mNumHotDogs > 0;
 		}
+
+		public override bool RegenerateAfterDeath()
+		{
+			return false;
+		}
 	}
 }
