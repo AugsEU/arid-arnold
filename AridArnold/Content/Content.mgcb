@@ -268,6 +268,21 @@
 #begin BG/Lab/Lab4.mlo
 /copy:BG/Lab/Lab4.mlo
 
+#begin BG/Library/BG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Library/BG.png
+
+#begin BG/Library/Library.mlo
+/copy:BG/Library/Library.mlo
+
 #begin BG/Mirror/BG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -655,6 +670,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0103.png
 
+#begin Campaigns/MainCampaign/Hub/0201.aux
+/copy:Campaigns/MainCampaign/Hub/0201.aux
+
+#begin Campaigns/MainCampaign/Hub/0201.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0201.png
+
 #begin Campaigns/MainCampaign/Levels/0100.aux
 /copy:Campaigns/MainCampaign/Levels/0100.aux
 
@@ -820,246 +850,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0110.png
 
-#begin Campaigns/MainCampaign/Levels/0201.aux
-/copy:Campaigns/MainCampaign/Levels/0201.aux
-
-#begin Campaigns/MainCampaign/Levels/0201.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0201.png
-
-#begin Campaigns/MainCampaign/Levels/0202.aux
-/copy:Campaigns/MainCampaign/Levels/0202.aux
-
-#begin Campaigns/MainCampaign/Levels/0202.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0202.png
-
-#begin Campaigns/MainCampaign/Levels/0203.aux
-/copy:Campaigns/MainCampaign/Levels/0203.aux
-
-#begin Campaigns/MainCampaign/Levels/0203.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0203.png
-
-#begin Campaigns/MainCampaign/Levels/0204.aux
-/copy:Campaigns/MainCampaign/Levels/0204.aux
-
-#begin Campaigns/MainCampaign/Levels/0204.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0204.png
-
-#begin Campaigns/MainCampaign/Levels/0301.aux
-/copy:Campaigns/MainCampaign/Levels/0301.aux
-
-#begin Campaigns/MainCampaign/Levels/0301.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0301.png
-
-#begin Campaigns/MainCampaign/Levels/0302.aux
-/copy:Campaigns/MainCampaign/Levels/0302.aux
-
-#begin Campaigns/MainCampaign/Levels/0302.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0302.png
-
-#begin Campaigns/MainCampaign/Levels/0303.aux
-/copy:Campaigns/MainCampaign/Levels/0303.aux
-
-#begin Campaigns/MainCampaign/Levels/0303.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0303.png
-
-#begin Campaigns/MainCampaign/Levels/0304.aux
-/copy:Campaigns/MainCampaign/Levels/0304.aux
-
-#begin Campaigns/MainCampaign/Levels/0304.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0304.png
-
-#begin Campaigns/MainCampaign/Levels/0401.aux
-/copy:Campaigns/MainCampaign/Levels/0401.aux
-
-#begin Campaigns/MainCampaign/Levels/0401.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0401.png
-
-#begin Campaigns/MainCampaign/Levels/0402.aux
-/copy:Campaigns/MainCampaign/Levels/0402.aux
-
-#begin Campaigns/MainCampaign/Levels/0402.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0402.png
-
-#begin Campaigns/MainCampaign/Levels/0403.aux
-/copy:Campaigns/MainCampaign/Levels/0403.aux
-
-#begin Campaigns/MainCampaign/Levels/0403.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0403.png
-
-#begin Campaigns/MainCampaign/Levels/0404.aux
-/copy:Campaigns/MainCampaign/Levels/0404.aux
-
-#begin Campaigns/MainCampaign/Levels/0404.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0404.png
-
-#begin Campaigns/MainCampaign/Levels/0501.aux
-/copy:Campaigns/MainCampaign/Levels/0501.aux
-
-#begin Campaigns/MainCampaign/Levels/0501.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0501.png
-
-#begin Campaigns/MainCampaign/Levels/0502.aux
-/copy:Campaigns/MainCampaign/Levels/0502.aux
-
-#begin Campaigns/MainCampaign/Levels/0502.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0502.png
-
-#begin Campaigns/MainCampaign/Levels/0503.aux
-/copy:Campaigns/MainCampaign/Levels/0503.aux
-
-#begin Campaigns/MainCampaign/Levels/0503.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0503.png
-
-#begin Campaigns/MainCampaign/Levels/0504.aux
-/copy:Campaigns/MainCampaign/Levels/0504.aux
-
-#begin Campaigns/MainCampaign/Levels/0504.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0504.png
-
 #begin Campaigns/MainCampaign/Meta.xml
 /copy:Campaigns/MainCampaign/Meta.xml
 
@@ -1068,6 +858,9 @@
 
 #begin Campaigns/MainCampaign/Themes/LabLevel.xml
 /copy:Campaigns/MainCampaign/Themes/LabLevel.xml
+
+#begin Campaigns/MainCampaign/Themes/LibraryLevel.xml
+/copy:Campaigns/MainCampaign/Themes/LibraryLevel.xml
 
 #begin Campaigns/MainCampaign/Themes/MirrorLevel.xml
 /copy:Campaigns/MainCampaign/Themes/MirrorLevel.xml
@@ -3474,6 +3267,66 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Lab/PermaUp.png
+
+#begin Tiles/Library/Books.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Library/Books.png
+
+#begin Tiles/Library/PenFull.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Library/PenFull.png
+
+#begin Tiles/Library/PenGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Library/PenGhost.png
+
+#begin Tiles/Library/Wood.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Library/Wood.png
+
+#begin Tiles/Library/WoodPlatform.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Library/WoodPlatform.png
 
 #begin Tiles/Mirror/Cobble.png
 /importer:TextureImporter

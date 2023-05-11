@@ -2,6 +2,7 @@
 <theme>
 	<name>Steam Plant</name>
 	<path from="Wall">Steel</path>
+	<path from="WallSecondary">../Library/Wood</path>
 	<path from="Platform">Girder</path>
 	<path from="CoinFull">BoltFull</path>
 	<path from="CoinGhost">BoltGhost</path>
