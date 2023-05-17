@@ -1,9 +1,11 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// Button that turns on electricity.
-	/// </summary>
-	internal class ElectricButton : InteractableTile
+    /// <summary>
+    /// Button that turns on electricity.
+    /// </summary>
+    internal class ElectricButton : InteractableTile
 	{
 		#region rInitialisation
 

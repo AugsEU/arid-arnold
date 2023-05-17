@@ -1,9 +1,11 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// Manages and stores the tile map.
-	/// </summary>
-	internal class TileManager : Singleton<TileManager>
+    /// <summary>
+    /// Manages and stores the tile map.
+    /// </summary>
+    internal class TileManager : Singleton<TileManager>
 	{
 		#region rConstants
 
@@ -605,211 +607,12 @@
 		{
 			Texture2D tileTexture = tile.GetTexture();
 
-			int tileHeight = tileTexture.Height;
+			TileTexDrawInfo tileDrawInfo = TileTextureHelpers.GetTileDrawInfo(tile);
 
-			//Tile index that we will pick from the texture.
-			Point tileIndex = new Point(0, 0);
+			int tileHeight = (int)Tile.sTILE_SIZE;
+			Rectangle sourceRectangle = new Rectangle(tileDrawInfo.mTileIndex.X * tileHeight, tileDrawInfo.mTileIndex.Y * tileHeight, tileHeight, tileHeight);
 
-			//Rotation amount so we can fit tiles together. Should be multiples of 90.
-			float rotation = 0.0f;
-
-			SpriteEffects effect = SpriteEffects.None;
-
-			//Square texture, draw as is.
-			if (tileTexture.Width == tileTexture.Height)
-			{
-				//Square textures can be rotated freely.
-				//Others can't since they need ot be rotated to fit together.
-				rotation = tile.GetRotation();
-				effect = tile.GetEffect();
-			}
-			//Otherwise, look for texture with different edge types
-			else if (tileTexture.Width == 6 * tileTexture.Height) //Needs rotating
-			{
-				SetupTileWithRotation(tile.GetAdjacency(), ref rotation, ref tileIndex);
-			}
-			else if (tileTexture.Width == 4 * tileTexture.Height)
-			{
-				tileHeight = tileHeight / 2;
-				SetupTileNoRotation(tile.GetAdjacency(), ref tileIndex);
-			}
-			//What is this?
-			else
-			{
-				throw new Exception("Unhandled texture dimensions");
-			}
-
-
-			if (tileHeight % drawDestination.Height != 0)
-			{
-				throw new Exception("Tile size doesn't match tile map, stretching may be happening. Must be an integer multiple.");
-			}
-
-			Rectangle sourceRectangle = new Rectangle(tileIndex.X * tileHeight, tileIndex.Y * tileHeight, tileHeight, tileHeight);
-
-			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, rotation, MonoDraw.CalcRotationOffset(rotation, tileHeight), effect, DrawLayer.Tile);
-		}
-
-
-
-		/// <summary>
-		/// Used for textures that have all 16 tile types
-		/// </summary>
-		/// <param name="adjacency">Adjacency type</param>
-		/// <param name="tileIndex">Output variable of which sub-section of the texture to use</param>
-		private void SetupTileNoRotation(AdjacencyType adjacency, ref Point tileIndex)
-		{
-			switch (adjacency)
-			{
-				case AdjacencyType.None:
-					tileIndex.X = 7;
-					tileIndex.Y = 1;
-					break;
-				case AdjacencyType.Top:
-					tileIndex.X = 0;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.Bottom:
-					tileIndex.X = 2;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.Left:
-					tileIndex.X = 3;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.Right:
-					tileIndex.X = 1;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.TopBottom:
-					tileIndex.X = 5;
-					tileIndex.Y = 1;
-					break;
-				case AdjacencyType.TopLeft:
-					tileIndex.X = 0;
-					tileIndex.Y = 1;
-					break;
-				case AdjacencyType.TopRight:
-					tileIndex.X = 1;
-					tileIndex.Y = 1;
-					break;
-				case AdjacencyType.TopBottomLeft:
-					tileIndex.X = 5;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.TopBottomRight:
-					tileIndex.X = 7;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.TopLeftRight:
-					tileIndex.X = 6;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.BottomRight:
-					tileIndex.X = 2;
-					tileIndex.Y = 1;
-					break;
-				case AdjacencyType.BottomLeft:
-					tileIndex.X = 3;
-					tileIndex.Y = 1;
-					break;
-				case AdjacencyType.BottomLeftRight:
-					tileIndex.X = 4;
-					tileIndex.Y = 0;
-					break;
-				case AdjacencyType.LeftRight:
-					tileIndex.X = 4;
-					tileIndex.Y = 1;
-					break;
-				case AdjacencyType.All:
-					tileIndex.X = 6;
-					tileIndex.Y = 1;
-					break;
-			}
-		}
-
-
-
-		/// <summary>
-		/// Used for textures that only have 5 tile types
-		/// The rest are generated from rotations
-		/// </summary>
-		/// <param name="adjacency">Adjacency type</param>
-		/// <param name="rotation">Output variable of how far to rotate the texture</param>
-		/// <param name="tileIndex">Output variable of which sub-section of the texture to use</param>
-		private void SetupTileWithRotation(AdjacencyType adjacency, ref float rotation, ref Point tileIndex)
-		{
-			const float PI2 = MathHelper.PiOver2;
-			const float PI = MathHelper.Pi;
-			const float PI32 = MathHelper.Pi * 1.5f;
-
-			switch (adjacency)
-			{
-				case AdjacencyType.None:
-					tileIndex.X = 0;
-					rotation = 0.0f;
-					break;
-				case AdjacencyType.Top:
-					tileIndex.X = 1;
-					rotation = PI32;
-					break;
-				case AdjacencyType.Bottom:
-					tileIndex.X = 1;
-					rotation = PI2;
-					break;
-				case AdjacencyType.Left:
-					tileIndex.X = 1;
-					rotation = PI;
-					break;
-				case AdjacencyType.Right:
-					tileIndex.X = 1;
-					rotation = 0.0f;
-					break;
-				case AdjacencyType.TopBottom:
-					tileIndex.X = 2;
-					rotation = PI2;
-					break;
-				case AdjacencyType.TopLeft:
-					tileIndex.X = 5;
-					rotation = 0.0f;
-					break;
-				case AdjacencyType.TopRight:
-					tileIndex.X = 5;
-					rotation = PI2;
-					break;
-				case AdjacencyType.TopBottomLeft:
-					tileIndex.X = 3;
-					rotation = PI32;
-					break;
-				case AdjacencyType.TopBottomRight:
-					tileIndex.X = 3;
-					rotation = PI2;
-					break;
-				case AdjacencyType.TopLeftRight:
-					tileIndex.X = 3;
-					rotation = 0.0f;
-					break;
-				case AdjacencyType.BottomRight:
-					tileIndex.X = 5;
-					rotation = PI;
-					break;
-				case AdjacencyType.BottomLeft:
-					tileIndex.X = 5;
-					rotation = PI32;
-					break;
-				case AdjacencyType.BottomLeftRight:
-					tileIndex.X = 3;
-					rotation = PI;
-					break;
-				case AdjacencyType.LeftRight:
-					tileIndex.X = 2;
-					rotation = 0.0f;
-					break;
-				case AdjacencyType.All:
-					tileIndex.X = 4;
-					rotation = 0.0f;
-					break;
-			}
+			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, tileDrawInfo.mRotation, MonoDraw.CalcRotationOffset(tileDrawInfo.mRotation, tileHeight), tileDrawInfo.mEffect, DrawLayer.Tile);
 		}
 
 		#endregion rDraw

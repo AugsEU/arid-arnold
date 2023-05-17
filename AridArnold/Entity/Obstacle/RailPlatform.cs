@@ -1,6 +1,8 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	class RailPlatform : Entity
+    class RailPlatform : Entity
 	{
 		#region rMembers
 

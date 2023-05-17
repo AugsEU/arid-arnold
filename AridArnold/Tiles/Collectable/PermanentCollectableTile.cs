@@ -1,9 +1,11 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// Tile you can collect once and have permanently
-	/// </summary>
-	abstract class PermanentCollectableTile : InteractableTile
+    /// <summary>
+    /// Tile you can collect once and have permanently
+    /// </summary>
+    abstract class PermanentCollectableTile : InteractableTile
 	{
 		protected bool mIsGhost;
 

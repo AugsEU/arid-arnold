@@ -1,6 +1,8 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	class StalactiteTile : AirTile
+    class StalactiteTile : AirTile
 	{
 		static Vector2 DROP_DISPLACEMENT = new Vector2(10.0f, 13.0f);
 		static Color DROP_MAIN_COLOR = new Color(0, 46, 101);

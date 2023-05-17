@@ -1,6 +1,8 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	class PlatformTile : Tile
+    class PlatformTile : Tile
 	{
 		#region rInitialisation
 

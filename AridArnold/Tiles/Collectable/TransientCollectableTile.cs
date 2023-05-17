@@ -1,9 +1,11 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// A tile you can collect
-	/// </summary>
-	abstract class TransientCollectableTile : InteractableTile
+    /// <summary>
+    /// A tile you can collect
+    /// </summary>
+    abstract class TransientCollectableTile : InteractableTile
 	{
 		/// <summary>
 		/// Tile with start position

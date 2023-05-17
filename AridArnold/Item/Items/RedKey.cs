@@ -1,6 +1,8 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	internal class RedKey : Item
+    internal class RedKey : Item
 	{
 		public RedKey()
 		{

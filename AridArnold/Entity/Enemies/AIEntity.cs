@@ -1,10 +1,12 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
 
-	/// <summary>
-	/// Generic class for an AI entity in the game.
-	/// </summary>
-	internal abstract class AIEntity : PlatformingEntity
+    /// <summary>
+    /// Generic class for an AI entity in the game.
+    /// </summary>
+    internal abstract class AIEntity : PlatformingEntity
 	{
 		#region rMembers
 

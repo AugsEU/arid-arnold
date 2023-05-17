@@ -1,6 +1,8 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	class ElectricTile : SquareTile
+    class ElectricTile : SquareTile
 	{
 		#region rMembers
 

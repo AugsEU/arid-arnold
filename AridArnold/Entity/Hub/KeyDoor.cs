@@ -1,9 +1,11 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// A door that requires a number of keys
-	/// </summary>
-	internal class KeyDoor : Entity
+    /// <summary>
+    /// A door that requires a number of keys
+    /// </summary>
+    internal class KeyDoor : Entity
 	{
 		#region rConstants
 

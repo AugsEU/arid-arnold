@@ -1,9 +1,11 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// Entity holding an item
-	/// </summary>
-	internal class ItemStand : Entity
+    /// <summary>
+    /// Entity holding an item
+    /// </summary>
+    internal class ItemStand : Entity
 	{
 		#region rConstants
 

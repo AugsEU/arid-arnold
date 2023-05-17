@@ -1,9 +1,11 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// Wall tile.
-	/// </summary>
-	class WallTile : SquareTile
+    /// <summary>
+    /// Wall tile.
+    /// </summary>
+    class WallTile : SquareTile
 	{
 		Animator mAnimation;
 		string mAnimName;

@@ -1,12 +1,14 @@
 ﻿#define EXPERIMENTAL_COLLISION_REMOVALS
 
 
+using AridArnold.Tiles.Basic;
+
 namespace AridArnold
 {
-	/// <summary>
-	/// Type of collision.
-	/// </summary>
-	enum CollisionType
+    /// <summary>
+    /// Type of collision.
+    /// </summary>
+    enum CollisionType
 	{
 		Ground,
 		Wall,

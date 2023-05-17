@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using AridArnold.Tiles.Basic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AridArnold
 {
-	// Entity that travels through teleportation pipes
-	class TeleportTransporter : Entity
+    // Entity that travels through teleportation pipes
+    class TeleportTransporter : Entity
 	{
 		#region rTypes
 

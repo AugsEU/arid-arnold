@@ -25,8 +25,6 @@
 
 
 
-
-
 	/// <summary>
 	/// Represents a tile in the game world.
 	/// </summary>
@@ -209,7 +207,7 @@
 		/// </summary>
 		public int GetNumNeighbours()
 		{
-			return (int)MonoMath.BitCountI32((UInt32)(mAdjacency));
+			return (int)MonoMath.BitCountI32((uint)mAdjacency);
 		}
 
 
@@ -219,7 +217,7 @@
 		/// </summary>
 		public virtual bool IsNeighbourType(Tile other)
 		{
-			return other.GetType() == this.GetType();
+			return other.GetType() == GetType();
 		}
 
 
@@ -305,129 +303,4 @@
 		#endregion rCollision
 
 	}
-
-
-
-
-
-	/// <summary>
-	/// Simple tile with a square hitbox. Does nothing else.
-	/// </summary>
-	abstract class SquareTile : Tile
-	{
-		public SquareTile(Vector2 position) : base(position)
-		{
-		}
-
-
-		/// <summary>
-		/// Resolve collision with an entity
-		/// </summary>
-		/// <param name="entity">Entity that is colliding with us</param>
-		/// <param name="gameTime">Frame time</param>
-		public override CollisionResults Collide(MovingEntity entity, GameTime gameTime)
-		{
-			return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), GetBounds());
-		}
-
-
-
-		/// <summary>
-		/// Is this tile solid?
-		/// </summary>
-		/// <returns>True if a tile is solid</returns>
-		public override bool IsSolid()
-		{
-			return true;
-		}
-	}
-
-
-
-
-
-	/// <summary>
-	/// A tile that has no texture or collisions.
-	/// </summary>
-	class AirTile : Tile
-	{
-		/// <summary>
-		/// Tile with start position
-		/// </summary>
-		/// <param name="position">Start position</param>
-		public AirTile(Vector2 position) : base(position)
-		{
-		}
-
-		/// <summary>
-		/// Load all textures and assets
-		/// </summary>
-		public override void LoadContent()
-		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Air");
-		}
-
-		/// <summary>
-		/// Do not collide with the entity.
-		/// </summary>
-		/// <param name="entity">Entity that is colliding with us</param>
-		/// <param name="gameTime">Frame time</param>
-		/// <returns></returns>
-		public override CollisionResults Collide(MovingEntity entity, GameTime gameTime)
-		{
-			// No collision.
-			return CollisionResults.None;
-		}
-
-
-
-		/// <summary>
-		/// Get empty bounds
-		/// </summary>
-		/// <returns>Zero bounds</returns>
-		protected override Rect2f CalculateBounds()
-		{
-			return new Rect2f(Vector2.Zero, Vector2.Zero);
-		}
-
-
-
-		/// <summary>
-		/// Is this tile solid?
-		/// </summary>
-		/// <returns>True if a tile is solid</returns>
-		public override bool IsSolid()
-		{
-			return false;
-		}
-	}
-
-
-
-
-
-	/// <summary>
-	/// A tile you can interact with. Such as collectables or spikes.
-	/// </summary>
-	class InteractableTile : AirTile
-	{
-		/// <summary>
-		/// Tile with start position
-		/// </summary>
-		/// <param name="position">Start position</param>
-		public InteractableTile(Vector2 position) : base(position)
-		{
-		}
-
-
-		/// <summary>
-		/// Get normal bounds
-		/// </summary>
-		/// <returns>Square bounds</returns>
-		protected override Rect2f CalculateBounds()
-		{
-			return new Rect2f(mPosition, mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE));
-		}
-	}
-
 }

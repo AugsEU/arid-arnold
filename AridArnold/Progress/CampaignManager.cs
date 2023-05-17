@@ -69,7 +69,7 @@ namespace AridArnold
 
 			mHubReturnInfo = null;
 			mCurrLives = START_LIVES;
-#if DEBUG_LOADER_D
+#if DEBUG_LOADER
 			CollectableManager.I.ChangePermanentItem(0x0300, 10);
 			QueueLoadSequence(new HubDirectLoader(201));
 			//QueueLoadSequence(new LevelDirectLoader(110));

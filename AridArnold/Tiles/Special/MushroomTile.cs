@@ -1,6 +1,8 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	class MushroomTile : InteractableTile
+    class MushroomTile : InteractableTile
 	{
 		#region rConstants
 

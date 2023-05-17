@@ -1,6 +1,8 @@
-﻿namespace AridArnold
+﻿using AridArnold.Tiles.Basic;
+
+namespace AridArnold
 {
-	internal class ElectricGate : SquareTile
+    internal class ElectricGate : SquareTile
 	{
 		#region rTypes
 
