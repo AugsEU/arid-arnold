@@ -54,11 +54,11 @@ namespace AridArnold
 				Vector2 entityCentre = entityBounds.Centre;
 				Vector2 ourCentre = ourBounds.Centre;
 
-				bool leftThresh = entityCentre.X > ourCentre.X - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Left) == (uint)AdjacencyType.Left);
-				bool rightThresh = entityCentre.X < ourCentre.X + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Right) == (uint)AdjacencyType.Right);
+				bool leftThresh = entityCentre.X > ourCentre.X - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad4) == (uint)AdjacencyType.Ad4);
+				bool rightThresh = entityCentre.X < ourCentre.X + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad6) == (uint)AdjacencyType.Ad6);
 
-				bool upThresh = entityCentre.Y > ourCentre.Y - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Top) == (uint)AdjacencyType.Top);
-				bool downThresh = entityCentre.Y < ourCentre.Y + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Bottom) == (uint)AdjacencyType.Bottom);
+				bool upThresh = entityCentre.Y > ourCentre.Y - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad8) == (uint)AdjacencyType.Ad8);
+				bool downThresh = entityCentre.Y < ourCentre.Y + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad2) == (uint)AdjacencyType.Ad2);
 
 				bool xThresh = leftThresh && rightThresh;
 				bool yThresh = downThresh && upThresh;

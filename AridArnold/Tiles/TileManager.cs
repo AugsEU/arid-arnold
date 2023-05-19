@@ -219,6 +219,23 @@ namespace AridArnold
 						{
 							mTileMap[x, y].SetRightAdjacent(mTileMap[x + 1, y]);
 						}
+
+						if(y + 1 < mTileMap.GetLength(1))
+						{
+							if (mTileMap[x, y].IsNeighbourType(mTileMap[x + 1, y + 1]))
+							{
+								mTileMap[x, y].SetBottomRightAdjacent(mTileMap[x + 1, y + 1]);
+							}
+						}
+
+						if(y - 1 > 0)
+						{
+							if (mTileMap[x, y].IsNeighbourType(mTileMap[x + 1, y - 1]))
+							{
+								mTileMap[x, y].SetTopRightAdjacent(mTileMap[x + 1, y - 1]);
+							}
+						}
+
 					}
 
 					if (y + 1 < mTileMap.GetLength(1))

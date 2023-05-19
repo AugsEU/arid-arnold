@@ -1,31 +1,6 @@
 ﻿namespace AridArnold
 {
 	/// <summary>
-	/// Bit map enum of all possible direct adjacencies.
-	/// </summary>
-	enum AdjacencyType
-	{
-		None = 0b0000,
-		Top = 0b0001,
-		Bottom = 0b0010,
-		Left = 0b0100,
-		Right = 0b1000,
-		TopBottom = Top | Bottom,
-		TopLeft = Top | Left,
-		TopRight = Top | Right,
-		TopBottomLeft = Top | Bottom | Left,
-		TopBottomRight = Top | Bottom | Right,
-		TopLeftRight = Top | Left | Right,
-		BottomRight = Bottom | Right,
-		BottomLeft = Bottom | Left,
-		BottomLeftRight = Bottom | Left | Right,
-		LeftRight = Left | Right,
-		All = Top | Bottom | Left | Right,
-	}
-
-
-
-	/// <summary>
 	/// Represents a tile in the game world.
 	/// </summary>
 	abstract class Tile
@@ -44,7 +19,7 @@
 
 		protected Texture2D mTexture = null;
 		protected bool mEnabled = true;
-		protected AdjacencyType mAdjacency = AdjacencyType.None;
+		protected AdjacencyType mAdjacency = AdjacencyType.Ad0;
 		protected Vector2 mPosition;
 		protected Point mTileMapIndex;
 		protected CardinalDirection mRotation;
@@ -179,10 +154,25 @@
 		public void SetRightAdjacent(Tile neighbour)
 		{
 			//My neighbour is to the right of me
-			mAdjacency |= AdjacencyType.Right;
+			mAdjacency |= AdjacencyType.Ad6;
 
 			//I'm to the left of my neighbour
-			neighbour.mAdjacency |= AdjacencyType.Left;
+			neighbour.mAdjacency |= AdjacencyType.Ad4;
+		}
+
+
+
+		/// <summary>
+		/// Inform that a neighbour is to the right of this tile
+		/// </summary>
+		/// <param name="neighbour">Tile that is adjacent to us</param>
+		public void SetTopRightAdjacent(Tile neighbour)
+		{
+			//My neighbour is to the top right of me
+			mAdjacency |= AdjacencyType.Ad9;
+
+			//I'm to the bottom left of my neighbour
+			neighbour.mAdjacency |= AdjacencyType.Ad1;
 		}
 
 
@@ -194,10 +184,25 @@
 		public void SetBottomAdjacent(Tile neighbour)
 		{
 			//My neighbour is under me
-			mAdjacency |= AdjacencyType.Bottom;
+			mAdjacency |= AdjacencyType.Ad2;
 
 			//I'm above my neighbour
-			neighbour.mAdjacency |= AdjacencyType.Top;
+			neighbour.mAdjacency |= AdjacencyType.Ad8;
+		}
+
+
+
+		/// <summary>
+		/// Inform that a neighbour is blow this tile 
+		/// </summary>
+		/// <param name="neighbour">Tile that is adjacent to us</param>
+		public void SetBottomRightAdjacent(Tile neighbour)
+		{
+			//My neighbour is bottom right of me
+			mAdjacency |= AdjacencyType.Ad3;
+
+			//I'm to the top left of my neighbour 
+			neighbour.mAdjacency |= AdjacencyType.Ad7;
 		}
 
 
@@ -205,9 +210,9 @@
 		/// <summary>
 		/// How many neighbours do we have?
 		/// </summary>
-		public int GetNumNeighbours()
+		public int GetNumDirectlyAdjacenct()
 		{
-			return (int)MonoMath.BitCountI32((uint)mAdjacency);
+			return (int)MonoMath.BitCountI32((uint)AdjacencyHelper.GetDirectlyAdjacent(mAdjacency));
 		}
 
 

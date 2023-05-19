@@ -43,7 +43,7 @@ namespace AridArnold
 		/// </summary>
 		public override void FinishInit()
 		{
-			mIsEntry = GetNumNeighbours() == 1;
+			mIsEntry = GetNumDirectlyAdjacenct() == 1;
 		}
 
 		#endregion rInitialisation
@@ -125,13 +125,13 @@ namespace AridArnold
 
 			switch (mAdjacency)
 			{
-				case AdjacencyType.Top:
+				case AdjacencyType.Ad8:
 					return new Vector2(0.0f, 1.0f);
-				case AdjacencyType.Bottom:
+				case AdjacencyType.Ad2:
 					return new Vector2(0.0f, -1.0f);
-				case AdjacencyType.Left:
+				case AdjacencyType.Ad4:
 					return new Vector2(1.0f, 0.0f);
-				case AdjacencyType.Right:
+				case AdjacencyType.Ad6:
 					return new Vector2(-1.0f, 0.0f);
 				default:
 					break;
