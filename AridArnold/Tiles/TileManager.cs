@@ -131,6 +131,8 @@ namespace AridArnold
 						return new WallTile(position, "Wall");
 					case 0x101010u:
 						return new WallTile(position, "WallSecondary");
+					case 0x202020u:
+						return new OtherWorldTile(position, "OtherWorldWall");
 					case 0xA9A9A9u:
 						return new AnimatedPlatformTile((CardinalDirection)param, position);
 					//Collectable

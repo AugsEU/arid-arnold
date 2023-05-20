@@ -2,10 +2,10 @@
 
 namespace AridArnold
 {
-    /// <summary>
-    /// Wall tile.
-    /// </summary>
-    class WallTile : SquareTile
+	/// <summary>
+	/// Wall tile.
+	/// </summary>
+	class WallTile : SquareTile
 	{
 		Animator mAnimation;
 		string mAnimName;
@@ -53,6 +53,14 @@ namespace AridArnold
 		public override Texture2D GetTexture()
 		{
 			return mAnimation.GetCurrentTexture();
+		}
+	}
+
+
+	class OtherWorldTile : WallTile
+	{
+		public OtherWorldTile(Vector2 position, string animName) : base(position, animName)
+		{
 		}
 	}
 }
