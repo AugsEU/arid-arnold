@@ -206,6 +206,28 @@
 		/// <returns>Render target with the screen drawn on</returns>
 		public abstract RenderTarget2D DrawToRenderTarget(DrawInfo info);
 
+
+
+		/// <summary>
+		/// Start sprite batch for this screen
+		/// </summary>
+		/// <param name="info"></param>
+		protected void StartScreenSpriteBatch(DrawInfo info)
+		{
+			CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera).StartSpriteBatch(info, new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+		}
+
+
+
+		/// <summary>
+		/// Sprite screen sprite batch.
+		/// </summary>
+		/// <param name="info"></param>
+		protected void EndScreenSpriteBatch(DrawInfo info)
+		{
+			CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera).EndSpriteBatch(info);
+		}
+
 		#endregion rDraw
 	}
 }

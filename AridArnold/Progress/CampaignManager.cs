@@ -71,8 +71,8 @@ namespace AridArnold
 			mCurrLives = START_LIVES;
 #if DEBUG_LOADER
 			CollectableManager.I.ChangePermanentItem(0x0300, 10);
-			QueueLoadSequence(new HubDirectLoader(201));
-			//QueueLoadSequence(new LevelDirectLoader(110));
+			//QueueLoadSequence(new HubDirectLoader(201));
+			QueueLoadSequence(new LevelDirectLoader(201));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 #endif

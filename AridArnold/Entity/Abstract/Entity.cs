@@ -310,6 +310,9 @@
 				case EntityData.EntityClass.kItemStand:
 					entity = new ItemStand(worldPosition, data.mIntParams[0]);
 					break;
+				case EntityData.EntityClass.kGravityOrb:
+					entity = new GravityOrb(worldPosition, (CardinalDirection)data.mIntParams[0]);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

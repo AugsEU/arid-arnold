@@ -76,15 +76,11 @@
 			info.device.SetRenderTarget(mScreenTarget);
 			info.device.Clear(new Color(0, 0, 0));
 
-			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
-									BlendState.AlphaBlend,
-									SamplerState.PointClamp,
-									DepthStencilState.Default,
-									RasterizerState.CullNone);
+			StartScreenSpriteBatch(info);
 
 			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.Gold, "LEVEL START SCREEN! TO DO!");
 
-			info.spriteBatch.End();
+			EndScreenSpriteBatch(info);
 
 			return mScreenTarget;
 		}

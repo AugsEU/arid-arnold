@@ -251,17 +251,13 @@
 			info.device.SetRenderTarget(mScreenTarget);
 			info.device.Clear(new Color(0, 0, 0));
 
-			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
-									BlendState.AlphaBlend,
-									SamplerState.PointClamp,
-									DepthStencilState.Default,
-									RasterizerState.CullNone);
+			StartScreenSpriteBatch(info);
 
 			GetCurrentUI().Draw(info);
 			Rectangle gameAreaRect = GetGameAreaRect();
 			DrawGameArea(info, gameAreaRect);
 
-			info.spriteBatch.End();
+			EndScreenSpriteBatch(info);
 
 			return mScreenTarget;
 		}
@@ -295,11 +291,8 @@
 
 			info.device.Clear(Color.Black);
 
-			info.spriteBatch.Begin(SpriteSortMode.FrontToBack,
-									BlendState.AlphaBlend,
-									SamplerState.PointClamp,
-									DepthStencilState.Default,
-									RasterizerState.CullNone);
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+			gameCam.StartSpriteBatch(info, new Vector2(GAME_AREA_WIDTH, GAME_AREA_HEIGHT));
 
 			if (mLoadSequence is not null)
 			{
@@ -308,7 +301,7 @@
 
 			DrawGamePlay(info);
 
-			info.spriteBatch.End();
+			gameCam.EndSpriteBatch(info);
 		}
 
 

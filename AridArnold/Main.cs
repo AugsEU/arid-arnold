@@ -92,6 +92,7 @@
 			ScreenManager.I.LoadAllScreens(_graphics);
 			GhostManager.I.Load();
 			InputManager.I.Init();
+			CameraManager.I.Init();
 
 			mDummyTexture = new Texture2D(GraphicsDevice, 1, 1);
 			mDummyTexture.SetData(new Color[] { Color.White });
@@ -246,15 +247,17 @@
 			if (screen != null)
 			{
 				RenderTarget2D screenTargetRef = screen.DrawToRenderTarget(frameInfo);
+				Rectangle screenRect = GraphicsDevice.PresentationParameters.Bounds;
+				Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GlobalCamera);
 
 				GraphicsDevice.SetRenderTarget(null);
-				_spriteBatch.Begin(SpriteSortMode.FrontToBack,
-									BlendState.AlphaBlend,
-									SamplerState.PointClamp,
-									DepthStencilState.Default,
-									RasterizerState.CullNone);
+
+				// Draw!
+				screenCam.StartSpriteBatch(frameInfo, new Vector2(screenRect.X, screenRect.Y));
+
 				DrawScreenPixelPerfect(frameInfo, screenTargetRef);
-				_spriteBatch.End();
+
+				screenCam.EndSpriteBatch(frameInfo);
 			}
 
 			base.Draw(gameTime);

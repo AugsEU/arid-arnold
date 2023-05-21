@@ -36,6 +36,7 @@
 			kLevelLock,
 			kShopDoor,
 			kItemStand,
+			kGravityOrb,
 			kUtilityClassEnd
 		}
 
