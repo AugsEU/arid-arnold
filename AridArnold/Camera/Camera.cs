@@ -69,6 +69,7 @@
 		{
 			mCurrentSpec = new CameraSpec();
 			mSpriteBatchOptions = new SpriteBatchOptions();
+			mCameraMovements = new Queue<CameraMovement>();
 			mCurrentCameraMovement = null;
 		}
 
@@ -112,18 +113,18 @@
 			}
 
 			CameraMovement topCamMove = mCameraMovements.Peek();
-			if(object.ReferenceEquals(topCamMove, mCurrentCameraMovement) && mCurrentCameraMovement is not null)
+
+			if (mCurrentCameraMovement is null)
 			{
-				if(mCurrentCameraMovement.IsMovementOver())
-				{
-					// Camera movement over; remove from queue.
-					mCameraMovements.Dequeue();
-				}
-			}
-			else
-			{
-				// New movement, start it.
 				topCamMove.StartMovement(mCurrentSpec);
+			}
+			else if(mCurrentCameraMovement.IsMovementOver())
+			{
+				mCameraMovements.Dequeue();
+				if(mCameraMovements.Count > 0)
+				{
+					mCameraMovements.Peek().StartMovement(mCurrentSpec);
+				}
 			}
 		}
 
@@ -187,6 +188,15 @@
 		public void SetOptions(SpriteBatchOptions options)
 		{
 			mSpriteBatchOptions = options;
+		}
+
+
+		/// <summary>
+		/// Queue up a movement
+		/// </summary>
+		public void QueueMovement(CameraMovement movement)
+		{
+			mCameraMovements.Enqueue(movement);
 		}
 
 		#endregion rUtil

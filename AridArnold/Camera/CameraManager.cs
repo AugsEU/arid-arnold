@@ -20,7 +20,7 @@
 
 		#region rMembers
 
-		Camera[] mCameraDictionary;
+		Camera[] mCameraList;
 
 		#endregion rMembers
 
@@ -33,10 +33,10 @@
 		public void Init()
 		{
 			int numInstances = (int)CameraInstance.NumCameraInstances;
-			mCameraDictionary = new Camera[numInstances];
+			mCameraList = new Camera[numInstances];
 			for(int i = 0; i < numInstances; i++)
 			{
-				mCameraDictionary[i] = new Camera();
+				mCameraList[i] = new Camera();
 			}
 		}
 
@@ -44,13 +44,25 @@
 
 
 
+		#region rUpdate
+
+		public void UpdateAllCameras(GameTime gameTime)
+		{
+			foreach(Camera camera in mCameraList)
+			{
+				camera.Update(gameTime);
+			}
+		}
+
+		#endregion rUpdate
+
 
 
 		#region rUtil
 
 		public Camera GetCamera(CameraInstance camera)
 		{
-			return mCameraDictionary[(int)camera];
+			return mCameraList[(int)camera];
 		}
 
 

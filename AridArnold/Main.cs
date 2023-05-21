@@ -166,6 +166,7 @@
 
 			//Always update every game update.
 			InputManager.I.Update(gameTime);
+			CameraManager.I.UpdateAllCameras(gameTime);
 
 			if (screen != null)
 			{

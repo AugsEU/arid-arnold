@@ -2,7 +2,7 @@
 {
 	abstract class CameraMovement
 	{
-		CameraSpec mCurrentSpec;
+		protected CameraSpec mCurrentSpec;
 
 		public void StartMovement(CameraSpec startingSpec)
 		{
@@ -12,7 +12,20 @@
 
 		abstract protected void StartMovementInternal();
 
-		abstract public bool IsMovementOver();
+		abstract protected void EndMovementInternal();
+
+		public bool IsMovementOver()
+		{
+			bool over = IsMovementOverInternal();
+			if (over)
+			{
+				EndMovementInternal();
+			}
+
+			return over;
+		}
+
+		abstract protected bool IsMovementOverInternal();
 
 		public CameraSpec Update(GameTime gameTime)
 		{
