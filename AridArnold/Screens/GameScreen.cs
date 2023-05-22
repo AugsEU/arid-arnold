@@ -117,6 +117,11 @@
 		/// </summary>
 		void GameUpdate(GameTime gameTime)
 		{
+			if(CameraManager.I.BlockUpdateRequested())
+			{
+				return;
+			}
+
 			CheckForLoadSequence();
 
 			Level currLevel = CampaignManager.I.GetCurrentLevel();

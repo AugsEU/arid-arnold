@@ -35,5 +35,7 @@
 
 		protected abstract void UpdateInternal(GameTime gameTime);
 
+		public virtual bool MovementBlocksUpdate() { return false; }
+
 	}
 }

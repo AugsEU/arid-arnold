@@ -30,6 +30,9 @@
 
 		#region rInit
 
+		/// <summary>
+		/// Init all cameras(called once per launch)
+		/// </summary>
 		public void Init()
 		{
 			int numInstances = (int)CameraInstance.NumCameraInstances;
@@ -46,6 +49,9 @@
 
 		#region rUpdate
 
+		/// <summary>
+		/// Update all the cameras
+		/// </summary>
 		public void UpdateAllCameras(GameTime gameTime)
 		{
 			foreach(Camera camera in mCameraList)
@@ -60,11 +66,28 @@
 
 		#region rUtil
 
+		/// <summary>
+		/// Get a camera of type
+		/// </summary>
 		public Camera GetCamera(CameraInstance camera)
 		{
 			return mCameraList[(int)camera];
 		}
 
+
+
+		/// <summary>
+		/// Do any of our cameras want us to block the update?
+		/// </summary>
+		public bool BlockUpdateRequested()
+		{
+			foreach(Camera cam in mCameraList)
+			{
+				if (cam.ShouldBlockUpdate()) return true;
+			}
+
+			return false;
+		}
 
 		#endregion rUtil
 	}

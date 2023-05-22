@@ -40,5 +40,7 @@
 
 			base.UpdateInternal(gameTime);
 		}
+
+		public override bool MovementBlocksUpdate() { return true; }
 	}
 }

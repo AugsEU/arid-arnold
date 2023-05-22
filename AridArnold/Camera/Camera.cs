@@ -199,6 +199,20 @@
 			mCameraMovements.Enqueue(movement);
 		}
 
+
+		/// <summary>
+		/// Should we block the game update?
+		/// </summary>
+		public bool ShouldBlockUpdate()
+		{
+			if(mCurrentCameraMovement is not null)
+			{
+				return mCurrentCameraMovement.MovementBlocksUpdate();
+			}
+
+			return false;
+		}
+
 		#endregion rUtil
 	}
 }
