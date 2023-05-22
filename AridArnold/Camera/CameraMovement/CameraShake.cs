@@ -16,7 +16,7 @@
 			mCurrAngle = 0.0f;
 		}
 
-		public CameraShake(float time, Vector2 amplitude, float speed) : base (time)
+		public CameraShake(float time, Vector2 amplitude, float speed) : base(time)
 		{
 			mShakeDisplacement = Vector2.Zero;
 			mAmplitude = amplitude;
@@ -43,11 +43,32 @@
 
 			mShakeDisplacement.X = MathF.Sin(mCurrAngle) * mAmplitude.X;
 			mShakeDisplacement.Y = MathF.Cos(mCurrAngle) * mAmplitude.Y;
-			mShakeDisplacement *= (1.0f - GetMovementPercentage());
+			mShakeDisplacement *= GetDropOff();
 
 			mCurrentSpec.mPosition = mCentrePos + mShakeDisplacement;
 
 			base.UpdateInternal(gameTime);
+		}
+
+		protected virtual float GetDropOff()
+		{
+			return 1.0f;
+		}
+	}
+
+	internal class DiminishCameraShake : CameraShake
+	{
+		public DiminishCameraShake(float time, float amplitude, float speed) : base(time, amplitude, speed)
+		{
+		}
+
+		public DiminishCameraShake(float time, Vector2 amplitude, float speed) : base(time, amplitude, speed)
+		{
+		}
+
+		protected override float GetDropOff()
+		{
+			return (1.0f - GetMovementPercentage());
 		}
 	}
 }

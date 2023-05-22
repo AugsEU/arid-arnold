@@ -37,6 +37,9 @@
 		/// </summary>
 		public GravityOrb(Vector2 pos, CardinalDirection gravityDir) : base(pos)
 		{
+			// Cheeky way to make sure no orb is active at the start of the level.
+			sActiveOrb = null;
+
 			mPosition.X += 3.0f;
 			mPosition.Y += 3.0f;
 
@@ -120,6 +123,42 @@
 		}
 
 
+
+		/// <summary>
+		/// Make this orb the active one.
+		/// </summary>
+		void SetActive()
+		{
+			if (!IsActive())
+			{
+				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+				gameCam.QueueMovement(new ShakeAndRotateTo(20.0f, GetTurnToAngle()));
+				SetAllEntitiesGravity();
+			}
+			sActiveOrb = this;
+		}
+
+
+
+		/// <summary>
+		/// Set the gravity of all entities.
+		/// </summary>
+		void SetAllEntitiesGravity()
+		{
+			int entityNum = EntityManager.I.GetEntityNum();
+			for(int i = 0; i < entityNum; i++)
+			{
+				Entity entity = EntityManager.I.GetEntity(i);
+				if(entity is PlatformingEntity)
+				{
+					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+					platformingEntity.SetGravity(mGravityDir);
+				}
+			}
+		}
+
+
+
 		/// <summary>
 		/// Orb collider
 		/// </summary>
@@ -155,16 +194,19 @@
 
 		#region rUtility
 
-		void SetActive()
-		{
-			sActiveOrb = this;
-		}
-
+		/// <summary>
+		/// Is this orb active?
+		/// </summary>
 		bool IsActive()
 		{
 			return object.ReferenceEquals(this, sActiveOrb);
 		}
 
+
+
+		/// <summary>
+		/// React to entity "pushin" us
+		/// </summary>
 		void EntityPush(MovingEntity entity)
 		{
 			Vector2 newVel = entity.GetVelocity();
@@ -176,24 +218,32 @@
 
 			mPushVelocity = newVel;
 
-
 			mPushVelocity.X = MonoMath.ClampAbs(mPushVelocity.X, 5.0f);
 			mPushVelocity.Y = MonoMath.ClampAbs(mPushVelocity.Y, 5.0f);
 		}
 
-		#endregion rUtility
 
 
-
-
-
-		#region rStatic
-
-		public static void ResetActive()
+		/// <summary>
+		/// Get angle we need to turn to.
+		/// </summary>
+		float GetTurnToAngle()
 		{
-			sActiveOrb = null;
+			switch (mGravityDir)
+			{
+				case CardinalDirection.Up:
+					return MathF.PI;
+				case CardinalDirection.Right:
+					return MathF.PI * 0.5f;
+				case CardinalDirection.Down:
+					return 0.0f;
+				case CardinalDirection.Left:
+					return MathF.PI * 1.5f;
+			}
+
+			throw new NotImplementedException();
 		}
 
-		#endregion rStatic
+		#endregion rUtility
 	}
 }
