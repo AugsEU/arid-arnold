@@ -103,6 +103,11 @@ namespace AridArnold
 				EntityManager.I.RegisterEntity(newEntity);
 			}
 
+			// Reset camera
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+			gameCam.Reset();
+
+			// Inform others
 			GhostManager.I.StartLevel(this);
 			ItemManager.I.LevelBegin();
 		}

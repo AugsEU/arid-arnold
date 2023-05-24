@@ -113,5 +113,26 @@
 
 			throw new NotImplementedException();
 		}
+
+		public static CardinalDirection CardinalDirectionFromAngle(float angle)
+		{
+			angle = MonoMath.MainBranchRadian(angle);
+			float PI8 = MathF.PI / 4.0f;
+
+			if (angle < PI8 || angle > 7.0f * PI8)
+			{
+				return CardinalDirection.Up;
+			}
+			else if(angle < 3.0f * PI8)
+			{
+				return CardinalDirection.Left;
+			}
+			else if(angle < 5.0f * PI8)
+			{
+				return CardinalDirection.Down;
+			}
+
+			return CardinalDirection.Right;
+		}
 	}
 }

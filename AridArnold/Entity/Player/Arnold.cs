@@ -35,6 +35,11 @@
 		PercentageTimer mTimerSinceDeath;
 		protected PercentageTimer mTimerSinceStart;
 
+		// Inputs(can change based on camera angle etc)
+		AridArnoldKeys mLeftKey;
+		AridArnoldKeys mRightKey;
+		AridArnoldKeys mDownKey;
+
 		#endregion rMembers
 
 
@@ -55,6 +60,10 @@
 
 			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
 			mTimerSinceStart = new PercentageTimer(START_TIME);
+
+			mLeftKey = AridArnoldKeys.ArnoldLeft;
+			mRightKey = AridArnoldKeys.ArnoldRight;
+			mDownKey = AridArnoldKeys.ArnoldDown;
 		}
 
 
@@ -173,8 +182,10 @@
 		/// <param name="gameTime">Frame time</param>
 		private void DoInputs(GameTime gameTime)
 		{
+			UpdateArnoldKeys();
+
 			bool jump = InputManager.I.KeyHeld(AridArnoldKeys.ArnoldJump);
-			bool fallthrough = InputManager.I.KeyHeld(GetFallthroughKey());
+			bool fallthrough = InputManager.I.KeyHeld(mDownKey);
 
 			if (jump && fallthrough)
 			{
@@ -208,42 +219,20 @@
 		/// </summary>
 		private void HandleWalkInput()
 		{
-			CardinalDirection gravDir = GetGravityDir();
-
-			if (gravDir == CardinalDirection.Down || gravDir == CardinalDirection.Up)
+			if (InputManager.I.KeyHeld(mLeftKey))
 			{
-				if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldLeft))
-				{
-					mWalkDirection = WalkDirection.Left;
-					mPrevDirection = mWalkDirection;
-				}
-				else if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldRight))
-				{
-					mWalkDirection = WalkDirection.Right;
-					mPrevDirection = mWalkDirection;
-				}
-				else
-				{
-					mWalkDirection = WalkDirection.None;
-				}
+				mWalkDirection = WalkDirection.Left;
+				mPrevDirection = mWalkDirection;
 			}
-			else if (gravDir == CardinalDirection.Left || gravDir == CardinalDirection.Right)
+			else if (InputManager.I.KeyHeld(mRightKey))
 			{
-				if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldUp))
-				{
-					mWalkDirection = WalkDirection.Left;
-					mPrevDirection = mWalkDirection;
-				}
-				else if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldDown))
-				{
-					mWalkDirection = WalkDirection.Right;
-					mPrevDirection = mWalkDirection;
-				}
-				else
-				{
-					mWalkDirection = WalkDirection.None;
-				}
+				mWalkDirection = WalkDirection.Right;
+				mPrevDirection = mWalkDirection;
 			}
+			else
+			{
+				mWalkDirection = WalkDirection.None;
+			}		
 		}
 
 
@@ -455,26 +444,55 @@
 
 
 		/// <summary>
-		/// Get key needed to fall through platforms
-		/// TO DO: Use input manager
+		/// Calculate all the keys used for movement.
 		/// </summary>
-		/// <returns></returns>
-		/// <exception cref="NotImplementedException">Requires valid cardinal direction</exception>
-		private AridArnoldKeys GetFallthroughKey()
+		private void UpdateArnoldKeys()
 		{
-			switch (GetGravityDir())
-			{
-				case CardinalDirection.Down:
-					return AridArnoldKeys.ArnoldDown;
-				case CardinalDirection.Up:
-					return AridArnoldKeys.ArnoldUp;
-				case CardinalDirection.Left:
-					return AridArnoldKeys.ArnoldLeft;
-				case CardinalDirection.Right:
-					return AridArnoldKeys.ArnoldRight;
-			}
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 
-			throw new NotImplementedException();
+			CardinalDirection camDir = Util.CardinalDirectionFromAngle(gameCam.GetCurrentSpec().mRotation);
+			CardinalDirection gravityDir = GetGravityDir();
+
+			// 16 cases
+			switch ((camDir, gravityDir))
+			{
+				case (CardinalDirection.Up, CardinalDirection.Up):
+					break;
+				case (CardinalDirection.Up, CardinalDirection.Right):
+					break;
+				case (CardinalDirection.Right, CardinalDirection.Left):
+				case (CardinalDirection.Up, CardinalDirection.Down):
+					mLeftKey = AridArnoldKeys.ArnoldLeft;
+					mRightKey = AridArnoldKeys.ArnoldRight;
+					mDownKey = AridArnoldKeys.ArnoldDown;
+					break;
+				case (CardinalDirection.Up, CardinalDirection.Left):
+					break;
+				case (CardinalDirection.Right, CardinalDirection.Up):
+					break;
+				case (CardinalDirection.Right, CardinalDirection.Right):
+					break;
+				case (CardinalDirection.Right, CardinalDirection.Down):
+					break;
+				case (CardinalDirection.Left, CardinalDirection.Right):
+				case (CardinalDirection.Down, CardinalDirection.Up):
+					mLeftKey = AridArnoldKeys.ArnoldRight;
+					mRightKey = AridArnoldKeys.ArnoldLeft;
+					mDownKey = AridArnoldKeys.ArnoldDown;
+					break;
+				case (CardinalDirection.Down, CardinalDirection.Right):
+					break;
+				case (CardinalDirection.Down, CardinalDirection.Down):
+					break;
+				case (CardinalDirection.Down, CardinalDirection.Left):
+					break;
+				case (CardinalDirection.Left, CardinalDirection.Up):
+					break;
+				case (CardinalDirection.Left, CardinalDirection.Down):
+					break;
+				case (CardinalDirection.Left, CardinalDirection.Left):
+					break;
+			}
 		}
 
 		#endregion rUtility

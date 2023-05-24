@@ -2,8 +2,8 @@
 {
 	internal class ShakeAndRotateTo : CameraShake
 	{
-		const float DEFAULT_SHAKE_SPEED = 17.2f;
-		const float DEFAULT_SHAKE_AMPLITUDE = 3.0f;
+		const float DEFAULT_SHAKE_SPEED = 30.2f;
+		const float DEFAULT_SHAKE_AMPLITUDE = 2.0f;
 
 		float mStartRotation;
 		float mTargetAngle;
@@ -22,6 +22,19 @@
 		protected override void StartMovementInternal()
 		{
 			mStartRotation = mCurrentSpec.mRotation;
+
+			if (MathF.Abs(mTargetAngle - mStartRotation) > MathF.PI)
+			{
+				if(mTargetAngle > mStartRotation)
+				{
+					mTargetAngle -= MathF.PI * 2.0f;
+				}
+				else
+				{
+					mTargetAngle += MathF.PI * 2.0f;
+				}
+			}
+
 			base.StartMovementInternal();
 		}
 

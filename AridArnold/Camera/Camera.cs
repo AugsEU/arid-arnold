@@ -162,7 +162,7 @@
 		/// <summary>
 		/// Caulate perspective matrix.
 		/// </summary>
-		public Matrix CalculateMatrix(Vector2 viewPortSize)
+		Matrix CalculateMatrix(Vector2 viewPortSize)
 		{
 			Vector3 centrePoint3 = new Vector3(viewPortSize / 2.0f, 0.0f);
 
@@ -201,6 +201,17 @@
 
 
 		/// <summary>
+		/// Reset spec to default
+		/// </summary>
+		public void Reset()
+		{
+			mCameraMovements.Clear();
+			mCurrentCameraMovement = null;
+			mCurrentSpec = new CameraSpec();
+		}
+
+
+		/// <summary>
 		/// Should we block the game update?
 		/// </summary>
 		public bool ShouldBlockUpdate()
@@ -211,6 +222,16 @@
 			}
 
 			return false;
+		}
+
+
+
+		/// <summary>
+		/// Get the current spec
+		/// </summary>
+		public CameraSpec GetCurrentSpec()
+		{
+			return mCurrentSpec;
 		}
 
 		#endregion rUtil

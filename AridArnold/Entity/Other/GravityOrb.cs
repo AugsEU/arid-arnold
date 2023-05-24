@@ -132,7 +132,7 @@
 			if (!IsActive())
 			{
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-				gameCam.QueueMovement(new ShakeAndRotateTo(20.0f, GetTurnToAngle()));
+				gameCam.QueueMovement(new ShakeAndRotateTo(15.0f, GetTurnToAngle()));
 				SetAllEntitiesGravity();
 			}
 			sActiveOrb = this;
@@ -153,6 +153,7 @@
 				{
 					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 					platformingEntity.SetGravity(mGravityDir);
+					platformingEntity.SetVelocity(Vector2.Zero);
 				}
 			}
 		}

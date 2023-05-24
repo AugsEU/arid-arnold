@@ -76,6 +76,19 @@ namespace AridArnold
 		}
 
 
+		/// <summary>
+		/// Turn radian into 0 -> 2PI range
+		/// </summary>
+		public static float MainBranchRadian(float angle)
+		{
+			while(angle <= 0.0f)
+			{
+				angle += MathF.PI * 2.0f;
+			}
+			return angle % (MathF.PI * 2.0f);
+		}
+
+
 
 		/// <summary>
 		/// Clamp number between -absLimit and absLimit
