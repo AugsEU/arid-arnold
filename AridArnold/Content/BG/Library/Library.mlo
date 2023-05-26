@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
 	<element type="texture">
-		<x>0.0</x>
-		<y>0.0</y>
+		<x>-108.0</x>
+		<y>-116.0</y>
 		<depth>Background</depth>
 		<texture>BG/Library/BG</texture>
 	</element>

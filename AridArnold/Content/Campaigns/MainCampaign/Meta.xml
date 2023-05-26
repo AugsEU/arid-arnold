@@ -4,6 +4,6 @@
 	<start>0101</start>
 	<coins>
 		<type root="SteamPlant">0</type>
-		<type root="Library">0</type>
+		<type root="Library">1</type>
 	</coins>
 </campaign>
