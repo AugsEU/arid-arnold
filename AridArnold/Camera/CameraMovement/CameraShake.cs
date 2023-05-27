@@ -30,10 +30,10 @@
 			mCentrePos = mCurrentSpec.mPosition;
 		}
 
-		protected override void EndMovementInternal()
+		protected override void EndMovementInternal(ref CameraSpec endSpec)
 		{
 			// Make sure we end exactly where we started
-			mCurrentSpec.mPosition = mCentrePos;
+			endSpec.mPosition = mCentrePos;
 		}
 
 		protected override void UpdateInternal(GameTime gameTime)

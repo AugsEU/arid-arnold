@@ -12,14 +12,14 @@
 
 		abstract protected void StartMovementInternal();
 
-		abstract protected void EndMovementInternal();
+		abstract protected void EndMovementInternal(ref CameraSpec endSpec);
 
-		public bool IsMovementOver()
+		public bool IsMovementOver(ref CameraSpec endSpec)
 		{
 			bool over = IsMovementOverInternal();
 			if (over)
 			{
-				EndMovementInternal();
+				EndMovementInternal(ref endSpec);
 			}
 
 			return over;

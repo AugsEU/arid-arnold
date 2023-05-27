@@ -38,11 +38,16 @@
 			base.StartMovementInternal();
 		}
 
-		protected override void EndMovementInternal()
+		protected override void EndMovementInternal(ref CameraSpec endSpec)
 		{
-			// Make sure we end exactly where we started
-			mCurrentSpec.mRotation = mTargetAngle;
-			base.EndMovementInternal();
+			// Make sure we end exactly on the right angle
+			endSpec.mRotation = mTargetAngle;
+			base.EndMovementInternal(ref endSpec);
+		}
+
+		protected override bool IsMovementOverInternal()
+		{
+			return mTargetAngle == mStartRotation || base.IsMovementOverInternal();
 		}
 
 		protected override void UpdateInternal(GameTime gameTime)

@@ -119,7 +119,7 @@
 			Arnold arnold = (Arnold)entity;
 			EntityPush(arnold);
 
-			SetActive();
+			SetActive(arnold);
 		}
 
 
@@ -127,13 +127,19 @@
 		/// <summary>
 		/// Make this orb the active one.
 		/// </summary>
-		void SetActive()
+		void SetActive(Entity activatingEntity)
 		{
 			if (!IsActive())
 			{
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-				gameCam.QueueMovement(new ShakeAndRotateTo(15.0f, GetTurnToAngle()));
+				gameCam.QueueMovement(new ShakeAndRotateTo(10.0f, GetTurnToAngle()));
 				SetAllEntitiesGravity();
+
+				// Pull entity towards orb for consistency
+				Vector2 orbCentrePos = mPosition + new Vector2(Tile.sTILE_SIZE) * 0.5f;
+				Vector2 entityCentrePos = activatingEntity.GetCentrePos();
+				Vector2 entityPos = activatingEntity.GetPos();
+				activatingEntity.SetPos(entityPos + (orbCentrePos - entityCentrePos) * 0.5f);
 			}
 			sActiveOrb = this;
 		}
@@ -146,14 +152,21 @@
 		void SetAllEntitiesGravity()
 		{
 			int entityNum = EntityManager.I.GetEntityNum();
+
 			for(int i = 0; i < entityNum; i++)
 			{
 				Entity entity = EntityManager.I.GetEntity(i);
 				if(entity is PlatformingEntity)
 				{
 					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
-					platformingEntity.SetGravity(mGravityDir);
-					platformingEntity.SetVelocity(Vector2.Zero);
+
+					if (platformingEntity.GetGravityDir() != mGravityDir)
+					{
+						platformingEntity.SetGravity(mGravityDir);
+						platformingEntity.SetPrevWalkDirFromVelocity();
+						platformingEntity.SetWalkDirection(WalkDirection.None);
+						platformingEntity.SetVelocity(Vector2.Zero);
+					}
 				}
 			}
 		}

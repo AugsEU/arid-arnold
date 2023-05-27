@@ -113,13 +113,15 @@
 			}
 
 			CameraMovement topCamMove = mCameraMovements.Peek();
+			CameraSpec endSpec = mCurrentSpec;
 
 			if (mCurrentCameraMovement is null)
 			{
 				topCamMove.StartMovement(mCurrentSpec);
 			}
-			else if(mCurrentCameraMovement.IsMovementOver())
+			else if(mCurrentCameraMovement.IsMovementOver(ref endSpec))
 			{
+				mCurrentSpec = endSpec;
 				mCameraMovements.Dequeue();
 				if(mCameraMovements.Count > 0)
 				{

@@ -372,7 +372,7 @@
 		/// <summary>
 		/// Set previous walk direction from the velocity we have. Prevents jumping backwards with mirrors.
 		/// </summary>
-		protected void SetPrevWalkDirFromVelocity()
+		public void SetPrevWalkDirFromVelocity()
 		{
 			const float AIR_DIR_THRESH = 0.25f;
 			switch (GetGravityDir())
