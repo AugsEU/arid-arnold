@@ -43,7 +43,7 @@
 			mPosition.X += 3.0f;
 			mPosition.Y += 3.0f;
 
-			mFloatAngle = 0.0f;
+			mFloatAngle = RandomManager.I.GetDraw().GetFloatRange(0.0f, 6.34f);
 
 			mGravityDir = gravityDir;
 		}
