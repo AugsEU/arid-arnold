@@ -129,7 +129,7 @@
 		/// Get rotation of tile. E.g. platforms can be rotated
 		/// </summary>
 		/// <returns>Rotation in radians</returns>
-		public float GetRotation()
+		public virtual float GetRotation()
 		{
 			return Util.GetRotation(mRotation);
 		}
