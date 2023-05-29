@@ -1,4 +1,4 @@
-﻿#define DEBUG_LOADER_D
+﻿#define DEBUG_LOADER
 
 namespace AridArnold
 {
@@ -71,8 +71,8 @@ namespace AridArnold
 			mCurrLives = START_LIVES;
 #if DEBUG_LOADER
 			CollectableManager.I.ChangePermanentItem(0x0300, 10);
-			QueueLoadSequence(new HubDirectLoader(201));
-			//QueueLoadSequence(new LevelDirectLoader(203));
+			//QueueLoadSequence(new HubDirectLoader(201));
+			QueueLoadSequence(new LevelDirectLoader(204));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 #endif
