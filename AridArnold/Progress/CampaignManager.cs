@@ -72,7 +72,7 @@ namespace AridArnold
 #if DEBUG_LOADER
 			CollectableManager.I.ChangePermanentItem(0x0300, 10);
 			QueueLoadSequence(new HubDirectLoader(201));
-			//QueueLoadSequence(new LevelDirectLoader(206));
+			//QueueLoadSequence(new LevelDirectLoader(20000));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 #endif
