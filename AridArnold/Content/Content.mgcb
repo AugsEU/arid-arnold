@@ -685,21 +685,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0201.png
 
-#begin Campaigns/MainCampaign/Levels/0100.aux
-/copy:Campaigns/MainCampaign/Levels/0100.aux
-
-#begin Campaigns/MainCampaign/Levels/0100.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0100.png
-
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
 
@@ -850,21 +835,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0110.png
 
-#begin Campaigns/MainCampaign/Levels/0200.aux
-/copy:Campaigns/MainCampaign/Levels/0200.aux
-
-#begin Campaigns/MainCampaign/Levels/0200.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0200.png
-
 #begin Campaigns/MainCampaign/Levels/0201.aux
 /copy:Campaigns/MainCampaign/Levels/0201.aux
 
@@ -954,6 +924,36 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0206.png
+
+#begin Campaigns/MainCampaign/Levels/10000.aux
+/copy:Campaigns/MainCampaign/Levels/10000.aux
+
+#begin Campaigns/MainCampaign/Levels/10000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/10000.png
+
+#begin Campaigns/MainCampaign/Levels/20000.aux
+/copy:Campaigns/MainCampaign/Levels/20000.aux
+
+#begin Campaigns/MainCampaign/Levels/20000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/20000.png
 
 #begin Campaigns/MainCampaign/Meta.xml
 /copy:Campaigns/MainCampaign/Meta.xml
