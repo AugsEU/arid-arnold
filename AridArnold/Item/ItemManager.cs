@@ -33,7 +33,10 @@ namespace AridArnold
 		/// </summary>
 		public void SequenceEnd(bool success)
 		{
-			RefundMoney(mCoinsOwed);
+			if (success == false)
+			{
+				RefundMoney(mCoinsOwed);
+			}
 			mActiveItem = null;
 		}
 
