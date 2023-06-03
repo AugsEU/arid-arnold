@@ -37,6 +37,7 @@
 			kShopDoor,
 			kItemStand,
 			kGravityOrb,
+			kGravityTile,
 			kUtilityClassEnd
 		}
 

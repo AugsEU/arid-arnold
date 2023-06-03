@@ -313,6 +313,9 @@
 				case EntityData.EntityClass.kGravityOrb:
 					entity = new GravityOrb(worldPosition, (CardinalDirection)data.mIntParams[0]);
 					break;
+				case EntityData.EntityClass.kGravityTile:
+					entity = new GravityTile(worldPosition);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

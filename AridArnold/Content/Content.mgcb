@@ -937,6 +937,51 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0206.png
 
+#begin Campaigns/MainCampaign/Levels/0207.aux
+/copy:Campaigns/MainCampaign/Levels/0207.aux
+
+#begin Campaigns/MainCampaign/Levels/0207.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0207.png
+
+#begin Campaigns/MainCampaign/Levels/0208.aux
+/copy:Campaigns/MainCampaign/Levels/0208.aux
+
+#begin Campaigns/MainCampaign/Levels/0208.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0208.png
+
+#begin Campaigns/MainCampaign/Levels/0209.aux
+/copy:Campaigns/MainCampaign/Levels/0209.aux
+
+#begin Campaigns/MainCampaign/Levels/0209.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0209.png
+
 #begin Campaigns/MainCampaign/Levels/10000.aux
 /copy:Campaigns/MainCampaign/Levels/10000.aux
 
@@ -3504,6 +3549,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Library/Books.png
+
+#begin Tiles/Library/GravityTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Library/GravityTile.png
 
 #begin Tiles/Library/PenFull.png
 /importer:TextureImporter
