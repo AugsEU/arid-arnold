@@ -97,7 +97,8 @@ namespace AridArnold
 		{
 			if(entity is Arnold)
 			{
-				mPlayerNear = true;
+				Arnold arnold = (Arnold)entity;
+				mPlayerNear = arnold.CanBuyItem();
 			}
 
 			base.OnCollideEntity(entity);

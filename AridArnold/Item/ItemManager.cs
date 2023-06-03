@@ -159,14 +159,6 @@ namespace AridArnold
 			if (mActiveItem is not null)
 			{
 				mActiveItem.Update(gameTime);
-
-				bool useItem = InputManager.I.KeyPressed(AridArnoldKeys.UseItem);
-
-				if (useItem && CanUseItem() && mActiveItem.CanUseItem())
-				{
-					mActiveItem.UseItem();
-					mActiveItem = null;
-				}
 			}
 		}
 
@@ -179,39 +171,23 @@ namespace AridArnold
 		#region rUtility
 
 		/// <summary>
-		/// Can we use an item right now?
-		/// </summary>
-		bool CanUseItem()
-		{
-			if(mActiveItem is null)
-			{
-				return false;
-			}
-
-			Level currLevel = CampaignManager.I.GetCurrentLevel();
-
-			if(currLevel is null)
-			{
-				return false;
-			}
-
-			AuxData.LevelType levelType = currLevel.GetAuxData().GetLevelType();
-			if (levelType == AuxData.LevelType.Hub || levelType == AuxData.LevelType.Shop)
-			{
-				return false;
-			}
-
-			return true;
-		}
-
-
-
-		/// <summary>
 		/// Get the active item, may be null.
 		/// </summary>
 		public Item GetActiveItem()
 		{
 			return mActiveItem;
+		}
+
+
+
+		/// <summary>
+		/// Take the reference of the active item into your own ownership
+		/// </summary>
+		public Item PopActiveItem()
+		{
+			Item item = mActiveItem;
+			mActiveItem = null;
+			return item;
 		}
 
 		#endregion rUtility

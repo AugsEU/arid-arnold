@@ -42,5 +42,32 @@
 		}
 
 		#endregion rInitialisation
+
+
+
+
+
+		#region rItem
+
+		/// <summary>
+		/// Can we use an item right now?
+		/// </summary>
+		protected override bool CanUseItem()
+		{
+			// Androld can't use an item
+			return false;
+		}
+
+
+		/// <summary>
+		/// Can we buy an item?
+		/// </summary>
+		public override bool CanBuyItem()
+		{
+			// Androld can't buy an item
+			return false;
+		}
+
+		#endregion rItem
 	}
 }

@@ -14,37 +14,32 @@ namespace AridArnold
 			return 3;
 		}
 
-		public override void UseItem()
+		public override void UseItem(Arnold arnoldUsingItem)
 		{
 			EventManager.I.SendEvent(EventType.RedKeyUsed, new EArgs(this));
 		}
 
-		public override bool CanUseItem()
+		public override bool CanUseItem(Arnold arnoldUsingItem)
 		{
-			if(AnyRedLocksNearArnold() == false)
+			if(AnyRedLocksNearArnold(arnoldUsingItem) == false)
 			{
 				return false;
 			}
 
-			return base.CanUseItem();
+			return base.CanUseItem(arnoldUsingItem);
 		}
 
-		bool AnyRedLocksNearArnold()
+		bool AnyRedLocksNearArnold(Arnold arnoldUsingItem)
 		{
-			List<Entity> arnoldList = EntityManager.I.GetAllOfType(typeof(Arnold));
-
-			foreach (Entity arnold in arnoldList)
+			Rectangle neighbours = TileManager.I.GetNbyN(arnoldUsingItem.GetCentrePos(), 3);
+			for (int x = neighbours.X; x < neighbours.X + neighbours.Width; x++)
 			{
-				Rectangle neighbours = TileManager.I.GetNbyN(arnold.GetCentrePos(), 3);
-				for (int x = neighbours.X; x < neighbours.X + neighbours.Width; x++)
+				for (int y = neighbours.Y; y < neighbours.Y + neighbours.Height; y++)
 				{
-					for (int y = neighbours.Y; y < neighbours.Y + neighbours.Height; y++)
+					Tile tile = TileManager.I.GetTile(x, y);
+					if(tile is RedLockTile)
 					{
-						Tile tile = TileManager.I.GetTile(x, y);
-						if(tile is RedLockTile)
-						{
-							return true;
-						}
+						return true;
 					}
 				}
 			}

@@ -1,6 +1,4 @@
-﻿using static System.Formats.Asn1.AsnWriter;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class EItemHolder : LayElement
 	{

@@ -13,11 +13,11 @@
 
 		protected  Texture2D mTexture;
 
-		public abstract void UseItem();
+		public abstract void UseItem(Arnold arnoldUsingItem);
 
 		public abstract int GetPrice();
 
-		public virtual bool CanUseItem()
+		public virtual bool CanUseItem(Arnold arnoldUsingItem)
 		{
 			return true;
 		}

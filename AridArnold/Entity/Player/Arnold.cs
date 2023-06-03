@@ -1,4 +1,7 @@
-﻿namespace AridArnold
+﻿using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// The playable character, our hero, our saviour, Arnold.
@@ -10,6 +13,7 @@
 		const double DEATH_TIME = 500.0;
 		const double START_TIME = 500.0;
 		const double FLASH_TIME = 100.0;
+		const double USE_ITEM_TIME = 600.0;
 		const int COYOTE_TIME = 12;
 
 
@@ -17,6 +21,8 @@
 		const float ARNOLD_GRAVITY = 4.35f;
 		const float ARNOLD_JUMP_SPEED = 25.0f;
 		const float ARNOLD_AIR_SPEED_BOOST = 0.015f;
+
+		static Vector2 ITEM_OFFSET = new Vector2(-2.0f, -15.0f);
 
 		#endregion rConstants
 
@@ -30,10 +36,15 @@
 
 		protected Texture2D mJumpUpTex;
 		protected Texture2D mJumpDownTex;
+		protected Texture2D mUseItemTex;
 
 		//Various timers.
 		PercentageTimer mTimerSinceDeath;
 		protected PercentageTimer mTimerSinceStart;
+
+		// Items
+		Item mItemToUse;
+		PercentageTimer mUseItemTimer;
 
 		// Inputs(can change based on camera angle etc)
 		AridArnoldKeys mLeftKey;
@@ -61,9 +72,13 @@
 			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
 			mTimerSinceStart = new PercentageTimer(START_TIME);
 
+			mUseItemTimer = new PercentageTimer(USE_ITEM_TIME);
+
 			mLeftKey = AridArnoldKeys.ArnoldLeft;
 			mRightKey = AridArnoldKeys.ArnoldRight;
 			mDownKey = AridArnoldKeys.ArnoldDown;
+
+			mItemToUse = null;
 		}
 
 
@@ -76,6 +91,7 @@
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldStand");
 			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldJumpUp");
 			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldJumpDown");
+			mUseItemTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldUseItem");
 
 			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
 												("Arnold/ArnoldRun1", 0.1f),
@@ -148,6 +164,22 @@
 				return;
 			}
 
+			//Item
+			if(mUseItemTimer.IsPlaying())
+			{
+				if (mUseItemTimer.GetPercentage() == 1.0)
+				{
+					Item usingItem = ItemManager.I.PopActiveItem();
+					MonoDebug.Assert(usingItem == mItemToUse);
+
+					usingItem.UseItem(this);
+					mItemToUse = usingItem;
+					mUseItemTimer.FullReset();
+				}
+
+				return;
+			}
+
 			//Anim
 			mRunningAnimation.Update(gameTime);
 
@@ -208,6 +240,19 @@
 				if (jump && mVelocity.Y > 0.0f)
 				{
 					Jump();
+				}
+			}
+
+			// Items
+			bool useItem = InputManager.I.KeyPressed(AridArnoldKeys.UseItem);
+			if(CanUseItem() && useItem)
+			{
+				Item activeItem = ItemManager.I.GetActiveItem();
+				if(activeItem is not null && activeItem.CanUseItem(this))
+				{
+					mUseItemTimer.Reset();
+					mUseItemTimer.Start();
+					mItemToUse = activeItem;
 				}
 			}
 		}
@@ -323,6 +368,10 @@
 				{
 					texture = mRunningAnimation.GetCurrentTexture();
 				}
+				else if(mUseItemTimer.IsPlaying())
+				{
+					texture = mUseItemTex;
+				}
 			}
 			else
 			{
@@ -388,7 +437,53 @@
 			return DrawLayer.Player;
 		}
 
+
+
+		/// <summary>
+		/// Draw arnold
+		/// </summary>
+		/// <param name="info"></param>
+		public override void Draw(DrawInfo info)
+		{
+			if (mOnGround && mUseItemTimer.IsPlaying())
+			{
+				Vector2 itemPos = mPosition + ITEM_OFFSET;
+				itemPos.Y -= 6.0f * mUseItemTimer.GetPercentageF();
+
+				MonoDraw.DrawTextureDepth(info, mItemToUse.GetTexture(), itemPos, DrawLayer.Player);
+			}
+
+			// Base actually draws arnold himself
+			base.Draw(info);
+		}
+
 		#endregion rDraw
+
+
+
+
+
+		#region rItem
+
+		/// <summary>
+		/// Can we use item
+		/// </summary>
+		protected virtual bool CanUseItem()
+		{
+			return mOnGround;
+		}
+
+
+
+		/// <summary>
+		/// Can we buy an item?
+		/// </summary>
+		public virtual bool CanBuyItem()
+		{
+			return mOnGround && !mUseItemTimer.IsPlaying();
+		}
+
+		#endregion rItem
 
 
 

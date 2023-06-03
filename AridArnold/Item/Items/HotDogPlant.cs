@@ -40,12 +40,12 @@
 			return 5;
 		}
 
-		public override void UseItem()
+		public override void UseItem(Arnold arnoldUsingItem)
 		{
 			CampaignManager.I.GainLives(mNumHotDogs);
 		}
 
-		public override bool CanUseItem()
+		public override bool CanUseItem(Arnold arnoldUsingItem)
 		{
 			return mNumHotDogs > 0;
 		}
