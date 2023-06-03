@@ -80,7 +80,7 @@
 				EntityCollision entityCollision = currentCollision;
 				CollisionResults collisionResults = entityCollision.GetResult();
 
-				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(mVelocity.X), Math.Abs(mVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.001f;
+				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(mVelocity.X), Math.Abs(mVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.005f;
 				mVelocity += pushVec;
 
 				mVelocity += entityCollision.GetExtraVelocity(this);
