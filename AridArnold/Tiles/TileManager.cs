@@ -200,6 +200,10 @@ namespace AridArnold
 					case 0xDC143Cu:
 						EntityManager.I.RegisterEntity(new Arnold(pos));
 						break;
+					// Gravity tile
+					case 0x76797Eu:
+						EntityManager.I.RegisterEntity(new GravityTile(pos));
+						break;
 				}
 			}
 		}

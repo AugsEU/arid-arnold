@@ -8,7 +8,7 @@
 	{
 		const float KILL_THRESH = 1.0f;
 
-		public GravityTile(Vector2 pos) : base(pos,0,0,5.0f)
+		public GravityTile(Vector2 pos) : base(pos,0,0,4.5f)
 		{
 		}
 
@@ -20,16 +20,18 @@
 
 		public override Rect2f ColliderBounds()
 		{
-			return new Rect2f(mPosition, mTexture);
+			return new Rect2f(mPosition, mTexture.Width, mTexture.Height);
 		}
 
 		public override void Draw(DrawInfo info)
 		{
-			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.Tile);
+			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.TileEffects);
 		}
 
 		public override void Update(GameTime gameTime)
 		{
+			mVelocity = new Vector2(MonoMath.ClampAbs(mVelocity.X, 60.0f), MonoMath.ClampAbs(mVelocity.Y, 60.0f));
+
 			//Collider
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 			base.Update(gameTime);
