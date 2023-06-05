@@ -3,6 +3,7 @@
 	<name>Steam Plant</name>
 	<path from="Wall">Wood</path>
 	<path from="WallSecondary">Books</path>
+	<path from="OtherWorldWall">../Buk/Cave</path>
 	<path from="Platform">WoodPlatform</path>
 	<path from="CoinFull">PenFull</path>
 	<path from="CoinGhost">PenGhost</path>
