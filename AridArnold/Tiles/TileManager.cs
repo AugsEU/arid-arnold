@@ -722,6 +722,83 @@ namespace AridArnold
 			return false;
 		}
 
+
+		/// <summary>
+		/// Make sure an entity isn't 
+		/// </summary>
+		/// <param name="entity"></param>
+		public void UntangleEntityFromTiles(Entity entity)
+		{
+			Rect2f collider = entity.ColliderBounds();
+
+			if(collider.Width > 16.0f || collider.Height > 16.0f)
+			{
+				return;
+			}
+
+			Vector2 centrePos = collider.Centre;
+			Point tileIdx = GetTileMapCoord(centrePos);
+			Vector2 tilePos = GetTileTopLeft(tileIdx);
+
+			Vector2 finalPos = entity.GetPos();
+
+			// Top
+			bool topIntersect = SolidAndIntersects(GetTile(tileIdx.X - 1, tileIdx.Y - 1), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X, tileIdx.Y - 1), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X + 1, tileIdx.Y - 1), collider);
+
+			if(topIntersect)
+			{
+				finalPos.Y = tilePos.Y;
+			}
+
+			// Bottom
+			bool bottomIntersect = SolidAndIntersects(GetTile(tileIdx.X - 1, tileIdx.Y + 1), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X, tileIdx.Y + 1), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X + 1, tileIdx.Y + 1), collider);
+
+			if (bottomIntersect)
+			{
+				finalPos.Y = tilePos.Y + Tile.sTILE_SIZE - collider.Height;
+			}
+
+			MonoDebug.Assert(!(topIntersect && bottomIntersect));
+
+			// Left
+			bool leftIntersect = SolidAndIntersects(GetTile(tileIdx.X - 1, tileIdx.Y - 1), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X - 1, tileIdx.Y), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X - 1, tileIdx.Y + 1), collider);
+
+			if (leftIntersect)
+			{
+				finalPos.X = tilePos.X;
+			}
+
+			// Right
+			bool rightIntersect = SolidAndIntersects(GetTile(tileIdx.X + 1, tileIdx.Y - 1), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X + 1, tileIdx.Y), collider) ||
+								SolidAndIntersects(GetTile(tileIdx.X + 1, tileIdx.Y + 1), collider);
+
+			if (rightIntersect)
+			{
+				finalPos.X = tilePos.X + Tile.sTILE_SIZE - collider.Width;
+			}
+
+			MonoDebug.Assert(!(leftIntersect && rightIntersect));
+
+			entity.SetPos(finalPos);
+		}
+
+
+
+		/// <summary>
+		/// Is this tile solid and does it intersect? (Basic check)
+		/// </summary>
+		public bool SolidAndIntersects(Tile tile, Rect2f collider)
+		{
+			return tile is not null && tile.IsSolid() && Collision2D.BoxVsBox(tile.GetBounds(), collider);
+		}
+
 		#endregion rCollision
 	}
 }

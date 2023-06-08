@@ -166,6 +166,8 @@
 						platformingEntity.SetPrevWalkDirFromVelocity();
 						platformingEntity.SetWalkDirection(WalkDirection.None);
 						platformingEntity.SetVelocity(Vector2.Zero);
+						platformingEntity.SetGrounded(false);
+						TileManager.I.UntangleEntityFromTiles(platformingEntity);
 					}
 				}
 			}
