@@ -276,6 +276,9 @@
 				case EntityData.EntityClass.kFutronRocket:
 					entity = new FutronRocket(worldPosition, data.mFloatParams[0], data.mFloatParams[1], data.mFloatParams[2], data.mFloatParams[3]);
 					break;
+				case EntityData.EntityClass.kFarry:
+					entity = new FallingFarry(worldPosition);
+					break;
 
 				// NPC
 				case EntityData.EntityClass.kBarbara:

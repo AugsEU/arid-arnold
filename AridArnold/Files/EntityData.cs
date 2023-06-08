@@ -20,6 +20,7 @@
 			kRoboto,
 			kFutronGun,
 			kFutronRocket,
+			kFarry,
 			kEnemyClassEnd,
 
 			//NPC

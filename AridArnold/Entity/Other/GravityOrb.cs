@@ -111,15 +111,15 @@
 		/// <param name="entity"></param>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if(entity is not Arnold)
+			if(entity is not Arnold && entity is not FallingFarry)
 			{
 				return;
 			}
 
-			Arnold arnold = (Arnold)entity;
-			EntityPush(arnold);
+			MovingEntity movingEntity = (MovingEntity)entity;
+			EntityPush(movingEntity);
 
-			SetActive(arnold);
+			SetActive(movingEntity);
 		}
 
 
