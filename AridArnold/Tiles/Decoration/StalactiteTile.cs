@@ -4,7 +4,7 @@ namespace AridArnold
 {
     class StalactiteTile : AirTile
 	{
-		static Vector2 DROP_DISPLACEMENT = new Vector2(10.0f, 13.0f);
+		static Vector2 DROP_DISPLACEMENT = new Vector2(10.0f, 11.0f);
 		static Color DROP_MAIN_COLOR = new Color(0, 46, 101);
 		static Color DROP_SECOND_COLOR = new Color(0, 33, 75);
 
