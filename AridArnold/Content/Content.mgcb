@@ -727,6 +727,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0203.png
 
+#begin Campaigns/MainCampaign/Hub/0204.aux
+/copy:Campaigns/MainCampaign/Hub/0204.aux
+
+#begin Campaigns/MainCampaign/Hub/0204.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0204.png
+
 #begin Campaigns/MainCampaign/Hub/0301.aux
 /copy:Campaigns/MainCampaign/Hub/0301.aux
 
