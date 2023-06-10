@@ -20,7 +20,7 @@ if __name__ == "__main__":
         print("Usage: python CloneLevel.py <code> <num_duplicates>")
     else:
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        os.chdir(dir_path + '/../AridArnold/Content/Campaigns/MainCampaign/Levels')
+        os.chdir(dir_path + '/../AridArnold/Content/Campaigns/MainCampaign/Hub')
 
         code = sys.argv[1]
         num_duplicates = int(sys.argv[2])
