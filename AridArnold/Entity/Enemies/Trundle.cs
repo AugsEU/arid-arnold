@@ -61,15 +61,15 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/Trundlestand");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/TrundleStand1");
 			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/TrundleJumpUp");
 			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/TrundleJumpDown");
 
 			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
-												("Enemies/trundle/Trundlewalk1", 0.12f),
-												("Enemies/trundle/Trundlewalk2", 0.15f),
-												("Enemies/trundle/Trundlewalk3", 0.12f),
-												("Enemies/trundle/Trundlewalk4", 0.12f));
+												("Enemies/trundle/TrundleWalk1", 0.12f),
+												("Enemies/trundle/TrundleWalk2", 0.15f),
+												("Enemies/trundle/TrundleWalk3", 0.12f),
+												("Enemies/trundle/TrundleWalk4", 0.12f));
 			mRunningAnimation.Play();
 
 			mStandAnimation = new Animator(Animator.PlayType.Repeat,
