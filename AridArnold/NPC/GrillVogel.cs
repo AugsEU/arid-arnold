@@ -43,6 +43,8 @@
 			mStyle.mFont = FontManager.I.GetFont("Pixica-24");
 			mStyle.mScrollSpeed = 1.6f;
 			mStyle.mFramesPerLetter = 20;
+			mStyle.mBorderColor = new Color(204, 122, 0, 200);
+			mStyle.mFillColor = new Color(50, 50, 0, 60);
 
 			mStoryRandom = new MonoRandom();
 		}
