@@ -7,8 +7,9 @@
 	{
 		public enum NodeType
 		{
-			None,
-			HasPlatform = 0b0000_0001
+			None = 0b0000_0000,
+			HasPlatform = 0b0000_0001,
+			HasSpikeBlock = 0b0000_0010,
 		}
 
 		public Point mPoint;
@@ -86,6 +87,68 @@
 		public RailNode GetNode(int i) {  return mRailNodes[i]; }
 
 		#endregion rUtil
+
+
+
+
+
+		#region rFactory
+
+		/// <summary>
+		/// Loop through rail nodes and spawn appropriate entities on them
+		/// </summary>
+		public void ParseAllNodes()
+		{
+			for(int i = 0; i < mRailNodes.Count; i++)
+			{
+				ParseRailNode(i);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Parse a single rail node and spawn the appropriate entities on this.
+		/// </summary>
+		private void ParseRailNode(int idx)
+		{
+			RailNode node = GetNode(idx);
+
+			if (node.mType == RailNode.NodeType.None)
+			{
+				return;
+			}
+
+			RailTraveller railTraveller;
+
+			switch (GetRailType())
+			{
+				case LinearRailData.RailType.BackAndForth:
+					railTraveller = new BackAndForthLinearRailTraveller(idx, this);
+					break;
+				case LinearRailData.RailType.Cycle:
+					railTraveller = new CycleLinearRailTraveller(idx, this);
+					break;
+				default:
+					throw new NotImplementedException();
+			}
+
+			switch (node.mType)
+			{
+				case RailNode.NodeType.HasPlatform:
+					EntityManager.I.RegisterEntity(new RailPlatform(railTraveller, node.mDirection, GetSize()));
+					break;
+				case RailNode.NodeType.HasSpikeBlock:
+					EntityManager.I.RegisterEntity(new SpikeBlock(railTraveller));
+					break;
+				default:
+					throw new NotImplementedException("Invalid node flags.");
+			}
+
+			
+		}
+
+		#endregion rFactory
 	}
 
 

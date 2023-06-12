@@ -245,12 +245,7 @@
 			
 
 			//Get type
-			node.mType = RailNode.NodeType.None;
-
-			if ((flags & 0x1) != 0)
-			{
-				node.mType |= RailNode.NodeType.HasPlatform;
-			}
+			node.mType = (RailNode.NodeType)(flags & 0xFF);
 
 			//Get direction
 			UInt32 direction = MonoAlg.IntSubString(flags, 8, 4);

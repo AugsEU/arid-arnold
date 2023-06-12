@@ -18,37 +18,6 @@ namespace AridArnold
 
 
 		#region rInitialisation
-
-		/// <summary>
-		/// Factory to create a rail platform from a rail node and register it.
-		/// </summary>
-		public static void TryCreateRailPlatformAtNode(LinearRailData railData, int idx)
-		{
-			RailNode node = railData.GetNode(idx);
-
-			if (node.mType != RailNode.NodeType.HasPlatform)
-			{
-				return;
-			}
-
-			RailTraveller railTraveller;
-
-			switch (railData.GetRailType())
-			{
-				case LinearRailData.RailType.BackAndForth:
-					railTraveller = new BackAndForthLinearRailTraveller(idx, railData);
-					break;
-				case LinearRailData.RailType.Cycle:
-					railTraveller = new CycleLinearRailTraveller(idx, railData);
-					break;
-				default:
-					throw new NotImplementedException();
-			}
-
-			EntityManager.I.RegisterEntity(new RailPlatform(railTraveller, node.mDirection, railData.GetSize()));
-		}
-		
-
 		
 		/// <summary>
 		/// Create rail platform that travels along a rail.

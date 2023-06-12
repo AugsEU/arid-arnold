@@ -88,10 +88,7 @@ namespace AridArnold
 			for (int i = 0; i < railList.Count; i++)
 			{
 				LinearRailData railData = railList[i];
-				for (int j = 0; j < railData.GetCount(); j++)
-				{
-					RailPlatform.TryCreateRailPlatformAtNode(railData, j);
-				}
+				railData.ParseAllNodes();
 			}
 
 			// Create Entities
