@@ -6,5 +6,6 @@
 		<type root="SteamPlant">0</type>
 		<type root="Library">1</type>
 		<type root="Buk">2</type>
+		<type root="Lab">3</type>
 	</coins>
 </campaign>

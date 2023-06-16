@@ -862,6 +862,51 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0308.png
 
+#begin Campaigns/MainCampaign/Hub/0401.aux
+/copy:Campaigns/MainCampaign/Hub/0401.aux
+
+#begin Campaigns/MainCampaign/Hub/0401.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0401.png
+
+#begin Campaigns/MainCampaign/Hub/0402.aux
+/copy:Campaigns/MainCampaign/Hub/0402.aux
+
+#begin Campaigns/MainCampaign/Hub/0402.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0402.png
+
+#begin Campaigns/MainCampaign/Hub/0403.aux
+/copy:Campaigns/MainCampaign/Hub/0403.aux
+
+#begin Campaigns/MainCampaign/Hub/0403.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0403.png
+
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
 
@@ -3849,6 +3894,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Lab/ButtonUp.png
+
+#begin Tiles/Lab/ChipFull.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Lab/ChipFull.png
+
+#begin Tiles/Lab/ChipGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Lab/ChipGhost.png
 
 #begin Tiles/Lab/ElectricFull1.png
 /importer:TextureImporter
