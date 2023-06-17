@@ -103,6 +103,7 @@ namespace AridArnold
 		public override void LoadContent()
 		{
 			mAnimation = MonoData.I.LoadAnimator("Platform");
+			mAnimation.Play();
 			base.LoadContent();
 		}
 

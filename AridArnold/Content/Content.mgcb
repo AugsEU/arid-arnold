@@ -871,7 +871,7 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
@@ -3955,7 +3955,7 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Lab/ElectricMid.png
 
-#begin Tiles/Lab/ElectrictNone.png
+#begin Tiles/Lab/ElectricNone.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3965,7 +3965,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Lab/ElectrictNone.png
+/build:Tiles/Lab/ElectricNone.png
 
 #begin Tiles/Lab/GateClosed.png
 /importer:TextureImporter
