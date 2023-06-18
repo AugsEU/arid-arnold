@@ -319,6 +319,9 @@
 				case EntityData.EntityClass.kGravityTile:
 					entity = new GravityTile(worldPosition);
 					break;
+				case EntityData.EntityClass.kTimeMachine:
+					entity = new TimeMachine(worldPosition);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

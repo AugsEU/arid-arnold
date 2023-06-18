@@ -39,6 +39,7 @@
 			kItemStand,
 			kGravityOrb,
 			kGravityTile,
+			kTimeMachine,
 			kUtilityClassEnd
 		}
 
