@@ -78,16 +78,6 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Collider bounds.
-		/// </summary>
-		public override Rect2f ColliderBounds()
-		{
-			return new Rect2f(mPosition, mTexture);
-		}
-
-
-
-		/// <summary>
 		/// React to collision with an entity.
 		/// </summary>
 		/// <param name="entity"></param>

@@ -21,7 +21,6 @@
 		Texture2D[] mNumberTextures;
 
 		LevelSequenceInfoBubble mHelpBubble;
-		bool mPlayerNear;
 		bool mDoorOpen;
 		bool mAlreadyCompleted;
 		Point mTileCoord;
@@ -60,7 +59,6 @@
 			bubbleStyle.mBorderColor = new Color(150, 150, 150, 200);
 			mHelpBubble = new LevelSequenceInfoBubble(mLevelSequence, mPosition + BUBBLE_OFFSET, bubbleStyle);
 
-			mPlayerNear = false;
 			mDoorOpen = false;
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
 		}
@@ -104,7 +102,7 @@
 		public override void Update(GameTime gameTime)
 		{
 			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)PermanentCollectable.Door);
-			if (mPlayerNear)
+			if (IsPlayerNear())
 			{
 				mHelpBubble.Open();
 			}
@@ -114,31 +112,18 @@
 			}
 			mHelpBubble.Update(gameTime);
 
-			HandleInput();
-
 			base.Update(gameTime);
-			mPlayerNear = false;
 		}
 
 
 
 		/// <summary>
-		/// Handle any inputs
+		/// Open the door when interacted with
 		/// </summary>
-		void HandleInput()
+		protected override void OnPlayerInteract()
 		{
-			if(mPlayerNear == false || mDoorOpen == true)
-			{
-				// Player can't interact
-				return;
-			}
-
-			bool activate = InputManager.I.KeyHeld(AridArnoldKeys.Confirm);
-
-			if(activate)
-			{
-				OpenDoor();
-			}
+			OpenDoor();
+			base.OnPlayerInteract();
 		}
 
 
@@ -153,21 +138,6 @@
 
 			CampaignManager.I.PushLevelSequence(mLevelSequence, mTileCoord);
 			CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader());
-		}
-
-
-
-		/// <summary>
-		/// Handle collision.
-		/// </summary>
-		public override void OnCollideEntity(Entity entity)
-		{
-			if(entity is Arnold)
-			{
-				mPlayerNear = true;
-			}
-
-			base.OnCollideEntity(entity);
 		}
 
 

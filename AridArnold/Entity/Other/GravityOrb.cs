@@ -173,16 +173,6 @@
 			}
 		}
 
-
-
-		/// <summary>
-		/// Orb collider
-		/// </summary>
-		public override Rect2f ColliderBounds()
-		{
-			return new Rect2f(mPosition, mTexture);
-		}
-
 		#endregion rUpadate
 
 

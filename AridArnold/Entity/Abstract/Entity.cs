@@ -15,6 +15,7 @@
 		protected Vector2 mCentreOfMass;
 		protected Texture2D mTexture;
 		protected float mUpdateOrder;
+		protected bool mPlayerNear;
 		private bool mEnabled;
 
 		#endregion rMembers
@@ -36,6 +37,7 @@
 			mUpdateOrder = 0.0f;
 			mHandle = sHandleHead;
 			mEnabled = true;
+			mPlayerNear = false;
 
 			// To do: Make this atomic if we end up needing to spawn multiple entities on different threads.
 			sHandleHead++;
@@ -84,6 +86,39 @@
 
 			//Calculate order for OrderedUpdate
 			CalculateUpdateOrder();
+
+			HandleInput();
+			mPlayerNear = false;
+		}
+
+
+
+		/// <summary>
+		/// Handle any inputs
+		/// </summary>
+		void HandleInput()
+		{
+			if (mPlayerNear == false)
+			{
+				// Player can't interact
+				return;
+			}
+
+			bool activate = InputManager.I.KeyHeld(AridArnoldKeys.Confirm);
+
+			if (activate)
+			{
+				OnPlayerInteract();
+			}
+		}
+
+
+
+		/// <summary>
+		/// Trigger event when interacted with
+		/// </summary>
+		protected virtual void OnPlayerInteract()
+		{
 		}
 
 
@@ -104,7 +139,10 @@
 		/// <param name="entity"></param>
 		public virtual void OnCollideEntity(Entity entity)
 		{
-			//Default: Do nothing.
+			if (entity is Arnold)
+			{
+				mPlayerNear = true;
+			}
 		}
 
 
@@ -143,7 +181,10 @@
 		/// Get the collider for this entity
 		/// </summary>
 		/// <returns></returns>
-		public abstract Rect2f ColliderBounds();
+		public virtual Rect2f ColliderBounds()
+		{
+			return new Rect2f(mPosition, mTexture);
+		}
 
 
 
@@ -239,6 +280,16 @@
 			return mEnabled;
 		}
 
+
+
+		/// <summary>
+		/// Is the player intersecting our collider?
+		/// </summary>
+		protected bool IsPlayerNear()
+		{
+			return mPlayerNear;
+		}
+
 		#endregion rUtility
 
 
@@ -320,7 +371,7 @@
 					entity = new GravityTile(worldPosition);
 					break;
 				case EntityData.EntityClass.kTimeMachine:
-					entity = new TimeMachine(worldPosition);
+					entity = new TimeMachine(worldPosition, data.mIntParams[0], data.mIntParams[1]);
 					break;
 				default:
 					throw new NotImplementedException();

@@ -17,12 +17,6 @@
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Library/GravityTile");
 		}
 
-
-		public override Rect2f ColliderBounds()
-		{
-			return new Rect2f(mPosition, mTexture.Width, mTexture.Height);
-		}
-
 		public override void Draw(DrawInfo info)
 		{
 			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.TileEffects);

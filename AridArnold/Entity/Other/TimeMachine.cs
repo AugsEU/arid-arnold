@@ -17,7 +17,8 @@ namespace AridArnold
 
 		#region rMembers
 
-
+		int mLevelID;
+		int mTimeZone;
 
 		#endregion rMembers
 
@@ -29,9 +30,11 @@ namespace AridArnold
 		/// <summary>
 		/// Create time machine at pos(bottom left)
 		/// </summary>
-		public TimeMachine(Vector2 pos) : base(pos)
+		public TimeMachine(Vector2 pos, int levelToLoadID, int timeZoneToGoTo) : base(pos)
 		{
 			mPosition.Y -= 45;
+			mLevelID = levelToLoadID;
+			mTimeZone = timeZoneToGoTo;
 		}
 
 
@@ -53,11 +56,14 @@ namespace AridArnold
 		#region rUpdate
 
 		/// <summary>
-		/// Get collider bounds
+		/// When player presses enter
 		/// </summary>
-		public override Rect2f ColliderBounds()
+		protected override void OnPlayerInteract()
 		{
-			return new Rect2f(mPosition, mTexture);
+			// Load the level directly, maybe we could shake and play an animation?
+			TimeZoneManager.I.SetTimeZone(mTimeZone);
+			CampaignManager.I.QueueLoadSequence(new HubDirectLoader(mLevelID));
+			base.OnPlayerInteract();
 		}
 
 		#endregion rUpdate

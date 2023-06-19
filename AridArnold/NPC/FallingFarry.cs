@@ -27,11 +27,6 @@
 			base.Update(gameTime);
 		}
 
-		public override Rect2f ColliderBounds()
-		{
-			return new Rect2f(mPosition, mTexture);
-		}
-
 		protected override Texture2D GetDrawTexture()
 		{
 			return mFallingAnim.GetCurrentTexture();

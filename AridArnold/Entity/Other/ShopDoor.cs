@@ -19,7 +19,6 @@
 		Texture2D mOpenTexture;
 		Texture2D mClosedTexture;
 		Texture2D mArrowTexture;
-		bool mPlayerNear;
 		bool mDoorOpen;
 
 		#endregion rMembers
@@ -35,7 +34,6 @@
 		/// </summary>
 		public ShopDoor(Vector2 pos) : base(pos)
 		{
-			mPlayerNear = false;
 			mDoorOpen = false;
 		}
 
@@ -61,35 +59,12 @@
 		#region rUpdate
 
 		/// <summary>
-		/// Update
+		/// Open the door when interacted with
 		/// </summary>
-		public override void Update(GameTime gameTime)
+		protected override void OnPlayerInteract()
 		{
-			HandleInput();
-
-			base.Update(gameTime);
-			mPlayerNear = false;
-		}
-
-
-
-		/// <summary>
-		/// Handle any inputs
-		/// </summary>
-		void HandleInput()
-		{
-			if(mPlayerNear == false || mDoorOpen == true)
-			{
-				// Player can't interact
-				return;
-			}
-
-			bool activate = InputManager.I.KeyHeld(AridArnoldKeys.Confirm);
-
-			if(activate)
-			{
-				OpenDoor();
-			}
+			OpenDoor();
+			base.OnPlayerInteract();
 		}
 
 
@@ -103,21 +78,6 @@
 			mTexture = mOpenTexture;
 
 			EventManager.I.SendEvent(EventType.ShopDoorOpen, new EArgs(this));
-		}
-
-
-
-		/// <summary>
-		/// Handle collision.
-		/// </summary>
-		public override void OnCollideEntity(Entity entity)
-		{
-			if(entity is Arnold)
-			{
-				mPlayerNear = true;
-			}
-
-			base.OnCollideEntity(entity);
 		}
 
 

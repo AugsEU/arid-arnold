@@ -57,6 +57,7 @@
 
 			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			TileManager.I.Init(new Vector2(-TILE_SIZE, -TILE_SIZE), TILE_SIZE);
+			TimeZoneManager.I.Init();
 		}
 
 

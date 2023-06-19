@@ -22,7 +22,6 @@ namespace AridArnold
 
 		Item mItem;
 		float mAngle;
-		bool mPlayerNear;
 		SpriteFont mFont;
 
 		#endregion rMembers
@@ -68,10 +67,7 @@ namespace AridArnold
 			float dt = Util.GetDeltaT(gameTime);
 			mAngle += ANGULAR_SPEED * dt;
 
-			HandleInput();
-
 			base.Update(gameTime);
-			mPlayerNear = false;
 		}
 
 
@@ -79,15 +75,11 @@ namespace AridArnold
 		/// <summary>
 		/// Handle any inputs
 		/// </summary>
-		void HandleInput()
+		protected override void OnPlayerInteract()
 		{
-			bool activate = InputManager.I.KeyPressed(AridArnoldKeys.Confirm);
-
-			if (activate && mPlayerNear)
-			{
-				ItemManager.I.PurchaseItem(mItem);
-			}
+			ItemManager.I.PurchaseItem(mItem);
 		}
+
 
 
 		/// <summary>
@@ -103,6 +95,7 @@ namespace AridArnold
 
 			base.OnCollideEntity(entity);
 		}
+
 
 
 		/// <summary>
