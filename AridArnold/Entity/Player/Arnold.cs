@@ -321,30 +321,6 @@ namespace AridArnold
 			base.OnCollideEntity(entity);
 		}
 
-
-
-		/// <summary>
-		/// Check if we died from going off-screen
-		/// </summary>
-		/// <returns>True if we should die</returns>
-		/// <exception cref="NotImplementedException">Required valid cardinal direction</exception>
-		private bool CheckOffScreenDeath()
-		{
-			switch (GetGravityDir())
-			{
-				case CardinalDirection.Up:
-					return mPosition.Y < -mTexture.Height / 2.0f;
-				case CardinalDirection.Right:
-					return mPosition.X > TileManager.I.GetDrawWidth() + 2.0f * mTexture.Width;
-				case CardinalDirection.Down:
-					return mPosition.Y > TileManager.I.GetDrawHeight() + mTexture.Height / 2.0f;
-				case CardinalDirection.Left:
-					return mPosition.X < -mTexture.Width / 2.0f;
-			}
-
-			throw new NotImplementedException();
-		}
-
 		#endregion rUpdate
 
 

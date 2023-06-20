@@ -54,9 +54,6 @@
 			mStandAnimation = new Animator(Animator.PlayType.OneShot,
 											("Enemies/roboto/RobotoWalk1", 1.2f));
 			mStandAnimation.Play();
-
-			//Botch position a bit. Not sure what's happening here.
-			mPosition.Y += 0.0f;
 		}
 
 		#endregion rInitialisation
@@ -77,6 +74,11 @@
 			{
 				//Collider
 				EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
+			}
+
+			if(CheckOffScreenDeath())
+			{
+				EntityManager.I.QueueDeleteEntity(this);
 			}
 
 			base.Update(gameTime);
@@ -146,6 +148,16 @@
 			{
 				base.OnCollideEntity(entity);
 			}
+		}
+
+
+
+		/// <summary>
+		/// Turn the robot on.
+		/// </summary>
+		public void PowerOn()
+		{
+			mPoweredOn = true;
 		}
 
 		#endregion rUpdate

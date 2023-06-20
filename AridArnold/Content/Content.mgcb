@@ -4369,6 +4369,42 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Lab/PermaUp.png
 
+#begin Tiles/Lab/RobotoSpawnerOff.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Lab/RobotoSpawnerOff.png
+
+#begin Tiles/Lab/RobotoSpawnerOn1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Lab/RobotoSpawnerOn1.png
+
+#begin Tiles/Lab/RobotoSpawnerOn2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Lab/RobotoSpawnerOn2.png
+
 #begin Tiles/Lab/TimeMachine.png
 /importer:TextureImporter
 /processor:TextureProcessor
