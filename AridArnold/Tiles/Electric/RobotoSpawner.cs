@@ -6,8 +6,10 @@ namespace AridArnold
 	{
 		#region rConstants
 
-		const float EXIT_VELOCITY_X = 7.0f;
+		const float EXIT_VELOCITY_X = 10.0f;
 		const float EXIT_VELOCITY_Y = 12.0f;
+		const double SPAWN_TIME = 2000.0;
+		const double CHARGE_UP_TIME = 800.0;
 
 		#endregion rConstants
 
@@ -18,7 +20,8 @@ namespace AridArnold
 		#region rMembers
 
 		Animator mOnAnim;
-		Roboto mActiveRobot;
+		Texture2D mPoweredTexture;
+		MonoTimer mSpawnTimer;
 		bool mIsOn;
 
 		#endregion rMembers
@@ -33,7 +36,8 @@ namespace AridArnold
 		{
 			mIsOn = false;
 			mRotation = rotation;
-			mActiveRobot = null;
+			mSpawnTimer = new MonoTimer();
+			mSpawnTimer.Start();
 		}
 
 
@@ -44,6 +48,7 @@ namespace AridArnold
 		public override void LoadContent()
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/RobotoSpawnerOff");
+			mPoweredTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/RobotoSpawnerPower");
 			mOnAnim = new Animator(Animator.PlayType.Repeat,
 				("Tiles/Lab/RobotoSpawnerOn1", 0.25f),
 				("Tiles/Lab/RobotoSpawnerOn2", 0.25f));
@@ -79,17 +84,15 @@ namespace AridArnold
 
 			if(mIsOn)
 			{
-				if(mActiveRobot is null)
+				if(mSpawnTimer.GetElapsedMs() > SPAWN_TIME + CHARGE_UP_TIME)
 				{
 					SpawnRobot();
+					mSpawnTimer.Reset();
 				}
-				else
-				{
-					if(mActiveRobot.CheckOffScreenDeath())
-					{
-						mActiveRobot = null;
-					}
-				}
+			}
+			else
+			{
+				mSpawnTimer.Reset();
 			}
 
 			base.Update(gameTime);
@@ -102,12 +105,14 @@ namespace AridArnold
 		/// </summary>
 		void SpawnRobot()
 		{
-			if(mActiveRobot is not null)
-			{
-				EntityManager.I.QueueDeleteEntity(mActiveRobot);
-			}
-
 			Vector2 spawnDirection = Util.GetNormal(mRotation);
+
+			// Spawn
+			Roboto newRobot = new Roboto(Vector2.Zero);
+			newRobot.PowerOn();
+			EntityManager.I.RegisterEntity(newRobot);
+
+			// Set Velocity
 			Vector2 spawnVel = spawnDirection;
 			spawnVel.X *= EXIT_VELOCITY_X;
 			spawnVel.Y *= EXIT_VELOCITY_Y;
@@ -115,16 +120,17 @@ namespace AridArnold
 			{
 				spawnVel.Y = 4.0f;
 			}
-			Vector2 spawnPos = mPosition + spawnDirection * sTILE_SIZE;
-			spawnPos.X += 2.0f;
-			spawnPos.Y -= sTILE_SIZE / 2.0f;
-
-			Roboto newRobot = new Roboto(spawnPos);
-			newRobot.PowerOn();
 			newRobot.SetVelocity(spawnVel);
 			newRobot.SetPrevWalkDirFromVelocity();
-			mActiveRobot = newRobot;
-			EntityManager.I.RegisterEntity(mActiveRobot);
+
+			// Set Position
+			Vector2 spawnPos = GetCentre() + spawnDirection * sTILE_SIZE * 0.5f;
+			if(mRotation == CardinalDirection.Right || mRotation == CardinalDirection.Left)
+			{
+				// Botch position a bit
+				spawnPos.Y -= 1.0f;
+			}
+			newRobot.SetCentrePos(spawnPos);
 		}
 
 
@@ -144,7 +150,7 @@ namespace AridArnold
 		{
 			if(mIsOn)
 			{
-				return mOnAnim.GetCurrentTexture();
+				return mSpawnTimer.GetElapsedMs() > SPAWN_TIME ? mOnAnim.GetCurrentTexture() : mPoweredTexture;
 			}
 
 			return mTexture;

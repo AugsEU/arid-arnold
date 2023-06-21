@@ -11,6 +11,7 @@
 		const float ROBOTO_HEIGHT_REDUCTION = 2.0f;
 		const float ROBOTO_JUMP_SPEED = 22.0f;
 		const float ROBOTO_WALK_SPEED = 5.0f;
+		const double ROBOTO_INT_TIME = 200.0;
 
 		#endregion rConstants
 
@@ -19,6 +20,7 @@
 		#region rMembers
 
 		bool mPoweredOn;
+		MonoTimer mTimeSinceOn;
 
 		#endregion rMembers
 
@@ -33,6 +35,7 @@
 		public Roboto(Vector2 pos) : base(pos, ROBOTO_WALK_SPEED, ROBOTO_JUMP_SPEED, ROBOTO_WIDTH_REDUCTION, ROBOTO_HEIGHT_REDUCTION)
 		{
 			mPoweredOn = false;
+			mTimeSinceOn = new MonoTimer();
 		}
 
 
@@ -74,6 +77,10 @@
 			{
 				//Collider
 				EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
+			}
+			else
+			{
+				mTimeSinceOn.Start();
 			}
 
 			if(CheckOffScreenDeath())
@@ -144,7 +151,7 @@
 		/// <param name="entity"></param>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if(mPoweredOn)
+			if(mTimeSinceOn.GetElapsedMs() > ROBOTO_INT_TIME)
 			{
 				base.OnCollideEntity(entity);
 			}
