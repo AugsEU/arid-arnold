@@ -73,11 +73,11 @@ namespace AridArnold
 			//Check surrounding tiles.
 			EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);
 
-			if (scan.mTotalPositiveElectric > 0.55f)
+			if (scan.mTotalPositiveElectric > 0.75f)
 			{
 				mIsOn = true;
 			}
-			else if (scan.mTotalPositiveElectric < 0.45f)
+			else if (scan.mTotalPositiveElectric < 0.65f)
 			{
 				mIsOn = false;
 			}

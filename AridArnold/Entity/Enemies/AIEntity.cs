@@ -221,6 +221,31 @@ namespace AridArnold
 			return GetNearbyTile(dx, dy).IsSolid();
 		}
 
+
+
+		/// <summary>
+		/// Are we touching a wall to the left
+		/// </summary>
+		protected bool IsTouchingLeftWall()
+		{
+			Vector2 testPoint = new Vector2(mPosition.X - 1.2f, mCentreOfMass.Y);
+			Tile leftTile = TileManager.I.GetTile(testPoint);
+			return leftTile is not null && leftTile.IsSolid();
+		}
+
+
+
+		/// <summary>
+		/// Are we touching a wall to the left
+		/// </summary>
+		protected bool IsTouchingRightWall()
+		{
+			float colWidth = ColliderBounds().Width;
+			Vector2 testPoint = new Vector2(mPosition.X + colWidth + 1.2f, mCentreOfMass.Y);
+			Tile rightTile = TileManager.I.GetTile(testPoint);
+			return rightTile is not null && rightTile.IsSolid();
+		}
+
 		#endregion rUtility
 	}
 }

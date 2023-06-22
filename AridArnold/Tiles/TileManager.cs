@@ -170,6 +170,8 @@ namespace AridArnold
 						return new AndroldTile(position);
 					case 0xB8ADC5u:
 						return new RobotoSpawner((CardinalDirection)param, position);
+					case 0x826218u:
+						return new Nuke(position);
 					//Decoration
 					case 0x2A3F50u:
 						return new StalactiteTile(position);

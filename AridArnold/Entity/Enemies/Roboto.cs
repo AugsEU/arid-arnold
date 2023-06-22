@@ -115,10 +115,10 @@
 			{
 				if (mOnGround)
 				{
-					bool wallLeft = CheckSolid(-1, 0);
-					bool wallRight = CheckSolid(1, 0);
+					bool wallLeft = IsTouchingLeftWall();
+					bool wallRight = IsTouchingRightWall();
 
-					if (wallLeft && wallRight)
+					if (CheckSolid(1, 0) && CheckSolid(-1, 0))
 					{
 						mWalkDirection = WalkDirection.None;
 					}
