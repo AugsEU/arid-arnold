@@ -129,6 +129,16 @@
 			return mElapsedTimeMs;
 		}
 
+
+
+		/// <summary>
+		/// Set elapsed milliseconds
+		/// </summary>
+		public void SetElapsedMs(double elapsed)
+		{
+			mElapsedTimeMs = elapsed;
+		}
+
 		#endregion rUtility
 	}
 

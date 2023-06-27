@@ -38,6 +38,7 @@ namespace AridArnold
 			mRotation = rotation;
 			mSpawnTimer = new MonoTimer();
 			mSpawnTimer.Start();
+			mSpawnTimer.SetElapsedMs(SPAWN_TIME);
 		}
 
 
@@ -84,7 +85,8 @@ namespace AridArnold
 
 			if(mIsOn)
 			{
-				if(mSpawnTimer.GetElapsedMs() > SPAWN_TIME + CHARGE_UP_TIME)
+				mSpawnTimer.Start();
+				if (mSpawnTimer.GetElapsedMs() > SPAWN_TIME + CHARGE_UP_TIME)
 				{
 					SpawnRobot();
 					mSpawnTimer.Reset();
@@ -92,7 +94,7 @@ namespace AridArnold
 			}
 			else
 			{
-				mSpawnTimer.Reset();
+				mSpawnTimer.Stop();
 			}
 
 			base.Update(gameTime);
