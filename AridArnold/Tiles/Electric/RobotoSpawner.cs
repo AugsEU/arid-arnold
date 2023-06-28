@@ -37,7 +37,6 @@ namespace AridArnold
 			mIsOn = false;
 			mRotation = rotation;
 			mSpawnTimer = new MonoTimer();
-			mSpawnTimer.Start();
 			mSpawnTimer.SetElapsedMs(SPAWN_TIME);
 		}
 
