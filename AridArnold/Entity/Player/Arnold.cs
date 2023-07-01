@@ -528,8 +528,14 @@ namespace AridArnold
 			switch ((camDir, gravityDir))
 			{
 				case (CardinalDirection.Up, CardinalDirection.Up):
+					mLeftKey = AridArnoldKeys.ArnoldLeft;
+					mRightKey = AridArnoldKeys.ArnoldRight;
+					mDownKey = AridArnoldKeys.ArnoldUp;
 					break;
 				case (CardinalDirection.Up, CardinalDirection.Right):
+					mLeftKey = AridArnoldKeys.ArnoldUp;
+					mRightKey = AridArnoldKeys.ArnoldDown;
+					mDownKey = AridArnoldKeys.ArnoldRight;
 					break;
 				case (CardinalDirection.Right, CardinalDirection.Left):
 				case (CardinalDirection.Up, CardinalDirection.Down):
@@ -538,6 +544,9 @@ namespace AridArnold
 					mDownKey = AridArnoldKeys.ArnoldDown;
 					break;
 				case (CardinalDirection.Up, CardinalDirection.Left):
+					mLeftKey = AridArnoldKeys.ArnoldUp;
+					mRightKey = AridArnoldKeys.ArnoldDown;
+					mDownKey = AridArnoldKeys.ArnoldLeft;
 					break;
 				case (CardinalDirection.Right, CardinalDirection.Up):
 					break;
