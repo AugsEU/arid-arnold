@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>Mountain Pass</name>
+	<path from="Wall">GravelSummer</path>
+	<path from="WallSecondary">GravelSummer</path>
+	<path from="Platform">LogSummer</path>
+	<path from="CoinFull">FrancFull</path>
+	<path from="CoinGhost">FrancGhost</path>
+</theme>

@@ -8,5 +8,6 @@
 		<type root="Buk">2</type>
 		<type root="Lab">3</type>
 		<type root="Mirror">4</type>
+		<type root="Mountain">5</type>
 	</coins>
 </campaign>

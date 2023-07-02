@@ -379,6 +379,21 @@
 #begin BG/Mirror/Mirror4.mlo
 /copy:BG/Mirror/Mirror4.mlo
 
+#begin BG/Mountain/BG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mountain/BG.png
+
+#begin BG/Mountain/Mountain.mlo
+/copy:BG/Mountain/Mountain.mlo
+
 #begin BG/SteamPlant/BG1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -951,6 +966,21 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0503.png
+
+#begin Campaigns/MainCampaign/Hub/0601.aux
+/copy:Campaigns/MainCampaign/Hub/0601.aux
+
+#begin Campaigns/MainCampaign/Hub/0601.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0601.png
 
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
@@ -1986,6 +2016,9 @@
 
 #begin Campaigns/MainCampaign/Themes/MirrorLevel.xml
 /copy:Campaigns/MainCampaign/Themes/MirrorLevel.xml
+
+#begin Campaigns/MainCampaign/Themes/MountainLevel.xml
+/copy:Campaigns/MainCampaign/Themes/MountainLevel.xml
 
 #begin Campaigns/MainCampaign/Themes/SteamPlantLevel.xml
 /copy:Campaigns/MainCampaign/Themes/SteamPlantLevel.xml
@@ -4809,6 +4842,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Mirror/TreePlatform.png
+
+#begin Tiles/Mountain/FrancFull.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mountain/FrancFull.png
+
+#begin Tiles/Mountain/FrancGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mountain/FrancGhost.png
+
+#begin Tiles/Mountain/GravelSummer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mountain/GravelSummer.png
+
+#begin Tiles/Mountain/LogSummer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mountain/LogSummer.png
 
 #begin Tiles/Platform.png
 /importer:TextureImporter
