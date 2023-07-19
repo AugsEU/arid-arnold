@@ -172,6 +172,9 @@ namespace AridArnold
 						return new RobotoSpawner((CardinalDirection)param, position);
 					case 0x826218u:
 						return new Nuke(position);
+					// Time
+					case 0xD39700u:
+						return new StopWatchTile(position);
 					//Decoration
 					case 0x2A3F50u:
 						return new StalactiteTile(position);
@@ -640,6 +643,7 @@ namespace AridArnold
 			Rectangle sourceRectangle = new Rectangle(tileDrawInfo.mTileIndex.X * tileHeight, tileDrawInfo.mTileIndex.Y * tileHeight, tileHeight, tileHeight);
 
 			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, tileDrawInfo.mRotation, MonoDraw.CalcRotationOffset(tileDrawInfo.mRotation, tileHeight), tileDrawInfo.mEffect, DrawLayer.Tile);
+			tile.DrawExtra(info);
 		}
 
 		#endregion rDraw

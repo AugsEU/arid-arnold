@@ -114,6 +114,40 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Sine-wave like function that goes from 0 to 1 and repeats every unit. Starts at 0
+		/// </summary>
+		/// <param name="t"></param>
+		/// <returns></returns>
+		public static float UnitWave(float t)
+		{
+			t *= 4.0f;
+			t += 1.0f;
+			t %= 4.0f;
+			t -= 2.0f;
+			t *= 2.0f - MathF.Abs(t);
+			t += 1.0f;
+			t *= 0.5f;
+			return t;
+		}
+
+
+
+		/// <summary>
+		/// Function that goes smoothly from 0 to 1
+		/// </summary>
+		public static float SmoothZeroToOne(float t)
+		{
+			t *= 2.0f;
+			t -= 1.0f;
+			t *= 2.0f - MathF.Abs(t);
+			t += 1.0f;
+			t *= 0.5f;
+			return t;
+		}
+
+
+
+		/// <summary>
 		/// Biject float into a fixed region.
 		/// </summary>
 		public static float SquashToRange(float value, float min, float max)

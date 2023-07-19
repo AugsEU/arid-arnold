@@ -117,6 +117,10 @@
 			return SpriteEffects.None;
 		}
 
+		public virtual void DrawExtra(DrawInfo info)
+		{
+		}
+
 		#endregion rDraw
 
 

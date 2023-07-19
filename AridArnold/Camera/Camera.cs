@@ -168,12 +168,11 @@
 		{
 			Vector3 centrePoint3 = new Vector3(viewPortSize / 2.0f, 0.0f);
 
-			return Matrix.CreateTranslation(-(int)mCurrentSpec.mPosition.X,
-										   -(int)mCurrentSpec.mPosition.Y, 0) *
-										   Matrix.CreateTranslation(-centrePoint3) *
-										   Matrix.CreateRotationZ(mCurrentSpec.mRotation) *
-										   Matrix.CreateTranslation(centrePoint3) *
-										   Matrix.CreateScale(new Vector3(mCurrentSpec.mZoom, mCurrentSpec.mZoom, 1));
+			return Matrix.CreateTranslation(-(int)mCurrentSpec.mPosition.X, -(int)mCurrentSpec.mPosition.Y, 0) *
+				   Matrix.CreateTranslation(-centrePoint3) *
+				   Matrix.CreateRotationZ(mCurrentSpec.mRotation) *
+				   Matrix.CreateScale(new Vector3(mCurrentSpec.mZoom, mCurrentSpec.mZoom, 1)) *
+				   Matrix.CreateTranslation(centrePoint3);
 		}
 
 		#endregion rDraw
