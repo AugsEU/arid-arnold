@@ -9,8 +9,7 @@
 
 		public ETexture(XmlNode node) : base(node)
 		{
-			string texturePath = node["texture"].InnerText;
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>(texturePath);
+			mTexture = MonoParse.GetTexture(node["texture"]);
 		}
 
 		protected override Texture2D GetDrawTexture()

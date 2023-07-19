@@ -39,7 +39,7 @@
 		public override void Draw(DrawInfo info)
 		{
 			int numKeys = (int)CollectableManager.I.GetCollected((UInt16)PermanentCollectable.Key);
-			Vector2 position = mPos;
+			Vector2 position = GetPosition();
 
 			DrawCollectable(info, position, mKeyTexture, numKeys);
 			position.Y += SPACING;
@@ -64,7 +64,7 @@
 			offset.Y = (icon.Height * SCALE - textureSize.Y) / 2.0f;
 			
 
-			MonoDraw.DrawTexture(info, icon, position, null, Color.White, 0.0f, Vector2.Zero, SCALE, SpriteEffects.None, mDepth);
+			MonoDraw.DrawTexture(info, icon, position, null, Color.White, 0.0f, Vector2.Zero, SCALE, SpriteEffects.None, GetDepth());
 			MonoDraw.DrawString(info, mFont, displayText, position + offset, Color.Wheat, DrawLayer.Default);
 		}
 	}

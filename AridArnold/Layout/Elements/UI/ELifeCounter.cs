@@ -23,12 +23,12 @@
 
 			int currLives = CampaignManager.I.GetLives();
 			int maxLives = CampaignManager.MAX_LIVES;
-			Vector2 position = mPos;
+			Vector2 position = GetPosition();
 
 			for(int i = 0; i < maxLives; i++)
 			{
 				Texture2D toDraw = i < currLives ? mLifeTexture : mEmptyTexture;
-				MonoDraw.DrawTexture(info, toDraw, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, mDepth);
+				MonoDraw.DrawTexture(info, toDraw, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth());
 
 				position.Y += SPACING;
 			}

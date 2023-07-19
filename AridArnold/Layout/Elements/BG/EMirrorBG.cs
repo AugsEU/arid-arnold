@@ -86,7 +86,7 @@ namespace AridArnold
 			float x = RandomManager.I.GetDraw().GetFloatRange(-width, 2.0f * width);
 			Vector2 pos = new Vector2(x, y);
 			float vel = RandomManager.I.GetDraw().GetFloatRange(1.0f, 2.2f);
-			mFallingLeaves.Add(new FallingLeaf(pos, vel, mLeafLateralTex, mLeafVerticalTex, mDepth));
+			mFallingLeaves.Add(new FallingLeaf(pos, vel, mLeafLateralTex, mLeafVerticalTex, GetDepth()));
 		}
 
 		public override void Draw(DrawInfo info)

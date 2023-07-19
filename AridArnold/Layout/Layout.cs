@@ -151,13 +151,17 @@ namespace AridArnold
 	/// </summary>
 	abstract class LayElement
 	{
-		protected Vector2 mPos;
-		protected DrawLayer mDepth;
+		Vector2 mPos;
+		DrawLayer mDepth;
+		Color mColor;
+		float mScale; 
 
 		public LayElement(XmlNode rootNode)
 		{
 			mPos = MonoParse.GetVector(rootNode);
-			mDepth = MonoDraw.GetDrawLayer(rootNode["depth"].InnerText);
+			mDepth = MonoParse.GetDrawLayer(rootNode["depth"]);
+			mScale = MonoParse.GetFloat(rootNode["scale"], 1.0f);
+			mColor = MonoParse.GetColor(rootNode["color"]);
 		}
 
 		public virtual void Update(GameTime gameTime) { }
@@ -165,5 +169,11 @@ namespace AridArnold
 		public virtual void Draw(DrawInfo info) { }
 
 		public DrawLayer GetDepth() { return mDepth; }
+
+		public float GetScale() { return mScale; }
+
+		public Vector2 GetPosition() {  return mPos; }
+
+		public Color GetColor() { return mColor; }
 	}
 }

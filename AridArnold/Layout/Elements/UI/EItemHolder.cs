@@ -26,15 +26,15 @@
 		public override void Draw(DrawInfo info)
 		{
 			const float SCALE = 5.0f;
-			MonoDraw.DrawTextureDepth(info, mFrame, mPos, mDepth);
+			MonoDraw.DrawTextureDepth(info, mFrame, GetPosition(), GetDepth());
 
 			if(mCurrItem is not null)
 			{
-				Vector2 itemPos = mPos;
+				Vector2 itemPos = GetPosition();
 				Texture2D itemTex = mCurrItem.GetTexture();
 				itemPos.X += (mFrame.Width - SCALE * itemTex.Width) / 2.0f;
 				itemPos.Y += (mFrame.Height - SCALE * itemTex.Height) / 2.0f;
-				MonoDraw.DrawTexture(info, itemTex, itemPos, null, Color.White, 0.0f, Vector2.Zero, SCALE, SpriteEffects.None, mDepth);
+				MonoDraw.DrawTexture(info, itemTex, itemPos, null, Color.White, 0.0f, Vector2.Zero, SCALE, SpriteEffects.None, GetDepth());
 			}
 
 			base.Draw(info);

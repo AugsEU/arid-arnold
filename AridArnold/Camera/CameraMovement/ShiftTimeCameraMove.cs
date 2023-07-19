@@ -2,8 +2,8 @@
 {
 	internal class ShiftTimeCameraMove : TimedCameraMove
 	{
-		const float TIME_TO_ROTATE = 15.0f;
-		const float ZOOM_OUT_LEVEL = 80.0f;
+		const float TIME_TO_ROTATE = 35.0f;
+		const float ZOOM_OUT_LEVEL = 8.0f;
 
 		float mStartRotation;
 		bool mForwards;
@@ -18,16 +18,15 @@
 		protected override void StartMovementInternal()
 		{
 			mStartRotation = mCurrentSpec.mRotation;
-			
 		}
 
 		protected override void UpdateInternal(GameTime gameTime)
 		{
 			float p = GetMovementPercentage();
-			float waveP = MonoMath.UnitWave(p);
-			mCurrentSpec.mRotation = mStartRotation + MathF.PI * 2.0f * p;
+			float waveP = MonoMath.SmoothZeroToOne( Math.Min(2.0f - MathF.Abs(4.0f*p-2.0f),1.0f) );
+			mCurrentSpec.mRotation = mStartRotation + MathF.PI * 2.0f * MonoMath.SmoothZeroToOne(p);
 			mCurrentSpec.mZoom = 1.0f + ((1.0f / ZOOM_OUT_LEVEL) - 1.0f) * waveP;
-			mCurrentSpec.mPosition = 40.0f * waveP * new Vector2(RandomManager.I.GetDraw().GetUnitFloat(), RandomManager.I.GetDraw().GetUnitFloat());
+			mCurrentSpec.mPosition = 20.0f * waveP * new Vector2(RandomManager.I.GetDraw().GetUnitFloat(), RandomManager.I.GetDraw().GetUnitFloat());
 
 			base.UpdateInternal(gameTime);
 		}

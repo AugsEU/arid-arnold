@@ -23,7 +23,7 @@
 
 		protected float GetMovementPercentage()
 		{
-			return mElapsedTime / mTotalTime;
+			return Math.Clamp(mElapsedTime / mTotalTime, 0.0f, 1.0f);
 		}
 	}
 }

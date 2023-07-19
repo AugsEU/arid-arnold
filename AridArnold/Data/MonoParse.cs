@@ -2,7 +2,6 @@
 {
 	/// <summary>
 	/// Class for parsing things.
-	/// None of these are safe, so just don't pass in invalid data 5head
 	/// </summary>
 	static class MonoParse
 	{
@@ -13,9 +12,52 @@
 			return new Vector2(GetFloat(xNode), GetFloat(yNode));
 		}
 
-		static public float GetFloat(XmlNode node)
+
+
+		static public float GetFloat(XmlNode node, float defaultVal = 0.0f)
 		{
+			if(node is null)
+			{
+				return defaultVal;
+			}
+
 			return float.Parse(node.InnerText);
+		}
+
+
+
+		static public DrawLayer GetDrawLayer(XmlNode node, DrawLayer defaultVal = DrawLayer.Default)
+		{
+			if(node is null)
+			{
+				return defaultVal;
+			}
+
+			return MonoDraw.GetDrawLayer(node.InnerText);
+		}
+
+
+
+		static public Texture2D GetTexture(XmlNode node)
+		{
+			if(node is null)
+			{
+				return Main.GetDummyTexture();
+			}
+
+			return MonoData.I.MonoGameLoad<Texture2D>(node.InnerText);
+		}
+
+
+
+		static public Color GetColor(XmlNode node)
+		{
+			if(node is null)
+			{
+				return Color.White;
+			}
+
+			return MonoColor.HEXToColor(node.InnerXml);
 		}
 	}
 }
