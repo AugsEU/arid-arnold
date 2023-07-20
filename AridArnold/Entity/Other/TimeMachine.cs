@@ -61,7 +61,14 @@ namespace AridArnold
 		protected override void OnPlayerInteract()
 		{
 			// Load the level directly, maybe we could shake and play an animation?
-			TimeZoneManager.I.SetTimeZone(mTimeZone);
+			if (mTimeZone != 0)
+			{
+				TimeZoneManager.I.TimeTravel();
+			}
+			else
+			{
+				TimeZoneManager.I.AntiTimeTravel();
+			}
 			CampaignManager.I.QueueLoadSequence(new HubDirectLoader(mLevelID));
 			base.OnPlayerInteract();
 		}

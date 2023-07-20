@@ -19,26 +19,10 @@
 		}
 
 
-
-		/// <summary>
-		/// Load textures and assets
-		/// </summary>
-		public override void LoadContent()
+		protected override void InitTexturePacks()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arnold/AndroldStand");
-			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/AndroldJumpUp");
-			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/AndroldJumpDown");
-
-			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
-												("Arnold/AndroldRun1", 0.1f),
-												("Arnold/AndroldRun2", 0.1f),
-												("Arnold/AndroldRun3", 0.1f),
-												("Arnold/AndroldRun4", 0.15f));
-
-			mRunningAnimation.Play();
-
-			//Botch position a bit. Not sure what's happening here.
-			mPosition.Y -= 2.0f;
+			mYoungTexturePack = new MonoTexturePack("Arnold/Androld.mtp");
+			mOldTexturePack = new MonoTexturePack("Arnold/Androld.mtp");
 		}
 
 		#endregion rInitialisation

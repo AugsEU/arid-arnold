@@ -13,6 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Arnold/Androld.mtp
+/copy:Arnold/Androld.mtp
+
 #begin Arnold/AndroldJumpDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -133,6 +136,102 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/ArnoldJumpUp.png
 
+#begin Arnold/ArnoldOldJumpDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldJumpDown.png
+
+#begin Arnold/ArnoldOldJumpUp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldJumpUp.png
+
+#begin Arnold/ArnoldOldRun1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldRun1.png
+
+#begin Arnold/ArnoldOldRun2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldRun2.png
+
+#begin Arnold/ArnoldOldRun3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldRun3.png
+
+#begin Arnold/ArnoldOldRun4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldRun4.png
+
+#begin Arnold/ArnoldOldStand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldStand.png
+
+#begin Arnold/ArnoldOldUseItem.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldOldUseItem.png
+
 #begin Arnold/ArnoldRun1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -204,6 +303,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Arnold/ArnoldUseItem.png
+
+#begin Arnold/OldArnold.mtp
+/copy:Arnold/OldArnold.mtp
+
+#begin Arnold/YoungArnold.mtp
+/copy:Arnold/YoungArnold.mtp
 
 #begin BG/Buk/BG.png
 /importer:TextureImporter

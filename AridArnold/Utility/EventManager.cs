@@ -31,9 +31,10 @@
 	{
 		PlayerDead,
 		KillPlayer,
+		TimeChanged,
 		KeyCollect,
 		ShopDoorOpen,
-		RedKeyUsed
+		RedKeyUsed,
 	}
 
 

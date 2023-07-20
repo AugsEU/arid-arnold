@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
+using System.Security.Authentication.ExtendedProtection;
 
 namespace AridArnold
 {
@@ -37,6 +38,9 @@ namespace AridArnold
 		protected Texture2D mJumpUpTex;
 		protected Texture2D mJumpDownTex;
 		protected Texture2D mUseItemTex;
+
+		protected MonoTexturePack mYoungTexturePack;
+		protected MonoTexturePack mOldTexturePack;
 
 		//Various timers.
 		PercentageTimer mTimerSinceDeath;
@@ -79,6 +83,8 @@ namespace AridArnold
 			mDownKey = AridArnoldKeys.ArnoldDown;
 
 			mItemToUse = null;
+
+			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
 
@@ -88,23 +94,45 @@ namespace AridArnold
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldStand");
-			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldJumpUp");
-			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldJumpDown");
-			mUseItemTex = MonoData.I.MonoGameLoad<Texture2D>("Arnold/ArnoldUseItem");
-
-			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
-												("Arnold/ArnoldRun1", 0.1f),
-												("Arnold/ArnoldRun2", 0.1f),
-												("Arnold/ArnoldRun3", 0.1f),
-												("Arnold/ArnoldRun4", 0.15f));
-
-			mRunningAnimation.Play();
+			InitTexturePacks();
+			LoadTexturePack(mYoungTexturePack);
 
 			//Botch position a bit. Not sure what's happening here.
 			mPosition.Y -= 2.0f;
 
 			mVelocity.Y = +0.01f;
+		}
+
+
+
+		/// <summary>
+		/// Load young/old textures
+		/// </summary>
+		protected virtual void InitTexturePacks()
+		{
+			mYoungTexturePack = new MonoTexturePack("Arnold/YoungArnold.mtp");
+			mOldTexturePack = new MonoTexturePack("Arnold/OldArnold.mtp");
+		}
+
+
+
+		/// <summary>
+		/// Load textures from a pack
+		/// </summary>
+		void LoadTexturePack(MonoTexturePack texturePack)
+		{
+			mTexture = texturePack.GetTexture("Stand");
+			mJumpUpTex = texturePack.GetTexture("JumpUp");
+			mJumpDownTex = texturePack.GetTexture("JumpDown");
+			mUseItemTex = texturePack.GetTexture("UseItem");
+
+			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
+												(texturePack.GetTexture("Run1"), 0.1f),
+												(texturePack.GetTexture("Run2"), 0.1f),
+												(texturePack.GetTexture("Run3"), 0.1f),
+												(texturePack.GetTexture("Run4"), 0.15f));
+
+			mRunningAnimation.Play();
 		}
 
 		#endregion rInitialisation
@@ -319,6 +347,26 @@ namespace AridArnold
 			}
 
 			base.OnCollideEntity(entity);
+		}
+
+
+
+		/// <summary>
+		/// Called when the time changes.
+		/// </summary>
+		void OnTimeChange(EArgs args)
+		{
+			switch (TimeZoneManager.I.GetCurrentPlayerAge())
+			{
+				case 0:
+					LoadTexturePack(mYoungTexturePack);
+					break;
+				case 1:
+					LoadTexturePack(mOldTexturePack);
+					break;
+				default:
+					throw new Exception("Invalid Arnold age");
+			}
 		}
 
 		#endregion rUpdate

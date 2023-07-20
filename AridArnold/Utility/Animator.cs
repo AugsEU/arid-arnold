@@ -72,6 +72,26 @@
 			}
 		}
 
+
+
+		/// <summary>
+		/// Animator constructor
+		/// </summary>
+		/// <param name="playType">Play mode.(See enum for details)</param>
+		public Animator(PlayType playType, params (Texture2D, float)[] frameData)
+		{
+			mPlaying = false;
+			mTotalDuration = 0.0f;
+			mPlayHead = 0.0f;
+			mPlayType = playType;
+
+			for (int i = 0; i < frameData.Length; i++)
+			{
+				mTotalDuration += frameData[i].Item2;
+				mFrames.Add(new AnimationFrame(frameData[i].Item1, frameData[i].Item2));
+			}
+		}
+
 		#endregion rInitialisation
 
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<texture code="JumpUp">Arnold/ArnoldOldJumpUp</texture>
+    <texture code="JumpDown">Arnold/ArnoldOldJumpDown</texture>
+	<texture code="Run1">Arnold/ArnoldOldRun1</texture>
+    <texture code="Run2">Arnold/ArnoldOldRun2</texture>
+    <texture code="Run3">Arnold/ArnoldOldRun3</texture>
+    <texture code="Run4">Arnold/ArnoldOldRun4</texture>
+    <texture code="Stand">Arnold/ArnoldOldStand</texture>
+    <texture code="UseItem">Arnold/ArnoldOldUseItem</texture>
+</root>

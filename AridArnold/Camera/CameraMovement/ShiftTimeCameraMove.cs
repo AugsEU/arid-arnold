@@ -7,11 +7,13 @@
 
 		float mStartRotation;
 		bool mForwards;
+		bool mChangedTime;
 
 		public ShiftTimeCameraMove(bool forwards) : base(TIME_TO_ROTATE)
 		{
 			mStartRotation = 0.0f;
 			mForwards = forwards;
+			mChangedTime = false;
 		}
 
 
@@ -28,7 +30,25 @@
 			mCurrentSpec.mZoom = 1.0f + ((1.0f / ZOOM_OUT_LEVEL) - 1.0f) * waveP;
 			mCurrentSpec.mPosition = 20.0f * waveP * new Vector2(RandomManager.I.GetDraw().GetUnitFloat(), RandomManager.I.GetDraw().GetUnitFloat());
 
+			if(p > 0.5f && !mChangedTime)
+			{
+				ChangeTime();
+				mChangedTime = true;
+			}
+
 			base.UpdateInternal(gameTime);
+		}
+
+		void ChangeTime()
+		{
+			if(mForwards)
+			{
+				TimeZoneManager.I.AgePlayer();
+			}
+			else
+			{
+				TimeZoneManager.I.AntiAgePlayer();
+			}
 		}
 
 		protected override void EndMovementInternal(ref CameraSpec endSpec)
