@@ -95,7 +95,7 @@ namespace AridArnold
 		public override void LoadContent()
 		{
 			InitTexturePacks();
-			LoadTexturePack(mYoungTexturePack);
+			RefreshTexturePack();
 
 			//Botch position a bit. Not sure what's happening here.
 			mPosition.Y -= 2.0f;
