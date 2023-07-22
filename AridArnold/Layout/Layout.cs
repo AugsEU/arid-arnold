@@ -97,7 +97,10 @@ namespace AridArnold
 		{
 			foreach (LayElement element in mElements)
 			{
-				element.Draw(info);
+				if (element.IsVisible())
+				{
+					element.Draw(info);
+				}
 			}
 		}
 
@@ -154,7 +157,8 @@ namespace AridArnold
 		Vector2 mPos;
 		DrawLayer mDepth;
 		Color mColor;
-		float mScale; 
+		float mScale;
+		bool mVisible;
 
 		public LayElement(XmlNode rootNode)
 		{
@@ -162,6 +166,7 @@ namespace AridArnold
 			mDepth = MonoParse.GetDrawLayer(rootNode["depth"]);
 			mScale = MonoParse.GetFloat(rootNode["scale"], 1.0f);
 			mColor = MonoParse.GetColor(rootNode["color"]);
+			mVisible = true;
 		}
 
 		public virtual void Update(GameTime gameTime) { }
@@ -175,5 +180,9 @@ namespace AridArnold
 		public Vector2 GetPosition() {  return mPos; }
 
 		public Color GetColor() { return mColor; }
+
+		public bool IsVisible() {  return mVisible; }
+
+		public void SetVisible(bool visible) {  mVisible = visible; }
 	}
 }

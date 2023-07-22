@@ -173,6 +173,8 @@ namespace AridArnold
 					case 0x826218u:
 						return new Nuke(position);
 					// Time
+					case 0x010101u:
+						return new TimeWallTile(position, "TimeWall");
 					case 0xD39700u:
 						return new StopWatchTile(position);
 					//Decoration

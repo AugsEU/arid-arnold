@@ -26,6 +26,18 @@
 
 
 
+		static public int GetInt(XmlNode node, int defaultVal = 0)
+		{
+			if (node is null)
+			{
+				return defaultVal;
+			}
+
+			return int.Parse(node.InnerText);
+		}
+
+
+
 		static public DrawLayer GetDrawLayer(XmlNode node, DrawLayer defaultVal = DrawLayer.Default)
 		{
 			if(node is null)

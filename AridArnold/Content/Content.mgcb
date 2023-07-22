@@ -484,7 +484,7 @@
 #begin BG/Mirror/Mirror4.mlo
 /copy:BG/Mirror/Mirror4.mlo
 
-#begin BG/Mountain/BG.png
+#begin BG/Mountain/BGSummer.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -494,7 +494,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:BG/Mountain/BG.png
+/build:BG/Mountain/BGSummer.png
+
+#begin BG/Mountain/BGWinter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mountain/BGWinter.png
 
 #begin BG/Mountain/ClockFace.png
 /importer:TextureImporter
@@ -507,6 +519,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:BG/Mountain/ClockFace.png
+
+#begin BG/Mountain/LevelFrame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mountain/LevelFrame.png
 
 #begin BG/Mountain/MoonAnger.png
 /importer:TextureImporter

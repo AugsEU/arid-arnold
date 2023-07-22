@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Mountain Pass</name>
-	<path from="Wall">GravelSummer</path>
-	<path from="WallSecondary">GravelSummer</path>
+	<path from="Wall">../Blank</path>
+	<path from="WallSecondary">../Blank</path>
+	<path from="TimeWall0">GravelSummer</path>
+	<path from="TimeWall1">GravelWinter</path>
 	<path from="Platform">LogSummer</path>
 	<path from="CoinFull">FrancFull</path>
 	<path from="CoinGhost">FrancGhost</path>

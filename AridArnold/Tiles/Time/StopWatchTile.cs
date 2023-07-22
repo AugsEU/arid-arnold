@@ -36,7 +36,10 @@ namespace AridArnold
 			if (entity is Arnold && mDebugEnabled)
 			{
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-				gameCam.QueueMovement(new ShiftTimeCameraMove(true));
+
+				bool forwards = TimeZoneManager.I.GetCurrentPlayerAge() == 0;
+
+				gameCam.QueueMovement(new ShiftTimeCameraMove(forwards));
 				mDebugEnabled = false;
 			}
 

@@ -356,6 +356,16 @@ namespace AridArnold
 		/// </summary>
 		void OnTimeChange(EArgs args)
 		{
+			RefreshTexturePack();
+		}
+
+
+
+		/// <summary>
+		/// Refresh the textures so we update with age
+		/// </summary>
+		void RefreshTexturePack()
+		{
 			switch (TimeZoneManager.I.GetCurrentPlayerAge())
 			{
 				case 0:
