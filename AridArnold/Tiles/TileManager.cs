@@ -173,10 +173,14 @@ namespace AridArnold
 					case 0x826218u:
 						return new Nuke(position);
 					// Time
+					case 0x93D5F2u:
+						return new IceTile(position);
 					case 0x010101u:
 						return new TimeWallTile(position, "TimeWall");
+					case 0xAAAAAAu:
+						return new TimePlatformTile((CardinalDirection)param, position, "TimePlatform");
 					case 0xD39700u:
-						return new StopWatchTile(position);
+						return new StopWatchTile(position, param);
 					//Decoration
 					case 0x2A3F50u:
 						return new StalactiteTile(position);

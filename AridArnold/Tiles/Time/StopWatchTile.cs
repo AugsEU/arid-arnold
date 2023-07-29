@@ -7,17 +7,20 @@ namespace AridArnold
 		const float TIME_SPEED = 0.2f;
 		static Color HAND_COLOR = new Color(11, 9, 10);
 
-		bool mDebugEnabled = true;
 		float mHandTime;
+		int mTimeZone;
 
-		public StopWatchTile(Vector2 position) : base(position)
+		public StopWatchTile(Vector2 position, int timeZone) : base(position)
 		{
 			mHandTime = RandomManager.I.GetWorld().GetFloatRange(0.0f, 12.0f);
+			mTimeZone = timeZone;
+			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
 		public override void LoadContent()
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mountain/StopWatch");
+			pEnabled = mTimeZone == TimeZoneManager.I.GetCurrentTimeZone();
 		}
 
 
@@ -25,7 +28,7 @@ namespace AridArnold
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
-			mHandTime += dt * TIME_SPEED;
+			mHandTime += TimeZoneManager.I.GetCurrentPlayerAge() == 0 ? dt * TIME_SPEED : -dt * TIME_SPEED;
 			mHandTime = mHandTime % 12.0f;
 
 			base.Update(gameTime);
@@ -33,17 +36,22 @@ namespace AridArnold
 
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (entity is Arnold && mDebugEnabled)
+			if (entity is Arnold)
 			{
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 
 				bool forwards = TimeZoneManager.I.GetCurrentPlayerAge() == 0;
 
 				gameCam.QueueMovement(new ShiftTimeCameraMove(forwards));
-				mDebugEnabled = false;
+				Arnold arnold = (Arnold)entity;
 			}
 
 			base.OnEntityIntersect(entity);
+		}
+
+		void OnTimeChange(EArgs args)
+		{
+			pEnabled = mTimeZone == TimeZoneManager.I.GetCurrentTimeZone();
 		}
 
 		public override void DrawExtra(DrawInfo info)
