@@ -220,7 +220,7 @@
 			CardinalDirection gravityDir = GetGravityDir();
 			DrawLayer drawLayer = GetDrawLayer();
 
-			MonoDraw.DrawPlatformer(info, originalTextureRect, textureToDraw, mPosition, colorToDraw, gravityDir, mPrevDirection, drawLayer);
+			MonoDraw.DrawPlatformer(info, originalTextureRect, textureToDraw, colorToDraw, gravityDir, mPrevDirection, drawLayer);
 		}
 
 

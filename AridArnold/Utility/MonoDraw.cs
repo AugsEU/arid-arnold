@@ -139,7 +139,7 @@
 		/// <summary>
 		/// Draw a texture to a rect(all options).
 		/// </summary>
-		public static void DrawPlatformer(DrawInfo info, Rect2f collider, Texture2D texture2D, Vector2 position, Color color, CardinalDirection gravityDir, WalkDirection walkDir, DrawLayer depth)
+		public static void DrawPlatformer(DrawInfo info, Rect2f collider, Texture2D texture2D, Color color, CardinalDirection gravityDir, WalkDirection walkDir, DrawLayer depth)
 		{
 			Vector2 drawPosition = Vector2.Zero;
 

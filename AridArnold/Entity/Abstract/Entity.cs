@@ -373,6 +373,9 @@
 				case EntityData.EntityClass.kTimeMachine:
 					entity = new TimeMachine(worldPosition, data.mIntParams[0], data.mIntParams[1]);
 					break;
+				case EntityData.EntityClass.kPlantPot:
+					entity = new PlantPot(worldPosition, data.mIntParams[0]);
+					break;
 				default:
 					throw new NotImplementedException();
 			}
