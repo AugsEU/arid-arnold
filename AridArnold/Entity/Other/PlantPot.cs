@@ -55,11 +55,47 @@
 		#region rUpdate
 
 		/// <summary>
+		/// Update plantpot
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
+
+			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
 		/// Called when the time changes
 		/// </summary>
 		public void OnTimeChange(EArgs eArgs)
 		{
 			mIsWinter = TimeZoneManager.I.GetCurrentTimeZone() == 1;
+		}
+
+
+
+		/// <summary>
+		/// Collider bounds
+		/// </summary>
+		public override Rect2f ColliderBounds()
+		{
+			Vector2 min;
+			Vector2 max;
+			int length = mIsWinter ? 0 : mLength;
+
+			switch (GetGravityDir())
+			{
+				case CardinalDirection.Down:
+					min = mPosition + new Vector2(0.0f, -length* Tile.sTILE_SIZE);
+					max = mPosition + new Vector2(Tile.sTILE_SIZE, Tile.sTILE_SIZE);
+					break;
+				default:
+					throw new NotImplementedException();
+			}
+
+			return new Rect2f(min, max);
 		}
 
 		#endregion rUpdate
@@ -76,13 +112,12 @@
 		/// <param name="info"></param>
 		public override void Draw(DrawInfo info)
 		{
-			Rect2f originalTextureRect = ColliderBounds();
-			Color colorToDraw = GetDrawColor();
+			Rect2f originalTextureRect = new Rect2f(mPosition, mTexture);
 			CardinalDirection gravityDir = GetGravityDir();
 			DrawLayer drawLayer = GetDrawLayer();
 
 			Texture2D potTexture = mIsWinter ? mPotWinter : mPotSummer;
-			MonoDraw.DrawPlatformer(info, originalTextureRect, potTexture, colorToDraw, gravityDir, mPrevDirection, drawLayer);
+			MonoDraw.DrawPlatformer(info, originalTextureRect, potTexture, Color.White, gravityDir, mPrevDirection, drawLayer);
 
 			Vector2 negGravity = -Tile.sTILE_SIZE * Util.GetNormal(gravityDir);
 			for (int i = 0; i < mLength; ++i)
@@ -95,7 +130,7 @@
 				originalTextureRect.min += negGravity;
 				originalTextureRect.max += negGravity;
 
-				MonoDraw.DrawPlatformer(info, originalTextureRect, treeTexture, colorToDraw, gravityDir, mPrevDirection, drawLayer);
+				MonoDraw.DrawPlatformer(info, originalTextureRect, treeTexture, Color.White, gravityDir, mPrevDirection, drawLayer);
 			}
 		}
 

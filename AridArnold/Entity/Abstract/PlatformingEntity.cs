@@ -12,6 +12,10 @@
 		const float DEFAULT_JUMP_SPEED = 25.0f;
 		const float MAX_VELOCITY = 65.0f;
 
+		protected const float NOT_MOVING_SPEED = 1.0f;
+
+		const float ICE_GRIP = 0.5f;
+
 		#endregion rConstants
 
 
@@ -32,6 +36,10 @@
 		private CardinalDirection mGravityDirection;
 		protected WalkDirection mWalkDirection;
 		protected WalkDirection mPrevDirection;
+
+		// Ice
+		bool mIceWalking;
+		Vector2 mIceVelocity;
 
 		#endregion rMembers
 
@@ -61,6 +69,10 @@
 			mGravityDirection = CardinalDirection.Down;
 
 			mUpdatesSinceGrounded = int.MaxValue;
+
+			// Ice
+			mIceWalking = false;
+			mIceVelocity = Vector2.Zero;
 		}
 
 		#endregion
@@ -77,27 +89,33 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			Vector2 downVec = GravityVecNorm();
-			Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
+			float dt = Util.GetDeltaT(gameTime);
 
-			float component = Vector2.Dot(mVelocity, sideVec);
+			SetSideVelocityFromDirection(mWalkDirection);
 
-			mVelocity = mVelocity - component * sideVec;
-
-			switch (mWalkDirection)
+			// Ice
+			if (mIceWalking)
 			{
-				case WalkDirection.Left:
-					mVelocity -= mWalkSpeed * sideVec;
-					break;
-				case WalkDirection.Right:
-					mVelocity += mWalkSpeed * sideVec;
-					break;
-				case WalkDirection.None:
-					if (mOnGround == false)
-					{
-						mVelocity += component * sideVec;
-					}
-					break;
+				Vector2 toVelocity = mVelocity - mIceVelocity;
+				toVelocity.Normalize();
+				mIceVelocity += toVelocity * ICE_GRIP * dt;
+
+				switch (mGravityDirection)
+				{
+					case CardinalDirection.Up:
+					case CardinalDirection.Down:
+						mVelocity.X = mIceVelocity.X;
+						break;
+					case CardinalDirection.Left:
+					case CardinalDirection.Right:
+						mVelocity.Y = mIceVelocity.Y;
+						break;
+				}
+				
+			}
+			else
+			{
+				mIceVelocity = mVelocity;
 			}
 
 			if (mOnGround)
@@ -114,9 +132,40 @@
 
 			mVelocity = new Vector2(MonoMath.ClampAbs(mVelocity.X, MAX_VELOCITY), MonoMath.ClampAbs(mVelocity.Y, MAX_VELOCITY));
 
+			mIceWalking = false;
+
 			base.Update(gameTime);
 		}
 
+
+		/// <summary>
+		/// Set side velocity from a direction
+		/// </summary>
+		private void SetSideVelocityFromDirection(WalkDirection dir)
+		{
+			Vector2 downVec = GravityVecNorm();
+			Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
+
+			float component = Vector2.Dot(mVelocity, sideVec);
+
+			mVelocity = mVelocity - component * sideVec;
+
+			switch (dir)
+			{
+				case WalkDirection.Left:
+					mVelocity -= mWalkSpeed * sideVec;
+					break;
+				case WalkDirection.Right:
+					mVelocity += mWalkSpeed * sideVec;
+					break;
+				case WalkDirection.None:
+					if (mOnGround == false)
+					{
+						mVelocity += component * sideVec;
+					}
+					break;
+			}
+		}
 
 
 		/// <summary>
@@ -198,6 +247,16 @@
 
 			mUpdateOrder = Vector2.Dot(mPosition, fallingVec);
 			mUpdateOrder = MonoMath.SquashToRange(mUpdateOrder, EntityManager.UPDATE_MENTITY_MIN, EntityManager.UPDATE_MENTITY_MAX);
+		}
+
+
+
+		/// <summary>
+		/// Inform this entity it is on ice.
+		/// </summary>
+		public void SetIceWalking()
+		{
+			mIceWalking = true;
 		}
 
 		#endregion rUpdate
@@ -317,6 +376,19 @@
 
 
 		/// <summary>
+		/// Get velocity relative to "down"
+		/// </summary>
+		public Vector2 GetVelocityRelativeToGravity()
+		{
+			float currentYVelocity = -Vector2.Dot(GravityVecNorm(), mVelocity);
+			float currentXVelocity = -Vector2.Dot(MonoMath.Perpendicular(GravityVecNorm()), mVelocity);
+
+			return new Vector2(currentXVelocity, currentYVelocity);
+		}
+
+
+
+		/// <summary>
 		/// Set walk direction
 		/// </summary>
 		/// <param name="dir">New walk direction</param>
@@ -409,9 +481,18 @@
 		/// </summary>
 		protected void Jump()
 		{
-			float currentYVelocity = -Vector2.Dot(GravityVecNorm(), mVelocity);
+			Vector2 gravVelocity = GetVelocityRelativeToGravity();
 
-			if (currentYVelocity < mJumpSpeed)
+			if (mIceWalking)
+			{
+				if(MathF.Abs(GetVelocityRelativeToGravity().X) >= NOT_MOVING_SPEED)
+				{
+					mWalkDirection = mPrevDirection;
+				}
+				mIceWalking = false;
+			}
+
+			if (gravVelocity.Y < mJumpSpeed)
 			{
 				mVelocity = -mJumpSpeed * GravityVecNorm();
 			}
@@ -515,6 +596,52 @@
 			}
 
 			throw new NotImplementedException();
+		}
+
+
+		/// <summary>
+		/// Gets 3 points at our "feet" to check against.
+		/// 0 - Left
+		/// 1 - Middle
+		/// 2 - Right
+		/// </summary>
+		public Vector2[] GetFeetCheckPoints()
+		{
+			const float FEET_SHIFT = 2.0f;
+			Vector2[] retValue = new Vector2[3];
+			Rect2f collider = ColliderBounds();
+			Vector2 gravityVec = GravityVecNorm();
+
+			switch (mGravityDirection)
+			{
+				case CardinalDirection.Up:
+					retValue[0] = new Vector2(collider.min.X + FEET_SHIFT, collider.min.Y);
+					retValue[2] = new Vector2(collider.max.X - FEET_SHIFT, collider.min.Y);
+					break;
+				case CardinalDirection.Right:
+					retValue[0] = new Vector2(collider.max.X, collider.max.Y - FEET_SHIFT);
+					retValue[2] = new Vector2(collider.max.X, collider.min.Y + FEET_SHIFT);
+					break;
+				case CardinalDirection.Down:
+					retValue[0] = new Vector2(collider.min.X + FEET_SHIFT, collider.max.Y);
+					retValue[2] = new Vector2(collider.max.X - FEET_SHIFT, collider.max.Y);
+					break;
+				case CardinalDirection.Left:
+					retValue[0] = new Vector2(collider.min.X, collider.min.Y + FEET_SHIFT);
+					retValue[2] = new Vector2(collider.min.X, collider.max.Y - FEET_SHIFT);
+					break;
+				default:
+					break;
+			}
+
+			retValue[1] = 0.5f * (retValue[0] + retValue[2]);
+
+			for(int i = 0; i < 3; ++i)
+			{
+				retValue[i] += gravityVec;
+			}
+
+			return retValue;
 		}
 
 		#endregion rUtility

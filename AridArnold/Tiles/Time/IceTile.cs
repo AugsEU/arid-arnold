@@ -1,7 +1,11 @@
-﻿namespace AridArnold
+﻿using Microsoft.Xna.Framework;
+
+namespace AridArnold
 {
 	internal class IceTile : SquareTile
 	{
+		const float RELATIVE_DIST_THRESH = 10.2f;
+
 		Texture2D mIceTexture;
 		Texture2D mGhostTexture;
 
@@ -21,10 +25,33 @@
 		{
 			if (TimeZoneManager.I.GetCurrentTimeZone() != 0)
 			{
+				if (entity is PlatformingEntity)
+				{
+					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+					if (IsOnIce(platformingEntity))
+					{
+						platformingEntity.SetIceWalking();
+					}
+				}
+
 				return base.Collide(entity, gameTime);
 			}
 
 			return CollisionResults.None;
+		}
+
+		bool IsOnIce(PlatformingEntity entity)
+		{
+			// This function sucks.....
+			Vector2[] feetPositions = entity.GetFeetCheckPoints();
+
+			foreach(Vector2 pos in feetPositions)
+			{
+				if (TileManager.I.GetTile(pos).GetType() != typeof(IceTile))
+					return false;
+			}
+
+			return true;
 		}
 
 		public void OnTimeChange(EArgs eArgs)

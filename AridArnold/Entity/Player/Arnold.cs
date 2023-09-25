@@ -398,7 +398,7 @@ namespace AridArnold
 
 			if (mOnGround)
 			{
-				if (mWalkDirection != WalkDirection.None && mVelocity.LengthSquared() >= mWalkSpeed)
+				if (mWalkDirection != WalkDirection.None && mVelocity.LengthSquared() >= NOT_MOVING_SPEED * NOT_MOVING_SPEED)
 				{
 					texture = mRunningAnimation.GetCurrentTexture();
 				}
