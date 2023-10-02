@@ -61,7 +61,78 @@
 		{
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
+			mUpdateOrder = +10000.0f;
+			
 			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Physics
+		/// </summary>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			UpdatePush(gameTime);
+
+			base.OrderedUpdate(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Update pushing from entities
+		/// </summary>
+		private void UpdatePush(GameTime gameTime)
+		{
+			if (!mIsWinter)
+			{
+				SetWalkDirection(WalkDirection.None);
+				return;
+			}
+
+			if(IceTile.IsOnIce(this))
+			{
+				return;
+			}
+
+			List<Entity> nearbyEntities = EntityManager.I.GetNearPos(Tile.sTILE_SIZE * 0.9f, GetCentrePos(), typeof(Arnold));
+
+			int direction = 0;
+
+			foreach (Entity entity in nearbyEntities)
+			{
+				PlatformingEntity platformingEntity = entity as PlatformingEntity;
+
+				if (platformingEntity.OnGround() && platformingEntity.GetGravityDir() == GetGravityDir())
+				{
+					WalkDirection toMe = DirectionNeededToWalkToMe(platformingEntity.GetCentrePos());
+					if (platformingEntity.GetWalkDirection() == toMe)
+					{
+						if (toMe == WalkDirection.Left)
+						{
+							direction += 1;
+						}
+						else if (toMe == WalkDirection.Right)
+						{
+							direction -= 1;
+						}
+					}
+				}
+			}
+			
+			if(direction > 0)
+			{
+				SetWalkDirection(WalkDirection.Left);
+			}
+			else if(direction < 0)
+			{
+				SetWalkDirection(WalkDirection.Right);
+			}
+			else
+			{
+				SetWalkDirection(WalkDirection.None);
+			}
 		}
 
 

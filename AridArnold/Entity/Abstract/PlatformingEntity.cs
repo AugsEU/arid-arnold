@@ -14,7 +14,7 @@
 
 		protected const float NOT_MOVING_SPEED = 1.0f;
 
-		const float ICE_GRIP = 0.5f;
+		const float ICE_GRIP = 0.9f;
 
 		#endregion rConstants
 
@@ -191,6 +191,16 @@
 				collisionType = CollisionType.Wall;
 			}
 
+			ReactToCollision(collisionType);
+		}
+
+
+
+		/// <summary>
+		/// React to collision with walls/ceilings/floors
+		/// </summary>
+		protected virtual void ReactToCollision(CollisionType collisionType)
+		{
 			switch (collisionType)
 			{
 				case CollisionType.Ground:
@@ -257,6 +267,16 @@
 		public void SetIceWalking()
 		{
 			mIceWalking = true;
+		}
+
+
+
+		/// <summary>
+		/// Are we on ice?
+		/// </summary>
+		public bool GetIceWalking()
+		{
+			return mIceWalking;
 		}
 
 		#endregion rUpdate
@@ -596,6 +616,30 @@
 			}
 
 			throw new NotImplementedException();
+		}
+
+
+
+		/// <summary>
+		/// If you were at the position, which way would you need to walk to get to me in my reference frame?
+		/// </summary>
+		public WalkDirection DirectionNeededToWalkToMe(Vector2 pos)
+		{
+			Vector2 down = GravityVecNorm();
+			Vector2 toPosition = pos - GetCentrePos();
+
+			float cross = down.X * toPosition.Y - down.Y * toPosition.X;
+
+			if(cross > 0.0f)
+			{
+				return WalkDirection.Right;
+			}
+			else if(cross < 0.0f)
+			{
+				return WalkDirection.Left;
+			}
+			
+			return WalkDirection.None;
 		}
 
 
