@@ -10,11 +10,11 @@
 		const float DEFAULT_WALK_SPEED = 9.0f;
 		const float DEFAULT_GRAVITY = 4.35f;
 		const float DEFAULT_JUMP_SPEED = 25.0f;
+		const float DEFAULT_ICE_GRIP = 0.9f;
 		const float MAX_VELOCITY = 65.0f;
 
 		protected const float NOT_MOVING_SPEED = 1.0f;
 
-		const float ICE_GRIP = 0.9f;
 
 		#endregion rConstants
 
@@ -30,6 +30,7 @@
 		protected float mWalkSpeed;
 		protected float mJumpSpeed;
 		protected float mGravity;
+		protected float mIceGrip;
 
 		int mUpdatesSinceGrounded;
 
@@ -56,11 +57,12 @@
 		/// <param name="walkSpeed">Ground walk speed.</param>
 		/// <param name="jumpSpeed">Initial upwards velocity when jumping.</param>
 		/// <param name="gravity">Gravity acceleration.</param>
-		public PlatformingEntity(Vector2 pos, float walkSpeed = DEFAULT_WALK_SPEED, float jumpSpeed = DEFAULT_JUMP_SPEED, float gravity = DEFAULT_GRAVITY) : base(pos)
+		public PlatformingEntity(Vector2 pos, float walkSpeed = DEFAULT_WALK_SPEED, float jumpSpeed = DEFAULT_JUMP_SPEED, float gravity = DEFAULT_GRAVITY, float iceGrip = DEFAULT_ICE_GRIP) : base(pos)
 		{
 			mVelocity = Vector2.Zero;
 			mWalkDirection = WalkDirection.None;
 			mPrevDirection = mWalkDirection;
+			mIceGrip = iceGrip;
 
 			mWalkSpeed = walkSpeed;
 			mJumpSpeed = jumpSpeed;
@@ -97,25 +99,27 @@
 			if (mIceWalking)
 			{
 				Vector2 toVelocity = mVelocity - mIceVelocity;
-				toVelocity.Normalize();
-				mIceVelocity += toVelocity * ICE_GRIP * dt;
-
-				switch (mGravityDirection)
+				if (toVelocity.LengthSquared() > float.Epsilon)
 				{
-					case CardinalDirection.Up:
-					case CardinalDirection.Down:
-						mVelocity.X = mIceVelocity.X;
-						break;
-					case CardinalDirection.Left:
-					case CardinalDirection.Right:
-						mVelocity.Y = mIceVelocity.Y;
-						break;
+					toVelocity.Normalize();
+					mIceVelocity += toVelocity * mIceGrip * dt;
+
+					switch (mGravityDirection)
+					{
+						case CardinalDirection.Up:
+						case CardinalDirection.Down:
+							mVelocity.X = mIceVelocity.X;
+							break;
+						case CardinalDirection.Left:
+						case CardinalDirection.Right:
+							mVelocity.Y = mIceVelocity.Y;
+							break;
+					}
 				}
-				
 			}
 			else
 			{
-				mIceVelocity = mVelocity;
+				GetAGrip();
 			}
 
 			if (mOnGround)
@@ -212,6 +216,9 @@
 						mVelocity = GravityVecNorm() * mGravity;
 					}
 					break;
+				case CollisionType.Wall:
+					GetAGrip();
+					break;
 			}
 		}
 
@@ -277,6 +284,20 @@
 		public bool GetIceWalking()
 		{
 			return mIceWalking;
+		}
+
+
+
+		/// <summary>
+		/// Grip ice instantly
+		/// </summary>
+		protected void GetAGrip()
+		{
+			if (this is PlantPot)
+			{
+				MonoDebug.DLog("Plant pot grip");
+			}
+			mIceVelocity = mVelocity;
 		}
 
 		#endregion rUpdate

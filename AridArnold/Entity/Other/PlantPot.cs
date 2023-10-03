@@ -24,7 +24,7 @@
 		/// <summary>
 		/// Create plant pot at point
 		/// </summary>
-		public PlantPot(Vector2 pos, int length) : base(pos)
+		public PlantPot(Vector2 pos, int length) : base(pos, walkSpeed: 10.0f, iceGrip: 20.2f)
 		{
 			mIsWinter = TimeZoneManager.I.GetCurrentTimeZone() == 1;
 			mLength = length;
@@ -78,7 +78,17 @@
 			base.OrderedUpdate(gameTime);
 		}
 
+		protected override void ReactToCollision(CollisionType collisionType)
+		{
+			switch (collisionType)
+			{
+				case CollisionType.Wall:
+					BeginPush(WalkDirection.None);
+					break;
+			}
 
+			base.ReactToCollision(collisionType);
+		}
 
 		/// <summary>
 		/// Update pushing from entities
@@ -87,12 +97,7 @@
 		{
 			if (!mIsWinter)
 			{
-				SetWalkDirection(WalkDirection.None);
-				return;
-			}
-
-			if(IceTile.IsOnIce(this))
-			{
+				BeginPush(WalkDirection.None);
 				return;
 			}
 
@@ -120,21 +125,47 @@
 					}
 				}
 			}
-			
-			if(direction > 0)
+
+			bool shouldGrip = mVelocity.LengthSquared() < 0.1f || !IceTile.IsOnIce(this);
+
+			if (direction > 0)
 			{
-				SetWalkDirection(WalkDirection.Left);
+				BeginPush(WalkDirection.Left);
 			}
 			else if(direction < 0)
 			{
-				SetWalkDirection(WalkDirection.Right);
+				BeginPush(WalkDirection.Right);
 			}
-			else
+			else if (shouldGrip)
 			{
-				SetWalkDirection(WalkDirection.None);
+				BeginPush(WalkDirection.None);
 			}
 		}
 
+
+
+		/// <summary>
+		/// Begin push if possible
+		/// </summary>
+		/// <param name="direction"></param>
+		private void BeginPush(WalkDirection direction)
+		{
+			if (direction != WalkDirection.None)
+			{
+				//Check for platforms
+				Vector2 checkDir = Util.GetNormal(Util.WalkDirectionToCardinal(direction, GetGravityDir()));
+				checkDir *= Tile.sTILE_SIZE / 1.95f;
+
+				Vector2 checkPos = GetCentrePos() + checkDir;
+
+				if (TileManager.I.GetTile(checkPos) is PlatformTile)
+				{
+					direction = WalkDirection.None;
+				}
+			}
+
+			SetWalkDirection(direction);
+		}
 
 
 		/// <summary>
@@ -143,6 +174,18 @@
 		public void OnTimeChange(EArgs eArgs)
 		{
 			mIsWinter = TimeZoneManager.I.GetCurrentTimeZone() == 1;
+
+			int maxCounter = 0;
+
+			Vector2 walkDir = Util.GetNormal(Util.WalkDirectionToCardinal(mWalkDirection, GetGravityDir()));
+
+			while (IceTile.IsOnIce(this) && maxCounter < 5000)
+			{
+				maxCounter++;
+				mPosition += walkDir;
+			}
+
+			MonoDebug.Assert(maxCounter != 5000);
 		}
 
 
