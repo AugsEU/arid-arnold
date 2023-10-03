@@ -21,6 +21,7 @@
 			kFutronGun,
 			kFutronRocket,
 			kFarry,
+			kMamal,
 			kEnemyClassEnd,
 
 			//NPC

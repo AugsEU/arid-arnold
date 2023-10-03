@@ -124,13 +124,23 @@ namespace AridArnold
 		/// <param name="entity"></param>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if (entity is Arnold)
+			if (ShouldKill() && entity is Arnold)
 			{
 				//Kill the player on touching.
 				EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
 			}
 
 			base.OnCollideEntity(entity);
+		}
+
+
+
+		/// <summary>
+		/// Should we kill on touch?
+		/// </summary>
+		protected virtual bool ShouldKill()
+		{
+			return true;
 		}
 
 

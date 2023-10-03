@@ -346,6 +346,37 @@
 		}
 
 
+
+		/// <summary>
+		/// Get nearest entity to position of types
+		/// </summary>
+		public Entity GetNearestEntity(Vector2 pos, params Type[] types)
+		{
+			float nearestDistance = float.MaxValue;
+			Entity nearestEntity = null;
+			foreach (Entity entity in mRegisteredEntities)
+			{
+				if (!entity.IsEnabled()) continue;
+				foreach (Type type in types)
+				{
+					if (entity.GetType() == type)
+					{
+						float distanceToEntity = (pos - entity.GetCentrePos()).LengthSquared();
+
+						if (distanceToEntity < nearestDistance)
+						{
+							nearestDistance=distanceToEntity;
+							nearestEntity = entity;
+						}
+					}
+				}
+			}
+
+			return nearestEntity;
+		}
+
+
+
 		/// <summary>
 		/// Returns a list of all entities of a certain types
 		/// </summary>

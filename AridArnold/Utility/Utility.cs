@@ -97,6 +97,31 @@
 			throw new NotImplementedException();
 		}
 
+
+
+		/// <summary>
+		/// Invert walking direction to opposite
+		/// </summary>
+		public static WalkDirection InvertDirection(WalkDirection dir)
+		{
+			switch (dir)
+			{
+				case WalkDirection.Left:
+					return WalkDirection.Right;
+				case WalkDirection.Right:
+					return WalkDirection.Left;
+				case WalkDirection.None:
+					return WalkDirection.None;
+			}
+
+			throw new NotImplementedException();
+		}
+
+
+
+		/// <summary>
+		/// Convert a walk direction to a cardinal direction
+		/// </summary>
 		public static CardinalDirection WalkDirectionToCardinal(WalkDirection walk, CardinalDirection gravity)
 		{
 			switch (gravity)
@@ -114,6 +139,11 @@
 			throw new NotImplementedException();
 		}
 
+
+
+		/// <summary>
+		/// Round angle to cardinal direction
+		/// </summary>
 		public static CardinalDirection CardinalDirectionFromAngle(float angle)
 		{
 			angle = MonoMath.MainBranchRadian(angle);

@@ -330,6 +330,9 @@
 				case EntityData.EntityClass.kFarry:
 					entity = new FallingFarry(worldPosition);
 					break;
+				case EntityData.EntityClass.kMamal:
+					entity = new Mamal(worldPosition);
+					break;
 
 				// NPC
 				case EntityData.EntityClass.kBarbara:
