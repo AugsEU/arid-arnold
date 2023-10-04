@@ -2239,6 +2239,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0512.png
 
+#begin Campaigns/MainCampaign/Levels/0601.aux
+/copy:Campaigns/MainCampaign/Levels/0601.aux
+
+#begin Campaigns/MainCampaign/Levels/0601.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0601.png
+
 #begin Campaigns/MainCampaign/Levels/10000.aux
 /copy:Campaigns/MainCampaign/Levels/10000.aux
 
@@ -2293,11 +2308,41 @@
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/40000.png
+
+#begin Campaigns/MainCampaign/Levels/50000.aux
+/copy:Campaigns/MainCampaign/Levels/50000.aux
+
+#begin Campaigns/MainCampaign/Levels/50000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/50000.png
+
+#begin Campaigns/MainCampaign/Levels/60000.aux
+/copy:Campaigns/MainCampaign/Levels/60000.aux
+
+#begin Campaigns/MainCampaign/Levels/60000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/60000.png
 
 #begin Campaigns/MainCampaign/Meta.xml
 /copy:Campaigns/MainCampaign/Meta.xml

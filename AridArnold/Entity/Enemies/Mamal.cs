@@ -139,6 +139,7 @@
 			Vector2 checkSpot = Util.GetNormal(Util.WalkDirectionToCardinal(dir, GetGravityDir()));
 			checkSpot *= Tile.sTILE_SIZE * 0.6f;
 			checkSpot += GravityVecNorm() * (Tile.sTILE_SIZE + 3.0f);
+			checkSpot += GetCentrePos();
 
 			bool canWalk = TileManager.I.GetTile(checkSpot).IsSolid();
 
