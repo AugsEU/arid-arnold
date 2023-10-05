@@ -217,8 +217,7 @@ namespace AridArnold
 		/// </summary>
 		public void RestartCurrentLevel()
 		{
-			mCurrentLevel.End();
-			mCurrentLevel.Begin();
+			mCurrentLevel.Reset();
 		}
 
 

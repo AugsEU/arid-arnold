@@ -24,6 +24,7 @@
 		bool mDoorOpen;
 		bool mAlreadyCompleted;
 		Point mTileCoord;
+		int mActiveTimeZone;
 
 		List<Level> mLevelSequence;
 
@@ -39,7 +40,7 @@
 		/// Create sequence door
 		/// </summary>
 		/// <param name="levelSequence">List of level IDs</param>
-		public SequenceDoor(Vector2 pos, int[] levelSequence) : base(pos)
+		public SequenceDoor(Vector2 pos, int[] levelSequence, int timeZone) : base(pos)
 		{
 			mLevelSequence = new List<Level>();
 			for (int i = 0; i < levelSequence.Length; i++)
@@ -61,6 +62,11 @@
 
 			mDoorOpen = false;
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
+
+			mActiveTimeZone = timeZone;
+
+			SetEnabled(mActiveTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
+			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
 
@@ -174,5 +180,21 @@
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Call back for time changes
+		/// </summary>
+		public void OnTimeChange(EArgs eArgs)
+		{
+			SetEnabled(mActiveTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
+		}
+
+		#endregion rUtility
 	}
 }

@@ -30,6 +30,8 @@ namespace AridArnold
 		Layout mBGLayout;
 		string mImagePath;
 		bool mActive;
+		int mStartTimezone;
+		int mStartAge;
 		protected LevelStatus mLevelStatus;
 
 
@@ -71,6 +73,10 @@ namespace AridArnold
 		{
 			mLevelStatus = LevelStatus.Continue;
 			mActive = true;
+
+			// Load timezone
+			mStartTimezone = TimeZoneManager.I.GetCurrentTimeZone();
+			mStartAge = TimeZoneManager.I.GetCurrentPlayerAge();
 
 			// Clear state
 			EntityManager.I.ClearEntities();
@@ -120,6 +126,17 @@ namespace AridArnold
 			ItemManager.I.LevelEnd(success);
 			mActive = false;
 			mTheme.Unload();
+		}
+
+
+		/// <summary>
+		/// Reset level
+		/// </summary>
+		public void Reset()
+		{
+			End();
+			TimeZoneManager.I.SetCurrentTimeZoneAndAge(mStartTimezone, mStartAge);
+			Begin();
 		}
 
 		#endregion rInitialisation

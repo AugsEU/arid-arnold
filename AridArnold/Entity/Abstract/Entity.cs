@@ -356,7 +356,7 @@
 					entity = new ArnoldRespawn(worldPosition, data.mGravityDirection, data.mStartDirection);
 					break;
 				case EntityData.EntityClass.kSequenceDoor:
-					entity = new SequenceDoor(worldPosition, data.mIntParams);
+					entity = new SequenceDoor(worldPosition, data.mIntParams, (int)data.mFloatParams[0]);
 					break;
 				case EntityData.EntityClass.kLevelLock:
 					entity = new KeyDoor(worldPosition, data.mIntParams[0]);

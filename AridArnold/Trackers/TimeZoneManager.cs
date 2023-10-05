@@ -50,6 +50,18 @@
 
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="time"></param>
+		public void SetCurrentTimeZoneAndAge(int time, int age)
+		{
+			mCurrentTimeZone = time;
+			mCurrentPlayerAge = age;
+			EventManager.I.SendEvent(EventType.TimeChanged, new EArgs(this));
+		}
+
+
+		/// <summary>
 		/// Travel forwards in time.
 		/// </summary>
 		public void TimeTravel()
