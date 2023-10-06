@@ -293,10 +293,6 @@
 		/// </summary>
 		protected void GetAGrip()
 		{
-			if (this is PlantPot)
-			{
-				MonoDebug.DLog("Plant pot grip");
-			}
 			mIceVelocity = mVelocity;
 		}
 

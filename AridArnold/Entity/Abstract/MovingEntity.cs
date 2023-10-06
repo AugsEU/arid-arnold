@@ -10,6 +10,9 @@
 		//Maximum number of collisions before we abort and assume we are stuck in an infinite loop.
 		const int COLLISION_MAX_COUNT = 1024;
 
+		// Below this number collisions start to get fuckywucky
+		const float COLLISION_MIN_VELOCITY = 0.001f;
+
 		#endregion rConstants
 
 
@@ -83,6 +86,11 @@
 				mVelocity += pushVec;
 
 				mVelocity += entityCollision.GetExtraVelocity(this);
+
+				if(mVelocity.LengthSquared() < COLLISION_MIN_VELOCITY * COLLISION_MIN_VELOCITY)
+				{
+					mVelocity = Vector2.Zero;
+				}
 
 				collisionList.Add(entityCollision);
 
