@@ -31,6 +31,8 @@
 			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
+
+
 		/// <summary>
 		/// Load content
 		/// </summary>
@@ -78,6 +80,11 @@
 			base.OrderedUpdate(gameTime);
 		}
 
+
+
+		/// <summary>
+		/// React to a collision
+		/// </summary>
 		protected override void ReactToCollision(CollisionType collisionType)
 		{
 			switch (collisionType)
@@ -89,6 +96,8 @@
 
 			base.ReactToCollision(collisionType);
 		}
+
+
 
 		/// <summary>
 		/// Update pushing from entities
@@ -202,7 +211,7 @@
 			switch (GetGravityDir())
 			{
 				case CardinalDirection.Down:
-					min = mPosition + new Vector2(0.0f, -length* Tile.sTILE_SIZE);
+					min = mPosition + new Vector2(0.0f, 0.0001f-length* Tile.sTILE_SIZE);
 					max = mPosition + new Vector2(Tile.sTILE_SIZE, Tile.sTILE_SIZE);
 					break;
 				default:

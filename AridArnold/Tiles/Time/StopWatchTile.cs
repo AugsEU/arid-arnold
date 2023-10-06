@@ -9,6 +9,8 @@ namespace AridArnold
 
 		float mHandTime;
 		int mTimeZone;
+		Texture2D mEnabledTexture;
+		Texture2D mGhostTexture;
 
 		public StopWatchTile(Vector2 position, int timeZone) : base(position)
 		{
@@ -19,8 +21,9 @@ namespace AridArnold
 
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mountain/StopWatch");
-			pEnabled = mTimeZone == TimeZoneManager.I.GetCurrentTimeZone();
+			mEnabledTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mountain/StopWatch");
+			mGhostTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mountain/StopWatchGhost");
+			RefreshTexture();
 		}
 
 
@@ -36,6 +39,11 @@ namespace AridArnold
 
 		public override void OnEntityIntersect(Entity entity)
 		{
+			if (mTimeZone != TimeZoneManager.I.GetCurrentTimeZone())
+			{
+				return;
+			}
+
 			if (entity is Arnold)
 			{
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
@@ -44,6 +52,9 @@ namespace AridArnold
 
 				gameCam.QueueMovement(new ShiftTimeCameraMove(forwards));
 				Arnold arnold = (Arnold)entity;
+				arnold.SetPrevWalkDirFromVelocity();
+				arnold.SetWalkDirection(WalkDirection.None);
+				arnold.SetVelocity(Vector2.Zero);
 			}
 
 			base.OnEntityIntersect(entity);
@@ -51,11 +62,28 @@ namespace AridArnold
 
 		void OnTimeChange(EArgs args)
 		{
-			pEnabled = mTimeZone == TimeZoneManager.I.GetCurrentTimeZone();
+			RefreshTexture();
+		}
+
+		void RefreshTexture()
+		{
+			if(mTimeZone == TimeZoneManager.I.GetCurrentTimeZone())
+			{
+				mTexture = mEnabledTexture;
+			}
+			else
+			{
+				mTexture = mGhostTexture;
+			}
 		}
 
 		public override void DrawExtra(DrawInfo info)
 		{
+			if (mTimeZone != TimeZoneManager.I.GetCurrentTimeZone())
+			{
+				return;
+			}
+
 			Vector2 centre = GetCentre() - new Vector2(0.5f, 0.5f);
 			Vector2 hourHand = new Vector2(3.0f, 0.0f);
 			Vector2 minuteHand = new Vector2(5.0f, 0.0f);

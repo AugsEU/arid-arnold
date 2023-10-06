@@ -2,7 +2,7 @@
 {
 	internal class ShiftTimeCameraMove : TimedCameraMove
 	{
-		const float TIME_TO_ROTATE = 35.0f;
+		const float TIME_TO_ROTATE = 15.0f;
 		const float ZOOM_OUT_LEVEL = 8.0f;
 
 		float mStartRotation;
