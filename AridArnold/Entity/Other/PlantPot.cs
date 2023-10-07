@@ -24,7 +24,7 @@
 		/// <summary>
 		/// Create plant pot at point
 		/// </summary>
-		public PlantPot(Vector2 pos, int length) : base(pos, walkSpeed: 10.0f, iceGrip: 20.2f)
+		public PlantPot(Vector2 pos, int length) : base(pos, walkSpeed: 9.5f, iceGrip: 20.2f)
 		{
 			mIsWinter = TimeZoneManager.I.GetCurrentTimeZone() == 1;
 			mLength = length;
@@ -255,6 +255,11 @@
 
 				MonoDraw.DrawPlatformer(info, originalTextureRect, treeTexture, Color.White, gravityDir, mPrevDirection, drawLayer);
 			}
+		}
+
+		protected override DrawLayer GetDrawLayer()
+		{
+			return DrawLayer.TileEffects;
 		}
 
 		#endregion rDraw

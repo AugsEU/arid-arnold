@@ -47,7 +47,8 @@ namespace AridArnold
 
 			foreach(Vector2 pos in feetPositions)
 			{
-				if (TileManager.I.GetTile(pos).GetType() != typeof(IceTile))
+				Type tileType = TileManager.I.GetTile(pos).GetType();
+				if (!(tileType == typeof(IceTile) || tileType == typeof(AirTile)))
 					return false;
 			}
 
