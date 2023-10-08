@@ -247,7 +247,7 @@ namespace AridArnold
 							}
 						}
 
-						if(y - 1 > 0)
+						if(y - 1 >= 0)
 						{
 							if (mTileMap[x, y].IsNeighbourType(mTileMap[x + 1, y - 1]))
 							{

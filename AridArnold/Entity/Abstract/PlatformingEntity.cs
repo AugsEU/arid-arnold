@@ -95,8 +95,17 @@
 
 			SetSideVelocityFromDirection(mWalkDirection);
 
+			if (mOnGround)
+			{
+				mUpdatesSinceGrounded = 0;
+			}
+			else if(mUpdatesSinceGrounded != int.MaxValue)
+			{
+				mUpdatesSinceGrounded++;
+			}
+
 			// Ice
-			if (mIceWalking)
+			if (mIceWalking && IsGroundedSince(4))
 			{
 				Vector2 toVelocity = mVelocity - mIceVelocity;
 				if (toVelocity.LengthSquared() > float.Epsilon)
@@ -120,15 +129,6 @@
 			else
 			{
 				GetAGrip();
-			}
-
-			if (mOnGround)
-			{
-				mUpdatesSinceGrounded = 0;
-			}
-			else if(mUpdatesSinceGrounded != int.MaxValue)
-			{
-				mUpdatesSinceGrounded++;
 			}
 
 			ApplyGravity(gameTime);
