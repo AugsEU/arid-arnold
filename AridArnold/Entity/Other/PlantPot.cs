@@ -186,7 +186,19 @@
 
 			int maxCounter = 0;
 
-			Vector2 walkDir = Util.GetNormal(Util.WalkDirectionToCardinal(mWalkDirection, GetGravityDir()));
+			WalkDirection direction = mWalkDirection;
+			if(mWalkDirection == WalkDirection.None)
+			{
+				direction = mPrevDirection;
+			}
+
+			if (mWalkDirection == WalkDirection.None)
+			{
+				direction = WalkDirection.Right;
+			}
+
+
+			Vector2 walkDir = Util.GetNormal(Util.WalkDirectionToCardinal(direction, GetGravityDir()));
 
 			while (IceTile.IsOnIce(this) && maxCounter < 5000)
 			{
