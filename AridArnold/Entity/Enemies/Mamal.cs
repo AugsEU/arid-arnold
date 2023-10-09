@@ -19,7 +19,7 @@
 		#region rConstants
 
 		const float MAMAL_JUMP_SPEED = 0.0f;
-		const float MAMAL_WALK_SPEED = 4.5f;
+		const float MAMAL_WALK_SPEED = 3.5f;
 
 		#endregion rConstants
 
@@ -137,7 +137,7 @@
 			dir = Util.InvertDirection(dir);
 
 			Vector2 checkSpot = Util.GetNormal(Util.WalkDirectionToCardinal(dir, GetGravityDir()));
-			checkSpot *= Tile.sTILE_SIZE * 0.6f;
+			checkSpot *= Tile.sTILE_SIZE * 0.45f;
 			checkSpot += GravityVecNorm() * (Tile.sTILE_SIZE + 3.0f);
 			checkSpot += GetCentrePos();
 
