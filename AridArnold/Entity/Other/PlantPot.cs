@@ -198,7 +198,6 @@
 				direction = WalkDirection.Right;
 			}
 
-
 			Vector2 walkDir = Util.GetNormal(Util.WalkDirectionToCardinal(direction, GetGravityDir()));
 
 			while (IceTile.IsOnIce(this) && maxCounter < 5000)

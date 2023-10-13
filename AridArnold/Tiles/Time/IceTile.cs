@@ -45,14 +45,17 @@ namespace AridArnold
 			// This function sucks.....
 			Vector2[] feetPositions = entity.GetFeetCheckPoints();
 
+			bool anyIce = false;
+			bool anySolid = false;
+
 			foreach(Vector2 pos in feetPositions)
 			{
 				Type tileType = TileManager.I.GetTile(pos).GetType();
-				if (!(tileType == typeof(IceTile) || tileType == typeof(AirTile)))
-					return false;
+				if (tileType == typeof(IceTile)) anyIce = true;
+				else if (tileType != typeof(AirTile)) anySolid = true;
 			}
 
-			return true;
+			return anyIce && !anySolid;
 		}
 
 		public void OnTimeChange(EArgs eArgs)

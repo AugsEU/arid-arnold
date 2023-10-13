@@ -162,6 +162,10 @@
 		void OnTimeChange(EArgs eArgs)
 		{
 			mIsAwake = TimeZoneManager.I.GetCurrentTimeZone() == 1;
+			SetWalkDirection(WalkDirection.None);
+			SetVelocity(Vector2.Zero);
+			mPrevVelocity = Vector2.Zero;
+			GetAGrip();
 		}
 
 
