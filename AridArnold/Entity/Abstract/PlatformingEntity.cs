@@ -668,7 +668,7 @@
 		/// </summary>
 		public Vector2[] GetFeetCheckPoints()
 		{
-			const float FEET_SHIFT = 2.0f;
+			const float FEET_SHIFT = -2.0f;
 			Vector2[] retValue = new Vector2[3];
 			Rect2f collider = ColliderBounds();
 			Vector2 gravityVec = GravityVecNorm();
