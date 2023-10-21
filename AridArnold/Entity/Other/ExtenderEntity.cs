@@ -8,12 +8,14 @@ namespace AridArnold
 
 		int mLength;
 		bool mIsExtended;
+		WalkDirection mPrevPushDir;
 
 		protected Texture2D mMiddleTexture;
 		protected Texture2D mTopTexture;
 		protected Texture2D mGhostTexture;
 		protected Texture2D mOffSeasonTexture;
 		protected Texture2D mOnSeasonTexture;
+		
 
 		#endregion rMembers
 
@@ -31,6 +33,7 @@ namespace AridArnold
 			mIsExtended = TimeZoneManager.I.GetCurrentTimeZone() == GetOnSeason();
 			mLength = length;
 			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
+			mPrevDirection = WalkDirection.Right;
 		}
 
 		#endregion rInitialisation
@@ -159,6 +162,10 @@ namespace AridArnold
 			}
 
 			SetWalkDirection(direction);
+			if(direction != WalkDirection.None)
+			{
+				mPrevPushDir = direction;
+			}
 		}
 
 
@@ -172,20 +179,10 @@ namespace AridArnold
 
 			int maxCounter = 0;
 
-			WalkDirection direction = mWalkDirection;
-			if (mWalkDirection == WalkDirection.None)
-			{
-				direction = mPrevDirection;
-			}
+			MonoDebug.Assert(mPrevPushDir != WalkDirection.None);
+			Vector2 walkDir = Util.GetNormal(Util.WalkDirectionToCardinal(mPrevPushDir, GetGravityDir()));
 
-			if (mWalkDirection == WalkDirection.None)
-			{
-				direction = WalkDirection.Right;
-			}
-
-			Vector2 walkDir = Util.GetNormal(Util.WalkDirectionToCardinal(direction, GetGravityDir()));
-
-			while (IceTile.IsOnIce(this) && maxCounter < 5000)
+			while (IceTile.IsOnIce(this, 2.0f) && maxCounter < 5000)
 			{
 				maxCounter++;
 				mPosition += walkDir;

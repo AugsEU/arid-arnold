@@ -40,10 +40,10 @@ namespace AridArnold
 			return CollisionResults.None;
 		}
 
-		static public bool IsOnIce(PlatformingEntity entity)
+		static public bool IsOnIce(PlatformingEntity entity, float feetShift = -2.0f)
 		{
 			// This function sucks.....
-			Vector2[] feetPositions = entity.GetFeetCheckPoints();
+			Vector2[] feetPositions = entity.GetFeetCheckPoints(feetShift);
 
 			bool anyIce = false;
 			bool anySolid = false;

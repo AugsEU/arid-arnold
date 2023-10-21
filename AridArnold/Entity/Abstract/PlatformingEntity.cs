@@ -666,9 +666,8 @@
 		/// 1 - Middle
 		/// 2 - Right
 		/// </summary>
-		public Vector2[] GetFeetCheckPoints()
+		public Vector2[] GetFeetCheckPoints(float footShift = -2.0f)
 		{
-			const float FEET_SHIFT = -2.0f;
 			Vector2[] retValue = new Vector2[3];
 			Rect2f collider = ColliderBounds();
 			Vector2 gravityVec = GravityVecNorm();
@@ -676,20 +675,20 @@
 			switch (mGravityDirection)
 			{
 				case CardinalDirection.Up:
-					retValue[0] = new Vector2(collider.min.X + FEET_SHIFT, collider.min.Y);
-					retValue[2] = new Vector2(collider.max.X - FEET_SHIFT, collider.min.Y);
+					retValue[0] = new Vector2(collider.min.X + footShift, collider.min.Y);
+					retValue[2] = new Vector2(collider.max.X - footShift, collider.min.Y);
 					break;
 				case CardinalDirection.Right:
-					retValue[0] = new Vector2(collider.max.X, collider.max.Y - FEET_SHIFT);
-					retValue[2] = new Vector2(collider.max.X, collider.min.Y + FEET_SHIFT);
+					retValue[0] = new Vector2(collider.max.X, collider.max.Y - footShift);
+					retValue[2] = new Vector2(collider.max.X, collider.min.Y + footShift);
 					break;
 				case CardinalDirection.Down:
-					retValue[0] = new Vector2(collider.min.X + FEET_SHIFT, collider.max.Y);
-					retValue[2] = new Vector2(collider.max.X - FEET_SHIFT, collider.max.Y);
+					retValue[0] = new Vector2(collider.min.X + footShift, collider.max.Y);
+					retValue[2] = new Vector2(collider.max.X - footShift, collider.max.Y);
 					break;
 				case CardinalDirection.Left:
-					retValue[0] = new Vector2(collider.min.X, collider.min.Y + FEET_SHIFT);
-					retValue[2] = new Vector2(collider.min.X, collider.max.Y - FEET_SHIFT);
+					retValue[0] = new Vector2(collider.min.X, collider.min.Y + footShift);
+					retValue[2] = new Vector2(collider.min.X, collider.max.Y - footShift);
 					break;
 				default:
 					break;
