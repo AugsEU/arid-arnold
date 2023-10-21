@@ -379,6 +379,9 @@
 				case EntityData.EntityClass.kPlantPot:
 					entity = new PlantPot(worldPosition, data.mIntParams[0]);
 					break;
+				case EntityData.EntityClass.kPillarPot:
+					entity = new PillarPot(worldPosition, data.mIntParams[0]);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

@@ -75,7 +75,7 @@ namespace AridArnold
 			CollectableManager.I.ChangePermanentItem(0x0000, 100);
 			//QueueLoadSequence(new HubDirectLoader(601));
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
-			QueueLoadSequence(new LevelDirectLoader(609));
+			QueueLoadSequence(new LevelDirectLoader(602));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 #endif

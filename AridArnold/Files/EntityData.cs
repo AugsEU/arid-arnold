@@ -42,6 +42,7 @@
 			kGravityTile,
 			kTimeMachine,
 			kPlantPot,
+			kPillarPot,
 			kUtilityClassEnd
 		}
 
