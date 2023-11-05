@@ -11,7 +11,7 @@
 		const int COLLISION_MAX_COUNT = 1024;
 
 		// Below this number collisions start to get fuckywucky
-		const float COLLISION_MIN_VELOCITY = 0.002f;
+		const float COLLISION_MIN_VELOCITY = 0.0021f;
 
 		#endregion rConstants
 
