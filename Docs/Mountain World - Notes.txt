@@ -1,0 +1,21 @@
+601 - Summer -> Winter (Intro)
+
+602 - Winter -> Summer (Ice Intro)
+610 - Summer -> Winter (Climbing Easy)
+603 - Winter -> Winter (Ice hard)
+
+605 - Summer -> Winter (Mamal Puzzle)
+606 - Winter -> Summer (Around Puzzle)
+
+604 - Winter -> Winter (Round Puzzle)
+607 - Winter -> Winter (Riding Mamals)
+
+608 - Winter -> ???    (Water 1)
+611 - ??? -> ???       (Water 2)
+613 - ??? -> Winter    (Free key)
+
+609 - Summer -> Summer (Climbing Easy)
+612 - Summer -> ???    (Water 3)
+614 - ??? -> Summer    (Free Key)
+
+
