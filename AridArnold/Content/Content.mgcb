@@ -1309,6 +1309,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0603.png
 
+#begin Campaigns/MainCampaign/Hub/0701.aux
+/copy:Campaigns/MainCampaign/Hub/0701.aux
+
+#begin Campaigns/MainCampaign/Hub/0701.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0701.png
+
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
 
@@ -5859,6 +5874,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/WW7/Beam.png
+
+#begin Tiles/WW7/ChipFull.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/WW7/ChipFull.png
+
+#begin Tiles/WW7/ChipGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/WW7/ChipGhost.png
 
 #begin Tiles/WW7/Concrete.png
 /importer:TextureImporter

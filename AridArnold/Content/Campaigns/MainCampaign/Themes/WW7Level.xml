@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Steam Plant</name>
-	<path from="wall">Gravel</path>
-	<path from="wallSecondary">Concrete</path>
-	<path from="platform">Beam</path>
+	<path from="Wall">Gravel</path>
+	<path from="WallSecondary">Concrete</path>
+	<path from="Platform">Beam</path>
+	<path from="CoinFull">ChipFull</path>
+	<path from="CoinGhost">ChipGhost</path>
 </theme>

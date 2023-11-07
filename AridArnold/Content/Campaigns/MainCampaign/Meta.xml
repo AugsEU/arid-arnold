@@ -9,5 +9,6 @@
 		<type root="Lab">3</type>
 		<type root="Mirror">4</type>
 		<type root="Mountain">5</type>
+		<type root="WW7">5</type>
 	</coins>
 </campaign>
