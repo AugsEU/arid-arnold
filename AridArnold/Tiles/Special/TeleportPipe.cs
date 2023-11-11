@@ -123,7 +123,7 @@ namespace AridArnold
 				return Vector2.Zero;
 			}
 
-			switch (mAdjacency)
+			switch (AdjacencyHelper.GetDirectlyAdjacent(mAdjacency))
 			{
 				case AdjacencyType.Ad8:
 					return new Vector2(0.0f, 1.0f);
