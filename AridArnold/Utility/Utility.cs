@@ -164,5 +164,20 @@
 
 			return CardinalDirection.Right;
 		}
+
+
+
+		/// <summary>
+		/// Card from a vector.
+		/// </summary>
+		public static CardinalDirection CardinalDirectionFromVector(Vector2 vector)
+		{
+			if(vector.Y < vector.X)
+			{
+				return -vector.Y < vector.X ? CardinalDirection.Right : CardinalDirection.Up;
+			}
+
+			return -vector.Y < vector.X ? CardinalDirection.Down : CardinalDirection.Left;
+		}
 	}
 }

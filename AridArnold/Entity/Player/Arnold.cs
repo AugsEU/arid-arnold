@@ -99,6 +99,7 @@ namespace AridArnold
 
 			//Botch position a bit. Not sure what's happening here.
 			mPosition.Y -= 2.0f;
+			mPosition.X += 2.0f;
 
 			mVelocity.Y = +0.01f;
 		}

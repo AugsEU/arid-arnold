@@ -93,6 +93,7 @@ namespace AridArnold
 				return;
 			}
 
+			mPrevVelocity = mVelocity;
 			List<EntityCollision> collisions = new List<EntityCollision>();
 			TileManager.I.GatherCollisions(gameTime, this, ref collisions);
 

@@ -72,6 +72,8 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mDirection = Util.CardinalDirectionFromVector(mVelocity);
+			mVelocity = LASER_SPEED * Vector2.Normalize(mVelocity); // Keep speed consistent
 			base.Update(gameTime);
 		}
 
