@@ -254,6 +254,19 @@
 
 
 		/// <summary>
+		/// Draw a simple rectangle. Used mostly for debugging
+		/// </summary>
+		public static void DrawRectDepth(DrawInfo info, Rect2f rect2f, Color col, DrawLayer depth)
+		{
+			Point min = new Point((int)rect2f.min.X, (int)rect2f.min.Y);
+			Point max = new Point((int)rect2f.max.X, (int)rect2f.max.Y);
+
+			DrawRectDepth(info, new Rectangle(min, max - min), col, depth);
+		}
+
+
+
+		/// <summary>
 		/// Draw a dot at a position.
 		/// </summary>
 		public static void DrawDot(DrawInfo info, Vector2 point, Color col)
