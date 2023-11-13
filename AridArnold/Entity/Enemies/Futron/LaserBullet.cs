@@ -72,7 +72,7 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			mDirection = Util.CardinalDirectionFromVector(mVelocity);
+			SetBulletDirection(Util.CardinalDirectionFromVector(mVelocity));
 			mVelocity = LASER_SPEED * Vector2.Normalize(mVelocity); // Keep speed consistent
 			base.Update(gameTime);
 		}
@@ -96,6 +96,44 @@ namespace AridArnold
 			base.OnCollideEntity(entity);
 		}
 
+
+
+		/// <summary>
+		/// Collider for bullet
+		/// </summary>
+		public override Rect2f ColliderBounds()
+		{
+			switch (mDirection)
+			{
+				case CardinalDirection.Up:
+				case CardinalDirection.Down:
+					return new Rect2f(mPosition, mTexture.Height, mTexture.Width);
+				case CardinalDirection.Right:
+				case CardinalDirection.Left:
+					return new Rect2f(mPosition, mTexture.Width, mTexture.Height);
+			}
+
+			throw new NotImplementedException();
+		}
+
+
+		/// <summary>
+		/// Set direction
+		/// </summary>
+		private void SetBulletDirection(CardinalDirection newDir)
+		{
+			CardinalDirection currDir = mDirection;
+
+			if(currDir != newDir)
+			{
+				Vector2 centre = GetCentrePos();
+				mDirection = newDir;
+
+				// Re-centre after collider changes.
+				SetCentrePos(centre);
+			}
+		}
+
 		#endregion rUpdate
 
 
@@ -112,17 +150,49 @@ namespace AridArnold
 			Vector2 drawPos = mPosition;
 			Texture2D texToDraw = mTexture;
 
+			// Bodge position
 			if (mState == ProjectileState.Exploding)
 			{
 				texToDraw = mExplodingAnim.GetCurrentTexture();
 				drawPos = mExplosionCentre;
-				drawPos.Y -= 3.0f;
+
+				switch (mDirection)
+				{
+					case CardinalDirection.Up:
+					case CardinalDirection.Down:
+						drawPos.X += 6.0f;
+						break;
+					case CardinalDirection.Right:
+					case CardinalDirection.Left:
+						drawPos.Y -= 3.0f;
+						break;
+				}
+			}
+			else
+			{
+				switch (mDirection)
+				{
+					case CardinalDirection.Down:
+					case CardinalDirection.Up:
+						drawPos.X += mTexture.Height;
+						drawPos.Y -= 1.0f;
+						break;
+					case CardinalDirection.Right:
+						break;
+					case CardinalDirection.Left:
+						drawPos.Y -= 1.0f;
+						drawPos.X += 1.0f;
+						break;
+				}
 			}
 
+			// Effect
 			switch (mDirection)
 			{
+				case CardinalDirection.Down:
 				case CardinalDirection.Right:
 					break;
+				case CardinalDirection.Up:
 				case CardinalDirection.Left:
 					effect = SpriteEffects.FlipHorizontally;
 					break;
@@ -130,7 +200,13 @@ namespace AridArnold
 
 			drawPos = MonoMath.Round(drawPos);
 
-			MonoDraw.DrawTexture(info, texToDraw, drawPos, null, Color.White, 0.0f, Vector2.Zero, 1.0f, effect, DrawLayer.Tile);
+			float rotation = 0.0f;
+			if(mDirection == CardinalDirection.Up || mDirection == CardinalDirection.Down)
+			{
+				rotation = MathF.PI / 2.0f;
+			}
+			
+			MonoDraw.DrawTexture(info, texToDraw, drawPos, null, Color.White, rotation, Vector2.Zero, 1.0f, effect, DrawLayer.Tile);
 		}
 
 		#endregion rDraw
