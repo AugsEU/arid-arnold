@@ -27,6 +27,7 @@ namespace AridArnold
 		int mID;
 		AuxData mAuxData;
 		LevelTheme mTheme;
+		string mLayoutPath;
 		Layout mBGLayout;
 		string mImagePath;
 		bool mActive;
@@ -58,7 +59,8 @@ namespace AridArnold
 			mTheme = new LevelTheme(themeFilePath, data.GetRoot());
 			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
 
-			mBGLayout = new Layout("BG/" + data.GetRoot() + "/" + data.GetBGPath() + ".mlo");
+			mLayoutPath = "BG/" + data.GetRoot() + "/" + data.GetBGPath() + ".mlo";
+			mBGLayout = new Layout(mLayoutPath);
 
 			// Level loaded but not playing.
 			mActive = false;
@@ -82,6 +84,9 @@ namespace AridArnold
 			EntityManager.I.ClearEntities();
 			CollectableManager.I.ClearTransient();
 			FXManager.I.Clear();
+
+			// Re-Load BG
+			mBGLayout = new Layout(mLayoutPath);
 
 			// Load theme
 			mTheme.Load();

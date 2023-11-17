@@ -131,6 +131,18 @@
 		}
 
 
+
+		/// <summary>
+		/// Add an effect
+		/// </summary>
+		/// <param name="fx"></param>
+		public void AddFX(FX fx)
+		{
+			mFXList.Add(fx);
+		}
+
+
+
 		/// <summary>
 		/// Clear all effects
 		/// </summary>

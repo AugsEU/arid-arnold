@@ -6,4 +6,39 @@
 		<depth>Background</depth>
 		<texture>BG/WW7/SewerBG</texture>
 	</element>
+	<element type="waterleak">
+		<x>165.0</x>
+		<y>24.0</y>
+		<distance>173.0</distance>
+		<color>030319</color>
+		<secondaryColor>030319</secondaryColor>
+	</element>
+	<element type="waterleak">
+		<x>81.0</x>
+		<y>151.0</y>
+		<distance>45.0</distance>
+		<color>030319</color>
+		<secondaryColor>030319</secondaryColor>
+	</element>
+	<element type="waterleak">
+		<x>470.0</x>
+		<y>273.0</y>
+		<distance>64.0</distance>
+		<color>030319</color>
+		<secondaryColor>030319</secondaryColor>
+	</element>
+	<element type="waterleak">
+		<x>299.0</x>
+		<y>263.0</y>
+		<distance>251.0</distance>
+		<color>030319</color>
+		<secondaryColor>030319</secondaryColor>
+	</element>
+	<element type="waterleak">
+		<x>192.0</x>
+		<y>468.0</y>
+		<distance>45.0</distance>
+		<color>030319</color>
+		<secondaryColor>030319</secondaryColor>
+	</element>
 </root>

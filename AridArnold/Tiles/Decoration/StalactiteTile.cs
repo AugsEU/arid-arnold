@@ -8,25 +8,16 @@ namespace AridArnold
 		static Color DROP_MAIN_COLOR = new Color(0, 46, 101);
 		static Color DROP_SECOND_COLOR = new Color(0, 33, 75);
 
-		MonoTimer mTimer;
-		float mDropTime;
-		float mDropDistance;
-
-		/// <summary>
-		/// Tile with start position
-		/// </summary>
-		/// <param name="position">Start position</param>
 		public StalactiteTile(Vector2 position) : base(position)
 		{
-			mTimer = new MonoTimer();
-			mTimer.Start();
-
-			mDropTime = RandomManager.I.GetDraw().GetFloatRange(0.0f, 5500.0f);
 		}
 
 		public override void FinishInit()
 		{
-			mDropDistance = CalculateDropDistance();
+			float dropDistance = CalculateDropDistance();
+
+			FXManager.I.AddFX(new WaterLeakFX(mPosition + DROP_DISPLACEMENT, dropDistance, DROP_MAIN_COLOR, DROP_SECOND_COLOR));
+
 			base.FinishInit();
 		}
 
@@ -51,37 +42,6 @@ namespace AridArnold
 
 			return start + (tilePt.Y - mTileMapIndex.Y - 1) * 16.0f;
 		}
-
-
-		public override void Update(GameTime gameTime)
-		{
-			if((float)mTimer.GetElapsedMs() > mDropTime)
-			{
-				AddDewDrop();
-			}
-
-			base.Update(gameTime);
-		}
-
-		void SetDropTime()
-		{
-			mDropTime = RandomManager.I.GetDraw().GetFloatRange(3500.0f, 10500.0f);
-		}
-
-
-		void AddDewDrop()
-		{
-			if(mDropDistance == 0.0f)
-			{
-				return;
-			}
-
-			FXManager.I.AddDrop(mPosition + DROP_DISPLACEMENT, mDropDistance, DROP_MAIN_COLOR, DROP_SECOND_COLOR);
-
-			mTimer.Reset();
-			SetDropTime();
-		}
-
 
 
 		/// <summary>
