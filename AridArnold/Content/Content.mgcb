@@ -934,7 +934,7 @@
 #begin BG/SteamPlant/ValveIdle.mia
 /copy:BG/SteamPlant/ValveIdle.mia
 
-#begin BG/WW7/BG.png
+#begin BG/WW7/CityBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -944,10 +944,25 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:BG/WW7/BG.png
+/build:BG/WW7/CityBG.png
 
-#begin BG/WW7/WW7.mlo
-/copy:BG/WW7/WW7.mlo
+#begin BG/WW7/SewerBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/WW7/SewerBG.png
+
+#begin BG/WW7/WW7City.mlo
+/copy:BG/WW7/WW7City.mlo
+
+#begin BG/WW7/WW7Sewer.mlo
+/copy:BG/WW7/WW7Sewer.mlo
 
 #begin Campaigns/MainCampaign/Hub/0101.aux
 /copy:Campaigns/MainCampaign/Hub/0101.aux
@@ -1323,6 +1338,21 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0701.png
+
+#begin Campaigns/MainCampaign/Hub/0702.aux
+/copy:Campaigns/MainCampaign/Hub/0702.aux
+
+#begin Campaigns/MainCampaign/Hub/0702.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0702.png
 
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
