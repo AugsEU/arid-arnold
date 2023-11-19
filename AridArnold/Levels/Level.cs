@@ -35,14 +35,14 @@ namespace AridArnold
 		int mStartAge;
 		protected LevelStatus mLevelStatus;
 
-
-
-
-
-
-
 		#endregion rMembers
+
+
+
+
+
 		#region rInitialisation
+
 		/// <summary>
 		/// Level constructor
 		/// </summary>

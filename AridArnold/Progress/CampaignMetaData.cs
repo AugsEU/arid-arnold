@@ -1,11 +1,20 @@
 ﻿namespace AridArnold
 {
+	struct TimeZoneOverride
+	{
+		public int mTimeFrom;
+		public int mTimeTo;
+		public int mDestinationLevel;
+		public Point mArnoldSpawnPoint;
+	}
+
 	class CampaignMetaData
 	{
 		string mCampaignName;
 		string mCampaignId;
 		int mStartRoomID;
 		Dictionary<string, byte> mCoinTypeIDs;
+		List<TimeZoneOverride> mTimeOverrides;
 
 		public CampaignMetaData(string xmlPath)
 		{
@@ -34,6 +43,28 @@
 				string worldRoot = coinTypeNode.Attributes["root"].Value;
 				byte coindTypeID = byte.Parse(coinTypeNode.InnerText);
 				mCoinTypeIDs.Add(worldRoot, coindTypeID);
+			}
+
+			// Load time overrides
+			mTimeOverrides = new List<TimeZoneOverride>();
+			XmlNode timeNode = rootNode.SelectSingleNode("timeOverrides");
+			XmlNodeList timeOverrideNodes = coinsNode.ChildNodes;
+			foreach (XmlNode timeOverrideNode in timeOverrideNodes)
+			{
+				mTimeOverrides.Add(MonoParse.GetTimeZoneOverride(timeOverrideNode));
+			}
+
+			// Validate time overrides
+			for(int i = 0; i < mTimeOverrides.Count; i++)
+			{
+				for(int j = i + 1; j < mTimeOverrides.Count; j++)
+				{
+					if (mTimeOverrides[i].mTimeTo == mTimeOverrides[j].mTimeTo &&
+						mTimeOverrides[i].mTimeFrom == mTimeOverrides[j].mTimeFrom)
+					{
+						throw new Exception("Invalid timezone override data. Possible duplicates or conflicting destinations.");
+					}
+				}
 			}
 		}
 

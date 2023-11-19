@@ -71,5 +71,25 @@
 
 			return MonoColor.HEXToColor(node.InnerXml);
 		}
+
+
+
+		static public TimeZoneOverride GetTimeZoneOverride(XmlNode node)
+		{
+			XmlNode fromTimeNode = node.SelectSingleNode("from");
+			XmlNode toTimeNode = node.SelectSingleNode("to");
+			XmlNode levelIDNode = node.SelectSingleNode("level");
+			XmlNode xNode = node.SelectSingleNode("x");
+			XmlNode yNode = node.SelectSingleNode("y");
+
+			TimeZoneOverride retInfo;
+
+			retInfo.mTimeFrom			= GetInt(fromTimeNode);
+			retInfo.mTimeTo				= GetInt(toTimeNode);
+			retInfo.mDestinationLevel	= GetInt(levelIDNode);
+			retInfo.mArnoldSpawnPoint = new Point(GetInt(xNode), GetInt(yNode));
+
+			return retInfo;
+		}
 	}
 }
