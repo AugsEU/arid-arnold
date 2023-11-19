@@ -48,7 +48,7 @@
 			// Load time overrides
 			mTimeOverrides = new List<TimeZoneOverride>();
 			XmlNode timeNode = rootNode.SelectSingleNode("timeOverrides");
-			XmlNodeList timeOverrideNodes = coinsNode.ChildNodes;
+			XmlNodeList timeOverrideNodes = timeNode.ChildNodes;
 			foreach (XmlNode timeOverrideNode in timeOverrideNodes)
 			{
 				mTimeOverrides.Add(MonoParse.GetTimeZoneOverride(timeOverrideNode));

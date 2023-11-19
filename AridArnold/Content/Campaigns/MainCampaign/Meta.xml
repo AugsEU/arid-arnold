@@ -9,6 +9,25 @@
 		<type root="Lab">3</type>
 		<type root="Mirror">4</type>
 		<type root="Mountain">5</type>
-		<type root="WW7">5</type>
+		<type root="WW7">6</type>
+		<type root="Hell">7</type>
 	</coins>
+	<timeOverrides>
+		<override>
+			<from>1</from>
+			<to>2</to>
+			<level>0801</level>
+			<x>16</x>
+			<y>16</y>
+		</override>
+	</timeOverrides>
+	<timeOverrides>
+		<override>
+			<from>2</from>
+			<to>1</to>
+			<level>0601</level>
+			<x>16</x>
+			<y>16</y>
+		</override>
+	</timeOverrides>
 </campaign>

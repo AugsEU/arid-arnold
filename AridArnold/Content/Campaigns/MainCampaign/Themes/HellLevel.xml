@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>Hell</name>
+	<path from="Wall">HellAsh</path>
+	<path from="Platform">Beam</path>
+	<path from="CoinFull">RockFull</path>
+	<path from="CoinGhost">RockGhost</path>
+</theme>

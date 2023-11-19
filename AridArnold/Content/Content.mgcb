@@ -433,6 +433,21 @@
 #begin BG/Buk/Buk.mlo
 /copy:BG/Buk/Buk.mlo
 
+#begin BG/Hell/Hell.mlo
+/copy:BG/Hell/Hell.mlo
+
+#begin BG/Hell/HellBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Hell/HellBG.png
+
 #begin BG/Lab/BG1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1353,6 +1368,21 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0702.png
+
+#begin Campaigns/MainCampaign/Hub/0801.aux
+/copy:Campaigns/MainCampaign/Hub/0801.aux
+
+#begin Campaigns/MainCampaign/Hub/0801.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0801.png
 
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
@@ -2874,6 +2904,9 @@
 
 #begin Campaigns/MainCampaign/Themes/BukCaveLevel.xml
 /copy:Campaigns/MainCampaign/Themes/BukCaveLevel.xml
+
+#begin Campaigns/MainCampaign/Themes/HellLevel.xml
+/copy:Campaigns/MainCampaign/Themes/HellLevel.xml
 
 #begin Campaigns/MainCampaign/Themes/LabLevel.xml
 /copy:Campaigns/MainCampaign/Themes/LabLevel.xml
@@ -5319,6 +5352,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Flag4.png
+
+#begin Tiles/Hell/GravelWinter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Hell/GravelWinter.png
+
+#begin Tiles/Hell/HellAsh.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Hell/HellAsh.png
+
+#begin Tiles/Hell/RockFull.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Hell/RockFull.png
+
+#begin Tiles/Hell/RockGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Hell/RockGhost.png
 
 #begin Tiles/HotDog.png
 /importer:TextureImporter
