@@ -1384,6 +1384,36 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0801.png
 
+#begin Campaigns/MainCampaign/Hub/0802.aux
+/copy:Campaigns/MainCampaign/Hub/0802.aux
+
+#begin Campaigns/MainCampaign/Hub/0802.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0802.png
+
+#begin Campaigns/MainCampaign/Hub/0803.aux
+/copy:Campaigns/MainCampaign/Hub/0803.aux
+
+#begin Campaigns/MainCampaign/Hub/0803.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0803.png
+
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
 

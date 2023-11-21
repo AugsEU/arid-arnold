@@ -63,7 +63,7 @@
 				}
 			}
 
-			if (mLeftID != 0 && loader is not null)
+			if (mLeftID != 0 && loader is null)
 			{
 				if (arnold.GetCentrePos().X < TRANSITION_BORDER)
 				{
@@ -71,7 +71,7 @@
 				}
 			}
 
-			if (mTopID != 0 && loader is not null)
+			if (mTopID != 0 && loader is null)
 			{
 				if (arnold.GetCentrePos().Y < TRANSITION_BORDER)
 				{
@@ -79,7 +79,7 @@
 				}
 			}
 
-			if (mBottomID != 0 && loader is not null)
+			if (mBottomID != 0 && loader is null)
 			{
 				if (arnold.GetCentrePos().Y > GameScreen.GAME_AREA_HEIGHT - TRANSITION_BORDER)
 				{
