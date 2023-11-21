@@ -54,40 +54,43 @@
 		{
 			Rect2f collider = arnold.ColliderBounds();
 
+			HubRoomEdgeLoader loader = null;
 			if (mRightID != 0 )
 			{
 				if(arnold.GetCentrePos().X > GameScreen.GAME_AREA_WIDTH - TRANSITION_BORDER)
 				{
-					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mRightID, CardinalDirection.Left, new Entity[]{ arnold }));
-					return;
+					loader = new HubRoomEdgeLoader(mRightID, CardinalDirection.Left);
 				}
 			}
 
-			if (mLeftID != 0)
+			if (mLeftID != 0 && loader is not null)
 			{
 				if (arnold.GetCentrePos().X < TRANSITION_BORDER)
 				{
-					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mLeftID, CardinalDirection.Right, new Entity[] { arnold }));
-					return;
+					loader = new HubRoomEdgeLoader(mLeftID, CardinalDirection.Right);
 				}
 			}
 
-			if (mTopID != 0)
+			if (mTopID != 0 && loader is not null)
 			{
 				if (arnold.GetCentrePos().Y < TRANSITION_BORDER)
 				{
-					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mTopID, CardinalDirection.Down, new Entity[] { arnold }));
-					return;
+					loader = new HubRoomEdgeLoader(mTopID, CardinalDirection.Down);
 				}
 			}
 
-			if (mBottomID != 0)
+			if (mBottomID != 0 && loader is not null)
 			{
 				if (arnold.GetCentrePos().Y > GameScreen.GAME_AREA_HEIGHT - TRANSITION_BORDER)
 				{
-					CampaignManager.I.QueueLoadSequence(new HubRoomEdgeLoader(mBottomID, CardinalDirection.Up, new Entity[] { arnold }));
-					return;
+					loader = new HubRoomEdgeLoader(mBottomID, CardinalDirection.Up);
 				}
+			}
+
+			if(loader is not null)
+			{
+				loader.AddPersistentEntities(arnold);
+				CampaignManager.I.QueueLoadSequence(loader);
 			}
 		}
 

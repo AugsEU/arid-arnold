@@ -3,9 +3,11 @@
 	abstract class LoadingSequence
 	{
 		protected int mLevelID;
+		protected List<Entity> mPersistentEntities;
 
 		public LoadingSequence(int levelID)
 		{
+			mPersistentEntities = new List<Entity>();
 			mLevelID = levelID;
 		}
 
@@ -15,6 +17,13 @@
 
 		public abstract bool Finished();
 
+		public void AddPersistentEntities(params Entity[] entities)
+		{
+			foreach(Entity entity in entities)
+			{
+				mPersistentEntities.Add(entity);
+			}
+		}
 
 		protected void LoadAsHubLevel()
 		{
@@ -57,6 +66,10 @@
 
 		protected virtual void PostLevelLoad()
 		{
+			foreach (Entity entity in mPersistentEntities)
+			{
+				EntityManager.I.InsertEntity(entity);
+			}
 		}
 	}
 }

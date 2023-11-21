@@ -8,6 +8,7 @@
 		float mStartRotation;
 		bool mForwards;
 		bool mChangedTime;
+		int mUnblockUpdateHack = 0;
 
 		public ShiftTimeCameraMove(bool forwards) : base(TIME_TO_ROTATE)
 		{
@@ -47,6 +48,7 @@
 
 		void ChangeTime()
 		{
+			int fromTime = TimeZoneManager.I.GetCurrentTimeZone();
 			if(mForwards)
 			{
 				TimeZoneManager.I.AgePlayer();
@@ -54,6 +56,21 @@
 			else
 			{
 				TimeZoneManager.I.AntiAgePlayer();
+			}
+			int toTime = TimeZoneManager.I.GetCurrentTimeZone();
+
+			TimeZoneOverride? timeZoneOverride = CampaignManager.I.GetTimeOverride(fromTime, toTime);
+
+			if(timeZoneOverride.HasValue)
+			{
+				Arnold arnold = EntityManager.I.FindArnold();// (timeZoneOverride.Value.mArnoldSpawnPoint);
+
+				Vector2 spawnPos = TileManager.I.GetTileCentre(timeZoneOverride.Value.mArnoldSpawnPoint);
+				arnold.SetCentrePos(spawnPos);
+
+				HubDirectLoader loader = new HubDirectLoader(timeZoneOverride.Value.mDestinationLevel);
+				loader.AddPersistentEntities(arnold);
+				CampaignManager.I.QueueLoadSequence(loader);
 			}
 		}
 

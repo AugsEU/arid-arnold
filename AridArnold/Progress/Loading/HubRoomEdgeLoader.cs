@@ -5,16 +5,14 @@
 		const float FADE_SPEED = 0.5f;
 		const float SPAWN_BORDER = 15.0f;
 
-		Entity[] mPersistentEntities;
 		CardinalDirection mArriveFrom;
 
-		public HubRoomEdgeLoader(int levelID, CardinalDirection arriveFrom, params Entity[] persistentEntities) : base(levelID)
+		public HubRoomEdgeLoader(int levelID, CardinalDirection arriveFrom) : base(levelID)
 		{
 			mArriveFrom = arriveFrom;
 			mFadeIn = new ScreenWipe(arriveFrom, FADE_SPEED, false);
 			CardinalDirection opposite = Util.InvertDirection(arriveFrom);
 			mFadeOut = new ScreenWipe(opposite, FADE_SPEED, true);
-			mPersistentEntities = persistentEntities;
 		}
 
 		protected override void PostLevelLoad()
@@ -23,8 +21,6 @@
 			{
 				SpawnEntityAtEdge(entity);
 			}
-
-			base.PostLevelLoad();
 		}
 
 		void SpawnEntityAtEdge(Entity entity)

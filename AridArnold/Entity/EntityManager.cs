@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Diagnostics;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Manager that updates and draws all entities.
@@ -419,6 +421,27 @@
 			}
 
 			return returnList;
+		}
+
+
+
+		/// <summary>
+		/// Find player. Should be used rarely.
+		/// </summary>
+		public Arnold FindArnold()
+		{
+			Arnold returnValue = null;
+			foreach (Entity entity in mRegisteredEntities)
+			{
+				if(entity is Arnold)
+				{
+					MonoDebug.Assert(returnValue == null); // Two arnolds detected.
+					returnValue = (Arnold)entity;
+				}
+			}
+
+			MonoDebug.Assert(returnValue is not null); // No arnolds detected.
+			return returnValue;
 		}
 
 		#endregion rUtility

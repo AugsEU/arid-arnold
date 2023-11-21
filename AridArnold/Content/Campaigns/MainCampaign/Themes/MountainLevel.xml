@@ -5,8 +5,10 @@
 	<path from="WallSecondary">../Blank</path>
 	<path from="TimeWall0">GravelSummer</path>
 	<path from="TimeWall1">GravelWinter</path>
+	<path from="TimeWall2">GravelWinter</path>
 	<path from="TimePlatform0">LogSummer</path>
 	<path from="TimePlatform1">LogWinter</path>
+	<path from="TimePlatform2">LogWinter</path>
 	<path from="Platform">LogSummer</path>
 	<path from="CoinFull">FrancFull</path>
 	<path from="CoinGhost">FrancGhost</path>

@@ -87,5 +87,18 @@
 		{
 			return mCoinTypeIDs[worldRoot];
 		}
+
+		public TimeZoneOverride? GetTimeOverride(int fromTime, int toTime)
+		{
+			foreach(TimeZoneOverride timeZoneOverride in mTimeOverrides)
+			{
+				if(timeZoneOverride.mTimeTo == toTime && timeZoneOverride.mTimeFrom == fromTime)
+				{
+					return timeZoneOverride;
+				}
+			}
+
+			return null;
+		}
 	}
 }
