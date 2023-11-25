@@ -4,7 +4,7 @@
 	{
 		#region rConstants
 
-		static Vector2 BULLET_OFFSET = new Vector2(0.0f, 8.0f);
+		static float BULLET_OFFSET = 2.0f;
 
 		#endregion rConstants
 
@@ -67,7 +67,8 @@
 		protected override void SpawnBullet()
 		{
 			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
-			Vector2 spawnPos = mPosition + Util.GetNormal(bulletDirection) * 12.0f + BULLET_OFFSET;
+			Vector2 offset = BULLET_OFFSET * Util.GetNormal(GetGravityDir());
+			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 12.0f + offset;
 			LaserBullet bullet = new LaserBullet(spawnPos, bulletDirection);
 			EntityManager.I.QueueRegisterEntity(bullet);
 		}

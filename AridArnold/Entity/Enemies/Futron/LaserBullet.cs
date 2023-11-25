@@ -29,7 +29,7 @@ namespace AridArnold
 		/// <summary>
 		/// Init bullet with texture.
 		/// </summary>
-		public LaserBullet(Vector2 pos, CardinalDirection direction) : base(pos)
+		public LaserBullet(Vector2 pos, CardinalDirection direction) : base(pos, 0.0f)
 		{
 			mDirection = direction;
 			mVelocity = Util.GetNormal(direction) * LASER_SPEED;

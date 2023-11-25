@@ -7,7 +7,7 @@ using AridArnold.Tiles.Basic;
 
 namespace AridArnold
 {
-    abstract class ProjectileEntity : MovingEntity
+    abstract class ProjectileEntity : PlatformingEntity
 	{
 		#region rConstants
 
@@ -51,7 +51,7 @@ namespace AridArnold
 		/// Projectile at point
 		/// </summary>
 		/// <param name="pos"></param>
-		public ProjectileEntity(Vector2 pos) : base(pos)
+		public ProjectileEntity(Vector2 pos, float gravity = PlatformingEntity.DEFAULT_GRAVITY) : base(pos, 0.0f, 0.0f, gravity, 0.0f)
 		{
 			mState = ProjectileState.FreeMotion;
 			mExplosionCentre = Vector2.Zero;

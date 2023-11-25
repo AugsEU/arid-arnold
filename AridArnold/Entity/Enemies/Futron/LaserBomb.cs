@@ -48,7 +48,7 @@ namespace AridArnold
 		/// <summary>
 		/// Load laser bomb
 		/// </summary>
-		public LaserBomb(Vector2 position, Vector2 velocity) : base(position)
+		public LaserBomb(Vector2 position, Vector2 velocity) : base(position, LASER_BOMB_GRAVITY)
 		{
 			mVelocity = velocity;
 			mTraceLength = 0.0f;
@@ -56,6 +56,7 @@ namespace AridArnold
 			mDeathTimer = new MonoTimer();
 
 			mPrevPosition = position;
+			mUseRealPhysics = true;
 		}
 
 
@@ -100,12 +101,6 @@ namespace AridArnold
 		public override void Update(GameTime gameTime)
 		{
 			float dt = Util.GetDeltaT(gameTime);
-
-			Vector2 prevPos = mPosition;
-
-			// Free-body motion
-			mPrevVelocity = mVelocity;
-			mVelocity.Y += dt * LASER_BOMB_GRAVITY;
 
 			//Draw
 			mTraceLength += dt * TRACE_LEN_INCREASE;

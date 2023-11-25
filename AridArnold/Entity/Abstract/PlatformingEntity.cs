@@ -8,7 +8,7 @@
 		#region rConstants
 
 		const float DEFAULT_WALK_SPEED = 9.0f;
-		const float DEFAULT_GRAVITY = 4.35f;
+		protected const float DEFAULT_GRAVITY = 4.35f;
 		const float DEFAULT_JUMP_SPEED = 25.0f;
 		const float DEFAULT_ICE_GRIP = 0.9f;
 		const float MAX_VELOCITY = 65.0f;
@@ -31,6 +31,7 @@
 		protected float mJumpSpeed;
 		protected float mGravity;
 		protected float mIceGrip;
+		protected bool mUseRealPhysics;
 
 		int mUpdatesSinceGrounded;
 
@@ -63,6 +64,7 @@
 			mWalkDirection = WalkDirection.None;
 			mPrevDirection = mWalkDirection;
 			mIceGrip = iceGrip;
+			mUseRealPhysics = false;
 
 			mWalkSpeed = walkSpeed;
 			mJumpSpeed = jumpSpeed;
@@ -93,7 +95,10 @@
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
-			SetSideVelocityFromDirection(mWalkDirection);
+			if (!mUseRealPhysics)
+			{
+				SetSideVelocityFromDirection(mWalkDirection);
+			}
 
 			if (mOnGround)
 			{
@@ -233,7 +238,7 @@
 			float vecAlongGrav = Vector2.Dot(GravityVecNorm(), mVelocity);
 
 			float mod = 1.0f;
-			if (vecAlongGrav < 0.0f)
+			if (vecAlongGrav < 0.0f && !mUseRealPhysics)
 			{
 				mod = 2.0f;
 			}
@@ -241,7 +246,7 @@
 			float delta = mGravity * Util.GetDeltaT(gameTime) * mod;
 			Vector2 deltaVec = GravityVecNorm() * delta;
 
-			if (-delta < vecAlongGrav && vecAlongGrav < 0.0f)
+			if (-delta < vecAlongGrav && vecAlongGrav < 0.0f && !mUseRealPhysics)
 			{
 				deltaVec = deltaVec / 3.5f;
 			}
