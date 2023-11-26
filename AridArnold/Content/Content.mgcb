@@ -2839,6 +2839,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0715.png
 
+#begin Campaigns/MainCampaign/Levels/0801.aux
+/copy:Campaigns/MainCampaign/Levels/0801.aux
+
+#begin Campaigns/MainCampaign/Levels/0801.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0801.png
+
 #begin Campaigns/MainCampaign/Levels/10000.aux
 /copy:Campaigns/MainCampaign/Levels/10000.aux
 
