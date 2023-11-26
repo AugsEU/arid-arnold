@@ -244,6 +244,21 @@
 
 
 		/// <summary>
+		/// Set position relative to centre.
+		/// </summary>
+		public void SetMiddleFootPos(Vector2 footMiddle)
+		{
+			Rect2f collider = ColliderBounds();
+
+			footMiddle.X -= collider.Width / 2.0f;
+			footMiddle.Y -= collider.Height;
+
+			mPosition = footMiddle;
+		}
+
+
+
+		/// <summary>
 		/// Get the update ordering. Higher value means update will happen first.
 		/// </summary>
 		public float GetUpdateOrder()

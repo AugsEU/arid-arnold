@@ -38,6 +38,8 @@ namespace AridArnold
 		protected ProjectileState mState;
 		protected Animator mExplodingAnim = null;
 		protected Vector2 mExplosionCentre;
+		protected Vector2 mExplosionNormal;
+		private bool mIsDeadly = true;
 
 		#endregion rMembers
 
@@ -55,6 +57,7 @@ namespace AridArnold
 		{
 			mState = ProjectileState.FreeMotion;
 			mExplosionCentre = Vector2.Zero;
+			mExplosionNormal = Vector2.Zero;
 		}
 
 		#endregion rInitialisation
@@ -93,6 +96,7 @@ namespace AridArnold
 				return;
 			}
 
+			Vector2 prevDisp = VelocityToDisplacement(gameTime);
 			mPrevVelocity = mVelocity;
 			List<EntityCollision> collisions = new List<EntityCollision>();
 			TileManager.I.GatherCollisions(gameTime, this, ref collisions);
@@ -105,7 +109,20 @@ namespace AridArnold
 				// Collision reaction could change enabled status.
 				if (IsEnabled())
 				{
-					mExplosionCentre = mPosition + firstCollision.GetResult().t.Value * VelocityToDisplacement(gameTime);
+					CollisionResults colResult = firstCollision.GetResult();
+					mExplosionCentre = mPosition + colResult.t.Value * VelocityToDisplacement(gameTime);
+
+					Rect2f collider = ColliderBounds();
+					if(colResult.normal.X < 0.0f)
+					{
+						mExplosionCentre.X += collider.Width;
+					}
+					else if(colResult.normal.Y < 0.0f)
+					{
+						mExplosionCentre.Y += collider.Height;
+					}
+
+					mExplosionNormal = colResult.normal;
 					mState = ProjectileState.Exploding;
 					mExplodingAnim.Play();
 				}
@@ -156,7 +173,7 @@ namespace AridArnold
 		/// </summary>
 		protected void KillPlayer(MovingEntity movingEntity)
 		{
-			if(movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
+			if(!mIsDeadly || movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
 			{
 				// Entity is travelling too fast. Not fair to kill them.
 				return;
@@ -164,7 +181,7 @@ namespace AridArnold
 
 			//Kill the player on touching.
 			EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
-			EntityManager.I.QueueDeleteEntity(this);
+			mIsDeadly = false;
 		}
 
 		#endregion rUpdate

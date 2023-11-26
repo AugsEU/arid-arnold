@@ -795,7 +795,7 @@ namespace AridArnold
 
 			if (rightIntersect)
 			{
-				finalPos.X = tilePos.X + Tile.sTILE_SIZE - collider.Width;
+				finalPos.X = tilePos.X + Tile.sTILE_SIZE - collider.Width * 1.2f;
 			}
 
 			MonoDebug.Assert(!(leftIntersect && rightIntersect));

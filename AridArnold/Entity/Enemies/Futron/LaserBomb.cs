@@ -117,7 +117,8 @@ namespace AridArnold
 
 					foreach (Entity entity in nearbyEntities)
 					{
-						if(entity.GetPos().Y < mExplosionCentre.Y)
+						Vector2 toEntity = entity.GetCentrePos() - mExplosionCentre;
+						if(Vector2.Dot(toEntity, mExplosionNormal) > 0.0f)
 						{
 							KillPlayer((MovingEntity)entity);
 							break;
@@ -141,6 +142,9 @@ namespace AridArnold
 
 		#region rDraw
 
+		/// <summary>
+		/// Draw bomb/explosion
+		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
 			switch (mState)
@@ -149,7 +153,7 @@ namespace AridArnold
 					MonoDraw.DrawTexture(info, mBombAnim.GetCurrentTexture(), MonoMath.Round(mPosition) - new Vector2(2.0f, 0.0f));
 					break;
 				case ProjectileState.Exploding:
-					MonoDraw.DrawTexture(info, mExplodingAnim.GetCurrentTexture(), MonoMath.Round(mExplosionCentre) - new Vector2(28.0f, 25.0f));
+					DrawExplosion(info);
 					break;
 				default:
 					break;
@@ -157,6 +161,8 @@ namespace AridArnold
 
 			DrawProjectedLine(info);
 		}
+
+
 
 		/// <summary>
 		/// Draw projected line
@@ -225,6 +231,19 @@ namespace AridArnold
 
 				MonoDraw.DrawTextureDepth(info, mReticuleTexture, target, DrawLayer.SubEntity);
 			}
+		}
+
+
+		/// <summary>
+		/// Draw explosion
+		/// </summary>
+		private void DrawExplosion(DrawInfo info)
+		{
+			Texture2D texture = mExplodingAnim.GetCurrentTexture();
+			float rotation = MathF.PI * 0.5f - MathF.Atan2(-mExplosionNormal.Y, mExplosionNormal.X);
+			Vector2 position = MonoMath.Round(mExplosionCentre) + (mExplosionNormal * texture.Height) + (MonoMath.Perpendicular(mExplosionNormal) * texture.Width * 0.5f);
+
+			MonoDraw.DrawTexture(info, texture, position, rotation);
 		}
 
 		#endregion rDraw
