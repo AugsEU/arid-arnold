@@ -11,7 +11,7 @@
 		const int COLLISION_MAX_COUNT = 1024;
 
 		// Below this number collisions start to get fuckywucky
-		const float COLLISION_MIN_VELOCITY = 0.0021f;
+		const float COLLISION_MIN_VELOCITY = 0.008f;
 
 		#endregion rConstants
 
@@ -82,7 +82,7 @@
 				EntityCollision entityCollision = currentCollision;
 				CollisionResults collisionResults = entityCollision.GetResult();
 
-				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(mVelocity.X), Math.Abs(mVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.012f;
+				Vector2 pushVec = collisionResults.normal * new Vector2(Math.Abs(mVelocity.X), Math.Abs(mVelocity.Y)) * (1.0f - collisionResults.t.Value) * 1.014f;
 				mVelocity += pushVec;
 
 				mVelocity += entityCollision.GetExtraVelocity(this);
