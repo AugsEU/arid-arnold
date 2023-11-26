@@ -170,7 +170,7 @@ namespace AridArnold
 
 			float traceLenRemaining = mTraceLength;
 			GameTime timeStep = new GameTime(new TimeSpan(0), new TimeSpan(100000));
-			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition, mVelocity, LASER_BOMB_GRAVITY, mTexture.Width);
+			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition, mVelocity, LASER_BOMB_GRAVITY, GetGravityDir(), mTexture.Width);
 
 			List<EntityCollision> collisions = new List<EntityCollision>();
 			TileManager.I.GatherCollisions(timeStep, freeBodyEntity, ref collisions);

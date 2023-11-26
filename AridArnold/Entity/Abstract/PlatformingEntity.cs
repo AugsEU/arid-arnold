@@ -383,6 +383,15 @@
 
 
 		/// <summary>
+		/// Are we using realistic physics, without modfications for control?
+		/// </summary>
+		public bool GetIsUsingRealPhysics()
+		{
+			return mUseRealPhysics;
+		}
+
+
+		/// <summary>
 		/// Get gravity normal.
 		/// </summary>
 		/// <returns>Get vector along gravity direction</returns>

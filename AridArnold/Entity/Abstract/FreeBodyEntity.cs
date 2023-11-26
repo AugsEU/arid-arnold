@@ -7,6 +7,7 @@
 	{
 		#region rMembers
 
+		CardinalDirection mGravityDir;
 		float mGravity;
 		int mSize;
 
@@ -21,10 +22,11 @@
 		/// <summary>
 		/// Init free body at point
 		/// </summary>
-		public FreeBodyEntity(Vector2 pos, Vector2 vel, float gravity, int size) : base(pos)
+		public FreeBodyEntity(Vector2 pos, Vector2 vel, float gravity, CardinalDirection gravityDir, int size) : base(pos)
 		{
 			mVelocity = vel;
 			mGravity = gravity;
+			mGravityDir = gravityDir;
 			mSize = size;
 		}
 
@@ -60,7 +62,7 @@
 		{
 			float dt = Util.GetDeltaT(gameTime);
 			mPosition += mVelocity * dt;
-			mVelocity.Y += mGravity * dt;
+			mVelocity += mGravity * Util.GetNormal(mGravityDir) * dt;
 		}
 
 
@@ -73,6 +75,16 @@
 			Vector2 dist = new Vector2(mSize, mSize);
 
 			return new Rect2f(mPosition, mPosition + dist);
+		}
+
+
+
+		/// <summary>
+		/// Set gravity dir
+		/// </summary>
+		public void SetGravityDir(CardinalDirection gravityDir)
+		{
+			mGravityDir = gravityDir;
 		}
 
 		#endregion rUpdate

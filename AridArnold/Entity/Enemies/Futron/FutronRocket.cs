@@ -2,16 +2,6 @@
 {
 	internal class FutronRocket : ShooterEnemy
 	{
-		#region rConstants
-
-		static Vector2 ROCKET_OFFSET = new Vector2(0.0f, 3.0f);
-
-		#endregion rConstants
-
-
-
-
-
 		#region rMembers
 
 		//Texture2D mBulletTexture;
@@ -80,13 +70,13 @@
 		protected override void SpawnBullet()
 		{
 			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
-			Vector2 spawnPos = mPosition + Util.GetNormal(bulletDirection) * 4.5f + ROCKET_OFFSET;
-			spawnPos.X += mTexture.Width / 2.0f - 2.0f;
+			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 4.5f;
 
-			Vector2 bombVel = new Vector2(0.0f, -mLaunchSpeed);
+			Vector2 bombVel = -mLaunchSpeed * Util.GetNormal(GetGravityDir());
 			bombVel = MonoMath.RotateDeg(bombVel, mLaunchAngle);
 
 			LaserBomb bullet = new LaserBomb(spawnPos, bombVel);
+			bullet.SetGravity(GetGravityDir());
 			EntityManager.I.QueueRegisterEntity(bullet);
 		}
 

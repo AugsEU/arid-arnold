@@ -163,10 +163,14 @@
 					if (platformingEntity.GetGravityDir() != mGravityDir)
 					{
 						platformingEntity.SetGravity(mGravityDir);
-						platformingEntity.SetPrevWalkDirFromVelocity();
-						platformingEntity.SetWalkDirection(WalkDirection.None);
-						platformingEntity.SetVelocity(Vector2.Zero);
-						platformingEntity.SetGrounded(false);
+
+						if (!platformingEntity.GetIsUsingRealPhysics())
+						{
+							platformingEntity.SetPrevWalkDirFromVelocity();
+							platformingEntity.SetWalkDirection(WalkDirection.None);
+							platformingEntity.SetVelocity(Vector2.Zero);
+							platformingEntity.SetGrounded(false);
+						}
 						TileManager.I.UntangleEntityFromTiles(platformingEntity);
 					}
 				}
