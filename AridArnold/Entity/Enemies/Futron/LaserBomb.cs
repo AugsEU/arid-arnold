@@ -175,7 +175,7 @@ namespace AridArnold
 			}
 
 			float traceLenRemaining = mTraceLength;
-			GameTime timeStep = new GameTime(new TimeSpan(0), new TimeSpan(100000));
+			GameTime timeStep = new GameTime(new TimeSpan(0), new TimeSpan(TimeSpan.TicksPerSecond / 60));
 			FreeBodyEntity freeBodyEntity = new FreeBodyEntity(mPosition, mVelocity, LASER_BOMB_GRAVITY, GetGravityDir(), mTexture.Width);
 
 			List<EntityCollision> collisions = new List<EntityCollision>();
@@ -221,13 +221,22 @@ namespace AridArnold
 
 			if (collisions.Count != 0)
 			{
-
 				EntityCollision firstCollision = MonoAlg.GetMin(ref collisions, EntityCollision.COLLISION_SORTER);
-
-				Vector2 target = freeBodyEntity.GetPos() + firstCollision.GetResult().t.Value * freeBodyEntity.VelocityToDisplacement(timeStep);
+				CollisionResults firstResults = firstCollision.GetResult();
+				
+				Vector2 target = freeBodyEntity.GetPos() + firstResults.t.Value * freeBodyEntity.VelocityToDisplacement(timeStep);
 
 				target.X -= mReticuleTexture.Width / 2.0f;
-				//target.Y -= mReticuleTexture.Height / 2.0f;
+				target.Y -= mReticuleTexture.Height / 2.0f;
+
+				if(firstResults.normal.Y < 0.0f)
+				{
+					target.Y += freeBodyEntity.ColliderBounds().Height;
+				}
+				if(firstResults.normal.X < 0.0f)
+				{
+					target.X += freeBodyEntity.ColliderBounds().Width;
+				}
 
 				MonoDraw.DrawTextureDepth(info, mReticuleTexture, target, DrawLayer.SubEntity);
 			}

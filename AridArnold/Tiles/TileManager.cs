@@ -456,6 +456,20 @@ namespace AridArnold
 			return result;
 		}
 
+
+
+		/// <summary>
+		/// Is the point within the map?
+		/// </summary>
+		public bool IsInTileMap(Vector2 pos)
+		{
+			float mapWidth = TILE_MAP_SIZE * mTileSize;
+			return pos.X >= 0.0f && pos.Y >= 0.0f
+				&& pos.X <= mapWidth && pos.Y <= mapWidth;
+		}
+
+
+
 		/// <summary>
 		/// Query if tile at position is solid.
 		/// </summary>
@@ -744,13 +758,14 @@ namespace AridArnold
 		public void UntangleEntityFromTiles(Entity entity)
 		{
 			Rect2f collider = entity.ColliderBounds();
+			Vector2 centrePos = collider.Centre;
 
-			if(collider.Width > 16.0f || collider.Height > 16.0f)
+			if (collider.Width > 16.0f || collider.Height > 16.0f || !IsInTileMap(centrePos))
 			{
 				return;
 			}
 
-			Vector2 centrePos = collider.Centre;
+
 			Point tileIdx = GetTileMapCoord(centrePos);
 			Vector2 tilePos = GetTileTopLeft(tileIdx);
 
