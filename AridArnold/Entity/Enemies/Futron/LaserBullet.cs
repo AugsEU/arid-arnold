@@ -29,7 +29,7 @@ namespace AridArnold
 		/// <summary>
 		/// Init bullet with texture.
 		/// </summary>
-		public LaserBullet(Vector2 pos, CardinalDirection direction) : base(pos, 0.0f)
+		public LaserBullet(Entity parent, Vector2 pos, CardinalDirection direction) : base(parent, pos, 0.0f)
 		{
 			mDirection = direction;
 			mVelocity = Util.GetNormal(direction) * LASER_SPEED;
@@ -87,7 +87,7 @@ namespace AridArnold
 		{
 			if (mState == ProjectileState.FreeMotion)
 			{
-				if (entity is Arnold)
+				if (entity != this && entity != mParent)
 				{
 					KillPlayer((MovingEntity)entity);
 				}
@@ -159,10 +159,16 @@ namespace AridArnold
 				switch (mDirection)
 				{
 					case CardinalDirection.Up:
+						drawPos.X += 6.0f;
+						drawPos.Y += texToDraw.Width;
+						break;
 					case CardinalDirection.Down:
 						drawPos.X += 6.0f;
 						break;
 					case CardinalDirection.Right:
+						drawPos.X -= texToDraw.Width;
+						drawPos.Y -= 3.0f;
+						break;
 					case CardinalDirection.Left:
 						drawPos.Y -= 3.0f;
 						break;

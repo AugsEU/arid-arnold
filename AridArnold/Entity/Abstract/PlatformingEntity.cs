@@ -12,7 +12,9 @@
 		const float DEFAULT_JUMP_SPEED = 25.0f;
 		const float DEFAULT_ICE_GRIP = 0.9f;
 		const float MAX_VELOCITY = 65.0f;
+		const double DEATH_TIME = 500.0;
 
+		protected const double FLASH_TIME = 100.0;
 		protected const float NOT_MOVING_SPEED = 1.0f;
 
 
@@ -38,6 +40,9 @@
 		private CardinalDirection mGravityDirection;
 		protected WalkDirection mWalkDirection;
 		protected WalkDirection mPrevDirection;
+
+		// Timers
+		protected PercentageTimer mTimerSinceDeath;
 
 		// Ice
 		bool mIceWalking;
@@ -74,6 +79,9 @@
 
 			mUpdatesSinceGrounded = int.MaxValue;
 
+			// Timers
+			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
+
 			// Ice
 			mIceWalking = false;
 			mIceVelocity = Vector2.Zero;
@@ -93,6 +101,17 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			//Death
+			if (mTimerSinceDeath.IsPlaying())
+			{
+				if (mTimerSinceDeath.GetPercentage() == 1.0)
+				{
+					EntityManager.I.QueueDeleteEntity(this);
+				}
+
+				return;
+			}
+
 			float dt = Util.GetDeltaT(gameTime);
 
 			if (!mUseRealPhysics)
@@ -274,6 +293,22 @@
 
 
 		/// <summary>
+		/// Don't update if the death timer is playing.
+		/// </summary>
+		/// <param name="gameTime"></param>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			if (mTimerSinceDeath.IsPlaying())
+			{
+				return;
+			}
+
+			base.OrderedUpdate(gameTime);
+		}
+
+
+
+		/// <summary>
 		/// Inform this entity it is on ice.
 		/// </summary>
 		public void SetIceWalking()
@@ -299,6 +334,16 @@
 		protected void GetAGrip()
 		{
 			mIceVelocity = mVelocity;
+		}
+
+
+
+		/// <summary>
+		/// Kill Entity
+		/// </summary>
+		public override void Kill()
+		{
+			mTimerSinceDeath.Start();
 		}
 
 		#endregion rUpdate
@@ -341,6 +386,20 @@
 		/// </summary>
 		protected virtual Color GetDrawColor()
 		{
+			if (mTimerSinceDeath.IsPlaying())
+			{
+				double timeSinceDeath = mTimerSinceDeath.GetElapsedMs();
+
+				if ((int)(timeSinceDeath / FLASH_TIME) % 2 == 0)
+				{
+					return new Color(255, 51, 33);
+				}
+				else
+				{
+					return new Color(255, 128, 79);
+				}
+			}
+
 			return Color.White;
 		}
 

@@ -35,11 +35,11 @@ namespace AridArnold
 
 		#region rMembers
 
+		protected Entity mParent;
 		protected ProjectileState mState;
 		protected Animator mExplodingAnim = null;
 		protected Vector2 mExplosionCentre;
 		protected Vector2 mExplosionNormal;
-		private bool mIsDeadly = true;
 
 		#endregion rMembers
 
@@ -53,8 +53,9 @@ namespace AridArnold
 		/// Projectile at point
 		/// </summary>
 		/// <param name="pos"></param>
-		public ProjectileEntity(Vector2 pos, float gravity = PlatformingEntity.DEFAULT_GRAVITY) : base(pos, 0.0f, 0.0f, gravity, 0.0f)
+		public ProjectileEntity(Entity parent, Vector2 pos, float gravity = PlatformingEntity.DEFAULT_GRAVITY) : base(pos, 0.0f, 0.0f, gravity, 0.0f)
 		{
+			mParent = parent;
 			mState = ProjectileState.FreeMotion;
 			mExplosionCentre = Vector2.Zero;
 			mExplosionNormal = Vector2.Zero;
@@ -173,15 +174,23 @@ namespace AridArnold
 		/// </summary>
 		protected void KillPlayer(MovingEntity movingEntity)
 		{
-			if(!mIsDeadly || movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
+			if(movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
 			{
 				// Entity is travelling too fast. Not fair to kill them.
 				return;
 			}
 
 			//Kill the player on touching.
-			EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
-			mIsDeadly = false;
+			movingEntity.Kill();
+		}
+
+
+
+		/// <summary>
+		/// This entity can't be killed.
+		/// </summary>
+		public override void Kill()
+		{
 		}
 
 		#endregion rUpdate

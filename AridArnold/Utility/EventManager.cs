@@ -30,7 +30,6 @@
 	enum EventType
 	{
 		PlayerDead,
-		KillPlayer,
 		TimeChanged,
 		KeyCollect,
 		ShopDoorOpen,

@@ -43,8 +43,7 @@ namespace AridArnold
 		{
 			if (entity is Arnold)
 			{
-				//TO DO: Is an event needed here?
-				EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
+				entity.Kill();
 			}
 		}
 

@@ -299,18 +299,13 @@ namespace AridArnold
 
 			foreach (Entity entity in mRegisteredEntities)
 			{
-				if (!entity.IsEnabled()) continue;
-				foreach (Type type in types)
-				{
-					if (entity.GetType() == type && !ReferenceEquals(nearEntity, entity))
-					{
-						float distanceToEntity = (nearEntityPos - entity.GetCentrePos()).LengthSquared();
+				if (!entity.IsEnabled() || !IsEntityOneOfTypes(entity, types)) continue;
 
-						if (distanceToEntity < distance)
-						{
-							return true;
-						}
-					}
+				float distanceToEntity = (nearEntityPos - entity.GetCentrePos()).LengthSquared();
+
+				if (distanceToEntity < distance)
+				{
+					return true;
 				}
 			}
 
@@ -329,18 +324,13 @@ namespace AridArnold
 
 			foreach (Entity entity in mRegisteredEntities)
 			{
-				if (!entity.IsEnabled()) continue;
-				foreach (Type type in types)
-				{
-					if (entity.GetType() == type)
-					{
-						float distanceToEntity = (pos - entity.GetCentrePos()).LengthSquared();
+				if (!entity.IsEnabled() || !IsEntityOneOfTypes(entity, types)) continue;
 
-						if (distanceToEntity < distance)
-						{
-							returnList.Add(entity);
-						}
-					}
+				float distanceToEntity = (pos - entity.GetCentrePos()).LengthSquared();
+
+				if (distanceToEntity < distance)
+				{
+					returnList.Add(entity);
 				}
 			}
 
@@ -358,19 +348,14 @@ namespace AridArnold
 			Entity nearestEntity = null;
 			foreach (Entity entity in mRegisteredEntities)
 			{
-				if (!entity.IsEnabled()) continue;
-				foreach (Type type in types)
-				{
-					if (entity.GetType() == type)
-					{
-						float distanceToEntity = (pos - entity.GetCentrePos()).LengthSquared();
+				if (!entity.IsEnabled() || !IsEntityOneOfTypes(entity, types)) continue;
 
-						if (distanceToEntity < nearestDistance)
-						{
-							nearestDistance=distanceToEntity;
-							nearestEntity = entity;
-						}
-					}
+				float distanceToEntity = (pos - entity.GetCentrePos()).LengthSquared();
+
+				if (distanceToEntity < nearestDistance)
+				{
+					nearestDistance=distanceToEntity;
+					nearestEntity = entity;
 				}
 			}
 
@@ -388,16 +373,9 @@ namespace AridArnold
 			
 			foreach (Entity entity in mRegisteredEntities)
 			{
-				if (!entity.IsEnabled()) continue;
+				if (!entity.IsEnabled() || !IsEntityOneOfTypes(entity, types)) continue;
 
-				foreach (Type type in types)
-				{
-					if (entity.GetType() == type)
-					{
-						returnList.Add(entity);
-						break;
-					}
-				}
+				returnList.Add(entity);
 			}
 
 			return returnList;
@@ -442,6 +420,24 @@ namespace AridArnold
 
 			MonoDebug.Assert(returnValue is not null); // No arnolds detected.
 			return returnValue;
+		}
+
+
+
+		/// <summary>
+		/// IsEntityOneOfTypes
+		/// </summary>
+		private bool IsEntityOneOfTypes(Entity entity, Type[] types)
+		{
+			foreach(Type type in types)
+			{
+				if(entity.GetType() == type)
+				{
+					return true;
+				}
+			}
+
+			return types.Length == 0;
 		}
 
 		#endregion rUtility

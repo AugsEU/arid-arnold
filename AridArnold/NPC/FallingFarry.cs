@@ -31,5 +31,12 @@
 		{
 			return mFallingAnim.GetCurrentTexture();
 		}
+
+		/// <summary>
+		/// This entity can't be killed.
+		/// </summary>
+		public override void Kill()
+		{
+		}
 	}
 }

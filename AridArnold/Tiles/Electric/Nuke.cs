@@ -90,7 +90,13 @@ namespace AridArnold
 		{
 			Camera gameCamera = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 			gameCamera.QueueMovement(new CameraShake(100.0f, 7.0f, 166.0f));
-			EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
+			
+			for(int i = 0; i < EntityManager.I.GetEntityNum(); i++)
+			{
+				Entity entity = EntityManager.I.GetEntity(i);
+				entity.Kill();
+			}
+
 			mExploded = true;
 		}
 

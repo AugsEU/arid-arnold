@@ -69,7 +69,7 @@
 			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
 			Vector2 offset = BULLET_OFFSET * Util.GetNormal(GetGravityDir());
 			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 12.0f + offset;
-			LaserBullet bullet = new LaserBullet(spawnPos, bulletDirection);
+			LaserBullet bullet = new LaserBullet(this, spawnPos, bulletDirection);
 			EntityManager.I.QueueRegisterEntity(bullet);
 		}
 

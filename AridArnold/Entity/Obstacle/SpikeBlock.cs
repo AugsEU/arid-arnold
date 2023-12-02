@@ -93,7 +93,7 @@
 		{
 			if(entity is Arnold)
 			{
-				EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
+				entity.Kill();
 			}
 
 			base.OnCollideEntity(entity);

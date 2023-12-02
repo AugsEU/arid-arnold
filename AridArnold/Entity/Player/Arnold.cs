@@ -11,9 +11,7 @@ namespace AridArnold
 	{
 		#region rConstants
 
-		const double DEATH_TIME = 500.0;
 		const double START_TIME = 500.0;
-		const double FLASH_TIME = 100.0;
 		const double USE_ITEM_TIME = 600.0;
 		const int COYOTE_TIME = 12;
 
@@ -43,7 +41,6 @@ namespace AridArnold
 		protected MonoTexturePack mOldTexturePack;
 
 		//Various timers.
-		PercentageTimer mTimerSinceDeath;
 		protected PercentageTimer mTimerSinceStart;
 
 		// Items
@@ -71,9 +68,7 @@ namespace AridArnold
 		{
 			mPrevDirection = WalkDirection.Right;
 
-			EventManager.I.AddListener(EventType.KillPlayer, SignalPlayerDead);
 
-			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
 			mTimerSinceStart = new PercentageTimer(START_TIME);
 
 			mUseItemTimer = new PercentageTimer(USE_ITEM_TIME);
@@ -312,21 +307,6 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Don't update if the death timer is playing.
-		/// </summary>
-		/// <param name="gameTime"></param>
-		public override void OrderedUpdate(GameTime gameTime)
-		{
-			if (mTimerSinceDeath.IsPlaying())
-			{
-				return;
-			}
-
-			base.OrderedUpdate(gameTime);
-		}
-
-
-		/// <summary>
 		/// Deal with things touching us.
 		/// </summary>
 		public override void OnCollideEntity(Entity entity)
@@ -431,20 +411,7 @@ namespace AridArnold
 		/// <returns>Draw Colour</returns>
 		protected override Color GetDrawColor()
 		{
-			if (mTimerSinceDeath.IsPlaying())
-			{
-				double timeSinceDeath = mTimerSinceDeath.GetElapsedMs();
-
-				if ((int)(timeSinceDeath / FLASH_TIME) % 2 == 0)
-				{
-					return new Color(255, 51, 33);
-				}
-				else
-				{
-					return new Color(255, 128, 79);
-				}
-			}
-			else if (mTimerSinceStart.IsPlaying())
+			if (!mTimerSinceDeath.IsPlaying() && mTimerSinceStart.IsPlaying())
 			{
 				//TO DO
 				double timeSinceStart = mTimerSinceStart.GetElapsedMs();
@@ -459,7 +426,7 @@ namespace AridArnold
 				}
 			}
 
-			return Color.White;
+			return base.GetDrawColor();
 		}
 
 
@@ -527,32 +494,11 @@ namespace AridArnold
 		#region rUtility
 
 		/// <summary>
-		/// Kill Arnold
-		/// </summary>
-		public void Kill()
-		{
-			mTimerSinceDeath.Start();
-		}
-
-
-
-		/// <summary>
-		/// Send Death event. TO DO: I don't think this is needed, why not just call Kill() directly?
+		/// Send Death event.
 		/// </summary>
 		private void SendPlayerDeathEvent()
 		{
 			EventManager.I.SendEvent(EventType.PlayerDead, new EArgs(this));
-		}
-
-
-
-		/// <summary>
-		/// Callback for the player death event.
-		/// </summary>
-		/// <param name="args">Event sender args</param>
-		public void SignalPlayerDead(EArgs args)
-		{
-			Kill();
 		}
 
 

@@ -75,7 +75,7 @@
 			Vector2 bombVel = -mLaunchSpeed * Util.GetNormal(GetGravityDir());
 			bombVel = MonoMath.RotateDeg(bombVel, mLaunchAngle);
 
-			LaserBomb bullet = new LaserBomb(spawnPos, bombVel);
+			LaserBomb bullet = new LaserBomb(this, spawnPos, bombVel);
 			bullet.SetGravity(GetGravityDir());
 			EntityManager.I.QueueRegisterEntity(bullet);
 		}

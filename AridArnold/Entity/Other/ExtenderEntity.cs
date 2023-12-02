@@ -215,6 +215,15 @@ namespace AridArnold
 			return new Rect2f(min, max);
 		}
 
+
+
+		/// <summary>
+		/// This entity can't be killed.
+		/// </summary>
+		public override void Kill()
+		{
+		}
+
 		#endregion rUpdate
 
 

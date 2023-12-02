@@ -155,6 +155,15 @@
 		}
 
 
+
+		/// <summary>
+		/// Kill this entity. By default most are immortal in this sense
+		/// </summary>
+		public virtual void Kill()
+		{
+
+		}
+
 		#endregion rUpdate
 
 

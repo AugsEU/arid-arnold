@@ -169,7 +169,7 @@
 		{
 			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
 			{
-				EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
+				EntityManager.I.FindArnold().Kill();
 			}
 			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
 			{

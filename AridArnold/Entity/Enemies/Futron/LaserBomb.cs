@@ -48,7 +48,7 @@ namespace AridArnold
 		/// <summary>
 		/// Load laser bomb
 		/// </summary>
-		public LaserBomb(Vector2 position, Vector2 velocity) : base(position, LASER_BOMB_GRAVITY)
+		public LaserBomb(Entity parent, Vector2 position, Vector2 velocity) : base(parent, position, LASER_BOMB_GRAVITY)
 		{
 			mVelocity = velocity;
 			mTraceLength = 0.0f;
@@ -106,22 +106,26 @@ namespace AridArnold
 			mTraceLength += dt * TRACE_LEN_INCREASE;
 			mBombAnim.Update(gameTime);
 
-			//Check death
+			//Check death (this is bad...)
 			if(mState == ProjectileState.Exploding)
 			{
 				mDeathTimer.Start();
 				double elapsedTime = mDeathTimer.GetElapsedMs();
 				if(DEATH_TIME_START < elapsedTime && elapsedTime < DEATH_TIME_END)
 				{
-					List<Entity> nearbyEntities = EntityManager.I.GetNearPos(DEATH_RADIUS, mExplosionCentre, typeof(Arnold), typeof(Androld));
+					List<Entity> nearbyEntities = EntityManager.I.GetNearPos(DEATH_RADIUS, mExplosionCentre);
 
 					foreach (Entity entity in nearbyEntities)
 					{
-						Vector2 toEntity = entity.GetCentrePos() - mExplosionCentre;
-						if(Vector2.Dot(toEntity, mExplosionNormal) > 0.0f)
+						MovingEntity movingEntity = entity as MovingEntity;
+
+						if (movingEntity != null)
 						{
-							KillPlayer((MovingEntity)entity);
-							break;
+							Vector2 toEntity = entity.GetCentrePos() - mExplosionCentre;
+							if (Vector2.Dot(toEntity, mExplosionNormal) > 0.0f)
+							{
+								KillPlayer((MovingEntity)entity);
+							}
 						}
 					}
 				}

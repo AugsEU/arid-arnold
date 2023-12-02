@@ -33,15 +33,21 @@
 
 		public override void OnCollideEntity(Entity entity)
 		{
-			if (entity is Arnold)
+			if (mVelocity.LengthSquared() > KILL_THRESH * KILL_THRESH)
 			{
-				if (mVelocity.LengthSquared() > KILL_THRESH * KILL_THRESH)
-				{
-					EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
-				}
+				entity.Kill();
 			}
 
 			base.OnCollideEntity(entity);
+		}
+
+
+
+		/// <summary>
+		/// This entity can't be killed.
+		/// </summary>
+		public override void Kill()
+		{
 		}
 	}
 }

@@ -127,7 +127,7 @@ namespace AridArnold
 			if (ShouldKill() && entity is Arnold)
 			{
 				//Kill the player on touching.
-				EventManager.I.SendEvent(EventType.KillPlayer, new EArgs(this));
+				entity.Kill();
 			}
 
 			base.OnCollideEntity(entity);
