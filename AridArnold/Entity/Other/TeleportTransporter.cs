@@ -208,7 +208,8 @@ namespace AridArnold
 			if(mTransportingEntity is PlatformingEntity)
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)mTransportingEntity;
-				platformingEntity.SetGrounded(dir.Y < 0.0f && MathF.Abs(dir.X) < 0.001f);
+				CardinalDirection inverseDir = Util.InvertDirection(Util.CardinalDirectionFromVector(dir));
+				platformingEntity.SetGrounded(inverseDir == platformingEntity.GetGravityDir());
 			}
 
 			// Release to the world.

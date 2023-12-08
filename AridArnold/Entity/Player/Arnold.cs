@@ -42,7 +42,7 @@ namespace AridArnold
 
 		//Various timers.
 		protected PercentageTimer mTimerSinceStart;
-
+		   
 		// Items
 		Item mItemToUse;
 		PercentageTimer mUseItemTimer;
@@ -68,7 +68,6 @@ namespace AridArnold
 		{
 			mPrevDirection = WalkDirection.Right;
 
-
 			mTimerSinceStart = new PercentageTimer(START_TIME);
 
 			mUseItemTimer = new PercentageTimer(USE_ITEM_TIME);
@@ -93,7 +92,7 @@ namespace AridArnold
 			RefreshTexturePack();
 
 			//Botch position a bit. Not sure what's happening here.
-			mPosition.Y -= 2.0f;
+			mPosition.Y -= 1.0f;
 			mPosition.X += 2.0f;
 
 			mVelocity.Y = +0.01f;
