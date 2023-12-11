@@ -17,7 +17,7 @@
 
 		protected override void PostLevelLoad()
 		{
-			foreach(Entity entity in mPersistentEntities)
+			foreach (Entity entity in mPersistentEntities)
 			{
 				SpawnEntityAtEdge(entity);
 			}

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class PillarPot : ExtenderEntity
 	{

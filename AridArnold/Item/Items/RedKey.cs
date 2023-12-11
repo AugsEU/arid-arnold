@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    internal class RedKey : Item
+	internal class RedKey : Item
 	{
 		public RedKey()
 		{
@@ -21,7 +19,7 @@ namespace AridArnold
 
 		public override bool CanUseItem(Arnold arnoldUsingItem)
 		{
-			if(AnyRedLocksNearArnold(arnoldUsingItem) == false)
+			if (AnyRedLocksNearArnold(arnoldUsingItem) == false)
 			{
 				return false;
 			}
@@ -37,7 +35,7 @@ namespace AridArnold
 				for (int y = neighbours.Y; y < neighbours.Y + neighbours.Height; y++)
 				{
 					Tile tile = TileManager.I.GetTile(x, y);
-					if(tile is RedLockTile)
+					if (tile is RedLockTile)
 					{
 						return true;
 					}

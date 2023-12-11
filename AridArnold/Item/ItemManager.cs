@@ -1,6 +1,4 @@
-﻿using System.Reflection.Emit;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	class ItemManager : Singleton<ItemManager>
 	{
@@ -119,7 +117,7 @@ namespace AridArnold
 		/// </summary>
 		public void PurchaseItem(Item item)
 		{
-			if(CanPurchase(item) == false)
+			if (CanPurchase(item) == false)
 			{
 				// Sorry can't buy it.
 				return;

@@ -1,6 +1,4 @@
-﻿using static AridArnold.Animator;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	class MonoTexturePack
 	{

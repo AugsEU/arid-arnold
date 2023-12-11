@@ -67,7 +67,7 @@ namespace AridArnold
 
 		void RefreshTexture()
 		{
-			if(mTimeZone == TimeZoneManager.I.GetCurrentTimeZone())
+			if (mTimeZone == TimeZoneManager.I.GetCurrentTimeZone())
 			{
 				mTexture = mEnabledTexture;
 			}

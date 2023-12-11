@@ -11,7 +11,7 @@
 			HotDogPlant
 		}
 
-		protected  Texture2D mTexture;
+		protected Texture2D mTexture;
 
 		public abstract void UseItem(Arnold arnoldUsingItem);
 

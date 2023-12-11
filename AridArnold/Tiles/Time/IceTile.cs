@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class IceTile : SquareTile
 	{
@@ -48,7 +46,7 @@ namespace AridArnold
 			bool anyIce = false;
 			bool anySolid = false;
 
-			foreach(Vector2 pos in feetPositions)
+			foreach (Vector2 pos in feetPositions)
 			{
 				Type tileType = TileManager.I.GetTile(pos).GetType();
 				if (tileType == typeof(IceTile)) anyIce = true;

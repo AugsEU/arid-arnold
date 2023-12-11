@@ -77,14 +77,14 @@
 			switch (mWaterState)
 			{
 				case WaterState.Dew:
-					if(mTimer.GetElapsedMs() > DEW_TIME)
+					if (mTimer.GetElapsedMs() > DEW_TIME)
 					{
 						mWaterState = WaterState.FreeFall;
 						mTimer.Reset();
 					}
 					break;
 				case WaterState.FreeFall:
-					if(mTotalDistanceTravelled > mMaximumDistance)
+					if (mTotalDistanceTravelled > mMaximumDistance)
 					{
 						mWaterState = WaterState.Splash;
 						mTimer.Reset();
@@ -100,7 +100,7 @@
 			Vector2 mainPos = mPos;
 			Vector2 secondPos = mPrevPos;
 
-			if(mWaterState == WaterState.Splash)
+			if (mWaterState == WaterState.Splash)
 			{
 				float move = (float)mTimer.GetElapsedMs() * SPLASH_INTENSITY / 1000.0f;
 				mainPos.X += move;

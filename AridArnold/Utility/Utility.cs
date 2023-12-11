@@ -153,11 +153,11 @@
 			{
 				return CardinalDirection.Up;
 			}
-			else if(angle < 3.0f * PI8)
+			else if (angle < 3.0f * PI8)
 			{
 				return CardinalDirection.Left;
 			}
-			else if(angle < 5.0f * PI8)
+			else if (angle < 5.0f * PI8)
 			{
 				return CardinalDirection.Down;
 			}
@@ -172,7 +172,7 @@
 		/// </summary>
 		public static CardinalDirection CardinalDirectionFromVector(Vector2 vector)
 		{
-			if(vector.Y < vector.X)
+			if (vector.Y < vector.X)
 			{
 				return -vector.Y < vector.X ? CardinalDirection.Right : CardinalDirection.Up;
 			}

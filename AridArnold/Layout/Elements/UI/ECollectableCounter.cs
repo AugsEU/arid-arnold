@@ -43,13 +43,13 @@
 
 			DrawCollectable(info, position, mKeyTexture, numKeys);
 			position.Y += SPACING;
-			if(mCoinAnim != null)
+			if (mCoinAnim != null)
 			{
 				int numCoins = (int)CollectableManager.I.GetCollected(CampaignManager.I.GetCurrCoinID());
 				DrawCollectable(info, position, mCoinAnim.GetCurrentTexture(), numCoins);
 				position.Y += SPACING;
 			}
-			
+
 
 			base.Draw(info);
 		}
@@ -62,7 +62,7 @@
 			Vector2 offset = new Vector2(5.0f, 0.0f);
 			offset.X = icon.Width * SCALE;
 			offset.Y = (icon.Height * SCALE - textureSize.Y) / 2.0f;
-			
+
 
 			MonoDraw.DrawTexture(info, icon, position, null, Color.White, 0.0f, Vector2.Zero, SCALE, SpriteEffects.None, GetDepth());
 			MonoDraw.DrawString(info, mFont, displayText, position + offset, Color.Wheat, DrawLayer.Default);

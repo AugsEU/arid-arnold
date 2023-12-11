@@ -1,11 +1,9 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    /// <summary>
-    /// A door that requires a number of keys
-    /// </summary>
-    internal class KeyDoor : Entity
+	/// <summary>
+	/// A door that requires a number of keys
+	/// </summary>
+	internal class KeyDoor : Entity
 	{
 		#region rConstants
 
@@ -91,7 +89,7 @@ namespace AridArnold
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
 			// Near check
-			if(mHasKeysRequired)
+			if (mHasKeysRequired)
 			{
 				if (EntityManager.I.AnyNearMe(UNLOCK_DISTANCE, this, typeof(Arnold), typeof(Androld)))
 				{
@@ -110,7 +108,7 @@ namespace AridArnold
 					mHelpBubble.Close();
 				}
 			}
-			
+
 
 			base.Update(gameTime);
 		}

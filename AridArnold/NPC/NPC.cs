@@ -173,7 +173,7 @@
 
 			bool mouthOpen = IsTalking() && MonoText.IsVowel(GetCurrentBlock().GetCurrentChar());
 
-			if(mouthOpen)
+			if (mouthOpen)
 			{
 				mMouthTimer.FullReset();
 				mMouthTimer.Start();
@@ -219,7 +219,7 @@
 		/// </summary>
 		protected void AddDialogBox(string stringID)
 		{
-			if(stringID == "")
+			if (stringID == "")
 			{
 				return;
 			}
@@ -238,7 +238,7 @@
 		/// </summary>
 		protected void AppendToDialog(string stringID)
 		{
-			if(HasAnyBoxes())
+			if (HasAnyBoxes())
 			{
 				GetCurrentBlock().PushNewString(stringID);
 			}

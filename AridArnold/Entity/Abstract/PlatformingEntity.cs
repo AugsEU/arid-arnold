@@ -123,7 +123,7 @@
 			{
 				mUpdatesSinceGrounded = 0;
 			}
-			else if(mUpdatesSinceGrounded != int.MaxValue)
+			else if (mUpdatesSinceGrounded != int.MaxValue)
 			{
 				mUpdatesSinceGrounded++;
 			}
@@ -595,7 +595,7 @@
 
 			if (mIceWalking)
 			{
-				if(MathF.Abs(GetVelocityRelativeToGravity().X) >= NOT_MOVING_SPEED)
+				if (MathF.Abs(GetVelocityRelativeToGravity().X) >= NOT_MOVING_SPEED)
 				{
 					mWalkDirection = mPrevDirection;
 				}
@@ -720,15 +720,15 @@
 
 			float cross = down.X * toPosition.Y - down.Y * toPosition.X;
 
-			if(cross > 0.0f)
+			if (cross > 0.0f)
 			{
 				return WalkDirection.Right;
 			}
-			else if(cross < 0.0f)
+			else if (cross < 0.0f)
 			{
 				return WalkDirection.Left;
 			}
-			
+
 			return WalkDirection.None;
 		}
 
@@ -769,7 +769,7 @@
 
 			retValue[1] = 0.5f * (retValue[0] + retValue[2]);
 
-			for(int i = 0; i < 3; ++i)
+			for (int i = 0; i < 3; ++i)
 			{
 				retValue[i] += gravityVec;
 			}

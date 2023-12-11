@@ -114,7 +114,7 @@
 		private void QueueUpInaneStories()
 		{
 			List<string> storyStringIDs = new List<string>();
-			for(int i = 0; i < NUM_STORIES; ++i)
+			for (int i = 0; i < NUM_STORIES; ++i)
 			{
 				string stringID = "NPC.GrillVogel.Inane" + i.ToString();
 				storyStringIDs.Add(stringID);
@@ -122,7 +122,7 @@
 
 			MonoAlg.ShuffleList(ref storyStringIDs, ref mStoryRandom);
 
-			foreach(string stringID in storyStringIDs)
+			foreach (string stringID in storyStringIDs)
 			{
 				AppendToDialog(stringID);
 			}

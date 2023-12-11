@@ -17,7 +17,7 @@
 		ArnoldUp,
 		ArnoldDown,
 		ArnoldJump,
-		
+
 		//Game
 		UseItem
 	}

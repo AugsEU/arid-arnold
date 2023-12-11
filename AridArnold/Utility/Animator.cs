@@ -65,7 +65,7 @@
 			mPlayHead = 0.0f;
 			mPlayType = playType;
 
-			for(int i = 0; i < frameData.Length; i++)
+			for (int i = 0; i < frameData.Length; i++)
 			{
 				mTotalDuration += frameData[i].Item2;
 				mFrames.Add(new AnimationFrame(MonoData.I.MonoGameLoad<Texture2D>(frameData[i].Item1), frameData[i].Item2));

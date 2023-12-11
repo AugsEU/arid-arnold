@@ -1,6 +1,4 @@
-﻿using System.Xml;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Utility class for loading animations from data

@@ -30,10 +30,10 @@
 			mVariationChance = variationChance;
 			mVariationAnims = new List<Animator>();
 			mCurrentVariation = -1;
-			
+
 			mRandom = new MonoRandom();
 
-			foreach(Animator animator in variationAnimators)
+			foreach (Animator animator in variationAnimators)
 			{
 				animator.SetType(Animator.PlayType.OneShot);
 				mVariationAnims.Add(animator);
@@ -51,13 +51,13 @@
 		public void Update(GameTime gameTime)
 		{
 			// If we are playing the default idle animation.
-			if(mCurrentVariation == -1)
+			if (mCurrentVariation == -1)
 			{
 				//Update it.
 				mWaitAnim.Update(gameTime);
 
 				// Animation has played out fully.
-				if(mWaitAnim.IsPlaying() == false)
+				if (mWaitAnim.IsPlaying() == false)
 				{
 					DecideNextAnimation();
 				}
@@ -83,7 +83,7 @@
 		/// </summary>
 		void DecideNextAnimation()
 		{
-			if(mVariationAnims.Count > 0 && mRandom.PercentChance(mVariationChance))
+			if (mVariationAnims.Count > 0 && mRandom.PercentChance(mVariationChance))
 			{
 				// Variation should play. Select random index and play it.
 				mCurrentVariation = mRandom.GetIntRange(0, mVariationAnims.Count - 1);
@@ -109,7 +109,7 @@
 		/// </summary>
 		public Texture2D GetCurrentTexture()
 		{
-			if(mCurrentVariation != -1)
+			if (mCurrentVariation != -1)
 			{
 				return mVariationAnims[mCurrentVariation].GetCurrentTexture();
 			}
@@ -124,7 +124,7 @@
 		/// </summary>
 		public Texture2D GetIdleTexture()
 		{
-			if(mWaitAnim.IsPlaying() == false)
+			if (mWaitAnim.IsPlaying() == false)
 			{
 				mWaitAnim.Play();
 			}

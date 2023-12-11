@@ -21,7 +21,7 @@
 		{
 			EntityCollision entityCollision = GetEntityCollisionInternal(gameTime, entity);
 
-			if(entityCollision != null)
+			if (entityCollision != null)
 			{
 				mCollidedEntities.Add(entity);
 			}
@@ -85,7 +85,7 @@
 			return Collision2D.MovingRectVsRect(entity.ColliderBounds(), entity.VelocityToDisplacement(gameTime), mEntity.ColliderBounds());
 		}
 
-		
+
 		/// <summary>
 		/// Do collision with other entity
 		/// </summary>
@@ -94,7 +94,7 @@
 			CollisionResults results = CollideWith(gameTime, entity);
 
 			//Collision!
-			if(results.t.HasValue)
+			if (results.t.HasValue)
 			{
 				return new EntityEntityCollision(!mCollidedEntities.Contains(entity), results, mEntity);
 			}

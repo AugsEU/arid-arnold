@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class TimeMachine : Entity
 	{

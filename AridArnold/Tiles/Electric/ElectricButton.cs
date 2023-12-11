@@ -2,10 +2,10 @@
 
 namespace AridArnold
 {
-    /// <summary>
-    /// Button that turns on electricity.
-    /// </summary>
-    internal class ElectricButton : InteractableTile
+	/// <summary>
+	/// Button that turns on electricity.
+	/// </summary>
+	internal class ElectricButton : InteractableTile
 	{
 		#region rInitialisation
 
@@ -58,7 +58,7 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			if(mIsPressed)
+			if (mIsPressed)
 			{
 				TileManager.I.GetEMField().SetElectricity(mTileMapIndex, 4.0f);
 				mWasPressed = true;
@@ -86,7 +86,7 @@ namespace AridArnold
 		/// </summary>
 		public override Texture2D GetTexture()
 		{
-			if(mWasPressed)
+			if (mWasPressed)
 			{
 				return mDownTexture;
 			}

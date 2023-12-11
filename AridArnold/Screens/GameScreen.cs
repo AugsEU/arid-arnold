@@ -118,7 +118,7 @@
 		/// </summary>
 		void GameUpdate(GameTime gameTime)
 		{
-			if(CameraManager.I.BlockUpdateRequested())
+			if (CameraManager.I.BlockUpdateRequested())
 			{
 				return;
 			}
@@ -404,7 +404,7 @@
 		/// </summary>
 		private Layout GetCurrentUI()
 		{
-			if(mLoadSequence is not null)
+			if (mLoadSequence is not null)
 			{
 				return mLoadingUI;
 			}

@@ -76,7 +76,7 @@
 				default:
 					break;
 			}
-			
+
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("GravityOrb/OrbBase");
 		}
 
@@ -111,7 +111,7 @@
 		/// <param name="entity"></param>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if(entity is not Arnold && entity is not FallingFarry)
+			if (entity is not Arnold && entity is not FallingFarry)
 			{
 				return;
 			}
@@ -153,10 +153,10 @@
 		{
 			int entityNum = EntityManager.I.GetEntityNum();
 
-			for(int i = 0; i < entityNum; i++)
+			for (int i = 0; i < entityNum; i++)
 			{
 				Entity entity = EntityManager.I.GetEntity(i);
-				if(entity is PlatformingEntity)
+				if (entity is PlatformingEntity)
 				{
 					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
@@ -221,7 +221,7 @@
 		{
 			Vector2 newVel = entity.GetVelocity();
 
-			if(newVel.LengthSquared() < mPushVelocity.LengthSquared())
+			if (newVel.LengthSquared() < mPushVelocity.LengthSquared())
 			{
 				return;
 			}

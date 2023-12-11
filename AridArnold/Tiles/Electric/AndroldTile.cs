@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    /// <summary>
-    /// Tile that spawns an Androld when powered by electricity.
-    /// </summary>
-    internal class AndroldTile : SquareTile
+	/// <summary>
+	/// Tile that spawns an Androld when powered by electricity.
+	/// </summary>
+	internal class AndroldTile : SquareTile
 	{
 		#region rConstants
 
@@ -74,7 +67,7 @@ namespace AridArnold
 				mActivationAnim.Update(gameTime);
 
 				//Animation is finished, spawn Androld
-				if(mActivationAnim.IsPlaying() == false)
+				if (mActivationAnim.IsPlaying() == false)
 				{
 					Vector2 position = TileManager.I.GetTileCentre(mTileMapIndex) + SPAWN_OFFSET;
 
@@ -109,11 +102,11 @@ namespace AridArnold
 		/// </summary>
 		public override Texture2D GetTexture()
 		{
-			if(mActivated)
+			if (mActivated)
 			{
 				return mActivationAnim.GetCurrentTexture();
 			}
-			
+
 			return mTexture;
 		}
 

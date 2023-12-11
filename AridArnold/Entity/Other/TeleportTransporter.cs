@@ -1,10 +1,7 @@
-﻿using AridArnold.Tiles.Basic;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    // Entity that travels through teleportation pipes
-    class TeleportTransporter : Entity
+	// Entity that travels through teleportation pipes
+	class TeleportTransporter : Entity
 	{
 		#region rTypes
 
@@ -33,7 +30,7 @@ namespace AridArnold
 		{
 			new Color(0,81,72),
 			new Color(0,61,54),
-			new Color(7,33,30) 
+			new Color(7,33,30)
 		};
 
 		const float SPEED_MULTIPLIER = 1.4025f;
@@ -51,7 +48,7 @@ namespace AridArnold
 		Point mSegmentEnd;
 		float mSegmentTimer;
 		float mSegmentTotalTime;
-		
+
 		// The entity we are transporting.
 		MovingEntity mTransportingEntity;
 		float mInputSpeed;
@@ -77,7 +74,7 @@ namespace AridArnold
 		public TeleportTransporter(Point tilePos, MovingEntity entityToTransport) : base(TileManager.I.GetTileTopLeft(tilePos))
 		{
 			mSegmentStart = tilePos;
-			
+
 			//Absorb entity
 			mTransportingEntity = entityToTransport;
 			mTransportingEntity.SetEnabled(false); // Hide entity as it travels through the pipe
@@ -89,7 +86,7 @@ namespace AridArnold
 
 			Point? nextPt = GetNextSegment(mSegmentStart, mSegmentStart);
 
-			if(nextPt == null)
+			if (nextPt == null)
 			{
 				throw new Exception("Can't find next point to travel to.");
 			}
@@ -172,11 +169,11 @@ namespace AridArnold
 			{
 				traceTex = mTraceTex2;
 			}
-			else if(currIdx == SEGMENT_DIVISIONS + 1)
+			else if (currIdx == SEGMENT_DIVISIONS + 1)
 			{
 				traceTex = mTraceTex3;
 			}
-			else if(currIdx > SEGMENT_DIVISIONS + 1)
+			else if (currIdx > SEGMENT_DIVISIONS + 1)
 			{
 				mTraceHistory[0] = null;
 				ShootOutEntity();
@@ -186,7 +183,7 @@ namespace AridArnold
 			mTraceHistory[0] = GenerateTraceAtHead(currIdx, traceTex);
 		}
 
-		
+
 		/// <summary>
 		/// Shoot the entity out.
 		/// </summary>
@@ -205,7 +202,7 @@ namespace AridArnold
 			mTransportingEntity.SetCentrePos(output);
 			mTransportingEntity.OverrideVelocity(dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length()));
 
-			if(mTransportingEntity is PlatformingEntity)
+			if (mTransportingEntity is PlatformingEntity)
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)mTransportingEntity;
 				CardinalDirection inverseDir = Util.InvertDirection(Util.CardinalDirectionFromVector(dir));
@@ -241,7 +238,7 @@ namespace AridArnold
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			for(int i = 0; i < mTraceHistory.Length; ++i)
+			for (int i = 0; i < mTraceHistory.Length; ++i)
 			{
 				if (mTraceHistory[i] == null)
 				{
@@ -267,14 +264,14 @@ namespace AridArnold
 		/// </summary>
 		private Point? GetNextSegment(Point prev, Point start)
 		{
-			foreach(Point pt in MonoMath.GetAdjacentPoints(start))
+			foreach (Point pt in MonoMath.GetAdjacentPoints(start))
 			{
-				if(pt == prev)
+				if (pt == prev)
 				{
 					continue;
 				}
 
-				if(TileManager.I.GetTile(pt) is TeleportPipe)
+				if (TileManager.I.GetTile(pt) is TeleportPipe)
 				{
 					return pt;
 				}
@@ -296,11 +293,11 @@ namespace AridArnold
 
 			Vector2 segStartPos = TileManager.I.GetTileCentre(mSegmentStart);
 			Vector2 segEndPos = TileManager.I.GetTileCentre(mSegmentEnd);
-			Vector2 mPosition = MonoMath.Lerp(segStartPos, segEndPos, (float)segIdx / (float)SEGMENT_DIVISIONS);
+			Vector2 mPosition = MonoMath.Lerp(segStartPos, segEndPos, segIdx / (float)SEGMENT_DIVISIONS);
 
 			bool horizontal = MathF.Abs(segStartPos.Y - segEndPos.Y) < 0.0001f;
 
-			if(horizontal)
+			if (horizontal)
 			{
 				mPosition.Y -= Tile.sTILE_SIZE / 2.0f;
 				traceInfo.mRotation = 0.0f;
@@ -311,7 +308,7 @@ namespace AridArnold
 					traceInfo.mSpriteEffects = SpriteEffects.FlipHorizontally;
 				}
 
-				if(left)
+				if (left)
 				{
 					mPosition.X -= mTraceTex1.Width;
 				}

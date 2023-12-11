@@ -15,11 +15,11 @@
 		{
 			// Check for new item
 			Item newItem = ItemManager.I.GetActiveItem();
-			if(!object.ReferenceEquals(newItem, mCurrItem))
+			if (!object.ReferenceEquals(newItem, mCurrItem))
 			{
 				mCurrItem = newItem;
 			}
-			
+
 			base.Update(gameTime);
 		}
 
@@ -28,7 +28,7 @@
 			const float SCALE = 5.0f;
 			MonoDraw.DrawTextureDepth(info, mFrame, GetPosition(), GetDepth());
 
-			if(mCurrItem is not null)
+			if (mCurrItem is not null)
 			{
 				Vector2 itemPos = GetPosition();
 				Texture2D itemTex = mCurrItem.GetTexture();

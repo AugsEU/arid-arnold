@@ -33,7 +33,7 @@
 			FXManager.I.AddAnimator(mPosition, "Tiles/BottleFade.max", DrawLayer.TileEffects);
 		}
 
-		public override float GetRotation() 
+		public override float GetRotation()
 		{
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 

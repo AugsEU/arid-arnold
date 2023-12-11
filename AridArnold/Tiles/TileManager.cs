@@ -1,11 +1,9 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    /// <summary>
-    /// Manages and stores the tile map.
-    /// </summary>
-    internal class TileManager : Singleton<TileManager>
+	/// <summary>
+	/// Manages and stores the tile map.
+	/// </summary>
+	internal class TileManager : Singleton<TileManager>
 	{
 		#region rConstants
 
@@ -85,7 +83,7 @@ namespace AridArnold
 				{
 					int index = x + y * tileTexture.Width;
 					Color col = colors1D[index];
-					Vector2 tileTopLeft = GetTileTopLeft(new Point(x,y));
+					Vector2 tileTopLeft = GetTileTopLeft(new Point(x, y));
 
 					mTileMap[x, y] = GetTileFromColour(colors1D[index], tileTopLeft);
 					mTileMap[x, y].LoadContent();
@@ -239,7 +237,7 @@ namespace AridArnold
 							mTileMap[x, y].SetRightAdjacent(mTileMap[x + 1, y]);
 						}
 
-						if(y + 1 < mTileMap.GetLength(1))
+						if (y + 1 < mTileMap.GetLength(1))
 						{
 							if (mTileMap[x, y].IsNeighbourType(mTileMap[x + 1, y + 1]))
 							{
@@ -247,7 +245,7 @@ namespace AridArnold
 							}
 						}
 
-						if(y - 1 >= 0)
+						if (y - 1 >= 0)
 						{
 							if (mTileMap[x, y].IsNeighbourType(mTileMap[x + 1, y - 1]))
 							{
@@ -584,7 +582,7 @@ namespace AridArnold
 			}
 
 			//Process delete requests
-			for(int p = 0; p < mDeleteRequests.Count; p++)
+			for (int p = 0; p < mDeleteRequests.Count; p++)
 			{
 				MakeTileIntoAir(mDeleteRequests[p]);
 			}
@@ -776,7 +774,7 @@ namespace AridArnold
 								SolidAndIntersects(GetTile(tileIdx.X, tileIdx.Y - 1), collider) ||
 								SolidAndIntersects(GetTile(tileIdx.X + 1, tileIdx.Y - 1), collider);
 
-			if(topIntersect)
+			if (topIntersect)
 			{
 				finalPos.Y = tilePos.Y;
 			}

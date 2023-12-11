@@ -37,7 +37,7 @@
 		{
 			int numInstances = (int)CameraInstance.NumCameraInstances;
 			mCameraList = new Camera[numInstances];
-			for(int i = 0; i < numInstances; i++)
+			for (int i = 0; i < numInstances; i++)
 			{
 				mCameraList[i] = new Camera();
 			}
@@ -54,7 +54,7 @@
 		/// </summary>
 		public void UpdateAllCameras(GameTime gameTime)
 		{
-			foreach(Camera camera in mCameraList)
+			foreach (Camera camera in mCameraList)
 			{
 				camera.Update(gameTime);
 			}
@@ -81,7 +81,7 @@
 		/// </summary>
 		public bool BlockUpdateRequested()
 		{
-			foreach(Camera cam in mCameraList)
+			foreach (Camera cam in mCameraList)
 			{
 				if (cam.ShouldBlockUpdate()) return true;
 			}

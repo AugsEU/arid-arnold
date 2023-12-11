@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Manager that updates and draws all entities.
@@ -78,7 +76,7 @@ namespace AridArnold
 				RegisterEntity(entity);
 			}
 
-			foreach(Entity entity in mQueuedDeletes)
+			foreach (Entity entity in mQueuedDeletes)
 			{
 				DeleteEntity(entity);
 			}
@@ -115,19 +113,19 @@ namespace AridArnold
 			//Gather all collisions
 			TileManager.I.GatherCollisions(gameTime, entity, ref mCollisionBuffer);
 
-			foreach(ColliderSubmission submission in mAuxiliaryColliders)
+			foreach (ColliderSubmission submission in mAuxiliaryColliders)
 			{
-				if(submission.CanCollideWith(entity))
+				if (submission.CanCollideWith(entity))
 				{
 					EntityCollision collision = submission.GetEntityCollision(gameTime, entity);
 
-					if(collision != null)
+					if (collision != null)
 					{
 						mCollisionBuffer.Add(collision);
 					}
 				}
 			}
-			
+
 			//mCollisionBuffer.Sort(EntityCollision.COLLISION_SORTER);
 
 			if (mCollisionBuffer.Count > 0)
@@ -354,7 +352,7 @@ namespace AridArnold
 
 				if (distanceToEntity < nearestDistance)
 				{
-					nearestDistance=distanceToEntity;
+					nearestDistance = distanceToEntity;
 					nearestEntity = entity;
 				}
 			}
@@ -370,7 +368,7 @@ namespace AridArnold
 		public List<Entity> GetAllOfType(params Type[] types)
 		{
 			List<Entity> returnList = new List<Entity>();
-			
+
 			foreach (Entity entity in mRegisteredEntities)
 			{
 				if (!entity.IsEnabled() || !IsEntityOneOfTypes(entity, types)) continue;
@@ -390,9 +388,9 @@ namespace AridArnold
 		{
 			List<Entity> returnList = new List<Entity>();
 
-			foreach(Entity entity in mRegisteredEntities)
+			foreach (Entity entity in mRegisteredEntities)
 			{
-				if(entity.PersistLevelEntry())
+				if (entity.PersistLevelEntry())
 				{
 					returnList.Add(entity);
 				}
@@ -411,7 +409,7 @@ namespace AridArnold
 			Arnold returnValue = null;
 			foreach (Entity entity in mRegisteredEntities)
 			{
-				if(entity is Arnold)
+				if (entity is Arnold && !(entity is Androld))
 				{
 					MonoDebug.Assert(returnValue == null); // Two arnolds detected.
 					returnValue = (Arnold)entity;
@@ -429,9 +427,9 @@ namespace AridArnold
 		/// </summary>
 		private bool IsEntityOneOfTypes(Entity entity, Type[] types)
 		{
-			foreach(Type type in types)
+			foreach (Type type in types)
 			{
-				if(entity.GetType() == type)
+				if (entity.GetType() == type)
 				{
 					return true;
 				}

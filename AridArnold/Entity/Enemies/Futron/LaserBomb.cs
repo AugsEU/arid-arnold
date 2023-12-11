@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class LaserBomb : ProjectileEntity
 	{
@@ -107,11 +105,11 @@ namespace AridArnold
 			mBombAnim.Update(gameTime);
 
 			//Check death (this is bad...)
-			if(mState == ProjectileState.Exploding)
+			if (mState == ProjectileState.Exploding)
 			{
 				mDeathTimer.Start();
 				double elapsedTime = mDeathTimer.GetElapsedMs();
-				if(DEATH_TIME_START < elapsedTime && elapsedTime < DEATH_TIME_END)
+				if (DEATH_TIME_START < elapsedTime && elapsedTime < DEATH_TIME_END)
 				{
 					List<Entity> nearbyEntities = EntityManager.I.GetNearPos(DEATH_RADIUS, mExplosionCentre);
 
@@ -173,7 +171,7 @@ namespace AridArnold
 		/// </summary>
 		private void DrawProjectedLine(DrawInfo info)
 		{
-			if(mState != ProjectileState.FreeMotion)
+			if (mState != ProjectileState.FreeMotion)
 			{
 				return;
 			}
@@ -202,9 +200,9 @@ namespace AridArnold
 
 				int tracerSegmentNew = (int)(tracerDistanceTravelled / TRACE_SEGMENT_LENGTH);
 
-				if(tracerSegmentNew > tracerSegmentPrev)
+				if (tracerSegmentNew > tracerSegmentPrev)
 				{
-					if(tracerSegmentNew % 2 == 1)
+					if (tracerSegmentNew % 2 == 1)
 					{
 						// Calculate end point and draw
 						float lerpT = 1.0f + (tracerSegmentNew * TRACE_SEGMENT_LENGTH - tracerDistanceTravelled) / tracerMoveDelta;
@@ -227,17 +225,17 @@ namespace AridArnold
 			{
 				EntityCollision firstCollision = MonoAlg.GetMin(ref collisions, EntityCollision.COLLISION_SORTER);
 				CollisionResults firstResults = firstCollision.GetResult();
-				
+
 				Vector2 target = freeBodyEntity.GetPos() + firstResults.t.Value * freeBodyEntity.VelocityToDisplacement(timeStep);
 
 				target.X -= mReticuleTexture.Width / 2.0f;
 				target.Y -= mReticuleTexture.Height / 2.0f;
 
-				if(firstResults.normal.Y < 0.0f)
+				if (firstResults.normal.Y < 0.0f)
 				{
 					target.Y += freeBodyEntity.ColliderBounds().Height;
 				}
-				if(firstResults.normal.X < 0.0f)
+				if (firstResults.normal.X < 0.0f)
 				{
 					target.X += freeBodyEntity.ColliderBounds().Width;
 				}
@@ -273,7 +271,7 @@ namespace AridArnold
 		public override void SetEnabled(bool enabled)
 		{
 			// When disabling, recude trace size. This is so when it re-appears the trace doesn't suddenly appear.
-			if(enabled == false)
+			if (enabled == false)
 			{
 				mTraceLength = 0.0f;
 			}

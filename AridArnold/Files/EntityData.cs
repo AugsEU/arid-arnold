@@ -68,7 +68,7 @@
 		{
 			if ((int)mEntityClass >= kNPCClassStart && (int)mEntityClass <= (int)EntityClass.kNPCClassEnd)
 			{
-				if(mEntityClass == EntityClass.kBickDogel)
+				if (mEntityClass == EntityClass.kBickDogel)
 				{
 					//Special exception
 					return EntityType.kBasic;

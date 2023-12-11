@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Math utility functions
@@ -81,7 +79,7 @@ namespace AridArnold
 		/// </summary>
 		public static float MainBranchRadian(float angle)
 		{
-			while(angle <= 0.0f)
+			while (angle <= 0.0f)
 			{
 				angle += MathF.PI * 2.0f;
 			}
@@ -190,10 +188,10 @@ namespace AridArnold
 		/// </summary>
 		public static UInt32 BitCountI32(UInt32 i)
 		{
-			i = i - ((i >> 1) & 0x55555555);				// add pairs of bits
-			i = (i & 0x33333333) + ((i >> 2) & 0x33333333);	// quads
-			i = (i + (i >> 4)) & 0x0F0F0F0F;				// groups of 8
-			return (i * 0x01010101) >> 24;					// horizontal sum of bytes
+			i = i - ((i >> 1) & 0x55555555);                // add pairs of bits
+			i = (i & 0x33333333) + ((i >> 2) & 0x33333333); // quads
+			i = (i + (i >> 4)) & 0x0F0F0F0F;                // groups of 8
+			return (i * 0x01010101) >> 24;                  // horizontal sum of bytes
 		}
 
 

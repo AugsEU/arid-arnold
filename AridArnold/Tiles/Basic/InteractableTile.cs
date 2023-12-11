@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AridArnold.Tiles.Basic
+﻿namespace AridArnold.Tiles.Basic
 {
 	/// <summary>
 	/// A tile you can interact with. Such as collectables or spikes.

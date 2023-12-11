@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    internal class ElectricGate : SquareTile
+	internal class ElectricGate : SquareTile
 	{
 		#region rTypes
 
@@ -68,11 +66,11 @@ namespace AridArnold
 			//Check surrounding tiles.
 			EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);
 
-			if(scan.mTotalPositiveElectric > 0.75f)
+			if (scan.mTotalPositiveElectric > 0.75f)
 			{
 				mStatus = GateStatus.Open;
 			}
-			else if(scan.mTotalPositiveElectric > 0.25f)
+			else if (scan.mTotalPositiveElectric > 0.25f)
 			{
 				mStatus = GateStatus.Mid;
 			}
@@ -89,7 +87,7 @@ namespace AridArnold
 		/// </summary>
 		public override CollisionResults Collide(MovingEntity entity, GameTime gameTime)
 		{
-			if(mStatus == GateStatus.Open)
+			if (mStatus == GateStatus.Open)
 			{
 				return CollisionResults.None;
 			}
@@ -100,7 +98,7 @@ namespace AridArnold
 
 		public override bool IsSolid()
 		{
-			if(mStatus == GateStatus.Open)
+			if (mStatus == GateStatus.Open)
 			{
 				return false;
 			}

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// BG for mirror world. A bit bodge but it's contained so who cares?
@@ -42,7 +40,7 @@ namespace AridArnold
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
-			foreach(FallingLeaf leaf in mFallingLeaves)
+			foreach (FallingLeaf leaf in mFallingLeaves)
 			{
 				leaf.Update(gameTime, mWindDirection);
 			}
@@ -63,13 +61,13 @@ namespace AridArnold
 
 			bool addLeaf = RandomManager.I.GetDraw().PercentChance(1.2f);
 
-			if(addLeaf)
+			if (addLeaf)
 			{
 				AddLeaf();
 			}
 
 			float height = TileManager.I.GetDrawHeight() + 20.0f;
-			for(int i = 0; i < mFallingLeaves.Count; i++)
+			for (int i = 0; i < mFallingLeaves.Count; i++)
 			{
 				if (mFallingLeaves[i].mPos.Y > height)
 				{
@@ -156,11 +154,11 @@ namespace AridArnold
 			Texture2D toDraw = mLateralTexture;
 			SpriteEffects effects = SpriteEffects.None;
 
-			if(mVelocity.X > 4.0f)
+			if (mVelocity.X > 4.0f)
 			{
 				effects = SpriteEffects.FlipHorizontally;
 			}
-			else if(mVelocity.X < -4.0f)
+			else if (mVelocity.X < -4.0f)
 			{
 			}
 			else

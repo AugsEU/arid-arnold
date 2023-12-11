@@ -25,7 +25,7 @@
 
 			if (MathF.Abs(mTargetAngle - mStartRotation) > MathF.PI)
 			{
-				if(mTargetAngle > mStartRotation)
+				if (mTargetAngle > mStartRotation)
 				{
 					mTargetAngle -= MathF.PI * 2.0f;
 				}

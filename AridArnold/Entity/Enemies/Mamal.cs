@@ -143,7 +143,7 @@
 
 			bool canWalk = TileManager.I.GetTile(checkSpot).IsSolid();
 
-			if(canWalk)
+			if (canWalk)
 			{
 				SetWalkDirection(dir);
 			}

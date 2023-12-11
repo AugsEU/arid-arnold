@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    abstract class ProjectileEntity : PlatformingEntity
+	abstract class ProjectileEntity : PlatformingEntity
 	{
 		#region rConstants
 
@@ -92,7 +85,7 @@ namespace AridArnold
 		/// <param name="gameTime">Frame time.</param>
 		public override void OrderedUpdate(GameTime gameTime)
 		{
-			if(mState != ProjectileState.FreeMotion)
+			if (mState != ProjectileState.FreeMotion)
 			{
 				return;
 			}
@@ -114,11 +107,11 @@ namespace AridArnold
 					mExplosionCentre = mPosition + colResult.t.Value * VelocityToDisplacement(gameTime);
 
 					Rect2f collider = ColliderBounds();
-					if(colResult.normal.X < 0.0f)
+					if (colResult.normal.X < 0.0f)
 					{
 						mExplosionCentre.X += collider.Width;
 					}
-					else if(colResult.normal.Y < 0.0f)
+					else if (colResult.normal.Y < 0.0f)
 					{
 						mExplosionCentre.Y += collider.Height;
 					}
@@ -174,7 +167,7 @@ namespace AridArnold
 		/// </summary>
 		protected void KillPlayer(MovingEntity movingEntity)
 		{
-			if(movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
+			if (movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
 			{
 				// Entity is travelling too fast. Not fair to kill them.
 				return;

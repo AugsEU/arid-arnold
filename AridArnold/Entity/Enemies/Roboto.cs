@@ -73,7 +73,7 @@
 		/// <param name="gameTime"></param>
 		public override void Update(GameTime gameTime)
 		{
-			if(!mPoweredOn)
+			if (!mPoweredOn)
 			{
 				//Collider
 				EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
@@ -83,7 +83,7 @@
 				mTimeSinceOn.Start();
 			}
 
-			if(CheckOffScreenDeath())
+			if (CheckOffScreenDeath())
 			{
 				EntityManager.I.QueueDeleteEntity(this);
 			}
@@ -151,7 +151,7 @@
 		/// <param name="entity"></param>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if(mTimeSinceOn.GetElapsedMs() > ROBOTO_INT_TIME)
+			if (mTimeSinceOn.GetElapsedMs() > ROBOTO_INT_TIME)
 			{
 				base.OnCollideEntity(entity);
 			}
@@ -180,7 +180,7 @@
 		/// </summary>
 		protected override Texture2D GetDrawTexture()
 		{
-			if(mPoweredOn == false)
+			if (mPoweredOn == false)
 			{
 				return mTexture;
 			}

@@ -13,7 +13,7 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			if(ArnoldExists() == false)
+			if (ArnoldExists() == false)
 			{
 				Arnold newArnold = new Arnold(mPosition);
 				newArnold.SetGravity(mGravityDir);
@@ -26,10 +26,10 @@
 		bool ArnoldExists()
 		{
 			int entityNum = EntityManager.I.GetEntityNum();
-			for(int i = 0; i < entityNum; i++)
+			for (int i = 0; i < entityNum; i++)
 			{
 				Entity entity = EntityManager.I.GetEntity(i);
-				if(entity is Arnold)
+				if (entity is Arnold)
 				{
 					return true;
 				}

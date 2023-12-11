@@ -1,6 +1,4 @@
-﻿using System.Xml;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Handles data mappings.
@@ -122,19 +120,19 @@ namespace AridArnold
 		/// </summary>
 		string GetRemappedPath(string path)
 		{
-			if(path.StartsWith("Content"))
+			if (path.StartsWith("Content"))
 			{
 				path = path.Substring(8);
 			}
 #if DEBUG
-			else if(path.Contains(":"))
+			else if (path.Contains(":"))
 			{
 				throw new Exception("Trying to access path |" + path + "| is not valid. Make relative to the game.");
 			}
 #endif
 
 			string newPath = path;
-			while(mPathRemappings.TryGetValue(path, out newPath))
+			while (mPathRemappings.TryGetValue(path, out newPath))
 			{
 				path = newPath;
 			}

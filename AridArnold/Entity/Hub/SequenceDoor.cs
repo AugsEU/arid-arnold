@@ -46,7 +46,7 @@
 			for (int i = 0; i < levelSequence.Length; i++)
 			{
 				int lvlID = levelSequence[i];
-				if(lvlID != 0)
+				if (lvlID != 0)
 				{
 					string path = CampaignManager.I.GetLevelPath(lvlID);
 					mLevelSequence.Add(Level.LoadFromFile(path, lvlID));

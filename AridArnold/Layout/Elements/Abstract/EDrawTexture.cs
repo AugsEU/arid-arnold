@@ -20,7 +20,7 @@
 			Vector2 rotOrigin = new Vector2(drawTex.Width / 2.0f, drawTex.Height / 2.0f) * GetScale();
 			Vector2 rotDest = MonoMath.Rotate(rotOrigin, rotation);
 			Vector2 drawPos = GetPosition();
-			drawPos += rotOrigin- rotDest;
+			drawPos += rotOrigin - rotDest;
 			MonoDraw.DrawTexture(info, drawTex, drawPos, null, GetColor(), GetRotation(), Vector2.Zero, GetScale(), SpriteEffects.None, GetDepth());
 
 			base.Draw(info);

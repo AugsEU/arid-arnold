@@ -40,7 +40,7 @@
 
 		public Vector2 GetExtraVelocity(MovingEntity entity)
 		{
-			if(mFirstTime)
+			if (mFirstTime)
 			{
 				return GetExtraVelocityInternal(entity);
 			}
@@ -149,7 +149,7 @@
 				CardinalDirection ourGrav = ourPlatEntity.GetGravityDir();
 				CardinalDirection theirGrav = theirPlatEntity.GetGravityDir();
 
-				if(ourGrav != theirGrav || ourPlatEntity.OnGround() == false)
+				if (ourGrav != theirGrav || ourPlatEntity.OnGround() == false)
 				{
 					return Vector2.Zero;
 				}
@@ -164,7 +164,7 @@
 					Vector2 addedVelocity = Vector2.Dot(dir, ourPlatEntity.GetVelocity()) * dir;
 
 					float len = addedVelocity.Length();
-					if(len > DRAG_THRESH)
+					if (len > DRAG_THRESH)
 					{
 						Vector2 dragVec = (addedVelocity / len) * DRAG_THRESH;
 						addedVelocity = (addedVelocity - dragVec) * DRAG_FACTOR + dragVec;
@@ -194,17 +194,17 @@
 
 		protected override Vector2 GetExtraVelocityInternal(MovingEntity entity)
 		{
-			if(entity is PlatformingEntity)
+			if (entity is PlatformingEntity)
 			{
-				PlatformingEntity platformingEntity =(PlatformingEntity)entity;
+				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 				Vector2 gravity = platformingEntity.GravityVecNorm();
 
-				if(Vector2.Dot(gravity, mResult.normal) < -0.001f)
+				if (Vector2.Dot(gravity, mResult.normal) < -0.001f)
 				{
 					return mAddedVel;
 				}
 			}
-			
+
 			return base.GetExtraVelocityInternal(entity);
 		}
 	}

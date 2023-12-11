@@ -119,7 +119,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
-			if(!mRecording)
+			if (!mRecording)
 			{
 				return;
 			}
@@ -171,7 +171,7 @@
 		/// <param name="info">Info needed to draw</param>
 		public void Draw(DrawInfo info)
 		{
-			if(mRecording == false)
+			if (mRecording == false)
 			{
 				return;
 			}

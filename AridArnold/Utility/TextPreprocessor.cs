@@ -16,7 +16,7 @@
 			{
 				char c = text[i];
 
-				if(c == '{')
+				if (c == '{')
 				{
 					inEscapeSequence = true;
 					escapeSequenceStr = "";
@@ -31,7 +31,7 @@
 					escapeSequenceStr += c;
 				}
 
-				if(c == '}')
+				if (c == '}')
 				{
 					inEscapeSequence = false;
 					outputStr += AddSubstituion(escapeSequenceStr);
@@ -56,8 +56,10 @@
 
 		static string GenerateGrillVogelName()
 		{
-			/*const*/ char[] kFirstNameStarts = { 'W', 'T', 'P', 'D', 'F', 'G', 'K', 'V', 'B', 'S' };
-			/*const*/ char[] kSecondNameStarts = { 'W', 'R', 'T', 'Y', 'P', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'V', 'B', 'N', 'M' };
+			/*const*/
+			char[] kFirstNameStarts = { 'W', 'T', 'P', 'D', 'F', 'G', 'K', 'V', 'B', 'S' };
+			/*const*/
+			char[] kSecondNameStarts = { 'W', 'R', 'T', 'Y', 'P', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'V', 'B', 'N', 'M' };
 
 			int firstNameIdx = sTextRandom.GetIntRange(0, kFirstNameStarts.Length - 1);
 			int secondNameIdx = sTextRandom.GetIntRange(0, kSecondNameStarts.Length - 1);

@@ -88,7 +88,7 @@
 		public void Update(GameTime gameTime)
 		{
 			CheckQueue();
-			if(mCameraMovements.Count > 0)
+			if (mCameraMovements.Count > 0)
 			{
 				mCurrentCameraMovement = mCameraMovements.Peek();
 				mCurrentSpec = mCurrentCameraMovement.Update(gameTime);
@@ -106,7 +106,7 @@
 		/// </summary>
 		void CheckQueue()
 		{
-			if(mCameraMovements.Count == 0)
+			if (mCameraMovements.Count == 0)
 			{
 				// Queue is emtpy; nothing to check.
 				return;
@@ -119,11 +119,11 @@
 			{
 				topCamMove.StartMovement(mCurrentSpec);
 			}
-			else if(mCurrentCameraMovement.IsMovementOver(ref endSpec))
+			else if (mCurrentCameraMovement.IsMovementOver(ref endSpec))
 			{
 				mCurrentSpec = endSpec;
 				mCameraMovements.Dequeue();
-				if(mCameraMovements.Count > 0)
+				if (mCameraMovements.Count > 0)
 				{
 					mCameraMovements.Peek().StartMovement(mCurrentSpec);
 				}
@@ -217,7 +217,7 @@
 		/// </summary>
 		public bool ShouldBlockUpdate()
 		{
-			if(mCurrentCameraMovement is not null)
+			if (mCurrentCameraMovement is not null)
 			{
 				return mCurrentCameraMovement.MovementBlocksUpdate();
 			}

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	abstract class ExtenderEntity : PlatformingEntity
 	{
@@ -15,7 +13,7 @@ namespace AridArnold
 		protected Texture2D mGhostTexture;
 		protected Texture2D mOffSeasonTexture;
 		protected Texture2D mOnSeasonTexture;
-		
+
 
 		#endregion rMembers
 
@@ -162,7 +160,7 @@ namespace AridArnold
 			}
 
 			SetWalkDirection(direction);
-			if(direction != WalkDirection.None)
+			if (direction != WalkDirection.None)
 			{
 				mPrevPushDir = direction;
 			}

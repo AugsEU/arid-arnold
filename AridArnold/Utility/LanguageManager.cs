@@ -71,7 +71,7 @@
 		/// </summary>
 		public string GetText(string ID)
 		{
-			if(ID == "")
+			if (ID == "")
 			{
 				return "";
 			}

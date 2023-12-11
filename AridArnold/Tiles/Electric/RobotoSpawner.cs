@@ -1,6 +1,4 @@
-﻿using System.Net.NetworkInformation;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class RobotoSpawner : SquareTile
 	{
@@ -82,7 +80,7 @@ namespace AridArnold
 				mIsOn = false;
 			}
 
-			if(mIsOn)
+			if (mIsOn)
 			{
 				mSpawnTimer.Start();
 				if (mSpawnTimer.GetElapsedMs() > SPAWN_TIME + CHARGE_UP_TIME)
@@ -117,7 +115,7 @@ namespace AridArnold
 			Vector2 spawnVel = spawnDirection;
 			spawnVel.X *= EXIT_VELOCITY_X;
 			spawnVel.Y *= EXIT_VELOCITY_Y;
-			if(mRotation == CardinalDirection.Down)
+			if (mRotation == CardinalDirection.Down)
 			{
 				spawnVel.Y = 4.0f;
 			}
@@ -126,7 +124,7 @@ namespace AridArnold
 
 			// Set Position
 			Vector2 spawnPos = GetCentre() + spawnDirection * sTILE_SIZE * 0.5f;
-			if(mRotation == CardinalDirection.Right || mRotation == CardinalDirection.Left)
+			if (mRotation == CardinalDirection.Right || mRotation == CardinalDirection.Left)
 			{
 				// Botch position a bit
 				spawnPos.Y -= 1.0f;
@@ -149,7 +147,7 @@ namespace AridArnold
 		/// <returns></returns>
 		public override Texture2D GetTexture()
 		{
-			if(mIsOn)
+			if (mIsOn)
 			{
 				return mSpawnTimer.GetElapsedMs() > SPAWN_TIME ? mOnAnim.GetCurrentTexture() : mPoweredTexture;
 			}

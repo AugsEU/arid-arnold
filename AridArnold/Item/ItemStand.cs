@@ -1,11 +1,9 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    /// <summary>
-    /// Entity holding an item
-    /// </summary>
-    internal class ItemStand : Entity
+	/// <summary>
+	/// Entity holding an item
+	/// </summary>
+	internal class ItemStand : Entity
 	{
 		#region rConstants
 
@@ -87,7 +85,7 @@ namespace AridArnold
 		/// </summary>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if(entity is Arnold)
+			if (entity is Arnold)
 			{
 				Arnold arnold = (Arnold)entity;
 				mPlayerNear = arnold.CanBuyItem();

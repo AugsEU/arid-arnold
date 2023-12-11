@@ -12,7 +12,7 @@
 		protected override void DrawAtTime(DrawInfo info, float time)
 		{
 			Texture2D dummy = Main.GetDummyTexture();
-			for(float x = 0.0f; x < GameScreen.GAME_AREA_WIDTH; x += mSpacing)
+			for (float x = 0.0f; x < GameScreen.GAME_AREA_WIDTH; x += mSpacing)
 			{
 				for (float y = 0.0f; y < GameScreen.GAME_AREA_HEIGHT; y += mSpacing)
 				{

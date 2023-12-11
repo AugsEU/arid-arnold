@@ -82,7 +82,7 @@
 			ClearAll();
 
 			int version = br.ReadInt32();
-			if(version != FILE_VER)
+			if (version != FILE_VER)
 			{
 				MonoDebug.Break();
 				throw new Exception("File version doesn't match. Verify data integrity!");
@@ -94,7 +94,7 @@
 			//Rails
 			ReadRails(br);
 
-			if(br.BaseStream.Position == br.BaseStream.Length)
+			if (br.BaseStream.Position == br.BaseStream.Length)
 			{
 				return;
 			}
@@ -115,7 +115,7 @@
 			mLevelType = (LevelType)br.ReadUInt32();
 			mThemePath = br.ReadString();
 			mBGPath = br.ReadString();
-			for(int i = 0; i < NUM_PARAMS; i++)
+			for (int i = 0; i < NUM_PARAMS; i++)
 			{
 				mIntParams[i] = br.ReadInt32();
 			}
@@ -129,7 +129,7 @@
 		private void ReadRails(BinaryReader br)
 		{
 			int railCount = br.ReadInt32();
-			for(int i = 0; i < railCount; i++)
+			for (int i = 0; i < railCount; i++)
 			{
 				int size = br.ReadInt32();
 				UInt32 flags = br.ReadUInt32();
@@ -140,7 +140,7 @@
 
 				//Add nodes
 				int nodeCount = br.ReadInt32();
-				for(int j = 0; j < nodeCount; j++)
+				for (int j = 0; j < nodeCount; j++)
 				{
 					RailNode node = new RailNode();
 					int ptX = br.ReadInt32();
@@ -149,7 +149,7 @@
 					node.mPoint = new Point(ptX, ptY);
 					node.mSpeed = br.ReadSingle();
 					node.mWaitTime = br.ReadSingle();
-					
+
 					UInt32 nodeFlags = br.ReadUInt32();
 
 					ParseNodeFlags(ref node, nodeFlags);
@@ -181,7 +181,7 @@
 				entityData.mFloatParams = new float[NUM_PARAMS];
 				entityData.mIntParams = new int[NUM_PARAMS];
 
-				for(int j = 0; j < NUM_PARAMS; j++)
+				for (int j = 0; j < NUM_PARAMS; j++)
 				{
 					entityData.mFloatParams[j] = br.ReadSingle();
 					entityData.mIntParams[j] = br.ReadInt32();
@@ -221,7 +221,7 @@
 		/// <returns>Rail type from flags.</returns>
 		LinearRailData.RailType ParseRailFlags(UInt32 flags)
 		{
-			if(flags == 0x1)
+			if (flags == 0x1)
 			{
 				return LinearRailData.RailType.Cycle;
 			}
@@ -242,7 +242,7 @@
 			// bbbb_bbbb_bbbb_bbbb_bbbb_bbbb_bbbb_bbbb
 			// NNNN_NNNN_NNNN_NNNN_NNNN_RRRR_TTTT_TTTT
 			//   NOT SET                ROT   TYPE
-			
+
 
 			//Get type
 			node.mType = (RailNode.NodeType)(flags & 0xFF);
@@ -250,7 +250,7 @@
 			//Get direction
 			UInt32 direction = MonoAlg.IntSubString(flags, 8, 4);
 
-			switch(direction)
+			switch (direction)
 			{
 				case 0:
 					node.mDirection = CardinalDirection.Up;

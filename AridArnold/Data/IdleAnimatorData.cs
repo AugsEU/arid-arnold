@@ -38,7 +38,7 @@
 		public IdleAnimator GenerateIdleAnimator()
 		{
 			Animator[] anims = new Animator[mAnimationPaths.Length];
-			for(int i = 0; i < mAnimationPaths.Length; i++)
+			for (int i = 0; i < mAnimationPaths.Length; i++)
 			{
 				anims[i] = MonoData.I.LoadAnimator(mAnimationPaths[i]);
 			}

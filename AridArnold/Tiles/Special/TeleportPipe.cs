@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    class TeleportPipe : SquareTile
+	class TeleportPipe : SquareTile
 	{
 		#region rMembers
 
@@ -68,13 +66,13 @@ namespace AridArnold
 		/// </summary>
 		public override void OnTouch(MovingEntity entity, CollisionResults collisionResults)
 		{
-			if(!mIsEntry)
+			if (!mIsEntry)
 			{
 				return;
 			}
 
 			Vector2 normal = GetEntryDirection();
-			if(normal != collisionResults.normal)
+			if (normal != collisionResults.normal)
 			{
 				return;
 			}
@@ -118,7 +116,7 @@ namespace AridArnold
 		/// </summary>
 		Vector2 GetEntryDirection()
 		{
-			if(!mIsEntry)
+			if (!mIsEntry)
 			{
 				return Vector2.Zero;
 			}

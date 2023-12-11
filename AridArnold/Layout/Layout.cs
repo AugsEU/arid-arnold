@@ -1,6 +1,5 @@
-﻿using System.Reflection;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Linq;
+using System.Reflection;
 
 namespace AridArnold
 {
@@ -114,7 +113,7 @@ namespace AridArnold
 		/// </summary>
 		private static LayElement GenerateElement(XmlNode node)
 		{
-			if(sElementNameMapping.Count == 0)
+			if (sElementNameMapping.Count == 0)
 			{
 				GenerateClassNameMap();
 			}
@@ -137,7 +136,7 @@ namespace AridArnold
 		{
 			Assembly assembly = Assembly.GetExecutingAssembly();
 			Type elementType = typeof(LayElement);
-			IEnumerable <Type> types = assembly.GetTypes().Where(t => elementType.IsAssignableFrom(t) && !t.IsAbstract);
+			IEnumerable<Type> types = assembly.GetTypes().Where(t => elementType.IsAssignableFrom(t) && !t.IsAbstract);
 
 			foreach (Type type in types)
 			{
@@ -177,12 +176,12 @@ namespace AridArnold
 
 		public float GetScale() { return mScale; }
 
-		public Vector2 GetPosition() {  return mPos; }
+		public Vector2 GetPosition() { return mPos; }
 
 		public Color GetColor() { return mColor; }
 
-		public bool IsVisible() {  return mVisible; }
+		public bool IsVisible() { return mVisible; }
 
-		public void SetVisible(bool visible) {  mVisible = visible; }
+		public void SetVisible(bool visible) { mVisible = visible; }
 	}
 }

@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    class StalactiteTile : AirTile
+	class StalactiteTile : AirTile
 	{
 		static Vector2 DROP_DISPLACEMENT = new Vector2(10.0f, 11.0f);
 		static Color DROP_MAIN_COLOR = new Color(0, 46, 101);
@@ -28,7 +26,7 @@ namespace AridArnold
 			Point tilePt = mTileMapIndex;
 			tilePt.Y += 1;
 
-			while(!TileManager.I.IsTileSolid(tilePt) && tilePt.Y < 50)
+			while (!TileManager.I.IsTileSolid(tilePt) && tilePt.Y < 50)
 			{
 				tilePt.Y += 1;
 			}

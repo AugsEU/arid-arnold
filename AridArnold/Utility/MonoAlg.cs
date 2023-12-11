@@ -68,7 +68,7 @@
 		/// </summary>
 		public static int GetIndex<T>(List<T> list, T toFind)
 		{
-			for(int i =0; i < list.Count; ++i)
+			for (int i = 0; i < list.Count; ++i)
 			{
 				if (object.ReferenceEquals(list[i], toFind))
 				{
@@ -101,7 +101,7 @@
 		{
 			int n = list.Count;
 
-			while(n > 0)
+			while (n > 0)
 			{
 				n--;
 				int newIdx = rng.GetIntRange(0, n);

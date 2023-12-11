@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    class MirrorTile : PlatformTile
+	class MirrorTile : PlatformTile
 	{
 		#region rInitialisation
 

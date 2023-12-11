@@ -55,9 +55,9 @@
 			}
 
 			// Validate time overrides
-			for(int i = 0; i < mTimeOverrides.Count; i++)
+			for (int i = 0; i < mTimeOverrides.Count; i++)
 			{
-				for(int j = i + 1; j < mTimeOverrides.Count; j++)
+				for (int j = i + 1; j < mTimeOverrides.Count; j++)
 				{
 					if (mTimeOverrides[i].mTimeTo == mTimeOverrides[j].mTimeTo &&
 						mTimeOverrides[i].mTimeFrom == mTimeOverrides[j].mTimeFrom)
@@ -90,9 +90,9 @@
 
 		public TimeZoneOverride? GetTimeOverride(int fromTime, int toTime)
 		{
-			foreach(TimeZoneOverride timeZoneOverride in mTimeOverrides)
+			foreach (TimeZoneOverride timeZoneOverride in mTimeOverrides)
 			{
-				if(timeZoneOverride.mTimeTo == toTime && timeZoneOverride.mTimeFrom == fromTime)
+				if (timeZoneOverride.mTimeTo == toTime && timeZoneOverride.mTimeFrom == fromTime)
 				{
 					return timeZoneOverride;
 				}

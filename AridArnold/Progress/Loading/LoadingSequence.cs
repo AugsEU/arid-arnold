@@ -19,7 +19,7 @@
 
 		public void AddPersistentEntities(params Entity[] entities)
 		{
-			foreach(Entity entity in entities)
+			foreach (Entity entity in entities)
 			{
 				mPersistentEntities.Add(entity);
 			}

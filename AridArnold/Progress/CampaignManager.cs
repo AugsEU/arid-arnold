@@ -21,7 +21,7 @@ namespace AridArnold
 
 
 
-		
+
 		#region rTypes
 
 		public enum GameplayState
@@ -76,7 +76,7 @@ namespace AridArnold
 			CollectableManager.I.ChangePermanentItem(0x0000, 100);
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(2, 1);
 			//QueueLoadSequence(new HubDirectLoader(801));
-			QueueLoadSequence(new LevelDirectLoader(803));
+			QueueLoadSequence(new LevelDirectLoader(804));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 #endif
@@ -188,7 +188,7 @@ namespace AridArnold
 		/// </summary>
 		public void SetCurrentLevel(Level level)
 		{
-			if(level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub)
+			if (level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub)
 			{
 				SetGameplayState(GameplayState.HubWorld);
 			}
@@ -239,9 +239,9 @@ namespace AridArnold
 		/// </summary>
 		void SetGameplayState(GameplayState newState)
 		{
-			if(mGameplayState != newState)
+			if (mGameplayState != newState)
 			{
-				if(newState == GameplayState.LevelSequence)
+				if (newState == GameplayState.LevelSequence)
 				{
 					// Remember this info for later.
 					HubReturnInfo retInfo = new HubReturnInfo();
@@ -252,7 +252,7 @@ namespace AridArnold
 					// Set lives
 					mCurrLives = START_LIVES;
 				}
-				else if(newState == GameplayState.HubWorld)
+				else if (newState == GameplayState.HubWorld)
 				{
 					// Forget about it
 					mHubReturnInfo = null;
@@ -299,7 +299,7 @@ namespace AridArnold
 		public Level GetNextLevelInSequence()
 		{
 			int currIdx = MonoAlg.GetIndex(mLevelSequence, mCurrentLevel);
-			if(currIdx == mLevelSequence.Count - 1)
+			if (currIdx == mLevelSequence.Count - 1)
 			{
 				return null;
 			}
@@ -345,7 +345,7 @@ namespace AridArnold
 		/// </summary>
 		public bool CanLoseLives()
 		{
-			if(mGameplayState == GameplayState.HubWorld || mLevelSequence.Count == 0)
+			if (mGameplayState == GameplayState.HubWorld || mLevelSequence.Count == 0)
 			{
 				return false;
 			}
@@ -384,7 +384,7 @@ namespace AridArnold
 		/// </summary>
 		public void GainLife()
 		{
-			if(mCurrLives < MAX_LIVES)
+			if (mCurrLives < MAX_LIVES)
 			{
 				mCurrLives++;
 			}

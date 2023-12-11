@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    class ElectricTile : SquareTile
+	class ElectricTile : SquareTile
 	{
 		#region rMembers
 
@@ -81,11 +79,11 @@ namespace AridArnold
 
 		public override Texture2D GetTexture()
 		{
-			if(mCurrentElectricity > 0.75f)
+			if (mCurrentElectricity > 0.75f)
 			{
 				return mFullAnimation.GetCurrentTexture();
 			}
-			else if(mCurrentElectricity > 0.25f)
+			else if (mCurrentElectricity > 0.25f)
 			{
 				return mMidTexture;
 			}

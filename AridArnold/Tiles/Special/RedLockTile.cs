@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    internal class RedLockTile : SquareTile
+	internal class RedLockTile : SquareTile
 	{
 		public RedLockTile(Vector2 position) : base(position)
 		{

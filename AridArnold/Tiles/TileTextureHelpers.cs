@@ -48,7 +48,7 @@
 			{
 				returnInfo = SetupTileNoRotation(tile.GetAdjacency());
 			}
-			else if(tileTexture.Width == tileSize && tileTexture.Height == 47 * tileSize)
+			else if (tileTexture.Width == tileSize && tileTexture.Height == 47 * tileSize)
 			{
 				returnInfo = SetupTileForBorderFill(tile.GetAdjacency());
 			}

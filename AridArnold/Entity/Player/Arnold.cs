@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
-using System.Security.Authentication.ExtendedProtection;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// The playable character, our hero, our saviour, Arnold.
@@ -42,7 +38,7 @@ namespace AridArnold
 
 		//Various timers.
 		protected PercentageTimer mTimerSinceStart;
-		   
+
 		// Items
 		Item mItemToUse;
 		PercentageTimer mUseItemTimer;
@@ -188,7 +184,7 @@ namespace AridArnold
 			}
 
 			//Item
-			if(mUseItemTimer.IsPlaying())
+			if (mUseItemTimer.IsPlaying())
 			{
 				if (mUseItemTimer.GetPercentage() == 1.0)
 				{
@@ -268,10 +264,10 @@ namespace AridArnold
 
 			// Items
 			bool useItem = InputManager.I.KeyPressed(AridArnoldKeys.UseItem);
-			if(CanUseItem() && useItem)
+			if (CanUseItem() && useItem)
 			{
 				Item activeItem = ItemManager.I.GetActiveItem();
-				if(activeItem is not null && activeItem.CanUseItem(this))
+				if (activeItem is not null && activeItem.CanUseItem(this))
 				{
 					mUseItemTimer.Reset();
 					mUseItemTimer.Start();
@@ -300,7 +296,7 @@ namespace AridArnold
 			else
 			{
 				mWalkDirection = WalkDirection.None;
-			}		
+			}
 		}
 
 
@@ -382,7 +378,7 @@ namespace AridArnold
 				{
 					texture = mRunningAnimation.GetCurrentTexture();
 				}
-				else if(mUseItemTimer.IsPlaying())
+				else if (mUseItemTimer.IsPlaying())
 				{
 					texture = mUseItemTex;
 				}

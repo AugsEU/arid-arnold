@@ -16,7 +16,7 @@
 		{
 			mLevelSequence = levelSequence;
 
-			SetTargetSize(2*BORDER_SIZE + mLevelSequence.Count * (ICON_WIDTH + ICON_SPACING) - ICON_SPACING, 20);
+			SetTargetSize(2 * BORDER_SIZE + mLevelSequence.Count * (ICON_WIDTH + ICON_SPACING) - ICON_SPACING, 20);
 
 			mLevelIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelDefault");
 			mShopIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelShop");
@@ -29,7 +29,7 @@
 		{
 			Vector2 offset = new Vector2(BORDER_SIZE, 2) + new Vector2(area.X, area.Y);
 
-			for(int i = 0; i < mLevelSequence.Count; i++)
+			for (int i = 0; i < mLevelSequence.Count; i++)
 			{
 				AuxData.LevelType levelType = mLevelSequence[i].GetAuxData().GetLevelType();
 

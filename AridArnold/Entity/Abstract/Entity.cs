@@ -411,14 +411,14 @@
 					throw new NotImplementedException();
 			}
 
-			if(entity is PlatformingEntity)
+			if (entity is PlatformingEntity)
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 				platformingEntity.SetGravity(data.mGravityDirection);
 				platformingEntity.SetPrevWalkDirection(data.mStartDirection);
 			}
 
-			if(entity is SimpleTalkNPC)
+			if (entity is SimpleTalkNPC)
 			{
 				SimpleTalkNPC npc = (SimpleTalkNPC)entity;
 				npc.SetTalkText(data.mTalkText);

@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 
 namespace AridArnold
 {
@@ -229,7 +228,7 @@ namespace AridArnold
 		/// Create mono file from name
 		/// </summary>
 		/// <param name="mFilename">File name only(not path)</param>
-		public MonoReadWriteFile(string fileName, bool compressed) : base (fileName, compressed)
+		public MonoReadWriteFile(string fileName, bool compressed) : base(fileName, compressed)
 		{
 		}
 

@@ -26,10 +26,10 @@
 		protected override void UpdateInternal(GameTime gameTime)
 		{
 			float p = GetMovementPercentage();
-			float waveP = MonoMath.SmoothZeroToOne( Math.Min(2.0f - MathF.Abs(4.0f*p-2.0f),1.0f) );
+			float waveP = MonoMath.SmoothZeroToOne(Math.Min(2.0f - MathF.Abs(4.0f * p - 2.0f), 1.0f));
 			mCurrentSpec.mRotation = mStartRotation + MathF.PI * 2.0f * MonoMath.SmoothZeroToOne(p);
 
-			if(!mForwards)
+			if (!mForwards)
 			{
 				mCurrentSpec.mRotation = -mCurrentSpec.mRotation;
 			}
@@ -37,7 +37,7 @@
 			mCurrentSpec.mZoom = 1.0f + ((1.0f / ZOOM_OUT_LEVEL) - 1.0f) * waveP;
 			mCurrentSpec.mPosition = 20.0f * waveP * new Vector2(RandomManager.I.GetDraw().GetUnitFloat(), RandomManager.I.GetDraw().GetUnitFloat());
 
-			if(p > 0.5f && !mChangedTime)
+			if (p > 0.5f && !mChangedTime)
 			{
 				ChangeTime();
 				mChangedTime = true;
@@ -49,7 +49,7 @@
 		void ChangeTime()
 		{
 			int fromTime = TimeZoneManager.I.GetCurrentTimeZone();
-			if(mForwards)
+			if (mForwards)
 			{
 				TimeZoneManager.I.AgePlayer();
 			}
@@ -61,7 +61,7 @@
 
 			TimeZoneOverride? timeZoneOverride = CampaignManager.I.GetTimeOverride(fromTime, toTime);
 
-			if(timeZoneOverride.HasValue)
+			if (timeZoneOverride.HasValue)
 			{
 				Arnold arnold = EntityManager.I.FindArnold();// (timeZoneOverride.Value.mArnoldSpawnPoint);
 

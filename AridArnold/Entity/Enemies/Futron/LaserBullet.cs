@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class LaserBullet : ProjectileEntity
 	{
@@ -124,7 +122,7 @@ namespace AridArnold
 		{
 			CardinalDirection currDir = mDirection;
 
-			if(currDir != newDir)
+			if (currDir != newDir)
 			{
 				Vector2 centre = GetCentrePos();
 				mDirection = newDir;
@@ -207,11 +205,11 @@ namespace AridArnold
 			drawPos = MonoMath.Round(drawPos);
 
 			float rotation = 0.0f;
-			if(mDirection == CardinalDirection.Up || mDirection == CardinalDirection.Down)
+			if (mDirection == CardinalDirection.Up || mDirection == CardinalDirection.Down)
 			{
 				rotation = MathF.PI / 2.0f;
 			}
-			
+
 			MonoDraw.DrawTexture(info, texToDraw, drawPos, null, Color.White, rotation, Vector2.Zero, 1.0f, effect, DrawLayer.Tile);
 		}
 

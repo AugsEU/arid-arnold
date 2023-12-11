@@ -25,7 +25,7 @@
 		public override void Update(GameTime gameTime)
 		{
 			Level newLevel = CampaignManager.I.GetCurrentLevel();
-			if(mNumHotDogs < 4 && !object.ReferenceEquals(newLevel, mCurrLevel) && newLevel is not null)
+			if (mNumHotDogs < 4 && !object.ReferenceEquals(newLevel, mCurrLevel) && newLevel is not null)
 			{
 				mNumHotDogs++;
 				mTexture = mPlantTextures[mNumHotDogs];

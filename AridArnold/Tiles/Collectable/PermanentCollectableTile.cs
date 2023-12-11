@@ -2,10 +2,10 @@
 
 namespace AridArnold
 {
-    /// <summary>
-    /// Tile you can collect once and have permanently
-    /// </summary>
-    abstract class PermanentCollectableTile : InteractableTile
+	/// <summary>
+	/// Tile you can collect once and have permanently
+	/// </summary>
+	abstract class PermanentCollectableTile : InteractableTile
 	{
 		protected bool mIsGhost;
 
@@ -23,7 +23,7 @@ namespace AridArnold
 			byte item = (byte)GetCollectableType();
 			byte impl = GetImplByte();
 
-			UInt16 ret = (UInt16)(((UInt16)item << 8) | impl);
+			UInt16 ret = (UInt16)((item << 8) | impl);
 
 			return ret;
 		}
@@ -71,7 +71,7 @@ namespace AridArnold
 
 		public override Texture2D GetTexture()
 		{
-			if(mIsGhost)
+			if (mIsGhost)
 			{
 				return mGhostAnim.GetCurrentTexture();
 			}

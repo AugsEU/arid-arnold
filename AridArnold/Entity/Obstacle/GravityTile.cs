@@ -8,7 +8,7 @@
 	{
 		const float KILL_THRESH = 1.0f;
 
-		public GravityTile(Vector2 pos) : base(pos,0,0,4.5f)
+		public GravityTile(Vector2 pos) : base(pos, 0, 0, 4.5f)
 		{
 		}
 

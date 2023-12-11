@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class Nuke : SquareTile
 	{
@@ -71,7 +69,7 @@ namespace AridArnold
 				mReadyToBlowAnim.Play();
 			}
 
-			if(mExplodeTimer.GetElapsedMs() > READY_TO_BLOW_TIME && !mExploded)
+			if (mExplodeTimer.GetElapsedMs() > READY_TO_BLOW_TIME && !mExploded)
 			{
 				BlowUp();
 			}
@@ -90,8 +88,8 @@ namespace AridArnold
 		{
 			Camera gameCamera = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 			gameCamera.QueueMovement(new CameraShake(100.0f, 7.0f, 166.0f));
-			
-			for(int i = 0; i < EntityManager.I.GetEntityNum(); i++)
+
+			for (int i = 0; i < EntityManager.I.GetEntityNum(); i++)
 			{
 				Entity entity = EntityManager.I.GetEntity(i);
 				entity.Kill();
@@ -113,7 +111,7 @@ namespace AridArnold
 		/// </summary>
 		public override Texture2D GetTexture()
 		{
-			if(mExplodeTimer.IsPlaying())
+			if (mExplodeTimer.IsPlaying())
 			{
 				return mReadyToBlowAnim.GetCurrentTexture();
 			}

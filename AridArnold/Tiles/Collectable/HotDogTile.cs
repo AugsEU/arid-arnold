@@ -2,10 +2,10 @@
 
 namespace AridArnold
 {
-    /// <summary>
-    /// Hot dog tile. Gives the player 1 life
-    /// </summary>
-    class HotDogTile : InteractableTile
+	/// <summary>
+	/// Hot dog tile. Gives the player 1 life
+	/// </summary>
+	class HotDogTile : InteractableTile
 	{
 		/// <summary>
 		/// Tile with start position

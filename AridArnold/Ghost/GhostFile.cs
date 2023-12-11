@@ -92,7 +92,7 @@
 				for (int j = 0; j < ghostNumber; j++)
 				{
 					GhostInfo info;
-					info.mEnabled = (bool)br.ReadBoolean();
+					info.mEnabled = br.ReadBoolean();
 					info.mPosition.X = br.ReadSingle(); info.mPosition.Y = br.ReadSingle();
 					info.mVelocity.X = br.ReadSingle(); info.mVelocity.Y = br.ReadSingle();
 					info.mGrounded = br.ReadBoolean();

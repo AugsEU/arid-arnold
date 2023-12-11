@@ -2,7 +2,7 @@
 
 namespace AridArnold
 {
-    class SpikesTile : InteractableTile
+	class SpikesTile : InteractableTile
 	{
 		#region rInitialisation
 

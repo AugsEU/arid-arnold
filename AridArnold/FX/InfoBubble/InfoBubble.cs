@@ -1,7 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Reflection.Metadata.Ecma335;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	abstract class InfoBubble
 	{
@@ -92,11 +89,11 @@ namespace AridArnold
 			switch (mState)
 			{
 				case BubbleState.Opening:
-					if(mCurrentSize.X < mTargetSize.X)
+					if (mCurrentSize.X < mTargetSize.X)
 					{
 						mCurrentSize.X += MOVE_SPEED * dt;
 					}
-					else if(mCurrentSize.Y < mTargetSize.Y)
+					else if (mCurrentSize.Y < mTargetSize.Y)
 					{
 						mCurrentSize.Y += MOVE_SPEED * dt;
 					}
@@ -145,14 +142,14 @@ namespace AridArnold
 
 		public void Draw(DrawInfo info)
 		{
-			if(mState == BubbleState.Closed)
+			if (mState == BubbleState.Closed)
 			{
 				return;
 			}
 
 			Vector2 pos = mBotCentre + mOffset;
 			Point innerOrigin = new Point((int)(pos.X - mCurrentSize.X / 2), (int)(pos.Y - mCurrentSize.Y));
-			Rectangle innerRect = new Rectangle((int)innerOrigin.X, (int)innerOrigin.Y, (int)mCurrentSize.X, (int)mCurrentSize.Y);
+			Rectangle innerRect = new Rectangle(innerOrigin.X, innerOrigin.Y, (int)mCurrentSize.X, (int)mCurrentSize.Y);
 
 			MonoDraw.DrawRectDepth(info, innerRect, mStyle.mInnerColor, DrawLayer.Bubble);
 
@@ -200,7 +197,7 @@ namespace AridArnold
 		/// </summary>
 		public void Close()
 		{
-			if(mState != BubbleState.Closed)
+			if (mState != BubbleState.Closed)
 			{
 				mState = BubbleState.Closing;
 			}

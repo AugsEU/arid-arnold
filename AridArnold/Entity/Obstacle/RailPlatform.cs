@@ -1,8 +1,6 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
-    class RailPlatform : Entity
+	class RailPlatform : Entity
 	{
 		#region rMembers
 
@@ -18,7 +16,7 @@ namespace AridArnold
 
 
 		#region rInitialisation
-		
+
 		/// <summary>
 		/// Create rail platform that travels along a rail.
 		/// </summary>

@@ -171,7 +171,7 @@
 			}
 
 			mSanitisedCharHead++;
-			if(mSanitisedCharHead >= mSanitisedText.Length)
+			if (mSanitisedCharHead >= mSanitisedText.Length)
 			{
 				mSanitisedCharHead = mSanitisedText.Length;
 			}
@@ -185,7 +185,7 @@
 
 			mLetterFrameCount = CalculateLetterTime(GetCurrentChar());
 
-			if(GetCurrentChar() != GetCurrentTextChar())
+			if (GetCurrentChar() != GetCurrentTextChar())
 			{
 				MonoDebug.DLog("DLOG: {0} vs {1}", GetCurrentChar(), GetCurrentTextChar());
 			}
@@ -312,7 +312,7 @@
 		/// </summary>
 		void ParseControlCharacters()
 		{
-			while(true)
+			while (true)
 			{
 				if (mRawCharHead >= mText.Length)
 				{
@@ -364,17 +364,17 @@
 		Color ParseColor()
 		{
 			char magic = mText[mRawCharHead];
-			if(magic != 'α')
+			if (magic != 'α')
 			{
 				return Color.White;
 			}
 
-			mRawCharHead+=2;
+			mRawCharHead += 2;
 			int r = ParseNumber();
 			int g = ParseNumber();
 			int b = ParseNumber();
 			mRawCharHead++;
-			
+
 			return new Color(r, g, b);
 		}
 
@@ -411,7 +411,7 @@
 		{
 			string result = "";
 			bool inControlSequence = false;
-			for(int i = 0; i < rawText.Length; i++)
+			for (int i = 0; i < rawText.Length; i++)
 			{
 				char currentChar = rawText[i];
 
@@ -420,7 +420,7 @@
 					inControlSequence = true;
 				}
 
-				if(!inControlSequence)
+				if (!inControlSequence)
 				{
 					result += currentChar;
 				}
@@ -431,7 +431,7 @@
 				}
 			}
 
-			if(inControlSequence == true)
+			if (inControlSequence == true)
 			{
 				throw new FormatException("INVALID TEXT FORMAT! DID NOT END CONTROL SEQUENCE!!");
 			}

@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Security.Cryptography;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Win condition status of the level
@@ -159,7 +156,7 @@ namespace AridArnold
 		/// <returns>Win condition status</returns>
 		public LevelStatus Update(GameTime gameTime)
 		{
-			if(mActive == false)
+			if (mActive == false)
 			{
 				throw new Exception("Cannot update inactive level. Did you forget to start it?");
 			}

@@ -43,7 +43,7 @@ namespace AridArnold
 		public static void Assert(bool condition)
 		{
 #if DEBUG
-			if(!condition)
+			if (!condition)
 			{
 				Break("Assertion failed.");
 			}

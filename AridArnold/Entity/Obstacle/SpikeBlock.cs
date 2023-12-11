@@ -91,7 +91,7 @@
 		/// </summary>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if(entity is Arnold)
+			if (entity is Arnold)
 			{
 				entity.Kill();
 			}

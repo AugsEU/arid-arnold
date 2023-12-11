@@ -84,7 +84,7 @@
 		public int GetSize() { return mSize; }
 		public RailType GetRailType() { return mType; }
 		public int GetCount() { return mRailNodes.Count; }
-		public RailNode GetNode(int i) {  return mRailNodes[i]; }
+		public RailNode GetNode(int i) { return mRailNodes[i]; }
 
 		#endregion rUtil
 
@@ -99,7 +99,7 @@
 		/// </summary>
 		public void ParseAllNodes()
 		{
-			for(int i = 0; i < mRailNodes.Count; i++)
+			for (int i = 0; i < mRailNodes.Count; i++)
 			{
 				ParseRailNode(i);
 			}
@@ -145,7 +145,7 @@
 					throw new NotImplementedException("Invalid node flags.");
 			}
 
-			
+
 		}
 
 		#endregion rFactory
@@ -222,7 +222,7 @@
 			float distanceFromStartSq = (mPosition - startPos).LengthSquared();
 
 			// Leg complete
-			if(distanceFromStartSq > legVector.LengthSquared())
+			if (distanceFromStartSq > legVector.LengthSquared())
 			{
 				ArriveAtNode(nextNodeIdx);
 			}
@@ -296,7 +296,7 @@
 
 		protected override int GetNextNodeIdx()
 		{
-			if(mPrevNode < mData.GetCount() - 1)
+			if (mPrevNode < mData.GetCount() - 1)
 			{
 				return mPrevNode + 1;
 			}
@@ -336,11 +336,11 @@
 		protected override void ArriveAtNode(int index)
 		{
 			//When we reach 0, we go forwards. When we reach the end we go backwards.
-			if(index == 0)
+			if (index == 0)
 			{
 				mGoingForwards = true;
 			}
-			else if(index == mData.GetCount() - 1)
+			else if (index == mData.GetCount() - 1)
 			{
 				mGoingForwards = false;
 			}

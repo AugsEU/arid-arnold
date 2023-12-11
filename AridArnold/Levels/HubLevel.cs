@@ -33,10 +33,10 @@
 		protected override LevelStatus UpdateInternal(GameTime gameTime)
 		{
 			int numEntities = EntityManager.I.GetEntityNum();
-			for(int i = 0; i < numEntities; i++)
+			for (int i = 0; i < numEntities; i++)
 			{
 				Entity entity = EntityManager.I.GetEntity(i);
-				if(entity is Arnold)
+				if (entity is Arnold)
 				{
 					CheckRoomTransition((Arnold)entity);
 				}
@@ -55,9 +55,9 @@
 			Rect2f collider = arnold.ColliderBounds();
 
 			HubRoomEdgeLoader loader = null;
-			if (mRightID != 0 )
+			if (mRightID != 0)
 			{
-				if(arnold.GetCentrePos().X > GameScreen.GAME_AREA_WIDTH - TRANSITION_BORDER)
+				if (arnold.GetCentrePos().X > GameScreen.GAME_AREA_WIDTH - TRANSITION_BORDER)
 				{
 					loader = new HubRoomEdgeLoader(mRightID, CardinalDirection.Left);
 				}
@@ -87,7 +87,7 @@
 				}
 			}
 
-			if(loader is not null)
+			if (loader is not null)
 			{
 				loader.AddPersistentEntities(arnold);
 				CampaignManager.I.QueueLoadSequence(loader);
@@ -99,14 +99,14 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			for (int x = 0; x < GameScreen.GAME_AREA_WIDTH; x+=mTransitionArrows.Height)
+			for (int x = 0; x < GameScreen.GAME_AREA_WIDTH; x += mTransitionArrows.Height)
 			{
 				if (mTopID != 0)
 				{
 					MonoDraw.DrawTexture(info, mTransitionArrows, new Vector2(x, mTransitionArrows.Width), MathF.PI * 1.5f);
 				}
 
-				if(mBottomID != 0)
+				if (mBottomID != 0)
 				{
 					MonoDraw.DrawTexture(info, mTransitionArrows, new Vector2(x + mTransitionArrows.Height, GameScreen.GAME_AREA_HEIGHT - mTransitionArrows.Width), MathF.PI * 0.5f);
 				}

@@ -97,9 +97,9 @@
 			MonoAlg.Swap(ref mCurrentField, ref mNextField);
 
 			//Zero out next field.
-			for(int x = 0; x < mNextField.GetLength(0); x++)
+			for (int x = 0; x < mNextField.GetLength(0); x++)
 			{
-				for(int y = 0; y < mNextField.GetLength(1); y++)
+				for (int y = 0; y < mNextField.GetLength(1); y++)
 				{
 					mNextField[x, y].Reset();
 				}
@@ -156,7 +156,7 @@
 		public void SetElectricity(Point index, Point delta, float elec)
 		{
 			index += delta;
-			if(!InEMField(index))
+			if (!InEMField(index))
 			{
 				return;
 			}
@@ -219,7 +219,7 @@
 
 				scanResults.mTotalElectric += elecAtPoint;
 
-				if(elecAtPoint > 0.0f)
+				if (elecAtPoint > 0.0f)
 				{
 					scanResults.mTotalPositiveElectric += elecAtPoint;
 				}
@@ -258,12 +258,12 @@
 		/// </summary>
 		bool InEMField(Point index)
 		{
-			if(index.X < 0 || index.Y < 0)
+			if (index.X < 0 || index.Y < 0)
 			{
 				return false;
 			}
 
-			if(index.X >= mCurrentField.GetLength(0) || index.Y >= mCurrentField.GetLength(1))
+			if (index.X >= mCurrentField.GetLength(0) || index.Y >= mCurrentField.GetLength(1))
 			{
 				return false;
 			}

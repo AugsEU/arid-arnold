@@ -16,7 +16,7 @@
 
 		static public float GetFloat(XmlNode node, float defaultVal = 0.0f)
 		{
-			if(node is null)
+			if (node is null)
 			{
 				return defaultVal;
 			}
@@ -40,7 +40,7 @@
 
 		static public DrawLayer GetDrawLayer(XmlNode node, DrawLayer defaultVal = DrawLayer.Default)
 		{
-			if(node is null)
+			if (node is null)
 			{
 				return defaultVal;
 			}
@@ -52,7 +52,7 @@
 
 		static public Texture2D GetTexture(XmlNode node)
 		{
-			if(node is null)
+			if (node is null)
 			{
 				return Main.GetDummyTexture();
 			}
@@ -64,7 +64,7 @@
 
 		static public Color GetColor(XmlNode node)
 		{
-			if(node is null)
+			if (node is null)
 			{
 				return Color.White;
 			}
@@ -84,9 +84,9 @@
 
 			TimeZoneOverride retInfo;
 
-			retInfo.mTimeFrom			= GetInt(fromTimeNode);
-			retInfo.mTimeTo				= GetInt(toTimeNode);
-			retInfo.mDestinationLevel	= GetInt(levelIDNode);
+			retInfo.mTimeFrom = GetInt(fromTimeNode);
+			retInfo.mTimeTo = GetInt(toTimeNode);
+			retInfo.mDestinationLevel = GetInt(levelIDNode);
 			retInfo.mArnoldSpawnPoint = new Point(GetInt(xNode), GetInt(yNode));
 
 			return retInfo;

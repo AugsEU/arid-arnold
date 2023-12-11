@@ -87,7 +87,7 @@
 
 				mVelocity += entityCollision.GetExtraVelocity(this);
 
-				if(mVelocity.LengthSquared() < COLLISION_MIN_VELOCITY * COLLISION_MIN_VELOCITY)
+				if (mVelocity.LengthSquared() < COLLISION_MIN_VELOCITY * COLLISION_MIN_VELOCITY)
 				{
 					mVelocity = Vector2.Zero;
 				}
@@ -182,7 +182,7 @@
 		}
 
 
-		
+
 		/// <summary>
 		/// Get current velocity
 		/// </summary>

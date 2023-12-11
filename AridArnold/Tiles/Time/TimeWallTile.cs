@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class TimeWallTile : SquareTile
 	{
@@ -33,7 +31,7 @@ namespace AridArnold
 		{
 			mDisplayTimeZone = TimeZoneManager.I.GetCurrentTimeZone();
 			Animator anim;
-			if(mTimeToAnimator.TryGetValue(mDisplayTimeZone, out anim))
+			if (mTimeToAnimator.TryGetValue(mDisplayTimeZone, out anim))
 			{
 				anim.Update(gameTime);
 			}
