@@ -22,6 +22,7 @@
 			kFutronRocket,
 			kFarry,
 			kMamal,
+			kPapyras,
 			kEnemyClassEnd,
 
 			//NPC

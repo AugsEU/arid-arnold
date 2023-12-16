@@ -142,8 +142,6 @@
 
 		public override void Draw(DrawInfo info)
 		{
-			// To do: add up and down!
-
 			SpriteEffects effect = SpriteEffects.None;
 			Vector2 drawPos = mPosition;
 			Texture2D texToDraw = mTexture;

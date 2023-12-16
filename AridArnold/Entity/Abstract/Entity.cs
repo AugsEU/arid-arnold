@@ -358,6 +358,9 @@
 				case EntityData.EntityClass.kMamal:
 					entity = new Mamal(worldPosition);
 					break;
+				case EntityData.EntityClass.kPapyras:
+					entity = new Papyras(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
+					break;
 
 				// NPC
 				case EntityData.EntityClass.kBarbara:
