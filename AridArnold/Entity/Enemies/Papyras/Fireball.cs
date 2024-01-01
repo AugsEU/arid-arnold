@@ -6,7 +6,7 @@ internal class Fireball : ProjectileEntity
 	#region rConstants
 
 	const float FIREBALL_SPEED = 8.0f;
-	const float MOVE_AMPLITUDE = 16.0f;
+	const float MOVE_AMPLITUDE = 15.0f;
 	const float MOVE_FREQUENCY = 0.35f;
 
 	#endregion rConstants
@@ -73,7 +73,7 @@ internal class Fireball : ProjectileEntity
 	{
 		float dt = Util.GetDeltaT(gameTime);
 		mPathAngle += (dt * MOVE_FREQUENCY) % MathF.PI * 2.0f;
-		Vector2 upDownComponent = -MathF.Cos(mPathAngle) * MonoMath.Perpendicular(mForwardDir);
+		Vector2 upDownComponent = -MathF.Cos(mPathAngle) * Util.GetNormal(GetGravityDir());
 		mVelocity = FIREBALL_SPEED * mForwardDir + MOVE_AMPLITUDE * upDownComponent;
 
 
@@ -140,11 +140,11 @@ internal class Fireball : ProjectileEntity
 			switch (direction)
 			{
 				case CardinalDirection.Up:
-					drawPos.X += 6.0f;
+					drawPos.X += 4.0f;
 					drawPos.Y -= texToDraw.Width;
 					break;
 				case CardinalDirection.Down:
-					drawPos.X += 6.0f;
+					drawPos.X += 4.0f;
 					break;
 				case CardinalDirection.Right:
 					//drawPos.X -= texToDraw.Width;
@@ -152,6 +152,7 @@ internal class Fireball : ProjectileEntity
 					break;
 				case CardinalDirection.Left:
 					drawPos.Y -= 3.0f;
+					drawPos.X -= 4.0f;
 					break;
 			}
 
@@ -177,7 +178,7 @@ internal class Fireball : ProjectileEntity
 
 		drawPos = MonoMath.Round(drawPos);
 
-		MonoDraw.DrawTexture(info, texToDraw, drawPos, null, Color.White, rotation, Vector2.Zero, 1.0f, effect, DrawLayer.Tile);
+		MonoDraw.DrawTexture(info, texToDraw, drawPos, null, Color.White, rotation, Vector2.Zero, 1.0f, effect, DrawLayer.Projectiles);
 	}
 
 	#endregion rDraw

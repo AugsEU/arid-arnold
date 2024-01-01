@@ -213,7 +213,12 @@
 		/// <returns>Tile reference</returns>
 		protected Tile GetNearbyTile(int dx, int dy)
 		{
-			return TileManager.I.GetRelativeTile(mCentreOfMass, dx, dy);
+			Vector2 up = -GravityVecNorm() * Tile.sTILE_SIZE;
+			Vector2 left = MonoMath.Perpendicular(up);
+
+			Vector2 tilePos = mCentreOfMass + dx * left + dy * up;
+
+			return TileManager.I.GetTile(tilePos);
 		}
 
 
@@ -236,9 +241,9 @@
 		/// </summary>
 		protected bool IsTouchingLeftWall()
 		{
-			Vector2 testPoint = new Vector2(mPosition.X - 1.2f, mCentreOfMass.Y);
-			Tile leftTile = TileManager.I.GetTile(testPoint);
-			return leftTile is not null && leftTile.IsSolid();
+			float colWidth = ColliderBounds().Width / 2.0f + 1.2f;
+
+			return ProbeLateral(colWidth);
 		}
 
 
@@ -248,10 +253,25 @@
 		/// </summary>
 		protected bool IsTouchingRightWall()
 		{
-			float colWidth = ColliderBounds().Width;
-			Vector2 testPoint = new Vector2(mPosition.X + colWidth + 1.2f, mCentreOfMass.Y);
-			Tile rightTile = TileManager.I.GetTile(testPoint);
-			return rightTile is not null && rightTile.IsSolid();
+			float colWidth = ColliderBounds().Width / 2.0f + 1.2f;
+
+			return ProbeLateral(-colWidth);
+		}
+
+
+
+		/// <summary>
+		/// Probe laterally for solids
+		/// </summary>
+		private bool ProbeLateral(float dist)
+		{
+			Vector2 up = -GravityVecNorm();
+			Vector2 left = MonoMath.Perpendicular(up);
+
+			Vector2 testPoint = mCentreOfMass + dist * left;
+
+			Tile leftTile = TileManager.I.GetTile(testPoint);
+			return leftTile is not null && leftTile.IsSolid();
 		}
 
 		#endregion rUtility

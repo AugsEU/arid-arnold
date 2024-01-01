@@ -2,38 +2,31 @@
 
 namespace AridArnold
 {
-	/// <summary>
-	/// Button that turns on electricity.
-	/// </summary>
-	internal class ElectricButton : InteractableTile
+	abstract class ElectricButtonBase : InteractableTile
 	{
-		#region rInitialisation
+		#region rMembers
 
-		Texture2D mDownTexture;
-		bool mIsPressed;
-		bool mWasPressed;
+		protected Texture2D mDownTexture;
+		protected bool mIsPressed;
+		protected bool mWasPressed;
+
+		#endregion rMembers
+
+
+
+
+
+		#region rInitialisation
 
 		/// <summary>
 		/// Construct button at position
 		/// </summary>
-		public ElectricButton(CardinalDirection rot, Vector2 position) : base(position)
+		public ElectricButtonBase(CardinalDirection rot, Vector2 position) : base(position)
 		{
 			mRotation = rot;
 			mIsPressed = false;
 			mWasPressed = false;
 		}
-
-		/// <summary>
-		/// Load all textures
-		/// </summary>
-		public override void LoadContent()
-		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonUp");
-			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonDown");
-
-			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
-		}
-
 
 		#endregion rInitialisation
 
@@ -48,7 +41,10 @@ namespace AridArnold
 		/// </summary>
 		public override void OnEntityIntersect(Entity entity)
 		{
-			mIsPressed = true;
+			if (entity is PlatformingEntity && entity is not ProjectileEntity)
+			{
+				mIsPressed = true;
+			}
 		}
 
 
@@ -58,18 +54,11 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			if (mIsPressed)
-			{
-				TileManager.I.GetEMField().SetElectricity(mTileMapIndex, 4.0f);
-				mWasPressed = true;
-			}
-			else
-			{
-				TileManager.I.GetEMField().SetElectricity(mTileMapIndex, -2.0f);
-				mWasPressed = false;
-			}
+			mWasPressed = mIsPressed;
 
-			mIsPressed = false;
+			float elec = mIsPressed ? 4.0f : -2.0f;
+			TileManager.I.GetEMField().SetElectricity(mTileMapIndex, elec);
+
 			base.Update(gameTime);
 		}
 
@@ -100,30 +89,44 @@ namespace AridArnold
 
 
 
+
+	/// <summary>
+	/// Button that turns on electricity.
+	/// </summary>
+	internal class ElectricButton : ElectricButtonBase
+	{
+		public ElectricButton(CardinalDirection rot, Vector2 position) : base(rot, position)
+		{
+		}
+
+		public override void LoadContent()
+		{
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonUp");
+			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonDown");
+
+			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
+		}
+
+		public override void Update(GameTime gameTime)
+		{
+			base.Update(gameTime);
+			mIsPressed = false;
+		}
+	}
+
+
+
+
+
 	/// <summary>
 	/// Button that turns on electricity and stays down forever.
 	/// </summary>
-	internal class PermElectricButton : InteractableTile
+	internal class PermElectricButton : ElectricButtonBase
 	{
-		#region rInitialisation
-
-		Texture2D mDownTexture;
-		bool mIsPressed;
-		bool mWasPressed;
-
-		/// <summary>
-		/// Construct button at position
-		/// </summary>
-		public PermElectricButton(CardinalDirection rot, Vector2 position) : base(position)
+		public PermElectricButton(CardinalDirection rot, Vector2 position) : base(rot, position)
 		{
-			mRotation = rot;
-			mIsPressed = false;
-			mWasPressed = false;
 		}
 
-		/// <summary>
-		/// Load all textures
-		/// </summary>
 		public override void LoadContent()
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/PermaUp");
@@ -131,66 +134,5 @@ namespace AridArnold
 
 			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
 		}
-
-
-		#endregion rInitialisation
-
-
-
-
-
-		#region rUpdate
-
-		/// <summary>
-		/// Entity intersect
-		/// </summary>
-		public override void OnEntityIntersect(Entity entity)
-		{
-			mIsPressed = true;
-		}
-
-
-
-		/// <summary>
-		/// Update button
-		/// </summary>
-		public override void Update(GameTime gameTime)
-		{
-			if (mIsPressed)
-			{
-				TileManager.I.GetEMField().SetElectricity(mTileMapIndex, 4.0f);
-				mWasPressed = true;
-			}
-			else
-			{
-				TileManager.I.GetEMField().SetElectricity(mTileMapIndex, -1.0f);
-				mWasPressed = false;
-			}
-
-			base.Update(gameTime);
-		}
-
-		#endregion rUpdate
-
-
-
-
-
-		#region rDraw
-
-		/// <summary>
-		/// Get button texture.
-		/// </summary>
-		public override Texture2D GetTexture()
-		{
-			if (mWasPressed)
-			{
-				return mDownTexture;
-			}
-
-			return mTexture;
-		}
-
-		#endregion rDraw
 	}
 }

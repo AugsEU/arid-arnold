@@ -20,6 +20,7 @@
 		Player,
 		Tile,
 		TileEffects,
+		Projectiles,
 		Bubble,
 		Front,
 		NumLayers

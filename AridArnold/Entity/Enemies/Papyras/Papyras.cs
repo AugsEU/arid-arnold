@@ -4,7 +4,7 @@
 	{
 		#region rConstants
 
-		static float BULLET_OFFSET = -6.0f;
+		static float BULLET_OFFSET = -4.0f;
 
 		#endregion rConstants
 
