@@ -77,6 +77,7 @@
 			Vector2 offset = BULLET_OFFSET * Util.GetNormal(GetGravityDir());
 			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 12.0f + offset;
 			Fireball bullet = new Fireball(this, spawnPos, bulletDirection);
+			bullet.SetGravity(GetGravityDir());
 			EntityManager.I.QueueRegisterEntity(bullet);
 		}
 

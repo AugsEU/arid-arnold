@@ -216,6 +216,11 @@
 			Vector2 up = -GravityVecNorm() * Tile.sTILE_SIZE;
 			Vector2 left = MonoMath.Perpendicular(up);
 
+			if (GetGravityDir() == CardinalDirection.Right || GetGravityDir() == CardinalDirection.Up)
+			{
+				left = -left;
+			}
+
 			Vector2 tilePos = mCentreOfMass + dx * left + dy * up;
 
 			return TileManager.I.GetTile(tilePos);
@@ -267,6 +272,11 @@
 		{
 			Vector2 up = -GravityVecNorm();
 			Vector2 left = MonoMath.Perpendicular(up);
+
+			if(GetGravityDir() == CardinalDirection.Right || GetGravityDir() == CardinalDirection.Up)
+			{
+				left = -left;
+			}
 
 			Vector2 testPoint = mCentreOfMass + dist * left;
 

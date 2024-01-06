@@ -6,7 +6,7 @@ internal class Fireball : ProjectileEntity
 	#region rConstants
 
 	const float FIREBALL_SPEED = 8.0f;
-	const float MOVE_AMPLITUDE = 15.0f;
+	const float MOVE_AMPLITUDE = 14.0f;
 	const float MOVE_FREQUENCY = 0.35f;
 
 	#endregion rConstants

@@ -325,7 +325,8 @@
 		public static Entity CreateEntityFromData(EntityData data)
 		{
 			Vector2 worldPosition = TileManager.I.GetTileTopLeft(data.mPosition);
-			worldPosition.Y -= 0.00123456f; // Collision offset bodge
+			worldPosition.Y -= 0.000123456f; // Collision offset bodge
+			worldPosition.X -= 0.000123456f; // Collision offset bodge
 
 			Entity entity;
 
