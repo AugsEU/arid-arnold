@@ -789,7 +789,7 @@
 				finalPos.Y = tilePos.Y + Tile.sTILE_SIZE - collider.Height;
 			}
 
-			MonoDebug.Assert(!(topIntersect && bottomIntersect));
+			//MonoDebug.Assert(!(topIntersect && bottomIntersect));
 
 			// Left
 			bool leftIntersect = SolidAndIntersects(GetTile(tileIdx.X - 1, tileIdx.Y - 1), collider) ||
@@ -808,10 +808,10 @@
 
 			if (rightIntersect)
 			{
-				finalPos.X = tilePos.X + Tile.sTILE_SIZE - collider.Width * 1.2f;
+				finalPos.X = tilePos.X + Tile.sTILE_SIZE - collider.Width;
 			}
 
-			MonoDebug.Assert(!(leftIntersect && rightIntersect));
+			//MonoDebug.Assert(!(leftIntersect && rightIntersect));
 
 			entity.SetPos(finalPos);
 		}
