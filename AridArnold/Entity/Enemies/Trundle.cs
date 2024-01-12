@@ -192,11 +192,11 @@
 				if (!CanWalkInDir(WalkDirection.Right))
 				{
 					mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
-					return true;
+					return false;
 				}
 				else
 				{
-					return false;
+					return true;
 				}
 			}
 			else if (mWalkDirection == WalkDirection.Left)
@@ -204,11 +204,11 @@
 				if (!CanWalkInDir(WalkDirection.Left))
 				{
 					mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0);
-					return true;
+					return false;
 				}
 				else
 				{
-					return false;
+					return true;
 				}
 			}
 

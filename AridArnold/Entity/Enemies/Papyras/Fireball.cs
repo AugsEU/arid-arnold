@@ -92,7 +92,7 @@ internal class Fireball : ProjectileEntity
 	{
 		if (mState == ProjectileState.FreeMotion)
 		{
-			if (entity != this && entity != mParent)
+			if (entity != this && entity != mParent && entity is PlatformingEntity)
 			{
 				KillPlayer((MovingEntity)entity);
 			}

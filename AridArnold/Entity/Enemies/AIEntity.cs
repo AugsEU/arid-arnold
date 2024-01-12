@@ -213,15 +213,15 @@
 		/// <returns>Tile reference</returns>
 		protected Tile GetNearbyTile(int dx, int dy)
 		{
-			Vector2 up = -GravityVecNorm() * Tile.sTILE_SIZE;
-			Vector2 left = MonoMath.Perpendicular(up);
+			Vector2 down = GravityVecNorm() * Tile.sTILE_SIZE;
+			Vector2 right = MonoMath.Perpendicular(down);
 
 			if (GetGravityDir() == CardinalDirection.Right || GetGravityDir() == CardinalDirection.Up)
 			{
-				left = -left;
+				right = -right;
 			}
 
-			Vector2 tilePos = mCentreOfMass + dx * left + dy * up;
+			Vector2 tilePos = mCentreOfMass + dx * right + dy * down;
 
 			return TileManager.I.GetTile(tilePos);
 		}
