@@ -127,7 +127,7 @@
 			switch (gravity)
 			{
 				case CardinalDirection.Up:
-					return walk == WalkDirection.Right ? CardinalDirection.Left : CardinalDirection.Right;
+					return walk == WalkDirection.Right ? CardinalDirection.Right : CardinalDirection.Left;
 				case CardinalDirection.Right:
 					return walk == WalkDirection.Right ? CardinalDirection.Up : CardinalDirection.Down;
 				case CardinalDirection.Down:

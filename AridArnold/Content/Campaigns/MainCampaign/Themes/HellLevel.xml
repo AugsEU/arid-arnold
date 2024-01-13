@@ -3,6 +3,7 @@
 	<name>Hell</name>
 	<path from="Wall">HellAsh</path>
 	<path from="Platform">HellPlatform</path>
+	<path from="TimePlatform2">HellPlatform</path>
 	<path from="CoinFull">RockFull</path>
 	<path from="CoinGhost">RockGhost</path>
 </theme>
