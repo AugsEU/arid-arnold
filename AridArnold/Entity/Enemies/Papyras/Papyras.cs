@@ -44,7 +44,6 @@
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Papyras/Idle1");
 
 			mIdleAnim.Play();
-			mShootTimer.Start();
 		}
 
 		#endregion rInitialisation

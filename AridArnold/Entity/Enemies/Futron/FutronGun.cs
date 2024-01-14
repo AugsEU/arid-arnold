@@ -50,7 +50,6 @@
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/Idle1");
 
 			mIdleAnim.Play();
-			mShootTimer.Start();
 		}
 
 		#endregion rInitialisation

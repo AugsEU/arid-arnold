@@ -38,7 +38,6 @@
 			shootFreq *= 1000.0f;
 			mShootTimer = new PercentageTimer(shootFreq);
 			mShootTimer.SetPercentTime(-shootPhase);
-			mShootTimer.Start();
 			mStateMachine = new StateMachine<State>(State.Idle);
 		}
 
@@ -55,6 +54,7 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mShootTimer.Start();
 			switch (mStateMachine.GetState())
 			{
 				case State.Idle:
