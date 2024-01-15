@@ -433,6 +433,21 @@
 #begin BG/Buk/Buk.mlo
 /copy:BG/Buk/Buk.mlo
 
+#begin BG/Heaven/Heaven.mlo
+/copy:BG/Heaven/Heaven.mlo
+
+#begin BG/Heaven/HeavenBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Heaven/HeavenBG.png
+
 #begin BG/Hell/Hell.mlo
 /copy:BG/Hell/Hell.mlo
 
@@ -3079,6 +3094,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0816.png
 
+#begin Campaigns/MainCampaign/Levels/0901.aux
+/copy:Campaigns/MainCampaign/Levels/0901.aux
+
+#begin Campaigns/MainCampaign/Levels/0901.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0901.png
+
 #begin Campaigns/MainCampaign/Levels/10000.aux
 /copy:Campaigns/MainCampaign/Levels/10000.aux
 
@@ -3174,6 +3204,9 @@
 
 #begin Campaigns/MainCampaign/Themes/BukCaveLevel.xml
 /copy:Campaigns/MainCampaign/Themes/BukCaveLevel.xml
+
+#begin Campaigns/MainCampaign/Themes/HeavenLevel.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenLevel.xml
 
 #begin Campaigns/MainCampaign/Themes/HellLevel.xml
 /copy:Campaigns/MainCampaign/Themes/HellLevel.xml
@@ -5778,6 +5811,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Flag4.png
+
+#begin Tiles/Heaven/GoldCoin.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/GoldCoin.png
+
+#begin Tiles/Heaven/GoldGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/GoldGhost.png
+
+#begin Tiles/Heaven/HeavenBlock.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/HeavenBlock.png
+
+#begin Tiles/Heaven/HeavenPlatform.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/HeavenPlatform.png
 
 #begin Tiles/Hell/GravelWinter.png
 /importer:TextureImporter
