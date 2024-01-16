@@ -33,7 +33,7 @@
 		/// <summary>
 		/// Init futron-gun at position.
 		/// </summary>
-		public ShooterEnemy(Vector2 pos, float shootPhase, float shootFreq) : base(pos, 0.0f, 0.0f)
+		public ShooterEnemy(Vector2 pos, float shootPhase, float shootFreq) : base(pos)
 		{
 			shootFreq *= 1000.0f;
 			mShootTimer = new PercentageTimer(shootFreq);

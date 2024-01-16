@@ -1,31 +1,52 @@
-﻿namespace AridArnold
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AridArnold
 {
-	internal class FutronGun : AIEntity
+	internal class Ranger : AIEntity
 	{
-		#region rConstants
+		#region rTypes
 
-		static float BULLET_OFFSET = 2.0f;
+		enum State
+		{
+			Wait,
+			ChargeAtPlayer,
+		}
 
-		#endregion rConstants
+		#endregion rTypes
 
 
 
 
 
-		#region rInitialisation
+		#region rMembers
+
+
+		#endregion rMembers
+
+
+
+
+
+		#region rInit
 
 		/// <summary>
-		/// Init futron-gun at position.
+		/// Spawn ranger at specific time
 		/// </summary>
-		public FutronGun(Vector2 pos, float shootPhase, float shootFreq) : base(pos, shootPhase, shootFreq)
+		/// <param name="pos">Spawn pos</param>
+		/// <param name="shootPhase">How far in the shoot cycle to start</param>
+		/// <param name="shootFreq">How long the shoot cycle is</param>
+		public Ranger(Vector2 pos, float shootPhase, float shootFreq) : base(pos, shootPhase, shootFreq)
 		{
-			mPosition.Y += 2.0f;
 		}
 
 
 
 		/// <summary>
-		/// Load textures for futron-gun
+		/// Load ranger content
 		/// </summary>
 		public override void LoadContent()
 		{
@@ -48,11 +69,9 @@
 																	("Enemies/Futron-Gun/Shoot4", 0.15f));
 
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/Idle1");
-
-			mIdleAnim.Play();
 		}
 
-		#endregion rInitialisation
+		#endregion rInit
 
 
 
@@ -60,31 +79,19 @@
 
 		#region rUpdate
 
-		/// <summary>
-		/// Shoot gun.
-		/// </summary>
-		protected override void SpawnBullet()
+		protected override void DecideActions()
 		{
-			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
-			Vector2 offset = BULLET_OFFSET * Util.GetNormal(GetGravityDir());
-			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 12.0f + offset;
-			LaserBullet bullet = new LaserBullet(this, spawnPos, bulletDirection);
-			EntityManager.I.QueueRegisterEntity(bullet);
-		}
-
-
-
-		/// <summary>
-		/// Get collider bounds
-		/// </summary>
-		public override Rect2f ColliderBounds()
-		{
-			const float WIDTH_REDUCTION = 2.0f;
-			const float HEIGHT_REDUCTION = 1.0f;
-
-			return GetReducedTextureCollider(WIDTH_REDUCTION, HEIGHT_REDUCTION);
+			throw new NotImplementedException();
 		}
 
 		#endregion rUpdate
+
+
+
+
+
+		#region rDraw
+
+		#endregion rDraw
 	}
 }

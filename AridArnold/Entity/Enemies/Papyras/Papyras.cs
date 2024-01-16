@@ -1,6 +1,6 @@
 ﻿namespace AridArnold
 {
-	internal class Papyras : ShooterEnemy
+	internal class Papyras : AIEntity
 	{
 		#region rConstants
 

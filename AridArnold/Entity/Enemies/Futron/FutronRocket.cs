@@ -1,6 +1,6 @@
 ﻿namespace AridArnold
 {
-	internal class FutronRocket : ShooterEnemy
+	internal class FutronRocket : AIEntity
 	{
 		#region rMembers
 
