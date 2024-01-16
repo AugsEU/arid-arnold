@@ -12,8 +12,9 @@ namespace AridArnold
 
 		enum State
 		{
-			Wait,
-			ChargeAtPlayer,
+			WalkAround,
+			ShootLaser,
+			Jump
 		}
 
 		#endregion rTypes
@@ -22,8 +23,23 @@ namespace AridArnold
 
 
 
+		#region rConstants
+
+		const float RANGER_WIDTH_REDUCTION = 6.0f;
+		const float RANGER_HEIGHT_REDUCTION = 3.0f;
+		const float RANGER_JUMP_SPEED = 22.0f;
+		const float RANGER_WALK_SPEED = 4.5f;
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
+		Animator mShootGunAnim;
+		StateMachine<State> mStateMachine;
 
 		#endregion rMembers
 
@@ -39,8 +55,9 @@ namespace AridArnold
 		/// <param name="pos">Spawn pos</param>
 		/// <param name="shootPhase">How far in the shoot cycle to start</param>
 		/// <param name="shootFreq">How long the shoot cycle is</param>
-		public Ranger(Vector2 pos, float shootPhase, float shootFreq) : base(pos, shootPhase, shootFreq)
+		public Ranger(Vector2 pos) : base(pos, RANGER_WALK_SPEED, RANGER_JUMP_SPEED, RANGER_WIDTH_REDUCTION, RANGER_HEIGHT_REDUCTION)
 		{
+			mStateMachine = new StateMachine<State>(State.WalkAround);
 		}
 
 
@@ -50,25 +67,30 @@ namespace AridArnold
 		/// </summary>
 		public override void LoadContent()
 		{
-			const float FT = 0.2f;
-			mIdleAnim = new Animator(Animator.PlayType.Repeat, ("Enemies/Futron-Gun/Idle1", FT),
-															   ("Enemies/Futron-Gun/Idle2", FT));
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Ranger/Idle1");
+			mJumpUpTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Ranger/JumpUp");
+			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Ranger/JumpDown");
 
-			mChargeGunAnim = new Animator(Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Charge1", FT),
-																	 ("Enemies/Futron-Gun/Charge2", FT),
-																	 ("Enemies/Futron-Gun/Charge3", FT),
-																	 ("Enemies/Futron-Gun/Charge4", FT),
-																	 ("Enemies/Futron-Gun/Charge5", FT),
-																	 ("Enemies/Futron-Gun/Charge6", FT),
-																	 ("Enemies/Futron-Gun/Charge5", FT),
-																	 ("Enemies/Futron-Gun/Charge6", FT));
+			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
+												("Enemies/Ranger/Run1", 0.2f),
+												("Enemies/Ranger/Run2", 0.2f),
+												("Enemies/Ranger/Run3", 0.2f),
+												("Enemies/Ranger/Run4", 0.2f));
+			mRunningAnimation.Play();
 
-			mShootGunAnim = new Animator(Animator.PlayType.OneShot, ("Enemies/Futron-Gun/Shoot1", 0.15f),
-																	("Enemies/Futron-Gun/Shoot2", 0.15f),
-																	("Enemies/Futron-Gun/Shoot3", 0.15f),
-																	("Enemies/Futron-Gun/Shoot4", 0.15f));
+			mStandAnimation = new Animator(Animator.PlayType.Repeat,
+											("Enemies/Ranger/Idle1", 0.3f),
+											("Enemies/Ranger/Idle2", 0.3f),
+											("Enemies/Ranger/Idle3", 0.3f),
+											("Enemies/Ranger/Idle2", 0.3f));
+			mStandAnimation.Play();
 
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/Idle1");
+			mShootGunAnim = new Animator(Animator.PlayType.OneShot,
+											("Enemies/Ranger/Charge1", 0.2f),
+											("Enemies/Ranger/Charge1", 0.2f),
+											("Enemies/Ranger/Charge1", 0.2f));
+
+			mPosition.Y -= 2.0f;
 		}
 
 		#endregion rInit
@@ -79,9 +101,39 @@ namespace AridArnold
 
 		#region rUpdate
 
+		/// <summary>
+		/// Update ranger
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			mShootGunAnim.Update(gameTime);
+
+			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Decide what to do
+		/// </summary>
 		protected override void DecideActions()
 		{
-			throw new NotImplementedException();
+			if (mOnGround)
+			{
+				mStateMachine.ForceGoToStateAndWait(State.WalkAround, 3500.0f);
+			}
+
+			EnforceState();
+		}
+
+
+
+		/// <summary>
+		/// Do things
+		/// </summary>
+		void EnforceState()
+		{
+
 		}
 
 		#endregion rUpdate
@@ -91,6 +143,20 @@ namespace AridArnold
 
 
 		#region rDraw
+
+		/// <summary>
+		/// Get texture we should draw.
+		/// </summary>
+		/// <returns></returns>
+		protected override Texture2D GetDrawTexture()
+		{
+			if(mStateMachine.GetState() == State.ShootLaser)
+			{
+				return mShootGunAnim.GetCurrentTexture();
+			}
+
+			return base.GetDrawTexture();
+		}
 
 		#endregion rDraw
 	}
