@@ -361,6 +361,9 @@
 				case EntityData.EntityClass.kPapyras:
 					entity = new Papyras(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
 					break;
+				case EntityData.EntityClass.kRanger:
+					entity = new Ranger(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
+					break;
 
 				// NPC
 				case EntityData.EntityClass.kBarbara:

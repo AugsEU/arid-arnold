@@ -23,6 +23,7 @@
 			kFarry,
 			kMamal,
 			kPapyras,
+			kRanger,
 			kEnemyClassEnd,
 
 			//NPC

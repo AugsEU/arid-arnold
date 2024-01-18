@@ -74,7 +74,7 @@ namespace AridArnold
 #if DEBUG_LOADER
 			CollectableManager.I.ChangePermanentItem(0x0300, 10);
 			CollectableManager.I.ChangePermanentItem(0x0000, 100);
-			TimeZoneManager.I.SetCurrentTimeZoneAndAge(2, 1);
+			TimeZoneManager.I.SetCurrentTimeZoneAndAge(-1, 0);
 			//QueueLoadSequence(new HubDirectLoader(801));
 			QueueLoadSequence(new LevelDirectLoader(901));
 #else

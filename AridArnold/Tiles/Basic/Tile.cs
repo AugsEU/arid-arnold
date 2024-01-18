@@ -234,7 +234,7 @@
 		/// <summary>
 		/// Get the center of the tile
 		/// </summary>
-		protected Vector2 GetCentre()
+		public Vector2 GetCentre()
 		{
 			return mPosition + new Vector2(sTILE_SIZE, sTILE_SIZE) * 0.5f;
 		}
