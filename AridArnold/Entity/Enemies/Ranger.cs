@@ -62,6 +62,7 @@ namespace AridArnold
 		/// <param name="shootFreq">How long the shoot cycle is</param>
 		public Ranger(Vector2 pos, float shootPhase, float shootFreq) : base(pos, RANGER_WALK_SPEED, RANGER_JUMP_SPEED, RANGER_WIDTH_REDUCTION, RANGER_HEIGHT_REDUCTION)
 		{
+			shootFreq *= 1000.0f;
 			mStateMachine = new StateMachine<State>(State.Wait);
 			mShootTimer = new PercentageTimer(shootFreq);
 			mShootTimer.SetPercentTime(-shootPhase);
@@ -176,16 +177,9 @@ namespace AridArnold
 		/// </summary>
 		bool CanKeepWalking()
 		{
-			if (GetPrevWalkDirection() == WalkDirection.Left)
-			{
-				return CheckSolid(-1, 1) && !CheckSolid(-1, 0);
-			}
-			else
-			{
-				return CheckSolid(1, 1) && !CheckSolid(1, 0);
-			}
+			int dx = GetPrevWalkDirection() == WalkDirection.Left ? -1 : 1;
 
-			throw new NotImplementedException();
+			return (CheckSolid(dx, 1) || CheckSolid(dx, 2)) && !CheckSolid(dx, 0);
 		}
 
 
@@ -205,6 +199,17 @@ namespace AridArnold
 				dx = 1;
 			}
 
+			bool aboveClear = !CheckSolid(0, -1) && !CheckSolid(0, -2);
+
+			return aboveClear && (CanJumpOverHole(dx) || CanJumpUpStep(dx));
+		}
+
+
+		/// <summary>
+		/// Can we jump over a hole in-front of us?
+		/// </summary>
+		bool CanJumpOverHole(int dx)
+		{
 			bool jumpZoneClear = !CheckSolid(dx, 1) && !CheckSolid(dx, 0) && !CheckSolid(dx, -1);
 			bool landingZoneClear = CheckSolid(dx * 2, 1) && !CheckSolid(dx * 2, 0) && !CheckSolid(dx * 2, -1);
 
@@ -214,6 +219,23 @@ namespace AridArnold
 			mHoleToJumpOver = holeCentre;
 
 			return jumpZoneClear && landingZoneClear;
+		}
+
+
+
+		/// <summary>
+		/// Can we jump up a step in-front of us?
+		/// </summary>
+		bool CanJumpUpStep(int dx)
+		{
+			bool landingZoneClear = CheckSolid(dx, 0) && !CheckSolid(dx, -1) && !CheckSolid(dx, -2);
+
+			Tile holeTile = GetNearbyTile(dx, 0);
+			Vector2 holeCentre = holeTile.GetCentre();
+
+			mHoleToJumpOver = holeCentre;
+
+			return landingZoneClear;
 		}
 
 
