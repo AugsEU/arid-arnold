@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Xml;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Manager that updates and draws all entities.
@@ -255,6 +257,7 @@
 				if (!entity.IsEnabled()) continue;
 				entity.Draw(info);
 			}
+			DebugDrawEntityColliders(info);
 		}
 
 		#endregion rDraw
@@ -439,5 +442,39 @@
 		}
 
 		#endregion rUtility
+
+
+
+
+
+		#region rDebug
+#if DEBUG
+
+		/// <summary>
+		/// Draw colliders
+		/// </summary>
+		void DebugDrawEntityColliders(DrawInfo info)
+		{
+			foreach(Entity entity in mRegisteredEntities)
+			{
+				if (!entity.IsEnabled()) continue;
+
+				Rect2f collider = entity.ColliderBounds();
+
+				int hashCode = entity.GetHashCode();
+
+				byte red = (byte)((hashCode >> 16) & 0xFF);
+				byte green = (byte)((hashCode >> 8) & 0xFF);
+				byte blue = (byte)(hashCode & 0xFF);
+
+				Color debugColor = new Color(red, green, blue);
+
+				MonoDraw.DrawRectDepth(info, collider, debugColor, DrawLayer.Front);
+			}
+		}
+
+
+#endif
+		#endregion rDebug
 	}
 }
