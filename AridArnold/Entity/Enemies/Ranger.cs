@@ -276,10 +276,11 @@ namespace AridArnold
 					if (mOnGround) mWalkDirection = WalkDirection.Left;
 					break;
 				case State.Jump:
-					if (mOnGround && (GetCentrePos() - mHoleToJumpOver).Length() < 15.0f)
+					mWalkDirection = mPrevDirection;
+					if (mOnGround && (GetCentrePos() - mHoleToJumpOver).Length() < 17.0f)
 					{
 						Jump();
-						mStateMachine.ForceGoToStateAndWait(State.Wait, 500.0f);
+						mStateMachine.ForceGoToStateAndWait(State.Wait, 800.0f);
 					}
 					break;
 				case State.ShootLaser:
@@ -303,11 +304,14 @@ namespace AridArnold
 			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
 			Vector2 offset = BULLET_OFFSET * Util.GetNormal(GetGravityDir());
 			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 4.0f + offset;
+			if(mPrevDirection == WalkDirection.Left)
+			{
+				spawnPos += Util.GetNormal(bulletDirection) * 12.0f;
+			}
 			LaserBullet bullet = new LaserBullet(this, spawnPos, bulletDirection);
 			EntityManager.I.QueueRegisterEntity(bullet);
 
-			mStandAnimation.Play(); // Visual hack to make it look like recoil
-			mStateMachine.ForceGoToStateAndWait(State.Wait, 400.0f);
+			mStateMachine.ForceGoToStateAndWait(State.Wait, 900.0f);
 			mShootTimer.Reset();
 		}
 
