@@ -257,7 +257,6 @@ namespace AridArnold
 				if (!entity.IsEnabled()) continue;
 				entity.Draw(info);
 			}
-			DebugDrawEntityColliders(info);
 		}
 
 		#endregion rDraw
