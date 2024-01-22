@@ -2,7 +2,8 @@
 <theme>
 	<name>Heaven</name>
 	<path from="Wall">HeavenBlock</path>
-	<path from="WallSecondary">HeavenPlatform</path>
+	<path from="WallSecondary">HeavenBlock</path>
+	<path from="Platform">HeavenPlatform</path>
 	<path from="CoinFull">GoldCoin</path>
 	<path from="CoinGhost">GoldGhost</path>
 </theme>
