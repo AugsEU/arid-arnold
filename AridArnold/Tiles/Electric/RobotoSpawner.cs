@@ -19,7 +19,7 @@
 
 		Animator mOnAnim;
 		Texture2D mPoweredTexture;
-		MonoTimer mSpawnTimer;
+		PercentageTimer mSpawnTimer;
 		bool mIsOn;
 
 		#endregion rMembers
@@ -34,8 +34,7 @@
 		{
 			mIsOn = false;
 			mRotation = rotation;
-			mSpawnTimer = new MonoTimer();
-			mSpawnTimer.SetElapsedMs(SPAWN_TIME);
+			mSpawnTimer = new PercentageTimer(SPAWN_TIME);
 		}
 
 
@@ -71,7 +70,7 @@
 			//Check surrounding tiles.
 			EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);
 
-			if (scan.mTotalPositiveElectric > 0.75f)
+			if (mSpawnTimer.GetPercentageF() > 0.02f || scan.mTotalPositiveElectric > 0.75f)
 			{
 				mIsOn = true;
 			}
@@ -86,7 +85,7 @@
 				if (mSpawnTimer.GetElapsedMs() > SPAWN_TIME + CHARGE_UP_TIME)
 				{
 					SpawnRobot();
-					mSpawnTimer.Reset();
+					mSpawnTimer.FullReset();
 				}
 			}
 			else
