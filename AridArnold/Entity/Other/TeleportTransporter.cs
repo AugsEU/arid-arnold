@@ -207,6 +207,14 @@
 				PlatformingEntity platformingEntity = (PlatformingEntity)mTransportingEntity;
 				CardinalDirection inverseDir = Util.InvertDirection(Util.CardinalDirectionFromVector(dir));
 				platformingEntity.SetGrounded(inverseDir == platformingEntity.GetGravityDir());
+
+				//HACK (Sorry Gaben)
+				if (platformingEntity is Roboto)
+				{
+					Vector2 hackPos = mTransportingEntity.GetPos();
+					hackPos += -platformingEntity.GravityVecNorm();
+					mTransportingEntity.SetPos(hackPos);
+				}
 			}
 
 			// Release to the world.
