@@ -9,6 +9,7 @@
 		LevelStart,
 		Game,
 		GameOver,
+		CinematicScreen,
 		None
 	}
 
@@ -41,6 +42,7 @@
 			LoadScreen(ScreenType.Game, new GameScreen(deviceManager));
 			LoadScreen(ScreenType.GameOver, new GameOverScreen(deviceManager));
 			LoadScreen(ScreenType.LevelStart, new StartLevelScreen(deviceManager));
+			LoadScreen(ScreenType.CinematicScreen, new CinematicScreen(deviceManager));
 		}
 
 
@@ -93,6 +95,16 @@
 			}
 
 			return null;
+		}
+
+
+
+		/// <summary>
+		/// Get the type of screen that is active
+		/// </summary>
+		public ScreenType GetActiveScreenType()
+		{
+			return mActiveScreen;
 		}
 
 

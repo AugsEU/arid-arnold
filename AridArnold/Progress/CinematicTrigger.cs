@@ -109,9 +109,11 @@
 		/// <summary>
 		/// Get cinematic
 		/// </summary>
-		public GameCinematic GetCinematic()
+		public void PlayCinematic()
 		{
-			return mCinematic;
+			CinematicScreen cinematicScreen = ScreenManager.I.GetScreen(ScreenType.CinematicScreen) as CinematicScreen;
+			cinematicScreen.StartCinematic(mCinematic, ScreenManager.I.GetActiveScreenType());
+			ScreenManager.I.ActivateScreen(ScreenType.CinematicScreen);
 		}
 
 		#region rFunc

@@ -1,38 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<campaign id="OriginalCampaign">
-	<name>Original Campaign</name>
-	<start>0101</start>
-	<cinematicTrigger type="LevelEnterFirst">
-		<level>0101</level>
-		<cinematicPath>"</cinematicPath>
-	</cinematicTrigger>
-	<coins>
-		<type root="SteamPlant">0</type>
-		<type root="Library">1</type>
-		<type root="Buk">2</type>
-		<type root="Lab">3</type>
-		<type root="Mirror">4</type>
-		<type root="Mountain">5</type>
-		<type root="WW7">6</type>
-		<type root="Hell">7</type>
-		<type root="Heaven">8</type>
-	</coins>
-	<timeOverrides>
-		<override>
-			<from>1</from>
-			<to>2</to>
-			<level>0801</level>
-			<x>5</x>
-			<y>25</y>
-		</override>
-	</timeOverrides>
-	<timeOverrides>
-		<override>
-			<from>2</from>
-			<to>1</to>
-			<level>0601</level>
-			<x>16</x>
-			<y>16</y>
-		</override>
-	</timeOverrides>
-</campaign>
+<cinematic>
+	<actors>
+	</actors>
+	<commands>
+		
+	</commands>
+</cinematic>
