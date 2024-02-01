@@ -10,18 +10,42 @@
 
 	class CampaignMetaData
 	{
+		#region rMembers
+
 		string mCampaignName;
 		string mCampaignId;
 		int mStartRoomID;
 		Dictionary<string, byte> mCoinTypeIDs;
 		List<TimeZoneOverride> mTimeOverrides;
+		List<CinematicTrigger> mCinematicTriggers;
 
+		#endregion rMembers
+
+
+		#region rInit
+
+		/// <summary>
+		/// Load meta data from xml path
+		/// </summary>
 		public CampaignMetaData(string xmlPath)
 		{
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(xmlPath);
 			XmlNode rootNode = xmlDoc.LastChild;
 
+			LoadBasicData(rootNode);
+			LoadCoinData(rootNode);
+			LoadTimeOverrides(rootNode);
+			LoadCinematicTriggers(rootNode);
+		}
+
+
+
+		/// <summary>
+		/// Load basic data about the campaign
+		/// </summary>
+		void LoadBasicData(XmlNode rootNode)
+		{
 			// Load campaign ID
 			XmlAttribute idAttr = rootNode.Attributes["id"];
 			mCampaignId = idAttr.Value;
@@ -33,7 +57,15 @@
 			// Load start room ID
 			XmlNode startNode = rootNode.SelectSingleNode("start");
 			mStartRoomID = int.Parse(startNode.InnerText);
+		}
 
+
+
+		/// <summary>
+		/// Load coin data
+		/// </summary>
+		void LoadCoinData(XmlNode rootNode)
+		{
 			// Load coin IDs
 			mCoinTypeIDs = new Dictionary<string, byte>();
 			XmlNode coinsNode = rootNode.SelectSingleNode("coins");
@@ -44,7 +76,15 @@
 				byte coindTypeID = byte.Parse(coinTypeNode.InnerText);
 				mCoinTypeIDs.Add(worldRoot, coindTypeID);
 			}
+		}
 
+
+
+		/// <summary>
+		/// Load time override data
+		/// </summary>
+		void LoadTimeOverrides(XmlNode rootNode)
+		{
 			// Load time overrides
 			mTimeOverrides = new List<TimeZoneOverride>();
 			XmlNode timeNode = rootNode.SelectSingleNode("timeOverrides");
@@ -53,6 +93,7 @@
 			{
 				mTimeOverrides.Add(MonoParse.GetTimeZoneOverride(timeOverrideNode));
 			}
+
 
 			// Validate time overrides
 			for (int i = 0; i < mTimeOverrides.Count; i++)
@@ -68,26 +109,74 @@
 			}
 		}
 
+
+
+		/// <summary>
+		/// Load cinematic triggers
+		/// </summary>
+		void LoadCinematicTriggers(XmlNode rootNode)
+		{
+			mCinematicTriggers = new List<CinematicTrigger>();
+			XmlNode cinematicNode = rootNode.SelectSingleNode("cinematics");
+			XmlNodeList cineTriggerNodes = cinematicNode.ChildNodes;
+
+			foreach(XmlNode triggerNode in cineTriggerNodes)
+			{
+				mCinematicTriggers.Add(new CinematicTrigger(triggerNode));
+			}
+		}
+
+		#endregion rInit
+
+
+
+
+
+		#region rGet
+
+		/// <summary>
+		/// Get display name
+		/// </summary>
 		public string GetCampaignName()
 		{
 			return mCampaignName;
 		}
 
+
+
+		/// <summary>
+		/// Get internal name
+		/// </summary>
 		public string GetCampaignId()
 		{
 			return mCampaignId;
 		}
 
+
+
+		/// <summary>
+		/// Get start room level ID
+		/// </summary>
 		public int GetStartRoomID()
 		{
 			return mStartRoomID;
 		}
 
+
+
+		/// <summary>
+		/// Get coin id
+		/// </summary>
 		public byte GetCoinTypeID(string worldRoot)
 		{
 			return mCoinTypeIDs[worldRoot];
 		}
 
+
+
+		/// <summary>
+		/// Get time override if it exists
+		/// </summary>
 		public TimeZoneOverride? GetTimeOverride(int fromTime, int toTime)
 		{
 			foreach (TimeZoneOverride timeZoneOverride in mTimeOverrides)
@@ -100,5 +189,7 @@
 
 			return null;
 		}
+
+		#endregion rGet
 	}
 }

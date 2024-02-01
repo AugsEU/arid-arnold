@@ -2,12 +2,10 @@
 <campaign id="OriginalCampaign">
 	<name>Original Campaign</name>
 	<start>0101</start>
-	<cinematics>
-		<cinematicTrigger type="LevelEnterFirst">
-			<level>0101</level>
-			<cinematicPath>Cinematics/Opening.mci</cinematicPath>
-		</cinematicTrigger>
-	</cinematics>
+	<cinematicTrigger type="LevelEnterFirst">
+		<level>0101</level>
+		<cinematicPath>"</cinematicPath>
+	</cinematicTrigger>
 	<coins>
 		<type root="SteamPlant">0</type>
 		<type root="Library">1</type>
