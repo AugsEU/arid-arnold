@@ -1,5 +1,8 @@
 ﻿namespace AridArnold
 {
+	/// <summary>
+	/// A command applied over multiple frames of a cutscene
+	/// </summary>
 	abstract class CinematicCommand
 	{
 		#region rMembers
@@ -10,27 +13,43 @@
 
 
 
+
+
 		#region rInit
 
 		/// <summary>
 		/// Load cinematic command from xml
 		/// </summary>
-		public CinematicCommand(XmlNode cmdNode)
+		public CinematicCommand(XmlNode cmdNode, GameCinematic parent)
 		{
-			string frameSpanStr = cmdNode.Attributes["frames"].Value;
+			string frameSpanStr = cmdNode.Attributes["frames"].InnerText;
 			frameSpanStr = frameSpanStr.Replace(" ", string.Empty).Trim();
 
 			string[] framesStrs = frameSpanStr.Split(",");
-			MonoDebug.Assert(framesStrs.Length == 2);
+			MonoDebug.Assert(framesStrs.Length == 2 || framesStrs.Length == 1);
 
-			int firstFrame = int.Parse(framesStrs[0]);
-			int lastFrame = int.Parse(framesStrs[2]);
-			mFrameSpan = new MonoRange<int>(firstFrame, lastFrame);
+			if(framesStrs.Length == 1)
+			{
+				int frame = int.Parse(framesStrs[0]);
+				mFrameSpan = new MonoRange<int>(frame, frame);
+			}
+			else if (framesStrs.Length == 2)
+			{
+				int firstFrame = int.Parse(framesStrs[0]);
+				int lastFrame = int.Parse(framesStrs[1]);
+				mFrameSpan = new MonoRange<int>(firstFrame, lastFrame);
+			}
+			else
+			{
+				throw new NotImplementedException("Cine: frames attribute incorrectly formatted");
+			}
 
 			MonoDebug.Assert(mFrameSpan.IsValid());
 		}
 
 		#endregion rInit
+
+
 
 
 
@@ -72,6 +91,9 @@
 		#endregion rDraw
 
 
+
+
+
 		#region rUtil
 
 		/// <summary>
@@ -80,6 +102,16 @@
 		public MonoRange<int> GetFrameRange()
 		{
 			return mFrameSpan;
+		}
+
+
+
+		/// <summary>
+		/// Get percentage of activeness
+		/// </summary>
+		protected float GetActivePercent(int frame)
+		{
+			return (frame -  mFrameSpan.GetMin()) / (mFrameSpan.GetMax() - mFrameSpan.GetMin());
 		}
 
 		#endregion rUtil

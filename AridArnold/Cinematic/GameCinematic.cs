@@ -31,7 +31,9 @@ namespace AridArnold
 
 		#region rMembers
 
+		List<CinematicActor> mActors;
 		List<CinematicCommand> mCommands;
+
 		int mTotalFrameCount = 0;
 		double mElapsedTime;
 		bool mIsPlaying;
@@ -53,10 +55,27 @@ namespace AridArnold
 			xmlDoc.Load(path);
 			XmlNode rootNode = xmlDoc.LastChild;
 
+			LoadActors(rootNode);
 			LoadCommands(rootNode);
 
 			mElapsedTime = 0.0;
 			mIsPlaying = false;
+		}
+
+
+
+		/// <summary>
+		/// Load actors
+		/// </summary>
+		void LoadActors(XmlNode rootNode)
+		{
+			mActors = new List<CinematicActor>();
+			XmlNode allActorsNode = rootNode.SelectSingleNode("actors");
+			XmlNodeList actorNodes = allActorsNode.ChildNodes;
+			foreach (XmlNode actorNode in actorNodes)
+			{
+				mActors.Add(new CinematicActor(actorNode));
+			}
 		}
 
 

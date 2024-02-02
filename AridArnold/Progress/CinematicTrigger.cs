@@ -35,11 +35,11 @@
 		/// <summary>
 		/// Cinematic trigger
 		/// </summary>
-		public CinematicTrigger(XmlNode cineNode)
+		public CinematicTrigger(string campaignRoot, XmlNode cineNode)
 		{
 			mType = GetTriggerTypeFromString(cineNode.Attributes["type"].Value);
 			mLevelTrigger = MonoParse.GetInt(cineNode["level"]);
-			mCinematic = new GameCinematic(cineNode["cinematicPath"].Value);
+			mCinematic = new GameCinematic(Path.Combine(campaignRoot, cineNode["cinematicPath"].InnerText));
 		}
 
 
@@ -116,6 +116,6 @@
 			ScreenManager.I.ActivateScreen(ScreenType.CinematicScreen);
 		}
 
-		#region rFunc
+		#endregion rFunc
 	}
 }

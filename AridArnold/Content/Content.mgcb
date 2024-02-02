@@ -994,6 +994,9 @@
 #begin BG/WW7/WW7Sewer.mlo
 /copy:BG/WW7/WW7Sewer.mlo
 
+#begin Campaigns/MainCampaign/Cinematics/Opening.mci
+/copy:Campaigns/MainCampaign/Cinematics/Opening.mci
+
 #begin Campaigns/MainCampaign/Hub/0101.aux
 /copy:Campaigns/MainCampaign/Hub/0101.aux
 

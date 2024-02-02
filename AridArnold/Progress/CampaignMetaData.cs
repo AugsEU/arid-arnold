@@ -27,16 +27,16 @@
 		/// <summary>
 		/// Load meta data from xml path
 		/// </summary>
-		public CampaignMetaData(string xmlPath)
+		public CampaignMetaData(string campaignRoot)
 		{
 			XmlDocument xmlDoc = new XmlDocument();
-			xmlDoc.Load(xmlPath);
+			xmlDoc.Load(campaignRoot + "Meta.xml");
 			XmlNode rootNode = xmlDoc.LastChild;
 
 			LoadBasicData(rootNode);
 			LoadCoinData(rootNode);
 			LoadTimeOverrides(rootNode);
-			LoadCinematicTriggers(rootNode);
+			LoadCinematicTriggers(campaignRoot, rootNode);
 		}
 
 
@@ -114,7 +114,7 @@
 		/// <summary>
 		/// Load cinematic triggers
 		/// </summary>
-		void LoadCinematicTriggers(XmlNode rootNode)
+		void LoadCinematicTriggers(string campaignRoot, XmlNode rootNode)
 		{
 			mCinematicTriggers = new List<CinematicTrigger>();
 			XmlNode cinematicNode = rootNode.SelectSingleNode("cinematics");
@@ -122,7 +122,7 @@
 
 			foreach(XmlNode triggerNode in cineTriggerNodes)
 			{
-				mCinematicTriggers.Add(new CinematicTrigger(triggerNode));
+				mCinematicTriggers.Add(new CinematicTrigger(campaignRoot, triggerNode));
 			}
 		}
 
