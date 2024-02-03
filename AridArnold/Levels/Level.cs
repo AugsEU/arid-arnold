@@ -115,6 +115,7 @@
 			// Inform others
 			GhostManager.I.StartLevel(this);
 			ItemManager.I.LevelBegin();
+
 		}
 
 

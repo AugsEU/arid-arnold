@@ -3,6 +3,8 @@
 	<actors>
 	</actors>
 	<commands>
-		
+		<CC_DisplayLayout frames="0,120">
+			<layout>BG/SteamPlant/SteamPlant.mlo</layout>
+		</CC_DisplayLayout>
 	</commands>
 </cinematic>

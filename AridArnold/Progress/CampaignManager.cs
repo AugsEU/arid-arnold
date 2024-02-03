@@ -157,6 +157,7 @@ namespace AridArnold
 		{
 			string startLevelPath = GetHubRoomPath(roomId);
 			mCurrentLevel = Level.LoadFromFile(startLevelPath, roomId);
+			CheckCinematicTriggers();
 			return mCurrentLevel;
 		}
 
@@ -197,6 +198,12 @@ namespace AridArnold
 				SetGameplayState(GameplayState.LevelSequence);
 			}
 			mCurrentLevel = level;
+
+			// TO DO: Think about this more.
+			if (level is HubLevel)
+			{
+				CheckCinematicTriggers();
+			}
 		}
 
 
@@ -428,5 +435,27 @@ namespace AridArnold
 
 
 		#endregion rCoins
+
+
+
+
+
+		#region rCinematics
+
+		/// <summary>
+		/// Check if cinematic triggers
+		/// </summary>
+		void CheckCinematicTriggers()
+		{
+			foreach(CinematicTrigger cinematicTrigger in mMetaData.GetCinematicTriggers())
+			{
+				if(cinematicTrigger.DoesTrigger(CinematicTrigger.TriggerType.LevelEnterFirst))
+				{
+					cinematicTrigger.PlayCinematic();
+				}
+			}
+		}
+
+		#endregion rCinematics
 	}
 }

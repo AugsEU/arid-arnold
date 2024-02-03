@@ -114,6 +114,16 @@
 			return (frame -  mFrameSpan.GetMin()) / (mFrameSpan.GetMax() - mFrameSpan.GetMin());
 		}
 
+
+
+		/// <summary>
+		/// Reset elements of this command
+		/// </summary>
+		virtual public void Reset()
+		{
+
+		}
+
 		#endregion rUtil
 	}
 }

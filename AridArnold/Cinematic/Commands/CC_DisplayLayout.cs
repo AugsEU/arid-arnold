@@ -1,12 +1,12 @@
 ﻿namespace AridArnold
 {
-	class DisplayLayoutCommand : CinematicCommand
+	class CC_DisplayLayout : CinematicCommand
 	{
 		Layout mLayout;
 
-		public DisplayLayoutCommand(XmlNode cmdNode, GameCinematic parent) : base(cmdNode, parent)
+		public CC_DisplayLayout(XmlNode cmdNode, GameCinematic parent) : base(cmdNode, parent)
 		{
-			string layoutPath = cmdNode["layout"].Value;
+			string layoutPath = cmdNode["layout"].InnerText;
 
 			mLayout = new Layout(layoutPath);
 		}

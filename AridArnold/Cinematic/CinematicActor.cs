@@ -7,6 +7,7 @@
 		string mName;
 		Vector2 mPosition;
 		DrawLayer mDrawLayer;
+		DrawLayer mInitialDrawLayer;
 		Animator mActiveAnimation;
 
 		#endregion rMembers
@@ -24,6 +25,7 @@
 		{
 			mName = actorNode["name"].InnerText;
 			mDrawLayer = MonoAlg.GetEnumFromString<DrawLayer>(actorNode["layer"].InnerText);
+			mInitialDrawLayer = mDrawLayer;
 			mPosition = MonoParse.GetVector(actorNode["pos"]);
 			mActiveAnimation = null;
 		}
@@ -102,15 +104,36 @@
 			mDrawLayer = drawLayer;
 		}
 
-		// Getter and setter for mActiveAnimation
-		public Animator GetActiveAnimation()
-		{
-			return mActiveAnimation;
-		}
 
+
+		/// <summary>
+		/// Load an active animation into an actor
+		/// </summary>
 		public void SetActiveAnimation(Animator activeAnimation)
 		{
 			mActiveAnimation = activeAnimation;
+		}
+
+
+
+		/// <summary>
+		/// Name
+		/// </summary>
+		public string GetName()
+		{
+			return mName;
+		}
+
+
+
+		/// <summary>
+		/// Reset the actor
+		/// </summary>
+		public void Reset()
+		{
+			mActiveAnimation = null;
+			mPosition = Vector2.Zero;
+			mDrawLayer = mInitialDrawLayer;
 		}
 
 		#endregion rUtil

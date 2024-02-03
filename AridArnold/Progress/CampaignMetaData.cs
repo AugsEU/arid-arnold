@@ -190,6 +190,16 @@
 			return null;
 		}
 
+
+
+		/// <summary>
+		/// Get list of cinematic triggers
+		/// </summary>
+		public List<CinematicTrigger> GetCinematicTriggers()
+		{
+			return mCinematicTriggers;
+		}
+
 		#endregion rGet
 	}
 }

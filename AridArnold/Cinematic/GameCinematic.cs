@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -35,6 +36,7 @@ namespace AridArnold
 		List<CinematicCommand> mCommands;
 
 		int mTotalFrameCount = 0;
+		int mLastFrameCompleted = -1;
 		double mElapsedTime;
 		bool mIsPlaying;
 
@@ -59,6 +61,7 @@ namespace AridArnold
 			LoadCommands(rootNode);
 
 			mElapsedTime = 0.0;
+			mLastFrameCompleted = -1;
 			mIsPlaying = false;
 		}
 
@@ -105,20 +108,20 @@ namespace AridArnold
 		/// <summary>
 		/// Create a cinematic command
 		/// </summary>
-		static CinematicCommand CreateCommand(XmlNode node)
+		CinematicCommand CreateCommand(XmlNode node)
 		{
 			if(sCommandNameMapping.Count == 0)
 			{
 				GenerateTypeMaps();
 			}
-			string xmlName = node.Name;
+			string xmlName = node.Name.ToLower();
 
 			if (!sCommandNameMapping.TryGetValue(xmlName, out Type elementType))
 			{
 				throw new Exception("Do not recognise cinematic command: " + xmlName);
 			}
 
-			return (CinematicCommand)Activator.CreateInstance(elementType, node);
+			return (CinematicCommand)Activator.CreateInstance(elementType, node, this);
 		}
 
 
@@ -157,8 +160,29 @@ namespace AridArnold
 
 			mElapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
 
-			int frameNum = GetCurrentFrame();
-			foreach(CinematicCommand command in mCommands)
+			int runUpToFrame = GetFrameFromElapsedTime();
+
+			while(mLastFrameCompleted < runUpToFrame)
+			{
+				AdvanceFrame(gameTime);
+			}
+
+			if(mLastFrameCompleted >= mTotalFrameCount)
+			{
+				mIsPlaying = false;
+			}
+		}
+
+
+
+		/// <summary>
+		/// Do update work for frames
+		/// </summary>
+		public void AdvanceFrame(GameTime gameTime)
+		{
+			int frameNum = mLastFrameCompleted + 1; // Ensure frames are done sequentially.
+
+			foreach (CinematicCommand command in mCommands)
 			{
 				int commandSpaceship = command.FrameSpaceship(frameNum);
 				if (commandSpaceship == 0)
@@ -166,25 +190,32 @@ namespace AridArnold
 					command.Update(gameTime, frameNum);
 				}
 			}
+
+			mLastFrameCompleted = frameNum;
 		}
+
 
 
 		/// <summary>
 		/// Start the cinematic
 		/// </summary>
-		public void Play()
+		public void PlayFromStart()
 		{
 			mElapsedTime = 0.0;
+			mLastFrameCompleted = -1;
 			mIsPlaying = true;
+			FullReset();
 		}
+
 
 
 		/// <summary>
 		/// Skip to end
 		/// </summary>
-		public void EndPlayback()
+		public void SkipToEnd()
 		{
 			mElapsedTime = (double)mTotalFrameCount/CINE_FRAME_RATE;
+			mLastFrameCompleted = mTotalFrameCount;
 			mIsPlaying = false;
 		}
 
@@ -201,7 +232,7 @@ namespace AridArnold
 		/// </summary>
 		public void Draw(DrawInfo info)
 		{
-			int frameNum = GetCurrentFrame();
+			int frameNum = GetFrameFromElapsedTime();
 			foreach (CinematicCommand command in mCommands)
 			{
 				int commandSpaceship = command.FrameSpaceship(frameNum);
@@ -220,12 +251,53 @@ namespace AridArnold
 
 		#region rUtil
 
+
 		/// <summary>
-		/// Get the current "frame"
+		/// Reset all actors and such
 		/// </summary>
-		int GetCurrentFrame()
+		void FullReset()
 		{
-			return (int)(mElapsedTime * CINE_FRAME_RATE + 0.0001);
+			Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+			screenCam.Reset();
+
+			foreach (CinematicCommand command in mCommands)
+			{
+				command.Reset();
+			}
+
+			foreach (CinematicActor actor in mActors)
+			{
+				actor.Reset();
+			}
+		}
+
+
+		/// <summary>
+		/// Get the frame we should be on given the time we have spent watching.
+		/// </summary>
+		int GetFrameFromElapsedTime()
+		{
+			return (int)(mElapsedTime * CINE_FRAME_RATE + 0.0001); // Calculate frame we should be on.
+		}
+
+
+
+		/// <summary>
+		/// Are we playing or paused?
+		/// </summary>
+		public bool IsPlaying()
+		{
+			return mIsPlaying;
+		}
+
+
+
+		/// <summary>
+		/// Cutscene done?
+		/// </summary>
+		public bool IsComplete()
+		{
+			return mLastFrameCompleted >= mTotalFrameCount;
 		}
 
 		#endregion rUtil

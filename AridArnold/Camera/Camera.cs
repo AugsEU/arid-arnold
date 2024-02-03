@@ -133,6 +133,9 @@
 		#endregion rUpdate
 
 
+
+
+
 		#region rDraw
 
 		/// <summary>
@@ -233,6 +236,16 @@
 		public CameraSpec GetCurrentSpec()
 		{
 			return mCurrentSpec;
+		}
+
+
+
+		/// <summary>
+		/// Set camera specifications
+		/// </summary>
+		public void ForceNewSpec(CameraSpec spec)
+		{
+			mCurrentSpec = spec;
 		}
 
 		#endregion rUtil

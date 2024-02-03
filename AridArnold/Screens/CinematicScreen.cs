@@ -28,6 +28,7 @@
 		public override void OnActivate()
 		{
 			MonoDebug.Assert(mCurrentCinematic != null);
+			mCurrentCinematic.PlayFromStart();
 			base.OnActivate();
 		}
 
@@ -39,6 +40,11 @@
 		public override void Update(GameTime gameTime)
 		{
 			mCurrentCinematic.Update(gameTime);
+
+			if(mCurrentCinematic.IsComplete())
+			{
+				ScreenManager.I.ActivateScreen(mScreenToReturnTo);
+			}
 		}
 
 
