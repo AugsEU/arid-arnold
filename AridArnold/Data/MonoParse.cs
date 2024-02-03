@@ -84,7 +84,7 @@
 		{
 			if (node is null)
 			{
-				return Color.Black;
+				return Color.White;
 			}
 
 			return MonoColor.HEXToColor(node.InnerXml);

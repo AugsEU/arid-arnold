@@ -9,7 +9,7 @@
 			mSpacing = spacing;
 		}
 
-		protected override void DrawAtTime(DrawInfo info, float time)
+		public override void DrawAtTime(DrawInfo info, float time)
 		{
 			Texture2D dummy = Main.GetDummyTexture();
 			for (float x = 0.0f; x < GameScreen.GAME_AREA_WIDTH; x += mSpacing)

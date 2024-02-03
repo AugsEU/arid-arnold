@@ -58,7 +58,7 @@
 		/// <summary>
 		/// Update cinematic command
 		/// </summary>
-		public abstract void Update(GameTime gameTime, int currentFrame);
+		public virtual void Update(GameTime gameTime, int currentFrame) { }
 
 
 
@@ -86,7 +86,7 @@
 		/// <summary>
 		/// Draw the cinematic command
 		/// </summary>
-		public abstract void Draw(DrawInfo info);
+		public virtual void Draw(DrawInfo info, int currentFrame) { }
 
 		#endregion rDraw
 

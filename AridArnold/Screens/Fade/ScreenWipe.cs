@@ -9,7 +9,7 @@
 			mDirection = direction;
 		}
 
-		protected override void DrawAtTime(DrawInfo info, float time)
+		public override void DrawAtTime(DrawInfo info, float time)
 		{
 			switch (mDirection)
 			{

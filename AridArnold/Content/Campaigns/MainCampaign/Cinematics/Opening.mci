@@ -4,10 +4,12 @@
 	</actors>
 	<commands>
 		<!-- Setup -->
-		<CC_DisplayLayout frames="0,120">
+		<CC_DisplayLayout frames="0,12000">
 			<layout>BG/SteamPlant/SteamPlant.mlo</layout>
 		</CC_DisplayLayout>
 		<!-- Opening pan -->
-
+		<CC_BlackFade frames="0,60">
+			<type>BlackTo</type>
+		</CC_BlackFade>
 	</commands>
 </cinematic>

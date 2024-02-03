@@ -243,7 +243,7 @@ namespace AridArnold
 				int commandSpaceship = command.FrameSpaceship(frameNum);
 				if (commandSpaceship == 0)
 				{
-					command.Draw(info);
+					command.Draw(info, frameNum);
 				}
 			}
 		}

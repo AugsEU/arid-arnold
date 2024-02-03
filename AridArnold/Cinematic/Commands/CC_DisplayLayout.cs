@@ -11,14 +11,14 @@
 			mLayout = new Layout(layoutPath);
 		}
 
-		public override void Draw(DrawInfo info)
-		{
-			mLayout.Draw(info);
-		}
-
 		public override void Update(GameTime gameTime, int currentFrame)
 		{
 			mLayout.Update(gameTime);
+		}
+
+		public override void Draw(DrawInfo info, int currentFrame)
+		{
+			mLayout.Draw(info);
 		}
 	}
 }

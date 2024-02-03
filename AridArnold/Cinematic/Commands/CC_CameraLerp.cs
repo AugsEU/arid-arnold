@@ -11,10 +11,6 @@
 			mEndState = MonoParse.GetCameraSpec(cmdNode["end"]);
 		}
 
-		public override void Draw(DrawInfo info)
-		{
-		}
-
 		public override void Update(GameTime gameTime, int currentFrame)
 		{
 			Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);

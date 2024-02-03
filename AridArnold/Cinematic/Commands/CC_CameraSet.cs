@@ -15,9 +15,5 @@
 
 			screenCam.ForceNewSpec(mCamState);
 		}
-
-		public override void Draw(DrawInfo drawInfo)
-		{
-		}
 	}
 }

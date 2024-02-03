@@ -33,6 +33,6 @@
 			DrawAtTime(info, mTime);
 		}
 
-		protected abstract void DrawAtTime(DrawInfo info, float time);
+		public abstract void DrawAtTime(DrawInfo info, float time);
 	}
 }

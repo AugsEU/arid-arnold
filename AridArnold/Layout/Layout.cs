@@ -164,7 +164,7 @@ namespace AridArnold
 			mPos = MonoParse.GetVector(rootNode);
 			mDepth = MonoParse.GetDrawLayer(rootNode["depth"]);
 			mScale = MonoParse.GetFloat(rootNode["scale"], 1.0f);
-			mColor = MonoParse.GetColor(rootNode["color"]);
+			mColor = MonoParse.GetColor(rootNode["color"], Color.White);
 			mVisible = true;
 		}
 
