@@ -136,7 +136,7 @@
 		/// </summary>
 		public override Rect2f ColliderBounds()
 		{
-			return new Rect2f(mPosition, GetNormalTalkTexture());
+			return new Rect2f(mPosition, 8.0f, 16.0f);
 		}
 
 		#endregion rUpdate

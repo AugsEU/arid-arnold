@@ -4906,6 +4906,222 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/Talk1.png
 
+#begin NPC/BoilerMan/Exclaim1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Exclaim1.png
+
+#begin NPC/BoilerMan/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Idle1.png
+
+#begin NPC/BoilerMan/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Idle1.png
+
+#begin NPC/BoilerMan/Idle2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Idle2.png
+
+#begin NPC/BoilerMan/Idle2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Idle2.png
+
+#begin NPC/BoilerMan/Idle3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Idle3.png
+
+#begin NPC/BoilerMan/Idle3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Idle3.png
+
+#begin NPC/BoilerMan/Talk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Talk1.png
+
+#begin NPC/BoilerMan/TurnTalk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/TurnTalk1.png
+
+#begin NPC/BoilerMan/TurnTalk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/TurnTalk1.png
+
+#begin NPC/BoilerMan/TurnTalk2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/TurnTalk2.png
+
+#begin NPC/BoilerMan/TurnTalk2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/TurnTalk2.png
+
+#begin NPC/BossMan/Angry1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/Angry1.png
+
+#begin NPC/BossMan/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/Idle1.png
+
+#begin NPC/BossMan/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/Idle1.png
+
+#begin NPC/BossMan/Shocked1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/Shocked1.png
+
+#begin NPC/BossMan/Talk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/Talk1.png
+
+#begin NPC/BossMan/Talk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/Talk1.png
+
 #begin NPC/Dialog/DialogSpikeBorder.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5838,6 +6054,33 @@
 
 #begin Text/EN/NPC/Barbara/SecondWorld.txt
 /copy:Text/EN/NPC/Barbara/SecondWorld.txt
+
+#begin Text/EN/NPC/BoilerMan/LostForWords.txt
+/copy:Text/EN/NPC/BoilerMan/LostForWords.txt
+
+#begin Text/EN/NPC/BoilerMan/NoWater.txt
+/copy:Text/EN/NPC/BoilerMan/NoWater.txt
+
+#begin Text/EN/NPC/BoilerMan/Problem.txt
+/copy:Text/EN/NPC/BoilerMan/Problem.txt
+
+#begin Text/EN/NPC/BossMan/GoGetWater.txt
+/copy:Text/EN/NPC/BossMan/GoGetWater.txt
+
+#begin Text/EN/NPC/BossMan/HardToFindWater.txt
+/copy:Text/EN/NPC/BossMan/HardToFindWater.txt
+
+#begin Text/EN/NPC/BossMan/Heckle.txt
+/copy:Text/EN/NPC/BossMan/Heckle.txt
+
+#begin Text/EN/NPC/BossMan/Summon.txt
+/copy:Text/EN/NPC/BossMan/Summon.txt
+
+#begin Text/EN/NPC/BossMan/WhatJiggery.txt
+/copy:Text/EN/NPC/BossMan/WhatJiggery.txt
+
+#begin Text/EN/NPC/BossMan/WhatUp.txt
+/copy:Text/EN/NPC/BossMan/WhatUp.txt
 
 #begin Text/EN/NPC/Dok/GravityConfusion.txt
 /copy:Text/EN/NPC/Dok/GravityConfusion.txt

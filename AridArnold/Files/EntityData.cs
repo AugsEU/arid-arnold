@@ -32,6 +32,8 @@
 			kDok,
 			kBickDogel,
 			kElectrent,
+			kBoilerMan,
+			kBossMan,
 			kNPCClassEnd,
 
 			// Utility

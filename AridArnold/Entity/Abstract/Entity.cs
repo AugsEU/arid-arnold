@@ -381,6 +381,12 @@
 				case EntityData.EntityClass.kElectrent:
 					entity = new Electrent(worldPosition);
 					break;
+				case EntityData.EntityClass.kBoilerMan:
+					entity = new BoilerMan(worldPosition);
+					break;
+				case EntityData.EntityClass.kBossMan:
+					entity = new BossMan(worldPosition);
+					break;
 
 				// Utility
 				case EntityData.EntityClass.kArnoldSpawner:
