@@ -11,9 +11,9 @@
 			mLayout = new Layout(layoutPath);
 		}
 
-		public override void Draw(DrawInfo drawInfo)
+		public override void Draw(DrawInfo info)
 		{
-			mLayout.Draw(drawInfo);
+			mLayout.Draw(info);
 		}
 
 		public override void Update(GameTime gameTime, int currentFrame)

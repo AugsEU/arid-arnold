@@ -86,7 +86,7 @@
 		/// <summary>
 		/// Draw the cinematic command
 		/// </summary>
-		public abstract void Draw(DrawInfo drawInfo);
+		public abstract void Draw(DrawInfo info);
 
 		#endregion rDraw
 
@@ -111,7 +111,7 @@
 		/// </summary>
 		protected float GetActivePercent(int frame)
 		{
-			return (frame -  mFrameSpan.GetMin()) / (mFrameSpan.GetMax() - mFrameSpan.GetMin());
+			return (frame -  (float)mFrameSpan.GetMin()) / (float)(mFrameSpan.GetMax() - mFrameSpan.GetMin());
 		}
 
 

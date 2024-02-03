@@ -78,13 +78,28 @@
 
 
 		/// <summary>
-		/// Parse hex colour from xml node. Default = White
+		/// Parse hex colour from xml node. Default = Black
 		/// </summary>
 		static public Color GetColor(XmlNode node)
 		{
 			if (node is null)
 			{
-				return Color.White;
+				return Color.Black;
+			}
+
+			return MonoColor.HEXToColor(node.InnerXml);
+		}
+
+
+
+		/// <summary>
+		/// Parse hex colour from xml node with specific default
+		/// </summary>
+		static public Color GetColor(XmlNode node, Color defaultVal)
+		{
+			if (node is null)
+			{
+				return defaultVal;
 			}
 
 			return MonoColor.HEXToColor(node.InnerXml);

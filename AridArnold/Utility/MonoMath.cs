@@ -41,9 +41,31 @@
 		}
 
 
+
+		/// <summary>
+		/// Lerp two vectors
+		/// </summary>
 		public static Vector2 Lerp(Vector2 p1, Vector2 p2, float t)
 		{
 			return (p1) * (1.0f - t) + (p2) * t;
+		}
+
+
+
+		/// <summary>
+		/// Lerp two colours
+		/// </summary>
+		public static Color Lerp(Color p1, Color p2, float t)
+		{
+			float R = (float)p1.R * (1.0f - t) + (float)p2.R * t;
+			float G = (float)p1.G * (1.0f - t) + (float)p2.G * t;
+			float B = (float)p1.B * (1.0f - t) + (float)p2.B * t;
+
+			R = Math.Clamp(R, 0.0f, 255.0f);
+			G = Math.Clamp(G, 0.0f, 255.0f);
+			B = Math.Clamp(B, 0.0f, 255.0f);
+
+			return new Color((byte)R, (byte)G, (byte)B);
 		}
 
 

@@ -25,7 +25,19 @@
 			r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
 			g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
 			b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
-			a = 255;
+
+			if (hex.Length == 6)
+			{
+				a = 255;
+			}
+			else if(hex.Length == 8)
+			{
+				a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+			}
+			else
+			{
+				throw new NotImplementedException();
+			}
 
 			return new Color(r, g, b, a);
 		}

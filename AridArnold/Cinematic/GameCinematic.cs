@@ -93,6 +93,11 @@ namespace AridArnold
 			XmlNodeList commandNodes = allCommandsNode.ChildNodes;
 			foreach (XmlNode commandNode in commandNodes)
 			{
+				if (commandNode.NodeType == XmlNodeType.Comment)
+				{
+					continue;
+				}
+
 				mCommands.Add(CreateCommand(commandNode));
 			}
 
@@ -204,7 +209,7 @@ namespace AridArnold
 			mElapsedTime = 0.0;
 			mLastFrameCompleted = -1;
 			mIsPlaying = true;
-			FullReset();
+			//FullReset();
 		}
 
 

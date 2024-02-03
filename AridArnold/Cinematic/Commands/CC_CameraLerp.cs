@@ -11,7 +11,7 @@
 			mEndState = MonoParse.GetCameraSpec(cmdNode["end"]);
 		}
 
-		public override void Draw(DrawInfo drawInfo)
+		public override void Draw(DrawInfo info)
 		{
 		}
 
