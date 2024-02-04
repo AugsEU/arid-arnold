@@ -140,38 +140,26 @@
 					HandleKeyPress(key);
 				}
 
-				const int updateSteps = 4;
+				Screen screen = ScreenManager.I.GetActiveScreen();
+				int updateSteps = screen.GetUpdateSteps();
+				InputManager.I.Update(gameTime);
+
 				System.TimeSpan timeInc = gameTime.ElapsedGameTime / updateSteps;
 				for (int i = 0; i < updateSteps; i++)
 				{
 					GameTime stepTime = new GameTime(gameTime.TotalGameTime - (updateSteps - 1 - i) * timeInc, timeInc);
 
-					GameUpdate(stepTime);
+					//Always update every game update.
+					CameraManager.I.UpdateAllCameras(stepTime);
+
+					if (screen != null)
+					{
+						screen.Update(stepTime);
+					}
 				}
 			}
 
 			base.Update(gameTime);
-		}
-
-
-
-		/// <summary>
-		/// Update the main game. Everything happens within the active screen.
-		/// </summary>
-		/// <param name="gameTime">Frame time</param>
-		private void GameUpdate(GameTime gameTime)
-		{
-			//Update Active screen
-			Screen screen = ScreenManager.I.GetActiveScreen();
-
-			//Always update every game update.
-			InputManager.I.Update(gameTime);
-			CameraManager.I.UpdateAllCameras(gameTime);
-
-			if (screen != null)
-			{
-				screen.Update(gameTime);
-			}
 		}
 
 

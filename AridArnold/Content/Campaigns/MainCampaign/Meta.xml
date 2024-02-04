@@ -4,7 +4,7 @@
 	<start>0101</start>
 	<cinematics>
 		<cinematicTrigger type="LevelEnterFirst">
-			<level>0101</level>
+			<level>0104</level>
 			<cinematicPath>Cinematics/Opening.mci</cinematicPath>
 		</cinematicTrigger>
 	</cinematics>

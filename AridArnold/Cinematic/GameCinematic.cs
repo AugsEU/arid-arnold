@@ -238,6 +238,9 @@ namespace AridArnold
 		public void Draw(DrawInfo info)
 		{
 			int frameNum = GetFrameFromElapsedTime();
+			
+			//MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(10.0f, 10.0f));
+			
 			foreach (CinematicCommand command in mCommands)
 			{
 				int commandSpaceship = command.FrameSpaceship(frameNum);
@@ -303,6 +306,24 @@ namespace AridArnold
 		public bool IsComplete()
 		{
 			return mLastFrameCompleted >= mTotalFrameCount;
+		}
+
+
+
+		/// <summary>
+		/// Get an actor by name
+		/// </summary>
+		public CinematicActor GetActorByName(string name)
+		{
+			foreach(CinematicActor actor in mActors)
+			{
+				if (actor.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase))
+				{
+					return actor;
+				}
+			}
+
+			throw new Exception("Could not find actor named: " + name);
 		}
 
 		#endregion rUtil

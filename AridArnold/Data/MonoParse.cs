@@ -48,6 +48,21 @@
 
 
 		/// <summary>
+		/// Get inner text of node
+		/// </summary>
+		static public string GetString(XmlNode node, string defaultVal = "")
+		{
+			if(node is null)
+			{
+				return defaultVal;
+			}
+
+			return node.InnerText;
+		}
+
+
+
+		/// <summary>
 		/// Parse draw layer from xml node. Default = Default Layer
 		/// </summary>
 		static public DrawLayer GetDrawLayer(XmlNode node, DrawLayer defaultVal = DrawLayer.Default)
@@ -137,7 +152,7 @@
 		{
 			CameraSpec returnValue = new CameraSpec();
 
-			returnValue.mPosition = GetVector(node["pos"]);
+			returnValue.mPosition = GetVector(node);
 			returnValue.mZoom = GetFloat(node["zoom"], 1.0f);
 			returnValue.mRotation = GetFloat(node["rot"]);
 

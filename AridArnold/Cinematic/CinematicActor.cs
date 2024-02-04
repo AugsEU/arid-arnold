@@ -26,7 +26,7 @@
 			mName = actorNode["name"].InnerText;
 			mDrawLayer = MonoAlg.GetEnumFromString<DrawLayer>(actorNode["layer"].InnerText);
 			mInitialDrawLayer = mDrawLayer;
-			mPosition = MonoParse.GetVector(actorNode["pos"]);
+			mPosition = MonoParse.GetVector(actorNode);
 			mActiveAnimation = null;
 		}
 

@@ -235,6 +235,17 @@
 			mLevelEndTimer.FullReset();
 		}
 
+
+
+		/// <summary>
+		/// How many subframes to compute
+		/// </summary>
+		public override int GetUpdateSteps()
+		{
+			// Request quarter steps. TO DO: Change this?
+			return 4;
+		}
+
 		#endregion rUpdate
 
 

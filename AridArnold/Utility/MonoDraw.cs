@@ -348,6 +348,19 @@
 			DrawLine(info, point1, point2, color, thickness, depth);
 		}
 
+
+
+		/// <summary>
+		/// Draw text for debugging
+		/// </summary>
+		public static void DrawDebugText(DrawInfo info, string text, Vector2 pos)
+		{
+#if DEBUG
+			SpriteFont font = FontManager.I.GetFont("Pixica-12");
+			MonoDraw.DrawString(info, font, text, pos, Color.White, DrawLayer.Front);
+#endif
+		}
+
 		#endregion rRender
 
 

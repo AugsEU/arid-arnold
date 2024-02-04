@@ -229,7 +229,13 @@
 				GetCurrentBlock().Stop();
 			}
 
-			mTextBlocks.Add(new SpeechBoxRenderer(stringID, mPosition + DIALOG_OFFSET, mStyle));
+			Vector2 dialogPosition = mPosition + DIALOG_OFFSET;
+			float maxX = FXManager.I.GetDrawableSize().X - mStyle.mWidth - 20.0f;
+			dialogPosition.X = MathF.Min(dialogPosition.X, maxX);
+
+			float spikeOffset = mPosition.X - dialogPosition.X + 17.0f;
+
+			mTextBlocks.Add(new SpeechBoxRenderer(stringID, dialogPosition, spikeOffset, mStyle));
 		}
 
 

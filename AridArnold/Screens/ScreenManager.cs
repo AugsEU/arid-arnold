@@ -203,6 +203,15 @@
 		/// <param name="gameTime">Frame time</param>
 		public abstract void Update(GameTime gameTime);
 
+
+		/// <summary>
+		/// Request to update in smaller steps
+		/// </summary>
+		public virtual int GetUpdateSteps()
+		{
+			return 1;
+		}
+
 		#endregion rUpdate
 
 

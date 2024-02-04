@@ -7429,3 +7429,12 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin BG/Cinematics/OpeningBG.mlo
+/copy:BG/Cinematics/OpeningBG.mlo
+
+#begin BG/Cinematics/OpeningBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Cinematics/OpeningBG.png
+

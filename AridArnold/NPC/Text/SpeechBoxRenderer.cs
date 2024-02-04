@@ -39,6 +39,7 @@
 		Queue<string> mPendingStringIDs;
 		List<SpeechBoxLetter> mLetters;
 		SpeechBoxStyle mStyle;
+		float mSpikeOffset;
 
 		//Transform
 		Vector2 mBottomLeft;
@@ -61,7 +62,7 @@
 		/// <summary>
 		/// Construct speech box renderer
 		/// </summary>
-		public SpeechBoxRenderer(string stringID, Vector2 bottomLeft, SpeechBoxStyle style)
+		public SpeechBoxRenderer(string stringID, Vector2 bottomLeft, float spikeOffset, SpeechBoxStyle style)
 		{
 			mStyle = style;
 			mCurrentBlock = new SmartTextBlock(stringID, style.mFramesPerLetter);
@@ -76,6 +77,7 @@
 			mLastDrawnCharHead = mCharHead;
 
 			mPendingStringIDs = new Queue<string>();
+			mSpikeOffset = spikeOffset;
 		}
 
 
@@ -231,22 +233,31 @@
 			// Draw bg
 			MonoDraw.DrawRectDepth(info, bgRectangle, mStyle.mFillColor, DrawLayer.Bubble);
 
-			// Draw borders
-			Rectangle topRect = new Rectangle(rectPosition.X - BORDER_WIDTH / 2, rectPosition.Y - BORDER_WIDTH, width + BORDER_WIDTH, BORDER_WIDTH);
-			Rectangle bottomRect = new Rectangle(rectPosition.X - BORDER_WIDTH / 2, rectPosition.Y + height, width + BORDER_WIDTH, BORDER_WIDTH);
-			Rectangle leftRect = new Rectangle(rectPosition.X - BORDER_WIDTH, rectPosition.Y - BORDER_WIDTH / 2, BORDER_WIDTH, height + BORDER_WIDTH);
-			Rectangle rightRect = new Rectangle(rectPosition.X + width, rectPosition.Y - BORDER_WIDTH / 2, BORDER_WIDTH, height + BORDER_WIDTH);
+			// Calc corners
+			Vector2 TL = new Vector2(bgRectangle.X,                     bgRectangle.Y);
+			Vector2 BL = new Vector2(bgRectangle.X,                     bgRectangle.Y + bgRectangle.Height);
+			Vector2 BR = new Vector2(bgRectangle.X + bgRectangle.Width, bgRectangle.Y + bgRectangle.Height);
+			Vector2 TR = new Vector2(bgRectangle.X + bgRectangle.Width, bgRectangle.Y);
 
-			MonoDraw.DrawRectDepth(info, topRect, mStyle.mBorderColor, DrawLayer.Bubble);
-			MonoDraw.DrawRectDepth(info, bottomRect, mStyle.mBorderColor, DrawLayer.Bubble);
-			MonoDraw.DrawRectDepth(info, leftRect, mStyle.mBorderColor, DrawLayer.Bubble);
-			MonoDraw.DrawRectDepth(info, rightRect, mStyle.mBorderColor, DrawLayer.Bubble);
+			// Spike left and right
+			Vector2 SL = BL + new Vector2(mSpikeOffset, 0.0f);
+			Vector2 SR = SL + new Vector2(sSpikeBorder.Width, 0.0f);
+
+			MonoDraw.DrawLine(info, TL, BL, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
+			MonoDraw.DrawLine(info, BR, TR, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
+			MonoDraw.DrawLine(info, TR, TL, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 
 			if (!IsStopped())
 			{
-				Vector2 spikePos = new Vector2(rectPosition.X + 30, rectPosition.Y + height);
+				Vector2 spikePos = new Vector2(rectPosition.X + mSpikeOffset, rectPosition.Y + height - 1.0f);
 				MonoDraw.DrawTextureDepthColor(info, sSpikeInner, spikePos, mStyle.mFillColor, DrawLayer.Bubble);
 				MonoDraw.DrawTextureDepthColor(info, sSpikeBorder, spikePos, mStyle.mBorderColor, DrawLayer.Bubble);
+				MonoDraw.DrawLine(info, BL, SL, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
+				MonoDraw.DrawLine(info, SR, BR, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
+			}
+			else
+			{
+				MonoDraw.DrawLine(info, BL, BR, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 			}
 		}
 
