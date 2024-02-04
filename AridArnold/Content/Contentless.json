@@ -13,7 +13,6 @@
         {
             "processorParams": 
             {
-                "TextureFormat": "Compressed",
                 "PremultiplyAlpha": "False"
             }
         },
