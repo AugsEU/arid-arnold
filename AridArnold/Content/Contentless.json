@@ -1,0 +1,47 @@
+{
+    "exclude": 
+    [
+        "obj/",
+        "bin/"
+    ],
+
+    "logSkipped": true,
+
+    "overrides": 
+    {
+        ".png": 
+        {
+            "processorParams": 
+            {
+                "TextureFormat": "Compressed",
+                "PremultiplyAlpha": "False"
+            }
+        },
+        ".txt": 
+        {
+            "copy": true
+        },
+        ".mlo": 
+        {
+            "copy": true
+        },
+        ".xml": 
+        {
+            "copy": true
+        },
+        ".aux": 
+        {
+            "copy": true
+        },
+        ".mia": 
+        {
+            "copy": true
+        },
+        ".max": 
+        {
+            "copy": true
+        }
+    },
+
+    "references": ["MonoGame.Extended.Content.Pipeline"]
+}
