@@ -4930,18 +4930,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/Idle1.png
 
-#begin NPC/BoilerMan/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Idle1.png
-
 #begin NPC/BoilerMan/Idle2.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4953,30 +4941,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/Idle2.png
-
-#begin NPC/BoilerMan/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Idle2.png
-
-#begin NPC/BoilerMan/Idle3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Idle3.png
 
 #begin NPC/BoilerMan/Idle3.png
 /importer:TextureImporter
@@ -5014,30 +4978,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/TurnTalk1.png
 
-#begin NPC/BoilerMan/TurnTalk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/TurnTalk1.png
-
-#begin NPC/BoilerMan/TurnTalk2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/TurnTalk2.png
-
 #begin NPC/BoilerMan/TurnTalk2.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5074,18 +5014,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BossMan/Idle1.png
 
-#begin NPC/BossMan/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BossMan/Idle1.png
-
 #begin NPC/BossMan/Shocked1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5097,18 +5025,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/BossMan/Shocked1.png
-
-#begin NPC/BossMan/Talk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BossMan/Talk1.png
 
 #begin NPC/BossMan/Talk1.png
 /importer:TextureImporter
@@ -6049,8 +5965,14 @@
 #begin Text/EN/NPC/Barbara/Heckle.txt
 /copy:Text/EN/NPC/Barbara/Heckle.txt
 
-#begin Text/EN/NPC/Barbara/Intro.txt
-/copy:Text/EN/NPC/Barbara/Intro.txt
+#begin Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
+/copy:Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
+
+#begin Text/EN/NPC/Barbara/Opening/FountainSpeil.txt
+/copy:Text/EN/NPC/Barbara/Opening/FountainSpeil.txt
+
+#begin Text/EN/NPC/Barbara/Opening/WaterLine.txt
+/copy:Text/EN/NPC/Barbara/Opening/WaterLine.txt
 
 #begin Text/EN/NPC/Barbara/SecondWorld.txt
 /copy:Text/EN/NPC/Barbara/SecondWorld.txt
