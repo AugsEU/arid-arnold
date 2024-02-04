@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cinematic>
 	<actors>
+		<actor>
+			<name>BoilerMan</name>
+			<layer>Default</layer>
+			<x>0</x>
+			<y>0</y>
+		</actor>
+		<actor>
+			<name>BossMan</name>
+			<layer>Default</layer>
+			<x>0</x>
+			<y>0</y>
+		</actor>
+		<actor>
+			<name>BoilerMan</name>
+			<layer>Default</layer>
+			<x>0</x>
+			<y>0</y>
+		</actor>
 	</actors>
 	<commands>
 		<!-- Setup -->
 		<CC_DisplayLayout frames="0,12000">
 			<layout>BG/SteamPlant/SteamPlant.mlo</layout>
 		</CC_DisplayLayout>
+		<CC_DisplayLayout frames="0,12000">
+			<layout>BG/Cinematics/OpeningBG.mlo</layout>
+		</CC_DisplayLayout>
 		<!-- Opening pan -->
 		<CC_BlackFade frames="0,60">
 			<type>BlackTo</type>
 		</CC_BlackFade>
+		<CC_CameraLerp frames = "0,360">
+			<start>
+				<x>-220</x>
+				<y>120</y>
+				<zoom>4.0</zoom>
+			</start>
+			<end>
+				<x>-220</x>
+				<y>-185</y>
+				<zoom>4.0</zoom>
+			</end>
+		</CC_CameraLerp>
 	</commands>
 </cinematic>
