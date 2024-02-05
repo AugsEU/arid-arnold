@@ -10,6 +10,25 @@
 		public int mFramesPerLetter;
 		public Color mBorderColor;
 		public Color mFillColor;
+		public bool mFlipSpike;
+
+		static public SpeechBoxStyle DefaultStyle
+		{
+			get
+			{
+				SpeechBoxStyle ret = new SpeechBoxStyle();
+				ret.mFont = FontManager.I.GetFont("Pixica-12");
+				ret.mWidth = 230.1f;
+				ret.mLeading = 8.0f;
+				ret.mKerning = 1.0f;
+				ret.mScrollSpeed = 0.6f;
+				ret.mFramesPerLetter = 20;
+				ret.mFillColor = new Color(0, 10, 20, 200);
+				ret.mBorderColor = new Color(56, 89, 122);
+				ret.mFlipSpike = true;
+				return ret;
+			}
+		}
 	}
 
 	/// <summary>
@@ -249,9 +268,10 @@
 
 			if (!IsStopped())
 			{
-				Vector2 spikePos = new Vector2(rectPosition.X + mSpikeOffset, rectPosition.Y + height - 1.0f);
-				MonoDraw.DrawTextureDepthColor(info, sSpikeInner, spikePos, mStyle.mFillColor, DrawLayer.Bubble);
-				MonoDraw.DrawTextureDepthColor(info, sSpikeBorder, spikePos, mStyle.mBorderColor, DrawLayer.Bubble);
+				SpriteEffects spikeEffects = mStyle.mFlipSpike ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+				Vector2 spikePos = new Vector2(rectPosition.X + mSpikeOffset, rectPosition.Y + height);
+				MonoDraw.DrawTexture(info, sSpikeInner, spikePos, null, mStyle.mFillColor, 0.0f, Vector2.Zero, 1.0f, spikeEffects, DrawLayer.Bubble);
+				MonoDraw.DrawTexture(info, sSpikeBorder, spikePos, null, mStyle.mBorderColor, 0.0f, Vector2.Zero, 1.0f, spikeEffects, DrawLayer.Bubble);
 				MonoDraw.DrawLine(info, BL, SL, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 				MonoDraw.DrawLine(info, SR, BR, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 			}

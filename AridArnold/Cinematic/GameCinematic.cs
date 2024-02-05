@@ -1,10 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Threading;
-using System.Windows.Input;
-using static AridArnold.RailNode;
 
 namespace AridArnold
 {
@@ -14,7 +9,12 @@ namespace AridArnold
 
 		const int CINE_FRAME_RATE = 60;
 
-		#endregion rConstant
+
+#if DEBUG
+		const int DEBUG_FRAME_SKIP = 1600;
+#endif
+
+	#endregion rConstant
 
 
 
@@ -104,7 +104,11 @@ namespace AridArnold
 			mTotalFrameCount = 0;
 			foreach (CinematicCommand command in mCommands)
 			{
-				mTotalFrameCount = Math.Max(mTotalFrameCount, command.GetFrameRange().GetMax());
+				int cmdEnd = command.GetFrameRange().GetMax();
+				if (cmdEnd != int.MaxValue)
+				{
+					mTotalFrameCount = Math.Max(mTotalFrameCount, command.GetFrameRange().GetMax());
+				}
 			}
 		}
 
@@ -163,6 +167,9 @@ namespace AridArnold
 		{
 			if (!mIsPlaying) return;
 
+#if DEBUG
+			DebugLoop:
+#endif
 			mElapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
 
 			int runUpToFrame = GetFrameFromElapsedTime();
@@ -176,6 +183,12 @@ namespace AridArnold
 			{
 				mIsPlaying = false;
 			}
+#if DEBUG
+			if(GetFrameFromElapsedTime() < DEBUG_FRAME_SKIP)
+			{
+				goto DebugLoop;
+			}
+#endif
 		}
 
 
@@ -209,7 +222,7 @@ namespace AridArnold
 			mElapsedTime = 0.0;
 			mLastFrameCompleted = -1;
 			mIsPlaying = true;
-			//FullReset();
+			FullReset();
 		}
 
 
@@ -239,7 +252,7 @@ namespace AridArnold
 		{
 			int frameNum = GetFrameFromElapsedTime();
 			
-			//MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(10.0f, 10.0f));
+			MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(160.0f, 20.0f));
 			
 			foreach (CinematicCommand command in mCommands)
 			{
@@ -248,6 +261,11 @@ namespace AridArnold
 				{
 					command.Draw(info, frameNum);
 				}
+			}
+
+			foreach(CinematicActor actor in mActors)
+			{
+				actor.Draw(info);
 			}
 		}
 

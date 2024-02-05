@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
 	<element type="texture">
-		<x>135.0</x>
+		<x>137.0</x>
 		<y>0.0</y>
 		<depth>Tile</depth>
 		<texture>BG/Cinematics/OpeningBG</texture>

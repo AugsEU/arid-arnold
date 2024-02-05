@@ -38,16 +38,7 @@
 			mTextBlocks = new List<SpeechBoxRenderer>();
 			mMouthTimer = new MonoTimer();
 
-			mStyle = new SpeechBoxStyle();
-			mStyle.mFont = FontManager.I.GetFont("Pixica-12");
-			mStyle.mWidth = 230.1f;
-			mStyle.mLeading = 8.0f;
-			mStyle.mKerning = 1.0f;
-			mStyle.mScrollSpeed = 0.6f;
-			mStyle.mFramesPerLetter = 20;
-
-			mStyle.mFillColor = new Color(0, 10, 20, 200);
-			mStyle.mBorderColor = new Color(56, 89, 122);
+			mStyle = SpeechBoxStyle.DefaultStyle;
 		}
 
 

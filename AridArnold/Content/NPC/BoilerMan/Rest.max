@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.8">NPC/BoilerMan/Idle3</texture>
+</animation>

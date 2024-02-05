@@ -8,7 +8,8 @@
 		Vector2 mPosition;
 		DrawLayer mDrawLayer;
 		DrawLayer mInitialDrawLayer;
-		Animator mActiveAnimation;
+		SpriteEffects mEffect;
+		Texture2D mDrawTexture;
 
 		#endregion rMembers
 
@@ -27,29 +28,11 @@
 			mDrawLayer = MonoAlg.GetEnumFromString<DrawLayer>(actorNode["layer"].InnerText);
 			mInitialDrawLayer = mDrawLayer;
 			mPosition = MonoParse.GetVector(actorNode);
-			mActiveAnimation = null;
+			mDrawTexture = null;
+			mEffect = SpriteEffects.None;
 		}
 
 		#endregion rInit
-
-
-
-
-
-		#region rUpdate
-
-		/// <summary>
-		/// Update the animations
-		/// </summary>
-		public void Update(GameTime gameTime)
-		{
-			if(mActiveAnimation != null)
-			{
-				mActiveAnimation.Update(gameTime);
-			}
-		}
-
-		#endregion rUpdate
 
 
 
@@ -62,9 +45,9 @@
 		/// </summary>
 		public void Draw(DrawInfo info)
 		{
-			if(mActiveAnimation is not null)
+			if(mDrawTexture is not null)
 			{
-				MonoDraw.DrawTextureDepth(info, mActiveAnimation.GetCurrentTexture(), mPosition, mDrawLayer);
+				MonoDraw.DrawTexture(info, mDrawTexture, mPosition, null, Color.White, 0.0f, Vector2.Zero, 1.0f, mEffect, mDrawLayer);
 			}
 		}
 
@@ -109,9 +92,19 @@
 		/// <summary>
 		/// Load an active animation into an actor
 		/// </summary>
-		public void SetActiveAnimation(Animator activeAnimation)
+		public void SetDrawTexture(Texture2D drawTex)
 		{
-			mActiveAnimation = activeAnimation;
+			mDrawTexture = drawTex;
+		}
+
+
+
+		/// <summary>
+		/// Set reflection settings.
+		/// </summary>
+		public void SetSpriteEffect(SpriteEffects spriteEffect)
+		{
+			mEffect = spriteEffect;
 		}
 
 
@@ -131,9 +124,10 @@
 		/// </summary>
 		public void Reset()
 		{
-			mActiveAnimation = null;
+			mDrawTexture = null;
 			mPosition = Vector2.Zero;
 			mDrawLayer = mInitialDrawLayer;
+			mEffect = SpriteEffects.None;
 		}
 
 		#endregion rUtil

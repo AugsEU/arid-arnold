@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cinematic>
+
 	<actors>
 		<actor>
 			<name>BoilerMan</name>
@@ -14,12 +15,15 @@
 			<y>0</y>
 		</actor>
 		<actor>
-			<name>BoilerMan</name>
+			<name>Barbara</name>
 			<layer>Default</layer>
 			<x>0</x>
 			<y>0</y>
 		</actor>
 	</actors>
+
+
+
 	<commands>
 		<!-- Setup -->
 		<CC_DisplayLayout frames="0,12000">
@@ -28,21 +32,127 @@
 		<CC_DisplayLayout frames="0,12000">
 			<layout>BG/Cinematics/OpeningBG.mlo</layout>
 		</CC_DisplayLayout>
+
+		<CC_SetActorProps frames="0">
+			<actor>BoilerMan</actor>
+			<facing>left</facing>
+			<x>217</x>
+			<y>124</y>
+		</CC_SetActorProps>
+		<CC_IdleAnimActor frames="0,12000">
+			<actor>BoilerMan</actor>
+			<anim>NPC/BoilerMan/Idle.mia</anim>
+		</CC_IdleAnimActor>
+
+		<CC_SetActorProps frames="0,12000">
+			<actor>BossMan</actor>
+			<x>287</x>
+			<y>126</y>
+			<tex>NPC/BossMan/Idle1</tex>
+		</CC_SetActorProps>
+
+
+
 		<!-- Opening pan -->
 		<CC_BlackFade frames="0,60">
 			<type>BlackTo</type>
 		</CC_BlackFade>
 		<CC_CameraLerp frames = "0,360">
 			<start>
-				<x>-220</x>
+				<x>-218</x>
 				<y>120</y>
 				<zoom>4.0</zoom>
 			</start>
 			<end>
-				<x>-220</x>
+				<x>-218</x>
 				<y>-185</y>
 				<zoom>4.0</zoom>
 			</end>
 		</CC_CameraLerp>
+
+
+
+		<!-- Boiler: Boss we've got a problem -->
+		<CC_AnimActor frames="400,560">
+			<actor>BoilerMan</actor>
+			<anim>NPC/BoilerMan/TurnTalk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="400">
+			<text>NPC.BoilerMan.Problem</text>
+			<x>165</x>
+			<y>115</y>
+			<spike>80</spike>
+			<borderColor>160014</borderColor>
+			<fillColor>260B23A0</fillColor>
+		</CC_SpawnTextbox>
+		<CC_SetActorProps frames="500">
+			<actor>BossMan</actor>
+			<facing>left</facing>
+		</CC_SetActorProps>
+
+		<!-- Boss: What's the issue? -->
+		<CC_AnimActor frames="620,760">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/Talk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="620">
+			<text>NPC.BossMan.WhatUp</text>
+			<x>165</x>
+			<y>115</y>
+			<spike>120</spike>
+			<borderColor>3D41B5</borderColor>
+			<fillColor>0F102DA0</fillColor>
+			<flipSpike></flipSpike>
+		</CC_SpawnTextbox>
+
+		<!-- Boiler: Looks like we are out of water -->
+		<CC_AnimActor frames="820,980">
+			<actor>BoilerMan</actor>
+			<anim>NPC/BoilerMan/TurnTalk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="820">
+			<text>NPC.BoilerMan.NoWater</text>
+			<x>165</x>
+			<y>115</y>
+			<spike>80</spike>
+			<borderColor>160014</borderColor>
+			<fillColor>260B23A0</fillColor>
+		</CC_SpawnTextbox>
+
+		<!-- Boss: WHAAT?! -->
+		<CC_AnimActor frames="930,1200">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/JumpShout.max</anim>
+		</CC_AnimActor>
+		<CC_AnimActor frames="1200,1450">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/Talk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="1040">
+			<text>NPC.BossMan.WhatJiggery</text>
+			<x>165</x>
+			<y>115</y>
+			<spike>120</spike>
+			<borderColor>3D41B5</borderColor>
+			<fillColor>0F102DA0</fillColor>
+			<flipSpike></flipSpike>
+		</CC_SpawnTextbox>
+
+		<!-- Boiler: I don't know what to tell you -->
+		<CC_AnimActor frames="1600,1800">
+			<actor>BoilerMan</actor>
+			<anim>NPC/BoilerMan/TurnTalk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="1600">
+			<text>NPC.BoilerMan.LostForWords</text>
+			<x>165</x>
+			<y>115</y>
+			<spike>80</spike>
+			<borderColor>160014</borderColor>
+			<fillColor>260B23A0</fillColor>
+		</CC_SpawnTextbox>
+
+		<!-- Barbara: I can get you water -->
+		
 	</commands>
 </cinematic>

@@ -7,7 +7,7 @@
 	{
 		#region rMembers
 
-		MonoRange<int> mFrameSpan;
+		protected MonoRange<int> mFrameSpan;
 
 		#endregion rMembers
 

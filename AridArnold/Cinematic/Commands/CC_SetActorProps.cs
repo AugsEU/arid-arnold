@@ -3,25 +3,40 @@ namespace AridArnold
 {
 	internal class CC_SetActorProps : CC_ActorCommand
 	{
-		bool mHasAnim;
-		Animator mNewAnimation; 
+		bool mSetTex;
+		Texture2D mDrawTexture; 
 		Vector2? mPosition;
 		DrawLayer? mDrawLayer;
+		SpriteEffects? mEffects = null;
 
 
 		public CC_SetActorProps(XmlNode cmdNode, GameCinematic parent) : base(cmdNode, parent)
 		{
-			string animPath = MonoParse.GetString(cmdNode["anim"]);
+			string texturePath = MonoParse.GetString(cmdNode["tex"]);
 
-			mHasAnim = animPath.Length > 0;
+			mSetTex = texturePath.Length > 0;
 
-			if(mHasAnim)
+			if(mSetTex)
 			{
-				mNewAnimation = animPath == "null" ? null : MonoData.I.LoadAnimator(animPath);
+				mDrawTexture = texturePath == "null" ? null : MonoData.I.MonoGameLoad<Texture2D>(texturePath);
 			}
 
 			mPosition = cmdNode["x"] is not null ? MonoParse.GetVector(cmdNode) : null;
 			mDrawLayer = cmdNode["layer"] is not null ? MonoAlg.GetEnumFromString<DrawLayer>(MonoParse.GetString(cmdNode["layer"])) : null;
+
+			XmlNode facingNode = cmdNode["facing"];
+			
+			if (facingNode is not null)
+			{
+				if(MonoParse.GetString(facingNode) == "left")
+				{
+					mEffects = SpriteEffects.FlipHorizontally;
+				}
+				else
+				{
+					mEffects = SpriteEffects.None;
+				}
+			}
 		}
 
 		public override void Update(GameTime gameTime, int currentFrame)
@@ -36,9 +51,14 @@ namespace AridArnold
 				mTargetActor.SetDrawLayer(mDrawLayer.Value);
 			}
 
-			if(mHasAnim)
+			if(mSetTex)
 			{
-				mTargetActor.SetActiveAnimation(mNewAnimation);
+				mTargetActor.SetDrawTexture(mDrawTexture);
+			}
+
+			if(mEffects.HasValue)
+			{
+				mTargetActor.SetSpriteEffect(mEffects.Value);
 			}
 		}
 	}

@@ -7438,3 +7438,27 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/Cinematics/OpeningBG.png
 
+#begin NPC/BoilerMan/BottleFade.max
+/copy:NPC/BoilerMan/BottleFade.max
+
+#begin NPC/BoilerMan/Idle.mia
+/copy:NPC/BoilerMan/Idle.mia
+
+#begin NPC/BoilerMan/Rest.max
+/copy:NPC/BoilerMan/Rest.max
+
+#begin NPC/BoilerMan/SpannerWait.max
+/copy:NPC/BoilerMan/SpannerWait.max
+
+#begin NPC/BoilerMan/TightenBolt.max
+/copy:NPC/BoilerMan/TightenBolt.max
+
+#begin NPC/BoilerMan/TurnTalk.max
+/copy:NPC/BoilerMan/TurnTalk.max
+
+#begin NPC/BossMan/JumpShout.max
+/copy:NPC/BossMan/JumpShout.max
+
+#begin NPC/BossMan/Talk.max
+/copy:NPC/BossMan/Talk.max
+

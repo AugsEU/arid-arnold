@@ -61,7 +61,6 @@
 		}
 
 
-
 		/// <summary>
 		/// Parse draw layer from xml node. Default = Default Layer
 		/// </summary>
