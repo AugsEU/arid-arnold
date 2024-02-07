@@ -9,8 +9,8 @@
 		/// </summary>
 		public Barbara(Vector2 pos) : base(pos)
 		{
-			mStyle.mScrollSpeed = 0.9f;
-			mStyle.mFramesPerLetter = 14;
+			mStyle.mFillColor = new Color(42, 18, 35, 160);
+			mStyle.mBorderColor = new Color(115, 37, 198);
 		}
 
 

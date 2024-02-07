@@ -21,8 +21,11 @@
 		bool mHasKeysRequired;
 		int[] mDisplayDigits;
 		Texture2D[] mNumberTextures;
+		Animator mUnlockAnim;
 		Point mTileCoord;
 		LevelLockInfoBubble mHelpBubble;
+
+		bool mIsUnlocking;
 
 		#endregion rMembers
 
@@ -39,17 +42,17 @@
 		{
 			mHasKeysRequired = CollectableManager.I.GetCollected((UInt16)PermanentCollectable.Key) >= numRequired;
 			mDisplayDigits = MonoMath.GetDigits(numRequired);
+			// Can't display more than 3 digits
+			MonoDebug.Assert(mDisplayDigits.Length <= 3);
 
 			InfoBubble.BubbleStyle bubbleStyle = new InfoBubble.BubbleStyle();
 			bubbleStyle.mInnerColor = new Color(20, 20, 20, 150);
 			bubbleStyle.mBorderColor = new Color(150, 150, 150, 200);
 			mHelpBubble = new LevelLockInfoBubble(pos + new Vector2(8.0f, -4.0f), bubbleStyle);
 
-			// Can't display more than 3 digits
-			MonoDebug.Assert(mDisplayDigits.Length <= 3);
-
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
 			SetEnabled(!CollectableManager.I.HasSpecific(mTileCoord, GetCollectType()));
+			mIsUnlocking = false;
 		}
 
 		/// <summary>
@@ -70,6 +73,13 @@
 			mNumberTextures[7] = MonoData.I.MonoGameLoad<Texture2D>("Shared/KeyDoor/LockSeven");
 			mNumberTextures[8] = MonoData.I.MonoGameLoad<Texture2D>("Shared/KeyDoor/LockEight");
 			mNumberTextures[9] = MonoData.I.MonoGameLoad<Texture2D>("Shared/KeyDoor/LockNine");
+
+			mUnlockAnim = new Animator(Animator.PlayType.OneShot,
+																	("Shared/KeyDoor/LevelLockUnlock1", 0.14f),
+																	("Shared/KeyDoor/LevelLockUnlock2", 0.14f),
+																	("Shared/KeyDoor/LevelLockUnlock3", 0.14f),
+																	("Shared/KeyDoor/LevelLockUnlock4", 0.14f),
+																	("Shared/KeyDoor/LevelLockUnlock5", 0.14f));
 		}
 
 		#endregion rInitialisation
@@ -85,6 +95,18 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			if(mIsUnlocking)
+			{
+				mUnlockAnim.Update(gameTime);
+
+				if(!mUnlockAnim.IsPlaying())
+				{
+					SetEnabled(false);
+				}
+
+				return;
+			}
+
 			// Collision
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
@@ -129,9 +151,9 @@
 		/// </summary>
 		void UnlockDoor()
 		{
-			// To do: Something more complicated that looks cool.
-			SetEnabled(false);
 			CollectableManager.I.CollectPermanentItem(mTileCoord, GetCollectType());
+			mUnlockAnim.Play();
+			mIsUnlocking = true;
 		}
 
 		#endregion rUpdate
@@ -147,26 +169,33 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.Tile);
-
-			// Draw digits
-			Vector2 offset = new Vector2(0.0f, 2.0f);
-
-			switch (mDisplayDigits.Length)
+			if (mIsUnlocking)
 			{
-				case 1: offset.X = 6.0f; break;
-				case 2: offset.X = 3.0f; break;
-				case 3: offset.X = 1.0f; break;
+				MonoDraw.DrawTextureDepth(info, mUnlockAnim.GetCurrentTexture(), mPosition, DrawLayer.Tile);
 			}
-
-			for (int i = 0; i < mDisplayDigits.Length; i++)
+			else
 			{
-				MonoDraw.DrawTextureDepth(info, mNumberTextures[mDisplayDigits[i]], mPosition + offset, DrawLayer.Tile);
+				MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.Tile);
 
-				offset.X += 5.0f;
+				// Draw digits
+				Vector2 offset = new Vector2(0.0f, 2.0f);
+
+				switch (mDisplayDigits.Length)
+				{
+					case 1: offset.X = 6.0f; break;
+					case 2: offset.X = 3.0f; break;
+					case 3: offset.X = 1.0f; break;
+				}
+
+				for (int i = 0; i < mDisplayDigits.Length; i++)
+				{
+					MonoDraw.DrawTextureDepth(info, mNumberTextures[mDisplayDigits[i]], mPosition + offset, DrawLayer.Tile);
+
+					offset.X += 5.0f;
+				}
+
+				mHelpBubble.Draw(info);
 			}
-
-			mHelpBubble.Draw(info);
 		}
 
 		#endregion rDraw

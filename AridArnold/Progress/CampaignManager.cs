@@ -50,6 +50,8 @@ namespace AridArnold
 		HubReturnInfo? mHubReturnInfo;
 		Point mPrevDoorPos;
 
+		HashSet<UInt64> mSeenCinematics;
+
 		#endregion rMembers
 
 
@@ -68,6 +70,8 @@ namespace AridArnold
 
 			mLevelSequence = new List<Level>();
 			mGameplayState = GameplayState.HubWorld;
+
+			mSeenCinematics = new HashSet<UInt64>();
 
 			mHubReturnInfo = null;
 			mCurrLives = START_LIVES;
@@ -449,9 +453,11 @@ namespace AridArnold
 		{
 			foreach(CinematicTrigger cinematicTrigger in mMetaData.GetCinematicTriggers())
 			{
-				if(cinematicTrigger.DoesTrigger(CinematicTrigger.TriggerType.LevelEnterFirst))
+				UInt64 cineID = cinematicTrigger.GetTriggerID();
+				if (!mSeenCinematics.Contains(cineID) && cinematicTrigger.DoesTrigger(CinematicTrigger.TriggerType.LevelEnterFirst))
 				{
 					cinematicTrigger.PlayCinematic();
+					mSeenCinematics.Add(cineID);
 				}
 			}
 		}

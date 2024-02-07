@@ -7513,3 +7513,39 @@
 #begin Text/EN/NPC/BossMan/WhoDis.txt
 /copy:Text/EN/NPC/BossMan/WhoDis.txt
 
+#begin Text/EN/NPC/Barbara/SteamPlant.txt
+/copy:Text/EN/NPC/Barbara/SteamPlant.txt
+
+#begin Text/EN/NPC/BoilerMan/BossIdiot.txt
+/copy:Text/EN/NPC/BoilerMan/BossIdiot.txt
+
+#begin Shared/KeyDoor/LevelLockUnlock1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/KeyDoor/LevelLockUnlock1.png
+
+#begin Shared/KeyDoor/LevelLockUnlock2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/KeyDoor/LevelLockUnlock2.png
+
+#begin Shared/KeyDoor/LevelLockUnlock3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/KeyDoor/LevelLockUnlock3.png
+
+#begin Shared/KeyDoor/LevelLockUnlock4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/KeyDoor/LevelLockUnlock4.png
+
+#begin Shared/KeyDoor/LevelLockUnlock5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/KeyDoor/LevelLockUnlock5.png
+

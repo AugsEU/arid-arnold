@@ -21,11 +21,11 @@
 				ret.mWidth = 230.1f;
 				ret.mLeading = 8.0f;
 				ret.mKerning = 1.0f;
-				ret.mScrollSpeed = 0.6f;
-				ret.mFramesPerLetter = 20;
+				ret.mScrollSpeed = 0.75f;
+				ret.mFramesPerLetter = 16;
 				ret.mFillColor = new Color(0, 10, 20, 200);
 				ret.mBorderColor = new Color(56, 89, 122);
-				ret.mFlipSpike = true;
+				ret.mFlipSpike = false;
 				return ret;
 			}
 		}

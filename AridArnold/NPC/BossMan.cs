@@ -4,6 +4,8 @@
 	{
 		public BossMan(Vector2 pos) : base(pos)
 		{
+			mStyle.mFillColor = new Color(15, 16, 45, 160);
+			mStyle.mBorderColor = new Color(61, 65, 181);
 		}
 
 		public override void LoadContent()

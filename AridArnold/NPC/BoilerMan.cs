@@ -4,6 +4,8 @@
 	{
 		public BoilerMan(Vector2 pos) : base(pos)
 		{
+			mStyle.mFillColor = new Color(38, 11, 35, 160);
+			mStyle.mBorderColor = new Color(22, 0, 20);
 		}
 
 		public override void LoadContent()
