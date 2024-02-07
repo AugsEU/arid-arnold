@@ -7462,3 +7462,54 @@
 #begin NPC/BossMan/Talk.max
 /copy:NPC/BossMan/Talk.max
 
+#begin NPC/Barbara/Fall1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Barbara/Fall1.png
+
+#begin NPC/Barbara/Fall2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Barbara/Fall2.png
+
+#begin NPC/Barbara/Stand1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Barbara/Stand1.png
+
+#begin NPC/Barbara/StandTalk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Barbara/StandTalk1.png
+
+#begin NPC/BoilerMan/LookAround.max
+/copy:NPC/BoilerMan/LookAround.max
+
+#begin NPC/BossMan/LookAround.max
+/copy:NPC/BossMan/LookAround.max
+
+#begin NPC/BossMan/LookBack1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/BossMan/LookBack1.png
+
+#begin NPC/Barbara/Fall.max
+/copy:NPC/Barbara/Fall.max
+
+#begin NPC/Barbara/Land1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Barbara/Land1.png
+
+#begin NPC/Barbara/StandTalk.max
+/copy:NPC/Barbara/StandTalk.max
+
+#begin Text/EN/NPC/BossMan/WhoDis.txt
+/copy:Text/EN/NPC/BossMan/WhoDis.txt
+

@@ -39,6 +39,7 @@
 			mMouthTimer = new MonoTimer();
 
 			mStyle = SpeechBoxStyle.DefaultStyle;
+			mPosition.X += 4.0f;
 		}
 
 

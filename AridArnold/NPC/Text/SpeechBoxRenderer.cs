@@ -266,7 +266,7 @@
 			MonoDraw.DrawLine(info, BR, TR, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 			MonoDraw.DrawLine(info, TR, TL, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 
-			if (!IsStopped())
+			if (!IsStopped() && mSpikeOffset > 0.0f)
 			{
 				SpriteEffects spikeEffects = mStyle.mFlipSpike ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 				Vector2 spikePos = new Vector2(rectPosition.X + mSpikeOffset, rectPosition.Y + height);

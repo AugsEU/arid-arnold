@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.4">NPC/BoilerMan/Idle3</texture>
+	<texture time="0.4">NPC/BoilerMan/TurnTalk2</texture>
+</animation>

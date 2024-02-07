@@ -11,7 +11,7 @@ namespace AridArnold
 
 
 #if DEBUG
-		const int DEBUG_FRAME_SKIP = 1600;
+		const int DEBUG_FRAME_SKIP = 0;
 #endif
 
 	#endregion rConstant
@@ -252,7 +252,7 @@ namespace AridArnold
 		{
 			int frameNum = GetFrameFromElapsedTime();
 			
-			MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(160.0f, 20.0f));
+			//MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(260.0f, 420.0f));
 			
 			foreach (CinematicCommand command in mCommands)
 			{
@@ -281,7 +281,7 @@ namespace AridArnold
 		/// <summary>
 		/// Reset all actors and such
 		/// </summary>
-		void FullReset()
+		public void FullReset()
 		{
 			Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 			screenCam.Reset();

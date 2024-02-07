@@ -20,16 +20,22 @@
 			<x>0</x>
 			<y>0</y>
 		</actor>
+		<actor>
+			<name>Arnold</name>
+			<layer>Default</layer>
+			<x>0</x>
+			<y>0</y>
+		</actor>
 	</actors>
 
 
 
 	<commands>
 		<!-- Setup -->
-		<CC_DisplayLayout frames="0,12000">
+		<CC_DisplayLayout frames="0,8060">
 			<layout>BG/SteamPlant/SteamPlant.mlo</layout>
 		</CC_DisplayLayout>
-		<CC_DisplayLayout frames="0,12000">
+		<CC_DisplayLayout frames="0,8060">
 			<layout>BG/Cinematics/OpeningBG.mlo</layout>
 		</CC_DisplayLayout>
 
@@ -39,12 +45,12 @@
 			<x>217</x>
 			<y>124</y>
 		</CC_SetActorProps>
-		<CC_IdleAnimActor frames="0,12000">
+		<CC_IdleAnimActor frames="0,2250">
 			<actor>BoilerMan</actor>
 			<anim>NPC/BoilerMan/Idle.mia</anim>
 		</CC_IdleAnimActor>
 
-		<CC_SetActorProps frames="0,12000">
+		<CC_SetActorProps frames="0,8060">
 			<actor>BossMan</actor>
 			<x>287</x>
 			<y>126</y>
@@ -152,7 +158,193 @@
 			<fillColor>260B23A0</fillColor>
 		</CC_SpawnTextbox>
 
-		<!-- Barbara: I can get you water -->
-		
+		<!-- Strange noise, both look around -->
+		<CC_AnimActor frames="1900,2100">
+			<actor>BoilerMan</actor>
+			<anim>NPC/BoilerMan/LookAround.max</anim>
+		</CC_AnimActor>
+		<CC_AnimActor frames="1900,2250">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/LookAround.max</anim>
+		</CC_AnimActor>
+		<CC_SetActorProps frames="2250">
+			<actor>BossMan</actor>
+			<facing>right</facing>
+		</CC_SetActorProps>
+		<CC_SetActorProps frames="2250">
+			<actor>BoilerMan</actor>
+			<tex>NPC/BoilerMan/TurnTalk2</tex>
+		</CC_SetActorProps>
+		<CC_CameraLerp frames = "2000,2200">
+			<start>
+				<x>-218</x>
+				<y>-185</y>
+				<zoom>4.0</zoom>
+			</start>
+			<end>
+				<x>-150</x>
+				<y>-185</y>
+				<zoom>4.0</zoom>
+			</end>
+		</CC_CameraLerp>
+
+		<!-- Barbara flies down -->
+		<CC_AnimActor frames="2100,2340">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/Fall.max</anim>
+		</CC_AnimActor>
+		<CC_ActorLeafFall frames="2100">
+			<actor>Barbara</actor>
+			<x>360</x>
+			<y>0</y>
+			<yStop>127</yStop>
+		</CC_ActorLeafFall>
+		<CC_SetActorProps frames="2340">
+			<actor>Barbara</actor>
+			<tex>NPC/Barbara/Land1</tex>
+			<facing>left</facing>
+		</CC_SetActorProps>
+
+		<!-- Barbara lands -->
+		<CC_SetActorProps frames="2360,8060">
+			<actor>Barbara</actor>
+			<tex>NPC/Barbara/Stand1</tex>
+			<facing>left</facing>
+		</CC_SetActorProps>
+
+
+		<!-- Barbara: I can get you your water -->
+		<CC_AnimActor frames="2400,2500">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/StandTalk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="2400">
+			<text>NPC.Barbara.Opening.WaterLine</text>
+			<x>225</x>
+			<y>115</y>
+			<spike>160</spike>
+			<borderColor>7325C6</borderColor>
+			<fillColor>2A1223A0</fillColor>
+			<flipSpike></flipSpike>
+		</CC_SpawnTextbox>
+
+		<!-- Boss: Who are you? -->
+		<CC_AnimActor frames="2600,2700">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/Talk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="2600">
+			<text>NPC.BossMan.WhoDis</text>
+			<x>220</x>
+			<y>115</y>
+			<spike>96</spike>
+			<borderColor>3D41B5</borderColor>
+			<fillColor>0F102DA0</fillColor>
+		</CC_SpawnTextbox>
+
+		<!-- Barbara: Intro -->
+		<CC_AnimActor frames="2800,3600">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/StandTalk.max</anim>
+		</CC_AnimActor>
+		<CC_AnimActor frames="3700,4720">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/StandTalk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="2800">
+			<text>NPC.Barbara.Opening.FountainSpeil</text>
+			<x>225</x>
+			<y>115</y>
+			<spike>160</spike>
+			<borderColor>7325C6</borderColor>
+			<fillColor>2A1223A0</fillColor>
+			<flipSpike></flipSpike>
+		</CC_SpawnTextbox>
+
+		<!-- Boss: Summon the man -->
+		<CC_AnimActor frames="4750,4774">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/JumpShout.max</anim>
+		</CC_AnimActor>
+		<CC_AnimActor frames="4774,5700">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/Talk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="4765">
+			<text>NPC.BossMan.Summon</text>
+			<x>220</x>
+			<y>115</y>
+			<spike>96</spike>
+			<borderColor>3D41B5</borderColor>
+			<fillColor>0F102DA0</fillColor>
+		</CC_SpawnTextbox>
+
+		<!-- Fade to black and back -->
+		<CC_BlackFade frames="5900,6050">
+			<type>ToBlackTo</type>
+		</CC_BlackFade>
+		<CC_CameraSet frames="5975">
+			<x>-100</x>
+			<y>120</y>
+			<zoom>4.0</zoom>
+		</CC_CameraSet>
+		<CC_SetActorProps frames="5975,8060">
+			<actor>BossMan</actor>
+			<facing>right</facing>
+			<x>314</x>
+			<y>414</y>
+		</CC_SetActorProps>
+		<CC_SetActorProps frames="5975,8060">
+			<actor>Barbara</actor>
+			<facing>left</facing>
+			<x>410</x>
+			<y>415</y>
+		</CC_SetActorProps>
+		<CC_SetActorProps frames="5975">
+			<actor>Arnold</actor>
+			<facing>right</facing>
+			<tex>Arnold/ArnoldStand</tex>
+			<x>365</x>
+			<y>449</y>
+		</CC_SetActorProps>
+
+		<!-- Arnold Summoning -->
+		<CC_AnimActor frames="6100,6150">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/StandTalk.max</anim>
+		</CC_AnimActor>
+		<CC_AnimActor frames="6250,7870">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/StandTalk.max</anim>
+		</CC_AnimActor>
+		<CC_SpawnTextbox frames="6100">
+			<text>NPC.Barbara.Opening.ArnoldBirth</text>
+			<x>275</x>
+			<y>405</y>
+			<spike>135</spike>
+			<borderColor>7325C6</borderColor>
+			<fillColor>2A1223A0</fillColor>
+			<flipSpike></flipSpike>
+		</CC_SpawnTextbox>
+		<CC_LerpActorPos frames="6250,6500">
+			<actor>Arnold</actor>
+			<start>
+				<x>365</x>
+				<y>449</y>
+			</start>
+			<end>
+				<x>365</x>
+				<y>434</y>
+			</end>
+		</CC_LerpActorPos>
+		<CC_AnimActor frames="6260,8000">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/JumpShout.max</anim>
+		</CC_AnimActor>
+
+		<CC_BlackFade frames="8000,8060">
+			<type>ToBlack</type>
+		</CC_BlackFade>
+
 	</commands>
 </cinematic>

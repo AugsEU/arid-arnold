@@ -11,13 +11,11 @@
 
 		FadeCmdType mType;
 		ScreenStars mToBlack;
-		ScreenStars mBlackTo;
 
 		public CC_BlackFade(XmlNode cmdNode, GameCinematic parent) : base(cmdNode, parent)
 		{
 			mType = ReadFadeType(cmdNode["type"].InnerText);
 			mToBlack = new ScreenStars(10.0f, 0.0f, false);
-
 		}
 
 		FadeCmdType ReadFadeType(string fadeStr)
@@ -29,7 +27,7 @@
 				case "blackto":
 					return FadeCmdType.BlackTo;
 				case "toblackto":
-					return FadeCmdType.BlackTo;
+					return FadeCmdType.ToBlackTo;
 			}
 
 			throw new NotImplementedException();
@@ -48,7 +46,7 @@
 					t = 1.0f - t;
 					break;
 				case FadeCmdType.ToBlackTo:
-					t = Math.Min(1.3f - Math.Abs(2.6f * t - 1.3f), 1.0f);
+					t = Math.Min(1.3f - Math.Abs(2.6f * t - 1.3f), 1.0f); // Plot this on desmos to see what is going on
 					break;
 			}
 
