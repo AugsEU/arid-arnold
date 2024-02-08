@@ -7549,3 +7549,12 @@
 /processorParam:PremultiplyAlpha=False
 /build:Shared/KeyDoor/LevelLockUnlock5.png
 
+#begin BG/SteamPlant/BG2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/SteamPlant/BG2.png
+
+#begin BG/SteamPlant/SteamPlantLeft.mlo
+/copy:BG/SteamPlant/SteamPlantLeft.mlo
+

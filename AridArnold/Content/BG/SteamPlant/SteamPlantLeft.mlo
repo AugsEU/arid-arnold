@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>BG/SteamPlant/BG2</texture>
+	</element>
+	<element type="IdleAnim">
+		<x>62.0</x>
+		<y>25.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/DialIdle.mia</anim>
+	</element>
+	<element type="IdleAnim">
+		<x>215.0</x>
+		<y>133.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/ValveIdle.mia</anim>
+	</element>
+	<element type="IdleAnim">
+		<x>375.0</x>
+		<y>356.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/ValveIdle.mia</anim>
+	</element>
+	<element type="IdleAnim">
+		<x>409.0</x>
+		<y>318.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/SteamIdle.mia</anim>
+	</element>
+</root>
