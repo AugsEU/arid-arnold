@@ -99,16 +99,27 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
+			Color arrowColors = mTheme.GetExitColor();
 			for (int x = 0; x < GameScreen.GAME_AREA_WIDTH; x += mTransitionArrows.Height)
 			{
 				if (mTopID != 0)
 				{
-					MonoDraw.DrawTexture(info, mTransitionArrows, new Vector2(x, mTransitionArrows.Width), MathF.PI * 1.5f);
+					MonoDraw.DrawTexture(info, mTransitionArrows,
+						new Vector2(x, mTransitionArrows.Width),
+						null,
+						arrowColors, 
+						MathF.PI * 1.5f, Vector2.Zero,
+						1.0f, SpriteEffects.None, DrawLayer.Default);
 				}
 
 				if (mBottomID != 0)
 				{
-					MonoDraw.DrawTexture(info, mTransitionArrows, new Vector2(x + mTransitionArrows.Height, GameScreen.GAME_AREA_HEIGHT - mTransitionArrows.Width), MathF.PI * 0.5f);
+					MonoDraw.DrawTexture(info, mTransitionArrows,
+						new Vector2(x + mTransitionArrows.Height, GameScreen.GAME_AREA_HEIGHT - mTransitionArrows.Width),
+						null,
+						arrowColors,
+						MathF.PI * 0.5f, Vector2.Zero,
+						1.0f, SpriteEffects.None, DrawLayer.Default);
 				}
 			}
 
@@ -116,12 +127,22 @@
 			{
 				if (mRightID != 0)
 				{
-					MonoDraw.DrawTexture(info, mTransitionArrows, new Vector2(GameScreen.GAME_AREA_WIDTH - mTransitionArrows.Width, y), 0.0f);
+					MonoDraw.DrawTexture(info, mTransitionArrows,
+						new Vector2(GameScreen.GAME_AREA_WIDTH - mTransitionArrows.Width, y),
+						null,
+						arrowColors,
+						0.0f, Vector2.Zero,
+						1.0f, SpriteEffects.None, DrawLayer.Default);
 				}
 
 				if (mLeftID != 0)
 				{
-					MonoDraw.DrawTexture(info, mTransitionArrows, new Vector2(mTransitionArrows.Width, y + mTransitionArrows.Height), MathF.PI);
+					MonoDraw.DrawTexture(info, mTransitionArrows,
+						new Vector2(mTransitionArrows.Width, y + mTransitionArrows.Height),
+						null,
+						arrowColors,
+						MathF.PI, Vector2.Zero,
+						1.0f, SpriteEffects.None, DrawLayer.Default);
 				}
 			}
 

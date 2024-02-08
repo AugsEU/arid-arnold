@@ -23,7 +23,7 @@
 
 		int mID;
 		AuxData mAuxData;
-		LevelTheme mTheme;
+		protected LevelTheme mTheme;
 		string mLayoutPath;
 		Layout mBGLayout;
 		string mImagePath;

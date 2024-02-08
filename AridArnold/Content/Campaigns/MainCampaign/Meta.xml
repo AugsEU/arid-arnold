@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <campaign id="OriginalCampaign">
 	<name>Original Campaign</name>
-	<start>0101</start>
+	<start>0104</start>
 	<cinematics>
 		<cinematicTrigger type="LevelEnterFirst">
 			<level>0104</level>

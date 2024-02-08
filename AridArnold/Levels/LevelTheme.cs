@@ -5,6 +5,7 @@
 		#region rMembers
 
 		List<(string, string)> mRemappedTextures;
+		Color mHubArrowColours;
 
 		#endregion rMembers
 
@@ -34,6 +35,8 @@
 
 				mRemappedTextures.Add((from, to));
 			}
+
+			mHubArrowColours = MonoParse.GetColor(rootNode["exitColour"], Color.Black);
 		}
 
 
@@ -63,5 +66,21 @@
 		}
 
 		#endregion rIntialisation
+
+
+
+
+
+		#region rGet
+
+		/// <summary>
+		/// Get colour for exit arrows
+		/// </summary>
+		public Color GetExitColor()
+		{
+			return mHubArrowColours;
+		}
+
+		#endregion rGet
 	}
 }

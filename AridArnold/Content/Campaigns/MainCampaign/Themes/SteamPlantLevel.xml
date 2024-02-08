@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Steam Plant</name>
+	<exitColour>102951</exitColour>
 	<path from="Wall">Steel</path>
 	<path from="OtherWorldWall">../Library/Wood</path>
 	<path from="Platform">Girder</path>
