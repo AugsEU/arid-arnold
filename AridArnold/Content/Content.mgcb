@@ -7558,3 +7558,15 @@
 #begin BG/SteamPlant/SteamPlantLeft.mlo
 /copy:BG/SteamPlant/SteamPlantLeft.mlo
 
+#begin BG/Library/BigCog.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Library/BigCog.png
+
+#begin BG/Library/Rotator.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Library/Rotator.png
+

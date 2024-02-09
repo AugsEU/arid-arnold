@@ -6,4 +6,17 @@
 		<depth>Background</depth>
 		<texture>BG/Library/BG</texture>
 	</element>
+	<element type="levelledTexture">
+		<x>213.0</x>
+		<y>221.0</y>
+		<depth>BackgroundElement</depth>
+		<texture>BG/Library/BigCog</texture>
+	</element>
+	<element type="rotatorTexture">
+		<x>303.0</x>
+		<y>267.0</y>
+		<depth>BackgroundElement</depth>
+		<mult>2.0</mult>
+		<texture>BG/Library/Rotator</texture>
+	</element>
 </root>
