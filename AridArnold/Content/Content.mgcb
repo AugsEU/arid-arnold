@@ -7570,3 +7570,27 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/Library/Rotator.png
 
+#begin NPC/Booker/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Booker/Idle1.png
+
+#begin NPC/Booker/Idle2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Booker/Idle2.png
+
+#begin NPC/Booker/Idle3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Booker/Idle3.png
+
+#begin Text/EN/NPC/Booker/FountainWater1.txt
+/copy:Text/EN/NPC/Booker/FountainWater1.txt
+
+#begin Text/EN/NPC/Booker/FountainWater2.txt
+/copy:Text/EN/NPC/Booker/FountainWater2.txt
+

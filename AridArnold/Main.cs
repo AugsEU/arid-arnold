@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Diagnostics;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Program top level
@@ -126,6 +128,9 @@
 		/// <param name="gameTime"></param>
 		protected override void Update(GameTime gameTime)
 		{
+			Stopwatch st = new Stopwatch();
+			st.Start();
+
 			gameTime.ElapsedGameTime = TargetElapsedTime;
 
 			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
@@ -160,6 +165,11 @@
 			}
 
 			base.Update(gameTime);
+
+			// Code
+			st.Stop();
+			double mill = (1000.0 * st.ElapsedTicks / (double)Stopwatch.Frequency);
+			MonoDebug.DLog($"Update {mill}ms");
 		}
 
 

@@ -387,6 +387,9 @@
 				case EntityData.EntityClass.kBossMan:
 					entity = new BossMan(worldPosition);
 					break;
+				case EntityData.EntityClass.kBooker:
+					entity = new Booker(worldPosition);
+					break;
 
 				// Utility
 				case EntityData.EntityClass.kArnoldSpawner:

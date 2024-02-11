@@ -20,9 +20,10 @@
 		#region rMembers
 
 		bool mTalking;
-		protected IdleAnimator mIdleAnimation;
-		protected Texture2D mTalkTexture;
-		protected Texture2D mAngryTexture;
+		IdleAnimator mIdleAnimation;
+		Texture2D mTalkTexture;
+		Texture2D mAngryTexture;
+		Texture2D mMouthClosedTexture;
 
 		MonoRandom mStoryRandom;
 
@@ -70,6 +71,7 @@
 			//Talk textures.
 			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/GrillVogel/Talk1");
 			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/GrillVogel/Angry1");
+			mMouthClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/GrillVogel/Idle1");
 
 			base.LoadContent();
 		}
@@ -186,6 +188,16 @@
 		protected override Texture2D GetExclaimTalkTexture()
 		{
 			return mAngryTexture;
+		}
+
+
+
+		/// <summary>
+		/// Get mouth closed texture
+		/// </summary>
+		protected override Texture2D GetMouthClosedTexture()
+		{
+			return mMouthClosedTexture;
 		}
 
 		#endregion rDraw

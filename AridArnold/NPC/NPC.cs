@@ -161,9 +161,11 @@
 		{
 			SmartTextBlock.TextMood textMood = GetMood();
 
-			Texture2D textureToDraw = GetIdleTexture();
+			Texture2D idleTexture = GetIdleTexture();
+			Texture2D textureToDraw = idleTexture;
 
-			bool mouthOpen = IsTalking() && MonoText.IsVowel(GetCurrentBlock().GetCurrentChar());
+			bool isTalking = IsTalking();
+			bool mouthOpen = isTalking && MonoText.IsVowel(GetCurrentBlock().GetCurrentChar());
 
 			if (mouthOpen)
 			{
@@ -187,6 +189,15 @@
 						break;
 				}
 			}
+			else if(isTalking)
+			{
+				textureToDraw = GetMouthClosedTexture();
+			}
+
+			if(textureToDraw == null)
+			{
+				textureToDraw = idleTexture;
+			}
 
 			return textureToDraw;
 		}
@@ -197,6 +208,7 @@
 		protected abstract Texture2D GetNormalTalkTexture();
 		protected abstract Texture2D GetExclaimTalkTexture();
 		protected virtual Texture2D GetQuestionTalkTexture() { return GetNormalTalkTexture(); }
+		protected abstract Texture2D GetMouthClosedTexture();
 
 		#endregion rDraw
 

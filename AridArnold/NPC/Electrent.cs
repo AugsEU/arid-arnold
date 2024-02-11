@@ -49,6 +49,7 @@
 			//Talk textures.
 			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Talk1");
 			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Angry1");
+			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Idle1");
 
 			base.LoadContent();
 		}

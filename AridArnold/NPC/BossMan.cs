@@ -19,6 +19,7 @@
 			//Talk textures.
 			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/BossMan/Talk1");
 			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/BossMan/Angry1");
+			mMouthClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/BossMan/Idle1");
 
 			base.LoadContent();
 		}

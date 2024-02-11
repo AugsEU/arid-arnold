@@ -21,6 +21,7 @@
 		protected IdleAnimator mIdleAnimation;
 		protected Texture2D mTalkTexture;
 		protected Texture2D mAngryTexture;
+		protected Texture2D mMouthClosedTexture;
 
 		protected string mTalkText;
 		protected string mHeckleText;
@@ -134,6 +135,16 @@
 		protected override Texture2D GetExclaimTalkTexture()
 		{
 			return mAngryTexture;
+		}
+
+
+
+		/// <summary>
+		/// Get texture when mouth is closed.
+		/// </summary>
+		protected override Texture2D GetMouthClosedTexture()
+		{
+			return mMouthClosedTexture;
 		}
 
 		#endregion rDraw
