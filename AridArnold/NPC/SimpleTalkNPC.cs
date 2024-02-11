@@ -189,6 +189,11 @@
 		/// </summary>
 		protected void HecklePlayer()
 		{
+			if(mHeckleText == "")
+			{
+				GetCurrentBlock().Stop();
+				return;
+			}
 			AddDialogBox(mHeckleText);
 		}
 

@@ -238,7 +238,6 @@
 
 			bool jump = InputManager.I.KeyHeld(AridArnoldKeys.ArnoldJump);
 			bool fallthrough = InputManager.I.KeyHeld(mDownKey);
-
 			if (jump && fallthrough)
 			{
 				if (!(mOnGround && mWalkDirection != WalkDirection.None))
@@ -257,7 +256,8 @@
 			}
 			else if (IsGroundedSince(COYOTE_TIME))
 			{
-				if (jump && mVelocity.Y > 0.0f)
+				bool goingDown = Vector2.Dot(mVelocity, GravityVecNorm()) > 0.0f;
+				if (jump && goingDown)
 				{
 					float originalJumpSpeed = mJumpSpeed;
 					mJumpSpeed += 1.01f;
@@ -265,7 +265,7 @@
 					mJumpSpeed = originalJumpSpeed;
 				}
 
-				if(IsGroundedSince(ROSS_TIME) && mWalkDirection == WalkDirection.None)
+				if(HasJumpedInTheLast(ROSS_TIME) && mWalkDirection == WalkDirection.None)
 				{
 					HandleWalkInput();
 				}

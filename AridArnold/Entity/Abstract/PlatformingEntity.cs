@@ -36,6 +36,7 @@
 		protected bool mUseRealPhysics;
 
 		int mUpdatesSinceGrounded;
+		int mUpdatesSinceJump;
 
 		private CardinalDirection mGravityDirection;
 		protected WalkDirection mWalkDirection;
@@ -78,6 +79,7 @@
 			mGravityDirection = CardinalDirection.Down;
 
 			mUpdatesSinceGrounded = int.MaxValue;
+			mUpdatesSinceJump = int.MaxValue;
 
 			// Timers
 			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
@@ -119,13 +121,18 @@
 				SetSideVelocityFromDirection(mWalkDirection);
 			}
 
-			if (mOnGround)
+			if (mOnGround && mUpdatesSinceJump > 4)
 			{
 				mUpdatesSinceGrounded = 0;
 			}
 			else if (mUpdatesSinceGrounded != int.MaxValue)
 			{
 				mUpdatesSinceGrounded++;
+			}
+
+			if (mUpdatesSinceJump != int.MaxValue)
+			{
+				mUpdatesSinceJump++;
 			}
 
 			// Ice
@@ -608,6 +615,7 @@
 			}
 
 			mUpdatesSinceGrounded = int.MaxValue;
+			mUpdatesSinceJump = 0;
 		}
 
 
@@ -620,6 +628,26 @@
 			return mUpdatesSinceGrounded < frames;
 		}
 
+
+
+		/// <summary>
+		/// Have we jumped in the last x frames?
+		/// </summary>
+		public bool HasJumpedInTheLast(int frames)
+		{
+			return mUpdatesSinceJump < frames;
+		}
+
+
+
+		/// <summary>
+		/// Undo jump helper timers
+		/// </summary>
+		public void ResetAllJumpHelpers()
+		{
+			mUpdatesSinceJump = int.MaxValue;
+			mUpdatesSinceGrounded = int.MaxValue;
+		}
 
 
 		/// <summary>
