@@ -9,7 +9,8 @@
 
 		const double START_TIME = 500.0;
 		const double USE_ITEM_TIME = 600.0;
-		const int COYOTE_TIME = 12;
+		const int COYOTE_TIME = 32;
+		const int ROSS_TIME = 20;
 
 
 		const float ARNOLD_WALK_SPEED = 9.0f;
@@ -258,7 +259,15 @@
 			{
 				if (jump && mVelocity.Y > 0.0f)
 				{
+					float originalJumpSpeed = mJumpSpeed;
+					mJumpSpeed += 1.01f;
 					Jump();
+					mJumpSpeed = originalJumpSpeed;
+				}
+
+				if(IsGroundedSince(ROSS_TIME) && mWalkDirection == WalkDirection.None)
+				{
+					HandleWalkInput();
 				}
 			}
 
