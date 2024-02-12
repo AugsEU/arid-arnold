@@ -31,7 +31,7 @@
 		{
 			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm) || InputManager.I.KeyPressed(AridArnoldKeys.ArnoldJump))
 			{
-				ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
+				ScreenManager.I.ActivateScreen(ScreenType.Game);
 			}
 		}
 
@@ -51,6 +51,7 @@
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
 			SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
+			SpriteFont pixelSmallFont = FontManager.I.GetFont("Pixica-12");
 
 			Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
 
@@ -61,6 +62,7 @@
 			StartScreenSpriteBatch(info);
 
 			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "GAME OVER");
+			MonoDraw.DrawStringCentred(info, pixelSmallFont, centre + new Vector2(0.0f, 30.0f), Color.Yellow, "-Press Enter-");
 
 			EndScreenSpriteBatch(info);
 

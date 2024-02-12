@@ -103,7 +103,7 @@ namespace AridArnold
 
 			// Temp
 			CampaignManager.I.LoadCampaign("MainCampaign");
-			ScreenManager.I.ActivateScreen(ScreenType.Game);
+			ScreenManager.I.ActivateScreen(ScreenType.Title);
 		}
 
 		/// <summary>

@@ -22,5 +22,18 @@
 		{
 			EventManager.I.SendEvent(EventType.KeyCollect, new EArgs(this));
 		}
+
+		public override void OnEntityIntersect(Entity entity)
+		{
+			if (entity is Arnold)
+			{
+				if (mIsGhost == false)
+				{
+					CollectableManager.I.CollectTentativeItem(mTileMapIndex, GetItemType());
+				}
+				mEnabled = false;
+				OnCollect();
+			}
+		}
 	}
 }

@@ -3334,3 +3334,9 @@
 #begin Text/EN/NPC/Booker/ThanksForPlaying.txt
 /copy:Text/EN/NPC/Booker/ThanksForPlaying.txt
 
+#begin UI/Title.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/Title.png
+

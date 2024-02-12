@@ -223,7 +223,7 @@
 
 		protected bool HasFallIn(int frames)
 		{
-			return frames < mUpdatesSinceFallthrough;
+			return frames > mUpdatesSinceFallthrough;
 		}
 
 	}

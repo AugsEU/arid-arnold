@@ -12,7 +12,7 @@ namespace AridArnold
 	{
 		#region rConstants
 
-		const int START_LIVES = 3;
+		const int START_LIVES = 5;
 		public const int MAX_LIVES = 7;
 
 		#endregion rConstants

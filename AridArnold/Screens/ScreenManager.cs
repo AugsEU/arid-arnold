@@ -39,6 +39,7 @@
 		{
 			mScreens.Clear();
 
+			LoadScreen(ScreenType.Title, new TitleScreen(deviceManager));
 			LoadScreen(ScreenType.Game, new GameScreen(deviceManager));
 			LoadScreen(ScreenType.GameOver, new GameOverScreen(deviceManager));
 			LoadScreen(ScreenType.LevelStart, new StartLevelScreen(deviceManager));

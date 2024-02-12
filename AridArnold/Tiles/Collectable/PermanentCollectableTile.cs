@@ -18,7 +18,7 @@ namespace AridArnold
 
 		protected virtual byte GetImplByte() { return 0; }
 
-		private UInt16 GetItemType()
+		protected UInt16 GetItemType()
 		{
 			byte item = (byte)GetCollectableType();
 			byte impl = GetImplByte();

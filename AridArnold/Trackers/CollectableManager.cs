@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Collections.Generic;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Types of objects we can collect that are gone at the end of the level
@@ -33,6 +35,7 @@
 		// Note: UInt16 == PermaenetCollectable type but C# has no type def >:| very angry bad language why
 		Dictionary<UInt16, uint> mPermanentCollectables = new Dictionary<UInt16, uint>();
 		HashSet<UInt64> mSpecificCollected = new HashSet<UInt64>();
+		List<(UInt64, UInt16)> mTentativeCollections = new List<(UInt64, UInt16)>();
 
 		#endregion rMembers
 
@@ -78,6 +81,55 @@
 			}
 
 			mSpecificCollected.Add(CalculateSpecificID(pos, type));
+		}
+
+
+
+		/// <summary>
+		/// Collect an item but not for sure
+		/// </summary>
+		public void CollectTentativeItem(Point pos, UInt16 type)
+		{
+			mTentativeCollections.Add((CalculateSpecificID(pos, type), type));
+
+			if (mPermanentCollectables.TryGetValue(type, out uint currentCount))
+			{
+				mPermanentCollectables[type] = currentCount + 1;
+			}
+			else
+			{
+				mPermanentCollectables.Add(type, 1);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Confirm tentative items are for real.
+		/// </summary>
+		public void ConfirmTentativeItems()
+		{
+			foreach ((UInt64, UInt16) entry in mTentativeCollections)
+			{
+				mSpecificCollected.Add(entry.Item1);
+			}
+
+			mTentativeCollections.Clear();
+		}
+
+
+
+		/// <summary>
+		/// Reject tentative items.
+		/// </summary>
+		public void RejectTentativeItems()
+		{
+			foreach ((UInt64, UInt16) entry in mTentativeCollections)
+			{
+				mPermanentCollectables[entry.Item2] -= 1;
+			}
+
+			mTentativeCollections.Clear();
 		}
 
 

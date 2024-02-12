@@ -40,6 +40,7 @@
 		{
 			// To do: make this more complicated
 			ReturnToHubLoad();
+			CollectableManager.I.ConfirmTentativeItems();
 			CampaignManager.I.EndSequence(true);
 		}
 	}
@@ -55,6 +56,8 @@
 		{
 			// To do: make this more complicated
 			ReturnToHubLoad();
+			ScreenManager.I.ActivateScreen(ScreenType.GameOver);
+			CollectableManager.I.RejectTentativeItems();
 			CampaignManager.I.EndSequence(false);
 		}
 	}
