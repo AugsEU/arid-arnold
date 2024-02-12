@@ -25,6 +25,8 @@
 		protected Vector2 mVelocity;
 		protected bool mFallthrough;
 
+		int mUpdatesSinceFallthrough;
+
 		#endregion rMembers
 
 
@@ -59,6 +61,7 @@
 			UpdateCollision(gameTime);
 
 			mFallthrough = false;
+			mUpdatesSinceFallthrough = int.MaxValue;
 
 			base.OrderedUpdate(gameTime);
 		}
@@ -70,6 +73,10 @@
 		/// <param name="gameTime"></param>
 		private void UpdateCollision(GameTime gameTime)
 		{
+			if (mUpdatesSinceFallthrough != int.MaxValue)
+			{
+				mUpdatesSinceFallthrough++;
+			}
 			// List of all collisions that actually happened. A collision can be detected but
 			// never actually happen. E.g. if we were going to collide with a wall, but the ground
 			// is in the way.
@@ -169,6 +176,7 @@
 		protected void FallThroughPlatforms()
 		{
 			mFallthrough = true;
+			mUpdatesSinceFallthrough = 0;
 		}
 
 
@@ -212,6 +220,11 @@
 		}
 
 		#endregion rUtility
+
+		protected bool HasFallIn(int frames)
+		{
+			return frames < mUpdatesSinceFallthrough;
+		}
 
 	}
 }

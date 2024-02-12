@@ -254,7 +254,7 @@
 
 				HandleWalkInput();
 			}
-			else if (IsGroundedSince(COYOTE_TIME))
+			else if (IsGroundedSince(COYOTE_TIME) && !HasFallIn(COYOTE_TIME))
 			{
 				bool goingDown = Vector2.Dot(mVelocity, GravityVecNorm()) > 0.0f;
 				if (jump && goingDown)
