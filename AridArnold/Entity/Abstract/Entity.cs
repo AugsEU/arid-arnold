@@ -341,26 +341,8 @@
 				case EntityData.EntityClass.kTrundle:
 					entity = new Trundle(worldPosition);
 					break;
-				case EntityData.EntityClass.kRoboto:
-					entity = new Roboto(worldPosition);
-					break;
-				case EntityData.EntityClass.kFutronGun:
-					entity = new FutronGun(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
-					break;
-				case EntityData.EntityClass.kFutronRocket:
-					entity = new FutronRocket(worldPosition, data.mFloatParams[0], data.mFloatParams[1], data.mFloatParams[2], data.mFloatParams[3]);
-					break;
 				case EntityData.EntityClass.kFarry:
 					entity = new FallingFarry(worldPosition);
-					break;
-				case EntityData.EntityClass.kMamal:
-					entity = new Mamal(worldPosition);
-					break;
-				case EntityData.EntityClass.kPapyras:
-					entity = new Papyras(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
-					break;
-				case EntityData.EntityClass.kRanger:
-					entity = new Ranger(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
 					break;
 
 				// NPC
@@ -370,14 +352,8 @@
 				case EntityData.EntityClass.kZippy:
 					entity = new Zippy(worldPosition);
 					break;
-				case EntityData.EntityClass.kDok:
-					entity = new Dok(worldPosition);
-					break;
 				case EntityData.EntityClass.kBickDogel: // Special NPC
 					entity = new GrillVogel(worldPosition);
-					break;
-				case EntityData.EntityClass.kElectrent:
-					entity = new Electrent(worldPosition);
 					break;
 				case EntityData.EntityClass.kBoilerMan:
 					entity = new BoilerMan(worldPosition);
@@ -413,15 +389,6 @@
 					break;
 				case EntityData.EntityClass.kGravityTile:
 					entity = new GravityTile(worldPosition);
-					break;
-				case EntityData.EntityClass.kTimeMachine:
-					entity = new TimeMachine(worldPosition, data.mIntParams[0], data.mIntParams[1]);
-					break;
-				case EntityData.EntityClass.kPlantPot:
-					entity = new PlantPot(worldPosition, data.mIntParams[0]);
-					break;
-				case EntityData.EntityClass.kPillarPot:
-					entity = new PillarPot(worldPosition, data.mIntParams[0]);
 					break;
 				default:
 					throw new NotImplementedException();

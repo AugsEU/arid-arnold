@@ -3313,3 +3313,12 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Campaigns/MainCampaign/Levels/0108.aux
+/copy:Campaigns/MainCampaign/Levels/0108.aux
+
+#begin Campaigns/MainCampaign/Levels/0108.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0108.png
+

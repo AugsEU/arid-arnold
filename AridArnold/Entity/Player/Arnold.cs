@@ -585,4 +585,12 @@
 
 		#endregion rUtility
 	}
+
+	// HACK!!
+	class Androld : Arnold
+	{
+		public Androld(Vector2 pos) : base(pos)
+		{
+		}
+	}
 }

@@ -149,36 +149,8 @@
 						return new RedLockTile(position);
 					case 0x404040u:
 						return new SpikesTile((CardinalDirection)param, position);
-					case 0xFFFF00u:
-						return new MirrorTile((CardinalDirection)param, position);
 					case 0x00CDF9u:
 						return new MushroomTile((CardinalDirection)param, position);
-					case 0x003D36u:
-						return new TeleportPipe(position);
-					//Electricity
-					case 0x61AD65u:
-						return new PermElectricButton((CardinalDirection)param, position);
-					case 0xFF6C7Cu:
-						return new ElectricButton((CardinalDirection)param, position);
-					case 0xFFC130u:
-						return new ElectricTile(position);
-					case 0x0D4C92u:
-						return new ElectricGate(position);
-					case 0x363636u:
-						return new AndroldTile(position);
-					case 0xB8ADC5u:
-						return new RobotoSpawner((CardinalDirection)param, position);
-					case 0x826218u:
-						return new Nuke(position);
-					// Time
-					case 0x93D5F2u:
-						return new IceTile(position);
-					case 0x010101u:
-						return new TimeWallTile(position, "TimeWall");
-					case 0xAAAAAAu:
-						return new TimePlatformTile((CardinalDirection)param, position, "TimePlatform");
-					case 0xD39700u:
-						return new StopWatchTile(position, param);
 					//Decoration
 					case 0x2A3F50u:
 						return new StalactiteTile(position);
