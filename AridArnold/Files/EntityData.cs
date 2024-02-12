@@ -35,6 +35,7 @@
 			kBoilerMan,
 			kBossMan,
 			kBooker,
+			kScholar,
 			kNPCClassEnd,
 
 			// Utility

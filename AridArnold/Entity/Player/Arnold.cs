@@ -264,11 +264,10 @@
 					Jump();
 					mJumpSpeed = originalJumpSpeed;
 				}
-
-				if(HasJumpedInTheLast(ROSS_TIME) && mWalkDirection == WalkDirection.None)
-				{
-					HandleWalkInput();
-				}
+			}
+			else if (HasJumpedInTheLast(ROSS_TIME) && mWalkDirection == WalkDirection.None)
+			{
+				HandleWalkInput();
 			}
 
 			// Items

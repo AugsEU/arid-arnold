@@ -7594,3 +7594,51 @@
 #begin Text/EN/NPC/Booker/FountainWater2.txt
 /copy:Text/EN/NPC/Booker/FountainWater2.txt
 
+#begin Text/EN/NPC/Booker/Jeans1.txt
+/copy:Text/EN/NPC/Booker/Jeans1.txt
+
+#begin Text/EN/NPC/Booker/Jeans2.txt
+/copy:Text/EN/NPC/Booker/Jeans2.txt
+
+#begin Text/EN/NPC/Booker/Jeans3.txt
+/copy:Text/EN/NPC/Booker/Jeans3.txt
+
+#begin NPC/Scholar/Angry1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scholar/Angry1.png
+
+#begin NPC/Scholar/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scholar/Idle1.png
+
+#begin NPC/Scholar/Talk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scholar/Talk1.png
+
+#begin NPC/Scholar/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scholar/Walk1.png
+
+#begin NPC/Scholar/Idle2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scholar/Idle2.png
+
+#begin Text/EN/NPC/Scholar/FallinFarry.txt
+/copy:Text/EN/NPC/Scholar/FallinFarry.txt
+
+#begin Text/EN/NPC/Scholar/Fountain.txt
+/copy:Text/EN/NPC/Scholar/Fountain.txt
+
+#begin Text/EN/NPC/Scholar/Heckle.txt
+/copy:Text/EN/NPC/Scholar/Heckle.txt
+

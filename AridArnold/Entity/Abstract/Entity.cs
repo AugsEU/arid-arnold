@@ -318,8 +318,6 @@
 
 
 
-
-
 		#region rFactory
 
 		public static Entity CreateEntityFromData(EntityData data)
@@ -389,6 +387,9 @@
 					break;
 				case EntityData.EntityClass.kBooker:
 					entity = new Booker(worldPosition);
+					break;
+				case EntityData.EntityClass.kScholar:
+					entity = new Scholar(worldPosition);
 					break;
 
 				// Utility

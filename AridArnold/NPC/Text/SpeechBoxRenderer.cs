@@ -83,6 +83,9 @@
 		/// </summary>
 		public SpeechBoxRenderer(string stringID, Vector2 bottomLeft, float spikeOffset, SpeechBoxStyle style)
 		{
+			bottomLeft.X = MathF.Round(bottomLeft.X);
+			bottomLeft.Y = MathF.Round(bottomLeft.Y);
+
 			mStyle = style;
 			mCurrentBlock = new SmartTextBlock(stringID, style.mFramesPerLetter);
 			mLetters = new List<SpeechBoxLetter>();
