@@ -1,2 +1,0 @@
-﻿<α[008E0E]>Control-C ^C
-Batch job terminated.

@@ -1,9 +1,0 @@
-﻿<α[008E0E]>12-01-33
---
-Coorperation between Androids is proving difficult.
-If two Androids are stacked on top of each other, having the bottom one walk with result in the top one also walking, and thus falling off the stack.
-New theory to test for next session: If they jump in tandem, can we avoid this problem?
---
-Configuration:
-(p = 0.01) (E = 1.6066951524)
-(a = 0.5) (F = 4.6692016091)

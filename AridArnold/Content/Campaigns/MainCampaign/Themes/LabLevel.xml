@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<theme>
-	<name>The Lab</name>
-	<path from="Wall">LabWall.max</path>
-	<path from="Platform">LabPlat.max</path>
-	<path from="CoinFull">ChipFull</path>
-	<path from="CoinGhost">ChipGhost</path>
-</theme>

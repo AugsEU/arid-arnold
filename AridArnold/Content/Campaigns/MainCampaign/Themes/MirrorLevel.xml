@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<theme>
-	<name>Land Of Mirrors</name>
-	<path from="Wall">Cobble</path>
-	<path from="Platform">TreePlatform</path>
-	<path from="CoinFull">FlowerFull</path>
-	<path from="CoinGhost">FlowerGhost</path>
-</theme>

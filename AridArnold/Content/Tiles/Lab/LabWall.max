@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<animation type="repeat">
-	<texture time="0.454">Tiles\Lab\LabWall1</texture>
-	<texture time="0.392">Tiles\Lab\LabWall2</texture>
-	<texture time="0.421">Tiles\Lab\LabWall3</texture>
-	<texture time="0.478">Tiles\Lab\LabWall4</texture>
-</animation>
