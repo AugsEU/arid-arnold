@@ -1,4 +1,4 @@
-﻿#define DEBUG_LOADER
+﻿//#define DEBUG_LOADER
 
 namespace AridArnold
 {

@@ -6,6 +6,7 @@
 
 		List<(string, string)> mRemappedTextures;
 		Color mHubArrowColours;
+		string mDisplayName;
 
 		#endregion rMembers
 
@@ -35,6 +36,8 @@
 
 				mRemappedTextures.Add((from, to));
 			}
+
+			mDisplayName = MonoParse.GetString(rootNode["name"]);
 
 			mHubArrowColours = MonoParse.GetColor(rootNode["exitColour"], Color.Black);
 		}
@@ -79,6 +82,15 @@
 		public Color GetExitColor()
 		{
 			return mHubArrowColours;
+		}
+
+
+		/// <summary>
+		/// Display world string
+		/// </summary>
+		public string GetDisplayName()
+		{
+			return mDisplayName;
 		}
 
 		#endregion rGet

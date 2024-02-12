@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
-	<name>Steam Plant</name>
+	<name>The Library</name>
 	<path from="Wall">Wood</path>
 	<path from="WallSecondary">Books</path>
 	<path from="OtherWorldWall">../Buk/Cave</path>
