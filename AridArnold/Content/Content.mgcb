@@ -3340,3 +3340,6 @@
 /processorParam:PremultiplyAlpha=False
 /build:UI/Title.png
 
+#begin Layouts/TitleScreen.mlo
+/copy:Layouts/TitleScreen.mlo
+

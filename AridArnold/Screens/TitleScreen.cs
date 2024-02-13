@@ -4,7 +4,7 @@
 	{
 		#region rMembers
 
-		Texture2D mBG;
+		Layout mLayoutBG;
 
 		#endregion rMembers
 
@@ -23,7 +23,7 @@
 
 		public override void LoadContent()
 		{
-			mBG = MonoData.I.MonoGameLoad<Texture2D>("UI/Title");
+			mLayoutBG = new Layout("Layouts/TitleScreen.mlo");
 			base.LoadContent();
 		}
 
@@ -41,6 +41,8 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			mLayoutBG.Update(gameTime);
+
 			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
@@ -62,17 +64,13 @@
 		/// <returns>Render target with the screen drawn on</returns>
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
-			SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
-
-			Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
-
 			//Draw out the game area
 			info.device.SetRenderTarget(mScreenTarget);
 			info.device.Clear(new Color(0, 0, 0));
 
 			StartScreenSpriteBatch(info);
 
-			MonoDraw.DrawTexture(info, mBG, Vector2.Zero);
+			mLayoutBG.Draw(info);
 
 			EndScreenSpriteBatch(info);
 
