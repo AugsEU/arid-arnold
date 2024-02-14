@@ -12,8 +12,8 @@
 		/// </summary>
 		public Zippy(Vector2 pos) : base(pos)
 		{
-			mStyle.mScrollSpeed = 1.1f;
-			mStyle.mFramesPerLetter = 11;
+			mStyle.mScrollSpeed = 0.8f;
+			mStyle.mFramesPerLetter = 15;
 		}
 
 

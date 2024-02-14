@@ -26,6 +26,12 @@
 		<y>409.0</y>
 		<depth>Background</depth>
 	</element>
+	<element type="LevelGoal">
+		<x>104.0</x>
+		<y>309.0</y>
+		<color>DC143C</color>
+		<depth>Background</depth>
+	</element>
 	<element type="Text">
 		<x>33.0</x>
 		<y>390.0</y>

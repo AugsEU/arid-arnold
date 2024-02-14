@@ -175,14 +175,9 @@ namespace AridArnold
 			KeyboardState keyboardState = Keyboard.GetState();
 
 			bool alt = keyboardState.IsKeyDown(Keys.LeftAlt) || keyboardState.IsKeyDown(Keys.RightAlt);
-			if (key == Keys.Enter && alt)
+			if (key == Keys.Enter && alt || key == Keys.F12)
 			{
 				ToggleFullscreen();
-			}
-
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
-			{
-				Exit();
 			}
 		}
 

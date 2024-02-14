@@ -1,4 +1,5 @@
 Arrows - Move
 Space - Jump
-R - Restart
+Enter - Enter Door
+R - Restart Level
 Esc - Return to Hub

@@ -171,9 +171,14 @@
 			{
 				EntityManager.I.FindArnold().Kill();
 			}
-			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
+			else if (InputManager.I.KeyPressed(AridArnoldKeys.GiveUpSequence))
 			{
-				LevelWin();
+				Level level = CampaignManager.I.GetCurrentLevel();
+
+				if (level is not null && level.GetAuxData().GetLevelType() != AuxData.LevelType.Hub)
+				{
+					CampaignManager.I.QueueLoadSequence(new ReturnToHubFailureLoader());
+				}
 			}
 		}
 
@@ -199,7 +204,7 @@
 
 			if (CampaignManager.I.IsGameover())
 			{
-				CampaignManager.I.QueueLoadSequence(new ReturnToHubFailureLoader());
+				
 			}
 			else
 			{

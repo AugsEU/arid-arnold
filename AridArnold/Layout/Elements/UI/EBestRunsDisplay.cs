@@ -99,7 +99,7 @@ namespace AridArnold
 			pos = GetPosition();
 			pos.Y -= 130.0f;
 
-			MonoDraw.DrawStringCentred(info, mBigFont, pos, strColor, "Best times");
+			MonoDraw.DrawStringCentred(info, mBigFont, pos, strColor, "Best level times");
 		}
 	}
 }
