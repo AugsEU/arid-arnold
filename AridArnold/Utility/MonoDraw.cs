@@ -197,7 +197,8 @@
 		{
 			Vector2 size = font.MeasureString(text);
 
-			info.spriteBatch.DrawString(font, text, position - size / 2, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
+			Vector2 textPos = MonoMath.Round(position - size / 2);
+			info.spriteBatch.DrawString(font, text, textPos, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
 		/// <summary>

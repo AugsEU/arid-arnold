@@ -718,6 +718,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0302.png
 
+#begin Campaigns/MainCampaign/Hub/0303.aux
+/copy:Campaigns/MainCampaign/Hub/0303.aux
+
+#begin Campaigns/MainCampaign/Hub/0303.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0303.png
+
 #begin Campaigns/MainCampaign/Levels/0101.aux
 /copy:Campaigns/MainCampaign/Levels/0101.aux
 
@@ -807,6 +822,21 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0107.png
+
+#begin Campaigns/MainCampaign/Levels/0108.aux
+/copy:Campaigns/MainCampaign/Levels/0108.aux
+
+#begin Campaigns/MainCampaign/Levels/0108.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0108.png
 
 #begin Campaigns/MainCampaign/Levels/0109.aux
 /copy:Campaigns/MainCampaign/Levels/0109.aux
@@ -1560,6 +1590,9 @@
 
 #begin Layouts/MainLoading.mlo
 /copy:Layouts/MainLoading.mlo
+
+#begin Layouts/TitleScreen.mlo
+/copy:Layouts/TitleScreen.mlo
 
 #begin NPC/Barbara/Angry1.png
 /importer:TextureImporter
@@ -2662,6 +2695,9 @@
 #begin Text/EN/NPC/Booker/Jeans3.txt
 /copy:Text/EN/NPC/Booker/Jeans3.txt
 
+#begin Text/EN/NPC/Booker/ThanksForPlaying.txt
+/copy:Text/EN/NPC/Booker/ThanksForPlaying.txt
+
 #begin Text/EN/NPC/BossMan/GoGetWater.txt
 /copy:Text/EN/NPC/BossMan/GoGetWater.txt
 
@@ -2781,6 +2817,9 @@
 
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt
+
+#begin Text/EN/UI/Controls.txt
+/copy:Text/EN/UI/Controls.txt
 
 #begin Tiles/Air.png
 /importer:TextureImporter
@@ -3301,6 +3340,18 @@
 /processorParam:TextureFormat=Color
 /build:UI/ItemFrame.png
 
+#begin UI/Title.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Title.png
+
 #begin UI/UIBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3312,34 +3363,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Campaigns/MainCampaign/Levels/0108.aux
-/copy:Campaigns/MainCampaign/Levels/0108.aux
-
-#begin Campaigns/MainCampaign/Levels/0108.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0108.png
-
-#begin Campaigns/MainCampaign/Hub/0303.aux
-/copy:Campaigns/MainCampaign/Hub/0303.aux
-
-#begin Campaigns/MainCampaign/Hub/0303.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Hub/0303.png
-
-#begin Text/EN/NPC/Booker/ThanksForPlaying.txt
-/copy:Text/EN/NPC/Booker/ThanksForPlaying.txt
-
-#begin UI/Title.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/Title.png
-
-#begin Layouts/TitleScreen.mlo
-/copy:Layouts/TitleScreen.mlo
 

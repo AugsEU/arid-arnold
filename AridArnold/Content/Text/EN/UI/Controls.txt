@@ -1,0 +1,4 @@
+Arrows - Move
+Space - Jump
+R - Restart
+Esc - Return to Hub

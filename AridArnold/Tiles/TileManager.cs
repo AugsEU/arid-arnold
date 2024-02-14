@@ -142,8 +142,6 @@
 						return new HotDogTile(position);
 					case 0xE0A021u:
 						return new KeyTile(position);
-					case 0xFE00FEu:
-						return new CoinTile(position);
 					//Special
 					case 0xA51D18u:
 						return new RedLockTile(position);
