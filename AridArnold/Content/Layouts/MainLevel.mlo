@@ -28,7 +28,7 @@
 	</element>
 	<element type="Text">
 		<x>33.0</x>
-		<y>333.0</y>
+		<y>390.0</y>
 		<depth>Background</depth>
 		<stringID>UI.Controls</stringID>
 		<font>Pixica-12</font>

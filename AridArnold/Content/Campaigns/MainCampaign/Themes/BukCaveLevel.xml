@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Buk's Cave</name>
+	<exitColour>282828</exitColour>
 	<path from="Wall">Cave</path>
 	<path from="Platform">CavePlatform</path>
 	<path from="CoinFull">GemFull</path>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>The Library</name>
+	<exitColour>282828</exitColour>
 	<path from="Wall">Wood</path>
 	<path from="WallSecondary">Books</path>
 	<path from="OtherWorldWall">../Buk/Cave</path>
