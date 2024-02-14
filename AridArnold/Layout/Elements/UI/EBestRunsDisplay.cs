@@ -66,7 +66,7 @@ namespace AridArnold
 
 			Color strColor = Color.Gray;
 
-			if(mRunTimes.Count == 31)
+			if(mRunTimes.Count >= 30)
 			{
 				strColor = Color.Gold;
 			}

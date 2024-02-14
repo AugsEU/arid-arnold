@@ -252,7 +252,7 @@ namespace AridArnold
 		{
 			int frameNum = GetFrameFromElapsedTime();
 			
-			MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(260.0f, 320.0f));
+			//MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(260.0f, 320.0f));
 			
 			foreach (CinematicCommand command in mCommands)
 			{
