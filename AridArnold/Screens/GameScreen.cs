@@ -204,7 +204,7 @@
 
 			if (CampaignManager.I.IsGameover())
 			{
-				
+				CampaignManager.I.QueueLoadSequence(new ReturnToHubFailureLoader());
 			}
 			else
 			{
