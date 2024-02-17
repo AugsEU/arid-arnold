@@ -23,7 +23,7 @@ namespace AridArnold
 
 			float spikeOffset = MonoParse.GetFloat(cmdNode["spike"], 30.0f);
 			Vector2 dialogPosition = MonoParse.GetVector(cmdNode);
-			
+
 
 			mSpeechBox = new SpeechBoxRenderer(stringID, dialogPosition, spikeOffset, style);
 		}

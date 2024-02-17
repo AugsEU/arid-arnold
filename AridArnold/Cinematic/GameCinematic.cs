@@ -14,7 +14,7 @@ namespace AridArnold
 		const int DEBUG_FRAME_SKIP = 0;
 #endif
 
-	#endregion rConstant
+		#endregion rConstant
 
 
 
@@ -119,7 +119,7 @@ namespace AridArnold
 		/// </summary>
 		CinematicCommand CreateCommand(XmlNode node)
 		{
-			if(sCommandNameMapping.Count == 0)
+			if (sCommandNameMapping.Count == 0)
 			{
 				GenerateTypeMaps();
 			}
@@ -174,12 +174,12 @@ namespace AridArnold
 
 			int runUpToFrame = GetFrameFromElapsedTime();
 
-			while(mLastFrameCompleted < runUpToFrame)
+			while (mLastFrameCompleted < runUpToFrame)
 			{
 				AdvanceFrame(gameTime);
 			}
 
-			if(mLastFrameCompleted >= mTotalFrameCount)
+			if (mLastFrameCompleted >= mTotalFrameCount)
 			{
 				mIsPlaying = false;
 			}
@@ -232,7 +232,7 @@ namespace AridArnold
 		/// </summary>
 		public void SkipToEnd()
 		{
-			mElapsedTime = (double)mTotalFrameCount/CINE_FRAME_RATE;
+			mElapsedTime = (double)mTotalFrameCount / CINE_FRAME_RATE;
 			mLastFrameCompleted = mTotalFrameCount;
 			mIsPlaying = false;
 		}
@@ -251,9 +251,9 @@ namespace AridArnold
 		public void Draw(DrawInfo info)
 		{
 			int frameNum = GetFrameFromElapsedTime();
-			
+
 			//MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(260.0f, 320.0f));
-			
+
 			foreach (CinematicCommand command in mCommands)
 			{
 				int commandSpaceship = command.FrameSpaceship(frameNum);
@@ -263,7 +263,7 @@ namespace AridArnold
 				}
 			}
 
-			foreach(CinematicActor actor in mActors)
+			foreach (CinematicActor actor in mActors)
 			{
 				actor.Draw(info);
 			}
@@ -333,7 +333,7 @@ namespace AridArnold
 		/// </summary>
 		public CinematicActor GetActorByName(string name)
 		{
-			foreach(CinematicActor actor in mActors)
+			foreach (CinematicActor actor in mActors)
 			{
 				if (actor.GetName().Equals(name, StringComparison.CurrentCultureIgnoreCase))
 				{

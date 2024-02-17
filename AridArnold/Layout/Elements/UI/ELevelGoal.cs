@@ -14,7 +14,7 @@ namespace AridArnold
 		{
 			Level currLevel = CampaignManager.I.GetCurrentLevel();
 
-			if(currLevel is null)
+			if (currLevel is null)
 			{
 				return;
 			}

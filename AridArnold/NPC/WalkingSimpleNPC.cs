@@ -20,14 +20,14 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			if(mWalkTimer.GetPercentageF() >= 1.0f)
+			if (mWalkTimer.GetPercentageF() >= 1.0f)
 			{
 				mWalkTimer.Reset();
 			}
 
 			mWalkAnim.Update(gameTime);
 
-			if(WantsWalk() && !IsTalking())
+			if (WantsWalk() && !IsTalking())
 			{
 				WalkAround();
 			}
@@ -59,7 +59,7 @@ namespace AridArnold
 
 			WalkDirection newWalkDir = GetPrevWalkDirection();
 
-			if(!canGoWhereFacing)
+			if (!canGoWhereFacing)
 			{
 				newWalkDir = Util.InvertDirection(newWalkDir);
 			}
@@ -70,7 +70,7 @@ namespace AridArnold
 
 		protected override Texture2D GetDrawTexture()
 		{
-			if(GetWalkDirection() != WalkDirection.None)
+			if (GetWalkDirection() != WalkDirection.None)
 			{
 				return mWalkAnim.GetCurrentTexture();
 			}

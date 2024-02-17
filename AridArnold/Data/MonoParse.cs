@@ -52,7 +52,7 @@
 		/// </summary>
 		static public string GetString(XmlNode node, string defaultVal = "")
 		{
-			if(node is null)
+			if (node is null)
 			{
 				return defaultVal;
 			}

@@ -48,7 +48,7 @@
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
 			}
 
-			if(InputManager.I.KeyHeld(AridArnoldKeys.RestartLevel) &&
+			if (InputManager.I.KeyHeld(AridArnoldKeys.RestartLevel) &&
 				InputManager.I.KeyHeld(AridArnoldKeys.ArnoldUp))
 			{
 				CollectableManager.I.ChangePermanentItem(0x0000, 20);

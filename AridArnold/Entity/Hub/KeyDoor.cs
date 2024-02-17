@@ -95,11 +95,11 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			if(mIsUnlocking)
+			if (mIsUnlocking)
 			{
 				mUnlockAnim.Update(gameTime);
 
-				if(!mUnlockAnim.IsPlaying())
+				if (!mUnlockAnim.IsPlaying())
 				{
 					SetEnabled(false);
 				}

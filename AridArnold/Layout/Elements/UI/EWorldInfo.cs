@@ -16,7 +16,7 @@ namespace AridArnold
 		{
 			Level currLevel = CampaignManager.I.GetCurrentLevel();
 
-			if(currLevel is not null)
+			if (currLevel is not null)
 			{
 				string worldName = currLevel.GetTheme().GetDisplayName();
 				MonoDraw.DrawStringCentred(info, mFont, GetPosition(), GetColor(), worldName, DrawLayer.Front);

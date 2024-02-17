@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Types of objects we can collect that are gone at the end of the level

@@ -24,7 +24,7 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime, int currentFrame)
 		{
-			if(mStopped) return;
+			if (mStopped) return;
 
 			float dt = Util.GetDeltaT(gameTime);
 

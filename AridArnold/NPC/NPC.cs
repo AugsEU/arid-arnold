@@ -189,12 +189,12 @@
 						break;
 				}
 			}
-			else if(isTalking)
+			else if (isTalking)
 			{
 				textureToDraw = GetMouthClosedTexture();
 			}
 
-			if(textureToDraw == null)
+			if (textureToDraw == null)
 			{
 				textureToDraw = idleTexture;
 			}

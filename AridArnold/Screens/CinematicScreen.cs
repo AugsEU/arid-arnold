@@ -41,12 +41,12 @@
 		{
 			mCurrentCinematic.Update(gameTime);
 
-			if(InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
 			{
 				mCurrentCinematic.SkipToEnd();
 			}
 
-			if(mCurrentCinematic.IsComplete())
+			if (mCurrentCinematic.IsComplete())
 			{
 				mCurrentCinematic.FullReset();
 				ScreenManager.I.ActivateScreen(mScreenToReturnTo);

@@ -45,7 +45,7 @@
 		/// </summary>
 		public void Draw(DrawInfo info)
 		{
-			if(mDrawTexture is not null)
+			if (mDrawTexture is not null)
 			{
 				MonoDraw.DrawTexture(info, mDrawTexture, mPosition, null, Color.White, 0.0f, Vector2.Zero, 1.0f, mEffect, mDrawLayer);
 			}

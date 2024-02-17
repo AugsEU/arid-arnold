@@ -30,7 +30,7 @@
 			{
 				a = 255;
 			}
-			else if(hex.Length == 8)
+			else if (hex.Length == 8)
 			{
 				a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
 			}

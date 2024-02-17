@@ -1,6 +1,4 @@
-﻿using System.Xml;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Manager that updates and draws all entities.

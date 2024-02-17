@@ -47,7 +47,7 @@ namespace AridArnold
 			string output = "";
 			int totalTime = 0;
 
-			foreach((string, int) runTime in mRunTimes)
+			foreach ((string, int) runTime in mRunTimes)
 			{
 				string timingStr = GhostManager.I.FrameTimeToString(runTime.Item2);
 				output += runTime.Item1 + " - " + timingStr + "\n";
@@ -62,11 +62,11 @@ namespace AridArnold
 
 		public override void Draw(DrawInfo info)
 		{
-			if(mRunTimes.Count == 0) return;
+			if (mRunTimes.Count == 0) return;
 
 			Color strColor = Color.Gray;
 
-			if(mRunTimes.Count >= 30)
+			if (mRunTimes.Count >= 30)
 			{
 				strColor = Color.Gold;
 			}
@@ -76,15 +76,15 @@ namespace AridArnold
 			int numRows = board.Length / numCols;
 
 			Vector2 pos = GetPosition();
-			pos.X -= (numCols-1) * COL_WIDTH / 2.0f;
+			pos.X -= (numCols - 1) * COL_WIDTH / 2.0f;
 
 			for (int c = 0; c < numCols; c++)
 			{
 				string colStr = "";
-				for(int r = 0; r < numRows; r++)
+				for (int r = 0; r < numRows; r++)
 				{
 					int index = c * numRows + r;
-					if(index >= board.Length)
+					if (index >= board.Length)
 					{
 						break;
 					}
