@@ -1141,36 +1141,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0202.png
 
-#begin Campaigns/MainCampaign/Hub/0203.aux
-/copy:Campaigns/MainCampaign/Hub/0203.aux
-
-#begin Campaigns/MainCampaign/Hub/0203.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Hub/0203.png
-
-#begin Campaigns/MainCampaign/Hub/0204.aux
-/copy:Campaigns/MainCampaign/Hub/0204.aux
-
-#begin Campaigns/MainCampaign/Hub/0204.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Hub/0204.png
-
 #begin Campaigns/MainCampaign/Hub/0301.aux
 /copy:Campaigns/MainCampaign/Hub/0301.aux
 
@@ -1650,6 +1620,21 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0110.png
+
+#begin Campaigns/MainCampaign/Levels/0112.aux
+/copy:Campaigns/MainCampaign/Levels/0112.aux
+
+#begin Campaigns/MainCampaign/Levels/0112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0112.png
 
 #begin Campaigns/MainCampaign/Levels/0201.aux
 /copy:Campaigns/MainCampaign/Levels/0201.aux
@@ -4876,6 +4861,9 @@
 #begin Layouts/MainLoading.mlo
 /copy:Layouts/MainLoading.mlo
 
+#begin Layouts/TitleScreen.mlo
+/copy:Layouts/TitleScreen.mlo
+
 #begin NPC/Barbara/Angry1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -6325,6 +6313,9 @@
 #begin Text/EN/NPC/Booker/Jeans3.txt
 /copy:Text/EN/NPC/Booker/Jeans3.txt
 
+#begin Text/EN/NPC/Booker/ThanksForPlaying.txt
+/copy:Text/EN/NPC/Booker/ThanksForPlaying.txt
+
 #begin Text/EN/NPC/BossMan/GoGetWater.txt
 /copy:Text/EN/NPC/BossMan/GoGetWater.txt
 
@@ -6466,11 +6457,17 @@
 #begin Text/EN/NPC/Zippy/Intro.txt
 /copy:Text/EN/NPC/Zippy/Intro.txt
 
+#begin Text/EN/NPC/Zippy/LevelSequence.txt
+/copy:Text/EN/NPC/Zippy/LevelSequence.txt
+
 #begin Text/EN/NPC/Zippy/RacoonTime.txt
 /copy:Text/EN/NPC/Zippy/RacoonTime.txt
 
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt
+
+#begin Text/EN/UI/Controls.txt
+/copy:Text/EN/UI/Controls.txt
 
 #begin Tiles/air.png
 /importer:TextureImporter
@@ -7780,24 +7777,21 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Layouts/TitleScreen.mlo
-/copy:Layouts/TitleScreen.mlo
+#begin Campaigns/MainCampaign/Hub/0309.aux
+/copy:Campaigns/MainCampaign/Hub/0309.aux
 
-#begin Campaigns/MainCampaign/Levels/0112.aux
-/copy:Campaigns/MainCampaign/Levels/0112.aux
-
-#begin Campaigns/MainCampaign/Levels/0112.png
+#begin Campaigns/MainCampaign/Hub/0309.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0112.png
+/build:Campaigns/MainCampaign/Hub/0309.png
 
-#begin Text/EN/UI/Controls.txt
-/copy:Text/EN/UI/Controls.txt
+#begin Campaigns/MainCampaign/Hub/0310.aux
+/copy:Campaigns/MainCampaign/Hub/0310.aux
 
-#begin Text/EN/NPC/Booker/ThanksForPlaying.txt
-/copy:Text/EN/NPC/Booker/ThanksForPlaying.txt
-
-#begin Text/EN/NPC/Zippy/LevelSequence.txt
-/copy:Text/EN/NPC/Zippy/LevelSequence.txt
+#begin Campaigns/MainCampaign/Hub/0310.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0310.png
 
