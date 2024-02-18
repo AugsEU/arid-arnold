@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>UI/Title</texture>
+	</element>
+	<element type="BestRunsDisplay">
+		<x>480.0</x>
+		<y>300.0</y>
+		<depth>Background</depth>
+		<texture>UI/Title</texture>
+	</element>
+</root>

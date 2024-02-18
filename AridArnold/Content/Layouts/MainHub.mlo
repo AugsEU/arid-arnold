@@ -12,4 +12,16 @@
 		<depth>Background</depth>
 		<texture>UI/UIBG</texture>
 	</element>
+	<element type="WorldInfo">
+		<x>104.0</x>
+		<y>503.0</y>
+		<color>FFFF00</color>
+	</element>
+	<element type="Text">
+		<x>33.0</x>
+		<y>390.0</y>
+		<depth>Background</depth>
+		<stringID>UI.Controls</stringID>
+		<font>Pixica-12</font>
+	</element>
 </root>

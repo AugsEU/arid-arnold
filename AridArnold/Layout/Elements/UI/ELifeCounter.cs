@@ -2,7 +2,7 @@
 {
 	class ELifeCounter : LayElement
 	{
-		const float SPACING = 50.0f;
+		const float SPACING = 38.0f;
 
 		Texture2D mLifeTexture;
 		Texture2D mEmptyTexture;

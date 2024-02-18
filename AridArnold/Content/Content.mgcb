@@ -7780,3 +7780,24 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Layouts/TitleScreen.mlo
+/copy:Layouts/TitleScreen.mlo
+
+#begin Campaigns/MainCampaign/Levels/0112.aux
+/copy:Campaigns/MainCampaign/Levels/0112.aux
+
+#begin Campaigns/MainCampaign/Levels/0112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0112.png
+
+#begin Text/EN/UI/Controls.txt
+/copy:Text/EN/UI/Controls.txt
+
+#begin Text/EN/NPC/Booker/ThanksForPlaying.txt
+/copy:Text/EN/NPC/Booker/ThanksForPlaying.txt
+
+#begin Text/EN/NPC/Zippy/LevelSequence.txt
+/copy:Text/EN/NPC/Zippy/LevelSequence.txt
+

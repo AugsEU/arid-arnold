@@ -35,6 +35,11 @@
 			mLevel = level;
 		}
 
+		public GhostFile(string relativePath) : base(relativePath, true)
+		{
+			mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
+		}
+
 		#endregion rInitialisation
 
 

@@ -246,6 +246,16 @@
 			return mID;
 		}
 
+
+
+		/// <summary>
+		/// Get the theme data
+		/// </summary>
+		public LevelTheme GetTheme()
+		{
+			return mTheme;
+		}
+
 		#endregion rUtility
 
 
