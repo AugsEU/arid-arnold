@@ -10,6 +10,9 @@
 		{
 			mFullAnim = MonoData.I.LoadAnimator("CoinFull");
 			mGhostAnim = MonoData.I.LoadAnimator("CoinGhost");
+
+			mExitAnim = MonoData.I.LoadAnimator("Shared/Coin/Explode.max");
+
 			base.LoadContent();
 		}
 

@@ -21,6 +21,7 @@
 		protected override void OnCollect()
 		{
 			EventManager.I.SendEvent(EventType.KeyCollect, new EArgs(this));
+			base.OnCollect();
 		}
 	}
 }

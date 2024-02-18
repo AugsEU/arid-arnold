@@ -23,7 +23,7 @@
 	</element>
 	<element type="TimingDisplay">
 		<x>856.0</x>
-		<y>360.0</y>
+		<y>320.0</y>
 		<depth>Background</depth>
 	</element>
 	<element type="ItemHolder">

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.10">Shared\Coin\Explode1</texture>
+	<texture time="0.10">Shared\Coin\Explode2</texture>
+	<texture time="0.10">Shared\Coin\Explode3</texture>
+</animation>

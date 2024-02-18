@@ -7795,3 +7795,24 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Hub/0310.png
 
+#begin Shared/Coin/Explode.max
+/copy:Shared/Coin/Explode.max
+
+#begin Shared/Coin/Explode1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/Coin/Explode1.png
+
+#begin Shared/Coin/Explode2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/Coin/Explode2.png
+
+#begin Shared/Coin/Explode3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/Coin/Explode3.png
+

@@ -8,15 +8,31 @@ namespace AridArnold
 	abstract class PermanentCollectableTile : InteractableTile
 	{
 		protected bool mIsGhost;
+		protected Animator mExitAnim;
+		protected bool mHasBeenCollected;
 
 		public PermanentCollectableTile(Vector2 pos) : base(pos)
 		{
 			mIsGhost = CollectableManager.I.HasSpecific(mTileMapIndex, GetItemType());
+			mExitAnim = null;
+			mHasBeenCollected = false;
 		}
 
 		protected abstract PermanentCollectable GetCollectableType();
 
 		protected virtual byte GetImplByte() { return 0; }
+
+		public override void Update(GameTime gameTime)
+		{
+			if(mExitAnim is not null)
+				mExitAnim.Update(gameTime);
+
+			if(mHasBeenCollected && (mExitAnim is null || !mExitAnim.IsPlaying()))
+			{
+				mEnabled = false;
+			}
+			base.Update(gameTime);
+		}
 
 		private UInt16 GetItemType()
 		{
@@ -30,14 +46,23 @@ namespace AridArnold
 
 		public override void OnEntityIntersect(Entity entity)
 		{
+			if(mHasBeenCollected)
+			{
+				return;
+			}
 			if (entity is Arnold)
 			{
 				if (mIsGhost == false)
 				{
 					CollectableManager.I.CollectPermanentItem(mTileMapIndex, GetItemType());
 				}
-				mEnabled = false;
 				OnCollect();
+
+				mHasBeenCollected = true;
+				if(mExitAnim is not null)
+				{
+					mExitAnim.Play();
+				}
 			}
 		}
 
@@ -71,6 +96,11 @@ namespace AridArnold
 
 		public override Texture2D GetTexture()
 		{
+			if(mHasBeenCollected)
+			{
+				return mExitAnim.GetCurrentTexture();
+			}
+
 			if (mIsGhost)
 			{
 				return mGhostAnim.GetCurrentTexture();

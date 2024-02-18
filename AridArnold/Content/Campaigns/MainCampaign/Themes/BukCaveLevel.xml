@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
-	<name>Land Of Mirrors</name>
+	<name>Buk's Cave</name>
 	<path from="Wall">Cave</path>
 	<path from="Platform">CavePlatform</path>
 	<path from="OtherWorldWall">../Library/Wood</path>
