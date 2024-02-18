@@ -43,12 +43,12 @@
 
 			DrawCollectable(info, position, mKeyTexture, numKeys);
 			position.Y += SPACING;
-			//if (mCoinAnim != null)
-			//{
-			//	int numCoins = (int)CollectableManager.I.GetCollected(CampaignManager.I.GetCurrCoinID());
-			//	DrawCollectable(info, position, mCoinAnim.GetCurrentTexture(), numCoins);
-			//	position.Y += SPACING;
-			//}
+			if (mCoinAnim != null)
+			{
+				int numCoins = (int)CollectableManager.I.GetCollected(CampaignManager.I.GetCurrCoinID());
+				DrawCollectable(info, position, mCoinAnim.GetCurrentTexture(), numCoins);
+				position.Y += SPACING;
+			}
 
 
 			base.Draw(info);

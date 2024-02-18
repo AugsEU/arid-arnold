@@ -3,6 +3,7 @@
 	<name>Land Of Mirrors</name>
 	<path from="Wall">Cave</path>
 	<path from="Platform">CavePlatform</path>
+	<path from="OtherWorldWall">../Library/Wood</path>
 	<path from="CoinFull">GemFull</path>
 	<path from="CoinGhost">GemGhost</path>
 </theme>
