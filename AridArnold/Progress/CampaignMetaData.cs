@@ -120,7 +120,7 @@
 			XmlNode cinematicNode = rootNode.SelectSingleNode("cinematics");
 			XmlNodeList cineTriggerNodes = cinematicNode.ChildNodes;
 
-			foreach(XmlNode triggerNode in cineTriggerNodes)
+			foreach (XmlNode triggerNode in cineTriggerNodes)
 			{
 				mCinematicTriggers.Add(new CinematicTrigger(campaignRoot, triggerNode));
 			}

@@ -107,7 +107,7 @@
 					MonoDraw.DrawTexture(info, mTransitionArrows,
 						new Vector2(x, mTransitionArrows.Width),
 						null,
-						arrowColors, 
+						arrowColors,
 						MathF.PI * 1.5f, Vector2.Zero,
 						1.0f, SpriteEffects.None, DrawLayer.Default);
 				}

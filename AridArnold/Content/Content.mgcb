@@ -433,6 +433,21 @@
 #begin BG/Buk/Buk.mlo
 /copy:BG/Buk/Buk.mlo
 
+#begin BG/Cinematics/OpeningBG.mlo
+/copy:BG/Cinematics/OpeningBG.mlo
+
+#begin BG/Cinematics/OpeningBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Cinematics/OpeningBG.png
+
 #begin BG/Heaven/Heaven.mlo
 /copy:BG/Heaven/Heaven.mlo
 
@@ -535,8 +550,32 @@
 /processorParam:TextureFormat=Color
 /build:BG/Library/BG.png
 
+#begin BG/Library/BigCog.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Library/BigCog.png
+
 #begin BG/Library/Library.mlo
 /copy:BG/Library/Library.mlo
+
+#begin BG/Library/Rotator.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Library/Rotator.png
 
 #begin BG/Mirror/BG.png
 /importer:TextureImporter
@@ -733,6 +772,18 @@
 /processorParam:TextureFormat=Color
 /build:BG/SteamPlant/BG1.png
 
+#begin BG/SteamPlant/BG2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/SteamPlant/BG2.png
+
 #begin BG/SteamPlant/Dial1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -906,6 +957,9 @@
 
 #begin BG/SteamPlant/SteamPlant.mlo
 /copy:BG/SteamPlant/SteamPlant.mlo
+
+#begin BG/SteamPlant/SteamPlantLeft.mlo
+/copy:BG/SteamPlant/SteamPlantLeft.mlo
 
 #begin BG/SteamPlant/Valve1.png
 /importer:TextureImporter
@@ -3472,17 +3526,17 @@
 #begin Campaigns/MainCampaign/Themes/WW7Level.xml
 /copy:Campaigns/MainCampaign/Themes/WW7Level.xml
 
-#begin Enemies/Futron-Gun/Bullet.png
+#begin Enemies/Futron-Gun/bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Futron-Gun/Bullet.png
+/build:Enemies/Futron-Gun/bullet.png
 
 #begin Enemies/Futron-Gun/Charge1.png
 /importer:TextureImporter
@@ -4408,185 +4462,185 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/Ranger/Run4.png
 
-#begin Enemies/Roboto/RobotoFall.png
+#begin Enemies/roboto/RobotoFall.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Roboto/RobotoFall.png
+/build:Enemies/roboto/RobotoFall.png
 
-#begin Enemies/Roboto/RobotoOff.png
+#begin Enemies/roboto/RobotoOff.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Roboto/RobotoOff.png
+/build:Enemies/roboto/RobotoOff.png
 
-#begin Enemies/Roboto/RobotoWalk1.png
+#begin Enemies/roboto/RobotoWalk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Roboto/RobotoWalk1.png
+/build:Enemies/roboto/RobotoWalk1.png
 
-#begin Enemies/Roboto/RobotoWalk2.png
+#begin Enemies/roboto/RobotoWalk2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Roboto/RobotoWalk2.png
+/build:Enemies/roboto/RobotoWalk2.png
 
-#begin Enemies/Trundle/TrundleJumpDown.png
+#begin Enemies/trundle/TrundleJumpDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleJumpDown.png
+/build:Enemies/trundle/TrundleJumpDown.png
 
-#begin Enemies/Trundle/TrundleJumpMid.png
+#begin Enemies/trundle/TrundleJumpMid.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleJumpMid.png
+/build:Enemies/trundle/TrundleJumpMid.png
 
-#begin Enemies/Trundle/TrundleJumpUp.png
+#begin Enemies/trundle/TrundleJumpUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleJumpUp.png
+/build:Enemies/trundle/TrundleJumpUp.png
 
-#begin Enemies/Trundle/TrundleStand1.png
+#begin Enemies/trundle/TrundleStand1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleStand1.png
+/build:Enemies/trundle/TrundleStand1.png
 
-#begin Enemies/Trundle/TrundleStand2.png
+#begin Enemies/trundle/TrundleStand2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleStand2.png
+/build:Enemies/trundle/TrundleStand2.png
 
-#begin Enemies/Trundle/TrundleStand3.png
+#begin Enemies/trundle/TrundleStand3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleStand3.png
+/build:Enemies/trundle/TrundleStand3.png
 
-#begin Enemies/Trundle/TrundleStand4.png
+#begin Enemies/trundle/TrundleStand4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleStand4.png
+/build:Enemies/trundle/TrundleStand4.png
 
-#begin Enemies/Trundle/TrundleWalk1.png
+#begin Enemies/trundle/TrundleWalk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleWalk1.png
+/build:Enemies/trundle/TrundleWalk1.png
 
-#begin Enemies/Trundle/TrundleWalk2.png
+#begin Enemies/trundle/TrundleWalk2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleWalk2.png
+/build:Enemies/trundle/TrundleWalk2.png
 
-#begin Enemies/Trundle/TrundleWalk3.png
+#begin Enemies/trundle/TrundleWalk3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleWalk3.png
+/build:Enemies/trundle/TrundleWalk3.png
 
-#begin Enemies/Trundle/TrundleWalk4.png
+#begin Enemies/trundle/TrundleWalk4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Enemies/Trundle/TrundleWalk4.png
+/build:Enemies/trundle/TrundleWalk4.png
 
 #begin Fonts/Pixica.spritefont
 /importer:FontDescriptionImporter
@@ -4834,6 +4888,33 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/Angry1.png
 
+#begin NPC/Barbara/Fall.max
+/copy:NPC/Barbara/Fall.max
+
+#begin NPC/Barbara/Fall1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/Fall1.png
+
+#begin NPC/Barbara/Fall2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/Fall2.png
+
 #begin NPC/Barbara/Idle1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4894,6 +4975,45 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/Idle5.png
 
+#begin NPC/Barbara/Land1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/Land1.png
+
+#begin NPC/Barbara/Stand1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/Stand1.png
+
+#begin NPC/Barbara/StandTalk.max
+/copy:NPC/Barbara/StandTalk.max
+
+#begin NPC/Barbara/StandTalk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/StandTalk1.png
+
 #begin NPC/Barbara/Talk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4917,6 +5037,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/Exclaim1.png
+
+#begin NPC/BoilerMan/Idle.mia
+/copy:NPC/BoilerMan/Idle.mia
 
 #begin NPC/BoilerMan/Idle1.png
 /importer:TextureImporter
@@ -4954,6 +5077,15 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/Idle3.png
 
+#begin NPC/BoilerMan/LookAround.max
+/copy:NPC/BoilerMan/LookAround.max
+
+#begin NPC/BoilerMan/Rest.max
+/copy:NPC/BoilerMan/Rest.max
+
+#begin NPC/BoilerMan/SpannerWait.max
+/copy:NPC/BoilerMan/SpannerWait.max
+
 #begin NPC/BoilerMan/Talk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4965,6 +5097,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/Talk1.png
+
+#begin NPC/BoilerMan/TightenBolt.max
+/copy:NPC/BoilerMan/TightenBolt.max
+
+#begin NPC/BoilerMan/TurnTalk.max
+/copy:NPC/BoilerMan/TurnTalk.max
 
 #begin NPC/BoilerMan/TurnTalk1.png
 /importer:TextureImporter
@@ -4990,6 +5128,42 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/TurnTalk2.png
 
+#begin NPC/Booker/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Booker/Idle1.png
+
+#begin NPC/Booker/Idle2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Booker/Idle2.png
+
+#begin NPC/Booker/Idle3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Booker/Idle3.png
+
 #begin NPC/BossMan/Angry1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5014,6 +5188,24 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BossMan/Idle1.png
 
+#begin NPC/BossMan/JumpShout.max
+/copy:NPC/BossMan/JumpShout.max
+
+#begin NPC/BossMan/LookAround.max
+/copy:NPC/BossMan/LookAround.max
+
+#begin NPC/BossMan/LookBack1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/LookBack1.png
+
 #begin NPC/BossMan/Shocked1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5025,6 +5217,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/BossMan/Shocked1.png
+
+#begin NPC/BossMan/Talk.max
+/copy:NPC/BossMan/Talk.max
 
 #begin NPC/BossMan/Talk1.png
 /importer:TextureImporter
@@ -5397,6 +5592,66 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/GrillVogel/Talk1.png
+
+#begin NPC/Scholar/Angry1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Scholar/Angry1.png
+
+#begin NPC/Scholar/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Scholar/Idle1.png
+
+#begin NPC/Scholar/Idle2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Scholar/Idle2.png
+
+#begin NPC/Scholar/Talk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Scholar/Talk1.png
+
+#begin NPC/Scholar/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Scholar/Walk1.png
 
 #begin NPC/Zippy/Angry1.png
 /importer:TextureImporter
@@ -5830,6 +6085,66 @@
 /processorParam:TextureFormat=Color
 /build:Shared/KeyDoor/LevelLock.png
 
+#begin Shared/KeyDoor/LevelLockUnlock1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/KeyDoor/LevelLockUnlock1.png
+
+#begin Shared/KeyDoor/LevelLockUnlock2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/KeyDoor/LevelLockUnlock2.png
+
+#begin Shared/KeyDoor/LevelLockUnlock3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/KeyDoor/LevelLockUnlock3.png
+
+#begin Shared/KeyDoor/LevelLockUnlock4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/KeyDoor/LevelLockUnlock4.png
+
+#begin Shared/KeyDoor/LevelLockUnlock5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/KeyDoor/LevelLockUnlock5.png
+
 #begin Shared/KeyDoor/LockEight.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5977,6 +6292,12 @@
 #begin Text/EN/NPC/Barbara/SecondWorld.txt
 /copy:Text/EN/NPC/Barbara/SecondWorld.txt
 
+#begin Text/EN/NPC/Barbara/SteamPlant.txt
+/copy:Text/EN/NPC/Barbara/SteamPlant.txt
+
+#begin Text/EN/NPC/BoilerMan/BossIdiot.txt
+/copy:Text/EN/NPC/BoilerMan/BossIdiot.txt
+
 #begin Text/EN/NPC/BoilerMan/Heckle.txt
 /copy:Text/EN/NPC/BoilerMan/Heckle.txt
 
@@ -5988,6 +6309,21 @@
 
 #begin Text/EN/NPC/BoilerMan/Problem.txt
 /copy:Text/EN/NPC/BoilerMan/Problem.txt
+
+#begin Text/EN/NPC/Booker/FountainWater1.txt
+/copy:Text/EN/NPC/Booker/FountainWater1.txt
+
+#begin Text/EN/NPC/Booker/FountainWater2.txt
+/copy:Text/EN/NPC/Booker/FountainWater2.txt
+
+#begin Text/EN/NPC/Booker/Jeans1.txt
+/copy:Text/EN/NPC/Booker/Jeans1.txt
+
+#begin Text/EN/NPC/Booker/Jeans2.txt
+/copy:Text/EN/NPC/Booker/Jeans2.txt
+
+#begin Text/EN/NPC/Booker/Jeans3.txt
+/copy:Text/EN/NPC/Booker/Jeans3.txt
 
 #begin Text/EN/NPC/BossMan/GoGetWater.txt
 /copy:Text/EN/NPC/BossMan/GoGetWater.txt
@@ -6006,6 +6342,9 @@
 
 #begin Text/EN/NPC/BossMan/WhatUp.txt
 /copy:Text/EN/NPC/BossMan/WhatUp.txt
+
+#begin Text/EN/NPC/BossMan/WhoDis.txt
+/copy:Text/EN/NPC/BossMan/WhoDis.txt
 
 #begin Text/EN/NPC/Dok/GravityConfusion.txt
 /copy:Text/EN/NPC/Dok/GravityConfusion.txt
@@ -6106,6 +6445,15 @@
 #begin Text/EN/NPC/GrillVogel/Intro7.txt
 /copy:Text/EN/NPC/GrillVogel/Intro7.txt
 
+#begin Text/EN/NPC/Scholar/FallinFarry.txt
+/copy:Text/EN/NPC/Scholar/FallinFarry.txt
+
+#begin Text/EN/NPC/Scholar/Fountain.txt
+/copy:Text/EN/NPC/Scholar/Fountain.txt
+
+#begin Text/EN/NPC/Scholar/Heckle.txt
+/copy:Text/EN/NPC/Scholar/Heckle.txt
+
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
 
@@ -6124,80 +6472,83 @@
 #begin Text/EN/test_text.txt
 /copy:Text/EN/test_text.txt
 
-#begin Tiles/Air.png
+#begin Tiles/air.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Air.png
+/build:Tiles/air.png
 
-#begin Tiles/Blank.png
+#begin Tiles/blank.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Blank.png
+/build:Tiles/blank.png
 
-#begin Tiles/Bottle.png
+#begin Tiles/bottle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Bottle.png
+/build:Tiles/bottle.png
+
+#begin Tiles/bottleFade.max
+/copy:Tiles/bottleFade.max
 
 #begin Tiles/BottleFade.max
 /copy:Tiles/BottleFade.max
 
-#begin Tiles/BottleFade1.png
+#begin Tiles/bottleFade1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/BottleFade1.png
+/build:Tiles/bottleFade1.png
 
-#begin Tiles/BottleFade2.png
+#begin Tiles/bottleFade2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/BottleFade2.png
+/build:Tiles/bottleFade2.png
 
-#begin Tiles/Buk/Cave.png
+#begin Tiles/Buk/cave.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/Cave.png
+/build:Tiles/Buk/cave.png
 
 #begin Tiles/Buk/CavePlatform.png
 /importer:TextureImporter
@@ -6247,17 +6598,17 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Buk/GemGhost.png
 
-#begin Tiles/Buk/Mushroom.png
+#begin Tiles/Buk/mushroom.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Buk/Mushroom.png
+/build:Tiles/Buk/mushroom.png
 
 #begin Tiles/Buk/MushroomBounce1.png
 /importer:TextureImporter
@@ -6319,41 +6670,41 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Buk/StalagTile.png
 
-#begin Tiles/Flag1.png
+#begin Tiles/flag1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Flag1.png
+/build:Tiles/flag1.png
 
-#begin Tiles/Flag2.png
+#begin Tiles/flag2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Flag2.png
+/build:Tiles/flag2.png
 
-#begin Tiles/Flag3.png
+#begin Tiles/flag3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Flag3.png
+/build:Tiles/flag3.png
 
 #begin Tiles/Flag4.png
 /importer:TextureImporter
@@ -6475,17 +6826,17 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Hell/RockGhost.png
 
-#begin Tiles/HotDog.png
+#begin Tiles/hotdog.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/HotDog.png
+/build:Tiles/hotdog.png
 
 #begin Tiles/KeyFull.png
 /importer:TextureImporter
@@ -6961,17 +7312,17 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Library/WoodPlatform.png
 
-#begin Tiles/Mirror/Cobble.png
+#begin Tiles/Mirror/cobble.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Mirror/Cobble.png
+/build:Tiles/Mirror/cobble.png
 
 #begin Tiles/Mirror/FlowerFull.png
 /importer:TextureImporter
@@ -6997,17 +7348,17 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Mirror/FlowerGhost.png
 
-#begin Tiles/Mirror/Mirror.png
+#begin Tiles/Mirror/mirror.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Mirror/Mirror.png
+/build:Tiles/Mirror/mirror.png
 
 #begin Tiles/Mirror/TreePlatform.png
 /importer:TextureImporter
@@ -7141,17 +7492,17 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Mountain/StopWatchGhost.png
 
-#begin Tiles/Platform.png
+#begin Tiles/platform.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Platform.png
+/build:Tiles/platform.png
 
 #begin Tiles/RedLock.png
 /importer:TextureImporter
@@ -7189,17 +7540,17 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/SawBlock2.png
 
-#begin Tiles/Spikes.png
+#begin Tiles/spikes.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Spikes.png
+/build:Tiles/spikes.png
 
 #begin Tiles/SteamPlant/BoltFull.png
 /importer:TextureImporter
@@ -7225,65 +7576,65 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/SteamPlant/BoltGhost.png
 
-#begin Tiles/SteamPlant/Girder.png
+#begin Tiles/SteamPlant/girder.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/SteamPlant/Girder.png
+/build:Tiles/SteamPlant/girder.png
 
-#begin Tiles/SteamPlant/Steel.png
+#begin Tiles/SteamPlant/steel.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/SteamPlant/Steel.png
+/build:Tiles/SteamPlant/steel.png
 
-#begin Tiles/Wall.png
+#begin Tiles/wall.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Wall.png
+/build:Tiles/wall.png
 
-#begin Tiles/Wall4.png
+#begin Tiles/wall4.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/Wall4.png
+/build:Tiles/wall4.png
 
-#begin Tiles/WW7/Beam.png
+#begin Tiles/WW7/beam.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/WW7/Beam.png
+/build:Tiles/WW7/beam.png
 
 #begin Tiles/WW7/ChipFull.png
 /importer:TextureImporter
@@ -7309,29 +7660,29 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/WW7/ChipGhost.png
 
-#begin Tiles/WW7/Concrete.png
+#begin Tiles/WW7/concrete.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/WW7/Concrete.png
+/build:Tiles/WW7/concrete.png
 
-#begin Tiles/WW7/Gravel.png
+#begin Tiles/WW7/gravel.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tiles/WW7/Gravel.png
+/build:Tiles/WW7/gravel.png
 
 #begin Tiles/WW7/TeleportPipe.png
 /importer:TextureImporter
@@ -7428,217 +7779,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin BG/Cinematics/OpeningBG.mlo
-/copy:BG/Cinematics/OpeningBG.mlo
-
-#begin BG/Cinematics/OpeningBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Cinematics/OpeningBG.png
-
-#begin NPC/BoilerMan/BottleFade.max
-/copy:NPC/BoilerMan/BottleFade.max
-
-#begin NPC/BoilerMan/Idle.mia
-/copy:NPC/BoilerMan/Idle.mia
-
-#begin NPC/BoilerMan/Rest.max
-/copy:NPC/BoilerMan/Rest.max
-
-#begin NPC/BoilerMan/SpannerWait.max
-/copy:NPC/BoilerMan/SpannerWait.max
-
-#begin NPC/BoilerMan/TightenBolt.max
-/copy:NPC/BoilerMan/TightenBolt.max
-
-#begin NPC/BoilerMan/TurnTalk.max
-/copy:NPC/BoilerMan/TurnTalk.max
-
-#begin NPC/BossMan/JumpShout.max
-/copy:NPC/BossMan/JumpShout.max
-
-#begin NPC/BossMan/Talk.max
-/copy:NPC/BossMan/Talk.max
-
-#begin NPC/Barbara/Fall1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Barbara/Fall1.png
-
-#begin NPC/Barbara/Fall2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Barbara/Fall2.png
-
-#begin NPC/Barbara/Stand1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Barbara/Stand1.png
-
-#begin NPC/Barbara/StandTalk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Barbara/StandTalk1.png
-
-#begin NPC/BoilerMan/LookAround.max
-/copy:NPC/BoilerMan/LookAround.max
-
-#begin NPC/BossMan/LookAround.max
-/copy:NPC/BossMan/LookAround.max
-
-#begin NPC/BossMan/LookBack1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/BossMan/LookBack1.png
-
-#begin NPC/Barbara/Fall.max
-/copy:NPC/Barbara/Fall.max
-
-#begin NPC/Barbara/Land1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Barbara/Land1.png
-
-#begin NPC/Barbara/StandTalk.max
-/copy:NPC/Barbara/StandTalk.max
-
-#begin Text/EN/NPC/BossMan/WhoDis.txt
-/copy:Text/EN/NPC/BossMan/WhoDis.txt
-
-#begin Text/EN/NPC/Barbara/SteamPlant.txt
-/copy:Text/EN/NPC/Barbara/SteamPlant.txt
-
-#begin Text/EN/NPC/BoilerMan/BossIdiot.txt
-/copy:Text/EN/NPC/BoilerMan/BossIdiot.txt
-
-#begin Shared/KeyDoor/LevelLockUnlock1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/KeyDoor/LevelLockUnlock1.png
-
-#begin Shared/KeyDoor/LevelLockUnlock2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/KeyDoor/LevelLockUnlock2.png
-
-#begin Shared/KeyDoor/LevelLockUnlock3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/KeyDoor/LevelLockUnlock3.png
-
-#begin Shared/KeyDoor/LevelLockUnlock4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/KeyDoor/LevelLockUnlock4.png
-
-#begin Shared/KeyDoor/LevelLockUnlock5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/KeyDoor/LevelLockUnlock5.png
-
-#begin BG/SteamPlant/BG2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/SteamPlant/BG2.png
-
-#begin BG/SteamPlant/SteamPlantLeft.mlo
-/copy:BG/SteamPlant/SteamPlantLeft.mlo
-
-#begin BG/Library/BigCog.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Library/BigCog.png
-
-#begin BG/Library/Rotator.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Library/Rotator.png
-
-#begin NPC/Booker/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Booker/Idle1.png
-
-#begin NPC/Booker/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Booker/Idle2.png
-
-#begin NPC/Booker/Idle3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Booker/Idle3.png
-
-#begin Text/EN/NPC/Booker/FountainWater1.txt
-/copy:Text/EN/NPC/Booker/FountainWater1.txt
-
-#begin Text/EN/NPC/Booker/FountainWater2.txt
-/copy:Text/EN/NPC/Booker/FountainWater2.txt
-
-#begin Text/EN/NPC/Booker/Jeans1.txt
-/copy:Text/EN/NPC/Booker/Jeans1.txt
-
-#begin Text/EN/NPC/Booker/Jeans2.txt
-/copy:Text/EN/NPC/Booker/Jeans2.txt
-
-#begin Text/EN/NPC/Booker/Jeans3.txt
-/copy:Text/EN/NPC/Booker/Jeans3.txt
-
-#begin NPC/Scholar/Angry1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Scholar/Angry1.png
-
-#begin NPC/Scholar/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Scholar/Idle1.png
-
-#begin NPC/Scholar/Talk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Scholar/Talk1.png
-
-#begin NPC/Scholar/Walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Scholar/Walk1.png
-
-#begin NPC/Scholar/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Scholar/Idle2.png
-
-#begin Text/EN/NPC/Scholar/FallinFarry.txt
-/copy:Text/EN/NPC/Scholar/FallinFarry.txt
-
-#begin Text/EN/NPC/Scholar/Fountain.txt
-/copy:Text/EN/NPC/Scholar/Fountain.txt
-
-#begin Text/EN/NPC/Scholar/Heckle.txt
-/copy:Text/EN/NPC/Scholar/Heckle.txt
 

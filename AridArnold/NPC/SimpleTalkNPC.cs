@@ -189,7 +189,7 @@
 		/// </summary>
 		protected void HecklePlayer()
 		{
-			if(mHeckleText == "")
+			if (mHeckleText == "")
 			{
 				GetCurrentBlock().Stop();
 				return;

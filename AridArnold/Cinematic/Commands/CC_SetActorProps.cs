@@ -4,7 +4,7 @@ namespace AridArnold
 	internal class CC_SetActorProps : CC_ActorCommand
 	{
 		bool mSetTex;
-		Texture2D mDrawTexture; 
+		Texture2D mDrawTexture;
 		Vector2? mPosition;
 		DrawLayer? mDrawLayer;
 		SpriteEffects? mEffects = null;
@@ -16,7 +16,7 @@ namespace AridArnold
 
 			mSetTex = texturePath.Length > 0;
 
-			if(mSetTex)
+			if (mSetTex)
 			{
 				mDrawTexture = texturePath == "null" ? null : MonoData.I.MonoGameLoad<Texture2D>(texturePath);
 			}
@@ -25,10 +25,10 @@ namespace AridArnold
 			mDrawLayer = cmdNode["layer"] is not null ? MonoAlg.GetEnumFromString<DrawLayer>(MonoParse.GetString(cmdNode["layer"])) : null;
 
 			XmlNode facingNode = cmdNode["facing"];
-			
+
 			if (facingNode is not null)
 			{
-				if(MonoParse.GetString(facingNode) == "left")
+				if (MonoParse.GetString(facingNode) == "left")
 				{
 					mEffects = SpriteEffects.FlipHorizontally;
 				}
@@ -41,22 +41,22 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime, int currentFrame)
 		{
-			if(mPosition.HasValue)
+			if (mPosition.HasValue)
 			{
 				mTargetActor.SetPosition(mPosition.Value);
 			}
-			
+
 			if (mDrawLayer.HasValue)
 			{
 				mTargetActor.SetDrawLayer(mDrawLayer.Value);
 			}
 
-			if(mSetTex)
+			if (mSetTex)
 			{
 				mTargetActor.SetDrawTexture(mDrawTexture);
 			}
 
-			if(mEffects.HasValue)
+			if (mEffects.HasValue)
 			{
 				mTargetActor.SetSpriteEffect(mEffects.Value);
 			}

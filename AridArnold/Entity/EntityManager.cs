@@ -1,6 +1,4 @@
-﻿using System.Xml;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Manager that updates and draws all entities.
@@ -454,7 +452,7 @@ namespace AridArnold
 		/// </summary>
 		void DebugDrawEntityColliders(DrawInfo info)
 		{
-			foreach(Entity entity in mRegisteredEntities)
+			foreach (Entity entity in mRegisteredEntities)
 			{
 				if (!entity.IsEnabled()) continue;
 

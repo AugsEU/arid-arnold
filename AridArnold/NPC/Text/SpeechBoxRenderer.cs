@@ -256,8 +256,8 @@
 			MonoDraw.DrawRectDepth(info, bgRectangle, mStyle.mFillColor, DrawLayer.Bubble);
 
 			// Calc corners
-			Vector2 TL = new Vector2(bgRectangle.X,                     bgRectangle.Y);
-			Vector2 BL = new Vector2(bgRectangle.X,                     bgRectangle.Y + bgRectangle.Height);
+			Vector2 TL = new Vector2(bgRectangle.X, bgRectangle.Y);
+			Vector2 BL = new Vector2(bgRectangle.X, bgRectangle.Y + bgRectangle.Height);
 			Vector2 BR = new Vector2(bgRectangle.X + bgRectangle.Width, bgRectangle.Y + bgRectangle.Height);
 			Vector2 TR = new Vector2(bgRectangle.X + bgRectangle.Width, bgRectangle.Y);
 

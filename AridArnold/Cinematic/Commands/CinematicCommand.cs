@@ -28,7 +28,7 @@
 			string[] framesStrs = frameSpanStr.Split(",");
 			MonoDebug.Assert(framesStrs.Length == 2 || framesStrs.Length == 1);
 
-			if(framesStrs.Length == 1)
+			if (framesStrs.Length == 1)
 			{
 				int frame = int.Parse(framesStrs[0]);
 				mFrameSpan = new MonoRange<int>(frame, frame);
@@ -67,7 +67,7 @@
 		/// </summary>
 		public int FrameSpaceship(int frame)
 		{
-			if(frame < mFrameSpan.GetMin())
+			if (frame < mFrameSpan.GetMin())
 			{
 				return frame - mFrameSpan.GetMin();
 			}
@@ -111,7 +111,7 @@
 		/// </summary>
 		protected float GetActivePercent(int frame)
 		{
-			return (frame -  (float)mFrameSpan.GetMin()) / (float)(mFrameSpan.GetMax() - mFrameSpan.GetMin());
+			return (frame - (float)mFrameSpan.GetMin()) / (mFrameSpan.GetMax() - mFrameSpan.GetMin());
 		}
 
 

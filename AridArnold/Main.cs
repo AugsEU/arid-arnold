@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Program top level

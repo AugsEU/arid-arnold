@@ -4,8 +4,8 @@
 	{
 		enum FadeCmdType
 		{
-			ToBlack   = 0b01, // Fade from something *to black*
-			BlackTo   = 0b10, // Fade from *black to* something
+			ToBlack = 0b01, // Fade from something *to black*
+			BlackTo = 0b10, // Fade from *black to* something
 			ToBlackTo = 0b11, // Fade from something *to black to* something
 		}
 

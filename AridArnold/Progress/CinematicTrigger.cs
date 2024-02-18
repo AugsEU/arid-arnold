@@ -85,7 +85,7 @@
 		/// </summary>
 		public bool DoesTrigger(TriggerType cineEvent)
 		{
-			if(cineEvent != mType)
+			if (cineEvent != mType)
 			{
 				return false;
 			}
@@ -93,7 +93,7 @@
 			switch (cineEvent)
 			{
 				case TriggerType.LevelEnterFirst:
-					if(CampaignManager.I.GetCurrentLevel() is null)
+					if (CampaignManager.I.GetCurrentLevel() is null)
 					{
 						return false;
 					}

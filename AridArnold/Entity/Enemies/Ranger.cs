@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class Ranger : AIEntity
 	{
@@ -304,7 +298,7 @@ namespace AridArnold
 			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
 			Vector2 offset = BULLET_OFFSET * Util.GetNormal(GetGravityDir());
 			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 4.0f + offset;
-			if(mPrevDirection == WalkDirection.Left)
+			if (mPrevDirection == WalkDirection.Left)
 			{
 				spawnPos += Util.GetNormal(bulletDirection) * 12.0f;
 			}
@@ -329,7 +323,7 @@ namespace AridArnold
 		/// <returns></returns>
 		protected override Texture2D GetDrawTexture()
 		{
-			if(mStateMachine.GetState() == State.ShootLaser)
+			if (mStateMachine.GetState() == State.ShootLaser)
 			{
 				return mShootGunAnim.GetCurrentTexture();
 			}

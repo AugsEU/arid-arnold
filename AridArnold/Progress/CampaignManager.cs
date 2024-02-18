@@ -451,7 +451,7 @@ namespace AridArnold
 		/// </summary>
 		void CheckCinematicTriggers()
 		{
-			foreach(CinematicTrigger cinematicTrigger in mMetaData.GetCinematicTriggers())
+			foreach (CinematicTrigger cinematicTrigger in mMetaData.GetCinematicTriggers())
 			{
 				UInt64 cineID = cinematicTrigger.GetTriggerID();
 				if (!mSeenCinematics.Contains(cineID) && cinematicTrigger.DoesTrigger(CinematicTrigger.TriggerType.LevelEnterFirst))
