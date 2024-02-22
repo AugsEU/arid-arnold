@@ -12,9 +12,6 @@
 		/// </summary>
 		public Electrent(Vector2 pos) : base(pos)
 		{
-			mStyle.mScrollSpeed = 1.1f;
-			mStyle.mFramesPerLetter = 11;
-
 			mStyle.mFillColor = new Color(0, 20, 5, 240);
 			mStyle.mBorderColor = new Color(56, 122, 89);
 		}
@@ -49,7 +46,7 @@
 			//Talk textures.
 			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Talk1");
 			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Angry1");
-			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Idle1");
+			mMouthClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/Electrent/Idle1");
 
 			base.LoadContent();
 		}
