@@ -121,9 +121,10 @@
 				SetSideVelocityFromDirection(mWalkDirection);
 			}
 
-			if (mOnGround && mUpdatesSinceJump > 4)
+			if (mOnGround)
 			{
 				mUpdatesSinceGrounded = 0;
+				mUpdatesSinceJump = int.MaxValue;
 			}
 			else if (mUpdatesSinceGrounded != int.MaxValue)
 			{
@@ -614,7 +615,6 @@
 				mVelocity = -mJumpSpeed * GravityVecNorm();
 			}
 
-			mUpdatesSinceGrounded = int.MaxValue;
 			mUpdatesSinceJump = 0;
 		}
 

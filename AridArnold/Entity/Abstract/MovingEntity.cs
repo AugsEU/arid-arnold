@@ -24,6 +24,7 @@
 		protected Vector2 mPrevVelocity;
 		protected Vector2 mVelocity;
 		protected bool mFallthrough;
+		int mUpdatesSinceFallthrough;
 
 		#endregion rMembers
 
@@ -39,6 +40,7 @@
 		/// <param name="pos">Starting position</param>
 		public MovingEntity(Vector2 pos) : base(pos)
 		{
+			mUpdatesSinceFallthrough = int.MaxValue;
 		}
 
 		#endregion rInitialisation
@@ -59,6 +61,10 @@
 			UpdateCollision(gameTime);
 
 			mFallthrough = false;
+			if(mUpdatesSinceFallthrough != int.MaxValue)
+			{
+				mUpdatesSinceFallthrough++;
+			}
 
 			base.OrderedUpdate(gameTime);
 		}
@@ -76,6 +82,10 @@
 			List<EntityCollision> collisionList = new List<EntityCollision>();
 
 			EntityCollision currentCollision = EntityManager.I.GetNextCollision(gameTime, this);
+
+			bool debug = this is Androld;
+
+			if (debug) MonoDebug.DLog("Start V: {0}", mVelocity.ToString());
 
 			while (currentCollision != null)
 			{
@@ -106,6 +116,8 @@
 
 				currentCollision = EntityManager.I.GetNextCollision(gameTime, this);
 			}
+
+			if (debug) MonoDebug.DLog("END V: {0}", mVelocity.ToString());
 
 			ApplyVelocity(gameTime);
 
@@ -168,7 +180,18 @@
 		/// </summary>
 		protected void FallThroughPlatforms()
 		{
+			mUpdatesSinceFallthrough = 0;
 			mFallthrough = true;
+		}
+
+
+
+		/// <summary>
+		/// Get number of updates since falling
+		/// </summary>
+		public bool HasFallThroughInLast(int frames)
+		{
+			return mUpdatesSinceFallthrough < frames;
 		}
 
 
