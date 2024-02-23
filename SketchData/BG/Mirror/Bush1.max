@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.180">BG\Mirror\Bush11</texture>
+	<texture time="0.180">BG\Mirror\Bush12</texture>
+	<texture time="0.180">BG\Mirror\Bush13</texture>
+	<texture time="0.180">BG\Mirror\Bush12</texture>
+	<texture time="0.180">BG\Mirror\Bush11</texture>
+	<texture time="0.180">BG\Mirror\Bush14</texture>
+	<texture time="0.180">BG\Mirror\Bush15</texture>
+	<texture time="0.180">BG\Mirror\Bush14</texture>
+</animation>
