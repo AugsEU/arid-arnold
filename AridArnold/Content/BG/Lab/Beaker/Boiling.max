@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.08">BG\Lab\Beaker\Bubble1</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble2</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble3</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble4</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble5</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble6</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble7</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble8</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble9</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble10</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble11</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble12</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble13</texture>
+	<texture time="0.08">BG\Lab\Beaker\Bubble14</texture>
+</animation>

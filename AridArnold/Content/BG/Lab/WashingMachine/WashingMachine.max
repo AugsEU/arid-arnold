@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.12">BG\Lab\WashingMachine\Spin1</texture>
+	<texture time="0.12">BG\Lab\WashingMachine\Spin2</texture>
+	<texture time="0.12">BG\Lab\WashingMachine\Spin3</texture>
+	<texture time="0.12">BG\Lab\WashingMachine\Spin4</texture>
+</animation>

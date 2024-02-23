@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.08">BG\Lab\Bunsen\Bunsen1</texture>
+	<texture time="0.08">BG\Lab\Bunsen\Bunsen2</texture>
+	<texture time="0.08">BG\Lab\Bunsen\Bunsen3</texture>
+	<texture time="0.08">BG\Lab\Bunsen\Bunsen4</texture>
+	<texture time="0.08">BG\Lab\Bunsen\Bunsen5</texture>
+</animation>

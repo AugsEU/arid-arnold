@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation variation="100.0">
+	<main>BG/Lab/ColdComputer/Rand0.max</main>
+	<alt>BG/Lab/ColdComputer/Rand1.max</alt>
+	<alt>BG/Lab/ColdComputer/Rand2.max</alt>
+	<alt>BG/Lab/ColdComputer/Rand3.max</alt>
+</animation>

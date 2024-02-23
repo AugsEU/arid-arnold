@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.20">BG\Lab\ColdComputer\Screens001</texture>
+	<texture time="0.20">BG\Lab\ColdComputer\Screens011</texture>
+	<texture time="0.20">BG\Lab\ColdComputer\Screens111</texture>
+	<texture time="0.20">BG\Lab\ColdComputer\Screens110</texture>
+	<texture time="0.20">BG\Lab\ColdComputer\Screens111</texture>
+</animation>
