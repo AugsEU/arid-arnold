@@ -6,4 +6,28 @@
 		<depth>Background</depth>
 		<texture>BG/Lab/L405</texture>
 	</element>
+
+	<!-- Computer -->
+	<element type="IdleAnim"> 
+		<x>47.0</x>
+		<y>158.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Computer/Screen.mia</anim>
+	</element>
+
+	<!-- Cold War Computer -->
+	<element type="IdleAnim"> 
+		<x>285.0</x>
+		<y>474.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/ColdComputer/RandScreen.mia</anim>
+	</element>
+
+	<!-- Bunsen -->
+	<element type="Animator">
+		<x>241.0</x>
+		<y>470.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Bunsen/Boiling.max</anim>
+	</element>
 </root>

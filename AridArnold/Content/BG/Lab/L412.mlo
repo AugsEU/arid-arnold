@@ -6,4 +6,54 @@
 		<depth>Background</depth>
 		<texture>BG/Lab/L412</texture>
 	</element>
+
+	<!-- Computer -->
+	<element type="IdleAnim"> 
+		<x>83.0</x>
+		<y>397.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Computer/Screen.mia</anim>
+	</element>
+
+	<!-- Cold War Computer -->
+	<element type="IdleAnim"> 
+		<x>241.0</x>
+		<y>426.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/ColdComputer/RandScreen.mia</anim>
+	</element>
+
+	<!-- Beaker -->
+	<element type="Animator">
+		<x>242.0</x>
+		<y>60.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Beaker/Boiling.max</anim>
+	</element>
+
+	<!-- Bunsen -->
+	<element type="Animator">
+		<x>206.0</x>
+		<y>70.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Bunsen/Boiling.max</anim>
+	</element>
+
+	<!-- Server -->
+	<element type="RandomStatic">
+		<x>471.0</x>
+		<y>378.0</y>
+		<width>10</width>
+		<height>2</height>
+		<depth>BackgroundElement</depth>
+	</element>
+
+	<!-- Server -->
+	<element type="RandomStatic">
+		<x>490.0</x>
+		<y>378.0</y>
+		<width>10</width>
+		<height>2</height>
+		<depth>BackgroundElement</depth>
+	</element>
 </root>

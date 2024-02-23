@@ -6,6 +6,7 @@
 		<depth>Background</depth>
 		<texture>BG/Lab/H401</texture>
 	</element>
+	
 	<!-- Computer -->
 	<element type="IdleAnim"> 
 		<x>142.0</x>
