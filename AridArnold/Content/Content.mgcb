@@ -7816,3 +7816,138 @@
 #begin Text/EN/NPC/Electrent/TimeTravel.txt
 /copy:Text/EN/NPC/Electrent/TimeTravel.txt
 
+#begin BG/Lab/L401.mlo
+/copy:BG/Lab/L401.mlo
+
+#begin BG/Lab/L401.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L401.png
+
+#begin BG/Lab/L402.mlo
+/copy:BG/Lab/L402.mlo
+
+#begin BG/Lab/L402.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L402.png
+
+#begin BG/Lab/L403.mlo
+/copy:BG/Lab/L403.mlo
+
+#begin BG/Lab/L403.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L403.png
+
+#begin BG/Lab/L404.mlo
+/copy:BG/Lab/L404.mlo
+
+#begin BG/Lab/L404.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L404.png
+
+#begin BG/Lab/L405.mlo
+/copy:BG/Lab/L405.mlo
+
+#begin BG/Lab/L405.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L405.png
+
+#begin BG/Lab/L406.mlo
+/copy:BG/Lab/L406.mlo
+
+#begin BG/Lab/L406.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L406.png
+
+#begin BG/Lab/L407.mlo
+/copy:BG/Lab/L407.mlo
+
+#begin BG/Lab/L407.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L407.png
+
+#begin BG/Lab/L408.mlo
+/copy:BG/Lab/L408.mlo
+
+#begin BG/Lab/L408.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L408.png
+
+#begin BG/Lab/L409.mlo
+/copy:BG/Lab/L409.mlo
+
+#begin BG/Lab/L409.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L409.png
+
+#begin BG/Lab/L410.mlo
+/copy:BG/Lab/L410.mlo
+
+#begin BG/Lab/L410.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L410.png
+
+#begin BG/Lab/L411.mlo
+/copy:BG/Lab/L411.mlo
+
+#begin BG/Lab/L411.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L411.png
+
+#begin BG/Lab/L412.mlo
+/copy:BG/Lab/L412.mlo
+
+#begin BG/Lab/L412.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L412.png
+
+#begin BG/Lab/L413.mlo
+/copy:BG/Lab/L413.mlo
+
+#begin BG/Lab/L413.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L413.png
+
+#begin BG/Lab/L414.mlo
+/copy:BG/Lab/L414.mlo
+
+#begin BG/Lab/L414.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L414.png
+
+#begin BG/Lab/L415.mlo
+/copy:BG/Lab/L415.mlo
+
+#begin BG/Lab/L415.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L415.png
+
