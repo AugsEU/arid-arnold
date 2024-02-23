@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.20">BG\Lab\Computer\CEmpty</texture>
+	<texture time="0.20">BG\Lab\Computer\CExclamation</texture>
+	<texture time="0.20">BG\Lab\Computer\CEmpty</texture>
+	<texture time="0.20">BG\Lab\Computer\CExclamation</texture>
+	<texture time="0.20">BG\Lab\Computer\CEmpty</texture>
+	<texture time="0.20">BG\Lab\Computer\CExclamation</texture>
+	<texture time="0.20">BG\Lab\Computer\CEmpty</texture>
+	<texture time="0.20">BG\Lab\Computer\CExclamation</texture>
+	<texture time="0.20">BG\Lab\Computer\CEmpty</texture>
+	<texture time="0.20">BG\Lab\Computer\CExclamation</texture>
+</animation>

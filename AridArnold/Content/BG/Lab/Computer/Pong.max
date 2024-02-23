@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.20">BG\Lab\Computer\CPong1</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong2</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong3</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong4</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong5</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong6</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong7</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong8</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong9</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong10</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong11</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong12</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong13</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong14</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong15</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong16</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong17</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong18</texture>
+	<texture time="0.20">BG\Lab\Computer\CPong19</texture>
+	<texture time="1.50">BG\Lab\Computer\CPong20</texture>
+	<texture time="0.50">BG\Lab\Computer\CEmpty</texture>
+</animation>

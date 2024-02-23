@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation variation="60.0">
+	<main>BG/Lab/Computer/TextScroll.max</main>
+	<alt>BG/Lab/Computer/GameOfLife.max</alt>
+	<alt>BG/Lab/Computer/Pong.max</alt>
+	<alt>BG/Lab/Computer/Warning.max</alt>
+	<alt>BG/Lab/Computer/CDesmos</alt>
+	<alt>BG/Lab/Computer/CBear</alt>
+</animation>

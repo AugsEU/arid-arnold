@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.20">BG\Lab\Computer\CText1</texture>
+	<texture time="0.20">BG\Lab\Computer\CText2</texture>
+	<texture time="0.20">BG\Lab\Computer\CText3</texture>
+	<texture time="0.20">BG\Lab\Computer\CText4</texture>
+	<texture time="0.20">BG\Lab\Computer\CText5</texture>
+	<texture time="0.20">BG\Lab\Computer\CText6</texture>
+	<texture time="0.20">BG\Lab\Computer\CText7</texture>
+	<texture time="0.20">BG\Lab\Computer\CText8</texture>
+	<texture time="0.20">BG\Lab\Computer\CText9</texture>
+	<texture time="0.20">BG\Lab\Computer\CText10</texture>
+	<texture time="0.20">BG\Lab\Computer\CEmpty</texture>
+</animation>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.20">BG\Lab\Computer\CGL1</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL2</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL3</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL4</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL5</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL6</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL7</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL8</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL9</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL11</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL12</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL13</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL14</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL15</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL16</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL17</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL18</texture>
+	<texture time="0.20">BG\Lab\Computer\CGL19</texture>
+</animation>
