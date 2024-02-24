@@ -83,10 +83,6 @@
 
 			EntityCollision currentCollision = EntityManager.I.GetNextCollision(gameTime, this);
 
-			bool debug = this is Androld;
-
-			if (debug) MonoDebug.DLog("Start V: {0}", mVelocity.ToString());
-
 			while (currentCollision != null)
 			{
 				EntityCollision entityCollision = currentCollision;
@@ -116,8 +112,6 @@
 
 				currentCollision = EntityManager.I.GetNextCollision(gameTime, this);
 			}
-
-			if (debug) MonoDebug.DLog("END V: {0}", mVelocity.ToString());
 
 			ApplyVelocity(gameTime);
 
