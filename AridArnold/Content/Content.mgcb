@@ -9106,3 +9106,42 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin NPC/Treey/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Treey/Idle1.png
+
+#begin NPC/Treey/Talk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Treey/Talk1.png
+
+#begin NPC/Treey/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Treey/Walk1.png
+
+#begin NPC/Treey/Walk2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Treey/Walk2.png
+
+#begin NPC/Treey/Walk3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Treey/Walk3.png
+
+#begin Text/EN/NPC/Treey/Platforms.txt
+/copy:Text/EN/NPC/Treey/Platforms.txt
+
+#begin Text/EN/NPC/Treey/Child.txt
+/copy:Text/EN/NPC/Treey/Child.txt
+
+#begin Text/EN/NPC/Treey/Mother.txt
+/copy:Text/EN/NPC/Treey/Mother.txt
+

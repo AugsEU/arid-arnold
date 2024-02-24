@@ -391,6 +391,9 @@
 				case EntityData.EntityClass.kScholar:
 					entity = new Scholar(worldPosition);
 					break;
+				case EntityData.EntityClass.kTreey:
+					entity = new Treey(worldPosition);
+					break;
 
 				// Utility
 				case EntityData.EntityClass.kArnoldSpawner:
