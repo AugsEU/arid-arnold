@@ -64,9 +64,15 @@ namespace AridArnold
 			mStyle = MonoParse.GetSpeechBoxStyle(rootNode["textStyle"]);
 
 			mIdleAnimation = MonoData.I.LoadIdleAnimator(Path.Combine(folder, "Idle.mia"));
-			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>(Path.Combine(folder, "TalkNormal"));
-			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>(Path.Combine(folder, "TalkAngry"));
-			mMouthClosedTexture = MonoData.I.MonoGameLoad<Texture2D>(Path.Combine(folder, "Default"));
+
+
+			string normTex = Path.Combine(folder, "TalkNormal");
+			string angryTex = Path.Combine(folder, "TalkAngry");
+			string closedTex = Path.Combine(folder, "Default");
+
+			mTalkTexture = File.Exists(normTex) ? MonoData.I.MonoGameLoad<Texture2D>(normTex) : null;
+			mAngryTexture = File.Exists(angryTex) ? MonoData.I.MonoGameLoad<Texture2D>(angryTex) : null;
+			mMouthClosedTexture = File.Exists(closedTex) ? MonoData.I.MonoGameLoad<Texture2D>(closedTex) : null;
 
 			base.LoadContent();
 		}
