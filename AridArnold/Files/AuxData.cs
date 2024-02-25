@@ -20,7 +20,7 @@
 
 		#region rConstants
 
-		const int FILE_VER = 4;
+		const int FILE_VER = 5;
 		const int NUM_PARAMS = 8;
 
 		#endregion rConstants
@@ -187,8 +187,9 @@
 					entityData.mIntParams[j] = br.ReadInt32();
 				}
 
-				if (entityData.GetEntityType() == EntityData.EntityType.kSimpleNPC)
+				if (entityData.mEntityClass == EntityData.EntityClass.kSimpleNPC)
 				{
+					entityData.mNPCDataPath = br.ReadString();
 					entityData.mTalkText = br.ReadString();
 					entityData.mHeckleText = br.ReadString();
 				}

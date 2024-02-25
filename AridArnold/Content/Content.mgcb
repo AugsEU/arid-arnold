@@ -3568,171 +3568,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0501.png
 
-#begin Campaigns/MainCampaign/Levels/0502.aux
-/copy:Campaigns/MainCampaign/Levels/0502.aux
-
-#begin Campaigns/MainCampaign/Levels/0502.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0502.png
-
-#begin Campaigns/MainCampaign/Levels/0503.aux
-/copy:Campaigns/MainCampaign/Levels/0503.aux
-
-#begin Campaigns/MainCampaign/Levels/0503.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0503.png
-
-#begin Campaigns/MainCampaign/Levels/0504.aux
-/copy:Campaigns/MainCampaign/Levels/0504.aux
-
-#begin Campaigns/MainCampaign/Levels/0504.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0504.png
-
-#begin Campaigns/MainCampaign/Levels/0505.aux
-/copy:Campaigns/MainCampaign/Levels/0505.aux
-
-#begin Campaigns/MainCampaign/Levels/0505.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0505.png
-
-#begin Campaigns/MainCampaign/Levels/0506.aux
-/copy:Campaigns/MainCampaign/Levels/0506.aux
-
-#begin Campaigns/MainCampaign/Levels/0506.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0506.png
-
-#begin Campaigns/MainCampaign/Levels/0507.aux
-/copy:Campaigns/MainCampaign/Levels/0507.aux
-
-#begin Campaigns/MainCampaign/Levels/0507.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0507.png
-
-#begin Campaigns/MainCampaign/Levels/0508.aux
-/copy:Campaigns/MainCampaign/Levels/0508.aux
-
-#begin Campaigns/MainCampaign/Levels/0508.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0508.png
-
-#begin Campaigns/MainCampaign/Levels/0509.aux
-/copy:Campaigns/MainCampaign/Levels/0509.aux
-
-#begin Campaigns/MainCampaign/Levels/0509.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0509.png
-
-#begin Campaigns/MainCampaign/Levels/0510.aux
-/copy:Campaigns/MainCampaign/Levels/0510.aux
-
-#begin Campaigns/MainCampaign/Levels/0510.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0510.png
-
-#begin Campaigns/MainCampaign/Levels/0511.aux
-/copy:Campaigns/MainCampaign/Levels/0511.aux
-
-#begin Campaigns/MainCampaign/Levels/0511.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0511.png
-
-#begin Campaigns/MainCampaign/Levels/0512.aux
-/copy:Campaigns/MainCampaign/Levels/0512.aux
-
-#begin Campaigns/MainCampaign/Levels/0512.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0512.png
-
 #begin Campaigns/MainCampaign/Levels/0601.aux
 /copy:Campaigns/MainCampaign/Levels/0601.aux
 
@@ -6151,6 +5986,9 @@
 #begin Layouts/TitleScreen.mlo
 /copy:Layouts/TitleScreen.mlo
 
+#begin NPC/Barbara/Barbara.mtn
+/copy:NPC/Barbara/Barbara.mtn
+
 #begin NPC/Barbara/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -6313,6 +6151,9 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/ToeExtend1.png
 
+#begin NPC/BoilerMan/BoilerMan.mtn
+/copy:NPC/BoilerMan/BoilerMan.mtn
+
 #begin NPC/BoilerMan/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -6415,6 +6256,9 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/TurnTalk2.png
 
+#begin NPC/Booker/Booker.mtn
+/copy:NPC/Booker/Booker.mtn
+
 #begin NPC/Booker/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -6456,6 +6300,9 @@
 
 #begin NPC/Booker/Idle.mia
 /copy:NPC/Booker/Idle.mia
+
+#begin NPC/BossMan/BossMan.mtn
+/copy:NPC/BossMan/BossMan.mtn
 
 #begin NPC/BossMan/Default.png
 /importer:TextureImporter
@@ -6565,6 +6412,9 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Dok/Default.png
 
+#begin NPC/Dok/Dok.mtn
+/copy:NPC/Dok/Dok.mtn
+
 #begin NPC/Dok/Idle.mia
 /copy:NPC/Dok/Idle.mia
 
@@ -6621,6 +6471,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/Default.png
+
+#begin NPC/Electrent/Electrent.mtn
+/copy:NPC/Electrent/Electrent.mtn
 
 #begin NPC/Electrent/Idle.mia
 /copy:NPC/Electrent/Idle.mia
@@ -6922,6 +6775,9 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Scholar/Itch1.png
 
+#begin NPC/Scholar/Scholar.mtn
+/copy:NPC/Scholar/Scholar.mtn
+
 #begin NPC/Scholar/TalkAngry.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -6984,6 +6840,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Treey/TalkNormal.png
+
+#begin NPC/Treey/Treey.mtn
+/copy:NPC/Treey/Treey.mtn
 
 #begin NPC/Treey/Walk1.png
 /importer:TextureImporter
@@ -7101,6 +6960,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Zippy/TalkNormal.png
+
+#begin NPC/Zippy/Zippy.mtn
+/copy:NPC/Zippy/Zippy.mtn
 
 #begin PlantPot/PillarBase.png
 /importer:TextureImporter
@@ -9204,31 +9066,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin NPC/Barbara/Barbara.mtn
-/copy:NPC/Barbara/Barbara.mtn
-
-#begin NPC/BoilerMan/BoilerMan.mtn
-/copy:NPC/BoilerMan/BoilerMan.mtn
-
-#begin NPC/Booker/Booker.mtn
-/copy:NPC/Booker/Booker.mtn
-
-#begin NPC/BossMan/BossMan.mtn
-/copy:NPC/BossMan/BossMan.mtn
-
-#begin NPC/Dok/Dok.mtn
-/copy:NPC/Dok/Dok.mtn
-
-#begin NPC/Electrent/Electrent.mtn
-/copy:NPC/Electrent/Electrent.mtn
-
-#begin NPC/Scholar/Scholar.mtn
-/copy:NPC/Scholar/Scholar.mtn
-
-#begin NPC/Treey/Treey.mtn
-/copy:NPC/Treey/Treey.mtn
-
-#begin NPC/Zippy/Zippy.mtn
-/copy:NPC/Zippy/Zippy.mtn
 

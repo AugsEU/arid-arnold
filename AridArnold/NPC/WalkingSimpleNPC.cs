@@ -6,7 +6,7 @@ namespace AridArnold
 		protected Animator mWalkAnim;
 		PercentageTimer mWalkTimer;
 
-		public WalkingSimpleNPC(Vector2 pos, float walkFreq = 5000.0f) : base(pos)
+		public WalkingSimpleNPC(Vector2 pos, string dataPath, string talkText, string heckleText, float walkFreq = 5000.0f) : base(pos, dataPath, talkText, heckleText)
 		{
 			mWalkTimer = new PercentageTimer(walkFreq * 2.0f);
 			mWalkTimer.Start();

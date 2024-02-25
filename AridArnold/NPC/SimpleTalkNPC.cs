@@ -5,7 +5,7 @@ namespace AridArnold
 	/// <summary>
 	/// A simple NPC that talks when you get near.
 	/// </summary>
-	abstract class SimpleTalkNPC : NPC
+	class SimpleTalkNPC : NPC
 	{
 		#region rConstants
 
@@ -43,7 +43,7 @@ namespace AridArnold
 		public SimpleTalkNPC(Vector2 pos, string dataPath, string talkText, string heckleText) : base(pos)
 		{
 			mTalking = false;
-			mDataPath = dataPath;
+			mDataPath = Path.Join("Content/", dataPath);
 			mTalkText = talkText;
 			mHeckleText = heckleText;
 		}
@@ -55,8 +55,7 @@ namespace AridArnold
 		/// </summary>
 		public override void LoadContent()
 		{
-			DirectoryInfo dirInfo = Directory.GetParent(mDataPath);
-			string folder = dirInfo.Name;
+			string folder = Path.GetDirectoryName(mDataPath);
 
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(mDataPath);
@@ -182,26 +181,6 @@ namespace AridArnold
 
 
 		#region rDialog
-
-		/// <summary>
-		/// Set text displayed when talking to the player.
-		/// </summary>
-		/// <param name="talkText">Talk text</param>
-		public void SetTalkText(string talkText)
-		{
-			mTalkText = talkText;
-		}
-
-
-
-		/// <summary>
-		/// Set's text that will be used to heckle the player
-		/// </summary>
-		/// <param name="heckleText">String ID of heckle text</param>
-		public void SetHeckleText(string heckleText)
-		{
-			mHeckleText = heckleText;
-		}
 
 		/// <summary>
 		/// Say something.

@@ -27,16 +27,8 @@
 			kEnemyClassEnd,
 
 			//NPC
-			kBarbara = kNPCClassStart,
-			kZippy,
-			kDok,
+			kSimpleNPC = kNPCClassStart,
 			kBickDogel,
-			kElectrent,
-			kBoilerMan,
-			kBossMan,
-			kBooker,
-			kScholar,
-			kTreey,
 			kNPCClassEnd,
 
 			// Utility
@@ -53,12 +45,6 @@
 			kUtilityClassEnd
 		}
 
-		public enum EntityType
-		{
-			kBasic,
-			kSimpleNPC
-		}
-
 		// Data
 		public Point mPosition;
 		public EntityClass mEntityClass;
@@ -70,20 +56,6 @@
 		// Only NPC data
 		public string mTalkText;
 		public string mHeckleText;
-
-		public EntityType GetEntityType()
-		{
-			if ((int)mEntityClass >= kNPCClassStart && (int)mEntityClass <= (int)EntityClass.kNPCClassEnd)
-			{
-				if (mEntityClass == EntityClass.kBickDogel)
-				{
-					//Special exception
-					return EntityType.kBasic;
-				}
-
-				return EntityType.kSimpleNPC;
-			}
-			return EntityType.kBasic;
-		}
+		public string mNPCDataPath;
 	}
 }

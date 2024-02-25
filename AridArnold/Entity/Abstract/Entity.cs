@@ -364,37 +364,12 @@
 					break;
 
 				// NPC
-				case EntityData.EntityClass.kBarbara:
-					entity = new Barbara(worldPosition);
-					break;
-				case EntityData.EntityClass.kZippy:
-					entity = new Zippy(worldPosition);
-					break;
-				case EntityData.EntityClass.kDok:
-					entity = new Dok(worldPosition);
+				case EntityData.EntityClass.kSimpleNPC:
+					entity = new SimpleTalkNPC(worldPosition, data.mNPCDataPath, data.mTalkText, data.mHeckleText);
 					break;
 				case EntityData.EntityClass.kBickDogel: // Special NPC
 					entity = new GrillVogel(worldPosition);
 					break;
-				case EntityData.EntityClass.kElectrent:
-					entity = new Electrent(worldPosition);
-					break;
-				case EntityData.EntityClass.kBoilerMan:
-					entity = new BoilerMan(worldPosition);
-					break;
-				case EntityData.EntityClass.kBossMan:
-					entity = new BossMan(worldPosition);
-					break;
-				case EntityData.EntityClass.kBooker:
-					entity = new Booker(worldPosition);
-					break;
-				case EntityData.EntityClass.kScholar:
-					entity = new Scholar(worldPosition);
-					break;
-				case EntityData.EntityClass.kTreey:
-					entity = new Treey(worldPosition);
-					break;
-
 				// Utility
 				case EntityData.EntityClass.kArnoldSpawner:
 					entity = new ArnoldRespawn(worldPosition, data.mGravityDirection, data.mStartDirection);
@@ -435,13 +410,6 @@
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 				platformingEntity.SetGravity(data.mGravityDirection);
 				platformingEntity.SetPrevWalkDirection(data.mStartDirection);
-			}
-
-			if (entity is SimpleTalkNPC)
-			{
-				SimpleTalkNPC npc = (SimpleTalkNPC)entity;
-				npc.SetTalkText(data.mTalkText);
-				npc.SetHeckleText(data.mHeckleText);
 			}
 
 			return entity;
