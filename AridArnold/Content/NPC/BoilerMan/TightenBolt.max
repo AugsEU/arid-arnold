@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <animation type="oneshot">
-	<texture time="0.2">NPC/BoilerMan/Idle1</texture>
-	<texture time="0.2">NPC/BoilerMan/Idle2</texture>
-	<texture time="0.2">NPC/BoilerMan/Idle1</texture>
-	<texture time="0.2">NPC/BoilerMan/Idle2</texture>
+	<texture time="0.2">NPC/BoilerMan/Default</texture>
+	<texture time="0.2">NPC/BoilerMan/Tighten1</texture>
+	<texture time="0.2">NPC/BoilerMan/Default</texture>
+	<texture time="0.2">NPC/BoilerMan/Tighten1</texture>
 </animation>

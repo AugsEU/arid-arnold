@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.3">NPC/Electrent/Idle1</texture>
+	<texture time="0.3">NPC/Electrent/Idle2</texture>
+</animation>

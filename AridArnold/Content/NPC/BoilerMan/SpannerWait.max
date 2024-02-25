@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <animation type="oneshot">
-	<texture time="0.6">NPC/BoilerMan/Idle1</texture>
+	<texture time="0.6">NPC/BoilerMan/Default</texture>
 </animation>

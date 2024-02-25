@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Boss</name>
+	<textStyle>
+		<fillColor>0F102DA2</fillColor>
+		<borderColor>3D41B5</borderColor>
+	</textStyle>
+</simpleTalkNPC>

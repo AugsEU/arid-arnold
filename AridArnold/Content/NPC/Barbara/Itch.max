@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.2">NPC/Barbara/Itch1</texture>
+	<texture time="0.3">NPC/Barbara/Default</texture>
+	<texture time="0.2">NPC/Barbara/Itch1</texture>
+</animation>

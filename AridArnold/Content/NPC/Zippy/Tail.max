@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.3">NPC/Zippy/TailWhip1</texture>
+    <texture time="0.4">NPC/Zippy/TailWhip2</texture>
+    <texture time="0.2">NPC/Zippy/TailWhip1</texture>
+	<texture time="0.8">NPC/Zippy/Default</texture>
+	<texture time="0.25">NPC/Zippy/TailWhip1</texture>
+    <texture time="0.3">NPC/Zippy/TailWhip2</texture>
+    <texture time="0.2">NPC/Zippy/TailWhip1</texture>
+</animation>

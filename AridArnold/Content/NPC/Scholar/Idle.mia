@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation variation="45.0">
+	<main>NPC/Scholar/Default</main>
+	<alt>NPC/Scholar/Itch.max</alt>
+</animation>

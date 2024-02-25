@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Book</name>
+	<textStyle>
+		<fillColor>DFE0D2A2</fillColor>
+		<borderColor>5B1000</borderColor>
+	</textStyle>
+</simpleTalkNPC>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation variation="45.0">
+	<main>NPC/Barbara/Default</main>
+	<alt>NPC/Barbara/LookUp.max</alt>
+	<alt>NPC/Barbara/Toe.max</alt>
+	<alt>NPC/Barbara/Itch.max</alt>
+</animation>

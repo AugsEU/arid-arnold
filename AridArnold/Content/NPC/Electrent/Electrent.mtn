@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Electrent</name>
+	<textStyle>
+		<scrollSpeed>0.55</scrollSpeed>
+		<framesPerLetter>21</framesPerLetter>
+		<fillColor>001405A2</fillColor>
+		<borderColor>387a59</borderColor>
+	</textStyle>
+</simpleTalkNPC>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Dok</name>
+	<textStyle>
+		<scrollSpeed>0.55</scrollSpeed>
+		<framesPerLetter>21</framesPerLetter>
+		<fillColor>1E1E28A2</fillColor>
+		<borderColor>004705</borderColor>
+	</textStyle>
+</simpleTalkNPC>

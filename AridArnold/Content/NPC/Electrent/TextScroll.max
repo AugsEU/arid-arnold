@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.1">NPC/Electrent/TextScroll1</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll2</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll3</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll4</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll5</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll6</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll7</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll8</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll9</texture>
+	<texture time="0.1">NPC/Electrent/TextScroll10</texture>
+	<texture time="0.5">NPC/Electrent/TextScroll1</texture>
+</animation>

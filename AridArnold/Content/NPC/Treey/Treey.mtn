@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Tree Wizard</name>
+	<textStyle>
+		<fillColor>1E1E28A2</fillColor>
+		<borderColor>2F3DFC</borderColor>
+	</textStyle>
+</simpleTalkNPC>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation variation="75.0">
+	<main>NPC/Zippy/Default</main>
+	<alt>NPC/Zippy/Sniff.max</alt>
+	<alt>NPC/Zippy/Tail.max</alt>
+</animation>
