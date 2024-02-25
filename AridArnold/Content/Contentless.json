@@ -39,6 +39,10 @@
         ".max": 
         {
             "copy": true
+        },
+        ".mtn": 
+        {
+            "copy": true
         }
     },
 

@@ -12,18 +12,12 @@ namespace AridArnold
 
 			string stringID = MonoParse.GetString(cmdNode["text"]);
 
-			SpeechBoxStyle style = SpeechBoxStyle.DefaultStyle;
+			SpeechBoxStyle style = MonoParse.GetSpeechBoxStyle(cmdNode);
 			style.mFramesPerLetter /= 4;
 			style.mWidth = 200.1f;
 
-			style.mBorderColor = MonoParse.GetColor(cmdNode["borderColor"], style.mBorderColor);
-			style.mFillColor = MonoParse.GetColor(cmdNode["fillColor"], style.mFillColor);
-			style.mScrollSpeed = MonoParse.GetFloat(cmdNode["scroll"], style.mScrollSpeed);
-			style.mFlipSpike = cmdNode["flipSpike"] is not null;
-
 			float spikeOffset = MonoParse.GetFloat(cmdNode["spike"], 30.0f);
 			Vector2 dialogPosition = MonoParse.GetVector(cmdNode);
-
 
 			mSpeechBox = new SpeechBoxRenderer(stringID, dialogPosition, spikeOffset, style);
 		}

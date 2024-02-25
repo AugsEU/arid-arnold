@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.IO;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// A simple NPC that talks when you get near.
@@ -25,6 +27,7 @@
 
 		protected string mTalkText;
 		protected string mHeckleText;
+		string mDataPath;
 
 		#endregion rMembers
 
@@ -37,11 +40,36 @@
 		/// <summary>
 		/// Put SimpleTalkNPC at a position
 		/// </summary>
-		public SimpleTalkNPC(Vector2 pos) : base(pos)
+		public SimpleTalkNPC(Vector2 pos, string dataPath, string talkText, string heckleText) : base(pos)
 		{
 			mTalking = false;
-			mTalkText = "";
-			mHeckleText = "";
+			mDataPath = dataPath;
+			mTalkText = talkText;
+			mHeckleText = heckleText;
+		}
+
+
+
+		/// <summary>
+		/// Load content
+		/// </summary>
+		public override void LoadContent()
+		{
+			DirectoryInfo dirInfo = Directory.GetParent(mDataPath);
+			string folder = dirInfo.Name;
+
+			XmlDocument xmlDoc = new XmlDocument();
+			xmlDoc.Load(mDataPath);
+			XmlNode rootNode = xmlDoc.LastChild;
+
+			mStyle = MonoParse.GetSpeechBoxStyle(rootNode["textStyle"]);
+
+			mIdleAnimation = MonoData.I.LoadIdleAnimator(Path.Combine(folder, "Idle.mia"));
+			mTalkTexture = MonoData.I.MonoGameLoad<Texture2D>(Path.Combine(folder, "TalkNormal"));
+			mAngryTexture = MonoData.I.MonoGameLoad<Texture2D>(Path.Combine(folder, "TalkAngry"));
+			mMouthClosedTexture = MonoData.I.MonoGameLoad<Texture2D>(Path.Combine(folder, "Default"));
+
+			base.LoadContent();
 		}
 
 		#endregion rInitialisation

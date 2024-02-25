@@ -157,5 +157,31 @@
 
 			return returnValue;
 		}
+
+
+
+		/// <summary>
+		/// Parse xml node into speechbox style
+		/// </summary>
+		static public SpeechBoxStyle GetSpeechBoxStyle(XmlNode node)
+		{
+			SpeechBoxStyle ret = SpeechBoxStyle.DefaultStyle;
+
+			string fontKey = GetString(node["font"]);
+			if (fontKey.Length > 0)
+			{
+				ret.mFont = FontManager.I.GetFont(fontKey);
+			}
+
+			ret.mWidth = GetFloat(node["width"], ret.mWidth);
+			ret.mLeading = GetFloat(node["leading"], ret.mLeading);
+			ret.mKerning = GetFloat(node["kerning"], ret.mKerning);
+			ret.mScrollSpeed = GetFloat(node["scrollSpeed"], ret.mScrollSpeed);
+			ret.mFramesPerLetter = GetInt(node["framesPerLetter"], ret.mFramesPerLetter);
+			ret.mFillColor = GetColor(node["fillColor"], ret.mFillColor);
+			ret.mBorderColor = GetColor(node["borderColor"], ret.mFillColor);
+			ret.mFlipSpike = node["flipSpike"] is not null;
+			return ret;
+		}
 	}
 }

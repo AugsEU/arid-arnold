@@ -6151,17 +6151,17 @@
 #begin Layouts/TitleScreen.mlo
 /copy:Layouts/TitleScreen.mlo
 
-#begin NPC/Barbara/Angry1.png
+#begin NPC/Barbara/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Barbara/Angry1.png
+/build:NPC/Barbara/Default.png
 
 #begin NPC/Barbara/Fall.max
 /copy:NPC/Barbara/Fall.max
@@ -6190,65 +6190,23 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/Fall2.png
 
-#begin NPC/Barbara/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/Idle1.png
+#begin NPC/Barbara/Idle.mia
+/copy:NPC/Barbara/Idle.mia
 
-#begin NPC/Barbara/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/Idle2.png
+#begin NPC/Barbara/Itch.max
+/copy:NPC/Barbara/Itch.max
 
-#begin NPC/Barbara/Idle3.png
+#begin NPC/Barbara/Itch1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Barbara/Idle3.png
-
-#begin NPC/Barbara/Idle4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/Idle4.png
-
-#begin NPC/Barbara/Idle5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/Idle5.png
+/build:NPC/Barbara/Itch1.png
 
 #begin NPC/Barbara/Land1.png
 /importer:TextureImporter
@@ -6261,6 +6219,33 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/Land1.png
+
+#begin NPC/Barbara/LookUp.max
+/copy:NPC/Barbara/LookUp.max
+
+#begin NPC/Barbara/LookUp1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/LookUp1.png
+
+#begin NPC/Barbara/LookUp2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/LookUp2.png
 
 #begin NPC/Barbara/Stand1.png
 /importer:TextureImporter
@@ -6289,68 +6274,59 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/StandTalk1.png
 
-#begin NPC/Barbara/Talk1.png
+#begin NPC/Barbara/TalkAngry.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Barbara/Talk1.png
+/build:NPC/Barbara/TalkAngry.png
 
-#begin NPC/BoilerMan/Exclaim1.png
+#begin NPC/Barbara/TalkNormal.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Exclaim1.png
+/build:NPC/Barbara/TalkNormal.png
+
+#begin NPC/Barbara/Toe.max
+/copy:NPC/Barbara/Toe.max
+
+#begin NPC/Barbara/ToeExtend1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Barbara/ToeExtend1.png
+
+#begin NPC/BoilerMan/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Default.png
 
 #begin NPC/BoilerMan/Idle.mia
 /copy:NPC/BoilerMan/Idle.mia
-
-#begin NPC/BoilerMan/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Idle1.png
-
-#begin NPC/BoilerMan/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Idle2.png
-
-#begin NPC/BoilerMan/Idle3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Idle3.png
 
 #begin NPC/BoilerMan/LookAround.max
 /copy:NPC/BoilerMan/LookAround.max
@@ -6358,20 +6334,56 @@
 #begin NPC/BoilerMan/Rest.max
 /copy:NPC/BoilerMan/Rest.max
 
-#begin NPC/BoilerMan/SpannerWait.max
-/copy:NPC/BoilerMan/SpannerWait.max
-
-#begin NPC/BoilerMan/Talk1.png
+#begin NPC/BoilerMan/Rest1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/BoilerMan/Talk1.png
+/build:NPC/BoilerMan/Rest1.png
+
+#begin NPC/BoilerMan/SpannerWait.max
+/copy:NPC/BoilerMan/SpannerWait.max
+
+#begin NPC/BoilerMan/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/TalkAngry.png
+
+#begin NPC/BoilerMan/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/TalkNormal.png
+
+#begin NPC/BoilerMan/Tighten1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BoilerMan/Tighten1.png
 
 #begin NPC/BoilerMan/TightenBolt.max
 /copy:NPC/BoilerMan/TightenBolt.max
@@ -6403,7 +6415,7 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BoilerMan/TurnTalk2.png
 
-#begin NPC/Booker/Idle1.png
+#begin NPC/Booker/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -6413,9 +6425,12 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Booker/Idle1.png
+/build:NPC/Booker/Default.png
 
-#begin NPC/Booker/Idle2.png
+#begin NPC/Booker/Float.max
+/copy:NPC/Booker/Float.max
+
+#begin NPC/Booker/Float1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -6425,9 +6440,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Booker/Idle2.png
+/build:NPC/Booker/Float1.png
 
-#begin NPC/Booker/Idle3.png
+#begin NPC/Booker/Float2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -6437,31 +6452,25 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Booker/Idle3.png
+/build:NPC/Booker/Float2.png
 
-#begin NPC/BossMan/Angry1.png
+#begin NPC/Booker/Idle.mia
+/copy:NPC/Booker/Idle.mia
+
+#begin NPC/BossMan/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/BossMan/Angry1.png
+/build:NPC/BossMan/Default.png
 
-#begin NPC/BossMan/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/BossMan/Idle1.png
+#begin NPC/BossMan/Idle.mia
+/copy:NPC/BossMan/Idle.mia
 
 #begin NPC/BossMan/JumpShout.max
 /copy:NPC/BossMan/JumpShout.max
@@ -6496,17 +6505,29 @@
 #begin NPC/BossMan/Talk.max
 /copy:NPC/BossMan/Talk.max
 
-#begin NPC/BossMan/Talk1.png
+#begin NPC/BossMan/TalkAngry.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/BossMan/Talk1.png
+/build:NPC/BossMan/TalkAngry.png
+
+#begin NPC/BossMan/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BossMan/TalkNormal.png
 
 #begin NPC/Dialog/DialogSpikeBorder.png
 /importer:TextureImporter
@@ -6532,77 +6553,77 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Dialog/DialogSpikeInner.png
 
-#begin NPC/Dok/Angry1.png
+#begin NPC/Dok/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Dok/Angry1.png
+/build:NPC/Dok/Default.png
 
-#begin NPC/Dok/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Dok/Idle1.png
+#begin NPC/Dok/Idle.mia
+/copy:NPC/Dok/Idle.mia
 
-#begin NPC/Dok/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Dok/Idle2.png
+#begin NPC/Dok/StickSmack.max
+/copy:NPC/Dok/StickSmack.max
 
-#begin NPC/Dok/Idle3.png
+#begin NPC/Dok/StickUp.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Dok/Idle3.png
+/build:NPC/Dok/StickUp.png
 
-#begin NPC/Dok/Talk1.png
+#begin NPC/Dok/TalkAngry.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Dok/Talk1.png
+/build:NPC/Dok/TalkAngry.png
 
-#begin NPC/Electrent/Angry1.png
+#begin NPC/Dok/TalkNormal.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Electrent/Angry1.png
+/build:NPC/Dok/TalkNormal.png
+
+#begin NPC/Electrent/CMDFlash.max
+/copy:NPC/Electrent/CMDFlash.max
+
+#begin NPC/Electrent/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Electrent/Default.png
+
+#begin NPC/Electrent/Idle.mia
+/copy:NPC/Electrent/Idle.mia
 
 #begin NPC/Electrent/Idle1.png
 /importer:TextureImporter
@@ -6616,29 +6637,32 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Electrent/Idle1.png
 
-#begin NPC/Electrent/Idle2.png
+#begin NPC/Electrent/TalkAngry.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Electrent/Idle2.png
+/build:NPC/Electrent/TalkAngry.png
 
-#begin NPC/Electrent/Talk1.png
+#begin NPC/Electrent/TalkNormal.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Electrent/Talk1.png
+/build:NPC/Electrent/TalkNormal.png
+
+#begin NPC/Electrent/TextScroll.max
+/copy:NPC/Electrent/TextScroll.max
 
 #begin NPC/Electrent/TextScroll1.png
 /importer:TextureImporter
@@ -6868,7 +6892,7 @@
 /processorParam:TextureFormat=Color
 /build:NPC/GrillVogel/Talk1.png
 
-#begin NPC/Scholar/Angry1.png
+#begin NPC/Scholar/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -6878,33 +6902,15 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Scholar/Angry1.png
+/build:NPC/Scholar/Default.png
 
-#begin NPC/Scholar/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Scholar/Idle1.png
+#begin NPC/Scholar/Idle.mia
+/copy:NPC/Scholar/Idle.mia
 
-#begin NPC/Scholar/Idle2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Scholar/Idle2.png
+#begin NPC/Scholar/Itch.max
+/copy:NPC/Scholar/Itch.max
 
-#begin NPC/Scholar/Talk1.png
+#begin NPC/Scholar/Itch1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -6914,7 +6920,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Scholar/Talk1.png
+/build:NPC/Scholar/Itch1.png
+
+#begin NPC/Scholar/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Scholar/TalkAngry.png
+
+#begin NPC/Scholar/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Scholar/TalkNormal.png
 
 #begin NPC/Scholar/Walk1.png
 /importer:TextureImporter
@@ -6928,89 +6958,149 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Scholar/Walk1.png
 
-#begin NPC/Zippy/Angry1.png
+#begin NPC/Treey/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Zippy/Angry1.png
+/build:NPC/Treey/Default.png
 
-#begin NPC/Zippy/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Zippy/Idle1.png
+#begin NPC/Treey/Idle.mia
+/copy:NPC/Treey/Idle.mia
 
-#begin NPC/Zippy/Idle2.png
+#begin NPC/Treey/TalkNormal.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Zippy/Idle2.png
+/build:NPC/Treey/TalkNormal.png
 
-#begin NPC/Zippy/Idle3.png
+#begin NPC/Treey/Walk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Zippy/Idle3.png
+/build:NPC/Treey/Walk1.png
 
-#begin NPC/Zippy/Idle4.png
+#begin NPC/Treey/Walk2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Zippy/Idle4.png
+/build:NPC/Treey/Walk2.png
 
-#begin NPC/Zippy/Idle5.png
+#begin NPC/Treey/Walk3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Zippy/Idle5.png
+/build:NPC/Treey/Walk3.png
 
-#begin NPC/Zippy/Talk1.png
+#begin NPC/Zippy/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:NPC/Zippy/Talk1.png
+/build:NPC/Zippy/Default.png
+
+#begin NPC/Zippy/Idle.mia
+/copy:NPC/Zippy/Idle.mia
+
+#begin NPC/Zippy/Sniff.max
+/copy:NPC/Zippy/Sniff.max
+
+#begin NPC/Zippy/Sniff1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Zippy/Sniff1.png
+
+#begin NPC/Zippy/Tail.max
+/copy:NPC/Zippy/Tail.max
+
+#begin NPC/Zippy/TailWhip1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Zippy/TailWhip1.png
+
+#begin NPC/Zippy/TailWhip2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Zippy/TailWhip2.png
+
+#begin NPC/Zippy/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Zippy/TalkAngry.png
+
+#begin NPC/Zippy/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Zippy/TalkNormal.png
 
 #begin PlantPot/PillarBase.png
 /importer:TextureImporter
@@ -7773,6 +7863,15 @@
 
 #begin Text/EN/NPC/Scholar/Heckle.txt
 /copy:Text/EN/NPC/Scholar/Heckle.txt
+
+#begin Text/EN/NPC/Treey/Child.txt
+/copy:Text/EN/NPC/Treey/Child.txt
+
+#begin Text/EN/NPC/Treey/Mother.txt
+/copy:Text/EN/NPC/Treey/Mother.txt
+
+#begin Text/EN/NPC/Treey/Platforms.txt
+/copy:Text/EN/NPC/Treey/Platforms.txt
 
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
@@ -9106,42 +9205,30 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin NPC/Treey/Idle1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Treey/Idle1.png
+#begin NPC/Barbara/Barbara.mtn
+/copy:NPC/Barbara/Barbara.mtn
 
-#begin NPC/Treey/Talk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Treey/Talk1.png
+#begin NPC/BoilerMan/BoilerMan.mtn
+/copy:NPC/BoilerMan/BoilerMan.mtn
 
-#begin NPC/Treey/Walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Treey/Walk1.png
+#begin NPC/Booker/Booker.mtn
+/copy:NPC/Booker/Booker.mtn
 
-#begin NPC/Treey/Walk2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Treey/Walk2.png
+#begin NPC/BossMan/BossMan.mtn
+/copy:NPC/BossMan/BossMan.mtn
 
-#begin NPC/Treey/Walk3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Treey/Walk3.png
+#begin NPC/Dok/Dok.mtn
+/copy:NPC/Dok/Dok.mtn
 
-#begin Text/EN/NPC/Treey/Platforms.txt
-/copy:Text/EN/NPC/Treey/Platforms.txt
+#begin NPC/Electrent/Electrent.mtn
+/copy:NPC/Electrent/Electrent.mtn
 
-#begin Text/EN/NPC/Treey/Child.txt
-/copy:Text/EN/NPC/Treey/Child.txt
+#begin NPC/Scholar/Scholar.mtn
+/copy:NPC/Scholar/Scholar.mtn
 
-#begin Text/EN/NPC/Treey/Mother.txt
-/copy:Text/EN/NPC/Treey/Mother.txt
+#begin NPC/Treey/Treey.mtn
+/copy:NPC/Treey/Treey.mtn
+
+#begin NPC/Zippy/Zippy.mtn
+/copy:NPC/Zippy/Zippy.mtn
 
