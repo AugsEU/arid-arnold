@@ -54,7 +54,7 @@
 			<actor>BossMan</actor>
 			<x>287</x>
 			<y>126</y>
-			<tex>NPC/BossMan/Idle1</tex>
+			<tex>NPC/BossMan/Default</tex>
 		</CC_SetActorProps>
 
 
