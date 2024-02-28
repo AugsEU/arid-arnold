@@ -4,7 +4,7 @@
 	<textStyle>
 		<scrollSpeed>0.55</scrollSpeed>
 		<framesPerLetter>21</framesPerLetter>
-		<fillColor>001405A2</fillColor>
-		<borderColor>387a59</borderColor>
+		<fillColor>000000E2</fillColor>
+		<borderColor>00560F</borderColor>
 	</textStyle>
 </simpleTalkNPC>

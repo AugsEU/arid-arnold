@@ -70,9 +70,9 @@ namespace AridArnold
 			string angryTex = Path.Combine(folder, "TalkAngry");
 			string closedTex = Path.Combine(folder, "Default");
 
-			mTalkTexture = File.Exists(normTex) ? MonoData.I.MonoGameLoad<Texture2D>(normTex) : null;
-			mAngryTexture = File.Exists(angryTex) ? MonoData.I.MonoGameLoad<Texture2D>(angryTex) : null;
-			mMouthClosedTexture = File.Exists(closedTex) ? MonoData.I.MonoGameLoad<Texture2D>(closedTex) : null;
+			mTalkTexture = MonoData.I.FileExists(normTex) ? MonoData.I.MonoGameLoad<Texture2D>(normTex) : null;
+			mAngryTexture = MonoData.I.FileExists(angryTex) ? MonoData.I.MonoGameLoad<Texture2D>(angryTex) : null;
+			mMouthClosedTexture = MonoData.I.FileExists(closedTex) ? MonoData.I.MonoGameLoad<Texture2D>(closedTex) : null;
 
 			base.LoadContent();
 		}

@@ -48,6 +48,16 @@
 
 
 		/// <summary>
+		/// Does file exist?
+		/// </summary>
+		public bool FileExists(string path)
+		{
+			return File.Exists($@"Content\{GetRemappedPath(path)}.xnb");
+		}
+
+
+
+		/// <summary>
 		/// Generates a new animator from an XML file.
 		/// </summary>
 		public Animator LoadAnimator(string path)
