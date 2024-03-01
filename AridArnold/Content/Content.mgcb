@@ -9067,9 +9067,3 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin BG/Mountain/Untitled.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Mountain/Untitled.png
-
