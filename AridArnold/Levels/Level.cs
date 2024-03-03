@@ -57,7 +57,7 @@
 			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
 
 			mLayoutPath = "BG/" + data.GetRoot() + "/" + data.GetBGPath() + ".mlo";
-			mBGLayout = new Layout(mLayoutPath);
+			mBGLayout = new Layout(mLayoutPath); // TO DO: Get rid of this?
 
 			// Level loaded but not playing.
 			mActive = false;

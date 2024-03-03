@@ -33,6 +33,10 @@
 		<depth>Background</depth>
 		<texture>BG/Mountain/BGWinter</texture>
 	</element>
+
+	<element type="snowField">
+		<time>1</time>
+	</element>
 	<!--In-game BG-->
 	
 	<!--Moons-->

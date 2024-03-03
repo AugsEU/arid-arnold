@@ -9067,3 +9067,21 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin BG/Mountain/SnowParticleBig.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Mountain/SnowParticleBig.png
+
+#begin BG/Mountain/SnowParticleMassive.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Mountain/SnowParticleMassive.png
+
+#begin BG/Mountain/SnowParticleSmall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Mountain/SnowParticleSmall.png
+

@@ -6,18 +6,6 @@
 	static class MonoParse
 	{
 		/// <summary>
-		/// Parse vector from xml node. Default = Zero
-		/// </summary>
-		static public Vector2 GetVector(XmlNode node)
-		{
-			XmlNode xNode = node.SelectSingleNode("x");
-			XmlNode yNode = node.SelectSingleNode("y");
-			return new Vector2(GetFloat(xNode), GetFloat(yNode));
-		}
-
-
-
-		/// <summary>
 		/// Parse float from xml node. Default = Zero
 		/// </summary>
 		static public float GetFloat(XmlNode node, float defaultVal = 0.0f)
@@ -59,6 +47,47 @@
 
 			return node.InnerText;
 		}
+
+
+
+		/// <summary>
+		/// Parse vector from xml node. Default = Zero
+		/// </summary>
+		static public Vector2 GetVector(XmlNode node)
+		{
+			XmlNode xNode = node.SelectSingleNode("x");
+			XmlNode yNode = node.SelectSingleNode("y");
+			return new Vector2(GetFloat(xNode), GetFloat(yNode));
+		}
+
+
+
+		/// <summary>
+		/// Parse point from xml node. Default = zero
+		/// </summary>
+		static public Point GetPoint(XmlNode node)
+		{
+			XmlNode xNode = node.SelectSingleNode("x");
+			XmlNode yNode = node.SelectSingleNode("y");
+			return new Point(GetInt(xNode), GetInt(yNode));
+		}
+
+
+
+
+		/// <summary>
+		/// Parse point from xml node. Default = zero
+		/// </summary>
+		static public Rectangle GetRectangle(XmlNode node)
+		{
+			XmlNode xNode = node.SelectSingleNode("x");
+			XmlNode yNode = node.SelectSingleNode("y");
+			XmlNode wNode = node.SelectSingleNode("width");
+			XmlNode hNode = node.SelectSingleNode("height");
+
+			return new Rectangle(GetInt(xNode), GetInt(yNode), GetInt(wNode), GetInt(hNode));
+		}
+
 
 
 		/// <summary>

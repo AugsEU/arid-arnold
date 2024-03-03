@@ -1,7 +1,7 @@
 ﻿namespace AridArnold
 {
 	/// <summary>
-	/// BG for mirror world. A bit bodge but it's contained so who cares?
+	/// BG for mirror world. TO DO: Use ParticleRect instead
 	/// </summary>
 	internal class EMirrorBG : LayElement
 	{
@@ -59,19 +59,12 @@
 				}
 			}
 
-			bool addLeaf = RandomManager.I.GetDraw().PercentChance(1.2f);
-
-			if (addLeaf)
-			{
-				AddLeaf();
-			}
-
 			float height = TileManager.I.GetDrawHeight() + 20.0f;
 			for (int i = 0; i < mFallingLeaves.Count; i++)
 			{
 				if (mFallingLeaves[i].mPos.Y > height)
 				{
-					mFallingLeaves.RemoveAt(i--);
+					mFallingLeaves[i].mPos.Y -= height;
 				}
 			}
 
