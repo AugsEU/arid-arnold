@@ -6,9 +6,6 @@
     <texture code="Run2">Arnold/ArnoldRun2</texture>
     <texture code="Run3">Arnold/ArnoldRun3</texture>
     <texture code="Run4">Arnold/ArnoldRun4</texture>
-    <texture code="Push1">Arnold/ArnoldPush1</texture>
-    <texture code="Push2">Arnold/ArnoldPush2</texture>
-    <texture code="Push3">Arnold/ArnoldPush3</texture>
     <texture code="Stand">Arnold/ArnoldStand</texture>
     <texture code="UseItem">Arnold/ArnoldUseItem</texture>
 </root>
