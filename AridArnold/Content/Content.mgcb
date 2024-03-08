@@ -9025,3 +9025,123 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/WW7/Clouds0.png
 
+#begin BG/WW7/Plane.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Plane.png
+
+#begin BG/WW7/FighterJet.max
+/copy:BG/WW7/FighterJet.max
+
+#begin BG/WW7/Plane1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Plane1.png
+
+#begin BG/WW7/Plane2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Plane2.png
+
+#begin BG/WW7/Plane3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Plane3.png
+
+#begin BG/WW7/Helicopter.max
+/copy:BG/WW7/Helicopter.max
+
+#begin BG/WW7/Helicopter1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Helicopter1.png
+
+#begin BG/WW7/Helicopter2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Helicopter2.png
+
+#begin BG/WW7/Blink1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Blink1.png
+
+#begin BG/WW7/Blink2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Blink2.png
+
+#begin BG/WW7/Blink3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Blink3.png
+
+#begin BG/WW7/Blink4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Blink4.png
+
+#begin BG/WW7/Blinker.max
+/copy:BG/WW7/Blinker.max
+
+#begin BG/WW7/TowerBlinker.max
+/copy:BG/WW7/TowerBlinker.max
+
+#begin BG/WW7/UFO.max
+/copy:BG/WW7/UFO.max
+
+#begin BG/WW7/UFO1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/UFO1.png
+
+#begin BG/WW7/UFO2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/UFO2.png
+
+#begin BG/WW7/UFO3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/UFO3.png
+
+#begin BG/WW7/UFO4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/UFO4.png
+
+#begin BG/WW7/Missile.max
+/copy:BG/WW7/Missile.max
+
+#begin BG/WW7/Missile1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Missile1.png
+
+#begin BG/WW7/Missile2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Missile2.png
+
+#begin BG/WW7/Missile3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Missile3.png
+

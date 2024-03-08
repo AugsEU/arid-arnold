@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.2">BG\WW7\Plane1</texture>
+	<texture time="0.2">BG\WW7\Plane2</texture>
+	<texture time="0.2">BG\WW7\Plane3</texture>
+</animation>

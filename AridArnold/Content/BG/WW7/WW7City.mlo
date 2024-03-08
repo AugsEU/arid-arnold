@@ -9,7 +9,7 @@
 
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>21.0</y>
+		<y>17.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/Clouds3</texture>
 		<speed>
@@ -19,7 +19,7 @@
 	</element>
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>18.0</y>
+		<y>17.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/Clouds3</texture>
 		<speed>
@@ -119,31 +119,50 @@
 	</element>
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>0.0</y>
+		<y>-2.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/Clouds0</texture>
 		<speed>
-			<x>1.8</x>
+			<x>2.8</x>
 			<y>0.0</y>
 		</speed>
 	</element>
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>0.0</y>
+		<y>-2.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/Clouds0</texture>
 		<speed>
-			<x>2.0</x>
+			<x>1.0</x>
 			<y>0.0</y>
 		</speed>
 	</element>
 
-
+	<element type="WW7Planes">
+	</element>
 
 	<element type="texture">
 		<x>0.0</x>
 		<y>0.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/CityForeground</texture>
+	</element>
+	<element type="animator">
+		<x>299.0</x>
+		<y>48.0</y>
+		<depth>Background</depth>
+		<anim>BG/WW7/Blinker.max</anim>
+	</element>
+	<element type="animator">
+		<x>411.0</x>
+		<y>177.0</y>
+		<depth>Background</depth>
+		<anim>BG/WW7/TowerBlinker.max</anim>
+	</element>
+	<element type="animator">
+		<x>450.0</x>
+		<y>177.0</y>
+		<depth>Background</depth>
+		<anim>BG/WW7/TowerBlinker.max</anim>
 	</element>
 </root>

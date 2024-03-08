@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="3.5">BG\WW7\Blink4</texture>
+    <texture time="0.2">BG\WW7\Blink1</texture>
+	<texture time="0.2">BG\WW7\Blink2</texture>
+	<texture time="0.2">BG\WW7\Blink3</texture>
+    <texture time="0.2">BG\WW7\Blink4</texture>
+    <texture time="0.2">BG\WW7\Blink1</texture>
+	<texture time="0.2">BG\WW7\Blink2</texture>
+	<texture time="0.2">BG\WW7\Blink3</texture>
+</animation>

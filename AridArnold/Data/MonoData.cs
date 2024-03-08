@@ -62,6 +62,18 @@
 		/// </summary>
 		public Animator LoadAnimator(string path)
 		{
+			AnimationData animData = LoadAnimatorData(path);
+
+			return animData.GenerateAnimator();
+		}
+
+
+
+		/// <summary>
+		/// Load animator data
+		/// </summary>
+		public AnimationData LoadAnimatorData(string path)
+		{
 			path = GetRemappedPath(path);
 
 			AnimationData animData = null;
@@ -78,7 +90,7 @@
 				mAnimationDataCache.Add(path, animData);
 			}
 
-			return animData.GenerateAnimator();
+			return animData;
 		}
 
 

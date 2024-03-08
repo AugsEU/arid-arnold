@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.1">BG\WW7\Missile1</texture>
+	<texture time="0.1">BG\WW7\Missile2</texture>
+	<texture time="0.1">BG\WW7\Missile3</texture>
+</animation>
