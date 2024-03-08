@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
-	<name>Steam Plant</name>
+	<name>World War VII</name>
+	<exitColour>2B2B3F</exitColour>
 	<path from="Wall">Gravel</path>
 	<path from="WallSecondary">Concrete</path>
 	<path from="Platform">Beam</path>

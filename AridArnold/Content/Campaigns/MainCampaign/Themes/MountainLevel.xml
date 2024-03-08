@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
-	<name>Mountain Pass</name>
+	<name>The Lost Kingdom</name>
+	<exitColour>3E3E3E</exitColour>
 	<path from="Wall">../Blank</path>
 	<path from="WallSecondary">../Blank</path>
 	<path from="TimeWall0">GravelSummer</path>
