@@ -9013,3 +9013,15 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/WW7/Clouds2.png
 
+#begin BG/WW7/Clouds3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Clouds3.png
+
+#begin BG/WW7/Clouds0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/WW7/Clouds0.png
+

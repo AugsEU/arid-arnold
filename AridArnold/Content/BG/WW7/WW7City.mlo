@@ -9,9 +9,29 @@
 
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>12.0</y>
+		<y>21.0</y>
 		<depth>Background</depth>
-		<texture>BG/WW7/Clouds1</texture>
+		<texture>BG/WW7/Clouds3</texture>
+		<speed>
+			<x>0.2</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>18.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds3</texture>
+		<speed>
+			<x>0.3</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>15.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds2</texture>
 		<speed>
 			<x>0.7</x>
 			<y>0.0</y>
@@ -19,7 +39,7 @@
 	</element>
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>13.0</y>
+		<y>12.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/Clouds2</texture>
 		<speed>
@@ -29,7 +49,17 @@
 	</element>
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>10.0</y>
+		<y>9.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds1</texture>
+		<speed>
+			<x>1.1</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>9.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/Clouds1</texture>
 		<speed>
@@ -49,11 +79,61 @@
 	</element>
 	<element type="scrollTexture">
 		<x>0.0</x>
-		<y>0.0</y>
+		<y>6.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds2</texture>
+		<speed>
+			<x>1.2</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>4.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds2</texture>
+		<speed>
+			<x>1.35</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>3.0</y>
 		<depth>Background</depth>
 		<texture>BG/WW7/Clouds1</texture>
 		<speed>
 			<x>1.5</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>-1.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds1</texture>
+		<speed>
+			<x>1.8</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds0</texture>
+		<speed>
+			<x>1.8</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds0</texture>
+		<speed>
+			<x>2.0</x>
 			<y>0.0</y>
 		</speed>
 	</element>
