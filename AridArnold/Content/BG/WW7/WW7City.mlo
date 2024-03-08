@@ -6,4 +6,64 @@
 		<depth>Background</depth>
 		<texture>BG/WW7/CityBG</texture>
 	</element>
+
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>12.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds1</texture>
+		<speed>
+			<x>0.7</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>13.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds2</texture>
+		<speed>
+			<x>0.8</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>10.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds1</texture>
+		<speed>
+			<x>1.0</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>6.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds2</texture>
+		<speed>
+			<x>1.2</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+	<element type="scrollTexture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/Clouds1</texture>
+		<speed>
+			<x>1.5</x>
+			<y>0.0</y>
+		</speed>
+	</element>
+
+
+
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>BG/WW7/CityForeground</texture>
+	</element>
 </root>

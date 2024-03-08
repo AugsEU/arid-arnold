@@ -40,42 +40,6 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/AndroldJumpUp.png
 
-#begin Arnold/AndroldPush1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/AndroldPush1.png
-
-#begin Arnold/AndroldPush2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/AndroldPush2.png
-
-#begin Arnold/AndroldPush3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/AndroldPush3.png
-
 #begin Arnold/AndroldRun1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -196,42 +160,6 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/ArnoldOldJumpUp.png
 
-#begin Arnold/ArnoldOldPush1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/ArnoldOldPush1.png
-
-#begin Arnold/ArnoldOldPush2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/ArnoldOldPush2.png
-
-#begin Arnold/ArnoldOldPush3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/ArnoldOldPush3.png
-
 #begin Arnold/ArnoldOldRun1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -303,42 +231,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Arnold/ArnoldOldUseItem.png
-
-#begin Arnold/ArnoldPush1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/ArnoldPush1.png
-
-#begin Arnold/ArnoldPush2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/ArnoldPush2.png
-
-#begin Arnold/ArnoldPush3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arnold/ArnoldPush3.png
 
 #begin Arnold/ArnoldRun1.png
 /importer:TextureImporter
@@ -2016,6 +1908,42 @@
 
 #begin BG/Mountain/Mountain.mlo
 /copy:BG/Mountain/Mountain.mlo
+
+#begin BG/Mountain/SnowParticleBig.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mountain/SnowParticleBig.png
+
+#begin BG/Mountain/SnowParticleMassive.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mountain/SnowParticleMassive.png
+
+#begin BG/Mountain/SnowParticleSmall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mountain/SnowParticleSmall.png
 
 #begin BG/SteamPlant/BG1.png
 /importer:TextureImporter
@@ -9067,21 +8995,21 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin BG/Mountain/SnowParticleBig.png
+#begin BG/WW7/CityForeground.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:BG/Mountain/SnowParticleBig.png
+/build:BG/WW7/CityForeground.png
 
-#begin BG/Mountain/SnowParticleMassive.png
+#begin BG/WW7/Clouds1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:BG/Mountain/SnowParticleMassive.png
+/build:BG/WW7/Clouds1.png
 
-#begin BG/Mountain/SnowParticleSmall.png
+#begin BG/WW7/Clouds2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:BG/Mountain/SnowParticleSmall.png
+/build:BG/WW7/Clouds2.png
 

@@ -6,4 +6,25 @@
 		<depth>Background</depth>
 		<texture>BG/Buk/BG</texture>
 	</element>
+	<element type="waterleak">
+		<x>230.0</x>
+		<y>192.0</y>
+		<distance>309.0</distance>
+		<color>07071C</color>
+		<secondaryColor>07071C</secondaryColor>
+	</element>
+	<element type="waterleak">
+		<x>288.0</x>
+		<y>141.0</y>
+		<distance>282.0</distance>
+		<color>07071C</color>
+		<secondaryColor>07071C</secondaryColor>
+	</element>
+	<element type="waterleak">
+		<x>461.0</x>
+		<y>-10.0</y>
+		<distance>415.0</distance>
+		<color>07071C</color>
+		<secondaryColor>07071C</secondaryColor>
+	</element>
 </root>

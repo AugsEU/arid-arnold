@@ -137,8 +137,8 @@
 	{
 		#region rConstants
 
-		const int SCREEN_WIDTH = 960;
-		const int SCREEN_HEIGHT = 540;
+		public const int SCREEN_WIDTH = 960;
+		public const int SCREEN_HEIGHT = 540;
 
 		#endregion rConstants
 
