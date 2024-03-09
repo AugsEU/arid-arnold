@@ -43,7 +43,7 @@ namespace AridArnold
 
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (mTimeZone != TimeZoneManager.I.GetCurrentTimeZone())
+			if (!IsInteractable())
 			{
 				return;
 			}
@@ -66,7 +66,7 @@ namespace AridArnold
 
 		void RefreshTexture()
 		{
-			if (mTimeZone == TimeZoneManager.I.GetCurrentTimeZone())
+			if (IsInteractable())
 			{
 				mTexture = mEnabledTexture;
 			}
@@ -76,9 +76,15 @@ namespace AridArnold
 			}
 		}
 
+		bool IsInteractable()
+		{
+			int currentTime = TimeZoneManager.I.GetCurrentTimeZone();
+			return mTimeZone == currentTime || currentTime == -1;
+		}
+
 		public override void DrawExtra(DrawInfo info)
 		{
-			if (mTimeZone != TimeZoneManager.I.GetCurrentTimeZone())
+			if (!IsInteractable())
 			{
 				return;
 			}

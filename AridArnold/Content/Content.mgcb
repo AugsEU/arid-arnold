@@ -9145,3 +9145,18 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/WW7/Missile3.png
 
+#begin Tiles/WW7/TimeMachine.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/WW7/TimeMachine.png
+
+#begin Campaigns/MainCampaign/Hub/0901.aux
+/copy:Campaigns/MainCampaign/Hub/0901.aux
+
+#begin Campaigns/MainCampaign/Hub/0901.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0901.png
+

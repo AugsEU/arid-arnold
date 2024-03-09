@@ -27,11 +27,23 @@
 			<x>5</x>
 			<y>25</y>
 		</override>
-	</timeOverrides>
-	<timeOverrides>
 		<override>
 			<from>2</from>
 			<to>1</to>
+			<level>0603</level>
+			<x>16</x>
+			<y>16</y>
+		</override>
+		<override>
+			<from>0</from>
+			<to>-1</to>
+			<level>0901</level>
+			<x>16</x>
+			<y>16</y>
+		</override>
+		<override>
+			<from>-1</from>
+			<to>0</to>
 			<level>0601</level>
 			<x>16</x>
 			<y>16</y>
