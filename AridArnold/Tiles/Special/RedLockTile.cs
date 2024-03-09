@@ -4,7 +4,6 @@
 	{
 		public RedLockTile(Vector2 position) : base(position)
 		{
-			EventManager.I.AddListener(EventType.RedKeyUsed, KeyUsedCallback);
 		}
 
 		public override void LoadContent()
@@ -12,9 +11,13 @@
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/RedLock");
 		}
 
-		void KeyUsedCallback(EArgs args)
+		public override void Update(GameTime gameTime)
 		{
-			mEnabled = false;
+			if(EventManager.I.IsSignaled(EventType.RedKeyUsed))
+			{
+				mEnabled = false;
+			}
+			base.Update(gameTime);
 		}
 	}
 }

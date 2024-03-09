@@ -66,7 +66,6 @@
 			mActiveTimeZone = timeZone;
 
 			SetEnabled(mActiveTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
 
@@ -190,7 +189,7 @@
 		/// <summary>
 		/// Call back for time changes
 		/// </summary>
-		public void OnTimeChange(EArgs eArgs)
+		protected override void OnTimeChange(GameTime gameTime)
 		{
 			SetEnabled(mActiveTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
 		}

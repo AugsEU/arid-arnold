@@ -12,7 +12,6 @@
 		/// </summary>
 		public ShopLevel(AuxData auxData, int id) : base(auxData, id)
 		{
-			EventManager.I.AddListener(EventType.ShopDoorOpen, ShopDoorOpenCallback);
 		}
 
 		#endregion rInitialisation
@@ -30,17 +29,11 @@
 		/// <returns></returns>
 		protected override LevelStatus UpdateInternal(GameTime gameTime)
 		{
+			if (EventManager.I.IsSignaled(EventType.ShopDoorOpen))
+			{
+				mLevelStatus = LevelStatus.Win;
+			}
 			return mLevelStatus;
-		}
-
-
-
-		/// <summary>
-		/// Called when door is opened
-		/// </summary>
-		void ShopDoorOpenCallback(EArgs eventArgs)
-		{
-			mLevelStatus = LevelStatus.Win;
 		}
 
 		#endregion rUpdate

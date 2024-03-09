@@ -30,7 +30,6 @@
 		{
 			mIsExtended = TimeZoneManager.I.GetCurrentTimeZone() == GetOnSeason();
 			mLength = length;
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 			mPrevDirection = WalkDirection.Right;
 		}
 
@@ -171,7 +170,7 @@
 		/// <summary>
 		/// Called when the time changes
 		/// </summary>
-		public void OnTimeChange(EArgs eArgs)
+		protected override void OnTimeChange(GameTime gameTime)
 		{
 			mIsExtended = TimeZoneManager.I.GetCurrentTimeZone() == GetOnSeason();
 

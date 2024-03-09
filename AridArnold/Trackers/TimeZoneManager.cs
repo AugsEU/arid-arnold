@@ -57,7 +57,7 @@
 		{
 			mCurrentTimeZone = time;
 			mCurrentPlayerAge = age;
-			EventManager.I.SendEvent(EventType.TimeChanged, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 
@@ -67,7 +67,7 @@
 		public void TimeTravel()
 		{
 			mCurrentTimeZone++;
-			EventManager.I.SendEvent(EventType.TimeChanged, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 
@@ -78,7 +78,7 @@
 		public void AntiTimeTravel()
 		{
 			mCurrentTimeZone--;
-			EventManager.I.SendEvent(EventType.TimeChanged, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 
@@ -90,7 +90,7 @@
 		{
 			mCurrentTimeZone++;
 			mCurrentPlayerAge++;
-			EventManager.I.SendEvent(EventType.TimeChanged, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 
@@ -102,7 +102,7 @@
 		{
 			mCurrentTimeZone--;
 			mCurrentPlayerAge--;
-			EventManager.I.SendEvent(EventType.TimeChanged, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 		#endregion rTime

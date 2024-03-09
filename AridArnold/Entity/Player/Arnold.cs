@@ -75,7 +75,7 @@
 
 			mItemToUse = null;
 
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
+			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 
@@ -338,7 +338,7 @@
 		/// <summary>
 		/// Called when the time changes.
 		/// </summary>
-		void OnTimeChange(EArgs args)
+		protected override void OnTimeChange(GameTime gameTime)
 		{
 			RefreshTexturePack();
 		}
@@ -501,7 +501,7 @@
 		/// </summary>
 		private void SendPlayerDeathEvent()
 		{
-			EventManager.I.SendEvent(EventType.PlayerDead, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.PlayerDead);
 		}
 
 

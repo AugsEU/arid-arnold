@@ -89,6 +89,11 @@
 
 			HandleInput();
 			mPlayerNear = false;
+
+			if(EventManager.I.IsSignaled(EventType.TimeChanged))
+			{
+				OnTimeChange(gameTime);
+			}
 		}
 
 
@@ -160,6 +165,16 @@
 		/// Kill this entity. By default most are immortal in this sense
 		/// </summary>
 		public virtual void Kill()
+		{
+
+		}
+
+
+
+		/// <summary>
+		/// Called when time changes
+		/// </summary>
+		protected virtual void OnTimeChange(GameTime gameTime)
 		{
 
 		}

@@ -54,7 +54,6 @@
 
 			string themeFilePath = CampaignManager.I.GetThemePath(data.GetThemePath());
 			mTheme = new LevelTheme(themeFilePath, data.GetRoot());
-			EventManager.I.AddListener(EventType.PlayerDead, HandlePlayerDeath);
 
 			mLayoutPath = "BG/" + data.GetRoot() + "/" + data.GetBGPath() + ".mlo";
 			mBGLayout = new Layout(mLayoutPath); // TO DO: Get rid of this?
@@ -162,6 +161,12 @@
 				throw new Exception("Cannot update inactive level. Did you forget to start it?");
 			}
 
+			if (EventManager.I.IsSignaled(EventType.PlayerDead))
+			{
+				mLevelStatus = LevelStatus.Loss;
+				return LevelStatus.Loss;
+			}
+
 			mBGLayout.Update(gameTime);
 
 			return UpdateInternal(gameTime);
@@ -195,18 +200,6 @@
 
 
 		#region rUtility
-
-		/// <summary>
-		/// Handle player's death event.
-		/// </summary>
-		/// <param name="args">Event sender args</param>
-		public virtual void HandlePlayerDeath(EArgs args)
-		{
-			if (!mActive) return;
-			mLevelStatus = LevelStatus.Loss;
-		}
-
-
 
 		/// <summary>
 		/// Get the image path for this level

@@ -45,7 +45,6 @@
 		{
 			mPosition.Y -= 16.0f;
 			mIsAwake = TimeZoneManager.I.GetCurrentTimeZone() == 1;
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 			mStateMachine = new StateMachine<State>(mIsAwake ? State.ChargeAtPlayer : State.Wait);
 		}
 
@@ -159,7 +158,7 @@
 		/// Call back for when time is changed.
 		/// </summary>
 		/// <param name="eArgs"></param>
-		void OnTimeChange(EArgs eArgs)
+		protected override void OnTimeChange(GameTime gameTime)
 		{
 			mIsAwake = TimeZoneManager.I.GetCurrentTimeZone() == 1;
 			SetWalkDirection(WalkDirection.None);

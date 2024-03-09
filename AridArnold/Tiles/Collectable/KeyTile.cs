@@ -20,7 +20,7 @@
 
 		protected override void OnCollect()
 		{
-			EventManager.I.SendEvent(EventType.KeyCollect, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.KeyCollect);
 			base.OnCollect();
 		}
 	}

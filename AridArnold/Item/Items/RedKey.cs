@@ -14,7 +14,7 @@
 
 		public override void UseItem(Arnold arnoldUsingItem)
 		{
-			EventManager.I.SendEvent(EventType.RedKeyUsed, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.RedKeyUsed);
 		}
 
 		public override bool CanUseItem(Arnold arnoldUsingItem)

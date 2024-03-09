@@ -18,7 +18,6 @@
 			mTimeToAnimator = new Dictionary<int, Animator>();
 			mDisplayTimeZone = TimeZoneManager.I.GetCurrentTimeZone();
 			LoadNewAnimation(mDisplayTimeZone);
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
 
@@ -31,6 +30,15 @@
 		{
 			mDisplayTimeZone = TimeZoneManager.I.GetCurrentTimeZone();
 			Animator anim;
+			if (EventManager.I.IsSignaled(EventType.TimeChanged))
+			{
+				mDisplayTimeZone = TimeZoneManager.I.GetCurrentTimeZone();
+				if (!mTimeToAnimator.TryGetValue(mDisplayTimeZone, out anim))
+				{
+					LoadNewAnimation(mDisplayTimeZone);
+				}
+			}
+
 			if (mTimeToAnimator.TryGetValue(mDisplayTimeZone, out anim))
 			{
 				anim.Update(gameTime);
@@ -41,17 +49,6 @@
 			}
 
 			base.Update(gameTime);
-		}
-
-
-		void OnTimeChange(EArgs eArgs)
-		{
-			mDisplayTimeZone = TimeZoneManager.I.GetCurrentTimeZone();
-			Animator anim;
-			if (!mTimeToAnimator.TryGetValue(mDisplayTimeZone, out anim))
-			{
-				LoadNewAnimation(mDisplayTimeZone);
-			}
 		}
 
 

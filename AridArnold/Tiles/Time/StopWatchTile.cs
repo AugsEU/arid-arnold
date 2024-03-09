@@ -16,7 +16,6 @@ namespace AridArnold
 		{
 			mHandTime = RandomManager.I.GetWorld().GetFloatRange(0.0f, 12.0f);
 			mTimeZone = timeZone;
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
 		public override void LoadContent()
@@ -33,6 +32,11 @@ namespace AridArnold
 
 			mHandTime += TimeZoneManager.I.GetCurrentPlayerAge() == 0 ? dt * TIME_SPEED : -dt * TIME_SPEED;
 			mHandTime = mHandTime % 12.0f;
+
+			if (EventManager.I.IsSignaled(EventType.TimeChanged))
+			{
+				RefreshTexture();
+			}
 
 			base.Update(gameTime);
 		}
@@ -58,11 +62,6 @@ namespace AridArnold
 			}
 
 			base.OnEntityIntersect(entity);
-		}
-
-		void OnTimeChange(EArgs args)
-		{
-			RefreshTexture();
 		}
 
 		void RefreshTexture()

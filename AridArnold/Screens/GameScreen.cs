@@ -158,6 +158,8 @@
 			{
 				LevelLose();
 			}
+
+			EventManager.I.Update(gameTime);
 		}
 
 

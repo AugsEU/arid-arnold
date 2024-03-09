@@ -77,7 +77,7 @@
 			mDoorOpen = true;
 			mTexture = mOpenTexture;
 
-			EventManager.I.SendEvent(EventType.ShopDoorOpen, new EArgs(this));
+			EventManager.I.TriggerEvent(EventType.ShopDoorOpen);
 		}
 
 

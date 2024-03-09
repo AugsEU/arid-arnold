@@ -7,13 +7,16 @@
 		public ETimeTexture(XmlNode node) : base(node)
 		{
 			mTimeZone = MonoParse.GetInt(node["time"]);
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 			SetVisible(mTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
 		}
 
-		void OnTimeChange(EArgs eArgs)
+		public override void Update(GameTime gameTime)
 		{
-			SetVisible(mTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
+			if(EventManager.I.IsSignaled(EventType.TimeChanged))
+			{
+				SetVisible(mTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
+			}
+			base.Update(gameTime);
 		}
 	}
 }

@@ -9,7 +9,6 @@
 
 		public IceTile(Vector2 position) : base(position)
 		{
-			EventManager.I.AddListener(EventType.TimeChanged, OnTimeChange);
 		}
 
 		public override void LoadContent()
@@ -56,9 +55,13 @@
 			return anyIce && !anySolid;
 		}
 
-		public void OnTimeChange(EArgs eArgs)
+		public override void Update(GameTime gameTime)
 		{
-			RefreshTexture();
+			if (EventManager.I.IsSignaled(EventType.TimeChanged))
+			{
+				RefreshTexture();
+			}
+			base.Update(gameTime);
 		}
 
 		void RefreshTexture()

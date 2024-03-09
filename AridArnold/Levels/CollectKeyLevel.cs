@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Level where you collect a flag to win.
@@ -12,7 +14,6 @@
 		/// </summary>
 		public CollectKeyLevel(AuxData auxData, int id) : base(auxData, id)
 		{
-			EventManager.I.AddListener(EventType.KeyCollect, KeyCollectCallback);
 		}
 
 		#endregion rInitialisation
@@ -30,17 +31,11 @@
 		/// <returns></returns>
 		protected override LevelStatus UpdateInternal(GameTime gameTime)
 		{
+			if (EventManager.I.IsSignaled(EventType.KeyCollect))
+			{
+				mLevelStatus = LevelStatus.Win;
+			}
 			return mLevelStatus;
-		}
-
-
-
-		/// <summary>
-		/// Called when a key is collected
-		/// </summary>
-		void KeyCollectCallback(EArgs eventArgs)
-		{
-			mLevelStatus = LevelStatus.Win;
 		}
 
 		#endregion rUpdate

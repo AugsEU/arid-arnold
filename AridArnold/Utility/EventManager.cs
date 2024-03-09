@@ -1,29 +1,7 @@
-﻿namespace AridArnold
+﻿using System;
+
+namespace AridArnold
 {
-	/// <summary>
-	/// Callback type
-	/// </summary>
-	/// <param name="args">Sender args</param>
-	delegate void EventCallback(EArgs args);
-
-
-
-
-
-	/// <summary>
-	/// Sender args. Might be pointless
-	/// </summary>
-	struct EArgs
-	{
-		public EArgs(object sender) { mSender = sender; }
-
-		public object mSender;
-	}
-
-
-
-
-
 	/// <summary>
 	/// Types of event. New ones have to be registered here.
 	/// </summary>
@@ -37,7 +15,17 @@
 	}
 
 
+	struct EventFlag
+	{
+		public EventFlag()
+		{
+			mSignal = false;
+			mTrigger = false;
+		}
 
+		public bool mTrigger;
+		public bool mSignal;
+	}
 
 
 	/// <summary>
@@ -45,50 +33,35 @@
 	/// </summary>
 	internal class EventManager : Singleton<EventManager>
 	{
-		#region rMembers
+		EventFlag[] mEventFlags;
 
-		Dictionary<EventType, EventCallback> mEventListeners = new Dictionary<EventType, EventCallback>();
-
-		#endregion rMembers
-
-
-
-
-
-		#region rEvents
-
-		/// <summary>
-		/// Add a listener to an event type. The callback will be executed whenever that event type is triggered.
-		/// </summary>
-		/// <param name="type">Type of event to listen for</param>
-		/// <param name="callback">Function to callback</param>
-		public void AddListener(EventType type, EventCallback callback)
+		public EventManager()
 		{
-			if (mEventListeners.ContainsKey(type))
+			mEventFlags = new EventFlag[Enum.GetNames(typeof(EventType)).Length];
+
+			for(int i = 0; i < mEventFlags.Length; i++)
 			{
-				mEventListeners[type] += callback;
-			}
-			else
-			{
-				mEventListeners.Add(type, callback);
+				mEventFlags[i] = new EventFlag();
 			}
 		}
 
-
-
-		/// <summary>
-		/// Trigger an event. Executes all callbacks in the listeners.
-		/// </summary>
-		/// <param name="type">Type of event to trigger</param>
-		/// <param name="args">Arguements</param>
-		public void SendEvent(EventType type, EArgs args)
+		public void TriggerEvent(EventType eventType)
 		{
-			if (mEventListeners.ContainsKey(type))
-			{
-				mEventListeners[type].Invoke(args);
-			}
+			mEventFlags[(int)eventType].mTrigger = true;
 		}
 
-		#endregion rEvents
+		public bool IsSignaled(EventType eventType)
+		{
+			return mEventFlags[(int)eventType].mSignal;
+		}
+
+		public void Update(GameTime gameTime)
+		{
+			for (int i = 0; i < mEventFlags.Length; i++)
+			{
+				mEventFlags[i].mSignal = mEventFlags[i].mTrigger;
+				mEventFlags[i].mTrigger = false;
+			}
+		}
 	}
 }
