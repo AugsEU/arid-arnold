@@ -18,10 +18,11 @@ namespace AridArnold
 			mPlaneLockoutTimer = new MonoTimer();
 			ResetLockoutTimer();
 
-			mPlaneAnimators = new AnimationData[3];
-			mPlaneAnimators[0] = MonoData.I.LoadAnimatorData("BG/WW7/FighterJet.max");
-			mPlaneAnimators[1] = MonoData.I.LoadAnimatorData("BG/WW7/Helicopter.max");
-			mPlaneAnimators[2] = MonoData.I.LoadAnimatorData("BG/WW7/UFO.max");
+			mPlaneAnimators = new AnimationData[] {
+				MonoData.I.LoadAnimatorData("BG/WW7/FighterJet.max"),
+				MonoData.I.LoadAnimatorData("BG/WW7/Helicopter.max"),
+				MonoData.I.LoadAnimatorData("BG/WW7/UFO.max")
+			};
 
 			SpawnPlane();
 			SpawnPlane();

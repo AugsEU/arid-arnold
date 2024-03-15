@@ -19,6 +19,7 @@ namespace AridArnold
 		#region rConstants
 
 		protected const float DEFAULT_GRAVITY = 2.0f;
+		protected const float DEFAULT_MAX_WIND_DEV = 5.0f;
 
 		#endregion rConstants
 
@@ -31,6 +32,7 @@ namespace AridArnold
 		Rectangle mArea;
 		Vector2 mWind;
 		Vector2 mWindVelocity;
+		float mMaxWindDeviation;
 		protected TParticle[] mParticles;
 
 		#endregion rMembers
@@ -44,9 +46,9 @@ namespace AridArnold
 		/// <summary>
 		/// Create from params
 		/// </summary>
-		public ParticleRect(Rectangle area, int xNum, int yNum, float mGravity = DEFAULT_GRAVITY)
+		public ParticleRect(Rectangle area, int xNum, int yNum, float gravity = DEFAULT_GRAVITY, float maxWindDeviation = DEFAULT_MAX_WIND_DEV)
 		{
-			InitRainRect(area, xNum, yNum, mGravity);
+			InitRainRect(area, xNum, yNum, gravity, maxWindDeviation);
 		}
 
 
@@ -59,7 +61,8 @@ namespace AridArnold
 			InitRainRect(MonoParse.GetRectangle(node),
 				MonoParse.GetInt(node["xNum"]),
 				MonoParse.GetInt(node["yNum"]),
-				MonoParse.GetFloat(node["gravity"]));
+				MonoParse.GetFloat(node["gravity"], DEFAULT_GRAVITY),
+				MonoParse.GetFloat(node["windDeviation"], DEFAULT_MAX_WIND_DEV));
 		}
 
 
@@ -67,15 +70,17 @@ namespace AridArnold
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		void InitRainRect(Rectangle area, int xNum, int yNum, float mGravity)
+		void InitRainRect(Rectangle area, int xNum, int yNum, float gravity, float maxWindDeviation)
 		{
 			mArea = area;
 
-			mWind = new Vector2(0.0f, mGravity);
+			mWind = new Vector2(0.0f, gravity);
 			mWindVelocity = Vector2.Zero;
 
 			// Init raindrops spread evenly
 			mParticles = new TParticle[xNum * yNum];
+
+			mMaxWindDeviation = maxWindDeviation;
 
 			MonoRandom rainRandom = RandomManager.I.GetDraw();
 			Vector2 topLeftCorner = new Vector2(area.Left, area.Top);
@@ -113,13 +118,15 @@ namespace AridArnold
 			float dt = Util.GetDeltaT(gameTime);
 
 			// Update wind
-			mWindVelocity.X += dt * RandomManager.I.GetDraw().GetFloatRange(-5.0f, 5.0f);
-			mWindVelocity.X = Math.Clamp(mWindVelocity.X, -5.0f, 5.0f);
+			mWindVelocity.X += dt * RandomManager.I.GetDraw().GetFloatRange(-mMaxWindDeviation, mMaxWindDeviation);
+			mWindVelocity.X = Math.Clamp(mWindVelocity.X, -mMaxWindDeviation, mMaxWindDeviation);
 
 			mWind += mWindVelocity * dt;
-			mWind.X = Math.Clamp(mWind.X, -5.0f, 5.0f);
+			mWind.X = Math.Clamp(mWind.X, -mMaxWindDeviation, mMaxWindDeviation);
 
+			float downAngle = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera).GetCurrentSpec().mRotation;
 			Vector2 windMove = dt * mWind;
+			windMove = MonoMath.Rotate(windMove, -downAngle);
 
 			// Do wind and wrap arounds
 			for (int d = 0; d < mParticles.Length; d++)

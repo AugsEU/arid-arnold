@@ -9160,3 +9160,57 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Hub/0901.png
 
+#begin BG/Hell/EmberMedium.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/EmberMedium.png
+
+#begin BG/Hell/EmberSmall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/EmberSmall.png
+
+#begin BG/Hell/DemonSmall.max
+/copy:BG/Hell/DemonSmall.max
+
+#begin BG/Hell/DemonSmall1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/DemonSmall1.png
+
+#begin BG/Hell/DemonSmall2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/DemonSmall2.png
+
+#begin BG/Hell/DemonMedium.max
+/copy:BG/Hell/DemonMedium.max
+
+#begin BG/Hell/DemonMedium1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/DemonMedium1.png
+
+#begin BG/Hell/DemonMedium2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/DemonMedium2.png
+
+#begin BG/Hell/DemonMedium3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/DemonMedium3.png
+
+#begin BG/Hell/DemonMedium4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Hell/DemonMedium4.png
+

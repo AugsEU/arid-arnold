@@ -36,6 +36,10 @@
 
 	<element type="snowField">
 		<time>1</time>
+		<x>0</x>
+		<y>0</y>
+		<width>544</width>
+		<height>528</height>
 	</element>
 	<!--In-game BG-->
 	

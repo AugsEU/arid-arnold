@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
 	<element type="texture">
-		<x>0.0</x>
-		<y>0.0</y>
+		<x>-108.0</x>
+		<y>-116.0</y>
 		<depth>Background</depth>
 		<texture>BG/Hell/HellBG</texture>
+	</element>
+
+	<element type="emberField">
+		<x>-108</x>
+		<y>-116</y>
+		<width>760</width>
+		<height>760</height>	
+	</element>
+
+	<element type="hellDemons">
 	</element>
 </root>

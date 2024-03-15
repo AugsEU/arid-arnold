@@ -1,7 +1,4 @@
-﻿
-using Microsoft.Xna.Framework;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	class ESnowField : LayElement
 	{
@@ -12,8 +9,7 @@ namespace AridArnold
 
 		public ESnowField(XmlNode rootNode) : base(rootNode)
 		{
-			Point drawSize = FXManager.I.GetDrawableSize();
-			Rectangle snowSizeRect = new Rectangle(0, 0, drawSize.X, drawSize.Y);
+			Rectangle snowSizeRect = MonoParse.GetRectangle(rootNode);
 
 			mSnowRects = new SnowRect[kNumSnowRect];
 
