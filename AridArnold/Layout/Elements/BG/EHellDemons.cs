@@ -86,7 +86,11 @@ namespace AridArnold
 				}
 			}
 
-			int animType = drawRandom.GetIntRange(0, mDemonAnimations.Length - 1);
+			int animType = drawRandom.GetIntRange(0, mDemonAnimations.Length - 2);
+			if(drawRandom.PercentChance(2))
+			{
+				animType += 1;
+			}
 			AnimationData animData = mDemonAnimations[animType];
 			float hoverSpeed = drawRandom.GetFloatRange(0.02f, 0.1f);
 			float hoverAmp = drawRandom.GetFloatRange(10.0f, 26.0f);
