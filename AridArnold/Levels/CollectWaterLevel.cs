@@ -39,14 +39,12 @@
 		/// </summary>
 		/// <param name="gameTime">Frame time</param>
 		/// <returns>Level completion status</returns>
-		protected override LevelStatus UpdateInternal(GameTime gameTime)
+		protected override void UpdateInternal(GameTime gameTime)
 		{
 			if (CollectableManager.I.GetCollected(TransientCollectable.WaterBottle) >= mNumWaterNeeded)
 			{
 				mLevelStatus = LevelStatus.Win;
 			}
-
-			return mLevelStatus;
 		}
 
 		#endregion rUpdate

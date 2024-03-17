@@ -30,9 +30,6 @@
 
 		LoadingSequence mLoadSequence;
 
-		ScreenFade mFadeOut;
-		ScreenFade mFadeIn;
-
 		Layout mHubUI;
 		Layout mLoadingUI;
 		Layout mLevelUI;
@@ -96,16 +93,13 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			MonoDebug.DLog("Update...");
 			if (mLoadSequence is null)
 			{
-				MonoDebug.DLog("    Seeking load sequence");
 				CheckForLoadSequence();
 			}
 
 			if (mLoadSequence is not null)
 			{
-				MonoDebug.DLog("    Doing load seq");
 				mLoadSequence.Update(gameTime);
 
 				if (mLoadSequence.Finished())
@@ -132,34 +126,6 @@
 				return;
 			}
 
-			System.TimeSpan timeInc = gameTime.ElapsedGameTime / UPDATE_STEPS;
-			for (int i = 0; i < UPDATE_STEPS; i++)
-			{
-				if(EventManager.I.IsEndUpdateImmediate())
-				{
-					break;
-				}
-				GameTime stepTime = new GameTime(gameTime.TotalGameTime - (UPDATE_STEPS - 1 - i) * timeInc, timeInc);
-
-				GameUpdateStep(stepTime);
-			}
-
-			EventManager.I.ResetEndUpdateImmediate();
-		}
-
-
-
-		/// <summary>
-		/// Update gameplay elements by 1 step
-		/// </summary>
-		void GameUpdateStep(GameTime gameTime)
-		{
-			Level currLevel = CampaignManager.I.GetCurrentLevel();
-			if (currLevel is null)
-			{
-				return;
-			}
-
 			FXManager.I.Update(gameTime);
 			if (mLevelEndTimer.IsPlaying())
 			{
@@ -170,15 +136,21 @@
 				return;
 			}
 
-			HandleInput();
-			GhostManager.I.Update(gameTime);
-			EntityManager.I.Update(gameTime);
-			if (EventManager.I.IsEndUpdateImmediate()) goto FinishUpdate;
-			TileManager.I.Update(gameTime);
-			ItemManager.I.Update(gameTime);
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
 
-			LevelStatus status = currLevel.Update(gameTime);
+			System.TimeSpan timeInc = gameTime.ElapsedGameTime / UPDATE_STEPS;
+			for (int i = 0; i < UPDATE_STEPS; i++)
+			{
+				if(EventManager.I.IsEndUpdateImmediate())
+				{
+					break;
+				}
+				GameTime stepTime = new GameTime(gameTime.TotalGameTime - (UPDATE_STEPS - 1 - i) * timeInc, timeInc);
+				GameUpdateStep(stepTime, currLevel);
+			}
 
+			// Check status.
+			LevelStatus status = currLevel.GetStatus();
 			if (status == LevelStatus.Win)
 			{
 				LevelWin();
@@ -187,6 +159,25 @@
 			{
 				LevelLose();
 			}
+
+			EventManager.I.ResetEndUpdateImmediate();
+		}
+
+
+
+		/// <summary>
+		/// Update gameplay elements by 1 step
+		/// </summary>
+		void GameUpdateStep(GameTime gameTime, Level level)
+		{
+			HandleInput();
+			GhostManager.I.Update(gameTime);
+			EntityManager.I.Update(gameTime);
+			if (EventManager.I.IsEndUpdateImmediate()) goto FinishUpdate;
+			TileManager.I.Update(gameTime);
+			ItemManager.I.Update(gameTime);
+
+			level.Update(gameTime);
 
 			FinishUpdate:
 			EventManager.I.Update(gameTime);

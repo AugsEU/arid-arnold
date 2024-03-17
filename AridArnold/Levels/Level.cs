@@ -155,28 +155,44 @@
 		/// </summary>
 		/// <param name="gameTime">Frame time</param>
 		/// <returns>Win condition status</returns>
-		public LevelStatus Update(GameTime gameTime)
+		public void Update(GameTime gameTime)
 		{
 			if (mActive == false)
 			{
 				throw new Exception("Cannot update inactive level. Did you forget to start it?");
 			}
 
+			if(mLevelStatus != LevelStatus.Continue)
+			{
+				return;
+			}
+
 			if (EventManager.I.IsSignaled(EventType.PlayerDead))
 			{
 				mLevelStatus = LevelStatus.Loss;
-				return LevelStatus.Loss;
+				return;
 			}
 
 			mBGLayout.Update(gameTime);
-
-			return UpdateInternal(gameTime);
+			UpdateInternal(gameTime);
 		}
+
+
 
 		/// <summary>
 		/// Internal level update
 		/// </summary>
-		protected abstract LevelStatus UpdateInternal(GameTime gameTime);
+		protected abstract void UpdateInternal(GameTime gameTime);
+
+
+
+		/// <summary>
+		/// Get if win/loss/nothing
+		/// </summary>
+		public LevelStatus GetStatus()
+		{
+			return mLevelStatus;
+		}
 
 		#endregion rUpdate
 

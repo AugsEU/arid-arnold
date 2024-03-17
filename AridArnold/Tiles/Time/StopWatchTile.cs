@@ -74,7 +74,7 @@ namespace AridArnold
 			{
 				HubTimeShiftLoader loader = new HubTimeShiftLoader(timeZoneOverride.Value.mDestinationLevel, forwards);
 				CampaignManager.I.QueueLoadSequence(loader);
-				EventManager.I.SignalEndUpdateImmediate();
+				//EventManager.I.SignalEndUpdateImmediate();
 			}
 			else
 			{

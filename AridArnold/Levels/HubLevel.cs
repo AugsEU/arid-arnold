@@ -30,7 +30,7 @@
 		/// <summary>
 		/// Do update
 		/// </summary>
-		protected override LevelStatus UpdateInternal(GameTime gameTime)
+		protected override void UpdateInternal(GameTime gameTime)
 		{
 			int numEntities = EntityManager.I.GetEntityNum();
 			for (int i = 0; i < numEntities; i++)
@@ -41,8 +41,6 @@
 					CheckRoomTransition((Arnold)entity);
 				}
 			}
-
-			return LevelStatus.Continue;
 		}
 
 

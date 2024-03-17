@@ -64,8 +64,6 @@
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
 
 			mActiveTimeZone = timeZone;
-
-			SetEnabled(mActiveTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
 		}
 
 
@@ -106,6 +104,11 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			if (!IsInCorrectTimeZone())
+			{
+				return;
+			}
+
 			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)PermanentCollectable.Door);
 			if (IsPlayerNear())
 			{
@@ -167,6 +170,11 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
+			if(!IsInCorrectTimeZone())
+			{
+				return;
+			}
+
 			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.Default);
 
 			if (mDoorOpen == false)
@@ -187,11 +195,12 @@
 		#region rUtility
 
 		/// <summary>
-		/// Call back for time changes
+		/// Check if timezone is correct
 		/// </summary>
-		protected override void OnTimeChange(GameTime gameTime)
+		/// <returns></returns>
+		bool IsInCorrectTimeZone()
 		{
-			SetEnabled(mActiveTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
+			return TimeZoneManager.I.GetCurrentTimeZone() == mActiveTimeZone;
 		}
 
 		#endregion rUtility

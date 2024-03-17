@@ -29,13 +29,12 @@ namespace AridArnold
 		/// </summary>
 		/// <param name="gameTime"></param>
 		/// <returns></returns>
-		protected override LevelStatus UpdateInternal(GameTime gameTime)
+		protected override void UpdateInternal(GameTime gameTime)
 		{
 			if (EventManager.I.IsSignaled(EventType.KeyCollect))
 			{
 				mLevelStatus = LevelStatus.Win;
 			}
-			return mLevelStatus;
 		}
 
 		#endregion rUpdate

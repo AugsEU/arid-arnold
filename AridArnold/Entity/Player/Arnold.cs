@@ -74,8 +74,6 @@
 			mDownKey = AridArnoldKeys.ArnoldDown;
 
 			mItemToUse = null;
-
-			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 
