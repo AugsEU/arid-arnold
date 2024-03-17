@@ -34,6 +34,7 @@ namespace AridArnold
 	internal class EventManager : Singleton<EventManager>
 	{
 		EventFlag[] mEventFlags;
+		bool mHaltUpdateImmediate;
 
 		public EventManager()
 		{

@@ -51,6 +51,8 @@
 		CameraSpec mCurrentSpec;
 		CameraMovement mCurrentCameraMovement;
 		Queue<CameraMovement> mCameraMovements;
+		RenderTarget2D mCurrentRenderTarget;
+		RenderTarget2D mPrevRenderTarget;
 
 		SpriteBatchOptions mSpriteBatchOptions;
 
@@ -71,6 +73,9 @@
 			mSpriteBatchOptions = new SpriteBatchOptions();
 			mCameraMovements = new Queue<CameraMovement>();
 			mCurrentCameraMovement = null;
+
+			mPrevRenderTarget = null;
+			mCurrentRenderTarget = null;
 		}
 
 		#endregion rInit
@@ -141,8 +146,13 @@
 		/// <summary>
 		/// Start the sprite batch
 		/// </summary>
-		public void StartSpriteBatch(DrawInfo info, Vector2 viewPortSize)
+		public void StartSpriteBatch(DrawInfo info, Vector2 viewPortSize, RenderTarget2D renderTarget2D, Color clearColor)
 		{
+			mPrevRenderTarget = null;
+			mCurrentRenderTarget = renderTarget2D;
+
+			info.device.SetRenderTarget(renderTarget2D);
+			info.device.Clear(clearColor);
 			info.spriteBatch.Begin(mSpriteBatchOptions.mSortMode,
 									mSpriteBatchOptions.mBlend,
 									mSpriteBatchOptions.mSamplerState,
@@ -150,7 +160,10 @@
 									mSpriteBatchOptions.mRasterizerState,
 									null,
 									CalculateMatrix(viewPortSize));
+
+			
 		}
+
 
 
 		/// <summary>
@@ -160,6 +173,8 @@
 		public void EndSpriteBatch(DrawInfo info)
 		{
 			info.spriteBatch.End();
+			mPrevRenderTarget = mCurrentRenderTarget;
+			mCurrentRenderTarget = null;
 		}
 
 
@@ -246,6 +261,16 @@
 		public void ForceNewSpec(CameraSpec spec)
 		{
 			mCurrentSpec = spec;
+		}
+
+
+
+		/// <summary>
+		/// Get copy of previous render target
+		/// </summary>
+		public RenderTarget2D GetPrevRenderTarget()
+		{
+			return mPrevRenderTarget;
 		}
 
 		#endregion rUtil

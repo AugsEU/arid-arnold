@@ -50,18 +50,54 @@ namespace AridArnold
 
 			if (entity is Arnold)
 			{
-				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-
-				bool forwards = TimeZoneManager.I.GetCurrentPlayerAge() == 0;
-
-				gameCam.QueueMovement(new ShiftTimeCameraMove(forwards));
 				Arnold arnold = (Arnold)entity;
 				arnold.SetPrevWalkDirFromVelocity();
 				arnold.SetWalkDirection(WalkDirection.None);
 				arnold.SetVelocity(Vector2.Zero);
+
+				ChangeTime();
 			}
 
 			base.OnEntityIntersect(entity);
+		}
+
+		void ChangeTime()
+		{
+			// Going forwards or backwards
+			bool forwards = TimeZoneManager.I.GetCurrentPlayerAge() == 0;
+
+			// Queue camera move
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+			gameCam.QueueMovement(new ShiftTimeCameraMove(forwards));
+
+			int fromTime = TimeZoneManager.I.GetCurrentTimeZone();
+			if (forwards)
+			{
+				TimeZoneManager.I.AgePlayer();
+			}
+			else
+			{
+				TimeZoneManager.I.AntiAgePlayer();
+			}
+			int toTime = TimeZoneManager.I.GetCurrentTimeZone();
+
+			TimeZoneOverride? timeZoneOverride = CampaignManager.I.GetTimeOverride(fromTime, toTime);
+
+			if (timeZoneOverride.HasValue)
+			{
+				Arnold arnold = EntityManager.I.FindArnold();
+
+				Vector2 spawnPos = TileManager.I.GetTileCentre(timeZoneOverride.Value.mArnoldSpawnPoint);
+				arnold.SetCentrePos(spawnPos);
+
+				HubDirectLoader loader = new HubDirectLoader(timeZoneOverride.Value.mDestinationLevel);
+				loader.AddPersistentEntities(arnold);
+				CampaignManager.I.QueueLoadSequence(loader);
+			}
+
+			FXManager.I.AddFX(new TimeShiftFaderFX());
+
+			RefreshTexture();
 		}
 
 		void RefreshTexture()

@@ -133,6 +133,7 @@
 			{
 				//Record elapsed time
 				TimeManager.I.Update(gameTime);
+				CameraManager.I.UpdateAllCameras(gameTime);
 
 				KeyboardState keyboardState = Keyboard.GetState();
 				foreach (Keys key in keyboardState.GetPressedKeys())
@@ -141,21 +142,11 @@
 				}
 
 				Screen screen = ScreenManager.I.GetActiveScreen();
-				int updateSteps = screen.GetUpdateSteps();
 				InputManager.I.Update(gameTime);
 
-				System.TimeSpan timeInc = gameTime.ElapsedGameTime / updateSteps;
-				for (int i = 0; i < updateSteps; i++)
+				if(screen is not null)
 				{
-					GameTime stepTime = new GameTime(gameTime.TotalGameTime - (updateSteps - 1 - i) * timeInc, timeInc);
-
-					//Always update every game update.
-					CameraManager.I.UpdateAllCameras(stepTime);
-
-					if (screen != null)
-					{
-						screen.Update(stepTime);
-					}
+					screen.Update(gameTime);
 				}
 			}
 
@@ -239,10 +230,8 @@
 				Rectangle screenRect = GraphicsDevice.PresentationParameters.Bounds;
 				Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GlobalCamera);
 
-				GraphicsDevice.SetRenderTarget(null);
-
 				// Draw!
-				screenCam.StartSpriteBatch(frameInfo, new Vector2(screenRect.X, screenRect.Y));
+				screenCam.StartSpriteBatch(frameInfo, new Vector2(screenRect.X, screenRect.Y), null, Color.Black);
 
 				DrawScreenPixelPerfect(frameInfo, screenTargetRef);
 

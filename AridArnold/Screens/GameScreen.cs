@@ -8,6 +8,7 @@
 		#region rConstants
 
 		public const int TILE_SIZE = 16;
+		public const int UPDATE_STEPS = 4;
 
 		const double END_LEVEL_TIME = 1000.0;
 
@@ -95,6 +96,11 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			if(mLoadSequence is null)
+			{
+				CheckForLoadSequence();
+			}
+
 			if (mLoadSequence is not null)
 			{
 				mLoadSequence.Update(gameTime);
@@ -114,7 +120,7 @@
 
 
 		/// <summary>
-		/// Update gameplay elements
+		/// Do all required steps for game update
 		/// </summary>
 		void GameUpdate(GameTime gameTime)
 		{
@@ -123,10 +129,24 @@
 				return;
 			}
 
-			CheckForLoadSequence();
+			System.TimeSpan timeInc = gameTime.ElapsedGameTime / UPDATE_STEPS;
+			for (int i = 0; i < UPDATE_STEPS; i++)
+			{
+				GameTime stepTime = new GameTime(gameTime.TotalGameTime - (UPDATE_STEPS - 1 - i) * timeInc, timeInc);
 
+				GameUpdateStep(stepTime);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Update gameplay elements by 1 step
+		/// </summary>
+		void GameUpdateStep(GameTime gameTime)
+		{
 			Level currLevel = CampaignManager.I.GetCurrentLevel();
-			if (currLevel is null || mLoadSequence is not null)
+			if (currLevel is null)
 			{
 				return;
 			}
@@ -138,7 +158,6 @@
 				{
 					MoveToNextLevel();
 				}
-
 				return;
 			}
 
@@ -237,17 +256,6 @@
 			mLevelEndTimer.FullReset();
 		}
 
-
-
-		/// <summary>
-		/// How many subframes to compute
-		/// </summary>
-		public override int GetUpdateSteps()
-		{
-			// Request quarter steps. TO DO: Change this?
-			return 4;
-		}
-
 		#endregion rUpdate
 
 
@@ -267,14 +275,10 @@
 			RenderGameAreaToTarget(info);
 
 			//Draw out the game area
-			info.device.SetRenderTarget(mScreenTarget);
-			info.device.Clear(new Color(0, 0, 0));
-
 			StartScreenSpriteBatch(info);
 
 			GetCurrentUI().Draw(info);
-			Rectangle gameAreaRect = GetGameAreaRect();
-			DrawGameArea(info, gameAreaRect);
+			DrawGameArea(info);
 
 			EndScreenSpriteBatch(info);
 
@@ -286,11 +290,10 @@
 		/// <summary>
 		/// Draw game area
 		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="destRect"></param>
-		private void DrawGameArea(DrawInfo info, Rectangle destRect)
+		private void DrawGameArea(DrawInfo info)
 		{
-			MonoDraw.DrawTexture(info, mGameArea, destRect);
+			Rectangle gameAreaRect = GetGameAreaRect();
+			MonoDraw.DrawTexture(info, mGameArea, gameAreaRect);
 		}
 
 
@@ -306,12 +309,8 @@
 				mGameArea = new RenderTarget2D(info.device, GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			}
 
-			info.device.SetRenderTarget(mGameArea);
-
-			info.device.Clear(Color.Black);
-
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-			gameCam.StartSpriteBatch(info, new Vector2(GAME_AREA_WIDTH, GAME_AREA_HEIGHT));
+			gameCam.StartSpriteBatch(info, new Vector2(GAME_AREA_WIDTH, GAME_AREA_HEIGHT), mGameArea, Color.Black);
 
 			if (mLoadSequence is not null)
 			{

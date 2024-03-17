@@ -203,15 +203,6 @@
 		/// <param name="gameTime">Frame time</param>
 		public abstract void Update(GameTime gameTime);
 
-
-		/// <summary>
-		/// Request to update in smaller steps
-		/// </summary>
-		public virtual int GetUpdateSteps()
-		{
-			return 1;
-		}
-
 		#endregion rUpdate
 
 
@@ -235,7 +226,7 @@
 		/// <param name="info"></param>
 		protected void StartScreenSpriteBatch(DrawInfo info)
 		{
-			CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera).StartSpriteBatch(info, new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+			CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera).StartSpriteBatch(info, new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT), mScreenTarget, Color.Black);
 		}
 
 

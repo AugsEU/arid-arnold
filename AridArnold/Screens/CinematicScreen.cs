@@ -76,9 +76,6 @@
 		/// </summary>
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
-			info.device.SetRenderTarget(mScreenTarget);
-			info.device.Clear(new Color(0, 0, 0));
-
 			StartScreenSpriteBatch(info);
 			mCurrentCinematic.Draw(info);
 			EndScreenSpriteBatch(info);

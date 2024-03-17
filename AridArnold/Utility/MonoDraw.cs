@@ -431,6 +431,43 @@
 			sCurrentLayerDelta = 0.0f;
 		}
 
+
+
+		/// <summary>
+		/// Memcpy a texture
+		/// </summary>
+		public static void MemCopyTexture(GraphicsDevice graphics, Texture2D source, Texture2D dest)
+		{
+			// Recreate texture if size is different
+			if (dest is null || dest.Width != source.Width || dest.Height != source.Height)
+			{
+				dest = new Texture2D(graphics, source.Width, source.Height);
+			}
+
+			int count = source.Width * source.Height;
+			Color[] data = new Color[count];
+			source.GetData<Color>(data);
+			dest.SetData(data);
+		}
+
+
+
+		/// <summary>
+		/// Create texture from memcpy
+		/// </summary>
+		public static Texture2D MemCopyTexture(GraphicsDevice graphics, Texture2D source)
+		{
+			// Recreate texture if size is different
+			Texture2D dest = new Texture2D(graphics, source.Width, source.Height);
+
+			int count = source.Width * source.Height;
+			Color[] data = new Color[count];
+			source.GetData<Color>(data);
+			dest.SetData(data);
+
+			return dest;
+		}
+
 		#endregion rUtility
 	}
 }

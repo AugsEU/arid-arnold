@@ -55,9 +55,6 @@
 			Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
 
 			//Draw out the game area
-			info.device.SetRenderTarget(mScreenTarget);
-			info.device.Clear(new Color(0, 0, 0));
-
 			StartScreenSpriteBatch(info);
 
 			MonoDraw.DrawStringCentred(info, pixelFont, centre, Color.White, "GAME OVER");
