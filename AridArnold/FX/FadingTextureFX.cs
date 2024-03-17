@@ -53,15 +53,12 @@ namespace AridArnold
 
 		public override void Draw(DrawInfo info)
 		{
-			if(mTextureFader is not null)
-			{
-				mTextureFader.Draw(info);
-			}
+			mTextureFader.Draw(info);
 		}
 
 		public override bool Finished()
 		{
-			return mTextureFader is not null && mTextureFader.Finished();
+			return mTextureFader.Finished();
 		}
 
 		public override void Update(GameTime gameTime)

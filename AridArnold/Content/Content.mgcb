@@ -9214,3 +9214,6 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/Hell/DemonMedium4.png
 
+#begin BG/Heaven/HeavenHub.mlo
+/copy:BG/Heaven/HeavenHub.mlo
+

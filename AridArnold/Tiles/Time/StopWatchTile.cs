@@ -65,12 +65,29 @@ namespace AridArnold
 		{
 			// Going forwards or backwards
 			bool forwards = TimeZoneManager.I.GetCurrentPlayerAge() == 0;
+			int fromTime = TimeZoneManager.I.GetCurrentTimeZone();
+			int toTime = TimeZoneManager.I.GetCurrentTimeZone() + (forwards ? 1 : -1);
 
+			TimeZoneOverride? timeZoneOverride = CampaignManager.I.GetTimeOverride(fromTime, toTime);
+
+			if (timeZoneOverride.HasValue)
+			{
+				HubTimeShiftLoader loader = new HubTimeShiftLoader(timeZoneOverride.Value.mDestinationLevel, forwards);
+				CampaignManager.I.QueueLoadSequence(loader);
+				EventManager.I.SignalEndUpdateImmediate();
+			}
+			else
+			{
+				SimpleTimeChange(forwards);
+			}
+		}
+
+		void SimpleTimeChange(bool forwards)
+		{
 			// Queue camera move
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 			gameCam.QueueMovement(new ShiftTimeCameraMove(forwards));
 
-			int fromTime = TimeZoneManager.I.GetCurrentTimeZone();
 			if (forwards)
 			{
 				TimeZoneManager.I.AgePlayer();
@@ -78,21 +95,6 @@ namespace AridArnold
 			else
 			{
 				TimeZoneManager.I.AntiAgePlayer();
-			}
-			int toTime = TimeZoneManager.I.GetCurrentTimeZone();
-
-			TimeZoneOverride? timeZoneOverride = CampaignManager.I.GetTimeOverride(fromTime, toTime);
-
-			if (timeZoneOverride.HasValue)
-			{
-				Arnold arnold = EntityManager.I.FindArnold();
-
-				Vector2 spawnPos = TileManager.I.GetTileCentre(timeZoneOverride.Value.mArnoldSpawnPoint);
-				arnold.SetCentrePos(spawnPos);
-
-				HubDirectLoader loader = new HubDirectLoader(timeZoneOverride.Value.mDestinationLevel);
-				loader.AddPersistentEntities(arnold);
-				CampaignManager.I.QueueLoadSequence(loader);
 			}
 
 			FXManager.I.AddFX(new TimeShiftFaderFX());

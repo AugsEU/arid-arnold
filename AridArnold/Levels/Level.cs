@@ -80,6 +80,7 @@
 			EntityManager.I.ClearEntities();
 			CollectableManager.I.ClearTransient();
 			FXManager.I.Clear();
+			EventManager.I.ResetAllEvents();
 
 			// Re-Load BG
 			mBGLayout = new Layout(mLayoutPath);

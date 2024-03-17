@@ -47,6 +47,10 @@
 			{
 				if (!entity.IsEnabled()) continue;
 				entity.Update(gameTime);
+				if(EventManager.I.IsEndUpdateImmediate())
+				{
+					goto FinishUpdate; // AHAOHAOAHOAHOA ITS GOTO!!
+				}
 			}
 
 			mRegisteredEntities.Sort(mUpdateSorter);
@@ -56,11 +60,16 @@
 			{
 				if (!entity.IsEnabled()) continue;
 				entity.OrderedUpdate(gameTime);
+				if (EventManager.I.IsEndUpdateImmediate())
+				{
+					goto FinishUpdate; // AHAOHAOAHOAHOA ITS GOTO!!
+				}
 			}
 
 			ResolveEntityTouching();
 
 			// Add/Removed queued entities
+			FinishUpdate:
 			FlushQueues();
 		}
 

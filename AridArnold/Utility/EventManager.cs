@@ -64,5 +64,29 @@ namespace AridArnold
 				mEventFlags[i].mTrigger = false;
 			}
 		}
+
+		public void ResetAllEvents()
+		{
+			for (int i = 0; i < mEventFlags.Length; i++)
+			{
+				mEventFlags[i].mSignal = false;
+				mEventFlags[i].mTrigger = false;
+			}
+		}
+
+		public void ResetEndUpdateImmediate()
+		{
+			mHaltUpdateImmediate = false;
+		}
+
+		public bool IsEndUpdateImmediate()
+		{
+			return mHaltUpdateImmediate;
+		}
+
+		public void SignalEndUpdateImmediate()
+		{
+			mHaltUpdateImmediate = true;
+		}
 	}
 }
