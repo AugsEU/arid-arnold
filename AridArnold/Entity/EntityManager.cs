@@ -11,6 +11,9 @@
 		public const float UPDATE_MENTITY_MIN = 0.0f;
 		public const float UPDATE_MENTITY_MAX = 1.0f;
 
+		// Divide physics into smaller steps
+		public const int PHYSICS_STEPS = 4;
+
 		#endregion rConstants
 
 
@@ -55,15 +58,16 @@
 
 			mRegisteredEntities.Sort(mUpdateSorter);
 
-			// Do ordered update.
-			foreach (Entity entity in mRegisteredEntities)
+			// Do physics
+			System.TimeSpan timeInc = gameTime.ElapsedGameTime / PHYSICS_STEPS;
+			for (int i = 0; i < PHYSICS_STEPS; i++)
 			{
-				if (!entity.IsEnabled()) continue;
-				entity.OrderedUpdate(gameTime);
 				if (EventManager.I.IsEndUpdateImmediate())
 				{
-					goto FinishUpdate; // AHAOHAOAHOAHOA ITS GOTO!!
+					break;
 				}
+				GameTime stepTime = new GameTime(gameTime.TotalGameTime - (PHYSICS_STEPS - 1 - i) * timeInc, timeInc);
+				DoOrderedUpdateStep(stepTime);
 			}
 
 			ResolveEntityTouching();
@@ -71,6 +75,21 @@
 			// Add/Removed queued entities
 			FinishUpdate:
 			FlushQueues();
+		}
+
+
+
+		/// <summary>
+		/// Do 1 step of entity physics update
+		/// </summary>
+		void DoOrderedUpdateStep(GameTime gameTime)
+		{
+			// Do ordered update.
+			foreach (Entity entity in mRegisteredEntities)
+			{
+				if (!entity.IsEnabled()) continue;
+				entity.OrderedUpdate(gameTime);
+			}
 		}
 
 

@@ -8,7 +8,6 @@
 		#region rConstants
 
 		public const int TILE_SIZE = 16;
-		public const int UPDATE_STEPS = 4;
 
 		const double END_LEVEL_TIME = 1000.0;
 
@@ -138,16 +137,7 @@
 
 			Level currLevel = CampaignManager.I.GetCurrentLevel();
 
-			System.TimeSpan timeInc = gameTime.ElapsedGameTime / UPDATE_STEPS;
-			for (int i = 0; i < UPDATE_STEPS; i++)
-			{
-				if(EventManager.I.IsEndUpdateImmediate())
-				{
-					break;
-				}
-				GameTime stepTime = new GameTime(gameTime.TotalGameTime - (UPDATE_STEPS - 1 - i) * timeInc, timeInc);
-				GameUpdateStep(stepTime, currLevel);
-			}
+			GameUpdateStep(gameTime, currLevel);
 
 			// Check status.
 			LevelStatus status = currLevel.GetStatus();

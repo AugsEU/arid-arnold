@@ -23,7 +23,6 @@
 
 		protected Vector2 mPrevVelocity;
 		protected Vector2 mVelocity;
-		protected bool mFallthrough;
 		int mUpdatesSinceFallthrough;
 
 		#endregion rMembers
@@ -52,6 +51,20 @@
 		#region rUpdate
 
 		/// <summary>
+		/// Update the moving entity
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			if (mUpdatesSinceFallthrough != int.MaxValue)
+			{
+				mUpdatesSinceFallthrough++;
+			}
+			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
 		/// Update Moving Entity.
 		/// </summary>
 		/// <param name="gameTime">Frame time.</param>
@@ -59,13 +72,6 @@
 		{
 			mPrevVelocity = mVelocity;
 			UpdateCollision(gameTime);
-
-			mFallthrough = false;
-			if(mUpdatesSinceFallthrough != int.MaxValue)
-			{
-				mUpdatesSinceFallthrough++;
-			}
-
 			base.OrderedUpdate(gameTime);
 		}
 
@@ -152,7 +158,7 @@
 		/// <returns></returns>
 		public bool CollideWithPlatforms()
 		{
-			return !mFallthrough;
+			return mUpdatesSinceFallthrough > 1;
 		}
 
 
@@ -175,7 +181,6 @@
 		protected void FallThroughPlatforms()
 		{
 			mUpdatesSinceFallthrough = 0;
-			mFallthrough = true;
 		}
 
 

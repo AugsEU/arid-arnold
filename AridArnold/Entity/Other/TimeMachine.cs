@@ -15,7 +15,7 @@
 		#region rMembers
 
 		int mLevelID;
-		int mTimeZone;
+		bool mIsForwards;
 		Vector2 mClockOffset;
 		Color mHourColor;
 		Color mMinuteColor;
@@ -30,10 +30,10 @@
 		/// <summary>
 		/// Create time machine at pos(bottom left)
 		/// </summary>
-		public TimeMachine(Vector2 pos, int levelToLoadID, int timeZoneToGoTo) : base(pos)
+		public TimeMachine(Vector2 pos, int levelToLoadID, int isForwards) : base(pos)
 		{
 			mLevelID = levelToLoadID;
-			mTimeZone = timeZoneToGoTo;
+			mIsForwards = isForwards != 0;
 		}
 
 
@@ -43,7 +43,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			if(IsForwardsTimeMachine())
+			if(mIsForwards)
 			{
 				// Past
 				mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/TimeMachine");
@@ -77,7 +77,7 @@
 		protected override void OnPlayerInteract()
 		{
 			// Load the level directly, maybe we could shake and play an animation?
-			if (IsForwardsTimeMachine())
+			if (mIsForwards)
 			{
 				TimeZoneManager.I.TimeTravel();
 			}
@@ -87,12 +87,6 @@
 			}
 			CampaignManager.I.QueueLoadSequence(new HubDirectLoader(mLevelID));
 			base.OnPlayerInteract();
-		}
-
-
-		bool IsForwardsTimeMachine()
-		{
-			return mTimeZone != 0;
 		}
 
 		#endregion rUpdate

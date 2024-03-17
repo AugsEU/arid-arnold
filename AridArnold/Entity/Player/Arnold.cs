@@ -9,8 +9,8 @@
 
 		const double START_TIME = 500.0;
 		const double USE_ITEM_TIME = 600.0;
-		const int COYOTE_TIME = 32;
-		const int ROSS_TIME = 20;
+		const int COYOTE_TIME = 8;
+		const int ROSS_TIME = 5;
 
 
 		const float ARNOLD_WALK_SPEED = 9.0f;
