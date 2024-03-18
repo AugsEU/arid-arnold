@@ -9217,3 +9217,6 @@
 #begin BG/Heaven/HeavenHub.mlo
 /copy:BG/Heaven/HeavenHub.mlo
 
+#begin Text/EN/InGame/TimeMachine.txt
+/copy:Text/EN/InGame/TimeMachine.txt
+

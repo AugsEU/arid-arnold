@@ -1,11 +1,30 @@
-﻿namespace AridArnold
+﻿using static AridArnold.InfoBubble;
+
+namespace AridArnold
 {
+	public struct BubbleStyle
+	{
+		public Color mBorderColor;
+		public Color mInnerColor;
+
+		public static BubbleStyle DefaultPrompt
+		{
+			get
+			{
+				BubbleStyle style = new BubbleStyle();
+				style.mInnerColor = new Color(20, 20, 20, 220);
+				style.mBorderColor = new Color(150, 150, 150, 200);
+				return style;
+			}
+		}
+	}
+
 	abstract class InfoBubble
 	{
 		#region rConstants
 
 		const float MOVE_SPEED = 30.1f;
-		const float ANGULAR_SPEED = 0.7f;
+		protected const float ANGULAR_SPEED = 0.7f;
 		const float AMPLITUDE = 1.5f;
 		const int BORDER_WIDTH = 2;
 
@@ -23,12 +42,6 @@
 			Open,
 			Closing,
 			Closed
-		}
-
-		public struct BubbleStyle
-		{
-			public Color mBorderColor;
-			public Color mInnerColor;
 		}
 
 		#endregion rTypes
@@ -51,6 +64,7 @@
 		BubbleStyle mStyle;
 
 		float mWaveAngle;
+		float mWaveSpeed;
 
 		#endregion rMembers
 
@@ -60,7 +74,7 @@
 
 		#region rInit
 
-		public InfoBubble(Vector2 botCentre, BubbleStyle style)
+		public InfoBubble(Vector2 botCentre, BubbleStyle style, float waveSpeed = ANGULAR_SPEED)
 		{
 			mWaveAngle = 0.0f;
 			mCurrentSize = Vector2.Zero;
@@ -68,6 +82,7 @@
 			mStyle = style;
 			mBotCentre = botCentre;
 			mState = BubbleState.Closed;
+			mWaveSpeed = waveSpeed;
 		}
 
 		protected void SetTargetSize(int width, int height)
@@ -107,7 +122,7 @@
 					break;
 
 				case BubbleState.Open:
-					mWaveAngle += dt * ANGULAR_SPEED;
+					mWaveAngle += dt * mWaveSpeed;
 					mOffset.Y = MathF.Sin(mWaveAngle) * AMPLITUDE;
 					break;
 

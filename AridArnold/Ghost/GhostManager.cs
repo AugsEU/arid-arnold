@@ -16,17 +16,6 @@
 	/// </summary>
 	internal class GhostManager : Singleton<GhostManager>
 	{
-		#region rConstants
-
-		//Only record every 4th frame.
-		const int FRAME_SUB = 4;
-
-		#endregion rConstants
-
-
-
-
-
 		#region rMembers
 
 		int mCurrentFrame;
@@ -131,11 +120,8 @@
 				mGhostArnold.Update(gameTime);
 			}
 
-			if (mCurrentFrame % FRAME_SUB == 0)
-			{
-				RecordFrame();
-				mRecordFrame++;
-			}
+			RecordFrame();
+			mRecordFrame++;
 		}
 
 

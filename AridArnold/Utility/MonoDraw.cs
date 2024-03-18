@@ -196,8 +196,11 @@
 		public static void DrawStringCentred(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, DrawLayer depth = DrawLayer.Bubble)
 		{
 			Vector2 size = font.MeasureString(text);
+			Vector2 drawPosition = position - size * 0.5f;
+			drawPosition.X = MathF.Round(drawPosition.X);
+			drawPosition.Y = MathF.Round(drawPosition.Y);
 
-			info.spriteBatch.DrawString(font, text, position - size / 2, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
+			info.spriteBatch.DrawString(font, text, drawPosition, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
 		/// <summary>

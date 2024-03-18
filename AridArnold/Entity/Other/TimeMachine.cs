@@ -19,6 +19,7 @@
 		Vector2 mClockOffset;
 		Color mHourColor;
 		Color mMinuteColor;
+		TextInfoBubble mUsePrompt;
 
 		#endregion rMembers
 
@@ -34,6 +35,21 @@
 		{
 			mLevelID = levelToLoadID;
 			mIsForwards = isForwards != 0;
+
+			Vector2 offset = Vector2.Zero;
+
+			if (mIsForwards)
+			{
+				offset.X = 30.0f;
+				offset.Y = -40.0f;
+			}
+			else
+			{
+				offset.Y = -40.0f;
+			}
+
+			SpriteFont bubbleFont = FontManager.I.GetFont("Pixica-12");
+			mUsePrompt = new TextInfoBubble(pos + offset, BubbleStyle.DefaultPrompt, bubbleFont, "InGame.TimeMachine", Color.White);
 		}
 
 
@@ -72,6 +88,26 @@
 		#region rUpdate
 
 		/// <summary>
+		/// Update
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			mUsePrompt.Update(gameTime);
+
+			if (IsPlayerNear())
+			{
+				mUsePrompt.Open();
+			}
+			else
+			{
+				mUsePrompt.Close();
+			}
+
+			base.Update(gameTime);
+		}
+
+
+		/// <summary>
 		/// When player presses enter
 		/// </summary>
 		protected override void OnPlayerInteract()
@@ -93,11 +129,11 @@
 
 
 
-		#region rDraw
+			#region rDraw
 
-		/// <summary>
-		/// Draw the time machine
-		/// </summary>
+			/// <summary>
+			/// Draw the time machine
+			/// </summary>
 		public override void Draw(DrawInfo info)
 		{
 			DateTime currentTime = DateTime.Now;
@@ -118,6 +154,8 @@
 
 			MonoDraw.DrawLine(info, clockCentre, minuteDelta + clockCentre, mMinuteColor, 2.0f, DrawLayer.Default);
 			MonoDraw.DrawLine(info, clockCentre, hourDelta + clockCentre, mHourColor, 2.0f, DrawLayer.Default);
+
+			mUsePrompt.Draw(info);
 		}
 
 		#endregion rDraw

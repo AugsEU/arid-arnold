@@ -55,7 +55,7 @@
 
 			MonoDebug.Assert(mLevelSequence.Count > 0 && mLevelSequence.Count < 10);
 
-			InfoBubble.BubbleStyle bubbleStyle = new InfoBubble.BubbleStyle();
+			BubbleStyle bubbleStyle = new BubbleStyle();
 			bubbleStyle.mInnerColor = new Color(20, 20, 20, 150);
 			bubbleStyle.mBorderColor = new Color(150, 150, 150, 200);
 			mHelpBubble = new LevelSequenceInfoBubble(mLevelSequence, mPosition + BUBBLE_OFFSET, bubbleStyle);

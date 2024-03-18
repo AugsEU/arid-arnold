@@ -45,10 +45,7 @@
 			// Can't display more than 3 digits
 			MonoDebug.Assert(mDisplayDigits.Length <= 3);
 
-			InfoBubble.BubbleStyle bubbleStyle = new InfoBubble.BubbleStyle();
-			bubbleStyle.mInnerColor = new Color(20, 20, 20, 150);
-			bubbleStyle.mBorderColor = new Color(150, 150, 150, 200);
-			mHelpBubble = new LevelLockInfoBubble(pos + new Vector2(8.0f, -4.0f), bubbleStyle);
+			mHelpBubble = new LevelLockInfoBubble(pos + new Vector2(8.0f, -4.0f), BubbleStyle.DefaultPrompt);
 
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
 			SetEnabled(!CollectableManager.I.HasSpecific(mTileCoord, GetCollectType()));
@@ -144,6 +141,7 @@
 		{
 			return new Rect2f(mPosition, Tile.sTILE_SIZE, Tile.sTILE_SIZE);
 		}
+
 
 
 		/// <summary>
