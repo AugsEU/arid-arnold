@@ -25,9 +25,11 @@
 		private Rectangle windowedRect;
 		private int mSlowDownCount;
 		private Texture2D mDummyTexture;
+		private bool mIsInputFrame = true;
+
 
 		// Hack
-		private static Main _self;
+		private static Main sSelf;
 
 		#endregion rMembers
 
@@ -47,16 +49,17 @@
 			IsMouseVisible = true;
 			//XNA
 
+			mIsInputFrame = true;
+
 			// Fix to 60 fps.
-			IsFixedTimeStep = true;//false;
+			IsFixedTimeStep = true;
 			TargetElapsedTime = System.TimeSpan.FromSeconds(1d / FRAME_RATE);
 
 			Window.ClientSizeChanged += OnResize;
 
-
 			mSlowDownCount = 0;
 
-			_self = this;
+			sSelf = this;
 		}
 
 
@@ -313,7 +316,7 @@
 		/// </summary>
 		public static GraphicsDevice GetGraphicsDevice()
 		{
-			return _self.GraphicsDevice;
+			return sSelf.GraphicsDevice;
 		}
 
 
@@ -322,7 +325,7 @@
 		/// </summary>
 		public static Texture2D GetDummyTexture()
 		{
-			return _self.mDummyTexture;
+			return sSelf.mDummyTexture;
 		}
 
 
@@ -331,7 +334,29 @@
 		/// </summary>
 		public static ContentManager GetMainContentManager()
 		{
-			return _self.Content;
+			return sSelf.Content;
+		}
+
+
+
+		/// <summary>
+		/// Signal the start of a loading screen.
+		/// </summary>
+		public static void LoadingScreenBegin()
+		{
+			sSelf.IsFixedTimeStep = false;
+			sSelf.mIsInputFrame = false;
+		}
+
+
+
+		/// <summary>
+		/// Signal the end of a loading screen.
+		/// </summary>
+		public static void LoadingScreenEnd()
+		{
+			sSelf.IsFixedTimeStep = true;
+			sSelf.mIsInputFrame = true;
 		}
 
 		#endregion rUtility

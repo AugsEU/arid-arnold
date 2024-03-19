@@ -25,7 +25,7 @@
 				EntityManager.I.InsertEntity(entity);
 			}
 
-			mLoadingState = LoadingState.FadeIn;
+			GoToFadeIn();
 		}
 	}
 

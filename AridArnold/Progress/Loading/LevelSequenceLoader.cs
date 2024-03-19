@@ -15,7 +15,7 @@
 			MonoDebug.Assert(nextLevel != null);
 			LoadLevel(nextLevel);
 
-			mLoadingState = LoadingState.FadeIn;
+			GoToFadeIn();
 		}
 	}
 }

@@ -27,6 +27,7 @@
 		#region rMembers
 
 		protected bool mOnGround;
+		int mAllowChangeDirFrames;
 
 		//Magniture of motion vectors
 		protected float mWalkSpeed;
@@ -87,6 +88,9 @@
 			// Ice
 			mIceWalking = false;
 			mIceVelocity = Vector2.Zero;
+
+			// Allow things to make you change direction for a certain number of frames.
+			mAllowChangeDirFrames = 0;
 		}
 
 		#endregion
@@ -164,13 +168,15 @@
 			}
 
 			ApplyGravity(gameTime);
-			mOnGround = false;
 
 			mVelocity = new Vector2(MonoMath.ClampAbs(mVelocity.X, MAX_VELOCITY), MonoMath.ClampAbs(mVelocity.Y, MAX_VELOCITY));
 
 			mIceWalking = false;
 
+			if(mAllowChangeDirFrames > 0) mAllowChangeDirFrames--;
+
 			base.Update(gameTime);
+			mOnGround = false;
 		}
 
 
@@ -195,7 +201,7 @@
 					mVelocity += mWalkSpeed * sideVec;
 					break;
 				case WalkDirection.None:
-					if (mOnGround == false)
+					if (!CanWalkDirChange())
 					{
 						mVelocity += component * sideVec;
 					}
@@ -803,6 +809,27 @@
 			}
 
 			return retValue;
+		}
+
+
+
+		/// <summary>
+		/// Allow changes in walk direction for a number of frames
+		/// </summary>
+		/// <param name="frames"></param>
+		public void AllowWalkChangeFor(int frames)
+		{
+			mAllowChangeDirFrames = frames;
+		}
+
+
+
+		/// <summary>
+		/// Can we set our direction?
+		/// </summary>
+		protected bool CanWalkDirChange()
+		{
+			return mOnGround || mAllowChangeDirFrames > 0;
 		}
 
 		#endregion rUtility

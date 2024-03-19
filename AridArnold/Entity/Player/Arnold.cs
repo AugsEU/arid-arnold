@@ -243,9 +243,9 @@
 					FallThroughPlatforms();
 				}
 			}
-			else if (mOnGround)
+			else if(CanWalkDirChange() || mOnGround)
 			{
-				if (jump)
+				if(jump && mOnGround)
 				{
 					Jump();
 				}
@@ -258,7 +258,7 @@
 				if (jump && goingDown)
 				{
 					float originalJumpSpeed = mJumpSpeed;
-					mJumpSpeed += 1.01f;
+					mJumpSpeed += 1.03f;
 					Jump();
 					mJumpSpeed = originalJumpSpeed;
 				}

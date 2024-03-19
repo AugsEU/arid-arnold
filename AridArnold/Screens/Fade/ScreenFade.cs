@@ -18,6 +18,7 @@
 			float dt = Util.GetDeltaT(gameTime);
 
 			mTime += (mForwards ? dt : -dt) * mSpeed;
+			mTime = Math.Clamp(mTime, 0.0f, 1.0f);
 		}
 
 

@@ -13,7 +13,6 @@ namespace AridArnold
 			string stringID = MonoParse.GetString(cmdNode["text"]);
 
 			SpeechBoxStyle style = MonoParse.GetSpeechBoxStyle(cmdNode);
-			style.mFramesPerLetter /= 4;
 			style.mWidth = 200.1f;
 
 			float spikeOffset = MonoParse.GetFloat(cmdNode["spike"], 30.0f);

@@ -20,9 +20,10 @@
 
 		#region rMembers
 
-		protected LoadingState mLoadingState;
+		private LoadingState mLoadingState;
 		protected ScreenFade mFadeIn;
 		protected ScreenFade mFadeOut;
+		int mNumUpdatesLoading;
 
 		#endregion rMembers
 
@@ -35,6 +36,7 @@
 		public FadeOutFadeInLoader(int levelID) : base(levelID)
 		{
 			mLoadingState = LoadingState.FadeOut;
+			mNumUpdatesLoading = 0;
 		}
 
 		#endregion rInit
@@ -54,8 +56,11 @@
 					break;
 
 				case LoadingState.LoadingLevel:
-					// Good time to collect garbage
-					GC.Collect();
+					mNumUpdatesLoading++;
+					if(mNumUpdatesLoading == 1)
+					{
+
+					}
 					LevelLoadUpdate(gameTime);
 					break;
 
@@ -72,6 +77,11 @@
 			if (fade is null || fade.Finished())
 			{
 				mLoadingState++;
+				if(mLoadingState == LoadingState.LoadingLevel)
+				{
+					Main.LoadingScreenBegin();
+					GC.Collect();
+				}
 				return;
 			}
 
@@ -82,6 +92,12 @@
 		public override bool Finished()
 		{
 			return mLoadingState == LoadingState.Done;
+		}
+
+		protected void GoToFadeIn()
+		{
+			mLoadingState = LoadingState.FadeIn;
+			Main.LoadingScreenEnd();
 		}
 
 		#endregion rUpdate
@@ -127,7 +143,7 @@
 		protected override void LevelLoadUpdate(GameTime gameTime)
 		{
 			DoLevelLoad();
-			mLoadingState = LoadingState.FadeIn;
+			GoToFadeIn();
 		}
 
 		protected abstract void DoLevelLoad();

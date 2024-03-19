@@ -114,21 +114,18 @@ namespace AridArnold
 
 				// TO DO: Make this nicer.
 				bool didBounce = false;
-
+				MonoDebug.DLog("VEL {0} {1}", entityVel.ToString(), mRotation.ToString());
 				switch (mRotation)
 				{
 					case CardinalDirection.Up:
 					{
 						if (platformingEntity.OnGround() == false)
 						{
-							if (entityVel.Y > minVel)
+							if (entityVel.Y > DOWN_VEL_THRESH)
 							{
-								platformingEntity.SetVelocity(new Vector2(entityVel.X, -entityVel.Y * alpha));
-								didBounce = true;
-							}
-							else if (entityVel.Y > DOWN_VEL_THRESH)
-							{
-								platformingEntity.SetVelocity(new Vector2(entityVel.X, -minVel * alpha));
+								MonoDebug.DLog("BOUNCE {0} {1}", entityVel.ToString(), mRotation.ToString());
+								float bounceVel = MathF.Max(minVel, entityVel.Y);
+								platformingEntity.SetVelocity(new Vector2(entityVel.X, -bounceVel * alpha));
 								didBounce = true;
 							}
 
@@ -136,7 +133,7 @@ namespace AridArnold
 							{
 								float newY = bounds.min.Y - entityBounds.Height;
 								platformingEntity.SetPos(new Vector2(entityPos.X, newY));
-								platformingEntity.SetGrounded(true); //HACK TO GET PLAYER TO BE ABLE TO CHANGE WALK DIRECTION
+								platformingEntity.AllowWalkChangeFor(1);
 							}
 						}
 					}
@@ -148,16 +145,9 @@ namespace AridArnold
 
 						if (valid)
 						{
-							if (platformingEntity.OnGround() == false)
-							{
-								platformingEntity.SetVelocity(new Vector2(-entityVel.X, entityVel.Y));
-								platformingEntity.ReverseWalkDirection();
-							}
-							else
-							{
-								platformingEntity.SetVelocity(new Vector2(-entityVel.X, -minVel * alpha));
-								platformingEntity.ReverseWalkDirection();
-							}
+							float bounceVel = platformingEntity.OnGround() ? -minVel * alpha : entityVel.Y;
+							platformingEntity.SetVelocity(new Vector2(-entityVel.X, bounceVel));
+							platformingEntity.ReverseWalkDirection();
 
 							didBounce = true;
 						}
