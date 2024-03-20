@@ -27,6 +27,7 @@
 
 		protected void LoadAsHubLevel()
 		{
+			MonoDebug.DLog("Loading hub level");
 			Level prevLevel = CampaignManager.I.GetCurrentLevel();
 
 			if (prevLevel is not null) prevLevel.End();

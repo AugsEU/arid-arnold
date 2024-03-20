@@ -129,6 +129,7 @@
 		/// <param name="gameTime"></param>
 		protected override void Update(GameTime gameTime)
 		{
+			MonoDebug.DLog("Top level update=========");
 			gameTime.ElapsedGameTime = TargetElapsedTime;
 
 			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
@@ -344,6 +345,7 @@
 		/// </summary>
 		public static void LoadingScreenBegin()
 		{
+			MonoDebug.DLog("Loading seq B=========");
 			sSelf.IsFixedTimeStep = false;
 			sSelf.mIsInputFrame = false;
 		}
@@ -355,6 +357,7 @@
 		/// </summary>
 		public static void LoadingScreenEnd()
 		{
+			MonoDebug.DLog("Loading seq E=========");
 			sSelf.IsFixedTimeStep = true;
 			sSelf.mIsInputFrame = true;
 		}

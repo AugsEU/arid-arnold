@@ -114,7 +114,6 @@ namespace AridArnold
 
 				// TO DO: Make this nicer.
 				bool didBounce = false;
-				MonoDebug.DLog("VEL {0} {1}", entityVel.ToString(), mRotation.ToString());
 				switch (mRotation)
 				{
 					case CardinalDirection.Up:
@@ -123,7 +122,6 @@ namespace AridArnold
 						{
 							if (entityVel.Y > DOWN_VEL_THRESH)
 							{
-								MonoDebug.DLog("BOUNCE {0} {1}", entityVel.ToString(), mRotation.ToString());
 								float bounceVel = MathF.Max(minVel, entityVel.Y);
 								platformingEntity.SetVelocity(new Vector2(entityVel.X, -bounceVel * alpha));
 								didBounce = true;

@@ -57,11 +57,10 @@
 
 				case LoadingState.LoadingLevel:
 					mNumUpdatesLoading++;
-					if(mNumUpdatesLoading == 1)
+					if(mNumUpdatesLoading == 2)
 					{
-
+						LevelLoadUpdate(gameTime);
 					}
-					LevelLoadUpdate(gameTime);
 					break;
 
 				case LoadingState.FadeIn:
