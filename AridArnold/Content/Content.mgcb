@@ -9220,3 +9220,21 @@
 #begin Text/EN/InGame/TimeMachine.txt
 /copy:Text/EN/InGame/TimeMachine.txt
 
+#begin Campaigns/MainCampaign/Hub/0902.aux
+/copy:Campaigns/MainCampaign/Hub/0902.aux
+
+#begin Campaigns/MainCampaign/Hub/0902.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0902.png
+
+#begin Campaigns/MainCampaign/Hub/0903.aux
+/copy:Campaigns/MainCampaign/Hub/0903.aux
+
+#begin Campaigns/MainCampaign/Hub/0903.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0903.png
+

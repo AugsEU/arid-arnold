@@ -17,7 +17,7 @@
 		<type root="Mountain">5</type>
 		<type root="WW7">6</type>
 		<type root="Hell">7</type>
-		<type root="Heaven">8</type>
+		<type root="Heaven">5</type>
 	</coins>
 	<timeOverrides>
 		<override>

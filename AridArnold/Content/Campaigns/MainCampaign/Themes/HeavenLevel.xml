@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Heaven</name>
+	<exitColour>423F63</exitColour>
 	<path from="Wall">HeavenBlock</path>
 	<path from="WallSecondary">HeavenBlock</path>
 	<path from="Platform">HeavenPlatform</path>

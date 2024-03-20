@@ -57,7 +57,7 @@
 
 				case LoadingState.LoadingLevel:
 					mNumUpdatesLoading++;
-					if(mNumUpdatesLoading == 2)
+					if(mNumUpdatesLoading == 5)
 					{
 						LevelLoadUpdate(gameTime);
 					}
