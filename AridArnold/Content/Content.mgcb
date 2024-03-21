@@ -9238,3 +9238,27 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Hub/0903.png
 
+#begin Tiles/Heaven/Marble.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/Marble.png
+
+#begin Tiles/Heaven/MarblePillarBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/MarblePillarBase.png
+
+#begin Tiles/Heaven/MarblePillarMiddle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/MarblePillarMiddle.png
+
+#begin Tiles/Heaven/MarblePillarTop.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/MarblePillarTop.png
+
