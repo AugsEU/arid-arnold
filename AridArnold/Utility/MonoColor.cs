@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Globalization;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Color related utilities
@@ -22,9 +24,9 @@
 		{
 			byte r, g, b, a;
 
-			r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-			g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-			b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+			r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat);
+			g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat);
+			b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat);
 
 			if (hex.Length == 6)
 			{
@@ -32,7 +34,7 @@
 			}
 			else if (hex.Length == 8)
 			{
-				a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+				a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat);
 			}
 			else
 			{

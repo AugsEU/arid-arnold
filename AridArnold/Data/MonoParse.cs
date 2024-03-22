@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Globalization;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Class for parsing things.
@@ -27,7 +29,7 @@
 				return defaultVal;
 			}
 
-			return float.Parse(node.InnerText);
+			return float.Parse(node.InnerText, CultureInfo.InvariantCulture.NumberFormat);
 		}
 
 
@@ -42,7 +44,7 @@
 				return defaultVal;
 			}
 
-			return int.Parse(node.InnerText);
+			return int.Parse(node.InnerText, CultureInfo.InvariantCulture.NumberFormat);
 		}
 
 

@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Globalization;
+
+namespace AridArnold
 {
 	internal class IdleAnimatorData
 	{
@@ -21,7 +23,7 @@
 
 			string varChance = rootNode.Attributes["variation"].Value;
 
-			mVariationChance = float.Parse(varChance);
+			mVariationChance = float.Parse(varChance, CultureInfo.InvariantCulture.NumberFormat);
 
 			XmlNodeList animNodes = rootNode.SelectNodes("alt");
 

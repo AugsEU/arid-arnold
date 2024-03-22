@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Globalization;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// A command applied over multiple frames of a cutscene
@@ -30,13 +32,13 @@
 
 			if (framesStrs.Length == 1)
 			{
-				int frame = int.Parse(framesStrs[0]);
+				int frame = int.Parse(framesStrs[0], CultureInfo.InvariantCulture.NumberFormat);
 				mFrameSpan = new MonoRange<int>(frame, frame);
 			}
 			else if (framesStrs.Length == 2)
 			{
-				int firstFrame = int.Parse(framesStrs[0]);
-				int lastFrame = int.Parse(framesStrs[1]);
+				int firstFrame = int.Parse(framesStrs[0], CultureInfo.InvariantCulture.NumberFormat);
+				int lastFrame = int.Parse(framesStrs[1], CultureInfo.InvariantCulture.NumberFormat);
 				mFrameSpan = new MonoRange<int>(firstFrame, lastFrame);
 			}
 			else

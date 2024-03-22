@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Globalization;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Utility class for loading animations from data
@@ -59,7 +61,7 @@
 			foreach (XmlNode textureNode in textureNodes)
 			{
 				XmlAttribute timeAttrib = textureNode.Attributes["time"];
-				float time = timeAttrib is not null ? float.Parse(timeAttrib.Value) : 1.0f;
+				float time = timeAttrib is not null ? float.Parse(timeAttrib.Value, CultureInfo.InvariantCulture.NumberFormat) : 1.0f;
 				mTextures[idx++] = (textureNode.InnerText, time);
 			}
 		}

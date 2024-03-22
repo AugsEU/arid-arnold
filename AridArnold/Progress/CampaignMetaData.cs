@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Globalization;
+
+namespace AridArnold
 {
 	struct TimeZoneOverride
 	{
@@ -56,7 +58,7 @@
 
 			// Load start room ID
 			XmlNode startNode = rootNode.SelectSingleNode("start");
-			mStartRoomID = int.Parse(startNode.InnerText);
+			mStartRoomID = int.Parse(startNode.InnerText, CultureInfo.InvariantCulture.NumberFormat);
 		}
 
 
@@ -73,7 +75,7 @@
 			foreach (XmlNode coinTypeNode in coinTypeNodes)
 			{
 				string worldRoot = coinTypeNode.Attributes["root"].Value;
-				byte coindTypeID = byte.Parse(coinTypeNode.InnerText);
+				byte coindTypeID = byte.Parse(coinTypeNode.InnerText, CultureInfo.InvariantCulture.NumberFormat);
 				mCoinTypeIDs.Add(worldRoot, coindTypeID);
 			}
 		}
