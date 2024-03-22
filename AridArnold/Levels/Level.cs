@@ -111,9 +111,6 @@
 			// Reset camera
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 			gameCam.Reset();
-			CameraSpec newSpec = new CameraSpec();
-			newSpec.mZoom = 0.5f;
-			gameCam.ForceNewSpec(newSpec);
 
 			// Inform others
 			GhostManager.I.StartLevel(this);
