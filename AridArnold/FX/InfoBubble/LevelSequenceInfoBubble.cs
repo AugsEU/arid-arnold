@@ -11,6 +11,7 @@
 		Texture2D mShopIcon;
 		Texture2D mWaterIcon;
 		Texture2D mFlagIcon;
+		Texture2D mEmptyIcon;
 
 		public LevelSequenceInfoBubble(List<Level> levelSequence, Vector2 botCentre, BubbleStyle style) : base(botCentre, style)
 		{
@@ -22,7 +23,7 @@
 			mShopIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelShop");
 			mWaterIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelWater");
 			mFlagIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelKey");
-
+			mEmptyIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelEmpty");
 		}
 
 		protected override void DrawInner(DrawInfo info, Rectangle area)
@@ -50,6 +51,8 @@
 					return mFlagIcon;
 				case AuxData.LevelType.Shop:
 					return mShopIcon;
+				case AuxData.LevelType.Empty:
+					return mEmptyIcon;
 			}
 
 			return mLevelIcon;

@@ -9,7 +9,8 @@
 			CollectWater,
 			CollectKey,
 			Shop,
-			Hub
+			Hub,
+			Empty
 		}
 
 		#endregion rTypes

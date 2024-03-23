@@ -3283,6 +3283,66 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0112.png
 
+#begin Campaigns/MainCampaign/Levels/0113.aux
+/copy:Campaigns/MainCampaign/Levels/0113.aux
+
+#begin Campaigns/MainCampaign/Levels/0113.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0113.png
+
+#begin Campaigns/MainCampaign/Levels/0114.aux
+/copy:Campaigns/MainCampaign/Levels/0114.aux
+
+#begin Campaigns/MainCampaign/Levels/0114.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0114.png
+
+#begin Campaigns/MainCampaign/Levels/0115.aux
+/copy:Campaigns/MainCampaign/Levels/0115.aux
+
+#begin Campaigns/MainCampaign/Levels/0115.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0115.png
+
+#begin Campaigns/MainCampaign/Levels/0116.aux
+/copy:Campaigns/MainCampaign/Levels/0116.aux
+
+#begin Campaigns/MainCampaign/Levels/0116.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0116.png
+
 #begin Campaigns/MainCampaign/Levels/0201.aux
 /copy:Campaigns/MainCampaign/Levels/0201.aux
 
@@ -7651,6 +7711,18 @@
 /processorParam:TextureFormat=Color
 /build:Shared/Icons/LevelDefault.png
 
+#begin Shared/Icons/LevelEmpty.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/Icons/LevelEmpty.png
+
 #begin Shared/Icons/LevelFlag.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9490,39 +9562,9 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Campaigns/MainCampaign/Levels/0113.aux
-/copy:Campaigns/MainCampaign/Levels/0113.aux
+#begin Text/EN/NPC/Zippy/Gym.txt
+/copy:Text/EN/NPC/Zippy/Gym.txt
 
-#begin Campaigns/MainCampaign/Levels/0113.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0113.png
-
-#begin Campaigns/MainCampaign/Levels/0114.aux
-/copy:Campaigns/MainCampaign/Levels/0114.aux
-
-#begin Campaigns/MainCampaign/Levels/0114.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0114.png
-
-#begin Campaigns/MainCampaign/Levels/0115.aux
-/copy:Campaigns/MainCampaign/Levels/0115.aux
-
-#begin Campaigns/MainCampaign/Levels/0115.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0115.png
-
-#begin Campaigns/MainCampaign/Levels/0116.aux
-/copy:Campaigns/MainCampaign/Levels/0116.aux
-
-#begin Campaigns/MainCampaign/Levels/0116.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0116.png
+#begin Text/EN/NPC/Zippy/MovingPlatforms.txt
+/copy:Text/EN/NPC/Zippy/MovingPlatforms.txt
 

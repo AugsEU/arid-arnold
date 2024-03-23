@@ -293,6 +293,8 @@
 					return new ShopLevel(auxData, id);
 				case AuxData.LevelType.Hub:
 					return new HubLevel(auxData, id);
+				case AuxData.LevelType.Empty:
+					return new EmptyLevel(auxData, id);
 			}
 
 			throw new NotImplementedException();
