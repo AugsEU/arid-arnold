@@ -82,6 +82,9 @@
 
 				MonoDraw.DrawTextureRotCent(info, mPlatformAnimation.GetCurrentTexture(), pos, rotation);
 			}
+
+
+			mRail.Draw(info, directionVec * mSize * 0.5f);
 		}
 
 

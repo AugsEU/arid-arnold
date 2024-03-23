@@ -50,6 +50,15 @@
 
 
 
+		#region rDraw
+
+		/// <summary>
+		/// Draw rail
+		/// </summary>
+		public abstract void Draw(DrawInfo info, Vector2 offset);
+
+		#endregion rDraw
+
 
 
 		#region rUtil

@@ -113,6 +113,8 @@
 		public override void Draw(DrawInfo info)
 		{
 			MonoDraw.DrawTextureDepth(info, mSpikeAnimation.GetCurrentTexture(), mPosition, DrawLayer.Tile);
+
+			mRail.Draw(info, new Vector2(8.0f, 8.0f));
 		}
 
 		#endregion rDraw

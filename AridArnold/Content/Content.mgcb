@@ -9490,3 +9490,39 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Campaigns/MainCampaign/Levels/0113.aux
+/copy:Campaigns/MainCampaign/Levels/0113.aux
+
+#begin Campaigns/MainCampaign/Levels/0113.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0113.png
+
+#begin Campaigns/MainCampaign/Levels/0114.aux
+/copy:Campaigns/MainCampaign/Levels/0114.aux
+
+#begin Campaigns/MainCampaign/Levels/0114.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0114.png
+
+#begin Campaigns/MainCampaign/Levels/0115.aux
+/copy:Campaigns/MainCampaign/Levels/0115.aux
+
+#begin Campaigns/MainCampaign/Levels/0115.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0115.png
+
+#begin Campaigns/MainCampaign/Levels/0116.aux
+/copy:Campaigns/MainCampaign/Levels/0116.aux
+
+#begin Campaigns/MainCampaign/Levels/0116.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0116.png
+

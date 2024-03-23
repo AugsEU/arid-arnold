@@ -206,7 +206,7 @@
 			}
 
 			int currentNodeIdx = GetCurrentNodeIdx();
-			int nextNodeIdx = GetNextNodeIdx();
+			int nextNodeIdx = GetNextNodeIdx(currentNodeIdx);
 
 			RailNode currentNode = mData.GetNode(currentNodeIdx);
 			RailNode nextNode = mData.GetNode(nextNodeIdx);
@@ -251,6 +251,69 @@
 
 
 
+		#region rDraw
+
+		/// <summary>
+		/// Draw rail
+		/// </summary>
+		public override void Draw(DrawInfo info, Vector2 offset)
+		{
+			int curr = 0;
+
+			while(curr < mData.GetCount() - 1)
+			{
+				int next = curr + 1;
+
+				while(next < mData.GetCount() - 1 && mData.GetNode(curr).mWaitTime == 0)
+				{
+					next++;
+				}
+
+				Vector2 startPos = GetNodePosition(mData.GetNode(curr)) + offset;
+				Vector2 endPos = GetNodePosition(mData.GetNode(next)) + offset;
+
+				DrawSection(info, startPos, endPos);
+
+				curr = next;
+			}
+		}
+
+
+
+		/// <summary>
+		/// Draw a section of the rail.
+		/// </summary>
+		public void DrawSection(DrawInfo info, Vector2 start, Vector2 end)
+		{
+			Color highlightCol = new Color(150, 150, 150);
+			Color shawdowCol = new Color(50, 50, 50);
+			const float DOT_SIZE = 1.0f;
+			const float DOT_DIST = 6.0f;
+			const float END_SIZE = 2.0f;
+
+
+			// Draw end caps
+			Rectangle startRect = MonoMath.SquareCenteredAt(start, END_SIZE);
+			Rectangle endRect = MonoMath.SquareCenteredAt(end, END_SIZE);
+			MonoDraw.DrawRectShadow(info, startRect, highlightCol, shawdowCol, 1.0f, DrawLayer.SubEntity);
+			MonoDraw.DrawRectShadow(info, endRect, highlightCol, shawdowCol, 1.0f, DrawLayer.SubEntity);
+
+			float sectionDist = (start - end).Length();
+			int numDots = (int)MathF.Round(sectionDist / DOT_DIST);
+			for(int i = 0; i < numDots; i++)
+			{
+				Vector2 dotPos = MonoMath.Lerp(start, end, (float)(i + 1) / (numDots + 1));
+				Rectangle dotRect = MonoMath.SquareCenteredAt(dotPos, DOT_SIZE);
+				MonoDraw.DrawRectShadow(info, dotRect, highlightCol, shawdowCol, 1.0f, DrawLayer.SubEntity);
+			}
+		}
+
+		#endregion rDraw
+
+
+
+
+
 		#region rUtil
 
 		/// <summary>
@@ -273,7 +336,7 @@
 		/// <summary>
 		/// Get node at the end of our current leg.
 		/// </summary>
-		protected abstract int GetNextNodeIdx();
+		protected abstract int GetNextNodeIdx(int index);
 
 		#endregion rUtil
 	}
@@ -294,11 +357,11 @@
 			return mPrevNode;
 		}
 
-		protected override int GetNextNodeIdx()
+		protected override int GetNextNodeIdx(int index)
 		{
-			if (mPrevNode < mData.GetCount() - 1)
+			if (index < mData.GetCount() - 1)
 			{
-				return mPrevNode + 1;
+				return index + 1;
 			}
 
 			return 0;
@@ -323,14 +386,10 @@
 			return mPrevNode;
 		}
 
-		protected override int GetNextNodeIdx()
+		protected override int GetNextNodeIdx(int index)
 		{
-			if (mGoingForwards)
-			{
-				return mPrevNode + 1;
-			}
-
-			return mPrevNode - 1;
+			int retIdx = index + (mGoingForwards ? 1 : -1);
+			return retIdx;
 		}
 
 		protected override void ArriveAtNode(int index)

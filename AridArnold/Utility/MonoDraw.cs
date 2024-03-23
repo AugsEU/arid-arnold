@@ -354,6 +354,26 @@
 
 
 		/// <summary>
+		/// Draw rect with a shadow
+		/// </summary>
+		public static void DrawRectShadow(DrawInfo info, Rectangle rect, Color color, Color shadowColor, float dropDistance, DrawLayer depth)
+		{
+			int iDropDistance = (int)Math.Round(dropDistance);
+
+			rect.X += iDropDistance;
+			rect.Y += iDropDistance;
+
+			DrawRectDepth(info, rect, shadowColor, depth);
+
+			rect.X -= iDropDistance;
+			rect.Y -= iDropDistance;
+
+			DrawRectDepth(info, rect, color, depth);
+		}
+
+
+
+		/// <summary>
 		/// Draw text for debugging
 		/// </summary>
 		public static void DrawDebugText(DrawInfo info, string text, Vector2 pos)

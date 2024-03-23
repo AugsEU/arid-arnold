@@ -254,5 +254,28 @@
 
 			return digits;
 		}
+
+
+
+		/// <summary>
+		/// Create a square centered at a location
+		/// </summary>
+		public static Rectangle SquareCenteredAt(Vector2 centre, float side)
+		{
+			int iS = (int)MathF.Round(side);
+			side *= 0.5f;
+
+			Vector2 TL = centre;
+			if (side > 1.0f)
+			{
+				TL.X -= side;
+				TL.Y -= side;
+			}
+
+			int iX = (int)MathF.Round(TL.X);
+			int iY = (int)MathF.Round(TL.Y);
+
+			return new Rectangle(iX, iY, iS, iS);
+		}
 	}
 }
