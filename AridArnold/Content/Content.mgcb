@@ -9577,3 +9577,60 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Levels/0117.png
 
+#begin NPC/LazyMan/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/LazyMan/Default.png
+
+#begin NPC/LazyMan/Idle.mia
+/copy:NPC/LazyMan/Idle.mia
+
+#begin NPC/LazyMan/Itch.max
+/copy:NPC/LazyMan/Itch.max
+
+#begin NPC/LazyMan/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/LazyMan/Itch1.png
+
+#begin NPC/LazyMan/Scholar.mtn
+/copy:NPC/LazyMan/Scholar.mtn
+
+#begin NPC/LazyMan/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/LazyMan/TalkAngry.png
+
+#begin NPC/LazyMan/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/LazyMan/TalkNormal.png
+
+#begin NPC/LazyMan/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/LazyMan/Walk1.png
+
+#begin NPC/LazyMan/LazyMan.mtn
+/copy:NPC/LazyMan/LazyMan.mtn
+
+#begin NPC/LazyMan/Breathe.max
+/copy:NPC/LazyMan/Breathe.max
+
+#begin NPC/LazyMan/Breathe1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/LazyMan/Breathe1.png
+
+#begin Text/EN/NPC/LazyMan/Heckle.txt
+/copy:Text/EN/NPC/LazyMan/Heckle.txt
+
+#begin Text/EN/NPC/LazyMan/Talk.txt
+/copy:Text/EN/NPC/LazyMan/Talk.txt
+

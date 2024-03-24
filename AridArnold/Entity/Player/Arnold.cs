@@ -510,12 +510,14 @@
 		/// <returns>Collider bounds</returns>
 		public override Rect2f ColliderBounds()
 		{
+			const float HEIGHT_EXT = 1.0f;
+
 			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
 			{
-				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));
+				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height + HEIGHT_EXT, mTexture.Width));
 			}
 
-			return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height));
+			return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height + HEIGHT_EXT));
 		}
 
 
