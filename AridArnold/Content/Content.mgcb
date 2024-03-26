@@ -9634,3 +9634,9 @@
 #begin Text/EN/NPC/LazyMan/Talk.txt
 /copy:Text/EN/NPC/LazyMan/Talk.txt
 
+#begin NPC/Scholar/Walk.max
+/copy:NPC/Scholar/Walk.max
+
+#begin NPC/Treey/Walk.max
+/copy:NPC/Treey/Walk.max
+

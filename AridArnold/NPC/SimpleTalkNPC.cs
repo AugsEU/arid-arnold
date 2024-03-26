@@ -10,6 +10,8 @@ namespace AridArnold
 		#region rConstants
 
 		const float TALK_DISTANCE = 29.0f;
+		const float WALK_FREQUENCY = 10000.0f;
+		const float WALK_SPEED = 3.0f;
 
 		#endregion rConstants
 
@@ -19,15 +21,24 @@ namespace AridArnold
 
 		#region rMembers
 
-		bool mTalking;
-		protected IdleAnimator mIdleAnimation;
-		protected Texture2D mTalkTexture;
-		protected Texture2D mAngryTexture;
-		protected Texture2D mMouthClosedTexture;
-
-		protected string mTalkText;
-		protected string mHeckleText;
+		// Data path
 		string mDataPath;
+
+		// Textures
+		IdleAnimator mIdleAnimation;
+		Animator mWalkAnimation;
+		Texture2D mTalkTexture;
+		Texture2D mAngryTexture;
+		Texture2D mMouthClosedTexture;
+
+		// Talking
+		bool mTalking;
+		string mTalkText;
+		string mHeckleText;
+
+		// Walking
+		bool mIsWalkingType;
+		PercentageTimer mWalkTimer;
 
 		#endregion rMembers
 
@@ -46,6 +57,11 @@ namespace AridArnold
 			mDataPath = Path.Join("Content/", dataPath);
 			mTalkText = talkText;
 			mHeckleText = heckleText;
+
+			mWalkTimer = new PercentageTimer(WALK_FREQUENCY);
+			mWalkTimer.Start();
+			mWalkSpeed = WALK_SPEED;
+			mIsWalkingType = false;
 		}
 
 
@@ -61,10 +77,9 @@ namespace AridArnold
 			xmlDoc.Load(mDataPath);
 			XmlNode rootNode = xmlDoc.LastChild;
 
+			mIsWalkingType = rootNode["walk"] is not null;
 			mStyle = MonoParse.GetSpeechBoxStyle(rootNode["textStyle"]);
-
 			mIdleAnimation = MonoData.I.LoadIdleAnimator(Path.Combine(folder, "Idle.mia"));
-
 
 			string normTex = Path.Combine(folder, "TalkNormal");
 			string angryTex = Path.Combine(folder, "TalkAngry");
@@ -73,6 +88,14 @@ namespace AridArnold
 			mTalkTexture = MonoData.I.FileExists(normTex) ? MonoData.I.MonoGameLoad<Texture2D>(normTex) : null;
 			mAngryTexture = MonoData.I.FileExists(angryTex) ? MonoData.I.MonoGameLoad<Texture2D>(angryTex) : null;
 			mMouthClosedTexture = MonoData.I.FileExists(closedTex) ? MonoData.I.MonoGameLoad<Texture2D>(closedTex) : null;
+
+			if(mIsWalkingType)
+			{
+				string walkAnim = Path.Combine(folder, "Walk.max");
+
+				mWalkAnimation = MonoData.I.LoadAnimator(walkAnim);
+				mWalkAnimation.Play();
+			}
 
 			base.LoadContent();
 		}
@@ -114,12 +137,91 @@ namespace AridArnold
 				mTalking = false;
 			}
 
+			if (mIsWalkingType)
+			{
+				WalkUpdate(gameTime);
+			}
+
 			mIdleAnimation.Update(gameTime);
 
 			base.Update(gameTime);
 		}
 
 		#endregion rUpdate
+
+
+
+
+
+		#region rWalk
+
+		/// <summary>
+		/// Do walking update
+		/// </summary>
+		public void WalkUpdate(GameTime gameTime)
+		{
+			if (mWalkTimer.GetPercentageF() >= 1.0f)
+			{
+				mWalkTimer.Reset();
+			}
+
+			mWalkAnimation.Update(gameTime);
+
+			if (WantsWalk() && !IsTalking())
+			{
+				WalkAround();
+			}
+			else
+			{
+				SetWalkDirection(WalkDirection.None);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Does the timer
+		/// </summary>
+		public bool WantsWalk()
+		{
+			return mIsWalkingType && mWalkTimer.GetPercentageF() < 0.5f;
+		}
+
+
+
+		/// <summary>
+		/// Walk around.
+		/// </summary>
+		void WalkAround()
+		{
+			bool canGoWhereFacing = false;
+
+			switch (GetPrevWalkDirection())
+			{
+				case WalkDirection.Left:
+					canGoWhereFacing = CheckSolid(-1, 1) && !CheckSolid(-1, 0);
+					break;
+				case WalkDirection.Right:
+					canGoWhereFacing = CheckSolid(1, 1) && !CheckSolid(1, 0);
+					break;
+				case WalkDirection.None:
+					break;
+				default:
+					break;
+			}
+
+			WalkDirection newWalkDir = GetPrevWalkDirection();
+
+			if (!canGoWhereFacing)
+			{
+				newWalkDir = Util.InvertDirection(newWalkDir);
+			}
+
+			SetWalkDirection(newWalkDir);
+			SetPrevWalkDirection(newWalkDir);
+		}
+
+		#endregion rWalk
 
 
 
@@ -132,6 +234,11 @@ namespace AridArnold
 		/// </summary>
 		protected override Texture2D GetDrawTexture()
 		{
+			if (GetWalkDirection() != WalkDirection.None && mWalkAnimation is not null)
+			{
+				return mWalkAnimation.GetCurrentTexture();
+			}
+
 			return GetTalkingDrawTexture();
 		}
 
