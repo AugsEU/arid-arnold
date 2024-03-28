@@ -83,8 +83,22 @@
 				MonoDraw.DrawTextureRotCent(info, mPlatformAnimation.GetCurrentTexture(), pos, rotation);
 			}
 
-
-			mRail.Draw(info, directionVec * mSize * 0.5f);
+			Vector2 offset = directionVec * mSize * 0.5f;
+			switch (mRotation)
+			{
+				case CardinalDirection.Up:
+					break;
+				case CardinalDirection.Right:
+					offset.X += 14.0f;
+					break;
+				case CardinalDirection.Down:
+					offset.Y += 14.0f;
+					break;
+				case CardinalDirection.Left:
+					
+					break;
+			}
+			mRail.Draw(info, offset);
 		}
 
 

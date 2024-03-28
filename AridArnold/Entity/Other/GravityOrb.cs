@@ -14,7 +14,7 @@
 
 		#region rMembers
 
-		static GravityOrb sActiveOrb = null;
+		static CardinalDirection sActiveDirection = CardinalDirection.Down;
 		Texture2D mActiveTexture;
 		Texture2D mInactiveTexture;
 		Vector2 mPushDisplacement;
@@ -38,7 +38,7 @@
 		public GravityOrb(Vector2 pos, CardinalDirection gravityDir) : base(pos)
 		{
 			// Cheeky way to make sure no orb is active at the start of the level.
-			sActiveOrb = null;
+			sActiveDirection = CardinalDirection.Down;
 
 			mPosition.X += 3.0f;
 			mPosition.Y += 3.0f;
@@ -141,7 +141,8 @@
 				Vector2 entityPos = activatingEntity.GetPos();
 				activatingEntity.SetPos(entityPos + (orbCentrePos - entityCentrePos) * 0.5f);
 			}
-			sActiveOrb = this;
+
+			sActiveDirection = mGravityDir;
 		}
 
 
@@ -210,7 +211,7 @@
 		/// </summary>
 		bool IsActive()
 		{
-			return object.ReferenceEquals(this, sActiveOrb);
+			return mGravityDir == sActiveDirection;
 		}
 
 

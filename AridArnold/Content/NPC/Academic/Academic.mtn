@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Academic</name>
+	<textStyle>
+		<fillColor>1E1E1EA2</fillColor>
+		<borderColor>3925BC</borderColor>
+	</textStyle>
+	<walk/>
+</simpleTalkNPC>

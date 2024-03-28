@@ -35,6 +35,9 @@
 				}
 			}
 
+			mStartRotation = mStartRotation % MathF.Tau;
+			mTargetAngle = mTargetAngle % MathF.Tau;
+
 			base.StartMovementInternal();
 		}
 

@@ -9640,3 +9640,45 @@
 #begin NPC/Treey/Walk.max
 /copy:NPC/Treey/Walk.max
 
+#begin NPC/Academic/Academic.mtn
+/copy:NPC/Academic/Academic.mtn
+
+#begin NPC/Academic/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Academic/Default.png
+
+#begin NPC/Academic/Idle.mia
+/copy:NPC/Academic/Idle.mia
+
+#begin NPC/Academic/Itch.max
+/copy:NPC/Academic/Itch.max
+
+#begin NPC/Academic/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Academic/Itch1.png
+
+#begin NPC/Academic/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Academic/TalkAngry.png
+
+#begin NPC/Academic/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Academic/TalkNormal.png
+
+#begin NPC/Academic/Walk.max
+/copy:NPC/Academic/Walk.max
+
+#begin NPC/Academic/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Academic/Walk1.png
+
