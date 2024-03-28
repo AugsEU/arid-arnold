@@ -173,10 +173,9 @@
 			//Death
 			if (mTimerSinceDeath.IsPlaying())
 			{
-				if (mTimerSinceDeath.GetPercentage() == 1.0)
+				if (mTimerSinceDeath.GetPercentage() >= 0.95)
 				{
 					SendPlayerDeathEvent();
-					mTimerSinceDeath.FullReset();
 				}
 
 				return;

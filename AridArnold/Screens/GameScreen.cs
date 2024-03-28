@@ -128,7 +128,7 @@
 			FXManager.I.Update(gameTime);
 			if (mLevelEndTimer.IsPlaying())
 			{
-				if (mLevelEndTimer.GetPercentage() == 1.0)
+				if (mLevelEndTimer.GetPercentage() >= 0.95)
 				{
 					MoveToNextLevel();
 				}

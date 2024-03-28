@@ -258,23 +258,43 @@
 		/// </summary>
 		public override void Draw(DrawInfo info, Vector2 offset)
 		{
-			int curr = 0;
+			int numSegs = GetNumDrawSegments();
+			int numNodes = mData.GetCount();
 
-			while(curr < mData.GetCount() - 1)
+			for(int curr = 0; curr < numSegs; curr++)
 			{
 				int next = curr + 1;
+				RailNode aNode = mData.GetNode(curr % numNodes);
+				RailNode bNode = mData.GetNode(next % numNodes);
 
-				while(next < mData.GetCount() - 1 && mData.GetNode(curr).mWaitTime == 0)
+				Vector2 aPos = GetNodePosition(aNode);
+				Vector2 bPos = GetNodePosition(bNode);
+
+				// Need to not draw nodes that are co-linear and have no wait time
+				Vector2 lineDir = (bPos - aPos);
+				lineDir.Normalize();
+				Vector2 perpLineDir = MonoMath.Perpendicular(lineDir);
+
+				while (bNode.mWaitTime == 0)
 				{
+					RailNode cNode = mData.GetNode(next + 1 % numNodes);
+					Vector2 cPos = GetNodePosition(cNode);
+
+					float distToLine = Vector2.Dot((cPos - aPos), perpLineDir);
+
+					if(distToLine > 0.1f)
+					{
+						// Points not co-linear
+						break;
+					}
+
+					// Co-linear go to next
 					next++;
+					bNode = cNode;
+					bPos = cPos;
 				}
 
-				Vector2 startPos = GetNodePosition(mData.GetNode(curr)) + offset;
-				Vector2 endPos = GetNodePosition(mData.GetNode(next)) + offset;
-
-				DrawSection(info, startPos, endPos);
-
-				curr = next;
+				DrawSection(info, aPos + offset, bPos + offset);
 			}
 		}
 
@@ -307,6 +327,13 @@
 				MonoDraw.DrawRectShadow(info, dotRect, highlightCol, shawdowCol, 1.0f, DrawLayer.SubEntity);
 			}
 		}
+
+
+
+		/// <summary>
+		/// Number of segments to draw
+		/// </summary>
+		abstract protected int GetNumDrawSegments();
 
 		#endregion rDraw
 
@@ -366,6 +393,11 @@
 
 			return 0;
 		}
+
+		protected override int GetNumDrawSegments()
+		{
+			return mData.GetCount() + 1;
+		}
 	}
 
 
@@ -405,6 +437,11 @@
 			}
 
 			base.ArriveAtNode(index);
+		}
+
+		protected override int GetNumDrawSegments()
+		{
+			return mData.GetCount();
 		}
 	}
 }
