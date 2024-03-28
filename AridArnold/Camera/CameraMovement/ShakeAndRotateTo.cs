@@ -23,20 +23,17 @@
 		{
 			mStartRotation = mCurrentSpec.mRotation;
 
-			if (MathF.Abs(mTargetAngle - mStartRotation) > MathF.PI)
+			while (MathF.Abs(mTargetAngle - mStartRotation) > MathF.Tau * 0.5f)
 			{
 				if (mTargetAngle > mStartRotation)
 				{
-					mTargetAngle -= MathF.PI * 2.0f;
+					mTargetAngle -= MathF.Tau;
 				}
 				else
 				{
-					mTargetAngle += MathF.PI * 2.0f;
+					mTargetAngle += MathF.Tau;
 				}
 			}
-
-			mStartRotation = mStartRotation % MathF.Tau;
-			mTargetAngle = mTargetAngle % MathF.Tau;
 
 			base.StartMovementInternal();
 		}
@@ -44,7 +41,7 @@
 		protected override void EndMovementInternal(ref CameraSpec endSpec)
 		{
 			// Make sure we end exactly on the right angle
-			endSpec.mRotation = mTargetAngle;
+			endSpec.mRotation = mTargetAngle % MathF.Tau;
 			base.EndMovementInternal(ref endSpec);
 		}
 
