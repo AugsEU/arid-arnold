@@ -103,8 +103,6 @@ namespace AridArnold
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonUp");
 			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/ButtonDown");
-
-			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
 		}
 
 		public override void Update(GameTime gameTime)
@@ -131,8 +129,6 @@ namespace AridArnold
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/PermaUp");
 			mDownTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/PermaDown");
-
-			TileManager.I.GetEMField().RegisterConductive(mTileMapIndex);
 		}
 	}
 }

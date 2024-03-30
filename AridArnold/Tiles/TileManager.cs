@@ -572,7 +572,8 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
-			Vector2 offset = new Vector2(mTileSize, mTileSize);
+			const int ELEC_SPEED_MULT = 4;
+
 			for (int x = 0; x < mTileMap.GetLength(0); x++)
 			{
 				for (int y = 0; y < mTileMap.GetLength(1); y++)
@@ -589,7 +590,10 @@
 
 			mDeleteRequests.Clear();
 
-			mEMField.ProcessUpdate();
+			for(int i = 0; i < ELEC_SPEED_MULT; i++)
+			{
+				mEMField.Update();
+			}
 		}
 
 

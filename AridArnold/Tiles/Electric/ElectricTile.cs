@@ -1,7 +1,4 @@
-﻿#define DEBUG_ELEC
-
-using System.Security.Cryptography;
-using System;
+﻿//#define DEBUG_ELEC
 
 namespace AridArnold
 {
@@ -62,14 +59,6 @@ namespace AridArnold
 			//Electricity
 			EMField emField = TileManager.I.GetEMField();
 			mCurrentElectricity = emField.GetValue(mTileMapIndex).mElectric;
-
-			EMField.ScanResults scan = emField.ScanAdjacent(mTileMapIndex);
-
-			if (scan.mTotalConductive > 0)
-			{
-				scan.mTotalElectric /= scan.mTotalConductive;
-				emField.SetElectricity(mTileMapIndex, scan.mTotalElectric);
-			}
 
 			base.Update(gameTime);
 		}

@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Represents ethereal field that tiles can affect.
@@ -19,16 +21,6 @@
 			{
 				mElectric = 0.0f;
 				mConductive = false;
-			}
-
-			public void Normalise()
-			{
-				mElectric = Math.Clamp(mElectric, 0.0f, 1.0f);
-			}
-
-			public void Reset()
-			{
-				mElectric = 0.0f;
 			}
 		}
 
@@ -91,17 +83,49 @@
 		/// <summary>
 		/// Processes all the inputs given.
 		/// </summary>
-		public void ProcessUpdate()
+		public void Update()
 		{
+			DoFlux();
+
 			//Next field is now the current one.
 			MonoAlg.Swap(ref mCurrentField, ref mNextField);
+		}
 
-			//Zero out next field.
+
+
+		/// <summary>
+		/// Handle conductivity fields
+		/// </summary>
+		private void DoFlux()
+		{
 			for (int x = 0; x < mNextField.GetLength(0); x++)
 			{
 				for (int y = 0; y < mNextField.GetLength(1); y++)
 				{
-					mNextField[x, y].Reset();
+					ref EMValue nextValue = ref mNextField[x, y];
+
+					if (!nextValue.mConductive)
+					{
+						continue;
+					}
+
+					// Get average of adjacent conductive
+					float totalAdjacentElec = 0.0f;
+					float numAdjacentConductive = 0.0f;
+
+					for (int a = 0; a < ADJACENT_COORDS.Length; a++)
+					{
+						int aX = x + ADJACENT_COORDS[a].X;
+						int aY = y + ADJACENT_COORDS[a].Y;
+
+						if (!InEMField(aX, aY)) continue;
+
+						ref EMValue adjacentValue = ref mCurrentField[aX, aY];
+						if(adjacentValue.mConductive || adjacentValue.mElectric != 0.0f) numAdjacentConductive += 1.0f;
+						totalAdjacentElec += adjacentValue.mElectric;
+					}
+
+					nextValue.mElectric = totalAdjacentElec / numAdjacentConductive;
 				}
 			}
 		}
@@ -145,7 +169,10 @@
 		/// </summary>
 		public void SetElectricity(Point index, float elec)
 		{
+			// We handle our own conductivity.
+			MonoDebug.Assert(!mCurrentField[index.X, index.Y].mConductive);
 			mNextField[index.X, index.Y].mElectric = elec;
+			mCurrentField[index.X, index.Y].mElectric = elec;
 		}
 
 
@@ -258,16 +285,24 @@
 		/// </summary>
 		bool InEMField(Point index)
 		{
-			if (index.X < 0 || index.Y < 0)
+			return InEMField(index.X, index.Y);
+		}
+
+
+
+		/// <summary>
+		/// Is this point even in the field?
+		/// </summary>
+		bool InEMField(int x, int y)
+		{
+			if (x < 0 || y < 0)
 			{
 				return false;
 			}
-
-			if (index.X >= mCurrentField.GetLength(0) || index.Y >= mCurrentField.GetLength(1))
+			if (x >= mCurrentField.GetLength(0) || y >= mCurrentField.GetLength(1))
 			{
 				return false;
 			}
-
 			return true;
 		}
 
