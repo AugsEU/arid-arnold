@@ -118,7 +118,7 @@ namespace AridArnold
 				{
 					case CardinalDirection.Up:
 					{
-						if (platformingEntity.OnGround() == false)
+						if (!platformingEntity.IsGroundedSince(4))
 						{
 							if (entityVel.Y > DOWN_VEL_THRESH)
 							{
@@ -153,7 +153,7 @@ namespace AridArnold
 					break;
 					case CardinalDirection.Down:
 					{
-						if (platformingEntity.OnGround() == false)
+						if (!platformingEntity.IsGroundedSince(4))
 						{
 							if (entityVel.Y < 0.0f)
 							{

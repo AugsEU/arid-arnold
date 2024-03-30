@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		static Vector2 SPAWN_OFFSET = new Vector2(-5.0f, -5.0f);
+		static Vector2 SPAWN_OFFSET = new Vector2(-5.0f, -6.0f);
 
 		#endregion rConstants
 

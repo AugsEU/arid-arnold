@@ -26,6 +26,7 @@
 			mFonts.Add("Pixica-24", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica"));
 			mFonts.Add("Pixica-12", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaMedium"));
 			mFonts.Add("Pixica Micro-24", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaSmall"));
+			mFonts.Add("Pixica Micro-12", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaMicro"));
 		}
 
 

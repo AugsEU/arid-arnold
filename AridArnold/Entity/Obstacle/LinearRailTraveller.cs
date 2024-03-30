@@ -261,7 +261,7 @@
 			int numSegs = GetNumDrawSegments();
 			int numNodes = mData.GetCount();
 
-			for(int curr = 0; curr < numSegs; curr++)
+			for(int curr = 0; curr < numSegs;)
 			{
 				int next = curr + 1;
 				RailNode aNode = mData.GetNode(curr % numNodes);
@@ -295,6 +295,8 @@
 				}
 
 				DrawSection(info, aPos + offset, bPos + offset);
+
+				curr = next;
 			}
 		}
 
@@ -396,7 +398,7 @@
 
 		protected override int GetNumDrawSegments()
 		{
-			return mData.GetCount() + 1;
+			return mData.GetCount();
 		}
 	}
 
@@ -441,7 +443,7 @@
 
 		protected override int GetNumDrawSegments()
 		{
-			return mData.GetCount();
+			return mData.GetCount() - 1;
 		}
 	}
 }

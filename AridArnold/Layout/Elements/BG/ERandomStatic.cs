@@ -12,7 +12,7 @@ namespace AridArnold
 		{
 			int width = MonoParse.GetInt(rootNode["width"]);
 			int height = MonoParse.GetInt(rootNode["height"]);
-			mPixelColour = MonoParse.GetColor(rootNode["on"], new Color(142, 128, 130));
+			mPixelColour = MonoParse.GetColor(rootNode["on"], new Color(71, 59, 67));
 
 			mScreenRefreshRate = MonoParse.GetFloat(rootNode["refresh"], 500.0f);
 
