@@ -3343,6 +3343,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0116.png
 
+#begin Campaigns/MainCampaign/Levels/0117.aux
+/copy:Campaigns/MainCampaign/Levels/0117.aux
+
+#begin Campaigns/MainCampaign/Levels/0117.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0117.png
+
 #begin Campaigns/MainCampaign/Levels/0201.aux
 /copy:Campaigns/MainCampaign/Levels/0201.aux
 
@@ -6183,6 +6198,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/PixicaMedium.spritefont
 
+#begin Fonts/PixicaMicro.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMicro.spritefont
+
 #begin Fonts/PixicaSmall.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -6405,6 +6427,78 @@
 
 #begin Layouts/TitleScreen.mlo
 /copy:Layouts/TitleScreen.mlo
+
+#begin NPC/Academic/Academic.mtn
+/copy:NPC/Academic/Academic.mtn
+
+#begin NPC/Academic/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Academic/Default.png
+
+#begin NPC/Academic/Idle.mia
+/copy:NPC/Academic/Idle.mia
+
+#begin NPC/Academic/Itch.max
+/copy:NPC/Academic/Itch.max
+
+#begin NPC/Academic/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Academic/Itch1.png
+
+#begin NPC/Academic/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Academic/TalkAngry.png
+
+#begin NPC/Academic/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Academic/TalkNormal.png
+
+#begin NPC/Academic/Walk.max
+/copy:NPC/Academic/Walk.max
+
+#begin NPC/Academic/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Academic/Walk1.png
 
 #begin NPC/Barbara/Barbara.mtn
 /copy:NPC/Barbara/Barbara.mtn
@@ -7165,6 +7259,150 @@
 /processorParam:TextureFormat=Color
 /build:NPC/GrillVogel/Talk1.png
 
+#begin NPC/LazyMan/Breathe.max
+/copy:NPC/LazyMan/Breathe.max
+
+#begin NPC/LazyMan/Breathe1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/LazyMan/Breathe1.png
+
+#begin NPC/LazyMan/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/LazyMan/Default.png
+
+#begin NPC/LazyMan/Idle.mia
+/copy:NPC/LazyMan/Idle.mia
+
+#begin NPC/LazyMan/Itch.max
+/copy:NPC/LazyMan/Itch.max
+
+#begin NPC/LazyMan/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/LazyMan/Itch1.png
+
+#begin NPC/LazyMan/LazyMan.mtn
+/copy:NPC/LazyMan/LazyMan.mtn
+
+#begin NPC/LazyMan/Scholar.mtn
+/copy:NPC/LazyMan/Scholar.mtn
+
+#begin NPC/LazyMan/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/LazyMan/TalkAngry.png
+
+#begin NPC/LazyMan/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/LazyMan/TalkNormal.png
+
+#begin NPC/LazyMan/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/LazyMan/Walk1.png
+
+#begin NPC/Poisson/Breathe.max
+/copy:NPC/Poisson/Breathe.max
+
+#begin NPC/Poisson/Breathe1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Poisson/Breathe1.png
+
+#begin NPC/Poisson/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Poisson/Default.png
+
+#begin NPC/Poisson/Idle.mia
+/copy:NPC/Poisson/Idle.mia
+
+#begin NPC/Poisson/Poisson.mtn
+/copy:NPC/Poisson/Poisson.mtn
+
+#begin NPC/Poisson/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Poisson/TalkAngry.png
+
+#begin NPC/Poisson/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Poisson/TalkNormal.png
+
 #begin NPC/Scholar/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -7222,6 +7460,9 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Scholar/TalkNormal.png
 
+#begin NPC/Scholar/Walk.max
+/copy:NPC/Scholar/Walk.max
+
 #begin NPC/Scholar/Walk1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -7263,6 +7504,9 @@
 
 #begin NPC/Treey/Treey.mtn
 /copy:NPC/Treey/Treey.mtn
+
+#begin NPC/Treey/Walk.max
+/copy:NPC/Treey/Walk.max
 
 #begin NPC/Treey/Walk1.png
 /importer:TextureImporter
@@ -8152,6 +8396,18 @@
 #begin Text/EN/NPC/GrillVogel/Intro7.txt
 /copy:Text/EN/NPC/GrillVogel/Intro7.txt
 
+#begin Text/EN/NPC/LazyMan/Heckle.txt
+/copy:Text/EN/NPC/LazyMan/Heckle.txt
+
+#begin Text/EN/NPC/LazyMan/Talk.txt
+/copy:Text/EN/NPC/LazyMan/Talk.txt
+
+#begin Text/EN/NPC/Poisson/CaveTalk.txt
+/copy:Text/EN/NPC/Poisson/CaveTalk.txt
+
+#begin Text/EN/NPC/Poisson/Heckle.txt
+/copy:Text/EN/NPC/Poisson/Heckle.txt
+
 #begin Text/EN/NPC/Scholar/FallinFarry.txt
 /copy:Text/EN/NPC/Scholar/FallinFarry.txt
 
@@ -8176,6 +8432,9 @@
 #begin Text/EN/NPC/Zippy/FallthroughMomentum.txt
 /copy:Text/EN/NPC/Zippy/FallthroughMomentum.txt
 
+#begin Text/EN/NPC/Zippy/Gym.txt
+/copy:Text/EN/NPC/Zippy/Gym.txt
+
 #begin Text/EN/NPC/Zippy/Heckle.txt
 /copy:Text/EN/NPC/Zippy/Heckle.txt
 
@@ -8184,6 +8443,9 @@
 
 #begin Text/EN/NPC/Zippy/LevelSequence.txt
 /copy:Text/EN/NPC/Zippy/LevelSequence.txt
+
+#begin Text/EN/NPC/Zippy/MovingPlatforms.txt
+/copy:Text/EN/NPC/Zippy/MovingPlatforms.txt
 
 #begin Text/EN/NPC/Zippy/RacoonTime.txt
 /copy:Text/EN/NPC/Zippy/RacoonTime.txt
@@ -9561,124 +9823,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Text/EN/NPC/Zippy/Gym.txt
-/copy:Text/EN/NPC/Zippy/Gym.txt
-
-#begin Text/EN/NPC/Zippy/MovingPlatforms.txt
-/copy:Text/EN/NPC/Zippy/MovingPlatforms.txt
-
-#begin Campaigns/MainCampaign/Levels/0117.aux
-/copy:Campaigns/MainCampaign/Levels/0117.aux
-
-#begin Campaigns/MainCampaign/Levels/0117.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0117.png
-
-#begin NPC/LazyMan/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/LazyMan/Default.png
-
-#begin NPC/LazyMan/Idle.mia
-/copy:NPC/LazyMan/Idle.mia
-
-#begin NPC/LazyMan/Itch.max
-/copy:NPC/LazyMan/Itch.max
-
-#begin NPC/LazyMan/Itch1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/LazyMan/Itch1.png
-
-#begin NPC/LazyMan/Scholar.mtn
-/copy:NPC/LazyMan/Scholar.mtn
-
-#begin NPC/LazyMan/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/LazyMan/TalkAngry.png
-
-#begin NPC/LazyMan/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/LazyMan/TalkNormal.png
-
-#begin NPC/LazyMan/Walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/LazyMan/Walk1.png
-
-#begin NPC/LazyMan/LazyMan.mtn
-/copy:NPC/LazyMan/LazyMan.mtn
-
-#begin NPC/LazyMan/Breathe.max
-/copy:NPC/LazyMan/Breathe.max
-
-#begin NPC/LazyMan/Breathe1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/LazyMan/Breathe1.png
-
-#begin Text/EN/NPC/LazyMan/Heckle.txt
-/copy:Text/EN/NPC/LazyMan/Heckle.txt
-
-#begin Text/EN/NPC/LazyMan/Talk.txt
-/copy:Text/EN/NPC/LazyMan/Talk.txt
-
-#begin NPC/Scholar/Walk.max
-/copy:NPC/Scholar/Walk.max
-
-#begin NPC/Treey/Walk.max
-/copy:NPC/Treey/Walk.max
-
-#begin NPC/Academic/Academic.mtn
-/copy:NPC/Academic/Academic.mtn
-
-#begin NPC/Academic/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Academic/Default.png
-
-#begin NPC/Academic/Idle.mia
-/copy:NPC/Academic/Idle.mia
-
-#begin NPC/Academic/Itch.max
-/copy:NPC/Academic/Itch.max
-
-#begin NPC/Academic/Itch1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Academic/Itch1.png
-
-#begin NPC/Academic/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Academic/TalkAngry.png
-
-#begin NPC/Academic/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Academic/TalkNormal.png
-
-#begin NPC/Academic/Walk.max
-/copy:NPC/Academic/Walk.max
-
-#begin NPC/Academic/Walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Academic/Walk1.png
 
