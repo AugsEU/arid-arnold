@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Poisson</name>
+	<textStyle>
+		<scrollSpeed>0.8</scrollSpeed>
+		<framesPerLetter>5</framesPerLetter>
+		<fillColor>110C08AF</fillColor>
+		<borderColor>262D6B</borderColor>
+	</textStyle>
+</simpleTalkNPC>
