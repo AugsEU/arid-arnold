@@ -41,78 +41,122 @@
 
 			if (entity is PlatformingEntity)
 			{
-				Rect2f ourBounds = GetBounds();
-
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
-				Rect2f entityBounds = entity.ColliderBounds();
-				float entityHeight = entityBounds.Height;
-				float entityWidth = entityBounds.Width;
-
-				Vector2 entityCentre = entityBounds.Centre;
-				Vector2 ourCentre = ourBounds.Centre;
-
-				bool leftThresh = entityCentre.X > ourCentre.X - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad4) == (uint)AdjacencyType.Ad4);
-				bool rightThresh = entityCentre.X < ourCentre.X + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad6) == (uint)AdjacencyType.Ad6);
-
-				bool upThresh = entityCentre.Y > ourCentre.Y - diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad8) == (uint)AdjacencyType.Ad8);
-				bool downThresh = entityCentre.Y < ourCentre.Y + diffThresh || (((uint)mAdjacency & (uint)AdjacencyType.Ad2) == (uint)AdjacencyType.Ad2);
-
-				bool xThresh = leftThresh && rightThresh;
-				bool yThresh = downThresh && upThresh;
-
-				switch (mRotation)
+				if(ShouldTriggerMirror(platformingEntity))
 				{
-					case CardinalDirection.Up:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Down && xThresh)
-						{
-							if (platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
-							{
-								platformingEntity.SetWalkDirection(WalkDirection.None);
-							}
-							platformingEntity.SetGravity(CardinalDirection.Down);
-							platformingEntity.ShiftPosition(new Vector2(0.0f, -(ourBounds.Height + entityHeight)));
-						}
-						break;
-					case CardinalDirection.Right:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Left && yThresh)
-						{
-							if (platformingEntity.GetGravityDir() == CardinalDirection.Up || platformingEntity.GetGravityDir() == CardinalDirection.Down)
-							{
-								platformingEntity.SetWalkDirection(WalkDirection.None);
-							}
-							platformingEntity.SetGravity(CardinalDirection.Left);
-							platformingEntity.ShiftPosition(new Vector2(ourBounds.Width + entityWidth, 0.0f));
-						}
-						break;
-					case CardinalDirection.Down:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Up && xThresh)
-						{
-							if (platformingEntity.GetGravityDir() == CardinalDirection.Left || platformingEntity.GetGravityDir() == CardinalDirection.Right)
-							{
-								platformingEntity.SetWalkDirection(WalkDirection.None);
-							}
-							platformingEntity.SetGravity(CardinalDirection.Up);
-							platformingEntity.ShiftPosition(new Vector2(0.0f, ourBounds.Height + entityHeight));
-						}
-						break;
-					case CardinalDirection.Left:
-						if (platformingEntity.GetGravityDir() != CardinalDirection.Right && yThresh)
-						{
-							if (platformingEntity.GetGravityDir() == CardinalDirection.Up || platformingEntity.GetGravityDir() == CardinalDirection.Down)
-							{
-								platformingEntity.SetWalkDirection(WalkDirection.None);
-							}
-							platformingEntity.SetGravity(CardinalDirection.Right);
-							platformingEntity.ShiftPosition(new Vector2(-(ourBounds.Width + entityWidth), 0.0f));
-						}
-						break;
+					ReflectEntity(platformingEntity);
 				}
-
-
 			}
 		}
 
+
+
+		/// <summary>
+		/// Should an entity intersecting us trigger the mirror?
+		/// </summary>
+		bool ShouldTriggerMirror(PlatformingEntity entity)
+		{
+			const float SIDE_HITBOX = 4.0f;
+
+			Rect2f ourBounds = GetBounds();
+			Vector2 ourCentre = ourBounds.Centre;
+
+			Rect2f entityBounds = entity.ColliderBounds();
+			Vector2 entityCentre = entityBounds.Centre;
+
+			Vector2 mirrorOut = -Util.GetNormal(mRotation);
+			Vector2 ourCentreToEntity = entityCentre - ourCentre;
+
+			float entityDot = Vector2.Dot(mirrorOut, ourCentreToEntity);
+
+			if(entityDot < 0.0f)
+			{
+				return false;
+			}
+
+			bool leftThresh = entityCentre.X > ourCentre.X - SIDE_HITBOX || (((uint)mAdjacency & (uint)AdjacencyType.Ad4) == (uint)AdjacencyType.Ad4);
+			bool rightThresh = entityCentre.X < ourCentre.X + SIDE_HITBOX || (((uint)mAdjacency & (uint)AdjacencyType.Ad6) == (uint)AdjacencyType.Ad6);
+
+			bool upThresh = entityCentre.Y > ourCentre.Y - SIDE_HITBOX || (((uint)mAdjacency & (uint)AdjacencyType.Ad8) == (uint)AdjacencyType.Ad8);
+			bool downThresh = entityCentre.Y < ourCentre.Y + SIDE_HITBOX || (((uint)mAdjacency & (uint)AdjacencyType.Ad2) == (uint)AdjacencyType.Ad2);
+
+			bool xThresh = leftThresh && rightThresh;
+			bool yThresh = downThresh && upThresh;
+
+			switch (mRotation)
+			{
+				case CardinalDirection.Up:
+					return entity.GetGravityDir() != CardinalDirection.Down && xThresh;
+				case CardinalDirection.Right:
+					return entity.GetGravityDir() != CardinalDirection.Left && yThresh;
+				case CardinalDirection.Down:
+					return entity.GetGravityDir() != CardinalDirection.Up && xThresh;
+				case CardinalDirection.Left:
+					return entity.GetGravityDir() != CardinalDirection.Right && yThresh;
+				default:
+					break;
+			}
+
+			throw new NotImplementedException();
+		}
+
+
+
+		/// <summary>
+		/// Do the
+		/// </summary>
+		void ReflectEntity(PlatformingEntity entity)
+		{
+			Rect2f ourBounds = GetBounds();
+			Vector2 ourCentre = ourBounds.Centre;
+
+			Rect2f entityBounds = entity.ColliderBounds();
+			float entityHeight = entityBounds.Height;
+			float entityWidth = entityBounds.Width;
+
+			switch (mRotation)
+			{
+				case CardinalDirection.Up:
+					if (entity.GetGravityDir() == CardinalDirection.Left || entity.GetGravityDir() == CardinalDirection.Right)
+					{
+						entity.SetWalkDirection(WalkDirection.None);
+					}
+					entity.SetGravity(CardinalDirection.Down);
+
+					Vector2 entityPos = entity.GetPos();
+					entityPos.Y = ourCentre.Y - sTILE_SIZE * 0.5f - entityHeight;
+					entity.SetPos(entityPos);
+					break;
+
+				case CardinalDirection.Right:
+					if (entity.GetGravityDir() == CardinalDirection.Up || entity.GetGravityDir() == CardinalDirection.Down)
+					{
+						entity.SetWalkDirection(WalkDirection.None);
+					}
+					entity.SetGravity(CardinalDirection.Left);
+					entity.ShiftPosition(new Vector2(ourBounds.Width + entityWidth, 0.0f));
+					break;
+
+				case CardinalDirection.Down:
+					if (entity.GetGravityDir() == CardinalDirection.Left || entity.GetGravityDir() == CardinalDirection.Right)
+					{
+						entity.SetWalkDirection(WalkDirection.None);
+					}
+					entity.SetGravity(CardinalDirection.Up);
+					entity.ShiftPosition(new Vector2(0.0f, ourBounds.Height + entityHeight));
+					break;
+
+				case CardinalDirection.Left:
+					if (entity.GetGravityDir() == CardinalDirection.Up || entity.GetGravityDir() == CardinalDirection.Down)
+					{
+						entity.SetWalkDirection(WalkDirection.None);
+					}
+					entity.SetGravity(CardinalDirection.Right);
+					entity.ShiftPosition(new Vector2(-(ourBounds.Width + entityWidth), 0.0f));
+					break;
+			}
+		}
 
 
 		/// <summary>
