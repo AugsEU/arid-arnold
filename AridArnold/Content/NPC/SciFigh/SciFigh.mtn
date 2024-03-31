@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <simpleTalkNPC>
-	<name>Scientisimo</name>
+	<name>SciFigh</name>
 	<textStyle>
-		<fillColor>1E1E1EA2</fillColor>
-		<borderColor>070400</borderColor>
+		<fillColor>020F00AF</fillColor>
+		<borderColor>183F1B</borderColor>
 	</textStyle>
 	<walk/>
 </simpleTalkNPC>

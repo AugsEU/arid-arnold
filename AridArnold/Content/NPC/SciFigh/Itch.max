@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.2">NPC/SciFigh/Default</texture>
+	<texture time="0.2">NPC/SciFigh/Itch1</texture>
+	<texture time="0.2">NPC/SciFigh/Default</texture>
+	<texture time="0.2">NPC/SciFigh/Itch1</texture>
+</animation>

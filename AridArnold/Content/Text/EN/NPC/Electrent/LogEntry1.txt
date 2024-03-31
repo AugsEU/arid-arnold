@@ -3,6 +3,3 @@
 Study of the killer-robots can be done remotely by mentally linking to an Android.
 Destruction of the Android will result in death for anyone linked, but this is not a safety concern, as we simply get others to link with the Androids.
 --
-Configuration:
-(p = 0.01) (E = 1.6066951524)
-(a = 0.5) (F = 4.6692016091)

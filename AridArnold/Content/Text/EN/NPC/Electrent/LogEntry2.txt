@@ -5,6 +5,3 @@ Avoids walls successfully.
 Eyes have stylish glow.
 Origin of the name "killer-robot" is unknown to me. But they are surely safe and there is nothing to worry about.
 --
-Configuration:
-(p = 0.01) (E = 1.6066951524)
-(a = 0.5) (F = 4.6692016091)

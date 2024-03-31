@@ -2,8 +2,6 @@
 <simpleTalkNPC>
 	<name>Electrent</name>
 	<textStyle>
-		<scrollSpeed>0.55</scrollSpeed>
-		<framesPerLetter>5</framesPerLetter>
 		<fillColor>000000E2</fillColor>
 		<borderColor>00560F</borderColor>
 	</textStyle>

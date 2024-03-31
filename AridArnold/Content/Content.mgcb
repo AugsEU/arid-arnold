@@ -9875,3 +9875,51 @@
 #begin Text/EN/NPC/Scientisimo/Intro.txt
 /copy:Text/EN/NPC/Scientisimo/Intro.txt
 
+#begin NPC/SciFigh/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/SciFigh/Default.png
+
+#begin NPC/SciFigh/Idle.mia
+/copy:NPC/SciFigh/Idle.mia
+
+#begin NPC/SciFigh/Itch.max
+/copy:NPC/SciFigh/Itch.max
+
+#begin NPC/SciFigh/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/SciFigh/Itch1.png
+
+#begin NPC/SciFigh/SciFigh.mtn
+/copy:NPC/SciFigh/SciFigh.mtn
+
+#begin NPC/SciFigh/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/SciFigh/TalkAngry.png
+
+#begin NPC/SciFigh/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/SciFigh/TalkNormal.png
+
+#begin NPC/SciFigh/Walk.max
+/copy:NPC/SciFigh/Walk.max
+
+#begin NPC/SciFigh/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/SciFigh/Walk1.png
+
+#begin Text/EN/NPC/SciFigh/Heckle.txt
+/copy:Text/EN/NPC/SciFigh/Heckle.txt
+
+#begin Text/EN/NPC/SciFigh/Intro.txt
+/copy:Text/EN/NPC/SciFigh/Intro.txt
+
