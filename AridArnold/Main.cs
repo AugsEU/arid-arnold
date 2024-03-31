@@ -51,6 +51,8 @@
 
 			mIsInputFrame = true;
 
+			LanguageManager.I.LoadLanguage(LanguageManager.LanguageType.English);
+
 			// Fix to 60 fps.
 			IsFixedTimeStep = true;
 			TargetElapsedTime = System.TimeSpan.FromSeconds(1d / FRAME_RATE);

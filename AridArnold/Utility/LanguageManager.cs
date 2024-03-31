@@ -4,8 +4,9 @@
 	{
 		#region rType
 
-		enum LanguageType
+		public enum LanguageType
 		{
+			None,
 			English,
 			French,
 			Italian,
@@ -21,7 +22,9 @@
 
 		#region rMembers
 
-		LanguageType mLanguageType = LanguageType.English;
+		LanguageType mLanguageType = LanguageType.None;
+		Dictionary<string, string> mKeyCache = new Dictionary<string, string>();
+
 
 		#endregion rMembers
 
@@ -31,13 +34,45 @@
 
 		#region rText
 
+		public void LoadLanguage(LanguageType languageType)
+		{
+			mLanguageType = languageType;
+
+			mKeyCache.Clear();
+			string[] filePaths = Directory.GetFiles(GetBasePath(), "*.txt", SearchOption.AllDirectories);
+
+			foreach (string filePath in filePaths)
+			{
+				string rawText = File.ReadAllText(filePath);
+				string ID = MonoData.I.StripBasePath(GetBasePath(), filePath);
+				ID = ID.Substring(ID.Length - 4);//Remove .txt
+				ID = ID.Replace('\\', '.');
+
+				mKeyCache[ID] = rawText;
+			}
+		}
+
+
+
 		/// <summary>
 		/// Gets path to text file.
 		/// </summary>
 		public string GetTextPath(string ID)
 		{
 			ID = ID.Replace('.', '\\');
-			return "Content\\Text\\" + GetLanguageCode() + "\\" + ID + ".txt";
+			return Path.Join(GetBasePath(), "\\" + ID + ".txt");
+		}
+
+
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="ID"></param>
+		/// <returns></returns>
+		public string GetBasePath()
+		{
+			return Path.Join("Content\\Text\\", GetLanguageCode());
 		}
 
 
@@ -76,7 +111,13 @@
 				return "";
 			}
 
-			string rawText = File.ReadAllText(GetTextPath(ID));
+
+			string rawText;
+			
+			if(!mKeyCache.TryGetValue(ID, out rawText))
+			{
+				rawText = File.ReadAllText(GetTextPath(ID));
+			}
 
 			return TextPreprocessor.Process(rawText);
 		}

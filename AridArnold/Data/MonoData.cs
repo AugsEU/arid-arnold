@@ -183,6 +183,28 @@
 			mPathRemappings.Remove(from);
 		}
 
+
+		/// <summary>
+		/// Strip a base path from a child path
+		/// </summary>
+		public string StripBasePath(string basePath, string childPath)
+		{
+			// Normalize paths to handle mixed separators
+			basePath = Path.GetFullPath(basePath);
+			childPath = Path.GetFullPath(childPath);
+
+			// Make sure the fullPath starts with the commonBasePath
+			if (childPath.StartsWith(basePath, StringComparison.OrdinalIgnoreCase))
+			{
+				// Extract the relative path
+				string relativePath = childPath.Substring(basePath.Length).TrimStart('\\', '/');
+
+				return relativePath;
+			}
+
+			throw new Exception("DATA ERROR: Child path not part of base path." + basePath + " | " + childPath);
+		}
+
 		#endregion rPaths
 	}
 }

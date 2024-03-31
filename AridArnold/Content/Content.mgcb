@@ -9824,3 +9824,54 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin NPC/Scientisimo/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scientisimo/Default.png
+
+#begin NPC/Scientisimo/Idle.mia
+/copy:NPC/Scientisimo/Idle.mia
+
+#begin NPC/Scientisimo/Itch.max
+/copy:NPC/Scientisimo/Itch.max
+
+#begin NPC/Scientisimo/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scientisimo/Itch1.png
+
+#begin NPC/Scientisimo/Scholar.mtn
+/copy:NPC/Scientisimo/Scholar.mtn
+
+#begin NPC/Scientisimo/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scientisimo/TalkAngry.png
+
+#begin NPC/Scientisimo/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scientisimo/TalkNormal.png
+
+#begin NPC/Scientisimo/Walk.max
+/copy:NPC/Scientisimo/Walk.max
+
+#begin NPC/Scientisimo/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Scientisimo/Walk1.png
+
+#begin NPC/Scientisimo/Scientisimo.mtn
+/copy:NPC/Scientisimo/Scientisimo.mtn
+
+#begin Text/EN/NPC/Scientisimo/Heckle.txt
+/copy:Text/EN/NPC/Scientisimo/Heckle.txt
+
+#begin Text/EN/NPC/Scientisimo/Intro.txt
+/copy:Text/EN/NPC/Scientisimo/Intro.txt
+
