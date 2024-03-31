@@ -9923,3 +9923,30 @@
 #begin Text/EN/NPC/SciFigh/Intro.txt
 /copy:Text/EN/NPC/SciFigh/Intro.txt
 
+#begin Campaigns/MainCampaign/Levels/0502.aux
+/copy:Campaigns/MainCampaign/Levels/0502.aux
+
+#begin Campaigns/MainCampaign/Levels/0502.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0502.png
+
+#begin Campaigns/MainCampaign/Levels/0503.aux
+/copy:Campaigns/MainCampaign/Levels/0503.aux
+
+#begin Campaigns/MainCampaign/Levels/0503.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0503.png
+
+#begin Campaigns/MainCampaign/Levels/0504.aux
+/copy:Campaigns/MainCampaign/Levels/0504.aux
+
+#begin Campaigns/MainCampaign/Levels/0504.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0504.png
+
