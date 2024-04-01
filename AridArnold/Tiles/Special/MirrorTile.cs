@@ -37,8 +37,6 @@
 		/// <param name="bounds">Our tile bounds</param>
 		public override void OnEntityIntersect(Entity entity)
 		{
-			float diffThresh = 4.0f;
-
 			if (entity is PlatformingEntity)
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
@@ -111,51 +109,43 @@
 			Rect2f ourBounds = GetBounds();
 			Vector2 ourCentre = ourBounds.Centre;
 
+			Vector2 entityPos = entity.GetPos();
 			Rect2f entityBounds = entity.ColliderBounds();
-			float entityHeight = entityBounds.Height;
+			float entityHeight =  entityBounds.Height;
 			float entityWidth = entityBounds.Width;
+			bool isEntityPerp = entity.GetGravityDir() != mRotation;
 
+			if (isEntityPerp)
+			{
+				entity.SetWalkDirection(WalkDirection.None);
+				entity.AllowWalkChangeFor(4);
+				MonoAlg.Swap(ref entityHeight, ref entityWidth);
+			}
+
+			// Set gravity
+			entity.SetGravity(Util.InvertDirection(mRotation));
+
+			// Fix position
 			switch (mRotation)
 			{
 				case CardinalDirection.Up:
-					if (entity.GetGravityDir() == CardinalDirection.Left || entity.GetGravityDir() == CardinalDirection.Right)
-					{
-						entity.SetWalkDirection(WalkDirection.None);
-					}
-					entity.SetGravity(CardinalDirection.Down);
-
-					Vector2 entityPos = entity.GetPos();
 					entityPos.Y = ourCentre.Y - sTILE_SIZE * 0.5f - entityHeight;
-					entity.SetPos(entityPos);
 					break;
 
 				case CardinalDirection.Right:
-					if (entity.GetGravityDir() == CardinalDirection.Up || entity.GetGravityDir() == CardinalDirection.Down)
-					{
-						entity.SetWalkDirection(WalkDirection.None);
-					}
-					entity.SetGravity(CardinalDirection.Left);
-					entity.ShiftPosition(new Vector2(ourBounds.Width + entityWidth, 0.0f));
+					entityPos.X = ourCentre.X + sTILE_SIZE * 0.5f;
 					break;
 
 				case CardinalDirection.Down:
-					if (entity.GetGravityDir() == CardinalDirection.Left || entity.GetGravityDir() == CardinalDirection.Right)
-					{
-						entity.SetWalkDirection(WalkDirection.None);
-					}
-					entity.SetGravity(CardinalDirection.Up);
-					entity.ShiftPosition(new Vector2(0.0f, ourBounds.Height + entityHeight));
+					entityPos.Y = ourCentre.Y + sTILE_SIZE * 0.5f;
 					break;
 
 				case CardinalDirection.Left:
-					if (entity.GetGravityDir() == CardinalDirection.Up || entity.GetGravityDir() == CardinalDirection.Down)
-					{
-						entity.SetWalkDirection(WalkDirection.None);
-					}
-					entity.SetGravity(CardinalDirection.Right);
-					entity.ShiftPosition(new Vector2(-(ourBounds.Width + entityWidth), 0.0f));
+					entityPos.X = ourCentre.X - sTILE_SIZE * 0.5f - entityWidth;
 					break;
 			}
+
+			entity.SetPos(entityPos);
 		}
 
 
