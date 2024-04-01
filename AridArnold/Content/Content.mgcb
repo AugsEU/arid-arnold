@@ -9950,3 +9950,48 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Levels/0504.png
 
+#begin Campaigns/MainCampaign/Levels/0505.aux
+/copy:Campaigns/MainCampaign/Levels/0505.aux
+
+#begin Campaigns/MainCampaign/Levels/0505.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0505.png
+
+#begin Campaigns/MainCampaign/Levels/0506.aux
+/copy:Campaigns/MainCampaign/Levels/0506.aux
+
+#begin Campaigns/MainCampaign/Levels/0506.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0506.png
+
+#begin Campaigns/MainCampaign/Levels/0507.aux
+/copy:Campaigns/MainCampaign/Levels/0507.aux
+
+#begin Campaigns/MainCampaign/Levels/0507.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0507.png
+
+#begin Campaigns/MainCampaign/Levels/0508.aux
+/copy:Campaigns/MainCampaign/Levels/0508.aux
+
+#begin Campaigns/MainCampaign/Levels/0508.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0508.png
+
+#begin Campaigns/MainCampaign/Levels/0509.aux
+/copy:Campaigns/MainCampaign/Levels/0509.aux
+
+#begin Campaigns/MainCampaign/Levels/0509.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0509.png
+
