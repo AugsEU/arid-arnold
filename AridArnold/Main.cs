@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		private const int FRAME_SLOWDOWN = 1;
+		private const int FRAME_SLOWDOWN = 4;
 		private const double FRAME_RATE = 60d;
 		private const int MIN_HEIGHT = 550;
 		private const float ASPECT_RATIO = 1.77778f;

@@ -58,7 +58,6 @@
 		public void SetGhostInfo(GhostInfo info)
 		{
 			mPosition = info.mPosition;
-			mPosition.Y -= 1.0f; // HACK
 
 			mVelocity = info.mVelocity;
 			mOnGround = info.mGrounded;

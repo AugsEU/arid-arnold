@@ -213,15 +213,23 @@
 				mWalkSpeed = ARNOLD_WALK_SPEED;
 			}
 
-			//Input
-			DoInputs(gameTime);
-
 			if (CheckOffScreenDeath())
 			{
 				Kill();
 			}
 
 			base.Update(gameTime);
+		}
+
+
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			if (mTimerSinceStart.IsPlaying() || mTimerSinceDeath.IsPlaying() || mUseItemTimer.IsPlaying())
+			{
+				return;
+			}
+			DoInputs(gameTime);
+			base.OrderedUpdate(gameTime);
 		}
 
 
@@ -235,6 +243,7 @@
 
 			bool jump = InputManager.I.KeyHeld(AridArnoldKeys.ArnoldJump);
 			bool fallthrough = InputManager.I.KeyHeld(mDownKey);
+
 			if (jump && fallthrough)
 			{
 				if (!(mOnGround && mWalkDirection != WalkDirection.None))
@@ -509,14 +518,12 @@
 		/// <returns>Collider bounds</returns>
 		public override Rect2f ColliderBounds()
 		{
-			const float HEIGHT_EXT = 1.0f;
-
 			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
 			{
-				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height + HEIGHT_EXT, mTexture.Width));
+				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));
 			}
 
-			return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height + HEIGHT_EXT));
+			return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Width, mTexture.Height));
 		}
 
 

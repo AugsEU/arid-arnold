@@ -118,13 +118,6 @@
 				return;
 			}
 
-			float dt = Util.GetDeltaT(gameTime);
-
-			if (!mUseRealPhysics)
-			{
-				SetSideVelocityFromDirection(mWalkDirection);
-			}
-
 			if (mOnGround)
 			{
 				mUpdatesSinceGrounded = 0;
@@ -138,6 +131,32 @@
 			if (mUpdatesSinceJump != int.MaxValue)
 			{
 				mUpdatesSinceJump++;
+			}
+
+			mIceWalking = false;
+
+			if(mAllowChangeDirFrames > 0) mAllowChangeDirFrames--;
+
+			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Physics stuff
+		/// </summary>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			if (mTimerSinceDeath.IsPlaying())
+			{
+				return;
+			}
+
+			float dt = Util.GetDeltaT(gameTime);
+
+			if (!mUseRealPhysics)
+			{
+				SetSideVelocityFromDirection(mWalkDirection);
 			}
 
 			// Ice
@@ -171,13 +190,10 @@
 
 			mVelocity = new Vector2(MonoMath.ClampAbs(mVelocity.X, MAX_VELOCITY), MonoMath.ClampAbs(mVelocity.Y, MAX_VELOCITY));
 
-			mIceWalking = false;
-
-			if(mAllowChangeDirFrames > 0) mAllowChangeDirFrames--;
-
-			base.Update(gameTime);
 			mOnGround = false;
+			base.OrderedUpdate(gameTime);
 		}
+
 
 
 		/// <summary>
@@ -302,22 +318,6 @@
 
 			mUpdateOrder = Vector2.Dot(mPosition, fallingVec);
 			mUpdateOrder = MonoMath.SquashToRange(mUpdateOrder, EntityManager.UPDATE_MENTITY_MIN, EntityManager.UPDATE_MENTITY_MAX);
-		}
-
-
-
-		/// <summary>
-		/// Don't update if the death timer is playing.
-		/// </summary>
-		/// <param name="gameTime"></param>
-		public override void OrderedUpdate(GameTime gameTime)
-		{
-			if (mTimerSinceDeath.IsPlaying())
-			{
-				return;
-			}
-
-			base.OrderedUpdate(gameTime);
 		}
 
 
