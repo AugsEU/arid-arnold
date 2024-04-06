@@ -242,6 +242,16 @@
 
 
 		/// <summary>
+		/// Gets the index of the tile.
+		/// </summary>
+		public Point GetIndex()
+		{
+			return mTileMapIndex;
+		}
+
+
+
+		/// <summary>
 		/// Is this tile enabled?
 		/// </summary>
 		public bool pEnabled

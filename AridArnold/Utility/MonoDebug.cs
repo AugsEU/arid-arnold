@@ -11,6 +11,7 @@ namespace AridArnold
 		}
 
 		private static List<DebugRect> mDebugRectToDraw = new List<DebugRect>();
+		public static bool mDebugFlag1 = false;
 
 		/// <summary>
 		/// Log message to console. Only if debug is on.
@@ -19,7 +20,7 @@ namespace AridArnold
 		public static void Log(string msg, params object[] args)
 		{
 #if DEBUG
-			Debug.WriteLine(msg);
+			Debug.WriteLine(msg, args);
 #endif
 		}
 

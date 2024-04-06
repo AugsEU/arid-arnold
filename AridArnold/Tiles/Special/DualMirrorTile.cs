@@ -59,13 +59,24 @@ namespace AridArnold
 			if (mChildReflection is null && entity is PlatformingEntity)
 			{
 				Vector2 tileCentre = GetCentre();
-				Vector2 reflectionNormal = Util.GetNormal(mRotation);
+				Vector2 reflectionNormal = GetReflectionNormal();
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
-				mChildReflection = new EntityReflection(platformingEntity, tileCentre, reflectionNormal);
+				mChildReflection = new EntityReflection(platformingEntity, this);
 				EntityManager.I.QueueRegisterEntity(mChildReflection);
 			}
 			base.OnTouch(entity, collisionResults);
+		}
+
+
+
+		/// <summary>
+		/// Call this when child reflection dies
+		/// </summary>
+		public void SignalReflectionDeath()
+		{
+			EntityManager.I.QueueDeleteEntity(mChildReflection);
+			mChildReflection = null;
 		}
 
 		#endregion rUpdate
@@ -85,5 +96,21 @@ namespace AridArnold
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Get vector pointing out of mirror
+		/// </summary>
+		public Vector2 GetReflectionNormal()
+		{
+			return Util.GetNormal(mRotation);
+		}
+
+		#endregion rUtility
 	}
 }

@@ -98,8 +98,8 @@ namespace AridArnold
 
 		public Rectangle ToRectangle()
 		{
-			Point rMin = new Point((int)min.X, (int)min.Y);
-			Point rMax = new Point((int)max.X, (int)max.Y);
+			Point rMin = new Point((int)MathF.Round(min.X), (int)MathF.Round(min.Y));
+			Point rMax = new Point((int)MathF.Round(max.X), (int)MathF.Round(max.Y));
 
 			return new Rectangle(rMin, rMax - rMin);
 		}

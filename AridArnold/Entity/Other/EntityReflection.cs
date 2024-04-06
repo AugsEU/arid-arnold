@@ -16,6 +16,7 @@ namespace AridArnold
 		#region rMembers
 
 		PlatformingEntity mEntityToReflect;
+		DualMirrorTile mParentTile;
 		Vector2 mReflectionCentre;
 		Vector2 mReflectionNormal;
 
@@ -30,12 +31,14 @@ namespace AridArnold
 		/// <summary>
 		/// Create reflection of entity along an axis.
 		/// </summary>
-		public EntityReflection(PlatformingEntity entityToReflect, Vector2 centre, Vector2 normal) : base(Vector2.Zero)
+		public EntityReflection(PlatformingEntity entityToReflect, DualMirrorTile parent) : base(Vector2.Zero)
 		{
 			mEntityToReflect = entityToReflect;
-			mReflectionCentre = centre;
-			mReflectionNormal = normal;
+			mReflectionCentre = parent.GetCentre();
+			mReflectionNormal = parent.GetReflectionNormal();
 			mReflectionNormal.Normalize();
+
+			mParentTile = parent;
 
 			//Canonical direction
 			mReflectionNormal.X = -Math.Abs(mReflectionNormal.X);
@@ -83,7 +86,7 @@ namespace AridArnold
 						continue;
 					}
 
-					EntityManager.I.AddColliderSubmission(new ReflectedTileSubmission(tile, mEntityToReflect, mReflectionNormal, GetPos()));
+					EntityManager.I.AddColliderSubmission(new ReflectedTileSubmission(tile, mEntityToReflect, mReflectionNormal, mReflectionCentre));
 				}
 			}
 
@@ -123,6 +126,17 @@ namespace AridArnold
 			reflectCollider.max += toUs;
 
 			return reflectCollider;
+		}
+
+
+		/// <summary>
+		/// Dead.
+		/// </summary>
+		public override void Kill()
+		{
+			mParentTile.SignalReflectionDeath();
+			mParentTile = null;
+			base.Kill();
 		}
 
 		#endregion rUpdate
