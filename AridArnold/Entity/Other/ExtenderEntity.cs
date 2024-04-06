@@ -262,7 +262,7 @@
 		/// <summary>
 		/// Get layer to draw on
 		/// </summary>
-		protected override DrawLayer GetDrawLayer()
+		public override DrawLayer GetDrawLayer()
 		{
 			return DrawLayer.TileEffects;
 		}

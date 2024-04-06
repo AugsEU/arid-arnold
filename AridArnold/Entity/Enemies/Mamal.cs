@@ -184,7 +184,7 @@
 
 		#region rDraw
 
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			Texture2D tex = mTexture;
 

@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		private const int FRAME_SLOWDOWN = 4;
+		private const int FRAME_SLOWDOWN = 1;
 		private const double FRAME_RATE = 60d;
 		private const int MIN_HEIGHT = 550;
 		private const float ASPECT_RATIO = 1.77778f;
@@ -149,7 +149,7 @@
 				Screen screen = ScreenManager.I.GetActiveScreen();
 				InputManager.I.Update(gameTime);
 
-				if(screen is not null)
+				if (screen is not null)
 				{
 					screen.Update(gameTime);
 				}

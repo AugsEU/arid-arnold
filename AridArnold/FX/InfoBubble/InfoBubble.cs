@@ -1,6 +1,4 @@
-﻿using static AridArnold.InfoBubble;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	public struct BubbleStyle
 	{

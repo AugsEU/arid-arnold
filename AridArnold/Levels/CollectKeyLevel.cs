@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Level where you collect a flag to win.

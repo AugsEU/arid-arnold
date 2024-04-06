@@ -142,6 +142,26 @@
 
 
 		/// <summary>
+		/// Get walk direction from cardinal direction
+		/// </summary>
+		public static WalkDirection CardinalToWalkDirection(CardinalDirection card, CardinalDirection gravity)
+		{
+			switch (gravity)
+			{
+				case CardinalDirection.Up:
+				case CardinalDirection.Down:
+					return card == CardinalDirection.Left ? WalkDirection.Left : WalkDirection.Right;
+				case CardinalDirection.Right:
+					return card == CardinalDirection.Up ? WalkDirection.Right : WalkDirection.Left;
+				case CardinalDirection.Left:
+					return card == CardinalDirection.Up ? WalkDirection.Left : WalkDirection.Right;
+			}
+
+			throw new NotImplementedException();
+		}
+
+
+		/// <summary>
 		/// Round angle to cardinal direction
 		/// </summary>
 		public static CardinalDirection CardinalDirectionFromAngle(float angle)
@@ -178,6 +198,18 @@
 			}
 
 			return -vector.Y < vector.X ? CardinalDirection.Down : CardinalDirection.Left;
+		}
+
+
+
+		/// <summary>
+		/// Reflect card by a reflection normal
+		/// </summary>
+		public static CardinalDirection ReflectCardinalDirection(CardinalDirection direction, Vector2 normal)
+		{
+			Vector2 cardVec = GetNormal(direction);
+			cardVec = MonoMath.Reflect(cardVec, normal);
+			return CardinalDirectionFromVector(cardVec);
 		}
 	}
 }

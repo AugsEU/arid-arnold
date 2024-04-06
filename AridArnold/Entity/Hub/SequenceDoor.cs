@@ -170,7 +170,7 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			if(!IsInCorrectTimeZone())
+			if (!IsInCorrectTimeZone())
 			{
 				return;
 			}

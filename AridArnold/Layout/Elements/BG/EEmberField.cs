@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class EEmberField : LayElement
 	{

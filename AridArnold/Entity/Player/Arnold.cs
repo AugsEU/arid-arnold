@@ -251,16 +251,16 @@
 					FallThroughPlatforms();
 				}
 			}
-			else if(CanWalkDirChange() || mOnGround)
+			else if (CanWalkDirChange() || mOnGround)
 			{
-				if(jump && mOnGround)
+				if (jump && mOnGround)
 				{
 					Jump();
 				}
 
 				HandleWalkInput();
 			}
-			else if (IsGroundedSince(COYOTE_TIME) && !HasJumpedInTheLast(COYOTE_TIME+1) && !HasFallThroughInLast(COYOTE_TIME+1))
+			else if (IsGroundedSince(COYOTE_TIME) && !HasJumpedInTheLast(COYOTE_TIME + 1) && !HasFallThroughInLast(COYOTE_TIME + 1))
 			{
 				bool goingDown = Vector2.Dot(mVelocity, GravityVecNorm()) > 0.0f;
 				if (jump && goingDown)
@@ -380,7 +380,7 @@
 		/// <summary>
 		/// Get Arnold texture
 		/// </summary>
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			Texture2D texture = mTexture;
 
@@ -418,7 +418,7 @@
 		/// Colour to draw Arnold as
 		/// </summary>
 		/// <returns>Draw Colour</returns>
-		protected override Color GetDrawColor()
+		public override Color GetDrawColor()
 		{
 			if (!mTimerSinceDeath.IsPlaying() && mTimerSinceStart.IsPlaying())
 			{
@@ -443,7 +443,7 @@
 		/// <summary>
 		/// Get draw layer for Arnold.
 		/// </summary>
-		protected override DrawLayer GetDrawLayer()
+		public override DrawLayer GetDrawLayer()
 		{
 			return DrawLayer.Player;
 		}

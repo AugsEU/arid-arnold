@@ -38,12 +38,12 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			if(mCurrentLockout < mPlaneLockoutTimer.GetElapsedMs())
+			if (mCurrentLockout < mPlaneLockoutTimer.GetElapsedMs())
 			{
 				SpawnPlane();
 			}
 
-			foreach(WW7Plane plane in mPlanes)
+			foreach (WW7Plane plane in mPlanes)
 			{
 				plane.Update(gameTime);
 			}
@@ -58,7 +58,7 @@ namespace AridArnold
 
 			bool goingLeft = drawRandom.PercentChance(50.0f);
 
-			
+
 			Vector2 planeVel = new Vector2(drawRandom.GetFloatRange(4.0f, 6.0f), 0.0f);
 			Vector2 planePos = new Vector2(-20.0f, y);
 
@@ -82,7 +82,7 @@ namespace AridArnold
 
 			foreach (WW7Plane plane in mPlanes)
 			{
-				if(MathF.Abs(plane.mPos.Y - y) < 10.0f)
+				if (MathF.Abs(plane.mPos.Y - y) < 10.0f)
 				{
 					// Too close. Try again next frame.
 					return;
@@ -124,7 +124,7 @@ namespace AridArnold
 		public override void Draw(DrawInfo info)
 		{
 			SpriteEffects effect = SpriteEffects.None;
-			if(mVelocity.X < 0.0f)
+			if (mVelocity.X < 0.0f)
 			{
 				effect = SpriteEffects.FlipHorizontally;
 			}
@@ -140,7 +140,7 @@ namespace AridArnold
 
 		public override bool Finished()
 		{
-			if(mVelocity.X < 0.0f)
+			if (mVelocity.X < 0.0f)
 			{
 				return mPos.X < -mAnimator.GetTexture(0).Width;
 			}

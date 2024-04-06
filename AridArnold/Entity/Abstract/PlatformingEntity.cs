@@ -135,7 +135,7 @@
 
 			mIceWalking = false;
 
-			if(mAllowChangeDirFrames > 0) mAllowChangeDirFrames--;
+			if (mAllowChangeDirFrames > 0) mAllowChangeDirFrames--;
 
 			base.Update(gameTime);
 		}
@@ -388,7 +388,7 @@
 		/// <summary>
 		/// Get texture to draw for this platformer.
 		/// </summary>
-		protected virtual Texture2D GetDrawTexture()
+		public virtual Texture2D GetDrawTexture()
 		{
 			return mTexture;
 		}
@@ -398,7 +398,7 @@
 		/// <summary>
 		/// Get color to apply when drawing.
 		/// </summary>
-		protected virtual Color GetDrawColor()
+		public virtual Color GetDrawColor()
 		{
 			if (mTimerSinceDeath.IsPlaying())
 			{
@@ -422,7 +422,7 @@
 		/// <summary>
 		/// Get the layer that this platformer should be drawn on.
 		/// </summary>
-		protected virtual DrawLayer GetDrawLayer()
+		public virtual DrawLayer GetDrawLayer()
 		{
 			return DrawLayer.Default;
 		}

@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// A simple NPC that talks when you get near.
@@ -89,7 +87,7 @@ namespace AridArnold
 			mAngryTexture = MonoData.I.FileExists(angryTex) ? MonoData.I.MonoGameLoad<Texture2D>(angryTex) : null;
 			mMouthClosedTexture = MonoData.I.FileExists(closedTex) ? MonoData.I.MonoGameLoad<Texture2D>(closedTex) : null;
 
-			if(mIsWalkingType)
+			if (mIsWalkingType)
 			{
 				string walkAnim = Path.Combine(folder, "Walk.max");
 
@@ -232,7 +230,7 @@ namespace AridArnold
 		/// <summary>
 		/// Just draw talking texture.
 		/// </summary>
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			if (GetWalkDirection() != WalkDirection.None && mWalkAnimation is not null)
 			{

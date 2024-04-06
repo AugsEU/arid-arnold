@@ -169,7 +169,7 @@
 
 			level.Update(gameTime);
 
-			FinishUpdate:
+		FinishUpdate:
 			EventManager.I.Update(gameTime);
 		}
 

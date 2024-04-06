@@ -261,7 +261,7 @@
 			int numSegs = GetNumDrawSegments();
 			int numNodes = mData.GetCount();
 
-			for(int curr = 0; curr < numSegs;)
+			for (int curr = 0; curr < numSegs;)
 			{
 				int next = curr + 1;
 				RailNode aNode = mData.GetNode(curr % numNodes);
@@ -282,7 +282,7 @@
 
 					float distToLine = Vector2.Dot((cPos - aPos), perpLineDir);
 
-					if(distToLine > 0.1f)
+					if (distToLine > 0.1f)
 					{
 						// Points not co-linear
 						break;
@@ -322,7 +322,7 @@
 
 			float sectionDist = (start - end).Length();
 			int numDots = (int)MathF.Round(sectionDist / DOT_DIST);
-			for(int i = 0; i < numDots; i++)
+			for (int i = 0; i < numDots; i++)
 			{
 				Vector2 dotPos = MonoMath.Lerp(start, end, (float)(i + 1) / (numDots + 1));
 				Rectangle dotRect = MonoMath.SquareCenteredAt(dotPos, DOT_SIZE);

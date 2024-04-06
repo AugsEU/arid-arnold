@@ -33,15 +33,15 @@ namespace AridArnold
 
 			int maxInc = Math.Max(mScreenSpan.Width / 2, 1);
 			bool draw = false;
-			while(drawPoint.Y < mScreenSpan.Height)
+			while (drawPoint.Y < mScreenSpan.Height)
 			{
 				int rectSize = rand.GetIntRange(1, maxInc);
 
-				if(drawPoint.X + rectSize > mScreenSpan.Width)
+				if (drawPoint.X + rectSize > mScreenSpan.Width)
 				{
 					rectSize = mScreenSpan.Width - drawPoint.X;
 
-					if(rectSize <= 0)
+					if (rectSize <= 0)
 					{
 						drawPoint.X = 0;
 						drawPoint.Y += 1;

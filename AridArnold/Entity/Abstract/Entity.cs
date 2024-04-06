@@ -90,7 +90,7 @@
 			HandleInput();
 			mPlayerNear = false;
 
-			if(EventManager.I.IsSignaled(EventType.TimeChanged))
+			if (EventManager.I.IsSignaled(EventType.TimeChanged))
 			{
 				OnTimeChange(gameTime);
 			}

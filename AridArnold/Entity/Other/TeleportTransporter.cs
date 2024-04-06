@@ -206,7 +206,7 @@
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)mTransportingEntity;
 				CardinalDirection inverseDir = Util.InvertDirection(Util.CardinalDirectionFromVector(dir));
-				if(inverseDir == platformingEntity.GetGravityDir())
+				if (inverseDir == platformingEntity.GetGravityDir())
 				{
 					platformingEntity.AllowWalkChangeFor(1);
 				}

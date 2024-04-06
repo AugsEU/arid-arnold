@@ -95,7 +95,7 @@
 					offset.Y += 14.0f;
 					break;
 				case CardinalDirection.Left:
-					
+
 					break;
 			}
 			mRail.Draw(info, offset);

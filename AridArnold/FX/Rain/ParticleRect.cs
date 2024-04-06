@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	public interface IParticle // Use interface bleh
 	{

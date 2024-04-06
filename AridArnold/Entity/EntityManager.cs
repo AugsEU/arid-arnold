@@ -50,7 +50,7 @@
 			{
 				if (!entity.IsEnabled()) continue;
 				entity.Update(gameTime);
-				if(EventManager.I.IsEndUpdateImmediate())
+				if (EventManager.I.IsEndUpdateImmediate())
 				{
 					goto FinishUpdate; // AHAOHAOAHOAHOA ITS GOTO!!
 				}
@@ -72,8 +72,8 @@
 
 			ResolveEntityTouching();
 
-			// Add/Removed queued entities
-			FinishUpdate:
+		// Add/Removed queued entities
+		FinishUpdate:
 			FlushQueues();
 		}
 

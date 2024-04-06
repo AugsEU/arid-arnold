@@ -13,7 +13,7 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			if(!mHasLoaded)
+			if (!mHasLoaded)
 			{
 				mHasLoaded = true;
 
@@ -45,6 +45,6 @@ namespace AridArnold
 			return mHasLoaded;
 		}
 
-		
+
 	}
 }

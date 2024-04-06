@@ -49,7 +49,7 @@ namespace AridArnold
 
 		public override void Draw(DrawInfo info)
 		{
-			for(int d = 0; d < mParticles.Length; d++)
+			for (int d = 0; d < mParticles.Length; d++)
 			{
 				MonoDraw.DrawTextureDepth(info, mParticles[d].mTexture, mParticles[d].mPos, DrawLayer.BackgroundElement);
 			}

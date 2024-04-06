@@ -277,5 +277,36 @@
 
 			return new Rectangle(iX, iY, iS, iS);
 		}
+
+
+
+		/// <summary>
+		/// Reflect vector along normal
+		/// </summary>
+		public static Vector2 Reflect(Vector2 vec, Vector2 normal)
+		{
+			return vec - 2.0f * Vector2.Dot(vec, normal) * normal;
+		}
+
+
+
+		/// <summary>
+		/// Reflect vector along normal and centre of reflection
+		/// </summary>
+		public static Vector2 Reflect(Vector2 vec, Vector2 normal, Vector2 centre)
+		{
+			vec -= centre;
+			return vec - 2.0f * Vector2.Dot(vec, normal) * normal + centre;
+		}
+
+
+
+		/// <summary>
+		/// Multiply vector components
+		/// </summary>
+		public static Vector2 CompMult(Vector2 a, Vector2 b)
+		{
+			return new Vector2(a.X * b.X, a.Y * b.Y);
+		}
 	}
 }

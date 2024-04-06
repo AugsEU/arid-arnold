@@ -27,7 +27,7 @@
 			base.Update(gameTime);
 		}
 
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			return mFallingAnim.GetCurrentTexture();
 		}

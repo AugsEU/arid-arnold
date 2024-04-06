@@ -12,7 +12,7 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			if(EventManager.I.IsSignaled(EventType.TimeChanged))
+			if (EventManager.I.IsSignaled(EventType.TimeChanged))
 			{
 				SetVisible(mTimeZone == TimeZoneManager.I.GetCurrentTimeZone());
 			}

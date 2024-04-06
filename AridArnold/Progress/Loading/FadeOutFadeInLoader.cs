@@ -57,7 +57,7 @@
 
 				case LoadingState.LoadingLevel:
 					mNumUpdatesLoading++;
-					if(mNumUpdatesLoading == 5)
+					if (mNumUpdatesLoading == 5)
 					{
 						LevelLoadUpdate(gameTime);
 					}
@@ -76,7 +76,7 @@
 			if (fade is null || fade.Finished())
 			{
 				mLoadingState++;
-				if(mLoadingState == LoadingState.LoadingLevel)
+				if (mLoadingState == LoadingState.LoadingLevel)
 				{
 					Main.LoadingScreenBegin();
 					GC.Collect();

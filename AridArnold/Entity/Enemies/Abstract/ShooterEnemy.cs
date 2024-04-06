@@ -123,7 +123,7 @@
 		/// <summary>
 		/// Get texture we should draw.
 		/// </summary>
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			if (mShootGunAnim.IsPlaying())
 			{

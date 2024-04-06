@@ -150,7 +150,7 @@
 		/// <summary>
 		/// Just draw talking texture.
 		/// </summary>
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			return GetTalkingDrawTexture();
 		}

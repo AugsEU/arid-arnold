@@ -13,7 +13,7 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			if(EventManager.I.IsSignaled(EventType.RedKeyUsed))
+			if (EventManager.I.IsSignaled(EventType.RedKeyUsed))
 			{
 				mEnabled = false;
 			}

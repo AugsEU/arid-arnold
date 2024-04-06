@@ -1,0 +1,89 @@
+﻿
+namespace AridArnold
+{
+	/// <summary>
+	/// Tile that creates copies of entities that touch it.
+	/// </summary>
+	internal class DualMirrorTile : SquareTile
+	{
+		#region rMembers
+
+		Texture2D mInactiveTexture;
+		Texture2D mActiveTexture;
+		EntityReflection mChildReflection;
+
+		#endregion rMembers
+
+
+
+
+
+		#region rInit
+
+		/// <summary>
+		/// Dual mirror tile tha
+		/// </summary>
+		/// <param name="position"></param>
+		public DualMirrorTile(CardinalDirection rotation, Vector2 position) : base(position)
+		{
+			mRotation = rotation;
+			mChildReflection = null;
+		}
+
+
+
+		/// <summary>
+		/// Load textures for this tile.
+		/// </summary>
+		public override void LoadContent()
+		{
+			mInactiveTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mirror/DualMirror");
+			mActiveTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Mirror/DualMirrorActive");
+			mTexture = mInactiveTexture;
+			base.LoadContent();
+		}
+
+		#endregion rInit
+
+
+
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// When an entity touches us
+		/// </summary>
+		public override void OnTouch(MovingEntity entity, CollisionResults collisionResults)
+		{
+			if (mChildReflection is null && entity is PlatformingEntity)
+			{
+				Vector2 tileCentre = GetCentre();
+				Vector2 reflectionNormal = Util.GetNormal(mRotation);
+				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+
+				mChildReflection = new EntityReflection(platformingEntity, tileCentre, reflectionNormal);
+				EntityManager.I.QueueRegisterEntity(mChildReflection);
+			}
+			base.OnTouch(entity, collisionResults);
+		}
+
+		#endregion rUpdate
+
+
+
+
+
+		#region rDraw
+
+		/// <summary>
+		/// Get texture to draw
+		/// </summary>
+		public override Texture2D GetTexture()
+		{
+			return mChildReflection is not null ? mActiveTexture : mInactiveTexture;
+		}
+
+		#endregion rDraw
+	}
+}

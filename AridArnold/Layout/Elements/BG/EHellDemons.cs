@@ -28,7 +28,7 @@ namespace AridArnold
 			SpawnDemon();
 			SpawnDemon();
 
-			foreach(HellDemon demon in mDemons)
+			foreach (HellDemon demon in mDemons)
 			{
 				demon.mPos.X = RandomManager.I.GetDraw().GetFloatRange(50.0f, 500.0f);
 			}
@@ -43,12 +43,12 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			if(mCurrentLockout < mDemonLockoutTimer.GetElapsedMs())
+			if (mCurrentLockout < mDemonLockoutTimer.GetElapsedMs())
 			{
 				SpawnDemon();
 			}
 
-			foreach(HellDemon demon in mDemons)
+			foreach (HellDemon demon in mDemons)
 			{
 				demon.Update(gameTime);
 			}
@@ -72,7 +72,7 @@ namespace AridArnold
 			demonPos += downVector * drawRandom.GetFloatRange(-250.0f, 250.0f);
 			demonPos += sideVector * (goingLeft ? 400.0f : -400.0f);
 
-			Vector2 demonVel = new Vector2((goingLeft?-1.0f:1.0f) * drawRandom.GetFloatRange(4.0f, 6.0f), 0.0f);
+			Vector2 demonVel = new Vector2((goingLeft ? -1.0f : 1.0f) * drawRandom.GetFloatRange(4.0f, 6.0f), 0.0f);
 
 			// Verify position
 			foreach (HellDemon demon in mDemons)
@@ -87,7 +87,7 @@ namespace AridArnold
 			}
 
 			int animType = drawRandom.GetIntRange(0, mDemonAnimations.Length - 2);
-			if(drawRandom.PercentChance(2))
+			if (drawRandom.PercentChance(2))
 			{
 				animType += 1;
 			}
@@ -140,7 +140,7 @@ namespace AridArnold
 		public override void Draw(DrawInfo info)
 		{
 			SpriteEffects effect = SpriteEffects.None;
-			if(mVelocity.X < 0.0f)
+			if (mVelocity.X < 0.0f)
 			{
 				effect = SpriteEffects.FlipHorizontally;
 			}
@@ -157,7 +157,7 @@ namespace AridArnold
 
 			float downAngle = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera).GetCurrentSpec().mRotation;
 			Vector2 effectiveVel = MonoMath.Rotate(mVelocity, -downAngle);
-		
+
 			mPos += effectiveVel * dt;
 			mHoverAngle += mHoverSpeed * dt;
 
@@ -166,7 +166,7 @@ namespace AridArnold
 
 		public override bool Finished()
 		{
-			return (mStartPos-mPos).Length() > 1500.0f;
+			return (mStartPos - mPos).Length() > 1500.0f;
 		}
 	}
 }

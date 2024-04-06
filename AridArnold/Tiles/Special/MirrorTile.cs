@@ -41,7 +41,7 @@
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
-				if(ShouldTriggerMirror(platformingEntity))
+				if (ShouldTriggerMirror(platformingEntity))
 				{
 					ReflectEntity(platformingEntity);
 				}
@@ -68,7 +68,7 @@
 
 			float entityDot = Vector2.Dot(mirrorOut, ourCentreToEntity);
 
-			if(entityDot < 0.0f)
+			if (entityDot < 0.0f)
 			{
 				return false;
 			}
@@ -111,7 +111,7 @@
 
 			Vector2 entityPos = entity.GetPos();
 			Rect2f entityBounds = entity.ColliderBounds();
-			float entityHeight =  entityBounds.Height;
+			float entityHeight = entityBounds.Height;
 			float entityWidth = entityBounds.Width;
 			bool isEntityPerp = entity.GetGravityDir() != mRotation;
 

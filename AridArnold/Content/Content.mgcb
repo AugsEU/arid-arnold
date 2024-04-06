@@ -9995,3 +9995,15 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Levels/0509.png
 
+#begin Tiles/Mirror/DualMirror.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Mirror/DualMirror.png
+
+#begin Tiles/Mirror/DualMirrorActive.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Mirror/DualMirrorActive.png
+

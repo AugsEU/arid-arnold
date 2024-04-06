@@ -178,7 +178,7 @@
 		/// <summary>
 		/// Get roboto texture depening on the state.
 		/// </summary>
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			if (mPoweredOn == false)
 			{

@@ -24,10 +24,10 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			if(mExitAnim is not null)
+			if (mExitAnim is not null)
 				mExitAnim.Update(gameTime);
 
-			if(mHasBeenCollected && (mExitAnim is null || !mExitAnim.IsPlaying()))
+			if (mHasBeenCollected && (mExitAnim is null || !mExitAnim.IsPlaying()))
 			{
 				mEnabled = false;
 			}
@@ -46,7 +46,7 @@ namespace AridArnold
 
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if(mHasBeenCollected)
+			if (mHasBeenCollected)
 			{
 				return;
 			}
@@ -59,7 +59,7 @@ namespace AridArnold
 				OnCollect();
 
 				mHasBeenCollected = true;
-				if(mExitAnim is not null)
+				if (mExitAnim is not null)
 				{
 					mExitAnim.Play();
 				}
@@ -96,7 +96,7 @@ namespace AridArnold
 
 		public override Texture2D GetTexture()
 		{
-			if(mHasBeenCollected)
+			if (mHasBeenCollected)
 			{
 				return mExitAnim.GetCurrentTexture();
 			}

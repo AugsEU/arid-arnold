@@ -160,7 +160,7 @@
 		/// Get texture we should draw.
 		/// </summary>
 		/// <returns></returns>
-		protected override Texture2D GetDrawTexture()
+		public override Texture2D GetDrawTexture()
 		{
 			if (mOnGround)
 			{

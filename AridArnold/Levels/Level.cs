@@ -162,7 +162,7 @@
 				throw new Exception("Cannot update inactive level. Did you forget to start it?");
 			}
 
-			if(mLevelStatus != LevelStatus.Continue)
+			if (mLevelStatus != LevelStatus.Continue)
 			{
 				return;
 			}

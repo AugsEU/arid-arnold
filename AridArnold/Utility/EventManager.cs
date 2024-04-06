@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Types of event. New ones have to be registered here.
@@ -40,7 +38,7 @@ namespace AridArnold
 		{
 			mEventFlags = new EventFlag[Enum.GetNames(typeof(EventType)).Length];
 
-			for(int i = 0; i < mEventFlags.Length; i++)
+			for (int i = 0; i < mEventFlags.Length; i++)
 			{
 				mEventFlags[i] = new EventFlag();
 			}

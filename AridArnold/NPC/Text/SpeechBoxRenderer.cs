@@ -248,7 +248,7 @@
 		public void DrawBox(DrawInfo info)
 		{
 			Point rectPosition = new Point(MonoMath.Round(mTopLeft.X) - PADDING, MonoMath.Round(mTopLeft.Y) - PADDING);
-			int height =  MonoMath.Round(mBottomLeft.Y) + PADDING - rectPosition.Y;
+			int height = MonoMath.Round(mBottomLeft.Y) + PADDING - rectPosition.Y;
 			int width = (int)mStyle.mWidth + 2 * PADDING + 5 + (int)((mCharHeight - 7.0f) / 2.0f);
 			Rectangle bgRectangle = new Rectangle(rectPosition.X, rectPosition.Y, width, height);
 

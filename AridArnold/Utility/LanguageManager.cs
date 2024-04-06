@@ -113,8 +113,8 @@
 
 
 			string rawText;
-			
-			if(!mKeyCache.TryGetValue(ID, out rawText))
+
+			if (!mKeyCache.TryGetValue(ID, out rawText))
 			{
 				rawText = File.ReadAllText(GetTextPath(ID));
 			}

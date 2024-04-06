@@ -14,7 +14,7 @@ namespace AridArnold
 			mBasePosition = Vector2.Zero;
 
 			MonoRandom drawRandom = RandomManager.I.GetDraw();
-			if(mScrollSpeed.X != 0.0f)
+			if (mScrollSpeed.X != 0.0f)
 			{
 				mBasePosition.X = drawRandom.GetFloatRange(-mTexture.Width, -0.1f);
 			}
@@ -31,11 +31,11 @@ namespace AridArnold
 
 			mBasePosition += dt * mScrollSpeed;
 
-			if(mBasePosition.X > 0.0f)
+			if (mBasePosition.X > 0.0f)
 			{
 				mBasePosition.X -= mTexture.Width;
 			}
-			else if(mBasePosition.Y > 0.0f)
+			else if (mBasePosition.Y > 0.0f)
 			{
 				mBasePosition.Y -= mTexture.Height;
 			}
@@ -46,19 +46,19 @@ namespace AridArnold
 			int xDrawNum = 1;
 			int yDrawNum = 1;
 
-			if(mScrollSpeed.X != 0.0f)
+			if (mScrollSpeed.X != 0.0f)
 			{
 				xDrawNum = 1 + (Screen.SCREEN_WIDTH / mTexture.Width);
 			}
 
-			if(mScrollSpeed.Y != 0.0f)
+			if (mScrollSpeed.Y != 0.0f)
 			{
 				yDrawNum = 1 + (Screen.SCREEN_HEIGHT / mTexture.Height);
 			}
 
-			for(int x = 0; x < xDrawNum; x++)
+			for (int x = 0; x < xDrawNum; x++)
 			{
-				for(int y = 0; y < yDrawNum; y++)
+				for (int y = 0; y < yDrawNum; y++)
 				{
 					Vector2 drawPos = GetPosition() + mBasePosition;
 					drawPos.X += x * mTexture.Width;

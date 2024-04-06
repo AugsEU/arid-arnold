@@ -151,6 +151,8 @@
 						return new SpikesTile((CardinalDirection)param, position);
 					case 0xFFFF00u:
 						return new MirrorTile((CardinalDirection)param, position);
+					case 0x049878u:
+						return new DualMirrorTile((CardinalDirection)param, position);
 					case 0x00CDF9u:
 						return new MushroomTile((CardinalDirection)param, position);
 					case 0x003D36u:
@@ -590,7 +592,7 @@
 
 			mDeleteRequests.Clear();
 
-			for(int i = 0; i < ELEC_SPEED_MULT; i++)
+			for (int i = 0; i < ELEC_SPEED_MULT; i++)
 			{
 				mEMField.Update();
 			}
@@ -688,7 +690,6 @@
 			Rect2f futurePlayerBounds = entity.ColliderBounds() + entity.VelocityToDisplacement(gameTime);
 
 			Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
-
 
 			for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
 			{

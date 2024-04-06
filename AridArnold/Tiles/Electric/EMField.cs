@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Represents ethereal field that tiles can affect.
@@ -121,7 +119,7 @@ namespace AridArnold
 						if (!InEMField(aX, aY)) continue;
 
 						ref EMValue adjacentValue = ref mCurrentField[aX, aY];
-						if(adjacentValue.mConductive || adjacentValue.mElectric != 0.0f) numAdjacentConductive += 1.0f;
+						if (adjacentValue.mConductive || adjacentValue.mElectric != 0.0f) numAdjacentConductive += 1.0f;
 						totalAdjacentElec += adjacentValue.mElectric;
 					}
 

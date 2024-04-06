@@ -59,7 +59,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			if(mIsForwards)
+			if (mIsForwards)
 			{
 				// Past
 				mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Lab/TimeMachine");
@@ -129,11 +129,11 @@
 
 
 
-			#region rDraw
+		#region rDraw
 
-			/// <summary>
-			/// Draw the time machine
-			/// </summary>
+		/// <summary>
+		/// Draw the time machine
+		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
 			DateTime currentTime = DateTime.Now;

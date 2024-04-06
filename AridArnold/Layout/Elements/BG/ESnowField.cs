@@ -23,11 +23,11 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			if(TimeZoneManager.I.GetCurrentTimeZone() != mTimeZone)
+			if (TimeZoneManager.I.GetCurrentTimeZone() != mTimeZone)
 			{
 				return;
 			}
-			foreach(SnowRect rect in mSnowRects)
+			foreach (SnowRect rect in mSnowRects)
 			{
 				rect.Update(gameTime);
 			}
