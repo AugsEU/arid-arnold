@@ -56,7 +56,10 @@ namespace AridArnold
 
 		#endregion rInit
 
+		
 
+
+		
 		#region rUpdate
 
 		/// <summary>
@@ -65,6 +68,25 @@ namespace AridArnold
 		public override void Update(GameTime gameTime)
 		{
 			SetReflectedPosition();
+
+			Rect2f ourBounds = ColliderBounds();
+			Rect2f futureBounds = ourBounds + mEntityToReflect.VelocityToDisplacement(gameTime);
+			Rectangle tileBounds = TileManager.I.PossibleIntersectTiles(ourBounds + futureBounds);
+
+			for (int x = tileBounds.X; x <= tileBounds.X + tileBounds.Width; x++)
+			{
+				for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
+				{
+					Tile tile = TileManager.I.GetTile(x, y);
+					if (tile.pEnabled == false)
+					{
+						continue;
+					}
+
+					EntityManager.I.AddColliderSubmission(new ReflectedTileSubmission(tile, mEntityToReflect, mReflectionNormal, GetPos()));
+				}
+			}
+
 			base.Update(gameTime);
 		}
 

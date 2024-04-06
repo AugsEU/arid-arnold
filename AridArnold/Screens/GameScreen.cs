@@ -311,6 +311,11 @@
 
 			DrawGamePlay(info);
 
+#if DEBUG
+			// Debug stuff
+			MonoDebug.DrawDebugRects(info);
+#endif
+
 			gameCam.EndSpriteBatch(info);
 		}
 

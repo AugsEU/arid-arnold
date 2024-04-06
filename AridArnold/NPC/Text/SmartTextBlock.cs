@@ -185,11 +185,7 @@
 
 			mLetterFrameCount = CalculateLetterTime(GetCurrentChar());
 
-			if (GetCurrentChar() != GetCurrentTextChar())
-			{
-				MonoDebug.DLog("DLOG: {0} vs {1}", GetCurrentChar(), GetCurrentTextChar());
-			}
-			System.Diagnostics.Debug.Assert(GetCurrentChar() == GetCurrentTextChar());
+			MonoDebug.Assert(GetCurrentChar() == GetCurrentTextChar(), "DLOG: {0} vs {1}", GetCurrentChar(), GetCurrentTextChar());
 		}
 
 

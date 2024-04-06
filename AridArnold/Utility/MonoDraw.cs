@@ -262,10 +262,7 @@
 		/// </summary>
 		public static void DrawRectDepth(DrawInfo info, Rect2f rect2f, Color col, DrawLayer depth)
 		{
-			Point min = new Point((int)rect2f.min.X, (int)rect2f.min.Y);
-			Point max = new Point((int)rect2f.max.X, (int)rect2f.max.Y);
-
-			DrawRectDepth(info, new Rectangle(min, max - min), col, depth);
+			DrawRectDepth(info, rect2f.ToRectangle(), col, depth);
 		}
 
 

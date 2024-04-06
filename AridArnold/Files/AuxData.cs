@@ -85,7 +85,6 @@
 			int version = br.ReadInt32();
 			if (version != FILE_VER)
 			{
-				MonoDebug.Break();
 				throw new Exception("File version doesn't match. Verify data integrity!");
 			}
 

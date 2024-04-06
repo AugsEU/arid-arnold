@@ -5,18 +5,20 @@
 	/// </summary>
 	class TileEntityCollision : SolidEntityCollision
 	{
-		Point mTileCoord;
+		Tile mTile;
 
-		public TileEntityCollision(bool firstTime, CollisionResults result, Point tileCoord) : base(firstTime, result)
+		public TileEntityCollision(bool firstTime, CollisionResults result, Tile tile) : base(firstTime, result)
 		{
-			mTileCoord = tileCoord;
+			mTile = tile;
 		}
 
 		public override void PostCollisionReact(MovingEntity entity)
 		{
-			TileManager.I.GetTile(mTileCoord).OnTouch(entity, mResult);
-
+			mTile.OnTouch(entity, mResult);
 			base.PostCollisionReact(entity);
 		}
 	}
+
+
+
 }

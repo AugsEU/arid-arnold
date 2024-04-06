@@ -96,6 +96,14 @@ namespace AridArnold
 			return rect;
 		}
 
+		public Rectangle ToRectangle()
+		{
+			Point rMin = new Point((int)min.X, (int)min.Y);
+			Point rMax = new Point((int)max.X, (int)max.Y);
+
+			return new Rectangle(rMin, rMax - rMin);
+		}
+
 		public Vector2 min;
 		public Vector2 max;
 	}

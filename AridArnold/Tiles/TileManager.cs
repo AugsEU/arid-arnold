@@ -650,6 +650,8 @@
 			}
 		}
 
+
+
 		/// <summary>
 		/// Draw a single tile
 		/// </summary>
@@ -687,7 +689,7 @@
 		public void GatherCollisions(GameTime gameTime, MovingEntity entity, ref List<EntityCollision> outputList)
 		{
 			Rect2f playerBounds = entity.ColliderBounds();
-			Rect2f futurePlayerBounds = entity.ColliderBounds() + entity.VelocityToDisplacement(gameTime);
+			Rect2f futurePlayerBounds = playerBounds + entity.VelocityToDisplacement(gameTime);
 
 			Rectangle tileBounds = PossibleIntersectTiles(playerBounds + futurePlayerBounds);
 
@@ -695,16 +697,17 @@
 			{
 				for (int y = tileBounds.Y; y <= tileBounds.Y + tileBounds.Height; y++)
 				{
-					if (mTileMap[x, y].pEnabled == false)
+					Tile tile = mTileMap[x, y];
+					if (tile.pEnabled == false)
 					{
 						continue;
 					}
 
-					CollisionResults collisionResults = mTileMap[x, y].Collide(entity, gameTime);
+					CollisionResults collisionResults = tile.Collide(entity, gameTime);
 
 					if (collisionResults.Collided)
 					{
-						outputList.Add(new TileEntityCollision(true, collisionResults, new Point(x, y)));
+						outputList.Add(new TileEntityCollision(true, collisionResults, tile));
 					}
 				}
 			}
@@ -727,7 +730,6 @@
 
 			return new Rectangle(rMin, rMax - rMin);
 		}
-
 
 
 		/// <summary>
