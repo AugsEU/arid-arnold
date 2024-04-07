@@ -75,7 +75,6 @@ namespace AridArnold
 		/// </summary>
 		public void SignalReflectionDeath()
 		{
-			EntityManager.I.QueueDeleteEntity(mChildReflection);
 			mChildReflection = null;
 		}
 

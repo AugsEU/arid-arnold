@@ -32,7 +32,6 @@
 	internal class EventManager : Singleton<EventManager>
 	{
 		EventFlag[] mEventFlags;
-		bool mHaltUpdateImmediate;
 
 		public EventManager()
 		{
@@ -70,21 +69,6 @@
 				mEventFlags[i].mSignal = false;
 				mEventFlags[i].mTrigger = false;
 			}
-		}
-
-		public void ResetEndUpdateImmediate()
-		{
-			mHaltUpdateImmediate = false;
-		}
-
-		public bool IsEndUpdateImmediate()
-		{
-			return mHaltUpdateImmediate;
-		}
-
-		public void SignalEndUpdateImmediate()
-		{
-			mHaltUpdateImmediate = true;
 		}
 	}
 }

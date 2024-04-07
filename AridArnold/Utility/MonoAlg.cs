@@ -119,5 +119,23 @@
 		{
 			return (T)Enum.Parse(typeof(T), value);
 		}
+
+
+		/// <summary>
+		/// Test if a value contains a flag.
+		/// </summary>
+		static public bool TestFlag<T>(T value, params T[] flags) where T : struct, Enum
+		{
+			UInt64 value64 = Convert.ToUInt64(value);
+			foreach (T flag in flags)
+			{
+				UInt64 flag64 = Convert.ToUInt64(flag);
+				if ((value64 & flag64) != 0)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }

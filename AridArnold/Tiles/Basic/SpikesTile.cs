@@ -37,11 +37,9 @@ namespace AridArnold
 		/// <summary>
 		/// Kill Arnold if he intersects this. TO DO: Expand this to other entities.
 		/// </summary>
-		/// <param name="entity">Entity that intersected us</param>
-		/// <param name="bounds">Our tile bounds</param>
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (entity is Arnold)
+			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
 			{
 				entity.Kill();
 			}

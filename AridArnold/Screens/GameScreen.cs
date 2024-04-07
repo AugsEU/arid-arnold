@@ -149,8 +149,6 @@
 			{
 				LevelLose();
 			}
-
-			EventManager.I.ResetEndUpdateImmediate();
 		}
 
 
@@ -163,7 +161,6 @@
 			HandleInput();
 			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
-			if (EventManager.I.IsEndUpdateImmediate()) goto FinishUpdate;
 			TileManager.I.Update(gameTime);
 			ItemManager.I.Update(gameTime);
 

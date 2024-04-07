@@ -50,10 +50,6 @@
 			{
 				if (!entity.IsEnabled()) continue;
 				entity.Update(gameTime);
-				if (EventManager.I.IsEndUpdateImmediate())
-				{
-					goto FinishUpdate; // AHAOHAOAHOAHOA ITS GOTO!!
-				}
 			}
 
 			mRegisteredEntities.Sort(mUpdateSorter);
@@ -62,18 +58,13 @@
 			System.TimeSpan timeInc = gameTime.ElapsedGameTime / PHYSICS_STEPS;
 			for (int i = 0; i < PHYSICS_STEPS; i++)
 			{
-				if (EventManager.I.IsEndUpdateImmediate())
-				{
-					break;
-				}
 				GameTime stepTime = new GameTime(gameTime.TotalGameTime - (PHYSICS_STEPS - 1 - i) * timeInc, timeInc);
 				DoOrderedUpdateStep(stepTime);
 			}
 
 			ResolveEntityTouching();
 
-		// Add/Removed queued entities
-		FinishUpdate:
+			// Add/Removed queued entities
 			FlushQueues();
 		}
 

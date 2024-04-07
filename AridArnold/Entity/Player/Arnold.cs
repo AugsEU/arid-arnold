@@ -141,6 +141,16 @@
 			return true;
 		}
 
+
+
+		/// <summary>
+		/// What should this interact with?
+		/// </summary>
+		public override InteractionLayer GetInteractionLayer()
+		{
+			return InteractionLayer.kPlayer;
+		}
+
 		#endregion rProperties
 
 

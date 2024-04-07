@@ -1,5 +1,13 @@
 ﻿namespace AridArnold
 {
+	// Layers for interacting with things.
+	enum InteractionLayer : byte
+	{
+		kNone =			0b0000_0000,
+		kPlayer =		0b0000_0001, // For Player entity
+		kAltPlayer =	0b0000_0010 // For other things Players control
+	}
+
 	/// <summary>
 	/// Represents a moving entity in the game world.
 	/// </summary>
@@ -64,6 +72,16 @@
 		public virtual bool PersistLevelEntry()
 		{
 			return false;
+		}
+
+
+
+		/// <summary>
+		/// What should this interact with?
+		/// </summary>
+		public virtual InteractionLayer GetInteractionLayer()
+		{
+			return InteractionLayer.kNone;
 		}
 
 		#endregion rProperties
@@ -330,6 +348,8 @@
 		}
 
 		#endregion rUtility
+
+
 
 
 

@@ -134,8 +134,18 @@ namespace AridArnold
 		/// </summary>
 		public override void Kill()
 		{
+			if(mParentTile is null)
+			{
+				// We can get killed by 2 things in 1 frame, so this might have already been triggered.
+				return;
+			}
 			mParentTile.SignalReflectionDeath();
 			mParentTile = null;
+			EntityManager.I.QueueDeleteEntity(this);
+
+			Animator explodeAnimator = MonoData.I.LoadAnimator("Shared/Coin/Explode.max");
+			FXManager.I.AddFX(new AnimationFX(GetPos(), explodeAnimator, DrawLayer.TileEffects));
+
 			base.Kill();
 		}
 
@@ -168,5 +178,21 @@ namespace AridArnold
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Passes interaction layer to base entity
+		/// </summary>
+		public override InteractionLayer GetInteractionLayer()
+		{
+			return mEntityToReflect.GetInteractionLayer();
+		}
+
+		#endregion rUtility
 	}
 }
