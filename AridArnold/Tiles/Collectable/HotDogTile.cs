@@ -32,7 +32,7 @@ namespace AridArnold
 		/// </summary>
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (entity is Arnold)
+			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
 			{
 				int livesBefore = CampaignManager.I.GetLives();
 				CampaignManager.I.GainLife();

@@ -91,7 +91,7 @@
 		/// </summary>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if (entity is Arnold)
+			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
 			{
 				entity.Kill();
 			}

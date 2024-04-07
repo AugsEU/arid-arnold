@@ -48,7 +48,7 @@ namespace AridArnold
 				return;
 			}
 
-			if (entity is Arnold)
+			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
 			{
 				Arnold arnold = (Arnold)entity;
 				arnold.SetPrevWalkDirFromVelocity();

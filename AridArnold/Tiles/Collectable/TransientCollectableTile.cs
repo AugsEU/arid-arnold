@@ -19,7 +19,7 @@ namespace AridArnold
 
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (entity is Arnold)
+			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
 			{
 				CollectableManager.I.CollectTransientItem(GetCollectableType());
 				mEnabled = false;

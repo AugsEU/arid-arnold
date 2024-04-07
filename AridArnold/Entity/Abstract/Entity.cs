@@ -162,7 +162,7 @@
 		/// <param name="entity"></param>
 		public virtual void OnCollideEntity(Entity entity)
 		{
-			if (entity is Arnold)
+			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
 			{
 				mPlayerNear = true;
 			}
