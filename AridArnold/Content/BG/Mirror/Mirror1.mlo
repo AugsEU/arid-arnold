@@ -7,8 +7,10 @@
 		<texture>BG/Mirror/BG</texture>
 	</element>
 	<element type="mirrorbg">
-		<x>0.0</x>
-		<y>0.0</y>
+		<x>0</x>
+		<y>0</y>
+		<width>544</width>
+		<height>528</height>
 		<depth>Background</depth>
 	</element>
 	<!--Bushes-->

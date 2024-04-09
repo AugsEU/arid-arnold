@@ -17,6 +17,7 @@
 
 		protected const float DEFAULT_GRAVITY = 2.0f;
 		protected const float DEFAULT_MAX_WIND_DEV = 5.0f;
+		const float DELTA_WIND_SPEED = 0.5f;
 
 		#endregion rConstants
 
@@ -28,7 +29,7 @@
 
 		Rectangle mArea;
 		Vector2 mWind;
-		Vector2 mWindVelocity;
+		float mWindDelta;
 		float mMaxWindDeviation;
 		protected TParticle[] mParticles;
 
@@ -72,7 +73,7 @@
 			mArea = area;
 
 			mWind = new Vector2(0.0f, gravity);
-			mWindVelocity = Vector2.Zero;
+			mWindDelta = 0.0f;
 
 			// Init raindrops spread evenly
 			mParticles = new TParticle[xNum * yNum];
@@ -95,7 +96,7 @@
 				}
 			}
 
-			mWindVelocity.X = rainRandom.GetFloatRange(-5.0f, 5.0f);
+			mWindDelta = rainRandom.GetFloatRange(0.0f, 3.14f);
 			mWind.X = rainRandom.GetFloatRange(-5.0f, 5.0f);
 		}
 
@@ -115,10 +116,10 @@
 			float dt = Util.GetDeltaT(gameTime);
 
 			// Update wind
-			mWindVelocity.X += dt * RandomManager.I.GetDraw().GetFloatRange(-mMaxWindDeviation, mMaxWindDeviation);
-			mWindVelocity.X = Math.Clamp(mWindVelocity.X, -mMaxWindDeviation, mMaxWindDeviation);
+			mWindDelta += dt * RandomManager.I.GetDraw().GetFloatRange(0.0f, DELTA_WIND_SPEED);
+			mWindDelta = mWindDelta % MathF.Tau;
 
-			mWind += mWindVelocity * dt;
+			mWind.X += MathF.Sin(mWindDelta) * 3.0f * dt;
 			mWind.X = Math.Clamp(mWind.X, -mMaxWindDeviation, mMaxWindDeviation);
 
 			float downAngle = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera).GetCurrentSpec().mRotation;
