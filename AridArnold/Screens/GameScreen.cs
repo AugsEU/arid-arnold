@@ -166,7 +166,6 @@
 
 			level.Update(gameTime);
 
-		FinishUpdate:
 			EventManager.I.Update(gameTime);
 		}
 
