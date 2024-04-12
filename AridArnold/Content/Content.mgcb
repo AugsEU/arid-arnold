@@ -10115,3 +10115,30 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/Mirror/Leaf.png
 
+#begin Campaigns/MainCampaign/Levels/0510.aux
+/copy:Campaigns/MainCampaign/Levels/0510.aux
+
+#begin Campaigns/MainCampaign/Levels/0510.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0510.png
+
+#begin Campaigns/MainCampaign/Levels/0511.aux
+/copy:Campaigns/MainCampaign/Levels/0511.aux
+
+#begin Campaigns/MainCampaign/Levels/0511.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0511.png
+
+#begin Campaigns/MainCampaign/Levels/0512.aux
+/copy:Campaigns/MainCampaign/Levels/0512.aux
+
+#begin Campaigns/MainCampaign/Levels/0512.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0512.png
+
