@@ -50,7 +50,7 @@
 
 			mPlatformAnimation.Update(gameTime);
 
-			EntityManager.I.AddColliderSubmission(new PlatformColliderSubmission(mRail.GetVelocity(gameTime), mPosition, mSize * Tile.sTILE_SIZE, mRotation));
+			EntityManager.I.AddColliderSubmission(new PlatformColliderSubmission(mRail.GetVelocityForCollision(gameTime), mPosition, mSize * Tile.sTILE_SIZE, mRotation));
 
 			mPosition = mRail.GetPosition();
 

@@ -74,11 +74,13 @@
 
 
 		/// <summary>
-		/// Get velocity of this time step.
+		/// Get velocity of this time step to be used in collisions
 		/// </summary>
-		public Vector2 GetVelocity(GameTime gameTime)
+		public Vector2 GetVelocityForCollision(GameTime gameTime)
 		{
-			return (mPosition - mPrevPosition) / Util.GetDeltaT(gameTime);
+			// We do collision in quarter steps
+			const float COLLISION_STEPS = 4.0f;
+			return COLLISION_STEPS * (mPosition - mPrevPosition) / Util.GetDeltaT(gameTime);
 		}
 
 
