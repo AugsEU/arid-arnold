@@ -1,0 +1,16 @@
+501K - Intro level
+
+502W - Advanced level
+503K - Advanced level
+505W - Intermediate level
+506K - Intermediate level
+
+507K - Dual intro
+509W - Dual up-down
+511K - Dual side-side
+
+508K - Dual puzzle
+
+510W - Maze-like level
+512K - Maze-like level
+504K - Maze-like level
