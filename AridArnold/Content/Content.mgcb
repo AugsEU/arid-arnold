@@ -10142,3 +10142,6 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Levels/0512.png
 
+#begin Text/EN/NPC/Barbara/Home.txt
+/copy:Text/EN/NPC/Barbara/Home.txt
+
