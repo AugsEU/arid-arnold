@@ -186,6 +186,11 @@
 				mPosition += walkDir;
 			}
 
+			if (maxCounter > 0)
+			{
+				mPosition += -GravityVecNorm();
+			}
+
 			MonoDebug.Assert(maxCounter != 5000);
 		}
 
