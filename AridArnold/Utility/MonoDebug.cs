@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace AridArnold
 {
@@ -11,6 +12,7 @@ namespace AridArnold
 		}
 
 		private static List<DebugRect> mDebugRectToDraw = new List<DebugRect>();
+		public static bool mConsoleAlloc = false;
 		public static bool mDebugFlag1 = false;
 
 		/// <summary>
@@ -20,9 +22,18 @@ namespace AridArnold
 		public static void Log(string msg, params object[] args)
 		{
 #if DEBUG
-			Debug.WriteLine(msg, args);
+			if(!mConsoleAlloc)
+			{
+				AllocConsole();
+				mConsoleAlloc = true;
+			}
+			Console.WriteLine(msg, args);
 #endif
 		}
+
+		[DllImport("kernel32.dll", SetLastError = true)]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		static extern bool AllocConsole();
 
 
 		public static void Break(string msg = "", params object[] args)

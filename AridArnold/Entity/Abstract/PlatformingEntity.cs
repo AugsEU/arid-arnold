@@ -10,7 +10,6 @@
 		const float DEFAULT_WALK_SPEED = 9.0f;
 		protected const float DEFAULT_GRAVITY = 4.35f;
 		const float DEFAULT_JUMP_SPEED = 25.0f;
-		const float DEFAULT_ICE_GRIP = 0.9f;
 		const float MAX_VELOCITY = 65.0f;
 		const double DEATH_TIME = 500.0;
 
@@ -33,7 +32,6 @@
 		protected float mWalkSpeed;
 		protected float mJumpSpeed;
 		protected float mGravity;
-		protected float mIceGrip;
 		protected bool mUseRealPhysics;
 
 		int mUpdatesSinceGrounded;
@@ -47,8 +45,7 @@
 		protected PercentageTimer mTimerSinceDeath;
 
 		// Ice
-		bool mIceWalking;
-		Vector2 mIceVelocity;
+		protected int mIceWalking;
 
 		#endregion rMembers
 
@@ -65,12 +62,11 @@
 		/// <param name="walkSpeed">Ground walk speed.</param>
 		/// <param name="jumpSpeed">Initial upwards velocity when jumping.</param>
 		/// <param name="gravity">Gravity acceleration.</param>
-		public PlatformingEntity(Vector2 pos, float walkSpeed = DEFAULT_WALK_SPEED, float jumpSpeed = DEFAULT_JUMP_SPEED, float gravity = DEFAULT_GRAVITY, float iceGrip = DEFAULT_ICE_GRIP) : base(pos)
+		public PlatformingEntity(Vector2 pos, float walkSpeed = DEFAULT_WALK_SPEED, float jumpSpeed = DEFAULT_JUMP_SPEED, float gravity = DEFAULT_GRAVITY) : base(pos)
 		{
 			mVelocity = Vector2.Zero;
 			mWalkDirection = WalkDirection.None;
 			mPrevDirection = mWalkDirection;
-			mIceGrip = iceGrip;
 			mUseRealPhysics = false;
 
 			mWalkSpeed = walkSpeed;
@@ -86,8 +82,7 @@
 			mTimerSinceDeath = new PercentageTimer(DEATH_TIME);
 
 			// Ice
-			mIceWalking = false;
-			mIceVelocity = Vector2.Zero;
+			mIceWalking = 0;
 
 			// Allow things to make you change direction for a certain number of frames.
 			mAllowChangeDirFrames = 0;
@@ -133,7 +128,7 @@
 				mUpdatesSinceJump++;
 			}
 
-			mIceWalking = false;
+			mIceWalking = Math.Max(mIceWalking-1, 0);
 
 			if (mAllowChangeDirFrames > 0) mAllowChangeDirFrames--;
 
@@ -152,38 +147,37 @@
 				return;
 			}
 
-			float dt = Util.GetDeltaT(gameTime);
+			Vector2 downVec = GravityVecNorm();
+			Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
+			float sideVel = Vector2.Dot(mPrevVelocity, sideVec);
 
 			if (!mUseRealPhysics)
 			{
-				SetSideVelocityFromDirection(mWalkDirection);
-			}
-
-			// Ice
-			if (mIceWalking && IsGroundedSince(4))
-			{
-				Vector2 toVelocity = mVelocity - mIceVelocity;
-				if (toVelocity.LengthSquared() > float.Epsilon)
+				WalkDirection motorDirection = WalkDirection.None;
+				// Ice
+				if (mIceWalking > 0 && IsGroundedSince(4) && MathF.Abs(sideVel) > 0.5f * mWalkSpeed)
 				{
-					toVelocity.Normalize();
-					mIceVelocity += toVelocity * mIceGrip * dt;
-
-					switch (mGravityDirection)
-					{
-						case CardinalDirection.Up:
-						case CardinalDirection.Down:
-							mVelocity.X = mIceVelocity.X;
-							break;
-						case CardinalDirection.Left:
-						case CardinalDirection.Right:
-							mVelocity.Y = mIceVelocity.Y;
-							break;
-					}
+					motorDirection = mPrevDirection;
+					MonoDebug.Assert(motorDirection != WalkDirection.None);
 				}
-			}
-			else
-			{
-				GetAGrip();
+				else
+				{
+					if (!mOnGround)
+					{
+						if (sideVel > mWalkSpeed * 0.5f)
+						{
+							mWalkDirection = WalkDirection.Right;
+						}
+						else if (sideVel < -mWalkSpeed * 0.5f)
+						{
+							mWalkDirection = WalkDirection.Left;
+						}
+					}
+
+					motorDirection = mWalkDirection;
+				}
+
+				SetSideVelocityFromDirection(motorDirection);
 			}
 
 			ApplyGravity(gameTime);
@@ -205,23 +199,28 @@
 			Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
 
 			float component = Vector2.Dot(mVelocity, sideVec);
-
-			mVelocity = mVelocity - component * sideVec;
-
+			float desiredComponent = component;
 			switch (dir)
 			{
 				case WalkDirection.Left:
-					mVelocity -= mWalkSpeed * sideVec;
+					desiredComponent = -mWalkSpeed;
 					break;
 				case WalkDirection.Right:
-					mVelocity += mWalkSpeed * sideVec;
+					desiredComponent = +mWalkSpeed;
 					break;
 				case WalkDirection.None:
-					if (!CanWalkDirChange())
+					if (CanWalkDirChange())
 					{
-						mVelocity += component * sideVec;
+						desiredComponent = 0.0f;
 					}
 					break;
+			}
+
+			// Don't need motor already going fast enough
+			if (CanWalkDirChange() || MathF.Abs(component) < MathF.Abs(desiredComponent) + 1.0f)
+			{
+				mVelocity += (desiredComponent - component) * sideVec;
+				return;
 			}
 		}
 
@@ -269,9 +268,6 @@
 					{
 						mVelocity = GravityVecNorm() * mGravity;
 					}
-					break;
-				case CollisionType.Wall:
-					GetAGrip();
 					break;
 			}
 		}
@@ -327,27 +323,7 @@
 		/// </summary>
 		public void SetIceWalking()
 		{
-			mIceWalking = true;
-		}
-
-
-
-		/// <summary>
-		/// Are we on ice?
-		/// </summary>
-		public bool GetIceWalking()
-		{
-			return mIceWalking;
-		}
-
-
-
-		/// <summary>
-		/// Grip ice instantly
-		/// </summary>
-		protected void GetAGrip()
-		{
-			mIceVelocity = mVelocity;
+			mIceWalking = 2;
 		}
 
 
@@ -607,13 +583,14 @@
 		{
 			Vector2 gravVelocity = GetVelocityRelativeToGravity();
 
-			if (mIceWalking)
+			if (mIceWalking > 0)
 			{
-				if (MathF.Abs(GetVelocityRelativeToGravity().X) >= NOT_MOVING_SPEED)
+				if (MathF.Abs(gravVelocity.X) >= NOT_MOVING_SPEED)
 				{
 					mWalkDirection = mPrevDirection;
+					//mOnGround = false;
 				}
-				mIceWalking = false;
+				mIceWalking = 0;
 			}
 
 			if (gravVelocity.Y < mJumpSpeed)
@@ -631,6 +608,10 @@
 		/// </summary>
 		public bool IsGroundedSince(int frames)
 		{
+			if (mOnGround)
+			{
+				mUpdatesSinceGrounded = 0;
+			}
 			return mUpdatesSinceGrounded < frames;
 		}
 

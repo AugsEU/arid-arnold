@@ -46,7 +46,7 @@
 		/// Projectile at point
 		/// </summary>
 		/// <param name="pos"></param>
-		public ProjectileEntity(Entity parent, Vector2 pos, float gravity = PlatformingEntity.DEFAULT_GRAVITY) : base(pos, 0.0f, 0.0f, gravity, 0.0f)
+		public ProjectileEntity(Entity parent, Vector2 pos, float gravity = PlatformingEntity.DEFAULT_GRAVITY) : base(pos, 0.0f, 0.0f, gravity)
 		{
 			mParent = parent;
 			mState = ProjectileState.FreeMotion;

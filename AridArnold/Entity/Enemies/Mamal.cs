@@ -164,7 +164,6 @@
 			SetWalkDirection(WalkDirection.None);
 			SetVelocity(Vector2.Zero);
 			mPrevVelocity = Vector2.Zero;
-			GetAGrip();
 		}
 
 

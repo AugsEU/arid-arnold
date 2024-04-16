@@ -40,7 +40,7 @@
 		/// </summary>
 		protected override int GetOnSeason()
 		{
-			return 0;
+			return 1;
 		}
 
 		#endregion rUtility

@@ -26,7 +26,7 @@
 		/// <summary>
 		/// Create extender at point
 		/// </summary>
-		public ExtenderEntity(Vector2 pos, int length) : base(pos, walkSpeed: 9.5f, iceGrip: 20.2f)
+		public ExtenderEntity(Vector2 pos, int length) : base(pos, walkSpeed: 9.5f)
 		{
 			mIsExtended = TimeZoneManager.I.GetCurrentTimeZone() == GetOnSeason();
 			mLength = length;
@@ -75,7 +75,7 @@
 			switch (collisionType)
 			{
 				case CollisionType.Wall:
-					BeginPush(WalkDirection.None);
+					PushInDir(WalkDirection.None);
 					break;
 			}
 
@@ -89,15 +89,16 @@
 		/// </summary>
 		private void UpdatePush(GameTime gameTime)
 		{
-			if (!mIsExtended)
+			if (mIsExtended)
 			{
-				BeginPush(WalkDirection.None);
+				PushInDir(WalkDirection.None);
 				return;
 			}
 
 			List<Entity> nearbyEntities = EntityManager.I.GetNearPos(Tile.sTILE_SIZE * 0.9f, GetCentrePos(), typeof(Arnold));
 
 			int direction = 0;
+
 
 			foreach (Entity entity in nearbyEntities)
 			{
@@ -120,19 +121,18 @@
 				}
 			}
 
-			bool shouldGrip = mVelocity.LengthSquared() < 0.1f || !IceTile.IsOnIce(this);
 
 			if (direction > 0)
 			{
-				BeginPush(WalkDirection.Left);
+				PushInDir(WalkDirection.Left);
 			}
 			else if (direction < 0)
 			{
-				BeginPush(WalkDirection.Right);
+				PushInDir(WalkDirection.Right);
 			}
-			else if (shouldGrip)
+			else
 			{
-				BeginPush(WalkDirection.None);
+				PushInDir(WalkDirection.None);
 			}
 		}
 
@@ -142,7 +142,7 @@
 		/// Begin push if possible
 		/// </summary>
 		/// <param name="direction"></param>
-		private void BeginPush(WalkDirection direction)
+		private void PushInDir(WalkDirection direction)
 		{
 			if (direction != WalkDirection.None)
 			{
@@ -161,6 +161,7 @@
 			SetWalkDirection(direction);
 			if (direction != WalkDirection.None)
 			{
+				SetPrevWalkDirection(direction);
 				mPrevPushDir = direction;
 			}
 		}
@@ -197,7 +198,7 @@
 		{
 			Vector2 min;
 			Vector2 max;
-			int length = mIsExtended ? 0 : mLength;
+			int length = mIsExtended ? mLength : 0;
 
 			switch (GetGravityDir())
 			{
@@ -239,21 +240,21 @@
 			CardinalDirection gravityDir = GetGravityDir();
 			DrawLayer drawLayer = GetDrawLayer();
 
-			Texture2D potTexture = mIsExtended ? mOnSeasonTexture : mOffSeasonTexture;
-			MonoDraw.DrawPlatformer(info, originalTextureRect, potTexture, Color.White, gravityDir, mPrevDirection, drawLayer);
+			Texture2D potTexture = mIsExtended ? mOffSeasonTexture : mOnSeasonTexture;
+			MonoDraw.DrawPlatformer(info, originalTextureRect, potTexture, Color.White, gravityDir, WalkDirection.Right, drawLayer);
 
 			Vector2 negGravity = -Tile.sTILE_SIZE * Util.GetNormal(gravityDir);
 			for (int i = 0; i < mLength; ++i)
 			{
 				Texture2D treeTexture = mGhostTexture;
-				if (!mIsExtended)
+				if (mIsExtended)
 				{
 					treeTexture = i == mLength - 1 ? mTopTexture : mMiddleTexture;
 				}
 				originalTextureRect.min += negGravity;
 				originalTextureRect.max += negGravity;
 
-				MonoDraw.DrawPlatformer(info, originalTextureRect, treeTexture, Color.White, gravityDir, mPrevDirection, drawLayer);
+				MonoDraw.DrawPlatformer(info, originalTextureRect, treeTexture, Color.White, gravityDir, WalkDirection.Right, drawLayer);
 			}
 		}
 
