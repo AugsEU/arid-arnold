@@ -10145,3 +10145,9 @@
 #begin Text/EN/NPC/Barbara/Home.txt
 /copy:Text/EN/NPC/Barbara/Home.txt
 
+#begin Shared/Door/DoorOutOfTime.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/Door/DoorOutOfTime.png
+

@@ -18,6 +18,7 @@
 
 		Texture2D mOpenTexture;
 		Texture2D mClosedTexture;
+		Texture2D mOutOfTimeTexture;
 		Texture2D[] mNumberTextures;
 
 		LevelSequenceInfoBubble mHelpBubble;
@@ -75,6 +76,7 @@
 		{
 			mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorOpen");
 			mClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorClosed");
+			mOutOfTimeTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorOutOfTime");
 
 			mNumberTextures = new Texture2D[10];
 			mNumberTextures[0] = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorZero");
@@ -170,14 +172,10 @@
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			if (!IsInCorrectTimeZone())
-			{
-				return;
-			}
+			Texture2D texture = IsInCorrectTimeZone() ? mTexture : mOutOfTimeTexture;
+			MonoDraw.DrawTextureDepth(info, texture, mPosition, DrawLayer.Default);
 
-			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.Default);
-
-			if (mDoorOpen == false)
+			if (mDoorOpen == false && IsInCorrectTimeZone())
 			{
 				Color numberCol = mAlreadyCompleted ? Color.Gray : Color.White;
 				MonoDraw.DrawTextureDepthColor(info, mNumberTextures[mLevelSequence.Count], mPosition, numberCol, DrawLayer.Default);
