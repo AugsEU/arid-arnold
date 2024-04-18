@@ -6,6 +6,8 @@ namespace AridArnold
 	{
 		public List<Entity> mPersistentEntities;
 		public Level mHubRoom;
+		public int mEnterAge;
+		public int mEnterTimeZone;
 	}
 
 	class CampaignManager : Singleton<CampaignManager>
@@ -258,6 +260,8 @@ namespace AridArnold
 					HubReturnInfo retInfo = new HubReturnInfo();
 					retInfo.mPersistentEntities = EntityManager.I.GetAllPersistent();
 					retInfo.mHubRoom = mCurrentLevel;
+					retInfo.mEnterAge = TimeZoneManager.I.GetCurrentPlayerAge();
+					retInfo.mEnterTimeZone = TimeZoneManager.I.GetCurrentTimeZone();
 					mHubReturnInfo = retInfo;
 
 					// Set lives

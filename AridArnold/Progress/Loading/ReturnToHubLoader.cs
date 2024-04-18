@@ -14,16 +14,18 @@
 		protected void ReturnToHubLoad()
 		{
 			// To do: Make this more complex
-			HubReturnInfo? returnInfo = CampaignManager.I.GetReturnInfo();
-			MonoDebug.Assert(returnInfo != null);
+			HubReturnInfo returnInfo = CampaignManager.I.GetReturnInfo().Value;
+			TimeZoneManager.I.SetCurrentTimeZoneAndAge(returnInfo.mEnterTimeZone, returnInfo.mEnterAge);
 
-			LoadLevel(returnInfo.Value.mHubRoom);
+			LoadLevel(returnInfo.mHubRoom);
 
 			// Bring these back to life
-			foreach (Entity entity in returnInfo.Value.mPersistentEntities)
+			foreach (Entity entity in returnInfo.mPersistentEntities)
 			{
 				EntityManager.I.InsertEntity(entity);
 			}
+
+
 
 			GoToFadeIn();
 		}
