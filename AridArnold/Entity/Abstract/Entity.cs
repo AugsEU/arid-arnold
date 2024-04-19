@@ -400,7 +400,7 @@
 
 				// NPC
 				case EntityData.EntityClass.kSimpleNPC:
-					entity = new SimpleTalkNPC(worldPosition, data.mNPCDataPath, data.mTalkText, data.mHeckleText);
+					entity = new SimpleTalkNPC(worldPosition, data.mNPCDataPath, data.mTalkText, data.mHeckleText, data.mIntParams[0] == 1, data.mIntParams[1] == 1);
 					break;
 				case EntityData.EntityClass.kBickDogel: // Special NPC
 					entity = new GrillVogel(worldPosition);

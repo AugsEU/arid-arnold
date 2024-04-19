@@ -22,6 +22,10 @@
 		// Data path
 		string mDataPath;
 
+		// Time
+		bool mNPCInTime;
+		bool mNPCInAge;
+
 		// Textures
 		IdleAnimator mIdleAnimation;
 		Animator mWalkAnimation;
@@ -49,8 +53,11 @@
 		/// <summary>
 		/// Put SimpleTalkNPC at a position
 		/// </summary>
-		public SimpleTalkNPC(Vector2 pos, string dataPath, string talkText, string heckleText) : base(pos)
+		public SimpleTalkNPC(Vector2 pos, string dataPath, string talkText, string heckleText, bool npcInTime, bool npcInAge) : base(pos)
 		{
+			mNPCInTime = npcInTime;
+			mNPCInAge = npcInAge;
+
 			mTalking = false;
 			mDataPath = Path.Join("Content/", dataPath);
 			mTalkText = talkText;
@@ -60,6 +67,8 @@
 			mWalkTimer.Start();
 			mWalkSpeed = WALK_SPEED;
 			mIsWalkingType = false;
+
+
 		}
 
 
@@ -77,15 +86,25 @@
 
 			mIsWalkingType = rootNode["walk"] is not null;
 			mStyle = MonoParse.GetSpeechBoxStyle(rootNode["textStyle"]);
-			mIdleAnimation = MonoData.I.LoadIdleAnimator(Path.Combine(folder, "Idle.mia"));
 
-			string normTex = Path.Combine(folder, "TalkNormal");
-			string angryTex = Path.Combine(folder, "TalkAngry");
-			string closedTex = Path.Combine(folder, "Default");
+			// System of fallbacks for textures
+			List<string> idleAnimPaths = new List<string>{ "Idle" };
+			List<string> talkNormalPaths = new List<string> { "TalkNormal" };
+			List<string> talkAngryPaths = new List<string> { "TalkAngry" };
+			List<string> talkClosedPaths = new List<string> { "Default" };
 
-			mTalkTexture = MonoData.I.FileExists(normTex) ? MonoData.I.MonoGameLoad<Texture2D>(normTex) : null;
-			mAngryTexture = MonoData.I.FileExists(angryTex) ? MonoData.I.MonoGameLoad<Texture2D>(angryTex) : null;
-			mMouthClosedTexture = MonoData.I.FileExists(closedTex) ? MonoData.I.MonoGameLoad<Texture2D>(closedTex) : null;
+			if(mNPCInAge || mNPCInTime)
+			{
+				AppendTimeAllInList(ref idleAnimPaths);
+				AppendTimeAllInList(ref talkNormalPaths);
+				AppendTimeAllInList(ref talkAngryPaths);
+				AppendTimeAllInList(ref talkClosedPaths);
+			}
+
+			mIdleAnimation = MonoData.I.LoadFirstThatExistsFolderIdleAnimator(folder, idleAnimPaths);
+			mTalkTexture = MonoData.I.LoadFirstThatExistsFolderTexture2D(folder, talkNormalPaths);
+			mAngryTexture = MonoData.I.LoadFirstThatExistsFolderTexture2D(folder, talkAngryPaths);
+			mMouthClosedTexture = MonoData.I.LoadFirstThatExistsFolderTexture2D(folder, talkClosedPaths);
 
 			if (mIsWalkingType)
 			{
@@ -96,6 +115,55 @@
 			}
 
 			base.LoadContent();
+		}
+
+
+
+		/// <summary>
+		/// Append string based on time
+		/// </summary>
+		string AppendBasedOnTime(string toAppend)
+		{
+			if(toAppend is null)
+			{
+				return null;
+			}
+
+			if(toAppend.Length == 0)
+			{
+				return "";
+			}
+
+			int time = TimeZoneManager.I.GetCurrentTimeZone();
+			int age = TimeZoneManager.I.GetCurrentPlayerAge();
+
+			if(mNPCInTime && mNPCInAge)
+			{
+				return string.Format("{0}{1}{2}", toAppend, time.ToString(), age.ToString());
+			}
+			else if(mNPCInTime)
+			{
+				return string.Format("{0}{1}", toAppend, time.ToString());
+			}
+			else if(mNPCInAge)
+			{
+				return string.Format("{0}{1}", toAppend, age.ToString());
+			}
+
+			return toAppend;
+		}
+
+
+
+		/// <summary>
+		/// Append time suffix to items in list
+		/// </summary>
+		void AppendTimeAllInList(ref List<string> paths)
+		{
+			for(int i = 0; i < paths.Count; i+=2)
+			{
+				paths.Insert(0, AppendBasedOnTime(paths[i]));
+			}
 		}
 
 		#endregion rInitialisation
@@ -138,6 +206,12 @@
 			if (mIsWalkingType)
 			{
 				WalkUpdate(gameTime);
+			}
+
+			if(EventManager.I.IsSignaled(EventType.TimeChanged))
+			{
+				// BODGE
+				LoadContent();
 			}
 
 			mIdleAnimation.Update(gameTime);
@@ -298,7 +372,8 @@
 		/// </summary>
 		protected void DoNormalSpeak()
 		{
-			AddDialogBox(mTalkText);
+			string talkID = AppendBasedOnTime(mTalkText);
+			AddDialogBox(talkID);
 		}
 
 
@@ -312,7 +387,8 @@
 				GetCurrentBlock().Stop();
 				return;
 			}
-			AddDialogBox(mHeckleText);
+			string talkID = AppendBasedOnTime(mHeckleText);
+			AddDialogBox(talkID);
 		}
 
 		#endregion rDialog

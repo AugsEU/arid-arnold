@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.IO;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Handles data mappings.
@@ -50,9 +52,19 @@
 		/// <summary>
 		/// Does file exist?
 		/// </summary>
-		public bool FileExists(string path)
+		public bool TextureFileExists(string path)
 		{
 			return File.Exists($@"Content\{GetRemappedPath(path)}.xnb");
+		}
+
+
+
+		/// <summary>
+		/// Does file exist?
+		/// </summary>
+		public bool FileExists(string path)
+		{
+			return File.Exists($@"Content\{GetRemappedPath(path)}");
 		}
 
 
@@ -100,6 +112,11 @@
 		/// </summary>
 		public IdleAnimator LoadIdleAnimator(string path)
 		{
+			if(!path.EndsWith(".mia"))
+			{
+				path += ".mia";
+			}
+
 			path = GetRemappedPath(path);
 
 			IdleAnimatorData animData = null;
@@ -118,6 +135,65 @@
 
 			return animData.GenerateIdleAnimator();
 		}
+
+
+
+		/// <summary>
+		/// Returns first string that is a real file in list
+		/// </summary>
+		public string FirstThatExists(List<string> paths)
+		{
+			foreach (string path in paths)
+			{
+				if (TextureFileExists(path)) return path;
+			}
+
+			return null;
+		}
+
+
+
+		/// <summary>
+		/// Load first item in folder that exists
+		/// </summary>
+		public Texture2D LoadFirstThatExistsFolderTexture2D(string folder, List<string> pathsToTry)
+		{
+			foreach (string path in pathsToTry)
+			{
+				string fullPath = Path.Combine(folder, path);
+				if (TextureFileExists(fullPath))
+				{
+					return MonoGameLoad<Texture2D>(fullPath);
+				}
+			}
+
+			return null;
+		}
+
+
+
+		/// <summary>
+		/// Load first item in folder that exists
+		/// </summary>
+		public IdleAnimator LoadFirstThatExistsFolderIdleAnimator(string folder, List<string> pathsToTry)
+		{
+			foreach (string path in pathsToTry)
+			{
+				string fullPath = Path.Combine(folder, path);
+				if (!fullPath.EndsWith(".mia"))
+				{
+					fullPath += ".mia";
+				}
+
+				if (FileExists(fullPath))
+				{
+					return LoadIdleAnimator(fullPath);
+				}
+			}
+
+			return null;
+		}
+
 
 		#endregion rLoading
 

@@ -1879,6 +1879,30 @@
 /processorParam:TextureFormat=Color
 /build:BG/Mirror/BushMother.png
 
+#begin BG/Mirror/Fluff.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mirror/Fluff.png
+
+#begin BG/Mirror/Leaf.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Mirror/Leaf.png
+
 #begin BG/Mirror/Mirror1.mlo
 /copy:BG/Mirror/Mirror1.mlo
 
@@ -4098,6 +4122,51 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0509.png
+
+#begin Campaigns/MainCampaign/Levels/0510.aux
+/copy:Campaigns/MainCampaign/Levels/0510.aux
+
+#begin Campaigns/MainCampaign/Levels/0510.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0510.png
+
+#begin Campaigns/MainCampaign/Levels/0511.aux
+/copy:Campaigns/MainCampaign/Levels/0511.aux
+
+#begin Campaigns/MainCampaign/Levels/0511.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0511.png
+
+#begin Campaigns/MainCampaign/Levels/0512.aux
+/copy:Campaigns/MainCampaign/Levels/0512.aux
+
+#begin Campaigns/MainCampaign/Levels/0512.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0512.png
 
 #begin Campaigns/MainCampaign/Levels/0601.aux
 /copy:Campaigns/MainCampaign/Levels/0601.aux
@@ -7403,9 +7472,6 @@
 #begin NPC/LazyMan/LazyMan.mtn
 /copy:NPC/LazyMan/LazyMan.mtn
 
-#begin NPC/LazyMan/Scholar.mtn
-/copy:NPC/LazyMan/Scholar.mtn
-
 #begin NPC/LazyMan/TalkAngry.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -7601,9 +7667,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Scientisimo/Itch1.png
 
-#begin NPC/Scientisimo/Scholar.mtn
-/copy:NPC/Scientisimo/Scholar.mtn
-
 #begin NPC/Scientisimo/Scientisimo.mtn
 /copy:NPC/Scientisimo/Scientisimo.mtn
 
@@ -7717,6 +7780,39 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/SciFigh/Walk1.png
+
+#begin NPC/Tome/Default0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Tome/Default0.png
+
+#begin NPC/Tome/Default1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Tome/Default1.png
+
+#begin NPC/Tome/Idle0.mia
+/copy:NPC/Tome/Idle0.mia
+
+#begin NPC/Tome/Idle1.mia
+/copy:NPC/Tome/Idle1.mia
+
+#begin NPC/Tome/Tome.mtn
+/copy:NPC/Tome/Tome.mtn
 
 #begin NPC/Treey/Default.png
 /importer:TextureImporter
@@ -8126,6 +8222,18 @@
 /processorParam:TextureFormat=Color
 /build:Shared/Door/DoorOpen.png
 
+#begin Shared/Door/DoorOutOfTime.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/Door/DoorOutOfTime.png
+
 #begin Shared/Door/DoorSeven.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -8467,6 +8575,9 @@
 
 #begin Text/EN/NPC/Barbara/Heckle.txt
 /copy:Text/EN/NPC/Barbara/Heckle.txt
+
+#begin Text/EN/NPC/Barbara/Home.txt
+/copy:Text/EN/NPC/Barbara/Home.txt
 
 #begin Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
 /copy:Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
@@ -10103,51 +10214,9 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin BG/Mirror/Fluff.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Mirror/Fluff.png
+#begin Text/EN/NPC/Tome/AgeExplain0.txt
+/copy:Text/EN/NPC/Tome/AgeExplain0.txt
 
-#begin BG/Mirror/Leaf.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Mirror/Leaf.png
-
-#begin Campaigns/MainCampaign/Levels/0510.aux
-/copy:Campaigns/MainCampaign/Levels/0510.aux
-
-#begin Campaigns/MainCampaign/Levels/0510.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0510.png
-
-#begin Campaigns/MainCampaign/Levels/0511.aux
-/copy:Campaigns/MainCampaign/Levels/0511.aux
-
-#begin Campaigns/MainCampaign/Levels/0511.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0511.png
-
-#begin Campaigns/MainCampaign/Levels/0512.aux
-/copy:Campaigns/MainCampaign/Levels/0512.aux
-
-#begin Campaigns/MainCampaign/Levels/0512.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0512.png
-
-#begin Text/EN/NPC/Barbara/Home.txt
-/copy:Text/EN/NPC/Barbara/Home.txt
-
-#begin Shared/Door/DoorOutOfTime.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/Door/DoorOutOfTime.png
+#begin Text/EN/NPC/Tome/AgeExplain1.txt
+/copy:Text/EN/NPC/Tome/AgeExplain1.txt
 
