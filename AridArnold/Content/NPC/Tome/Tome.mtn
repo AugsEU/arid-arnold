@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Tome</name>
 	<textStyle>
-		<fillColor>37393DAF</fillColor>
+		<fillColor>37393DDF</fillColor>
 		<borderColor>121314</borderColor>
 	</textStyle>
 </simpleTalkNPC>

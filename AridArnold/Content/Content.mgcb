@@ -10217,3 +10217,9 @@
 #begin Text/EN/NPC/Tome/AgeExplain.txt
 /copy:Text/EN/NPC/Tome/AgeExplain.txt
 
+#begin Text/EN/NPC/Tome/KingdomRuin.txt
+/copy:Text/EN/NPC/Tome/KingdomRuin.txt
+
+#begin Text/EN/NPC/Tome/LastMonarch.txt
+/copy:Text/EN/NPC/Tome/LastMonarch.txt
+
