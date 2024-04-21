@@ -10214,9 +10214,6 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Text/EN/NPC/Tome/AgeExplain0.txt
-/copy:Text/EN/NPC/Tome/AgeExplain0.txt
-
-#begin Text/EN/NPC/Tome/AgeExplain1.txt
-/copy:Text/EN/NPC/Tome/AgeExplain1.txt
+#begin Text/EN/NPC/Tome/AgeExplain.txt
+/copy:Text/EN/NPC/Tome/AgeExplain.txt
 

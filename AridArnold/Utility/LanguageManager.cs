@@ -24,6 +24,7 @@
 
 		LanguageType mLanguageType = LanguageType.None;
 		Dictionary<string, string> mKeyCache = new Dictionary<string, string>();
+		HashSet<string> mInvalidKeys = new HashSet<string>();
 
 
 		#endregion rMembers
@@ -120,6 +121,17 @@
 			}
 
 			return TextPreprocessor.Process(rawText);
+		}
+
+
+
+		/// <summary>
+		/// Does the key exist in our loaded language?
+		/// </summary>
+		public bool KeyExists(string ID)
+		{
+			// Note: Cache is always complete.
+			return mKeyCache.ContainsKey(ID);
 		}
 
 		#endregion rText

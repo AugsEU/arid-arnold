@@ -372,7 +372,7 @@
 		/// </summary>
 		protected void DoNormalSpeak()
 		{
-			string talkID = AppendBasedOnTime(mTalkText);
+			string talkID = GetStringIDFromBaseID(mTalkText);
 			AddDialogBox(talkID);
 		}
 
@@ -387,8 +387,24 @@
 				GetCurrentBlock().Stop();
 				return;
 			}
-			string talkID = AppendBasedOnTime(mHeckleText);
+			string talkID = GetStringIDFromBaseID(mHeckleText);
 			AddDialogBox(talkID);
+		}
+
+
+
+		/// <summary>
+		/// Get string ID to load
+		/// </summary>
+		string GetStringIDFromBaseID(string baseID)
+		{
+			string timeID = AppendBasedOnTime(baseID);
+			if (LanguageManager.I.KeyExists(timeID))
+			{
+				return timeID;
+			}
+
+			return baseID;
 		}
 
 		#endregion rDialog
