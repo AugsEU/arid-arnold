@@ -7781,6 +7781,63 @@
 /processorParam:TextureFormat=Color
 /build:NPC/SciFigh/Walk1.png
 
+#begin NPC/SciOld/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/SciOld/Default.png
+
+#begin NPC/SciOld/Idle.mia
+/copy:NPC/SciOld/Idle.mia
+
+#begin NPC/SciOld/Itch.max
+/copy:NPC/SciOld/Itch.max
+
+#begin NPC/SciOld/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/SciOld/Itch1.png
+
+#begin NPC/SciOld/SciOld.mtn
+/copy:NPC/SciOld/SciOld.mtn
+
+#begin NPC/SciOld/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/SciOld/TalkAngry.png
+
+#begin NPC/SciOld/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/SciOld/TalkNormal.png
+
 #begin NPC/Tome/Default0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -8782,6 +8839,24 @@
 
 #begin Text/EN/NPC/SciFigh/Intro.txt
 /copy:Text/EN/NPC/SciFigh/Intro.txt
+
+#begin Text/EN/NPC/SciOld/Heckle.txt
+/copy:Text/EN/NPC/SciOld/Heckle.txt
+
+#begin Text/EN/NPC/SciOld/WorldWar0.txt
+/copy:Text/EN/NPC/SciOld/WorldWar0.txt
+
+#begin Text/EN/NPC/SciOld/WorldWar1.txt
+/copy:Text/EN/NPC/SciOld/WorldWar1.txt
+
+#begin Text/EN/NPC/Tome/AgeExplain.txt
+/copy:Text/EN/NPC/Tome/AgeExplain.txt
+
+#begin Text/EN/NPC/Tome/KingdomRuin.txt
+/copy:Text/EN/NPC/Tome/KingdomRuin.txt
+
+#begin Text/EN/NPC/Tome/LastMonarch.txt
+/copy:Text/EN/NPC/Tome/LastMonarch.txt
 
 #begin Text/EN/NPC/Treey/Child.txt
 /copy:Text/EN/NPC/Treey/Child.txt
@@ -10213,13 +10288,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Text/EN/NPC/Tome/AgeExplain.txt
-/copy:Text/EN/NPC/Tome/AgeExplain.txt
-
-#begin Text/EN/NPC/Tome/KingdomRuin.txt
-/copy:Text/EN/NPC/Tome/KingdomRuin.txt
-
-#begin Text/EN/NPC/Tome/LastMonarch.txt
-/copy:Text/EN/NPC/Tome/LastMonarch.txt
 

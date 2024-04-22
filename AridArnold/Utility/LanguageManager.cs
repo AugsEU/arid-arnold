@@ -46,7 +46,7 @@
 			{
 				string rawText = File.ReadAllText(filePath);
 				string ID = MonoData.I.StripBasePath(GetBasePath(), filePath);
-				ID = ID.Substring(ID.Length - 4);//Remove .txt
+				ID = ID.Substring(0, ID.Length - 4);//Remove .txt
 				ID = ID.Replace('\\', '.');
 
 				mKeyCache[ID] = rawText;
