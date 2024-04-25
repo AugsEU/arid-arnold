@@ -10289,3 +10289,27 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin FireBarrel/Barrel1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:FireBarrel/Barrel1.png
+
+#begin FireBarrel/Barrel2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:FireBarrel/Barrel2.png
+
+#begin FireBarrel/Barrel3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:FireBarrel/Barrel3.png
+
+#begin FireBarrel/Barrel4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:FireBarrel/Barrel4.png
+

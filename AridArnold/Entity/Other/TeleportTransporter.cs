@@ -208,8 +208,11 @@
 				CardinalDirection inverseDir = Util.InvertDirection(Util.CardinalDirectionFromVector(dir));
 				if (inverseDir == platformingEntity.GetGravityDir())
 				{
-					platformingEntity.AllowWalkChangeFor(1);
+					platformingEntity.AllowWalkChangeFor(4);
 				}
+
+				platformingEntity.ResetAllJumpHelpers();
+				platformingEntity.SetGrounded(false);
 
 				//HACK (Sorry Gaben)
 				if (platformingEntity is Roboto)

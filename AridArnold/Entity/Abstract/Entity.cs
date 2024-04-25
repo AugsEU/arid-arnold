@@ -405,6 +405,10 @@
 				case EntityData.EntityClass.kBickDogel: // Special NPC
 					entity = new GrillVogel(worldPosition);
 					break;
+				case EntityData.EntityClass.kFireBarrel:
+					entity = new FireBarrel(worldPosition);
+					break;
+
 				// Utility
 				case EntityData.EntityClass.kArnoldSpawner:
 					entity = new ArnoldRespawn(worldPosition, data.mGravityDirection, data.mStartDirection);

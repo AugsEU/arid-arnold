@@ -164,14 +164,14 @@
 				{
 					if (!mOnGround)
 					{
-						if (sideVel > mWalkSpeed * 0.5f)
-						{
-							mWalkDirection = WalkDirection.Right;
-						}
-						else if (sideVel < -mWalkSpeed * 0.5f)
-						{
-							mWalkDirection = WalkDirection.Left;
-						}
+						//if (sideVel > mWalkSpeed * 0.5f)
+						//{
+						//	mWalkDirection = WalkDirection.Right;
+						//}
+						//else if (sideVel < -mWalkSpeed * 0.5f)
+						//{
+						//	mWalkDirection = WalkDirection.Left;
+						//}
 					}
 
 					motorDirection = mWalkDirection;
