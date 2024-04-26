@@ -10313,3 +10313,9 @@
 /processorParam:PremultiplyAlpha=False
 /build:FireBarrel/Barrel4.png
 
+#begin Particles/SmokeSet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Particles/SmokeSet.png
+

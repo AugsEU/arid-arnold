@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using Microsoft.Xna.Framework;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Manages all effects that display on screen.
@@ -26,6 +28,7 @@
 		{
 			mScreenHeight = screenHeight;
 			mScreenWidth = screenWidth;
+			ParticleManager.I.Init();
 		}
 
 		#endregion rInitialisation
@@ -42,6 +45,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
+			ParticleManager.I.Update(gameTime);
 			for (int i = 0; i < mFXList.Count; i++)
 			{
 				FX fx = mFXList[i];
@@ -76,6 +80,7 @@
 			{
 				fx.Draw(info);
 			}
+			ParticleManager.I.Draw(info);
 		}
 
 		#endregion rDraw
@@ -149,6 +154,7 @@
 		public void Clear()
 		{
 			mFXList.Clear();
+			ParticleManager.I.Clear();
 		}
 
 		#endregion rAddEffects
@@ -165,6 +171,18 @@
 		public Point GetDrawableSize()
 		{
 			return new Point(mScreenWidth, mScreenHeight);
+		}
+
+
+
+		/// <summary>
+		/// Are we offscreen?
+		/// </summary>
+		public bool OutsideFXRegion(Vector2 pos)
+		{
+			const float TOLERANCE = 10.0f;
+			return pos.X < -TOLERANCE || pos.Y < -TOLERANCE
+				|| pos.X > mScreenWidth + TOLERANCE || pos.Y > mScreenHeight + TOLERANCE;
 		}
 
 		#endregion rUtility

@@ -16,6 +16,7 @@
 		Background = 0,
 		BackgroundElement,
 		SubEntity,
+		Particle, // Reserved for particles for better batching.
 		Default,
 		Player,
 		Tile,

@@ -122,6 +122,15 @@
 
 
 		/// <summary>
+		/// Get number of length
+		/// </summary>
+		static public int EnumLength(Type enumType)
+		{
+			return Enum.GetNames(enumType).Length;
+		}
+
+
+		/// <summary>
 		/// Test if a value contains a flag.
 		/// </summary>
 		static public bool TestFlag<T>(T value, params T[] flags) where T : struct, Enum
