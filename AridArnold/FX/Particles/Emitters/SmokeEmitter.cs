@@ -24,7 +24,7 @@ namespace AridArnold
 			MonoRandom rng = RandomManager.I.GetDraw();
 			if(rng.PercentChance(EMIT_CHANCE))
 			{
-				byte textureIndex = (byte)(rng.GetIntRange(0, 3));
+				byte textureIndex = (byte)(rng.GetIntRange(0, 4));
 				Color color = COLOR_TABLE[rng.GetIntRange(0, COLOR_TABLE.Length-1)];
 
 				float xDiff = rng.GetFloatRange(-X_DIFF_VAR, X_DIFF_VAR);
