@@ -6349,6 +6349,54 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/trundle/TrundleWalk4.png
 
+#begin FireBarrel/Barrel1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FireBarrel/Barrel1.png
+
+#begin FireBarrel/Barrel2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FireBarrel/Barrel2.png
+
+#begin FireBarrel/Barrel3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FireBarrel/Barrel3.png
+
+#begin FireBarrel/Barrel4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FireBarrel/Barrel4.png
+
 #begin Fonts/Pixica.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -7940,6 +7988,63 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Treey/Walk3.png
 
+#begin NPC/Vagabond/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Vagabond/Default.png
+
+#begin NPC/Vagabond/Idle.mia
+/copy:NPC/Vagabond/Idle.mia
+
+#begin NPC/Vagabond/Itch.max
+/copy:NPC/Vagabond/Itch.max
+
+#begin NPC/Vagabond/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Vagabond/Itch1.png
+
+#begin NPC/Vagabond/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Vagabond/TalkAngry.png
+
+#begin NPC/Vagabond/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Vagabond/TalkNormal.png
+
+#begin NPC/Vagabond/Vagabond.mtn
+/copy:NPC/Vagabond/Vagabond.mtn
+
 #begin NPC/Zippy/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -8023,6 +8128,18 @@
 
 #begin NPC/Zippy/Zippy.mtn
 /copy:NPC/Zippy/Zippy.mtn
+
+#begin Particles/SmokeSet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Particles/SmokeSet.png
 
 #begin PlantPot/PillarBase.png
 /importer:TextureImporter
@@ -8866,6 +8983,12 @@
 
 #begin Text/EN/NPC/Treey/Platforms.txt
 /copy:Text/EN/NPC/Treey/Platforms.txt
+
+#begin Text/EN/NPC/Vagabond/DemonWorld.txt
+/copy:Text/EN/NPC/Vagabond/DemonWorld.txt
+
+#begin Text/EN/NPC/Vagabond/Heckle.txt
+/copy:Text/EN/NPC/Vagabond/Heckle.txt
 
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
@@ -10288,34 +10411,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin FireBarrel/Barrel1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:FireBarrel/Barrel1.png
-
-#begin FireBarrel/Barrel2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:FireBarrel/Barrel2.png
-
-#begin FireBarrel/Barrel3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:FireBarrel/Barrel3.png
-
-#begin FireBarrel/Barrel4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:FireBarrel/Barrel4.png
-
-#begin Particles/SmokeSet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Particles/SmokeSet.png
 
