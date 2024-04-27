@@ -10412,3 +10412,9 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Text/EN/InGame/PromptEnter.txt
+/copy:Text/EN/InGame/PromptEnter.txt
+
+#begin Text/EN/NPC/Barbara/ScriptTest.txt
+/copy:Text/EN/NPC/Barbara/ScriptTest.txt
+

@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.Xml.Linq;
+
+namespace AridArnold
 {
 	internal class SmartTextBlock
 	{
@@ -18,6 +20,19 @@
 
 
 
+		#region rConstants
+
+		static readonly Type[] SCRIPT_TYPES = 
+		{ 
+			typeof(CoinFlipScript)
+		};
+
+		#endregion rConstants
+
+
+
+
+
 		#region rMembers
 
 		string mText; // Raw text
@@ -28,6 +43,7 @@
 		int mDefaultFrameCount;
 		TextMood mMood;
 		LetterAnimation mAnimation;
+		TextScript mCurrentScript;
 
 		#endregion rMembers
 
@@ -337,13 +353,20 @@
 						case 'Σ':
 							ParseShaker();
 							break;
+						case 'ζ':
+							ParseScript();
+							break;
 						default:
+#if DEBUG
+							throw new Exception("Invalid control sequence character");
+#else
 							return;
+#endif
 					}
 
 					if (GetCurrentChar() != '>')
 					{
-						throw new FormatException("INVALID TEXT FORMAT! DID NOT END CONTROL SEQUENCE!!");
+						throw new FormatException("Invalid text format. Did not end control sequence.");
 					}
 					mRawCharHead++;
 				}
@@ -396,6 +419,16 @@
 			int frame = ParseNumber();
 
 			mAnimation = new LetterAnimShaking(intensity, frame, col);
+		}
+
+		/// <summary>
+		/// Parse script element
+		/// </summary>
+		void ParseScript()
+		{
+			mRawCharHead++;
+			int scriptIndex = ParseNumber();
+			mCurrentScript = (TextScript)Activator.CreateInstance(SCRIPT_TYPES[scriptIndex], this);
 		}
 
 
@@ -454,6 +487,36 @@
 			}
 
 			return '\0';
+		}
+
+
+
+		/// <summary>
+		/// Get the active script
+		/// </summary>
+		public TextScript GetScript()
+		{
+			return mCurrentScript;
+		}
+
+
+
+		/// <summary>
+		/// Add text to the text box
+		/// </summary>
+		public void AppendText(string text)
+		{
+			mText += text;
+			mSanitisedText += SanitiseText(ref text);
+		}
+
+
+		public void CheckScriptEnd()
+		{
+			if(mCurrentScript is not null && mCurrentScript.IsFinished())
+			{
+				mCurrentScript = null;
+			}
 		}
 
 		#endregion rUtility

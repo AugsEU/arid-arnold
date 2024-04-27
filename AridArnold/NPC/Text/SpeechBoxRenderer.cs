@@ -128,26 +128,43 @@
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
+			TextScript textScript = null;
+
 			//Slowly increase speed when the tile is stopped.
-			if (IsStopped())
+			if (IsTextFinished())
 			{
 				mStyle.mScrollSpeed += 0.05f * dt;
 			}
+			else
+			{
+				textScript = mCurrentBlock.GetScript();
+			}
 
-			ScrollLettersUp(dt);
+			bool haltRequested = false;
+			if (textScript is not null)
+			{
+				textScript.Update(gameTime);
+				haltRequested = textScript.HaltText();
+				mCurrentBlock.CheckScriptEnd();
+			}
 
 			foreach (SpeechBoxLetter letter in mLetters)
 			{
 				letter.Update(gameTime);
 			}
 
-			if (!IsStopped() && (mCharHead.Y + GetNewLineSize()) < 0.0f)
+			if (!haltRequested)
 			{
-				bool newLetter = mCurrentBlock.AdvanceTimeStep();
+				ScrollLettersUp(dt);
 
-				if (newLetter)
+				if (!IsTextFinished() && (mCharHead.Y + GetNewLineSize()) < 0.0f)
 				{
-					PlaceNewLetter();
+					bool newLetter = mCurrentBlock.AdvanceTimeStep();
+
+					if (newLetter)
+					{
+						PlaceNewLetter();
+					}
 				}
 			}
 
@@ -170,7 +187,7 @@
 
 			mTopLeft.Y += dy;
 
-			if (IsStopped())
+			if (IsTextFinished())
 			{
 				mBottomLeft.Y += dy;
 
@@ -269,7 +286,7 @@
 			MonoDraw.DrawLine(info, BR, TR, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 			MonoDraw.DrawLine(info, TR, TL, mStyle.mBorderColor, BORDER_WIDTH, DrawLayer.Bubble);
 
-			if (!IsStopped() && mSpikeOffset > 0.0f)
+			if (!IsTextFinished() && mSpikeOffset > 0.0f)
 			{
 				SpriteEffects spikeEffects = mStyle.mFlipSpike ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 				Vector2 spikePos = new Vector2(rectPosition.X + mSpikeOffset, rectPosition.Y + height);
@@ -463,7 +480,7 @@
 		/// </summary>
 		public SmartTextBlock.TextMood GetMood()
 		{
-			if (!IsStopped())
+			if (!IsTextFinished())
 			{
 				return mCurrentBlock.GetMood();
 			}
@@ -498,7 +515,7 @@
 		/// <summary>
 		/// Are we done with the text block?
 		/// </summary>
-		public bool IsStopped()
+		public bool IsTextFinished()
 		{
 			return mCurrentBlock is null;
 		}

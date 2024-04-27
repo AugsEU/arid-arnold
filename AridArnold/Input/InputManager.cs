@@ -112,6 +112,16 @@
 		{
 			return mInputBindings[key].AnyKeyHeld();
 		}
+
+
+
+		/// <summary>
+		/// Get set of input bindings for a certain action type
+		/// </summary>
+		public InputBindSet GetInputBindSet(AridArnoldKeys key)
+		{
+			return mInputBindings[key];
+		}
 		#endregion rKeySense
 	}
 }

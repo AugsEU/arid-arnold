@@ -77,6 +77,11 @@
 		{
 			return Keyboard.GetState().IsKeyDown(mInputKey);
 		}
+
+		public override string ToString()
+		{
+			return mInputKey.ToString();
+		}
 	}
 
 
@@ -108,6 +113,11 @@
 			}
 
 			throw new NotImplementedException();
+		}
+
+		public override string ToString()
+		{
+			return mMouseButton.ToString();
 		}
 	}
 }

@@ -292,7 +292,7 @@
 		{
 			if (HasAnyBoxes())
 			{
-				return !GetCurrentBlock().IsStopped();
+				return !GetCurrentBlock().IsTextFinished();
 			}
 
 			return false;

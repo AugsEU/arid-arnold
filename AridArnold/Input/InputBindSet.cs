@@ -72,5 +72,27 @@
 		}
 
 		#endregion rKeyPresses
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Convert to list of input strings
+		/// </summary>
+		public override string ToString()
+		{
+			string returnStr = "";
+			for(int i = 0; i < mBindings.Count; i++)
+			{
+				returnStr += mBindings[i].ToString();
+				if(i < mBindings.Count - 1) returnStr += ", ";
+			}
+
+			return returnStr;
+		}
+
+		#endregion rUtility
 	}
 }

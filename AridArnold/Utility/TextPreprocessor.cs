@@ -44,10 +44,24 @@
 		static string AddSubstituion(string subCode)
 		{
 			subCode = subCode.Substring(1, subCode.Length - 2);
+			// Direct names
 			switch (subCode)
 			{
 				case "GrillVogel":
 					return GenerateGrillVogelName();
+			}
+
+			// More complex matches
+			if (subCode.StartsWith("Str."))
+			{
+				subCode = subCode.Substring(4);
+				return LanguageManager.I.GetText(subCode);
+			}
+			else if(subCode.StartsWith("Key."))
+			{
+				subCode = subCode.Substring(4);
+				AridArnoldKeys key = MonoAlg.GetEnumFromString<AridArnoldKeys>(subCode);
+				return InputManager.I.GetInputBindSet(key).ToString();
 			}
 
 			throw new NotImplementedException("Did not recognise substitution code:" + subCode);
