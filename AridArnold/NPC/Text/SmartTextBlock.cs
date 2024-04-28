@@ -428,7 +428,28 @@ namespace AridArnold
 		{
 			mRawCharHead++;
 			int scriptIndex = ParseNumber();
-			mCurrentScript = (TextScript)Activator.CreateInstance(SCRIPT_TYPES[scriptIndex], this);
+
+			List<string> scriptArgs = new List<string>();
+			// Parse string args
+			while(GetCurrentChar() == '[')
+			{
+				string argument = "";
+				while(true)
+				{
+					mRawCharHead++;
+					if(GetCurrentChar() != ']')
+					{
+						argument += GetCurrentChar();
+					}
+					else
+					{
+						break;
+					}
+				}
+				scriptArgs.Add(argument);
+			}
+
+			mCurrentScript = (TextScript)Activator.CreateInstance(SCRIPT_TYPES[scriptIndex], this, scriptArgs.ToArray());
 		}
 
 
@@ -502,7 +523,7 @@ namespace AridArnold
 
 
 		/// <summary>
-		/// Add text to the text box
+		/// Add text to the end of text box
 		/// </summary>
 		public void AppendText(string text)
 		{
@@ -511,6 +532,24 @@ namespace AridArnold
 		}
 
 
+
+		/// <summary>
+		/// Append some text where the cursor currently is.
+		/// </summary>
+		/// <param name="text"></param>
+		public void AppendTextAtHead(string text)
+		{
+			mText = mText.Insert(mRawCharHead, text);
+			mSanitisedText = mSanitisedText.Insert(mSanitisedCharHead, SanitiseText(ref text));
+
+			mRawCharHead--;
+			mSanitisedCharHead--;
+		}
+
+
+		/// <summary>
+		/// Check if the script has ended
+		/// </summary>
 		public void CheckScriptEnd()
 		{
 			if(mCurrentScript is not null && mCurrentScript.IsFinished())

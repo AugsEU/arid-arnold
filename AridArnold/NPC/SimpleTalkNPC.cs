@@ -110,8 +110,11 @@
 			{
 				string walkAnim = Path.Combine(folder, "Walk.max");
 
-				mWalkAnimation = MonoData.I.LoadAnimator(walkAnim);
-				mWalkAnimation.Play();
+				if (MonoData.I.FileExists(walkAnim))
+				{
+					mWalkAnimation = MonoData.I.LoadAnimator(walkAnim);
+					mWalkAnimation.Play();
+				}
 			}
 
 			base.LoadContent();
@@ -237,7 +240,7 @@
 				mWalkTimer.Reset();
 			}
 
-			mWalkAnimation.Update(gameTime);
+			if(mWalkAnimation is not null) mWalkAnimation.Update(gameTime);
 
 			if (WantsWalk() && !IsTalking())
 			{

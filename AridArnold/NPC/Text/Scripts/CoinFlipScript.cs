@@ -3,7 +3,7 @@ namespace AridArnold
 {
 	internal class CoinFlipScript : OneShotScript
 	{
-		public CoinFlipScript(SmartTextBlock parentBlock) : base(parentBlock)
+		public CoinFlipScript(SmartTextBlock parentBlock, string[] args) : base(parentBlock, args)
 		{
 		}
 
@@ -13,7 +13,7 @@ namespace AridArnold
 			bool heads = rng.PercentChance(50.0f);
 
 			string toAppend = heads ? "Heads!" : "Tails!";
-			GetSmartTextBlock().AppendText(toAppend);
+			GetSmartTextBlock().AppendTextAtHead(toAppend);
 		}
 	}
 }

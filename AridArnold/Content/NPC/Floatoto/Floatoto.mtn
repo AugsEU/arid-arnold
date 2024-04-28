@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Floatoto</name>
+	<textStyle>
+		<fillColor>D1C9B8A2</fillColor>
+		<borderColor>AA002B</borderColor>
+	</textStyle>
+	<walk/>
+</simpleTalkNPC>

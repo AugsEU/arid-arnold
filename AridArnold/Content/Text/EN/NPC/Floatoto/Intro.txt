@@ -1,0 +1,2 @@
+﻿<α[121314]>fgrep "Fountain of water" . -r
+./sys/usr/FountainWater1.txt: The fountain of water is a mythological structure believed to be an endless source of water. Believed to have belonged to the native population of the fish kingdom. Our campaigns failed to find such a structure. At least we did manage to study their biology and harness the power of lasers.

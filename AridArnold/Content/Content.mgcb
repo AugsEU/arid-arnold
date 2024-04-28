@@ -7412,6 +7412,39 @@
 /processorParam:TextureFormat=Color
 /build:NPC/FallinFarry/Farry4.png
 
+#begin NPC/Floatoto/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Floatoto/Default.png
+
+#begin NPC/Floatoto/Float.max
+/copy:NPC/Floatoto/Float.max
+
+#begin NPC/Floatoto/Float1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Floatoto/Float1.png
+
+#begin NPC/Floatoto/Floatoto.mtn
+/copy:NPC/Floatoto/Floatoto.mtn
+
+#begin NPC/Floatoto/Idle.mia
+/copy:NPC/Floatoto/Idle.mia
+
 #begin NPC/GrillVogel/Angry1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -8744,6 +8777,9 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Text/EN/InGame/PromptEnter.txt
+/copy:Text/EN/InGame/PromptEnter.txt
+
 #begin Text/EN/InGame/TimeMachine.txt
 /copy:Text/EN/InGame/TimeMachine.txt
 
@@ -8761,6 +8797,9 @@
 
 #begin Text/EN/NPC/Barbara/Opening/WaterLine.txt
 /copy:Text/EN/NPC/Barbara/Opening/WaterLine.txt
+
+#begin Text/EN/NPC/Barbara/ScriptTest.txt
+/copy:Text/EN/NPC/Barbara/ScriptTest.txt
 
 #begin Text/EN/NPC/Barbara/SecondWorld.txt
 /copy:Text/EN/NPC/Barbara/SecondWorld.txt
@@ -10412,9 +10451,9 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Text/EN/InGame/PromptEnter.txt
-/copy:Text/EN/InGame/PromptEnter.txt
+#begin Text/EN/NPC/Floatoto/Heckle.txt
+/copy:Text/EN/NPC/Floatoto/Heckle.txt
 
-#begin Text/EN/NPC/Barbara/ScriptTest.txt
-/copy:Text/EN/NPC/Barbara/ScriptTest.txt
+#begin Text/EN/NPC/Floatoto/Intro.txt
+/copy:Text/EN/NPC/Floatoto/Intro.txt
 

@@ -4,11 +4,11 @@ namespace AridArnold
 	/// <summary>
 	/// Script that halts text until enter is pressed.
 	/// </summary>
-	abstract class WaitForInputScript : TextScript
+	abstract class WaitForConfirmScript : TextScript
 	{
 		bool mConfirmPressed = false;
 
-		protected WaitForInputScript(SmartTextBlock parentBlock) : base(parentBlock)
+		protected WaitForConfirmScript(SmartTextBlock parentBlock, string[] args) : base(parentBlock, args)
 		{
 		}
 

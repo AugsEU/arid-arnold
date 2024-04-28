@@ -3,10 +3,12 @@
 	abstract class TextScript
 	{
 		SmartTextBlock mParentBlock;
+		string[] mArgs;
 
-		public TextScript(SmartTextBlock parentBlock)
+		public TextScript(SmartTextBlock parentBlock, string[] args)
 		{
 			mParentBlock = parentBlock;
+			mArgs = args;
 		}
 
 		protected SmartTextBlock GetSmartTextBlock()

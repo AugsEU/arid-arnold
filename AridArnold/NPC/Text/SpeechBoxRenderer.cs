@@ -21,8 +21,8 @@
 				ret.mWidth = 230.1f;
 				ret.mLeading = 8.0f;
 				ret.mKerning = 1.0f;
-				ret.mScrollSpeed = 0.75f;
-				ret.mFramesPerLetter = 4;
+				ret.mScrollSpeed = 0.85f;
+				ret.mFramesPerLetter = 3;
 				ret.mFillColor = new Color(0, 10, 20, 200);
 				ret.mBorderColor = new Color(56, 89, 122);
 				ret.mFlipSpike = false;
