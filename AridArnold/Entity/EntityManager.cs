@@ -75,6 +75,11 @@
 		/// </summary>
 		void DoOrderedUpdateStep(GameTime gameTime)
 		{
+			foreach(ColliderSubmission submission in mAuxiliaryColliders)
+			{
+				submission.ClearForNextStep();
+			}
+
 			// Do ordered update.
 			foreach (Entity entity in mRegisteredEntities)
 			{

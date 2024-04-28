@@ -219,7 +219,9 @@
 			// Don't need motor already going fast enough
 			if (CanWalkDirChange() || MathF.Abs(component) < MathF.Abs(desiredComponent) + 1.0f)
 			{
-				mVelocity += (desiredComponent - component) * sideVec;
+				Vector2 velToAdd = MonoMath.TruncateSmall((desiredComponent - component) * sideVec);
+
+				mVelocity.X += velToAdd.X;
 				return;
 			}
 		}
@@ -307,12 +309,10 @@
 		protected override void CalculateUpdateOrder()
 		{
 			// If one entity is standing on another, and they both jump on the same frame,
-			// we want the one who is standing on top to 
-			Vector2 gravityVec = GravityVecNorm();
-			Vector2 fallingVec = Vector2.Dot(gravityVec, mVelocity) * gravityVec;
-			fallingVec.Normalize();
+			// we want the one who is standing on top to go first.
+			Vector2 gravityVec = -GravityVecNorm();
 
-			mUpdateOrder = Vector2.Dot(mPosition, fallingVec);
+			mUpdateOrder = Vector2.Dot(mPosition, gravityVec);
 			mUpdateOrder = MonoMath.SquashToRange(mUpdateOrder, EntityManager.UPDATE_MENTITY_MIN, EntityManager.UPDATE_MENTITY_MAX);
 		}
 

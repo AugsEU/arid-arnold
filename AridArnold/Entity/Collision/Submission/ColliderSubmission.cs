@@ -31,6 +31,14 @@
 		}
 
 
+		/// <summary>
+		/// Prepare for next step.
+		/// </summary>
+		public void ClearForNextStep()
+		{
+			mCollidedEntities.Clear();
+		}
+
 
 		/// <summary>
 		/// Do collision check and get entity collision result. Can return null

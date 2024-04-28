@@ -79,7 +79,7 @@
 		public Vector2 GetVelocityForCollision(GameTime gameTime)
 		{
 			// We do collision in quarter steps
-			const float COLLISION_STEPS = 4.0f;
+			const float COLLISION_STEPS = 1.0f;
 			return COLLISION_STEPS * (mPosition - mPrevPosition) / Util.GetDeltaT(gameTime);
 		}
 

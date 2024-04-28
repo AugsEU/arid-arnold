@@ -64,7 +64,7 @@
 				if (Vector2.Dot(gravity, mResult.normal) < -0.001f)
 				{
 					const float DRAG_FACTOR = 0.4f;
-					const float DRAG_THRESH = 5.0f;
+					const float DRAG_THRESH = 20.0f;
 					Vector2 dir = MonoMath.Perpendicular(gravity);
 					Vector2 addedVelocity = Vector2.Dot(dir, ourPlatEntity.GetVelocity()) * dir;
 

@@ -308,5 +308,25 @@
 		{
 			return new Vector2(a.X * b.X, a.Y * b.Y);
 		}
+
+
+
+		/// <summary>
+		/// Truncate annoying float stuff
+		/// </summary>
+		public static Vector2 TruncateSmall(Vector2 a)
+		{
+			const float THRESH = 0.000001f;
+			if(-THRESH < a.X && a.X < THRESH)
+			{
+				a.X = 0.0f;
+			}
+			else if(-THRESH < a.Y && a.Y < THRESH)
+			{
+				a.Y = 0.0f;
+			}
+
+			return a;
+		}
 	}
 }
