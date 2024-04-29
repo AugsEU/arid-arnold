@@ -25,8 +25,6 @@
 				EntityManager.I.InsertEntity(entity);
 			}
 
-
-
 			GoToFadeIn();
 		}
 	}
