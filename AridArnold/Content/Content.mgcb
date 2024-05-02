@@ -10457,3 +10457,42 @@
 #begin Text/EN/NPC/Floatoto/Intro.txt
 /copy:Text/EN/NPC/Floatoto/Intro.txt
 
+#begin Tiles/Hell/Lava1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava1.png
+
+#begin Tiles/Hell/Lava2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava2.png
+
+#begin Tiles/Hell/Lava3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava3.png
+
+#begin Tiles/Hell/Lava4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava4.png
+
+#begin Tiles/Hell/Lava5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava5.png
+
+#begin Tiles/Hell/Lava6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava6.png
+
+#begin Tiles/Hell/LavaAnim1.max
+/copy:Tiles/Hell/LavaAnim1.max
+

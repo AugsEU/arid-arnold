@@ -1,6 +1,4 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Tile you can collect once and have permanently

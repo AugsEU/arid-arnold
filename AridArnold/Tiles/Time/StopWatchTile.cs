@@ -1,6 +1,4 @@
-﻿using AridArnold.Tiles.Basic;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class StopWatchTile : InteractableTile
 	{

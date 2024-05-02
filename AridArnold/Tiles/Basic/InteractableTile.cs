@@ -1,4 +1,4 @@
-﻿namespace AridArnold.Tiles.Basic
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// A tile you can interact with. Such as collectables or spikes.

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
 	<name>Hell</name>
+	<exitColour>562B2B</exitColour>
 	<path from="Wall">HellAsh</path>
 	<path from="Platform">HellPlatform</path>
 	<path from="TimePlatform2">HellPlatform</path>

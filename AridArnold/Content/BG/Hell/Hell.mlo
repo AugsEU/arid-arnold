@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
+	<!--Clock face-->
+	<element type="texture">
+		<x>-3200.0</x>
+		<y>-3200.0</y>
+		<depth>Background</depth>
+		<scale>8000.0</scale>
+		<color>0B090A</color>
+	</element>
+	<element type="texture">
+		<x>-1600.0</x>
+		<y>-1608.0</y>
+		<depth>Front</depth>
+		<scale>8.0</scale>
+		<texture>BG/Mountain/ClockFace</texture>
+	</element>
+	<!--Clock face-->
+	<!--Moons-->
+	<element type="levelledTexture">
+		<x>-880.0</x>
+		<y>-888.0</y>
+		<depth>BackgroundElement</depth>
+		<scale>8.0</scale>
+		<texture>BG/Mountain/MoonAnger</texture>
+	</element>
+	<element type="levelledTexture">
+		<x>832.0</x>
+		<y>824.0</y>
+		<depth>BackgroundElement</depth>
+		<scale>8.0</scale>
+		<texture>BG/Mountain/MoonFear</texture>
+	</element>
+	<element type="levelledTexture">
+		<x>832.0</x>
+		<y>-888.0</y>
+		<depth>BackgroundElement</depth>
+		<scale>8.0</scale>
+		<texture>BG/Mountain/MoonPatience</texture>
+	</element>
+	<element type="levelledTexture">
+		<x>-880.0</x>
+		<y>824.0</y>
+		<depth>BackgroundElement</depth>
+		<scale>8.0</scale>
+		<texture>BG/Mountain/MoonPeace</texture>
+	</element>
+	<!--Moons-->
+
 	<element type="texture">
 		<x>-108.0</x>
 		<y>-116.0</y>
