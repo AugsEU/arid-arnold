@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <animation type="repeat">
-	<texture time="0.10">Tiles\Hell\Lava1</texture>
-	<texture time="0.10">Tiles\Hell\Lava2</texture>
-	<texture time="0.10">Tiles\Hell\Lava3</texture>
-	<texture time="0.10">Tiles\Hell\Lava4</texture>
-	<texture time="0.10">Tiles\Hell\Lava5</texture>
-	<texture time="0.10">Tiles\Hell\Lava6</texture>
+	<texture time="0.15">Tiles\Hell\Lava1</texture>
+	<texture time="0.15">Tiles\Hell\Lava2</texture>
+	<texture time="0.15">Tiles\Hell\Lava3</texture>
+	<texture time="0.15">Tiles\Hell\Lava4</texture>
+	<texture time="0.15">Tiles\Hell\Lava5</texture>
+	<texture time="0.15">Tiles\Hell\Lava6</texture>
 </animation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.15">Tiles\Hell\Lava7</texture>
+	<texture time="0.15">Tiles\Hell\Lava8</texture>
+	<texture time="0.15">Tiles\Hell\Lava9</texture>
+	<texture time="0.15">Tiles\Hell\Lava10</texture>
+	<texture time="0.15">Tiles\Hell\Lava11</texture>
+	<texture time="0.15">Tiles\Hell\Lava12</texture>
+</animation>

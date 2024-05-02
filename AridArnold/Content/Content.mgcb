@@ -10496,3 +10496,42 @@
 #begin Tiles/Hell/LavaAnim1.max
 /copy:Tiles/Hell/LavaAnim1.max
 
+#begin Tiles/Hell/Lava10.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava10.png
+
+#begin Tiles/Hell/Lava11.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava11.png
+
+#begin Tiles/Hell/Lava12.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava12.png
+
+#begin Tiles/Hell/Lava7.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava7.png
+
+#begin Tiles/Hell/Lava8.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava8.png
+
+#begin Tiles/Hell/Lava9.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/Lava9.png
+
+#begin Tiles/Hell/LavaAnim2.max
+/copy:Tiles/Hell/LavaAnim2.max
+

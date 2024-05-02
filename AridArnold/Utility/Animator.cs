@@ -163,6 +163,14 @@
 			mPlaying = false;
 		}
 
+
+		public void MoveFrames(int frames)
+		{
+			float frameLen = mTotalDuration / mFrames.Count;
+			mPlayHead += frameLen * frames;
+			mPlayHead = (mTotalDuration + mPlayHead) % mTotalDuration;
+		}
+
 		#endregion rUpdate
 
 
