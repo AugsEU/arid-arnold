@@ -13,6 +13,7 @@ namespace AridArnold
 		{
 			MonoRandom rng = new MonoRandom(0);
 			rng.ChugNumber(mTileMapIndex.X);
+			rng.ChugNumber(mTileMapIndex.Y);
 
 			string[] animPaths = { "Tiles/Hell/LavaAnim1.max", "Tiles/Hell/LavaAnim2.max" };
 			int bubbleIdx = rng.GetIntRange(0, animPaths.Length - 1);
