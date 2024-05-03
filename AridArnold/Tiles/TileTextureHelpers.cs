@@ -52,6 +52,10 @@
 			{
 				returnInfo = SetupTileForBorderFill(tile.GetAdjacency());
 			}
+			else if (tileTexture.Width == tileSize && tileTexture.Height == 2 * tileSize)
+			{
+				returnInfo = SetupTileForUpDown(tile.GetAdjacency());
+			}
 			else
 			{
 				throw new Exception("Unhandled texture dimensions");
@@ -386,6 +390,22 @@
 					break;
 				default:
 					throw new Exception("This tile type doesn't work!");
+			}
+
+			return ret;
+		}
+
+
+		/// <summary>
+		/// Setup basic up/down tile
+		/// </summary>
+		private static TileTexDrawInfo SetupTileForUpDown(AdjacencyType adjacency)
+		{
+			TileTexDrawInfo ret = new TileTexDrawInfo();
+
+			if(adjacency.HasFlag(AdjacencyType.Ad8))
+			{
+				ret.mTileIndex.Y = 1;
 			}
 
 			return ret;
