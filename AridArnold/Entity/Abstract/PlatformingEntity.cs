@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using System.ComponentModel;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Entity that can run and jump.
@@ -176,7 +178,7 @@
 
 					motorDirection = mWalkDirection;
 				}
-
+				
 				SetSideVelocityFromDirection(motorDirection);
 			}
 
@@ -221,7 +223,7 @@
 			{
 				Vector2 velToAdd = MonoMath.TruncateSmall((desiredComponent - component) * sideVec);
 
-				mVelocity.X += velToAdd.X;
+				mVelocity += velToAdd;
 				return;
 			}
 		}

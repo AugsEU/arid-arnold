@@ -10535,3 +10535,6 @@
 #begin Tiles/Hell/LavaAnim2.max
 /copy:Tiles/Hell/LavaAnim2.max
 
+#begin BG/Hell/HellHub.mlo
+/copy:BG/Hell/HellHub.mlo
+
