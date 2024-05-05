@@ -123,6 +123,7 @@
 			}
 			else
 			{
+				ApplyGravity(gameTime);
 				ApplyVelocity(gameTime);
 			}
 		}

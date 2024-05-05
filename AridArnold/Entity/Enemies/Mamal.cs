@@ -157,7 +157,6 @@
 		/// <summary>
 		/// Call back for when time is changed.
 		/// </summary>
-		/// <param name="eArgs"></param>
 		protected override void OnTimeChange(GameTime gameTime)
 		{
 			mIsAwake = TimeZoneManager.I.GetCurrentTimeZone() == 1;

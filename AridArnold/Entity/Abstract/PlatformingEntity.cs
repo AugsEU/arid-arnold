@@ -184,7 +184,10 @@ namespace AridArnold
 
 			ApplyGravity(gameTime);
 
-			mVelocity = new Vector2(MonoMath.ClampAbs(mVelocity.X, MAX_VELOCITY), MonoMath.ClampAbs(mVelocity.Y, MAX_VELOCITY));
+			if (!mUseRealPhysics)
+			{
+				mVelocity = new Vector2(MonoMath.ClampAbs(mVelocity.X, MAX_VELOCITY), MonoMath.ClampAbs(mVelocity.Y, MAX_VELOCITY));
+			}
 
 			mOnGround = false;
 			base.OrderedUpdate(gameTime);
@@ -224,7 +227,6 @@ namespace AridArnold
 				Vector2 velToAdd = MonoMath.TruncateSmall((desiredComponent - component) * sideVec);
 
 				mVelocity += velToAdd;
-				return;
 			}
 		}
 
@@ -282,7 +284,7 @@ namespace AridArnold
 		/// Move entity under the force of gravity
 		/// </summary>
 		/// <param name="gameTime">Frame time</param>
-		private void ApplyGravity(GameTime gameTime)
+		protected void ApplyGravity(GameTime gameTime)
 		{
 			float vecAlongGrav = Vector2.Dot(GravityVecNorm(), mVelocity);
 
@@ -436,7 +438,7 @@ namespace AridArnold
 		/// <summary>
 		/// Are we using realistic physics, without modfications for control?
 		/// </summary>
-		public bool GetIsUsingRealPhysics()
+		public bool IsUsingRealPhysics()
 		{
 			return mUseRealPhysics;
 		}

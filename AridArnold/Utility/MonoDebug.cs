@@ -14,6 +14,7 @@ namespace AridArnold
 		private static List<DebugRect> mDebugRectToDraw = new List<DebugRect>();
 		public static bool mConsoleAlloc = false;
 		public static bool mDebugFlag1 = false;
+		static uint mLogLineNum = 0;
 
 		/// <summary>
 		/// Log message to console. Only if debug is on.
@@ -27,7 +28,9 @@ namespace AridArnold
 				AllocConsole();
 				mConsoleAlloc = true;
 			}
-			Console.WriteLine(msg, args);
+			mLogLineNum++;
+			string format = string.Format("[{0}]: {1}", mLogLineNum.ToString("X4"), msg);
+			Console.WriteLine(format, args);
 #endif
 		}
 

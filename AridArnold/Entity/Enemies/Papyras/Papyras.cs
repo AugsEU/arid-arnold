@@ -44,6 +44,15 @@
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Papyras/Idle1");
 
 			mIdleAnim.Play();
+
+			// Hack
+			switch(GetGravityDir())
+			{
+				case CardinalDirection.Left:
+				case CardinalDirection.Right:
+					mPosition += new Vector2(-1.0f, 1.0f);
+					break;
+			}
 		}
 
 		#endregion rInitialisation
@@ -74,7 +83,7 @@
 		{
 			CardinalDirection bulletDirection = Util.WalkDirectionToCardinal(mPrevDirection, GetGravityDir());
 			Vector2 offset = BULLET_OFFSET * Util.GetNormal(GetGravityDir());
-			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 12.0f + offset;
+			Vector2 spawnPos = GetCentrePos() + Util.GetNormal(bulletDirection) * 11.0f + offset;
 			Fireball bullet = new Fireball(this, spawnPos, bulletDirection);
 			bullet.SetGravity(GetGravityDir());
 			EntityManager.I.QueueRegisterEntity(bullet);

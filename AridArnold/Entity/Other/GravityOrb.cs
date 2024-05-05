@@ -165,7 +165,7 @@
 					{
 						platformingEntity.SetGravity(mGravityDir);
 
-						if (!platformingEntity.GetIsUsingRealPhysics())
+						if (!platformingEntity.IsUsingRealPhysics())
 						{
 							platformingEntity.SetPrevWalkDirFromVelocity();
 							platformingEntity.SetWalkDirection(WalkDirection.None);

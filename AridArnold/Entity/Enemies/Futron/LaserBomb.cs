@@ -29,6 +29,7 @@
 		Animator mBombAnim;
 		float mTraceLength;
 		MonoTimer mDeathTimer;
+		Vector2 mPrevVelDirection;
 
 		Vector2 mPrevPosition;
 		float mDistanceTravelled;
@@ -55,6 +56,7 @@
 
 			mPrevPosition = position;
 			mUseRealPhysics = true;
+			mPrevVelDirection = velocity;
 		}
 
 
@@ -134,6 +136,14 @@
 
 			mDistanceTravelled += Vector2.Distance(mPrevPosition, mPosition);
 			mPrevPosition = mPosition;
+
+			// Detect big swings in velocity to then avoid the trace changing too quickly
+			float dirDiff = MonoMath.VectorDiff(mPrevVelDirection, mVelocity);
+			if (dirDiff > 0.5f)// && MonoMath.VectorDiff(GravityVecNorm(), mVelocity) < 0.5f && mVelocity.LengthSquared() > 10.0f)
+			{
+				mTraceLength = 0.0f;
+			}
+			mPrevVelDirection = mVelocity;
 		}
 
 		#endregion rUpdate

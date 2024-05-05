@@ -210,6 +210,10 @@
 				{
 					platformingEntity.AllowWalkChangeFor(4);
 				}
+				else
+				{
+					platformingEntity.AllowWalkChangeFor(0);
+				}
 
 				platformingEntity.ResetAllJumpHelpers();
 				platformingEntity.SetGrounded(false);

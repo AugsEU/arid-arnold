@@ -76,7 +76,6 @@ internal class Fireball : ProjectileEntity
 		Vector2 upDownComponent = -MathF.Cos(mPathAngle) * Util.GetNormal(GetGravityDir());
 		mVelocity = FIREBALL_SPEED * mForwardDir + MOVE_AMPLITUDE * upDownComponent;
 
-
 		mFireballAnim.Update(gameTime);
 
 		base.Update(gameTime);

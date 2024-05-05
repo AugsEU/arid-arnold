@@ -53,6 +53,19 @@
 
 
 		/// <summary>
+		/// Gets diff in direction between two vectors. 0 is no diff, 1 is max diff, 0.5 is perp
+		/// </summary>
+		public static float VectorDiff(Vector2 p1, Vector2 p2)
+		{
+			p1.Normalize();
+			p2.Normalize();
+
+			return 0.5f * (1.0f - Vector2.Dot(p1, p2));
+		}
+
+
+
+		/// <summary>
 		/// Lerp two colours
 		/// </summary>
 		public static Color Lerp(Color p1, Color p2, float t)

@@ -98,12 +98,17 @@
 		/// <param name="entity">Entity that intersected us</param>
 		public override void OnEntityIntersect(Entity entity)
 		{
-			const float alpha = 1.4f;
-			const float minVel = 19.5f;
+			float minVel = 19.5f;
+			float alpha = 1.4f;
 
 			if (entity is PlatformingEntity)
 			{
 				PlatformingEntity platformingEntity = (PlatformingEntity)entity;
+				if(platformingEntity.IsUsingRealPhysics())
+				{
+					alpha = 1.0f;
+					minVel = 0.0f;
+				}
 				Rect2f entityBounds = platformingEntity.ColliderBounds();
 				Rect2f bounds = GetBounds();
 
