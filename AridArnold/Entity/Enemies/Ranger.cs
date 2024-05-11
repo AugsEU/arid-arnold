@@ -161,7 +161,17 @@
 		/// </summary>
 		bool ShouldShootLaser()
 		{
-			return mShootTimer.GetPercentageF() >= 1.0f;
+			bool solidInFront = false;
+			switch (GetPrevWalkDirection())
+			{
+				case WalkDirection.Left:
+					solidInFront = CheckSolid(-1, 0);
+					break;
+				case WalkDirection.Right:
+					solidInFront = CheckSolid(1, 0);
+					break;
+			}
+			return mShootTimer.GetPercentageF() >= 1.0f && !solidInFront;
 		}
 
 

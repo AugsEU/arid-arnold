@@ -152,14 +152,18 @@
 				texToDraw = mExplodingAnim.GetCurrentTexture();
 				drawPos = mExplosionCentre;
 
+				MonoDebug.AddDebugRect(new Rect2f(mExplosionCentre, 1.0f, 1.0f), Color.Red);
+
 				switch (mDirection)
 				{
 					case CardinalDirection.Up:
 						drawPos.X += 6.0f;
-						drawPos.Y += texToDraw.Width;
+						//drawPos.Y += texToDraw.Width;
 						break;
 					case CardinalDirection.Down:
 						drawPos.X += 6.0f;
+						// Only fish people need this?
+						drawPos.Y -= texToDraw.Width;
 						break;
 					case CardinalDirection.Right:
 						drawPos.X -= texToDraw.Width;
