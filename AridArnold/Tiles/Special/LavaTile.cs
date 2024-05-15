@@ -38,7 +38,7 @@ namespace AridArnold
 
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
+			if (entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
 				entity.Kill();
 			}

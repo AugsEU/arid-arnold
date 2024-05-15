@@ -52,6 +52,9 @@
 			mState = ProjectileState.FreeMotion;
 			mExplosionCentre = Vector2.Zero;
 			mExplosionNormal = Vector2.Zero;
+
+			// Don't want gravity orb to affect us
+			LayerOptOut(InteractionLayer.kGravityOrb);
 		}
 
 		#endregion rInitialisation

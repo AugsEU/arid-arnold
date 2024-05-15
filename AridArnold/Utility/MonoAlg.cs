@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using static AridArnold.EMField;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Simple algorithms
@@ -133,7 +135,7 @@
 		/// <summary>
 		/// Test if a value contains a flag.
 		/// </summary>
-		static public bool TestFlag<T>(T value, params T[] flags) where T : struct, Enum
+		static public bool TestFlag<T>(T value, params T[] flags) where T : Enum
 		{
 			UInt64 value64 = Convert.ToUInt64(value);
 			foreach (T flag in flags)
@@ -145,6 +147,40 @@
 				}
 			}
 			return false;
+		}
+
+
+
+		/// <summary>
+		/// Add value to existing flag(or them). You have to do the casting yourself since generics suck
+		/// </summary>
+		static public UInt64 AddFlags<T>(T original, params T[] flags) where T : Enum
+		{
+			UInt64 value64 = Convert.ToUInt64(original);
+			foreach (T flag in flags)
+			{
+				UInt64 flag64 = Convert.ToUInt64(flag);
+				value64 |= flag64;
+			}
+
+			return value64;
+		}
+
+
+
+		/// <summary>
+		/// Remove values from existing flag(or them). You have to do the casting yourself since generics suck
+		/// </summary>
+		static public UInt64 SubFlags<T>(T original, params T[] flags) where T : Enum
+		{
+			UInt64 value64 = Convert.ToUInt64(original);
+			foreach (T flag in flags)
+			{
+				UInt64 flag64 = Convert.ToUInt64(flag);
+				value64 &= ~flag64;
+			}
+
+			return value64;
 		}
 	}
 }

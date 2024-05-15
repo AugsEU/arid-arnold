@@ -157,7 +157,7 @@
 			for (int i = 0; i < entityNum; i++)
 			{
 				Entity entity = EntityManager.I.GetEntity(i);
-				if (entity is PlatformingEntity)
+				if (entity.OnInteractLayer(InteractionLayer.kGravityOrb))
 				{
 					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
@@ -254,6 +254,16 @@
 			}
 
 			throw new NotImplementedException();
+		}
+
+
+
+		/// <summary>
+		/// Get gravity direction from orbs
+		/// </summary>
+		static public CardinalDirection GetEffectiveGravity()
+		{
+			return sActiveDirection;
 		}
 
 		#endregion rUtility

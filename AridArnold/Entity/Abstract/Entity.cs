@@ -5,7 +5,8 @@
 	{
 		kNone =			0b0000_0000,
 		kPlayer =		0b0000_0001, // For Player entity
-		kAltPlayer =	0b0000_0010 // For other things Players control
+		kAltPlayer =	0b0000_0010, // For other things Players control
+		kGravityOrb =   0b0000_0100  // For things affected by gravity orb
 	}
 
 	/// <summary>
@@ -25,6 +26,7 @@
 		protected float mUpdateOrder;
 		protected bool mPlayerNear;
 		private bool mEnabled;
+		private InteractionLayer mLayer;
 
 		#endregion rMembers
 
@@ -49,6 +51,8 @@
 
 			// To do: Make this atomic if we end up needing to spawn multiple entities on different threads.
 			sHandleHead++;
+
+			mLayer = InteractionLayer.kNone;
 		}
 
 
@@ -81,7 +85,37 @@
 		/// </summary>
 		public virtual InteractionLayer GetInteractionLayer()
 		{
-			return InteractionLayer.kNone;
+			return mLayer;
+		}
+
+
+
+		/// <summary>
+		/// Are we on this interaction layer?
+		/// </summary>
+		public bool OnInteractLayer(InteractionLayer layer)
+		{
+			return MonoAlg.TestFlag(GetInteractionLayer(), layer);
+		}
+
+
+
+		/// <summary>
+		/// Start interacting with layer
+		/// </summary>
+		protected void LayerOptIn(params InteractionLayer[] flags)
+		{
+			mLayer = (InteractionLayer)MonoAlg.AddFlags(mLayer, flags);
+		}
+
+
+
+		/// <summary>
+		/// Start interacting with layer
+		/// </summary>
+		protected void LayerOptOut(params InteractionLayer[] flags)
+		{
+			mLayer = (InteractionLayer)MonoAlg.SubFlags(mLayer, flags);
 		}
 
 		#endregion rProperties
@@ -162,7 +196,7 @@
 		/// <param name="entity"></param>
 		public virtual void OnCollideEntity(Entity entity)
 		{
-			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
+			if (entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
 				mPlayerNear = true;
 			}

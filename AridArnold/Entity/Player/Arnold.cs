@@ -74,6 +74,7 @@
 			mDownKey = AridArnoldKeys.ArnoldDown;
 
 			mItemToUse = null;
+			LayerOptIn(InteractionLayer.kPlayer);
 		}
 
 
@@ -139,16 +140,6 @@
 		public override bool PersistLevelEntry()
 		{
 			return true;
-		}
-
-
-
-		/// <summary>
-		/// What should this interact with?
-		/// </summary>
-		public override InteractionLayer GetInteractionLayer()
-		{
-			return InteractionLayer.kPlayer;
 		}
 
 		#endregion rProperties

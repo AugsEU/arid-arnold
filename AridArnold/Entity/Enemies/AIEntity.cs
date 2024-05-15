@@ -122,7 +122,7 @@
 		/// <param name="entity"></param>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if (ShouldKill() && MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
+			if (ShouldKill() && entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
 				//Kill the player on touching.
 				entity.Kill();

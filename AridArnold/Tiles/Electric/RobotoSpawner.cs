@@ -110,11 +110,15 @@
 			newRobot.PowerOn();
 			EntityManager.I.RegisterEntity(newRobot);
 
+			// Set Gravity
+			CardinalDirection gravityCard = GravityOrb.GetEffectiveGravity();
+			newRobot.SetGravity(gravityCard);
+
 			// Set Velocity
 			Vector2 spawnVel = spawnDirection;
 			spawnVel.X *= EXIT_VELOCITY_X;
 			spawnVel.Y *= EXIT_VELOCITY_Y;
-			if (mRotation == CardinalDirection.Down)
+			if (mRotation == gravityCard)
 			{
 				spawnVel.Y = 4.0f;
 			}
@@ -122,11 +126,11 @@
 			newRobot.SetPrevWalkDirFromVelocity();
 
 			// Set Position
-			Vector2 spawnPos = GetCentre() + spawnDirection * sTILE_SIZE * 0.5f;
-			if (mRotation == CardinalDirection.Right || mRotation == CardinalDirection.Left)
+			Vector2 spawnPos = GetCentre() + spawnDirection * sTILE_SIZE * 0.75f;
+			if (mRotation != gravityCard && Util.InvertDirection(mRotation) != gravityCard)
 			{
 				// Botch position a bit
-				spawnPos.Y -= 1.0f;
+				spawnPos -= Util.GetNormal(gravityCard);
 			}
 			newRobot.SetCentrePos(spawnPos);
 		}

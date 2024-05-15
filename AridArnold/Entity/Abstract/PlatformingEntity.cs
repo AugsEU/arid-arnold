@@ -88,6 +88,9 @@ namespace AridArnold
 
 			// Allow things to make you change direction for a certain number of frames.
 			mAllowChangeDirFrames = 0;
+
+			// Opt into this by default
+			LayerOptIn(InteractionLayer.kGravityOrb);
 		}
 
 		#endregion

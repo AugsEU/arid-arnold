@@ -21,6 +21,9 @@
 		{
 			mPosition.Y += 0.0f;
 			mGravity = 0.0f;
+
+			// Don't want gravity orb to affect us
+			LayerOptOut(InteractionLayer.kGravityOrb);
 		}
 
 

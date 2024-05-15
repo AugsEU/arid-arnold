@@ -30,7 +30,7 @@
 		/// </summary>
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
+			if (entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
 				int livesBefore = CampaignManager.I.GetLives();
 				CampaignManager.I.GainLife();

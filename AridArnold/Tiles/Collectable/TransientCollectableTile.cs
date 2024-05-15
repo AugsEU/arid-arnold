@@ -17,7 +17,7 @@
 
 		public override void OnEntityIntersect(Entity entity)
 		{
-			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
+			if (entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
 				CollectableManager.I.CollectTransientItem(GetCollectableType());
 				mEnabled = false;

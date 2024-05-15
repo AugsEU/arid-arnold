@@ -46,7 +46,7 @@
 				return;
 			}
 
-			if (MonoAlg.TestFlag(entity.GetInteractionLayer(), InteractionLayer.kPlayer))
+			if (entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
 				Arnold arnold = (Arnold)entity;
 				arnold.SetPrevWalkDirFromVelocity();
