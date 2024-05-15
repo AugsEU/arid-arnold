@@ -19,7 +19,6 @@
 		/// </summary>
 		public Papyras(Vector2 pos, float shootPhase, float shootFreq) : base(pos, shootPhase, shootFreq)
 		{
-			mPosition.Y += 0.0f;
 			mGravity = 0.0f;
 
 			// Don't want gravity orb to affect us
@@ -54,6 +53,9 @@
 				case CardinalDirection.Left:
 				case CardinalDirection.Right:
 					mPosition += new Vector2(-1.0f, 1.0f);
+					break;
+				case CardinalDirection.Up:
+					mPosition.Y -= 1.0f;
 					break;
 			}
 		}
