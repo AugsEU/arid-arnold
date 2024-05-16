@@ -93,7 +93,7 @@ internal class Fireball : ProjectileEntity
 		{
 			if (entity != this && entity != mParent && entity is PlatformingEntity)
 			{
-				KillPlayer((MovingEntity)entity);
+				KillPlayer(entity);
 			}
 		}
 

@@ -169,16 +169,19 @@
 		/// <summary>
 		/// Kill player.
 		/// </summary>
-		protected void KillPlayer(MovingEntity movingEntity)
+		protected void KillPlayer(Entity entity)
 		{
-			if (movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
+			if(entity is MovingEntity movingEntity)
 			{
-				// Entity is travelling too fast. Not fair to kill them.
-				return;
+				if (movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)
+				{
+					// Entity is travelling too fast. Not fair to kill them.
+					return;
+				}
 			}
 
 			//Kill the player on touching.
-			movingEntity.Kill();
+			entity.Kill();
 		}
 
 

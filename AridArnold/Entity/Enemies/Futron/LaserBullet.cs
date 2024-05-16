@@ -87,7 +87,7 @@
 			{
 				if (entity != this && entity != mParent)
 				{
-					KillPlayer((MovingEntity)entity);
+					KillPlayer(entity);
 				}
 			}
 

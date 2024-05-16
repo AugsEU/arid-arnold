@@ -5,7 +5,7 @@ namespace AridArnold
 	/// <summary>
 	/// Reflection of an entity, created by dual mirror tile.
 	/// </summary>
-	internal class EntityReflection : Entity
+	internal class EntityReflection : MovingEntity
 	{
 		#region rConstants
 
@@ -91,6 +91,28 @@ namespace AridArnold
 			}
 
 			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Mimic reflected entity
+		/// </summary>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			mVelocity = mEntityToReflect.GetVelocity();
+			mPrevVelocity = mEntityToReflect.GetPrevVelocity();
+		}
+
+
+
+		/// <summary>
+		/// Dummy function
+		/// </summary>
+		public override void ReactToCollision(Vector2 collisionNormal)
+		{
+			// Shouldn't actually be colliding with anything.
+			throw new NotImplementedException();
 		}
 
 
