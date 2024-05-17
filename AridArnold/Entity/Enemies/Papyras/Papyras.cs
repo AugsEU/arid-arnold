@@ -51,6 +51,8 @@
 			switch(GetGravityDir())
 			{
 				case CardinalDirection.Left:
+					mPosition += new Vector2(-2.0f, 1.0f);
+					break;
 				case CardinalDirection.Right:
 					mPosition += new Vector2(-1.0f, 1.0f);
 					break;
@@ -77,6 +79,17 @@
 
 			mVelocity = Vector2.Zero;
 			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Do physics
+		/// </summary>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			// Force grounded and no physics
+			mOnGround = true;
 		}
 
 

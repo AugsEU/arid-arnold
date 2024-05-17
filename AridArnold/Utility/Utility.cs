@@ -133,7 +133,7 @@
 				case CardinalDirection.Down:
 					return walk == WalkDirection.Right ? CardinalDirection.Right : CardinalDirection.Left;
 				case CardinalDirection.Left:
-					return walk == WalkDirection.Right ? CardinalDirection.Up : CardinalDirection.Down;
+					return walk == WalkDirection.Right ? CardinalDirection.Down : CardinalDirection.Up;
 			}
 
 			throw new NotImplementedException();
