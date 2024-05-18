@@ -57,6 +57,8 @@
 			mPrevPosition = position;
 			mUseRealPhysics = true;
 			mPrevVelDirection = velocity;
+
+			LayerOptIn(InteractionLayer.kGravityOrb);
 		}
 
 

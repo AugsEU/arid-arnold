@@ -86,8 +86,8 @@
 		/// </summary>
 		public override Rect2f ColliderBounds()
 		{
-			const float WIDTH_REDUCTION = 2.0f;
-			const float HEIGHT_REDUCTION = 1.0f;
+			const float WIDTH_REDUCTION = 0.0f;
+			const float HEIGHT_REDUCTION = 0.0f;
 
 			return GetReducedTextureCollider(WIDTH_REDUCTION, HEIGHT_REDUCTION);
 		}

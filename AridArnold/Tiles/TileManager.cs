@@ -759,13 +759,15 @@
 
 
 		/// <summary>
-		/// Make sure an entity isn't 
+		/// Make sure an entity isn't intersecting any solid tiles. A bit of a hack.
 		/// </summary>
 		/// <param name="entity"></param>
 		public void UntangleEntityFromTiles(Entity entity)
 		{
 			Rect2f collider = entity.ColliderBounds();
 			Vector2 centrePos = collider.Centre;
+
+			//MonoDebug.Log("COLLIDER: {0} {1}", collider.Width.ToString(), collider.Height.ToString());
 
 			if (collider.Width > 16.0f || collider.Height > 16.0f || !IsInTileMap(centrePos))
 			{
