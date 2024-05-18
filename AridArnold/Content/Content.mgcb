@@ -10538,3 +10538,6 @@
 #begin BG/Hell/HellHub.mlo
 /copy:BG/Hell/HellHub.mlo
 
+#begin Text/EN/NPC/Zippy/DualGravity.txt
+/copy:Text/EN/NPC/Zippy/DualGravity.txt
+
