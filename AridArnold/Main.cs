@@ -20,8 +20,8 @@
 
 		#region rMembers
 
-		private GraphicsDeviceManager _graphics;
-		private SpriteBatch _spriteBatch;
+		private GraphicsDeviceManager mGraphics;
+		private SpriteBatch mMainSpriteBatch;
 		private Rectangle mWindowRect;
 		private Rectangle mOutputRectSize;
 		private int mSlowDownCount;
@@ -45,7 +45,7 @@
 		public Main()
 		{
 			//XNA
-			_graphics = new GraphicsDeviceManager(this);
+			mGraphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 			IsMouseVisible = true;
 			//XNA
@@ -75,8 +75,8 @@
 		protected override void Initialize()
 		{
 			SetWindowHeight(MIN_HEIGHT);
-			_graphics.IsFullScreen = false;
-			_graphics.ApplyChanges();
+			mGraphics.IsFullScreen = false;
+			mGraphics.ApplyChanges();
 
 			Window.AllowUserResizing = true;
 			Window.Title = "Arid Arnold";
@@ -92,10 +92,10 @@
 		protected override void LoadContent()
 		{
 			MonoData.I.Init(Content);
-			_spriteBatch = new SpriteBatch(GraphicsDevice);
+			mMainSpriteBatch = new SpriteBatch(GraphicsDevice);
 
 			FontManager.I.LoadAllFonts();
-			ScreenManager.I.LoadAllScreens(_graphics);
+			ScreenManager.I.LoadAllScreens(mGraphics);
 			GhostManager.I.Load();
 			InputManager.I.Init();
 			CameraManager.I.Init();
@@ -188,22 +188,22 @@
 		/// </summary>
 		private void ToggleFullscreen()
 		{
-			if (_graphics.IsFullScreen)
+			if (mGraphics.IsFullScreen)
 			{
-				_graphics.IsFullScreen = false;
-				_graphics.PreferredBackBufferWidth = mWindowRect.Width;
-				_graphics.PreferredBackBufferHeight = mWindowRect.Height;
+				mGraphics.IsFullScreen = false;
+				mGraphics.PreferredBackBufferWidth = mWindowRect.Width;
+				mGraphics.PreferredBackBufferHeight = mWindowRect.Height;
 			}
 			else
 			{
 				mWindowRect = GraphicsDevice.PresentationParameters.Bounds;
-				_graphics.IsFullScreen = true;
+				mGraphics.IsFullScreen = true;
 
-				_graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-				_graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+				mGraphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+				mGraphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 			}
 
-			_graphics.ApplyChanges();
+			mGraphics.ApplyChanges();
 		}
 
 		#endregion rUpdate
@@ -222,8 +222,8 @@
 		{
 			DrawInfo frameInfo;
 
-			frameInfo.graphics = _graphics;
-			frameInfo.spriteBatch = _spriteBatch;
+			frameInfo.graphics = mGraphics;
+			frameInfo.spriteBatch = mMainSpriteBatch;
 			frameInfo.gameTime = gameTime;
 			frameInfo.device = GraphicsDevice;
 
@@ -279,7 +279,7 @@
 		/// <param name="eventArgs">Event args</param>
 		private void OnResize(object sender, EventArgs eventArgs)
 		{
-			if (_graphics.IsFullScreen)
+			if (mGraphics.IsFullScreen)
 			{
 				return;
 			}
@@ -303,9 +303,9 @@
 		/// <param name="height">New window height</param>
 		private void SetWindowHeight(int height)
 		{
-			_graphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
-			_graphics.PreferredBackBufferHeight = height;
-			_graphics.ApplyChanges();
+			mGraphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
+			mGraphics.PreferredBackBufferHeight = height;
+			mGraphics.ApplyChanges();
 		}
 
 		#endregion rDraw
