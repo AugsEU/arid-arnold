@@ -131,6 +131,14 @@
 			}
 #endif
 
+			// Hack to emulate old env without changing path
+			const string PATH_PREFIX = "Arcade/DeathRide";
+			if (!path.StartsWith("Arcade"))
+			{
+				path = Path.Combine(PATH_PREFIX, path);
+			}
+			
+
 			string newPath = path;
 			while (mPathRemappings.TryGetValue(path, out newPath))
 			{

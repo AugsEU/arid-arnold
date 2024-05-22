@@ -44,6 +44,17 @@
 			gameCam.QueueMovement(new DiminishCameraShake(5.5f, 5.0f, 25.0f));
 		}
 
+
+		public void ResetNoEffects()
+		{
+			mRunStarted = false;
+			mHighScore = 0;
+			mRoundNumber = 0;
+			mHealthPacksRemaining = NUM_HEALTH_PACKS;
+			mCurrentHealth = Player.MAX_HEALTH;
+			mRoundNumber = 0;
+		}
+
 		public int GetHealth()
 		{
 			return mCurrentHealth;

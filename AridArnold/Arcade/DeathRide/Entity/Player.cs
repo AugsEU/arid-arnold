@@ -206,12 +206,12 @@
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
-			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.ArnoldJump))
+			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick))
 			{
 				BeginGrapple();
 			}
 				
-			if (!AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldJump))
+			if (!AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.LeftClick))
 			{
 				EndGrapple();
 			}

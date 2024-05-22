@@ -25,7 +25,7 @@ namespace DeathRide
 		{
 			//Load songs
 			mSongs = new Dictionary<MusicType, Song>();
-			mSongs.Add(MusicType.MainGame, content.Load<Song>("Sound/DeathRide"));
+			mSongs.Add(MusicType.MainGame, content.Load<Song>("Arcade/DeathRide/Sound/GMTK2023"));
 
 			MediaPlayer.IsRepeating = true;
 			MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
@@ -33,9 +33,9 @@ namespace DeathRide
 			//LoadSFX
 			mSFX = new Dictionary<SFXType, SoundEffect>();
 
-			mSFX.Add(SFXType.GameOver, content.Load<SoundEffect>("Sound/GameOverSFX"));
-			mSFX.Add(SFXType.PlayerHit, content.Load<SoundEffect>("Sound/PlayerHit"));
-			mSFX.Add(SFXType.Convert, content.Load<SoundEffect>("Sound/Convert"));
+			mSFX.Add(SFXType.GameOver, content.Load<SoundEffect>("Arcade/DeathRide/Sound/GameOverSFX"));
+			mSFX.Add(SFXType.PlayerHit, content.Load<SoundEffect>("Arcade/DeathRide/Sound/PlayerHit"));
+			mSFX.Add(SFXType.Convert, content.Load<SoundEffect>("Arcade/DeathRide/Sound/Convert"));
 		}
 
 

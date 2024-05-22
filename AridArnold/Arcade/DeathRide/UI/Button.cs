@@ -1,6 +1,4 @@
-﻿using AridArnold;
-
-namespace DeathRide
+﻿namespace DeathRide
 {
 	abstract class Button
 	{
@@ -32,7 +30,7 @@ namespace DeathRide
 		{
 			if (IsMouseOver())
 			{
-				if (InputManager.I.KeyHeld(AridArnoldKeys.LeftClick))
+				if (AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.LeftClick))
 				{
 					mState = ButtonState.Pressed;
 				}

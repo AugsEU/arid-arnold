@@ -20,7 +20,7 @@
 
 		#region rMembers
 
-		private GraphicsDeviceManager mGraphics;
+		private GraphicsDeviceManager mGraphicsManager;
 		private SpriteBatch mMainSpriteBatch;
 		private Rectangle mWindowRect;
 		private Rectangle mOutputRectSize;
@@ -45,7 +45,7 @@
 		public Main()
 		{
 			//XNA
-			mGraphics = new GraphicsDeviceManager(this);
+			mGraphicsManager = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 			IsMouseVisible = true;
 			//XNA
@@ -75,8 +75,8 @@
 		protected override void Initialize()
 		{
 			SetWindowHeight(MIN_HEIGHT);
-			mGraphics.IsFullScreen = false;
-			mGraphics.ApplyChanges();
+			mGraphicsManager.IsFullScreen = false;
+			mGraphicsManager.ApplyChanges();
 
 			Window.AllowUserResizing = true;
 			Window.Title = "Arid Arnold";
@@ -95,7 +95,7 @@
 			mMainSpriteBatch = new SpriteBatch(GraphicsDevice);
 
 			FontManager.I.LoadAllFonts();
-			ScreenManager.I.LoadAllScreens(mGraphics);
+			ScreenManager.I.LoadAllScreens(mGraphicsManager);
 			GhostManager.I.Load();
 			InputManager.I.Init();
 			CameraManager.I.Init();
@@ -107,7 +107,9 @@
 
 			// Temp
 			CampaignManager.I.LoadCampaign("MainCampaign");
-			ScreenManager.I.ActivateScreen(ScreenType.Game);
+			ArcadeGameScreen debugScreen = ScreenManager.I.GetScreen(ScreenType.ArcadeGame) as ArcadeGameScreen;
+			debugScreen.ActivateGame(ArcadeGameType.DeathRide);
+			ScreenManager.I.ActivateScreen(ScreenType.ArcadeGame);
 		}
 
 		/// <summary>
@@ -188,22 +190,22 @@
 		/// </summary>
 		private void ToggleFullscreen()
 		{
-			if (mGraphics.IsFullScreen)
+			if (mGraphicsManager.IsFullScreen)
 			{
-				mGraphics.IsFullScreen = false;
-				mGraphics.PreferredBackBufferWidth = mWindowRect.Width;
-				mGraphics.PreferredBackBufferHeight = mWindowRect.Height;
+				mGraphicsManager.IsFullScreen = false;
+				mGraphicsManager.PreferredBackBufferWidth = mWindowRect.Width;
+				mGraphicsManager.PreferredBackBufferHeight = mWindowRect.Height;
 			}
 			else
 			{
 				mWindowRect = GraphicsDevice.PresentationParameters.Bounds;
-				mGraphics.IsFullScreen = true;
+				mGraphicsManager.IsFullScreen = true;
 
-				mGraphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-				mGraphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+				mGraphicsManager.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+				mGraphicsManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 			}
 
-			mGraphics.ApplyChanges();
+			mGraphicsManager.ApplyChanges();
 		}
 
 		#endregion rUpdate
@@ -222,7 +224,7 @@
 		{
 			DrawInfo frameInfo;
 
-			frameInfo.graphics = mGraphics;
+			frameInfo.graphics = mGraphicsManager;
 			frameInfo.spriteBatch = mMainSpriteBatch;
 			frameInfo.gameTime = gameTime;
 			frameInfo.device = GraphicsDevice;
@@ -279,7 +281,7 @@
 		/// <param name="eventArgs">Event args</param>
 		private void OnResize(object sender, EventArgs eventArgs)
 		{
-			if (mGraphics.IsFullScreen)
+			if (mGraphicsManager.IsFullScreen)
 			{
 				return;
 			}
@@ -303,9 +305,9 @@
 		/// <param name="height">New window height</param>
 		private void SetWindowHeight(int height)
 		{
-			mGraphics.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
-			mGraphics.PreferredBackBufferHeight = height;
-			mGraphics.ApplyChanges();
+			mGraphicsManager.PreferredBackBufferWidth = (int)(height * ASPECT_RATIO);
+			mGraphicsManager.PreferredBackBufferHeight = height;
+			mGraphicsManager.ApplyChanges();
 		}
 
 		#endregion rDraw
