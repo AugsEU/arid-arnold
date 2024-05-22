@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	/// <summary>
 	/// Struct to specify the camera

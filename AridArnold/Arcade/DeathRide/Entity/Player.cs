@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	internal class Player : Motorbike
 	{
@@ -148,10 +148,10 @@
 
 		void HandleKeys(GameTime gameTime)
 		{
-			bool up = InputManager.I.KeyHeld(GameKeys.MoveUp);
-			bool down = InputManager.I.KeyHeld(GameKeys.MoveDown);
-			bool left = InputManager.I.KeyHeld(GameKeys.MoveLeft);
-			bool right = InputManager.I.KeyHeld(GameKeys.MoveRight);
+			bool up = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldUp);
+			bool down = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldDown);
+			bool left = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldLeft);
+			bool right = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldRight);
 
 			SetAcelerate(true);
 
@@ -206,19 +206,19 @@
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
-			if (InputManager.I.KeyPressed(GameKeys.FireGun))
+			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.ArnoldJump))
 			{
 				BeginGrapple();
 			}
-
-			if (!InputManager.I.KeyHeld(GameKeys.FireGun))
+				
+			if (!AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldJump))
 			{
 				EndGrapple();
 			}
 
 			if (mGrappleInAction && mGrappledEntity is null)
 			{
-				Vector2 newGrappleDir = (InputManager.I.GetMouseWorldPos() - GetCentrePos());
+				Vector2 newGrappleDir = (AridArnold.InputManager.I.GetMouseWorldPos() - GetCentrePos());
 				float newAngle = MathF.Atan2(newGrappleDir.Y, newGrappleDir.X);
 				float currAngle = MathF.Atan2(mGrappleDir.Y, mGrappleDir.X);
 
@@ -235,7 +235,7 @@
 		{
 			mGrappleInAction = true;
 			mGrappleLength = 0.0f;
-			mGrappleDir = (InputManager.I.GetMouseWorldPos() - GetCentrePos());
+			mGrappleDir = (AridArnold.InputManager.I.GetMouseWorldPos() - GetCentrePos());
 			if (mGrappledEntity is not null)
 			{
 				mGrappledEntity.SetBeingGrappled(false);

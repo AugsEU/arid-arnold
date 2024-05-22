@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	internal class ExitGameButton : Button
 	{
@@ -8,7 +8,8 @@
 
 		protected override void DoAction()
 		{
-			GMTK2023.sInstance.Exit();
+			// A TO DO: Make this return to Arid Arnold.
+			//DeathRide.sInstance.Exit();
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	internal class ScrollerTextFX : FX
 	{

@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	/// <summary>
 	/// Utility class for loading animations from data

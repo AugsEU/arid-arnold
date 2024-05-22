@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	/// <summary>
 	/// Manager that updates and draws all entities.

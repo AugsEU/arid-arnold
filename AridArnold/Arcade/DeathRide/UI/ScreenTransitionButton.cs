@@ -1,4 +1,4 @@
-﻿namespace GMTK2023.UI
+﻿namespace DeathRide.UI
 {
 	internal class ScreenTransitionButton : Button
 	{

@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	/// <summary>
 	/// Manages all effects that display on screen.

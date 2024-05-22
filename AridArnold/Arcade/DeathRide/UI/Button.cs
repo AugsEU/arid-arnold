@@ -1,4 +1,6 @@
-﻿namespace GMTK2023
+﻿using AridArnold;
+
+namespace DeathRide
 {
 	abstract class Button
 	{
@@ -30,7 +32,7 @@
 		{
 			if (IsMouseOver())
 			{
-				if (InputManager.I.IsLClickDown())
+				if (InputManager.I.KeyHeld(AridArnoldKeys.LeftClick))
 				{
 					mState = ButtonState.Pressed;
 				}
@@ -51,7 +53,7 @@
 
 		bool IsMouseOver()
 		{
-			Vector2 mousePos = InputManager.I.GetMouseWorldPos();
+			Vector2 mousePos = AridArnold.InputManager.I.GetMouseWorldPos();
 
 			return mousePos.X > mPosition.X && mousePos.X < mPosition.X + mBackTexture.Width
 				&& mousePos.Y > mPosition.Y && mousePos.Y < mPosition.Y + mBackTexture.Height;

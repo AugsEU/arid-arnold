@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 
-namespace GMTK2023
+namespace DeathRide
 {
 	internal class SoundManager : Singleton<SoundManager>
 	{
@@ -25,7 +25,7 @@ namespace GMTK2023
 		{
 			//Load songs
 			mSongs = new Dictionary<MusicType, Song>();
-			mSongs.Add(MusicType.MainGame, content.Load<Song>("Sound/GMTK2023"));
+			mSongs.Add(MusicType.MainGame, content.Load<Song>("Sound/DeathRide"));
 
 			MediaPlayer.IsRepeating = true;
 			MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;

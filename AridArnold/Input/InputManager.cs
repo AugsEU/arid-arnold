@@ -1,5 +1,6 @@
 ﻿namespace AridArnold
 {
+	using Microsoft.Xna.Framework.Input;
 	using InputBindingMap = Dictionary<AridArnoldKeys, InputBindSet>;
 	using InputBindingPair = KeyValuePair<AridArnoldKeys, InputBindSet>;
 
@@ -18,6 +19,10 @@
 		ArnoldDown,
 		ArnoldJump,
 
+		//Mouse
+		LeftClick,
+		RightClick,
+
 		//Game
 		UseItem
 	}
@@ -29,6 +34,7 @@
 	{
 		#region rMembers
 
+		MouseState mMouseState;
 		InputBindingMap mInputBindings = new InputBindingMap();
 
 		#endregion rMembers
@@ -46,6 +52,8 @@
 		{
 			//Set default bindings for now. TO DO: Load from file.
 			SetDefaultBindings();
+
+			mMouseState = new MouseState();
 		}
 
 
@@ -65,6 +73,9 @@
 			mInputBindings.Add(AridArnoldKeys.ArnoldUp, new InputBindSet(new KeyBinding(Keys.Up)));
 			mInputBindings.Add(AridArnoldKeys.ArnoldDown, new InputBindSet(new KeyBinding(Keys.Down)));
 			mInputBindings.Add(AridArnoldKeys.ArnoldJump, new InputBindSet(new KeyBinding(Keys.Space)));
+
+			mInputBindings.Add(AridArnoldKeys.LeftClick, new InputBindSet(new MouseBtnBinding(MouseButton.Left)));
+			mInputBindings.Add(AridArnoldKeys.RightClick, new InputBindSet(new MouseBtnBinding(MouseButton.Right)));
 
 			mInputBindings.Add(AridArnoldKeys.UseItem, new InputBindSet(new KeyBinding(Keys.LeftShift)));
 		}
@@ -87,6 +98,8 @@
 			{
 				keyBindPair.Value.Update(gameTime);
 			}
+
+			mMouseState = Mouse.GetState();
 		}
 
 
@@ -122,6 +135,38 @@
 		{
 			return mInputBindings[key];
 		}
+
+
+
+		/// <summary>
+		/// Get absolute mouse position, not accounting for scale.
+		/// </summary>
+		public Point GetMousePos()
+		{
+			Point screenPoint;
+
+			Rectangle screenRect = Main.GetGameDrawArea();
+			screenPoint.X = (mMouseState.Position.X - screenRect.Location.X);
+			screenPoint.Y = (mMouseState.Position.Y - screenRect.Location.Y);
+
+			return screenPoint;
+		}
+
+
+
+		/// <summary>
+		/// Get mouse position in "world" units. Accounting for scale. Use this one if in doubt.
+		/// </summary>
+		public Vector2 GetMouseWorldPos()
+		{
+			Point mousePos = GetMousePos();
+
+			Rectangle screenRect = Main.GetGameDrawArea();
+			float scaleFactor = screenRect.Width / Screen.SCREEN_WIDTH;
+
+			return new Vector2(mousePos.X, mousePos.Y) / scaleFactor;
+		}
+
 		#endregion rKeySense
 	}
 }

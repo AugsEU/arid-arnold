@@ -22,7 +22,8 @@
 
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
-		private Rectangle windowedRect;
+		private Rectangle mWindowRect;
+		private Rectangle mOutputRectSize;
 		private int mSlowDownCount;
 		private Texture2D mDummyTexture;
 		private bool mIsInputFrame = true;
@@ -190,12 +191,12 @@
 			if (_graphics.IsFullScreen)
 			{
 				_graphics.IsFullScreen = false;
-				_graphics.PreferredBackBufferWidth = windowedRect.Width;
-				_graphics.PreferredBackBufferHeight = windowedRect.Height;
+				_graphics.PreferredBackBufferWidth = mWindowRect.Width;
+				_graphics.PreferredBackBufferHeight = mWindowRect.Height;
 			}
 			else
 			{
-				windowedRect = GraphicsDevice.PresentationParameters.Bounds;
+				mWindowRect = GraphicsDevice.PresentationParameters.Bounds;
 				_graphics.IsFullScreen = true;
 
 				_graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
@@ -231,14 +232,16 @@
 
 			if (screen != null)
 			{
-				RenderTarget2D screenTargetRef = screen.DrawToRenderTarget(frameInfo);
+				RenderTarget2D finalFrame = screen.DrawToRenderTarget(frameInfo);
 				Rectangle screenRect = GraphicsDevice.PresentationParameters.Bounds;
 				Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GlobalCamera);
 
 				// Draw!
 				screenCam.StartSpriteBatch(frameInfo, new Vector2(screenRect.X, screenRect.Y), null, Color.Black);
 
-				DrawScreenPixelPerfect(frameInfo, screenTargetRef);
+				Rectangle destRect = DrawScreenPixelPerfect(frameInfo, finalFrame);
+				MonoDraw.DrawTexture(frameInfo, finalFrame, destRect);
+				mOutputRectSize = destRect;
 
 				screenCam.EndSpriteBatch(frameInfo);
 			}
@@ -255,7 +258,7 @@
 		/// </summary>
 		/// <param name="info">Info needed to draw</param>
 		/// <param name="screen">Screen to draw</param>
-		private void DrawScreenPixelPerfect(DrawInfo info, RenderTarget2D screen)
+		private Rectangle DrawScreenPixelPerfect(DrawInfo info, RenderTarget2D screen)
 		{
 			Rectangle screenRect = info.device.PresentationParameters.Bounds;
 
@@ -264,9 +267,7 @@
 			int finalWidth = screen.Width * multiplier;
 			int finalHeight = screen.Height * multiplier;
 
-			Rectangle destRect = new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
-
-			MonoDraw.DrawTexture(info, screen, destRect);
+			return new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
 		}
 
 
@@ -311,6 +312,8 @@
 
 
 
+
+
 		#region rUtility
 
 		/// <summary>
@@ -337,6 +340,16 @@
 		public static ContentManager GetMainContentManager()
 		{
 			return sSelf.Content;
+		}
+
+
+
+		/// <summary>
+		/// Get rectangle corresponding to the area where the game is actually drawn
+		/// </summary>
+		public static Rectangle GetGameDrawArea()
+		{
+			return sSelf.mOutputRectSize;
 		}
 
 

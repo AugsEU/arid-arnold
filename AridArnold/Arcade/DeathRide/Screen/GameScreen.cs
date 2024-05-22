@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	/// <summary>
 	/// Gameplay screen
@@ -116,7 +116,7 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			if (InputManager.I.KeyPressed(GameKeys.Pause))
+			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Pause))
 			{
 				mIsPaused = !mIsPaused;
 			}

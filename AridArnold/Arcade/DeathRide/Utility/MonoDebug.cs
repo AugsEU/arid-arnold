@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace GMTK2023
+namespace DeathRide
 {
 	static class MonoDebug
 	{

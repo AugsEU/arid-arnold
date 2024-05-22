@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	class RunManager : Singleton<RunManager>
 	{

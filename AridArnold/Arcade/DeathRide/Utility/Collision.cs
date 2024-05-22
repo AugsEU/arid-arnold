@@ -1,6 +1,6 @@
 ﻿#define EXPERIMENTAL_COLLISION_REMOVALS
 
-namespace GMTK2023
+namespace DeathRide
 {
 	/// <summary>
 	/// Type of collision.

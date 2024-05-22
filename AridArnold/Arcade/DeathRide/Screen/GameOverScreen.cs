@@ -1,6 +1,6 @@
-﻿using GMTK2023.UI;
+﻿using DeathRide.UI;
 
-namespace GMTK2023
+namespace DeathRide
 {
 	internal class GameOverScreen : Screen
 	{

@@ -1,4 +1,4 @@
-﻿namespace GMTK2023
+﻿namespace DeathRide
 {
 	/// <summary>
 	/// Info needed to draw
@@ -204,7 +204,7 @@
 		/// </summary>
 		public static void DrawRect(DrawInfo info, Rectangle rect, Color col)
 		{
-			info.spriteBatch.Draw(GMTK2023.GetDummyTexture(), rect, col);
+			info.spriteBatch.Draw(AridArnold.Main.GetDummyTexture(), rect, col);
 		}
 
 
@@ -213,7 +213,7 @@
 		/// </summary>
 		public static void DrawRectDepth(DrawInfo info, Rectangle rect, Color col, DrawLayer depth)
 		{
-			info.spriteBatch.Draw(GMTK2023.GetDummyTexture(), rect, null, col, 0.0f, Vector2.Zero, SpriteEffects.None, GetDepth(depth));
+			info.spriteBatch.Draw(AridArnold.Main.GetDummyTexture(), rect, null, col, 0.0f, Vector2.Zero, SpriteEffects.None, GetDepth(depth));
 		}
 
 
@@ -279,7 +279,7 @@
 		{
 			var origin = new Vector2(0f, 0.5f);
 			var scale = new Vector2(length, thickness);
-			info.spriteBatch.Draw(GMTK2023.GetDummyTexture(), point, null, color, angle, origin, scale, SpriteEffects.None, GetDepth(depth));
+			info.spriteBatch.Draw(AridArnold.Main.GetDummyTexture(), point, null, color, angle, origin, scale, SpriteEffects.None, GetDepth(depth));
 		}
 
 
