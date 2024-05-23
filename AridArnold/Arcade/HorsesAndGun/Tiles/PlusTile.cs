@@ -15,9 +15,9 @@ namespace HorsesAndGun.Tiles
 		{
 			switch (amount)
 			{
-				case 1: return "Tiles/plus_one_tile";
-				case 2: return "Tiles/plus_two_tile";
-				case 3: return "Tiles/plus_three_tile";
+				case 1: return "Arcade/HorsesAndGun/Tiles/plus_one_tile";
+				case 2: return "Arcade/HorsesAndGun/Tiles/plus_two_tile";
+				case 3: return "Arcade/HorsesAndGun/Tiles/plus_three_tile";
 			}
 
 			throw new NotImplementedException();

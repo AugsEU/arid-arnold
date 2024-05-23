@@ -63,42 +63,42 @@ namespace HorsesAndGun
 
 		public override void LoadContent(ContentManager content)
 		{
-			mBackground = content.Load<Texture2D>("main_bg");
-			mGunTexture = content.Load<Texture2D>("gun");
-			mGunBarrelTexture = content.Load<Texture2D>("gun_barrel");
-			mGameOverCross = content.Load<Texture2D>("dead_x");
+			mBackground = content.Load<Texture2D>("Arcade/HorsesAndGun/main_bg");
+			mGunTexture = content.Load<Texture2D>("Arcade/HorsesAndGun/gun");
+			mGunBarrelTexture = content.Load<Texture2D>("Arcade/HorsesAndGun/gun_barrel");
+			mGameOverCross = content.Load<Texture2D>("Arcade/HorsesAndGun/dead_x");
 
-			mTopSky = new ScrollingImage(content.Load<Texture2D>("sky_1"), content.Load<Texture2D>("sky_2"), Vector2.Zero, 70);
-			mTopSkyCloud1 = new ScrollingImage(content.Load<Texture2D>("dust_cloud_1"), content.Load<Texture2D>("dust_cloud_1"), Vector2.Zero, 130);
-			mTopSkyCloud2 = new ScrollingImage(content.Load<Texture2D>("dust_cloud_2"), content.Load<Texture2D>("dust_cloud_2"), Vector2.Zero, 130);
-			mGround = new ScrollingImage(content.Load<Texture2D>("ground"), content.Load<Texture2D>("ground"), new Vector2(84.0f, 27.0f), 200);
+			mTopSky = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/sky_1"), content.Load<Texture2D>("Arcade/HorsesAndGun/sky_2"), Vector2.Zero, 70);
+			mTopSkyCloud1 = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_1"), content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_1"), Vector2.Zero, 130);
+			mTopSkyCloud2 = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_2"), content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_2"), Vector2.Zero, 130);
+			mGround = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/ground"), content.Load<Texture2D>("Arcade/HorsesAndGun/ground"), new Vector2(84.0f, 27.0f), 200);
 
-			mDiceTextures[0] = content.Load<Texture2D>("Dice1");
-			mDiceTextures[1] = content.Load<Texture2D>("Dice2");
-			mDiceTextures[2] = content.Load<Texture2D>("Dice3");
-			mDiceTextures[3] = content.Load<Texture2D>("Dice4");
-			mDiceTextures[4] = content.Load<Texture2D>("Dice5");
-			mDiceTextures[5] = content.Load<Texture2D>("Dice6");
+			mDiceTextures[0] = content.Load<Texture2D>("Arcade/HorsesAndGun/Dice1");
+			mDiceTextures[1] = content.Load<Texture2D>("Arcade/HorsesAndGun/Dice2");
+			mDiceTextures[2] = content.Load<Texture2D>("Arcade/HorsesAndGun/Dice3");
+			mDiceTextures[3] = content.Load<Texture2D>("Arcade/HorsesAndGun/Dice4");
+			mDiceTextures[4] = content.Load<Texture2D>("Arcade/HorsesAndGun/Dice5");
+			mDiceTextures[5] = content.Load<Texture2D>("Arcade/HorsesAndGun/Dice6");
 
 
-			mSideDiceTextures[0] = content.Load<Texture2D>("dice_side_1");
-			mSideDiceTextures[1] = content.Load<Texture2D>("dice_side_2");
-			mSideDiceTextures[2] = content.Load<Texture2D>("dice_side_3");
-			mSideDiceTextures[3] = content.Load<Texture2D>("dice_side_4");
-			mSideDiceTextures[4] = content.Load<Texture2D>("dice_side_5");
-			mSideDiceTextures[5] = content.Load<Texture2D>("dice_side_6");
+			mSideDiceTextures[0] = content.Load<Texture2D>("Arcade/HorsesAndGun/dice_side_1");
+			mSideDiceTextures[1] = content.Load<Texture2D>("Arcade/HorsesAndGun/dice_side_2");
+			mSideDiceTextures[2] = content.Load<Texture2D>("Arcade/HorsesAndGun/dice_side_3");
+			mSideDiceTextures[3] = content.Load<Texture2D>("Arcade/HorsesAndGun/dice_side_4");
+			mSideDiceTextures[4] = content.Load<Texture2D>("Arcade/HorsesAndGun/dice_side_5");
+			mSideDiceTextures[5] = content.Load<Texture2D>("Arcade/HorsesAndGun/dice_side_6");
 
-			mShootAnim.LoadFrame(content, "gun-fire1", 0.05f);
-			mShootAnim.LoadFrame(content, "gun-fire2", 0.05f);
-			mShootAnim.LoadFrame(content, "gun-fire3", 0.05f);
-			mShootAnim.LoadFrame(content, "gun-fire4", 0.07f);
-			mShootAnim.LoadFrame(content, "gun-fire5", 0.07f);
-			mShootAnim.LoadFrame(content, "gun-fire6", 0.07f);
-			mShootAnim.LoadFrame(content, "gun-fire7", 0.07f);
-			mShootAnim.LoadFrame(content, "gun-fire8", 0.07f);
-			mShootAnim.LoadFrame(content, "gun-fire9", 0.07f);
-			mShootAnim.LoadFrame(content, "gun-fire10", 0.07f);
-			mShootAnim.LoadFrame(content, "gun", 0.05f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire1", 0.05f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire2", 0.05f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire3", 0.05f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire4", 0.07f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire5", 0.07f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire6", 0.07f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire7", 0.07f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire8", 0.07f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire9", 0.07f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun-fire10", 0.07f);
+			mShootAnim.LoadFrame(content, "Arcade/HorsesAndGun/gun", 0.05f);
 
 		}
 

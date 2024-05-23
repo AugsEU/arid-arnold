@@ -2,7 +2,7 @@
 {
 	internal class DeathTile : BasicTile
 	{
-		public DeathTile(ContentManager content) : base(content, "Tiles/tile_death")
+		public DeathTile(ContentManager content) : base(content, "Arcade/HorsesAndGun/Tiles/tile_death")
 		{
 
 		}

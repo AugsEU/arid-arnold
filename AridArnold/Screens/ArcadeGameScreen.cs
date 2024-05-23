@@ -4,6 +4,7 @@ namespace AridArnold
 	public enum ArcadeGameType : int
 	{
 		DeathRide = 0,
+		HorsesAndGun,
 	}
 
 	internal class ArcadeGameScreen : Screen
@@ -14,7 +15,8 @@ namespace AridArnold
 		public ArcadeGameScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
 			mGames = new ArcadeGame[MonoAlg.EnumLength(typeof(ArcadeGameType))];
-			mGames[(int)ArcadeGameType.DeathRide] = new DeathRide.DeathRide(graphics, Main.GetMainContentManager());
+			mGames[(int)ArcadeGameType.DeathRide]    = new DeathRide.DeathRide(graphics, Main.GetMainContentManager());
+			mGames[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGun.HorsesAndGun(graphics, Main.GetMainContentManager());
 			mActiveGame = null;
 		}
 

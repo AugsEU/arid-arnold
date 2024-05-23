@@ -13,7 +13,7 @@ namespace HorsesAndGun
 
 		public override void LoadContent(ContentManager content)
 		{
-			mBackButton = new Button(content.Load<Texture2D>("wooden_button"), content.Load<SpriteFont>("Fonts/Pixica"))
+			mBackButton = new Button(content.Load<Texture2D>("Arcade/HorsesAndGun/wooden_button"), content.Load<SpriteFont>("Arcade/HorsesAndGun/Fonts/Pixica"))
 			{
 				mPosition = new Vector2(366.5f, 290.0f),
 				mText = "Back"
@@ -21,7 +21,7 @@ namespace HorsesAndGun
 
 			mBackButton.mOnMouseClick += BackButtonClick;
 
-			mBG = content.Load<Texture2D>("help-screen");
+			mBG = content.Load<Texture2D>("Arcade/HorsesAndGun/help-screen");
 		}
 
 		public override void OnActivate()

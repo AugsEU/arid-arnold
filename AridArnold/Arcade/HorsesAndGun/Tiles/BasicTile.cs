@@ -4,7 +4,7 @@
 	{
 		Texture2D mTexture;
 
-		public BasicTile(ContentManager content, string texName = "Tiles/basic_tile")
+		public BasicTile(ContentManager content, string texName = "Arcade/HorsesAndGun/Tiles/basic_tile")
 		{
 			mTexture = content.Load<Texture2D>(texName);
 		}

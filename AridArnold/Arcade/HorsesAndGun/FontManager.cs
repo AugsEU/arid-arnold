@@ -8,8 +8,8 @@ namespace HorsesAndGun
 
 		public void LoadAllFonts(ContentManager content)
 		{
-			mFonts.Add("Pixica-24", content.Load<SpriteFont>("Fonts/Pixica"));
-			mFonts.Add("Pixica Micro-24", content.Load<SpriteFont>("Fonts/Pixica-Small"));
+			mFonts.Add("Pixica-24", content.Load<SpriteFont>("Arcade/HorsesAndGun/Fonts/Pixica"));
+			mFonts.Add("Pixica Micro-24", content.Load<SpriteFont>("Arcade/HorsesAndGun/Fonts/Pixica-Small"));
 		}
 
 		public SpriteFont GetFont(string key)

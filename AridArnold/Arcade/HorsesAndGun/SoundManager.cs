@@ -26,7 +26,7 @@ namespace HorsesAndGun
 		{
 			//Load songs
 			mSongs = new Dictionary<MusicType, Song>();
-			mSongs.Add(MusicType.MainGame, content.Load<Song>("Music/Horses and gun"));
+			mSongs.Add(MusicType.MainGame, content.Load<Song>("Arcade/HorsesAndGun/Music/Horses and gun"));
 
 			MediaPlayer.IsRepeating = true;
 			MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
@@ -34,11 +34,11 @@ namespace HorsesAndGun
 			//LoadSFX
 			mSFX = new Dictionary<SFXType, SoundEffect>();
 
-			mSFX.Add(SFXType.GetHerDone, content.Load<SoundEffect>("SFX/getherdone"));
-			mSFX.Add(SFXType.GunReload, content.Load<SoundEffect>("SFX/reloadsfx"));
-			mSFX.Add(SFXType.GunShoot, content.Load<SoundEffect>("SFX/gunsfx"));
-			mSFX.Add(SFXType.TileActivate, content.Load<SoundEffect>("SFX/levelupsfx"));
-			mSFX.Add(SFXType.GameOver, content.Load<SoundEffect>("SFX/GameOverSFX"));
+			mSFX.Add(SFXType.GetHerDone, content.Load<SoundEffect>("Arcade/HorsesAndGun/SFX/getherdone"));
+			mSFX.Add(SFXType.GunReload, content.Load<SoundEffect>("Arcade/HorsesAndGun/SFX/reloadsfx"));
+			mSFX.Add(SFXType.GunShoot, content.Load<SoundEffect>("Arcade/HorsesAndGun/SFX/gunsfx"));
+			mSFX.Add(SFXType.TileActivate, content.Load<SoundEffect>("Arcade/HorsesAndGun/SFX/levelupsfx"));
+			mSFX.Add(SFXType.GameOver, content.Load<SoundEffect>("Arcade/HorsesAndGun/SFX/GameOverSFX"));
 		}
 
 

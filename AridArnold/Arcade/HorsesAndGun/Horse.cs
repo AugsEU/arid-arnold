@@ -93,42 +93,42 @@ namespace HorsesAndGun
 
 		public override void LoadContent(ContentManager content)
 		{
-			mTexture = content.Load<Texture2D>("Horse/horse-stand1");
+			mTexture = content.Load<Texture2D>("Arcade/HorsesAndGun/Horse/horse-stand1");
 
-			mIdleAnim.LoadFrame(content, "Horse/horse-stand1", 0.5f);
-			mIdleAnim.LoadFrame(content, "Horse/horse-stand3", 0.5f);
-			mIdleAnim.LoadFrame(content, "Horse/horse-stand2", 0.5f);
-			mIdleAnim.LoadFrame(content, "Horse/horse-stand3", 0.5f);
+			mIdleAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse-stand1", 0.5f);
+			mIdleAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse-stand3", 0.5f);
+			mIdleAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse-stand2", 0.5f);
+			mIdleAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse-stand3", 0.5f);
 			mIdleAnim.Play();
 
 			const float RUN_ANIM_SPEED = 0.1f;
-			mRunAnim.LoadFrame(content, "Horse/horse_run_1", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_2", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_3", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_4", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_5", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_6", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_7", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_8", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_9", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_10", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_11", RUN_ANIM_SPEED);
-			mRunAnim.LoadFrame(content, "Horse/horse_run_12", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_1", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_2", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_3", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_4", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_5", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_6", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_7", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_8", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_9", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_10", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_11", RUN_ANIM_SPEED);
+			mRunAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_run_12", RUN_ANIM_SPEED);
 			mRunAnim.Play();
 
 			const float JUMP_ANIM_SPEED = 0.075f;
-			mJumpUpAnim.LoadFrame(content, "Horse/horse_jump_1", JUMP_ANIM_SPEED);
-			mJumpUpAnim.LoadFrame(content, "Horse/horse_jump_2", JUMP_ANIM_SPEED);
-			mJumpUpAnim.LoadFrame(content, "Horse/horse_jump_3", JUMP_ANIM_SPEED);
-			mJumpUpAnim.LoadFrame(content, "Horse/horse_jump_4", JUMP_ANIM_SPEED);
-			mJumpUpAnim.LoadFrame(content, "Horse/horse_jump_5", JUMP_ANIM_SPEED);
-			mJumpUpAnim.LoadFrame(content, "Horse/horse_jump_6", JUMP_ANIM_SPEED);
-			mJumpUpAnim.LoadFrame(content, "Horse/horse_jump_7", JUMP_ANIM_SPEED);
+			mJumpUpAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_1", JUMP_ANIM_SPEED);
+			mJumpUpAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_2", JUMP_ANIM_SPEED);
+			mJumpUpAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_3", JUMP_ANIM_SPEED);
+			mJumpUpAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_4", JUMP_ANIM_SPEED);
+			mJumpUpAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_5", JUMP_ANIM_SPEED);
+			mJumpUpAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_6", JUMP_ANIM_SPEED);
+			mJumpUpAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_7", JUMP_ANIM_SPEED);
 
-			mJumpDownAnim.LoadFrame(content, "Horse/horse_jump_7", RUN_ANIM_SPEED);
-			mJumpDownAnim.LoadFrame(content, "Horse/horse_jump_8", RUN_ANIM_SPEED);
-			mJumpDownAnim.LoadFrame(content, "Horse/horse_jump_9", RUN_ANIM_SPEED);
-			mJumpDownAnim.LoadFrame(content, "Horse/horse_jump_10", RUN_ANIM_SPEED);
+			mJumpDownAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_7", RUN_ANIM_SPEED);
+			mJumpDownAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_8", RUN_ANIM_SPEED);
+			mJumpDownAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_9", RUN_ANIM_SPEED);
+			mJumpDownAnim.LoadFrame(content, "Arcade/HorsesAndGun/Horse/horse_jump_10", RUN_ANIM_SPEED);
 		}
 
 		public override Rect2f ColliderBounds()

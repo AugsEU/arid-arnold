@@ -64,7 +64,7 @@ namespace HorsesAndGun
 		{
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			mCursor = Content.Load<Texture2D>("cursor");
+			mCursor = Content.Load<Texture2D>("Arcade/HorsesAndGun/cursor");
 
 			SoundManager.I.LoadContent(this.Content);
 			ScreenManager.I.LoadAllScreens(this.Content, _graphics);

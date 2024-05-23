@@ -25,7 +25,8 @@ namespace HorsesAndGun
 
 		private void QuitButtonClick(object sender, EventArgs e)
 		{
-			Game1.self.Exit();
+			// A To Do: Make this work...
+			//Game1.self.Exit();
 		}
 
 		public RossButtonsScreen(ContentManager content, GraphicsDeviceManager graphics) : base(content, graphics)
@@ -35,25 +36,25 @@ namespace HorsesAndGun
 
 		public override void LoadContent(ContentManager content)
 		{
-			Button playButton = new Button(content.Load<Texture2D>("wooden_button"), content.Load<SpriteFont>("Fonts/Pixica"))
+			Button playButton = new Button(content.Load<Texture2D>("Arcade/HorsesAndGun/wooden_button"), content.Load<SpriteFont>("Arcade/HorsesAndGun/Fonts/Pixica"))
 			{
 				mPosition = new Vector2(196.5f, 160.0f),
 				mText = "Play"
 			};
 
-			Button optionsButton = new Button(content.Load<Texture2D>("wooden_button"), content.Load<SpriteFont>("Fonts/Pixica"))
+			Button optionsButton = new Button(content.Load<Texture2D>("Arcade/HorsesAndGun/wooden_button"), content.Load<SpriteFont>("Arcade/HorsesAndGun/Fonts/Pixica"))
 			{
 				mPosition = new Vector2(196.5f, 220.0f),
 				mText = "Help"
 			};
 
-			Button quitButton = new Button(content.Load<Texture2D>("wooden_button"), content.Load<SpriteFont>("Fonts/Pixica"))
+			Button quitButton = new Button(content.Load<Texture2D>("Arcade/HorsesAndGun/wooden_button"), content.Load<SpriteFont>("Arcade/HorsesAndGun/Fonts/Pixica"))
 			{
 				mPosition = new Vector2(196.5f, 280.0f),
 				mText = "Quit"
 			};
 
-			mGround = new ScrollingImage(content.Load<Texture2D>("menu_background"), content.Load<Texture2D>("menu_background"), Vector2.Zero, 200);
+			mGround = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/menu_background"), content.Load<Texture2D>("Arcade/HorsesAndGun/menu_background"), Vector2.Zero, 200);
 
 
 			playButton.mOnMouseClick += PlayButtonClick;
@@ -68,7 +69,7 @@ namespace HorsesAndGun
 				quitButton
 			};
 
-			mLogo = content.Load<Texture2D>("main_logo");
+			mLogo = content.Load<Texture2D>("Arcade/HorsesAndGun/main_logo");
 		}
 
 		public override void OnActivate()

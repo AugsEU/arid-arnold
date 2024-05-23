@@ -1,7 +1,4 @@
-﻿using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Media;
-
-namespace DeathRide
+﻿namespace DeathRide
 {
 	internal class SoundManager : Singleton<SoundManager>
 	{

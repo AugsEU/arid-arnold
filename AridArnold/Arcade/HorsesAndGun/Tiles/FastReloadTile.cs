@@ -2,7 +2,7 @@
 {
 	internal class FastReloadTile : BasicTile
 	{
-		public FastReloadTile(ContentManager content) : base(content, "Tiles/fast_reload")
+		public FastReloadTile(ContentManager content) : base(content, "Arcade/HorsesAndGun/Tiles/fast_reload")
 		{
 
 		}

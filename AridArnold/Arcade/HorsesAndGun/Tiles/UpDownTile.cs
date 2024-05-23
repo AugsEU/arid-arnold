@@ -13,7 +13,7 @@ namespace HorsesAndGun.Tiles
 
 		static string GetPlusTex(bool up)
 		{
-			return up ? "Tiles/tile_go_up" : "Tiles/tile_go_down";
+			return up ? "Arcade/HorsesAndGun/Tiles/tile_go_up" : "Arcade/HorsesAndGun/Tiles/tile_go_down";
 
 			throw new NotImplementedException();
 		}

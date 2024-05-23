@@ -41,5 +41,11 @@
 
 			return false;
 		}
+
+		public void ResetAll()
+		{
+			mHighScore = 0;
+			mCurrentScore = 0;
+		}
 	}
 }
