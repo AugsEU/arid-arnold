@@ -29,8 +29,6 @@ namespace HorsesAndGun
 
 		public override void Update(GameTime gameTime)
 		{
-			InputManager.I.Update(gameTime);
-
 			ScreenManager.I.Update(gameTime);
 			TimeManager.I.Update(gameTime);
 		}

@@ -167,6 +167,16 @@
 			return new Vector2(mousePos.X, mousePos.Y) / scaleFactor;
 		}
 
+
+
+		/// <summary>
+		/// Get mouse position in "world" units. Accounting for scale. Use this one if in doubt.
+		/// </summary>
+		public Point GetMouseWorldPoint()
+		{
+			return new Point((int)GetMouseWorldPos().X, (int)GetMouseWorldPos().Y);
+		}
+
 		#endregion rKeySense
 	}
 }

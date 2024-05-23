@@ -7,9 +7,6 @@ namespace HorsesAndGun
 	{
 		// ROSS BUTTON SCREEN FOR TESTING //
 		RossButtonsScreen,
-
-		Intro,
-		MainMenu,
 		Options,
 		StatsScreen,
 		MainGame,
@@ -28,9 +25,6 @@ namespace HorsesAndGun
 
 			// ROSS BUTTON SCREEN FOR TESTING //
 			LoadScreen(ScreenType.RossButtonsScreen, new RossButtonsScreen(content, deviceManager), content);
-
-			LoadScreen(ScreenType.Intro, new IntroScreen(content, deviceManager), content);
-			LoadScreen(ScreenType.MainMenu, new MainMenuScreen(content, deviceManager), content);
 			LoadScreen(ScreenType.Options, new OptionsScreen(content, deviceManager), content);
 			LoadScreen(ScreenType.StatsScreen, new StatsScreen(content, deviceManager), content);
 			LoadScreen(ScreenType.MainGame, new MainGameScreen(content, deviceManager), content);

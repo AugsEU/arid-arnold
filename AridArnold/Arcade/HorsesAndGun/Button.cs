@@ -34,14 +34,14 @@ namespace HorsesAndGun
 		{
 			mIsMouseOverButton = false; // Default to false so can then be checked for
 
-			Point mouseScreenPosition = InputManager.I.GetMousePos();
-			Rectangle mousePoint = new Rectangle(mouseScreenPosition, new Point(1, 1));
+			Vector2 mouseScreenPosition = AridArnold.InputManager.I.GetMouseWorldPos();
+			Rectangle mousePoint = new Rectangle((int)mouseScreenPosition.X, (int)mouseScreenPosition.Y, 1, 1);
 
 			if (mousePoint.Intersects(mBounds))
 			{
 				mIsMouseOverButton = true;
 
-				if (InputManager.I.LClick())
+				if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick))
 				{
 					mOnMouseClick?.Invoke(this, new EventArgs());
 				}

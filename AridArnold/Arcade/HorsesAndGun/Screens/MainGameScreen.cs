@@ -171,7 +171,7 @@ namespace HorsesAndGun
 
 				if (GetGameOverPercent() == 1.0f)
 				{
-					if (InputManager.I.LClick())
+					if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick))
 					{
 						ScreenManager.I.ActivateScreen(ScreenType.RossButtonsScreen);
 					}
@@ -219,7 +219,8 @@ namespace HorsesAndGun
 
 		private void HandleInput(GameTime gameTime)
 		{
-			if (InputManager.I.LClick() && GetReloadPercent() == 1.0f)
+			bool lClick = AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick);
+			if (lClick && GetReloadPercent() == 1.0f)
 			{
 				FireGun(gameTime);
 			}
@@ -264,7 +265,7 @@ namespace HorsesAndGun
 
 		public void DecideGunPosition()
 		{
-			Point mousePos = InputManager.I.GetMousePos();
+			Point mousePos = AridArnold.InputManager.I.GetMouseWorldPoint();
 
 			mGunLane = Math.Max(0, (mousePos.Y - 29) / 50);
 
