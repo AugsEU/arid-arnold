@@ -5,6 +5,7 @@ namespace AridArnold
 	{
 		DeathRide = 0,
 		HorsesAndGun,
+		WormWarp
 	}
 
 	internal class ArcadeGameScreen : Screen
@@ -17,6 +18,7 @@ namespace AridArnold
 			mGames = new ArcadeGame[MonoAlg.EnumLength(typeof(ArcadeGameType))];
 			mGames[(int)ArcadeGameType.DeathRide]    = new DeathRide.DeathRide(graphics, Main.GetMainContentManager());
 			mGames[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGun.HorsesAndGun(graphics, Main.GetMainContentManager());
+			mGames[(int)ArcadeGameType.WormWarp] = new WormWarp.SnakeGameArcade(graphics, Main.GetMainContentManager());
 			mActiveGame = null;
 		}
 
@@ -52,7 +54,7 @@ namespace AridArnold
 
 			if (arcadeGameRender is not null)
 			{
-				MonoDraw.DrawTexture(info, arcadeGameRender, Vector2.Zero);
+				MonoDraw.DrawTexture(info, arcadeGameRender, Vector2.Zero, null, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, DrawLayer.Default);
 			}
 
 			EndScreenSpriteBatch(info);

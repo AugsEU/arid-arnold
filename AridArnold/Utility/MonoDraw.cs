@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Info needed to draw
 	/// </summary>
-	struct DrawInfo
+	public struct DrawInfo
 	{
 		public GameTime gameTime;
 		public SpriteBatch spriteBatch;

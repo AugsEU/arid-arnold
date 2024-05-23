@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-
-namespace WormWarp
+﻿namespace WormWarp
 {
 	enum AppleType
 	{
@@ -183,20 +178,25 @@ namespace WormWarp
 			}
 
 			UpdateResult update_res = UpdateResult.UR_NORMAL;
-			//// TODO: Add your update logic here
-			if (Keyboard.GetState().IsKeyDown(Keys.Up))
+
+			bool up = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldUp);
+			bool left = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldLeft);
+			bool down = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldDown);
+			bool right = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldRight);
+
+			if (up && !down)
 			{
 				mSnake.SetNewDir(SDirection.Up);
 			}
-			if (Keyboard.GetState().IsKeyDown(Keys.Left))
+			if (left && !right)
 			{
 				mSnake.SetNewDir(SDirection.Left);
 			}
-			if (Keyboard.GetState().IsKeyDown(Keys.Down))
+			if (down && !up)
 			{
 				mSnake.SetNewDir(SDirection.Down);
 			}
-			if (Keyboard.GetState().IsKeyDown(Keys.Right))
+			if (right && !left)
 			{
 				mSnake.SetNewDir(SDirection.Right);
 			}
@@ -208,7 +208,6 @@ namespace WormWarp
 
 				Vector2 prevTail = mSnake.Positions[mSnake.Positions.Count - 1];
 				mSnake.Move();
-
 
 				if (mApple.active && mSnake.Positions[0] == mApple.position)
 				{

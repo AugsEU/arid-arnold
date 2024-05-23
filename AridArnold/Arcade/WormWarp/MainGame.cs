@@ -19,326 +19,342 @@
 	/// <summary>
 	/// This is the main type for your game.
 	/// </summary>
-	public class MainGame : Game
+	public class MainGame
 	{
+		#region rConstants
+
 		const int APPLE_FREQ = 6;
 
-		const int SCREEN_WIDTH = 1280;
-		const int SCREEN_HEIGHT = 720;
+		public const int SCREEN_WIDTH = 1280;
+		public const int SCREEN_HEIGHT = 720;
 
 		const float BG_START = 600.0f;
 		const float BG_STEP = 456.0f;
 
-		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
+		#endregion rConstants
+
+
+
+
+
+		#region rMembers
+
 		SpriteFont mFont;
-		Camera MainCamera;
-		List<SnakeGame> SnakeGames = new List<SnakeGame>();
-		Dictionary<string, Texture2D> tb;
-		Dictionary<string, SoundEffect> SFX_db;
-		List<Uptext> ScoreMarkers = new List<Uptext>();
+		Camera mMainCamera;
+		List<SnakeGame> mSnakeGames = new List<SnakeGame>();
+		Dictionary<string, Texture2D> mTextureDB;
+		Dictionary<string, SoundEffect> mSoundDB;
+		List<Uptext> mScoreMarkers = new List<Uptext>();
 
-		Song mainSong;
-		Song menuSong;
+		Song mMainSong;
+		Song mMenuSong;
 
-		int num_apple_placed = 0;
+		int mNumApplesPlaced = 0;
 
-		int current_step = -1;
-		TimeSpan begin_time;
-		int current_bg_frame = 0;
+		int mCurrentStep = -1;
+		TimeSpan mBeginTime;
+		int mCurrentBGFrame = 0;
 
-		bool enter_held;
+		int mTargetWidth = 0;
 
-		int target_width = 0;
+		int mCurrScore;
+		int mHighScore;
 
-		int curr_score;
-		int high_score;
+		Vector2 mBGPos;
 
-		Vector2 BGpos;
+		GameState mGameState;
+		float mGameOverOpacity = 0.0f;
+
+		#endregion rMembers
 
 
 
-		GameState CurrentState;
-		float GameOverOpacity = 0.0f;
 
+
+		#region rInit
+
+		/// <summary>
+		/// Create game
+		/// </summary>
 		public MainGame()
 		{
-			graphics = new GraphicsDeviceManager(this);
-			graphics.IsFullScreen = false;
-
-			graphics.PreferredBackBufferWidth = SCREEN_WIDTH;
-			graphics.PreferredBackBufferHeight = SCREEN_HEIGHT;
-			graphics.ApplyChanges();
-			Content.RootDirectory = "Content";
 		}
 
+
+
 		/// <summary>
-		/// Allows the game to perform any initialization it needs to before starting to run.
-		/// This is where it can query for any required services and load any non-graphic
-		/// related content.  Calling base.Initialize will enumerate through any components
-		/// and initialize them as well.
+		/// Reset game state
 		/// </summary>
-		protected override void Initialize()
+		public void ResetGame()
 		{
-			MainCamera = new Camera(0f, 0f);
-			base.Initialize();
-			high_score = 0;
-			enter_held = Keyboard.GetState().IsKeyDown(Keys.Enter);
+			mMainCamera = new Camera(0f, 0f);
+			mHighScore = 0;
+			mCurrScore = 0;
+			InitMenu();
 		}
 
+
+
 		/// <summary>
-		/// LoadContent will be called once per game and is the place to load
-		/// all of your content.
+		/// Load all textures
 		/// </summary>
-		protected override void LoadContent()
+		public void LoadContent(ContentManager content)
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
-			tb = LoadContent<Texture2D>("Textures");
-			SFX_db = LoadContent<SoundEffect>("SFX");
+			mTextureDB = LoadTypeDB<Texture2D>(content, "Textures");
+			mSoundDB = LoadTypeDB<SoundEffect>(content, "SFX");
 
-			mainSong = Content.Load<Song>("Music/GJ Main");
-			menuSong = Content.Load<Song>("Music/GameJam21");
+			mMainSong = content.Load<Song>("Music/GJ Main");
+			mMenuSong = content.Load<Song>("Music/GameJam21");
 
-			mFont = Content.Load<SpriteFont>("Fonts/PixelFont");
+			mFont = content.Load<SpriteFont>("Fonts/PixelFont");
 
 			InitMenu();
 		}
 
-		private Dictionary<string, T> LoadContent<T>(string contentFolder)
-		{
-			//Load directory info, abort if none
-			DirectoryInfo dir = new DirectoryInfo(Content.RootDirectory + "\\" + contentFolder);
-			if (!dir.Exists)
-				throw new DirectoryNotFoundException();
-			//Init the resulting list
-			Dictionary<string, T> result = new Dictionary<string, T>();
 
-			//Load all files that matches the file filter
-			FileInfo[] files = dir.GetFiles("*.*");
-			foreach (FileInfo file in files)
-			{
-				string key = Path.GetFileNameWithoutExtension(file.Name);
-
-				result[key] = Content.Load<T>(contentFolder + "/" + key);
-			}
-			//Return the result
-			return result;
-		}
-
-		private Dictionary<string, T> LoadContent<T>()
-		{
-			//Load directory info, abort if none
-			DirectoryInfo dir = new DirectoryInfo(Content.RootDirectory + "\\");
-			if (!dir.Exists)
-				throw new DirectoryNotFoundException();
-			//Init the resulting list
-			Dictionary<string, T> result = new Dictionary<string, T>();
-
-			//Load all files that matches the file filter
-			FileInfo[] files = dir.GetFiles("*.*");
-			foreach (FileInfo file in files)
-			{
-				string key = Path.GetFileNameWithoutExtension(file.Name);
-
-				result[key] = Content.Load<T>(key);
-			}
-			//Return the result
-			return result;
-		}
 
 		/// <summary>
-		/// UnloadContent will be called once per game and is the place to unload
-		/// game-specific content.
+		/// Load files of a type into a dictionary
 		/// </summary>
-		protected override void UnloadContent()
+		private Dictionary<string, T> LoadTypeDB<T>(ContentManager content, string contentFolder)
 		{
-			// TODO: Unload any non ContentManager content here
-		}
+			//Load directory info, abort if none
+			DirectoryInfo dir = new DirectoryInfo(content.RootDirectory + "\\" + contentFolder);
+			if (!dir.Exists)
+				throw new DirectoryNotFoundException();
 
-		void PlaySFX(SFX_TYPE type)
-		{
-			switch (type)
+			//Init the resulting list
+			Dictionary<string, T> result = new Dictionary<string, T>();
+
+			//Load all files that matches the file filter
+			FileInfo[] files = dir.GetFiles("*.*");
+			foreach (FileInfo file in files)
 			{
-				case SFX_TYPE.ST_PICKUP:
-					SFX_db["PointGetSFX"].Play(0.15f, 0.0f, 0.0f);
-					break;
-				case SFX_TYPE.ST_DIMENSION:
-					SFX_db["NewDimensionSFX"].Play(0.2f, 0.0f, 0.0f);
-					break;
-				case SFX_TYPE.ST_GAMEOVER:
-					SFX_db["GameOverSFX"].Play(0.7f, 0.0f, 0.0f);
-					break;
+				string key = Path.GetFileNameWithoutExtension(file.Name);
+
+				result[key] = content.Load<T>(contentFolder + "/" + key);
 			}
+
+			//Return the result
+			return result;
 		}
 
+
+
+		/// <summary>
+		/// Begin game from start
+		/// </summary>
 		void InitNewMutiverse()
 		{
-			SnakeGames.Clear();
+			mSnakeGames.Clear();
 
 			//Add first snake game
 			AddNewSnakeGame();
-			num_apple_placed = 0;
+			mNumApplesPlaced = 0;
 			AddNewApple();
 
 			//Start music
 			MediaPlayer.Stop();
 			MediaPlayer.Volume = 0.15f;
-			MediaPlayer.Play(mainSong);
+			MediaPlayer.Play(mMainSong);
 			MediaPlayer.IsRepeating = true;
 
-			CurrentState = GameState.GS_MAIN;
+			mGameState = GameState.GS_MAIN;
 
-			if (high_score < curr_score)
+			if (mHighScore < mCurrScore)
 			{
-				high_score = curr_score;
+				mHighScore = mCurrScore;
 			}
-			curr_score = 0;
-			current_step = -1;
+			mCurrScore = 0;
+			mCurrentStep = -1;
 		}
 
+
+
+		/// <summary>
+		/// Set state to be in the main menu
+		/// </summary>
 		void InitMenu()
 		{
-			BGpos = new Vector2(0.0f, BG_START);
-			ScoreMarkers.Clear();
-			GameOverOpacity = 0.0f;
+			mBGPos = new Vector2(0.0f, BG_START);
+			mScoreMarkers.Clear();
+			mGameOverOpacity = 0.0f;
 
-			CurrentState = GameState.GS_START;
+			mGameState = GameState.GS_START;
 
 			//Start music
 			MediaPlayer.Stop();
 			MediaPlayer.Volume = 0.2f;
-			MediaPlayer.Play(menuSong);
+			MediaPlayer.Play(mMenuSong);
 			MediaPlayer.IsRepeating = true;
 		}
 
+
+
+		/// <summary>
+		/// Set state to be in the panning
+		/// </summary>
 		void InitPan(GameTime start)
 		{
-			CurrentState = GameState.GS_PAN_DOWN;
-			begin_time = start.TotalGameTime;
+			mGameState = GameState.GS_PAN_DOWN;
+			mBeginTime = start.TotalGameTime;
 		}
 
+
+
+		/// <summary>
+		/// Set state to be in game over
+		/// </summary>
 		void InitGameOver()
 		{
-			CurrentState = GameState.GS_GAMEOVER;
+			mGameState = GameState.GS_GAMEOVER;
 			MediaPlayer.Stop();
 		}
+
+		#endregion rInit
+
+
+
+
+
+		#region rSound
+
+		/// <summary>
+		/// Play a sound effect
+		/// </summary>
+		void PlaySFX(SFX_TYPE type)
+		{
+			switch (type)
+			{
+				case SFX_TYPE.ST_PICKUP:
+					mSoundDB["PointGetSFX"].Play(0.15f, 0.0f, 0.0f);
+					break;
+				case SFX_TYPE.ST_DIMENSION:
+					mSoundDB["NewDimensionSFX"].Play(0.2f, 0.0f, 0.0f);
+					break;
+				case SFX_TYPE.ST_GAMEOVER:
+					mSoundDB["GameOverSFX"].Play(0.7f, 0.0f, 0.0f);
+					break;
+			}
+		}
+
+		#endregion rSound
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// Add an apple
+		/// </summary>
 		void AddNewApple()
 		{
-			int universe_to_add = num_apple_placed % SnakeGames.Count;
+			int universe_to_add = mNumApplesPlaced % mSnakeGames.Count;
 
 			AppleType type = AppleType.AT_NORMAL;
-			if (num_apple_placed % APPLE_FREQ == 1)
+			if (mNumApplesPlaced % APPLE_FREQ == 1)
 			{
 				type = AppleType.AT_DIMENSION;
 			}
 
-			SnakeGames[universe_to_add].PlaceApple(type);
+			mSnakeGames[universe_to_add].PlaceApple(type);
 
-			num_apple_placed++;
+			mNumApplesPlaced++;
 		}
 
+
+
+		/// <summary>
+		/// Create another simultaneous game of snake
+		/// </summary>
 		void AddNewSnakeGame()
 		{
 			Vector2 StartPos;
-			if (SnakeGames.Count == 0)
+			if (mSnakeGames.Count == 0)
 			{
 				StartPos = new Vector2(320, 70);
-				target_width = 100;
+				mTargetWidth = 100;
 			}
 			else
 			{
-				StartPos = SnakeGames[SnakeGames.Count - 1].CurrPos;
+				StartPos = mSnakeGames[mSnakeGames.Count - 1].CurrPos;
 			}
-			SnakeGames.Add(new SnakeGame(StartPos, target_width, tb["SnakeHead"], tb["SnakeBody"], tb["SnakeCorner"], tb["SnakeTail"], tb["GrassTile"], new Texture2D[] { tb["AppleNormal"], tb["AppleDimension"] }, tb["SnakeDead"]));
+			mSnakeGames.Add(new SnakeGame(StartPos, mTargetWidth, mTextureDB["SnakeHead"], mTextureDB["SnakeBody"], mTextureDB["SnakeCorner"], mTextureDB["SnakeTail"], mTextureDB["GrassTile"], new Texture2D[] { mTextureDB["AppleNormal"], mTextureDB["AppleDimension"] }, mTextureDB["SnakeDead"]));
 		}
 
+
+
 		/// <summary>
-		/// Allows the game to run logic such as updating the world,
-		/// checking for collisions, gathering input, and playing audio.
+		/// Update game
 		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		protected override void Update(GameTime gameTime)
+		public void Update(GameTime gameTime)
 		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-				Exit();
-
-			if (Keyboard.GetState().IsKeyDown(Keys.Enter) && (Keyboard.GetState().IsKeyDown(Keys.LeftAlt) || Keyboard.GetState().IsKeyDown(Keys.RightAlt)))
+			if (mGameState == GameState.GS_START)
 			{
-				graphics.ToggleFullScreen();
-			}
-
-			if (CurrentState == GameState.GS_START)
-			{
-				current_bg_frame = (int)Math.Floor(gameTime.TotalGameTime.TotalMilliseconds / 500.0) % 2;
-				if (Keyboard.GetState().IsKeyDown(Keys.Space))
+				mCurrentBGFrame = (int)Math.Floor(gameTime.TotalGameTime.TotalMilliseconds / 500.0) % 2;
+				if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
 				{
-					if (!enter_held)
-					{
-						InitPan(gameTime);
-					}
-				}
-				else if (Keyboard.GetState().IsKeyUp(Keys.Space))
-				{
-					enter_held = false;
+					InitPan(gameTime);
 				}
 			}
-			else if (CurrentState == GameState.GS_PAN_DOWN)
+			else if (mGameState == GameState.GS_PAN_DOWN)
 			{
-				current_bg_frame = (int)Math.Floor(gameTime.TotalGameTime.TotalMilliseconds / 250.0) % 2;
+				mCurrentBGFrame = (int)Math.Floor(gameTime.TotalGameTime.TotalMilliseconds / 250.0) % 2;
 				float secFraq = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
 
 				MediaPlayer.Volume = Math.Max(0.0f, MediaPlayer.Volume - 0.1f * secFraq);
 
-				BGpos.Y = Math.Max(0.0f, BGpos.Y - BG_STEP * secFraq);
+				mBGPos.Y = Math.Max(0.0f, mBGPos.Y - BG_STEP * secFraq);
 
-				if (MediaPlayer.Volume == 0.0f && BGpos.Y == 0.0f)
+				if (MediaPlayer.Volume == 0.0f && mBGPos.Y == 0.0f)
 				{
 					InitNewMutiverse();
 				}
 			}
-			else if (CurrentState == GameState.GS_MAIN)
+			else if (mGameState == GameState.GS_MAIN)
 			{
-				if (current_step == -1)
+				if (mCurrentStep == -1)
 				{
-					begin_time = gameTime.TotalGameTime;
-					current_step = 0;
+					mBeginTime = gameTime.TotalGameTime;
+					mCurrentStep = 0;
 				}
 
-				current_step = (int)Math.Floor((gameTime.TotalGameTime.TotalMilliseconds - begin_time.TotalMilliseconds) / 500.0);
-				current_bg_frame = (int)Math.Floor((gameTime.TotalGameTime.TotalMilliseconds - begin_time.TotalMilliseconds) / 250.0) % 2;
+				mCurrentStep = (int)Math.Floor((gameTime.TotalGameTime.TotalMilliseconds - mBeginTime.TotalMilliseconds) / 500.0);
+				mCurrentBGFrame = (int)Math.Floor((gameTime.TotalGameTime.TotalMilliseconds - mBeginTime.TotalMilliseconds) / 250.0) % 2;
 
 				SFX_TYPE sfxToPlay = SFX_TYPE.ST_NONE;
-				for (int i = 0; i < SnakeGames.Count; i++)
+				for (int i = 0; i < mSnakeGames.Count; i++)
 				{
-					HandleUpdateResult(SnakeGames[i].Update(current_step), i, ref sfxToPlay);
+					HandleUpdateResult(mSnakeGames[i].Update(mCurrentStep), i, ref sfxToPlay);
 				}
 
 				PlaySFX(sfxToPlay);
 			}
-			else if (CurrentState == GameState.GS_GAMEOVER)
+			else if (mGameState == GameState.GS_GAMEOVER)
 			{
-				GameOverOpacity = Math.Min(GameOverOpacity + 0.2f * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f), 0.6f);
-				if (Keyboard.GetState().IsKeyDown(Keys.Space))
+				mGameOverOpacity = Math.Min(mGameOverOpacity + 0.2f * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f), 0.6f);
+				if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
 				{
 					InitMenu();
-					enter_held = true;
 				}
 			}
 
-			for (int i = 0; i < ScoreMarkers.Count; i++)
+			for (int i = 0; i < mScoreMarkers.Count; i++)
 			{
-				ScoreMarkers[i].Update(gameTime);
-				if (ScoreMarkers[i].deleteMe())
+				mScoreMarkers[i].Update(gameTime);
+				if (mScoreMarkers[i].deleteMe())
 				{
-					ScoreMarkers.RemoveAt(i);
+					mScoreMarkers.RemoveAt(i);
 					i--;
 				}
 			}
-
-			base.Update(gameTime);
 		}
 
+
+
+		/// <summary>
+		/// Handle signals sent from snake games
+		/// </summary>
 		void HandleUpdateResult(UpdateResult res, int idx, ref SFX_TYPE sfx)
 		{
 			switch (res)
@@ -357,7 +373,7 @@
 					{
 						sfx = SFX_TYPE.ST_DIMENSION;
 					}
-					AddScore(10 * SnakeGames.Count, Color.MediumVioletRed, idx);
+					AddScore(10 * mSnakeGames.Count, Color.MediumVioletRed, idx);
 					AddNewSnakeGame();
 					AddNewApple();
 					break;
@@ -366,29 +382,30 @@
 					{
 						sfx = SFX_TYPE.ST_PICKUP;
 					}
-					AddScore(5 * SnakeGames.Count, Color.Wheat, idx);
+					AddScore(5 * mSnakeGames.Count, Color.Wheat, idx);
 					AddNewApple();
 					break;
 			}
 		}
 
-		void AddScore(int numpts, Color col, int i)
-		{
-			ScoreMarkers.Add(new Uptext(SnakeGames[i].GetSnakeHeadPos(), "+" + numpts.ToString(), col));
-			curr_score += numpts;
-		}
+
 
 		/// <summary>
-		/// This is called when the game should draw itself.
+		/// Add score to player
 		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		protected override void Draw(GameTime gameTime)
+		void AddScore(int numpts, Color col, int i)
 		{
-			GraphicsDevice.Clear(Color.Black);
+			mScoreMarkers.Add(new Uptext(mSnakeGames[i].GetSnakeHeadPos(), "+" + numpts.ToString(), col));
+			mCurrScore += numpts;
+		}
 
-			// TODO: Add your drawing code here
-			spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp, null, null, null, Matrix.CreateScale(MainCamera.Zoom));
+		#endregion rUpdate
 
+
+		#region rUpdate
+
+		public void Draw(AridArnold.DrawInfo info)
+		{
 			const int TOP_PAD = 90;
 			const int BORDER = 15;
 			const int SPACING = 15;
@@ -396,28 +413,30 @@
 			const int PLAYABLE_HEIGHT = SCREEN_HEIGHT - BORDER - TOP_PAD;
 			Vector2 TL_OFFSET = new Vector2(BORDER, TOP_PAD);
 
-			Rectangle fullScreen = new Rectangle((int)BGpos.X, (int)BGpos.Y, SCREEN_WIDTH, SCREEN_HEIGHT);
+			SpriteBatch spriteBatch = info.spriteBatch;
 
-			if (current_bg_frame == 0)
+			Rectangle fullScreen = new Rectangle((int)mBGPos.X, (int)mBGPos.Y, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+			if (mCurrentBGFrame == 0)
 			{
-				spriteBatch.Draw(tb["SnakeBackground"], fullScreen, Color.White);
+				spriteBatch.Draw(mTextureDB["SnakeBackground"], fullScreen, Color.White);
 			}
 			else
 			{
-				spriteBatch.Draw(tb["SnakeBackgroundAnimated"], fullScreen, Color.White);
+				spriteBatch.Draw(mTextureDB["SnakeBackgroundAnimated"], fullScreen, Color.White);
 			}
 
-			if (CurrentState == GameState.GS_START || CurrentState == GameState.GS_PAN_DOWN)
+			if (mGameState == GameState.GS_START || mGameState == GameState.GS_PAN_DOWN)
 			{
-				DrawString("Worm Warp", new Vector2(60.0f, 60.0f + (BGpos.Y - BG_START)), Color.Wheat, 1.0f, false);
+				DrawString(spriteBatch, "Worm Warp", new Vector2(60.0f, 60.0f + (mBGPos.Y - BG_START)), Color.Wheat, 1.0f, false);
 
-				DrawString("Press space to start...", new Vector2(760.0f, 560.0f + (BGpos.Y - BG_START)), Color.Wheat, 0.5f, false);
+				DrawString(spriteBatch, "Press space to start...", new Vector2(760.0f, 560.0f + (mBGPos.Y - BG_START)), Color.Wheat, 0.5f, false);
 			}
-			else if (CurrentState == GameState.GS_MAIN || CurrentState == GameState.GS_GAMEOVER)
+			else if (mGameState == GameState.GS_MAIN || mGameState == GameState.GS_GAMEOVER)
 			{
 				int num_col = 1;
 				int num_rows = 0;
-				int num_games = SnakeGames.Count;
+				int num_games = mSnakeGames.Count;
 
 				float GameSize = 0.0f;
 
@@ -435,7 +454,7 @@
 				} while (true);
 
 				int ViewSize = (int)GameSize - SPACING * 2;
-				target_width = ViewSize;
+				mTargetWidth = ViewSize;
 				int num_in_last_row = num_games - (num_rows - 1) * (num_col);
 				float last_row_buffer = (float)(PLAYABLE_WIDTH - GameSize * num_in_last_row) / 2.0f;
 
@@ -450,56 +469,56 @@
 					{
 						if (y == num_rows - 1)
 						{
-							SnakeGames[g].Draw(spriteBatch, MainCamera, new Vector2(x * GameSize + last_row_buffer + SPACING, y * GameSize + vertical_buffer) + TL_OFFSET, ViewSize, ViewSize);
+							mSnakeGames[g].Draw(spriteBatch, mMainCamera, new Vector2(x * GameSize + last_row_buffer + SPACING, y * GameSize + vertical_buffer) + TL_OFFSET, ViewSize, ViewSize);
 						}
 						else
 						{
-							SnakeGames[g].Draw(spriteBatch, MainCamera, new Vector2(x * GameSize + SPACING, y * GameSize + vertical_buffer) + TL_OFFSET, ViewSize, ViewSize);
+							mSnakeGames[g].Draw(spriteBatch, mMainCamera, new Vector2(x * GameSize + SPACING, y * GameSize + vertical_buffer) + TL_OFFSET, ViewSize, ViewSize);
 						}
-
 
 						g++;
 					}
 				}
 
-				for (int i = 0; i < ScoreMarkers.Count; i++)
+				for (int i = 0; i < mScoreMarkers.Count; i++)
 				{
-					ScoreMarkers[i].Draw(ref spriteBatch, ref mFont);
+					mScoreMarkers[i].Draw(ref spriteBatch, ref mFont);
 				}
 
-				if (CurrentState != GameState.GS_GAMEOVER)
+				if (mGameState != GameState.GS_GAMEOVER)
 				{
-					DrawString("Score: " + curr_score, new Vector2(35.0f, 15.0f), Color.Wheat, 0.8f, false);
+					DrawString(spriteBatch, "Score: " + mCurrScore, new Vector2(35.0f, 15.0f), Color.Wheat, 0.8f, false);
 				}
 			}
-			if (CurrentState == GameState.GS_GAMEOVER)
+			if (mGameState == GameState.GS_GAMEOVER)
 			{
-				Rectangle ScreenBlank = new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+				Rectangle screenBlank = new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 				Color blankCol = new Color(255, 0, 0, 0);
 
-				DrawRect(ScreenBlank, blankCol, GameOverOpacity);
+				DrawRect(spriteBatch, screenBlank, blankCol, mGameOverOpacity);
 
-				DrawString("GAME OVER!", new Vector2(SCREEN_WIDTH / 2.0f, TOP_PAD * 0.94f), Color.Wheat, 1.5f, true);
-				DrawString("Final Score:" + curr_score, new Vector2(SCREEN_WIDTH / 2.0f, 1.45f * TOP_PAD), Color.Wheat, 0.5f, true);
+				DrawString(spriteBatch, "GAME OVER!", new Vector2(SCREEN_WIDTH / 2.0f, TOP_PAD * 0.94f), Color.Wheat, 1.5f, true);
+				DrawString(spriteBatch, "Final Score:" + mCurrScore, new Vector2(SCREEN_WIDTH / 2.0f, 1.45f * TOP_PAD), Color.Wheat, 0.5f, true);
 
-				if (curr_score > high_score)
+				if (mCurrScore > mHighScore)
 				{
-					DrawString("New high score!", new Vector2(SCREEN_WIDTH / 2.0f, 1.7f * TOP_PAD), Color.HotPink, 0.5f, true);
+					DrawString(spriteBatch, "New high score!", new Vector2(SCREEN_WIDTH / 2.0f, 1.7f * TOP_PAD), Color.HotPink, 0.5f, true);
 				}
 				else
 				{
-					DrawString("High Score:" + high_score, new Vector2(SCREEN_WIDTH / 2.0f, 1.7f * TOP_PAD), Color.Wheat, 0.5f, true);
+					DrawString(spriteBatch, "High Score:" + mHighScore, new Vector2(SCREEN_WIDTH / 2.0f, 1.7f * TOP_PAD), Color.Wheat, 0.5f, true);
 				}
 
-				DrawString("Press space to continue...", new Vector2(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT - TOP_PAD * 0.7f), Color.Wheat, 0.5f, true);
+				DrawString(spriteBatch, "Press space to continue...", new Vector2(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT - TOP_PAD * 0.7f), Color.Wheat, 0.5f, true);
 			}
-
-
-			spriteBatch.End();
-			base.Draw(gameTime);
 		}
 
-		public void DrawString(string text, Vector2 pos, Color color, float scale, bool center)
+
+
+		/// <summary>
+		/// Draw a string
+		/// </summary>
+		public void DrawString(SpriteBatch spriteBatch, string text, Vector2 pos, Color color, float scale, bool center)
 		{
 			if (center)
 			{
@@ -514,12 +533,16 @@
 		}
 
 
-		void DrawRect(Rectangle rectangle, Color C, float opacity)
-		{
-			Texture2D transitionTexture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-			transitionTexture.SetData(new Color[] { Color.Black });
 
+		/// <summary>
+		/// Draw a simple rect
+		/// </summary>
+		void DrawRect(SpriteBatch spriteBatch, Rectangle rectangle, Color C, float opacity)
+		{
+			Texture2D transitionTexture = AridArnold.Main.GetDummyTexture();
 			spriteBatch.Draw(transitionTexture, rectangle, Color.Black * opacity);
 		}
+
+		#endregion rDraw
 	}
 }
