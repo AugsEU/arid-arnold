@@ -11870,3 +11870,93 @@
 /processorParam:PremultiplyAlpha=False
 /build:Arcade/HorsesAndGun/Tiles/tile_go_up.png
 
+#begin Arcade/WormWarp/Fonts/PixelFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:Arcade/WormWarp/Fonts/PixelFont.spritefont
+
+#begin Arcade/WormWarp/Music/GameJam21.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/build:Arcade/WormWarp/Music/GameJam21.ogg
+
+#begin Arcade/WormWarp/Music/GJ Main.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/build:Arcade/WormWarp/Music/GJ Main.ogg
+
+#begin Arcade/WormWarp/SFX/GameOverSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/build:Arcade/WormWarp/SFX/GameOverSFX.wav
+
+#begin Arcade/WormWarp/SFX/NewDimensionSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/build:Arcade/WormWarp/SFX/NewDimensionSFX.wav
+
+#begin Arcade/WormWarp/SFX/PointGetSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/build:Arcade/WormWarp/SFX/PointGetSFX.wav
+
+#begin Arcade/WormWarp/Textures/AppleDimension.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/AppleDimension.png
+
+#begin Arcade/WormWarp/Textures/AppleNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/AppleNormal.png
+
+#begin Arcade/WormWarp/Textures/GrassTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/GrassTile.png
+
+#begin Arcade/WormWarp/Textures/SnakeBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/SnakeBackground.png
+
+#begin Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
+
+#begin Arcade/WormWarp/Textures/SnakeBody.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/SnakeBody.png
+
+#begin Arcade/WormWarp/Textures/SnakeCorner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/SnakeCorner.png
+
+#begin Arcade/WormWarp/Textures/SnakeDead.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/SnakeDead.png
+
+#begin Arcade/WormWarp/Textures/SnakeHead.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/SnakeHead.png
+
+#begin Arcade/WormWarp/Textures/SnakeTail.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WormWarp/Textures/SnakeTail.png
+
