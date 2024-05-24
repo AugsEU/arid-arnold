@@ -24,12 +24,20 @@ namespace WormWarp
 
 		public override void Update(GameTime gameTime)
 		{
-			mGameToEmulate.Update(gameTime);
+			if (GetState() == ArcadeGameState.kPlaying)
+			{
+				mGameToEmulate.Update(gameTime);
+				if(mGameToEmulate.QuitRequested())
+				{
+					SetState(ArcadeGameState.kGameOver);
+				}
+			}
 		}
 
 		public override void ResetGame()
 		{
 			mGameToEmulate.ResetGame();
+			base.ResetGame();
 		}
 
 		public override RenderTarget2D DrawToRenderTarget(AridArnold.DrawInfo info)
@@ -49,5 +57,9 @@ namespace WormWarp
 			return mScreenTarget;
 		}
 
+		public override int GetScore()
+		{
+			return mGameToEmulate.GetScore();
+		}
 	}
 }

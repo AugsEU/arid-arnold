@@ -10,52 +10,49 @@ namespace AridArnold
 
 	internal class ArcadeGameScreen : Screen
 	{
-		ArcadeGame[] mGames;
-		ArcadeGame mActiveGame;
+		ArcadeCabinet[] mCabinets;
+		int mActiveCabinet;
 
 		public ArcadeGameScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
-			mGames = new ArcadeGame[MonoAlg.EnumLength(typeof(ArcadeGameType))];
-			mGames[(int)ArcadeGameType.DeathRide]    = new DeathRide.DeathRide(graphics, Main.GetMainContentManager());
-			mGames[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGun.HorsesAndGun(graphics, Main.GetMainContentManager());
-			mGames[(int)ArcadeGameType.WormWarp] = new WormWarp.SnakeGameArcade(graphics, Main.GetMainContentManager());
-			mActiveGame = null;
+			mCabinets = new ArcadeCabinet[MonoAlg.EnumLength(typeof(ArcadeGameType))];
+			//mGames[(int)ArcadeGameType.DeathRide]    = new DeathRide.DeathRide(graphics, Main.GetMainContentManager());
+			//mGames[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGun.HorsesAndGun(graphics, Main.GetMainContentManager());
+			mCabinets[(int)ArcadeGameType.WormWarp] = new WormWarpCabinet(graphics, Main.GetMainContentManager());
+			mActiveCabinet = -1;
 		}
 
 
 		public void ActivateGame(ArcadeGameType gameType)
 		{
-			ArcadeGame game = mGames[(int)gameType];
-			mActiveGame = game;
-			game.ResetGame();
+			ArcadeCabinet cab = mCabinets[(int)gameType];
+			mActiveCabinet = (int)gameType;
+			cab.ResetCabinet();
 		}
 
 		public override void Update(GameTime gameTime)
 		{
-			if(mActiveGame != null)
+			if (mActiveCabinet <= 0)
 			{
-				mActiveGame.Update(gameTime);
+				throw new Exception("No cabinet selected");
 			}
+
+			mCabinets[mActiveCabinet].Update(gameTime);
 		}
 
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
-			MonoDebug.Assert(mActiveGame != null);
-
-			// Render the arcade game
-			RenderTarget2D arcadeGameRender = null;
-			if (mActiveGame != null)
+			if (mActiveCabinet <= 0)
 			{
-				arcadeGameRender = mActiveGame.DrawToRenderTarget(info);
+				throw new Exception("No cabinet selected");
 			}
+
+			mCabinets[mActiveCabinet].DrawGameToTexture(info);
 
 			//Draw out the game area
 			StartScreenSpriteBatch(info);
 
-			if (arcadeGameRender is not null)
-			{
-				MonoDraw.DrawTexture(info, arcadeGameRender, Vector2.Zero, null, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, DrawLayer.Default);
-			}
+			mCabinets[mActiveCabinet].Draw(info);
 
 			EndScreenSpriteBatch(info);
 

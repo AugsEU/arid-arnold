@@ -84,5 +84,10 @@
 		{
 			return mHighScore;
 		}
+
+		public int GetScore()
+		{
+			return mRoundNumber;
+		}
 	}
 }

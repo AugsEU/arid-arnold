@@ -20,6 +20,7 @@ namespace DeathRide
 			RunManager.I.ResetNoEffects();
 			SoundManager.I.StopMusic();
 			ScreenManager.I.ActivateScreen(ScreenType.Title);
+			base.ResetGame();
 		}
 
 		public override void Update(GameTime gameTime)
@@ -62,6 +63,11 @@ namespace DeathRide
 			MonoDraw.FlushRender();
 
 			return screenTargetRef;
+		}
+
+		public override int GetScore()
+		{
+			return RunManager.I.GetScore();
 		}
 	}
 }

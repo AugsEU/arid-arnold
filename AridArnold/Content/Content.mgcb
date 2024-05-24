@@ -11960,3 +11960,33 @@
 /processorParam:PremultiplyAlpha=False
 /build:Arcade/WormWarp/Textures/SnakeTail.png
 
+#begin Arcade/Cabinets/WormWarp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Cabinets/WormWarp.png
+
+#begin Text/EN/Arcade/InsertCoin.txt
+/copy:Text/EN/Arcade/InsertCoin.txt
+
+#begin Text/EN/Arcade/InvalidCoin.txt
+/copy:Text/EN/Arcade/InvalidCoin.txt
+
+#begin Text/EN/Arcade/WormWarp/Title.txt
+/copy:Text/EN/Arcade/WormWarp/Title.txt
+
+#begin Text/EN/Arcade/GoNext.txt
+/copy:Text/EN/Arcade/GoNext.txt
+
+#begin Text/EN/Arcade/HighScores.txt
+/copy:Text/EN/Arcade/HighScores.txt
+
+#begin Text/EN/Arcade/SubmitScore.txt
+/copy:Text/EN/Arcade/SubmitScore.txt
+
+#begin Text/EN/Arcade/SubmitName.txt
+/copy:Text/EN/Arcade/SubmitName.txt
+
+#begin Text/EN/Arcade/NewHighScore.txt
+/copy:Text/EN/Arcade/NewHighScore.txt
+

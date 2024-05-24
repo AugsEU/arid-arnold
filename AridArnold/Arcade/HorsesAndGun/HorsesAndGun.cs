@@ -1,7 +1,4 @@
-﻿
-using Microsoft.Xna.Framework.Graphics;
-
-namespace HorsesAndGun
+﻿namespace HorsesAndGun
 {
 	internal class HorsesAndGun : AridArnold.ArcadeGame
 	{
@@ -25,6 +22,7 @@ namespace HorsesAndGun
 			SoundManager.I.StopMusic();
 			ScreenManager.I.ActivateScreen(ScreenType.RossButtonsScreen);
 			ScoreManager.I.ResetAll();
+			base.ResetGame();
 		}
 
 		public override void Update(GameTime gameTime)
@@ -65,6 +63,11 @@ namespace HorsesAndGun
 			}
 
 			return screenTargetRef;
+		}
+
+		public override int GetScore()
+		{
+			return ScoreManager.I.GetCurrentScore();
 		}
 	}
 }

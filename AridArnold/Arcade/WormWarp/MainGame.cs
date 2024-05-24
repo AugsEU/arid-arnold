@@ -2,8 +2,6 @@
 {
 	enum GameState
 	{
-		GS_START,
-		GS_PAN_DOWN,
 		GS_MAIN,
 		GS_GAMEOVER
 	}
@@ -28,8 +26,7 @@
 		public const int SCREEN_WIDTH = 1280;
 		public const int SCREEN_HEIGHT = 720;
 
-		const float BG_START = 600.0f;
-		const float BG_STEP = 456.0f;
+		const float BG_START = 0.0f;
 
 		#endregion rConstants
 
@@ -45,6 +42,7 @@
 		Dictionary<string, Texture2D> mTextureDB;
 		Dictionary<string, SoundEffect> mSoundDB;
 		List<Uptext> mScoreMarkers = new List<Uptext>();
+		bool mRequestQuit = false;
 
 		Song mMainSong;
 		Song mMenuSong;
@@ -90,7 +88,10 @@
 			mMainCamera = new Camera(0f, 0f);
 			mHighScore = 0;
 			mCurrScore = 0;
+			mRequestQuit = false;
 			InitMenu();
+			mCurrentStep = -1;
+			mSnakeGames.Clear();
 		}
 
 
@@ -181,24 +182,13 @@
 			mScoreMarkers.Clear();
 			mGameOverOpacity = 0.0f;
 
-			mGameState = GameState.GS_START;
+			mGameState = GameState.GS_MAIN;
 
 			//Start music
 			MediaPlayer.Stop();
 			MediaPlayer.Volume = 0.2f;
 			MediaPlayer.Play(mMenuSong);
 			MediaPlayer.IsRepeating = true;
-		}
-
-
-
-		/// <summary>
-		/// Set state to be in the panning
-		/// </summary>
-		void InitPan(GameTime start)
-		{
-			mGameState = GameState.GS_PAN_DOWN;
-			mBeginTime = start.TotalGameTime;
 		}
 
 
@@ -289,34 +279,13 @@
 		/// </summary>
 		public void Update(GameTime gameTime)
 		{
-			if (mGameState == GameState.GS_START)
-			{
-				mCurrentBGFrame = (int)Math.Floor(gameTime.TotalGameTime.TotalMilliseconds / 500.0) % 2;
-				if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
-				{
-					InitPan(gameTime);
-				}
-			}
-			else if (mGameState == GameState.GS_PAN_DOWN)
-			{
-				mCurrentBGFrame = (int)Math.Floor(gameTime.TotalGameTime.TotalMilliseconds / 250.0) % 2;
-				float secFraq = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
-
-				MediaPlayer.Volume = Math.Max(0.0f, MediaPlayer.Volume - 0.1f * secFraq);
-
-				mBGPos.Y = Math.Max(0.0f, mBGPos.Y - BG_STEP * secFraq);
-
-				if (MediaPlayer.Volume == 0.0f && mBGPos.Y == 0.0f)
-				{
-					InitNewMutiverse();
-				}
-			}
-			else if (mGameState == GameState.GS_MAIN)
+			if (mGameState == GameState.GS_MAIN)
 			{
 				if (mCurrentStep == -1)
 				{
 					mBeginTime = gameTime.TotalGameTime;
 					mCurrentStep = 0;
+					InitNewMutiverse();
 				}
 
 				mCurrentStep = (int)Math.Floor((gameTime.TotalGameTime.TotalMilliseconds - mBeginTime.TotalMilliseconds) / 500.0);
@@ -335,7 +304,7 @@
 				mGameOverOpacity = Math.Min(mGameOverOpacity + 0.2f * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f), 0.6f);
 				if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
 				{
-					InitMenu();
+					mRequestQuit = true;
 				}
 			}
 
@@ -402,7 +371,7 @@
 		#endregion rUpdate
 
 
-		#region rUpdate
+		#region rDraw
 
 		public void Draw(AridArnold.DrawInfo info)
 		{
@@ -426,13 +395,7 @@
 				spriteBatch.Draw(mTextureDB["SnakeBackgroundAnimated"], fullScreen, Color.White);
 			}
 
-			if (mGameState == GameState.GS_START || mGameState == GameState.GS_PAN_DOWN)
-			{
-				DrawString(spriteBatch, "Worm Warp", new Vector2(60.0f, 60.0f + (mBGPos.Y - BG_START)), Color.Wheat, 1.0f, false);
-
-				DrawString(spriteBatch, "Press space to start...", new Vector2(760.0f, 560.0f + (mBGPos.Y - BG_START)), Color.Wheat, 0.5f, false);
-			}
-			else if (mGameState == GameState.GS_MAIN || mGameState == GameState.GS_GAMEOVER)
+			if (mGameState == GameState.GS_MAIN || mGameState == GameState.GS_GAMEOVER)
 			{
 				int num_col = 1;
 				int num_rows = 0;
@@ -544,5 +507,24 @@
 		}
 
 		#endregion rDraw
+
+
+
+		#region rUtil
+
+		/// <summary>
+		/// Get current player score
+		/// </summary>
+		public int GetScore()
+		{
+			return mCurrScore;
+		}
+
+		public bool QuitRequested()
+		{
+			return mRequestQuit;
+		}
+
+		#endregion rUtil
 	}
 }
