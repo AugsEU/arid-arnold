@@ -11990,3 +11990,8 @@
 #begin Text/EN/Arcade/NewHighScore.txt
 /copy:Text/EN/Arcade/NewHighScore.txt
 
+#begin Fonts/PixicaMassive.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:Fonts/PixicaMassive.spritefont
+

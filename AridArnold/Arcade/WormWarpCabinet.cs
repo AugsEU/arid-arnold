@@ -28,8 +28,8 @@ namespace AridArnold
 
 		protected override void DrawTitleScreen(DrawInfo info)
 		{
-			SpriteFont bigFont = FontManager.I.GetFont("Pixica-24");
-			SpriteFont font = FontManager.I.GetFont("Pixica-12");
+			SpriteFont bigFont = FontManager.I.GetFont("Pixica-32");
+			SpriteFont font = FontManager.I.GetFont("Pixica-24");
 			Vector2 textPos = WORM_SCREEN_SPACE.min;
 			textPos.X += WORM_SCREEN_SPACE.Width * 0.5f;
 
@@ -38,10 +38,10 @@ namespace AridArnold
 
 			textPos.Y += 50.0f;
 
-			MonoDraw.DrawStringCentred(info, bigFont, textPos, Color.Magenta, wormTitle, DrawLayer.Background);
+			MonoDraw.DrawStringCentred(info, bigFont, textPos, new Color(255,125,147), wormTitle, DrawLayer.Background);
 
 			textPos.Y += 150.0f;
-			MonoDraw.DrawStringCentred(info, font, textPos, Color.DarkBlue, insertCoin, DrawLayer.Background);
+			MonoDraw.DrawStringCentred(info, font, textPos, new Color(71, 116, 237), insertCoin, DrawLayer.Background);
 		}
 	}
 }

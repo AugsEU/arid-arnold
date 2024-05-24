@@ -35,7 +35,7 @@
 		#region rConstants
 
 		const int MAX_HIGH_SCORES = 8;
-		const double CURSOR_BLINK_SPEED = 20.0;
+		const double CURSOR_BLINK_SPEED = 150.0;
 
 		#endregion rConstants
 
