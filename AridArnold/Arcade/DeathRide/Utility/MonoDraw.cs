@@ -164,6 +164,16 @@
 			info.spriteBatch.DrawString(font, text, pos, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
+		public static void DrawShadowString(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, DrawLayer depth = DrawLayer.Text)
+		{
+			Color dropColor = color;
+			MonoColor.DarkenColour(ref dropColor, 0.1f);
+			Vector2 dropPos = position + new Vector2(2.0f, 2.0f);
+
+			info.spriteBatch.DrawString(font, text, dropPos, dropColor, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
+			info.spriteBatch.DrawString(font, text, position, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
+		}
+
 		/// <summary>
 		/// Draw a string at position(top left)
 		/// </summary>

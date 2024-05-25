@@ -54,11 +54,11 @@
 			MediaPlayer.Stop();
 		}
 
-		public void PlaySFX(SFXType sfx, float volume, float pan = 0.0f)
+		public void PlaySFX(SFXType sfx, float volume, float pan = 0.0f, float pitch = 0.0f)
 		{
 			if (mSFX.ContainsKey(sfx))
 			{
-				mSFX[sfx].Play(volume, 0.0f, pan);
+				mSFX[sfx].Play(volume, pitch, pan);
 			}
 		}
 

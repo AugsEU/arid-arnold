@@ -12,14 +12,14 @@ namespace DeathRide
 			SoundManager.I.LoadContent(content);
 
 			ScreenManager.I.LoadAllScreens(deviceManager);
-			ScreenManager.I.ActivateScreen(ScreenType.Title);
+			ScreenManager.I.ActivateScreen(ScreenType.Game);
 		}
 
 		public override void ResetGame()
 		{
 			RunManager.I.ResetNoEffects();
 			SoundManager.I.StopMusic();
-			ScreenManager.I.ActivateScreen(ScreenType.Title);
+			ScreenManager.I.ActivateScreen(ScreenType.Game);
 			base.ResetGame();
 		}
 
@@ -37,6 +37,11 @@ namespace DeathRide
 			if (screen != null)
 			{
 				screen.Update(gameTime);
+			}
+
+			if(RunManager.I.ExitRequested())
+			{
+				SetState(ArcadeGameState.kGameOver);
 			}
 		}
 

@@ -1,15 +1,11 @@
-﻿using DeathRide.UI;
-
-namespace DeathRide
+﻿namespace DeathRide
 {
 	internal class GameOverScreen : Screen
 	{
 		Texture2D mBG;
-		ScreenTransitionButton mTutorialBtn;
 
 		public GameOverScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
-			mTutorialBtn = new ScreenTransitionButton(new Vector2(770.0f, 430.0f), "Back", ScreenType.Title);
 		}
 
 		public override void LoadContent()
@@ -31,12 +27,13 @@ namespace DeathRide
 			StartScreenSpriteBatch(info);
 
 			MonoDraw.DrawTexture(info, mBG, Vector2.Zero);
-			mTutorialBtn.Draw(info);
 
 			Color textCol = new Color(255, 219, 162);
+
+			centre.Y += 50.0f;
 			MonoDraw.DrawShadowStringCentred(info, pixelFont, centre, textCol, "Rounds: " + RunManager.I.GetRounds());
 			centre.Y += 50.0f;
-			MonoDraw.DrawShadowStringCentred(info, pixelFont, centre, textCol, "High Score: " + RunManager.I.GetHighScore());
+			MonoDraw.DrawShadowStringCentred(info, pixelFont, centre, textCol, "Score: " + RunManager.I.GetScore());
 
 			EndScreenSpriteBatch(info);
 
@@ -45,7 +42,10 @@ namespace DeathRide
 
 		public override void Update(GameTime gameTime)
 		{
-			mTutorialBtn.Update(gameTime);
+			if(AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
+			{
+				RunManager.I.RequestExit();
+			}
 		}
 	}
 }

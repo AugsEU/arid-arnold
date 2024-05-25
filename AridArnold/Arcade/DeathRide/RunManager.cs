@@ -2,13 +2,11 @@
 {
 	class RunManager : Singleton<RunManager>
 	{
-		const int NUM_HEALTH_PACKS = 2;
-
-		int mHighScore = 0;
 		int mCurrentHealth;
-		int mHealthPacksRemaining;
 		int mRoundNumber;
 		bool mRunStarted = false;
+		bool mExitRequested = false;
+		int mScore;
 
 
 		public bool HasStarted()
@@ -18,9 +16,9 @@
 
 		public void StartRun()
 		{
-			mHealthPacksRemaining = NUM_HEALTH_PACKS;
 			mCurrentHealth = Player.MAX_HEALTH;
 			mRoundNumber = 0;
+			mScore = 0;
 			mRunStarted = true;
 		}
 
@@ -34,10 +32,6 @@
 		public void EndRun()
 		{
 			mRunStarted = false;
-			if (mRoundNumber > mHighScore)
-			{
-				mHighScore = mRoundNumber;
-			}
 			SoundManager.I.PlaySFX(SoundManager.SFXType.GameOver, 1.0f);
 			SoundManager.I.StopMusic();
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
@@ -47,12 +41,12 @@
 
 		public void ResetNoEffects()
 		{
+			mExitRequested = false;
 			mRunStarted = false;
-			mHighScore = 0;
 			mRoundNumber = 0;
-			mHealthPacksRemaining = NUM_HEALTH_PACKS;
 			mCurrentHealth = Player.MAX_HEALTH;
 			mRoundNumber = 0;
+			mScore = 0;
 		}
 
 		public int GetHealth()
@@ -63,16 +57,8 @@
 
 		public int GetNumberOfEnemies()
 		{
-			return 2 * (int)MathF.Ceiling(MathF.Sqrt(mRoundNumber + 0.25f)) + mRoundNumber;
-		}
-
-		public void UseHealthPack()
-		{
-			if (mHealthPacksRemaining > 0)
-			{
-				mCurrentHealth = Player.MAX_HEALTH;
-				mHealthPacksRemaining--;
-			}
+			int baseNum = (int)MathF.Ceiling(0.65f * MathF.Sqrt(mRoundNumber + 0.1f) + mRoundNumber);
+			return Math.Min(baseNum, 25); // Cap at 25 to keep it reasonable
 		}
 
 		public int GetRounds()
@@ -80,14 +66,24 @@
 			return mRoundNumber;
 		}
 
-		public int GetHighScore()
+		public void AddScore(int delta)
 		{
-			return mHighScore;
+			mScore += delta;
 		}
 
 		public int GetScore()
 		{
-			return mRoundNumber;
+			return mScore;
+		}
+
+		public bool ExitRequested()
+		{
+			return mExitRequested;
+		}
+
+		public void RequestExit()
+		{
+			mExitRequested = true;
 		}
 	}
 }

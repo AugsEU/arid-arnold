@@ -198,7 +198,12 @@
 		/// </summary>
 		public void QueueMovement(CameraMovement movement)
 		{
-			mCameraMovements.Clear();
+			// Hack to fix camera bug
+			if(mCameraMovements.Count > 0)
+			{
+				return;
+			}
+
 			mCameraMovements.Enqueue(movement);
 		}
 

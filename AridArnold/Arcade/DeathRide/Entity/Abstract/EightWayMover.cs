@@ -8,7 +8,7 @@
 		protected Animator[] mDirectionTextures;
 
 		EightDirection mCurrentDirection;
-		float mCurrentAngle;
+		protected float mCurrentAngle;
 		float mTargetAngle;
 		protected float mSpeed;
 		float mTurnSpeed;

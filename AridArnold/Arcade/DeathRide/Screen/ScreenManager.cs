@@ -5,11 +5,9 @@
 	/// </summary>
 	enum ScreenType
 	{
-		Title,
 		Game,
 		GameOver,
 		NextRound,
-		Tutorial,
 		None
 	}
 
@@ -40,10 +38,7 @@
 			mScreens.Clear();
 
 			LoadScreen(ScreenType.Game, new GameScreen(deviceManager));
-			LoadScreen(ScreenType.Title, new TitleScreen(deviceManager));
-			LoadScreen(ScreenType.NextRound, new NextRoundScreen(deviceManager));
 			LoadScreen(ScreenType.GameOver, new GameOverScreen(deviceManager));
-			LoadScreen(ScreenType.Tutorial, new TutorialScreen(deviceManager));
 		}
 
 

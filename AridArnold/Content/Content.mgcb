@@ -11995,3 +11995,15 @@
 /processor:FontDescriptionProcessor
 /build:Fonts/PixicaMassive.spritefont
 
+#begin Arcade/Cabinets/DeathRide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Cabinets/DeathRide.png
+
+#begin Text/EN/Arcade/DeathRide/Title.txt
+/copy:Text/EN/Arcade/DeathRide/Title.txt
+
+#begin Text/EN/Arcade/NewScore.txt
+/copy:Text/EN/Arcade/NewScore.txt
+

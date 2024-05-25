@@ -1,6 +1,4 @@
-﻿using static System.Formats.Asn1.AsnWriter;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	internal class WormWarpCabinet : ArcadeCabinet
 	{
@@ -37,7 +35,6 @@ namespace AridArnold
 			string insertCoin = LanguageManager.I.GetText("Arcade.InsertCoin");
 
 			textPos.Y += 50.0f;
-
 			MonoDraw.DrawStringCentred(info, bigFont, textPos, new Color(255,125,147), wormTitle, DrawLayer.Background);
 
 			textPos.Y += 150.0f;

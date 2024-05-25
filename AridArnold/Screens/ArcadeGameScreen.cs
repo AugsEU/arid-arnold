@@ -16,7 +16,7 @@ namespace AridArnold
 		public ArcadeGameScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
 			mCabinets = new ArcadeCabinet[MonoAlg.EnumLength(typeof(ArcadeGameType))];
-			//mGames[(int)ArcadeGameType.DeathRide]    = new DeathRide.DeathRide(graphics, Main.GetMainContentManager());
+			mCabinets[(int)ArcadeGameType.DeathRide]    = new DeathRideCabinet(graphics, Main.GetMainContentManager());
 			//mGames[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGun.HorsesAndGun(graphics, Main.GetMainContentManager());
 			mCabinets[(int)ArcadeGameType.WormWarp] = new WormWarpCabinet(graphics, Main.GetMainContentManager());
 			mActiveCabinet = -1;
@@ -32,7 +32,7 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			if (mActiveCabinet <= 0)
+			if (mActiveCabinet < 0)
 			{
 				throw new Exception("No cabinet selected");
 			}
@@ -42,7 +42,7 @@ namespace AridArnold
 
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
-			if (mActiveCabinet <= 0)
+			if (mActiveCabinet < 0)
 			{
 				throw new Exception("No cabinet selected");
 			}

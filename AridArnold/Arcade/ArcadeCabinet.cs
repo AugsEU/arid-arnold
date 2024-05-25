@@ -283,7 +283,9 @@
 		/// </summary>
 		void DrawGameScreen(DrawInfo info)
 		{
-			MonoDraw.DrawTexture(info, mGameOutput, mScreenSpace.min, null, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, DrawLayer.Background);
+			float scale = (float)mGameOutput.Width / mScreenSpace.Width;
+
+			MonoDraw.DrawTexture(info, mGameOutput, mScreenSpace.min, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, DrawLayer.Background);
 		}
 
 
@@ -344,7 +346,7 @@
 			}
 
 			// Draw high score submission
-			if(mPendingNewHighScore > 0)
+			if (mPendingNewHighScore > 0)
 			{
 				string newHS = LanguageManager.I.GetText("Arcade.NewHighScore") + mPendingNewHighScore.ToString();
 				string insertName = LanguageManager.I.GetText("Arcade.SubmitName");
@@ -358,7 +360,7 @@
 				footerPos.Y += 10.0f;
 				footerPos.X -= 15.0f;
 
-				for(int x = 0; x < 3; x++)
+				for (int x = 0; x < 3; x++)
 				{
 					string charToDraw = mPendingNewInitials[x].ToString();
 
@@ -372,6 +374,13 @@
 					}
 					footerPos.X += 15.0f;
 				}
+			}
+			else
+			{
+				string newScore = LanguageManager.I.GetText("Arcade.NewScore") + mLoadedGame.GetScore().ToString();
+
+				footerPos.Y -= 50.0f;
+				MonoDraw.DrawStringCentred(info, font, footerPos, Color.LightGray, newScore, DrawLayer.Background);
 			}
 		}
 

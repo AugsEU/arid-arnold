@@ -228,6 +228,7 @@
 
 		public void DrawUI(DrawInfo info)
 		{
+			SpriteFont smallFont = FontManager.I.GetFont("Pixica-24");
 			SpriteFont font = FontManager.I.GetFont("Scream-36");
 			Vector2 centre = new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT) * 0.5f;
 
@@ -246,10 +247,10 @@
 				if (mWinTimer.IsPlaying())
 				{
 					float flash = mWinTimer.GetPercentageF() % 0.5f;
-					Color textColor = Color.White;
+					Color textColor = Color.Wheat;
 					if (flash > 0.25f)
 					{
-						textColor = Color.Yellow;
+						textColor = Color.IndianRed;
 					}
 					MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new Color(10, 10, 10, 100), DrawLayer.Text);
 					MonoDraw.DrawShadowStringCentred(info, font, centre, textColor, "Round Won", DrawLayer.Text);
@@ -260,12 +261,15 @@
 					Color textColor = Color.Orange;
 					if (flash > 0.25f)
 					{
-						textColor = Color.Red;
+						textColor = Color.IndianRed;
 					}
 					MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new Color(10, 10, 10, 100), DrawLayer.Text);
 					MonoDraw.DrawShadowStringCentred(info, font, centre, textColor, "Round Lost", DrawLayer.Text);
 				}
 			}
+
+			
+			MonoDraw.DrawShadowString(info, smallFont, new Vector2(770.0f, 7.0f), Color.White, "Score: " + RunManager.I.GetScore().ToString(), DrawLayer.SubEntity);
 
 			DrawHealthBar(info, new Vector2(44.0f, 18.0f));
 		}
@@ -300,8 +304,9 @@
 		{
 
 			SpriteFont font = FontManager.I.GetFont("Scream-36");
+			SpriteFont smallFont = FontManager.I.GetFont("Scream-24");
 			double time = mReadyGoTimer.GetElapsedMs();
-			string text = "Ready?";
+			string text = "READY?";
 			Vector2 pos = new Vector2(SCREEN_WIDTH / 2.0f, 0.0f);
 
 			if (time > GetReadyTime())
@@ -319,7 +324,7 @@
 			pos.Y += 25.0f;
 			MonoDraw.DrawShadowStringCentred(info, font, pos, Color.Wheat, text, DrawLayer.Text);
 			pos.Y -= 75.0f;
-			MonoDraw.DrawShadowStringCentred(info, font, pos, Color.Wheat, "Round: " + (RunManager.I.GetRounds() + 1), DrawLayer.Text);
+			MonoDraw.DrawShadowStringCentred(info, smallFont, pos, Color.Wheat, "Round " + (RunManager.I.GetRounds() + 1), DrawLayer.Text);
 		}
 
 		#endregion rDraw

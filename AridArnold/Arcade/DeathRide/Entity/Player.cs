@@ -1,17 +1,21 @@
-﻿namespace DeathRide
+﻿using System;
+
+namespace DeathRide
 {
 	internal class Player : Motorbike
 	{
 		#region rConstants
 		protected const float MAX_SPEED = 30.0f;
-		const float GRAPPLE_EXTEND_SPEED = 70.0f;
-		const float GRAPPLE_MAX_LENGTH = 120.0f;
-		const float GRAPPLE_CHANGE_SPEED = 0.4f;
+		const float GRAPPLE_EXTEND_SPEED = 120.0f;
+		const float GRAPPLE_MAX_LENGTH = 125.0f;
 		const float GRAPPLE_LOCK_DISTANCE = 25.0f;
 		const float GRAPPLE_RADIAL_SPIN_SPEED = MAX_SPEED + 20.0f;
 		const float GRAPPLE_RADIAL_SPIN_START_ANGLE = 0.9f;
 		const float GRAPPLE_RADIAL_SPIN_MIN_RADIUS = 25.0f;
 		const float GRAPPLE_ANGLE_TO_CHANGE_TEAM = MathF.PI * 1.75f;
+
+		const double BLINK_SPEED = 20.0;
+		const double BLINK_LENGTH = 2000.0;
 
 		const float FIRE_DISTANCE = 10.0f;
 
@@ -29,10 +33,13 @@
 		float mGrappleLength;
 		Vector2 mGrappleDir;
 		AIEntity mGrappledEntity;
+		AIEntity mBestEntityToGrapple;
 		float mRadialAngleSpeed;
 		float mRadialAngle;
 		float mTotalRadialAngleTravelled;
 		Vector2 mLastFirePos = Vector2.Zero;
+
+		MonoTimer mImmunityTimer;
 
 		bool mOnFire = false;
 		int mFireCombo = 0;
@@ -52,6 +59,8 @@
 			mRadialAngleSpeed = 0.0f;
 			mRadialAngle = 0.0f;
 			mTotalRadialAngleTravelled = 0.0f;
+
+			mImmunityTimer = new MonoTimer();
 
 			mHealth = MAX_HEALTH;
 		}
@@ -110,23 +119,42 @@
 				{
 					if (mGrappledEntity.GetTeam() == AITeam.Enemy)
 					{
+						Vector2 scrollPos = mCentreOfMass;
 						mFireCombo++;
 						if (mFireCombo > 1)
 						{
-							if (mFireCombo % 5 == 0)
+							if (mFireCombo % 3 == 0)
 							{
 								AddHealth(1);
-								FXManager.I.AddTextScroller(Color.Wheat, mCentreOfMass, "Combo: +1HP");
+								FXManager.I.AddTextScroller(Color.Wheat, scrollPos, "Combo: +1HP");
+								
 							}
 							else
 							{
-								FXManager.I.AddTextScroller(Color.Wheat, mCentreOfMass, "Combo: " + mFireCombo);
+								FXManager.I.AddTextScroller(Color.Wheat, scrollPos, "Combo: " + mFireCombo);
 							}
+							scrollPos.Y += 16.0f;
+						}
 
+						int score = mGrappledEntity.GiveScore();
+						score *= mFireCombo;
+						score *= (1 + (RunManager.I.GetRounds() / 2));
+
+						SoundManager.I.PlaySFX(SoundManager.SFXType.Convert, 0.7f, 0.0f, 0.0f);
+
+						if (score > 0)
+						{
+							FXManager.I.AddTextScroller(Color.IndianRed, scrollPos, "+" + score);
+							RunManager.I.AddScore(score);
 						}
 					}
 					mGrappledEntity.SetTeam(AITeam.Ally);
 				}
+			}
+
+			if(mImmunityTimer.IsPlaying() && mImmunityTimer.GetElapsedMs() > BLINK_LENGTH)
+			{
+				mImmunityTimer.FullReset();
 			}
 
 			if (mSpeed > mMaxSpeed + 3.0f)
@@ -206,28 +234,19 @@
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
-			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick))
+			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.UseItem))
 			{
 				BeginGrapple();
 			}
 				
-			if (!AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.LeftClick))
+			if (!AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.UseItem))
 			{
 				EndGrapple();
 			}
 
 			if (mGrappleInAction && mGrappledEntity is null)
 			{
-				Vector2 newGrappleDir = (AridArnold.InputManager.I.GetMouseWorldPos() - GetCentrePos());
-				float newAngle = MathF.Atan2(newGrappleDir.Y, newGrappleDir.X);
-				float currAngle = MathF.Atan2(mGrappleDir.Y, mGrappleDir.X);
-
-				float angleDiff = MonoMath.GetAngleDiff(newAngle, currAngle);
-				float maxAngleChange = GRAPPLE_CHANGE_SPEED * dt;
-
-				angleDiff = Math.Clamp(angleDiff, -maxAngleChange, maxAngleChange);
-
-				mGrappleDir = MonoMath.Rotate(mGrappleDir, angleDiff);
+				AimGrapple();
 			}
 		}
 
@@ -235,7 +254,8 @@
 		{
 			mGrappleInAction = true;
 			mGrappleLength = 0.0f;
-			mGrappleDir = (AridArnold.InputManager.I.GetMouseWorldPos() - GetCentrePos());
+			mBestEntityToGrapple = FindBestEntityToAimFor();
+			mGrappleDir = MonoMath.GetVectorFromAngle(-GetCurrentAngle());
 			if (mGrappledEntity is not null)
 			{
 				mGrappledEntity.SetBeingGrappled(false);
@@ -243,6 +263,52 @@
 			mGrappledEntity = null;
 			mRadialAngleSpeed = 0.0f;
 			mTotalRadialAngleTravelled = 0.0f;
+		}
+
+		void AimGrapple()
+		{
+			if (mBestEntityToGrapple is not null)
+			{
+				mGrappleDir = (mBestEntityToGrapple.GetCentrePos() - GetCentrePos());
+			}
+		}
+
+		AIEntity FindBestEntityToAimFor()
+		{
+			AIEntity bestEntity = null;
+			float bestEntityScore = 0.0f;
+
+			for(int e = 0; e < EntityManager.I.GetEntityNum(); e++)
+			{
+				Entity entity = EntityManager.I.GetEntity(e);
+				if(entity is AIEntity enemy)
+				{
+					float enemyScore = RateEnemyForGrapple(enemy);
+
+					if (bestEntity is null || enemyScore > bestEntityScore)
+					{
+						bestEntity = enemy;
+						bestEntityScore = enemyScore;
+					}
+				}
+			}
+
+			return bestEntity;
+		}
+
+		float RateEnemyForGrapple(AIEntity enemy)
+		{
+			float dist = Vector2.Distance(GetCentrePos(), enemy.GetCentrePos());
+
+			Vector2 ourDir = MonoMath.GetVectorFromAngle(-GetCurrentAngle());
+			Vector2 theirDir = MonoMath.GetVectorFromAngle(-enemy.GetCurrentAngle());
+
+			float angleFactor = Vector2.Dot(ourDir, theirDir); // Between -1 and 1
+			angleFactor = 1.0f + angleFactor * 0.2f; // Between 0.8 and 1.2
+
+			float teamFactor = enemy.GetTeam() == AITeam.Enemy ? 1.2f : 0.65f; // Prefer enemies over allies
+
+			return (1000.0f / (1.0f + dist)) * angleFactor * teamFactor;
 		}
 
 		void EndGrapple()
@@ -359,6 +425,11 @@
 				MonoDraw.DrawLine(info, grappleStart, grappleEnd, Color.Black, 2.0f, DrawLayer.SubEntity);
 			}
 
+			if((mImmunityTimer.GetElapsedMs() % (BLINK_SPEED * 2.0) > BLINK_SPEED))
+			{
+				return;
+			}
+
 			base.Draw(info);
 		}
 
@@ -382,12 +453,14 @@
 			{
 				Kill();
 			}
-			else if (delta < 0)
+			else if (delta < 0 && !mImmunityTimer.IsPlaying())
 			{
 				SoundManager.I.PlaySFX(SoundManager.SFXType.PlayerHit, 0.6f);
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 
 				gameCam.QueueMovement(new DiminishCameraShake(1.5f, 3.0f, 25.0f));
+
+				mImmunityTimer.Start();
 			}
 		}
 

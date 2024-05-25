@@ -48,6 +48,8 @@
 		bool mBeingGrappled = false;
 		bool mIsUzi = false;
 
+		int mScoreToGive;
+
 		Texture2D mPentagram;
 
 		#endregion rMembers
@@ -105,6 +107,7 @@
 				mTeamSkins[(int)AITeam.Enemy][(int)EightDirection.DownRight] = MonoData.I.LoadAnimator("Enemies/EnemyUziDownRight");
 				mTeamSkins[(int)AITeam.Enemy][(int)EightDirection.Right] = MonoData.I.LoadAnimator("Enemies/EnemyUziRight");
 				mTeamSkins[(int)AITeam.Enemy][(int)EightDirection.UpRight] = MonoData.I.LoadAnimator("Enemies/EnemyUziUpRight");
+				mScoreToGive = 20;
 			}
 			else
 			{
@@ -117,6 +120,7 @@
 				mTeamSkins[(int)AITeam.Enemy][(int)EightDirection.DownRight] = MonoData.I.LoadAnimator("Enemies/EnemyDownRight");
 				mTeamSkins[(int)AITeam.Enemy][(int)EightDirection.Right] = MonoData.I.LoadAnimator("Enemies/EnemyRight");
 				mTeamSkins[(int)AITeam.Enemy][(int)EightDirection.UpRight] = MonoData.I.LoadAnimator("Enemies/EnemyUpRight");
+				mScoreToGive = 15;
 			}
 
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/AllyUp");
@@ -300,11 +304,6 @@
 
 		public void SetTeam(AITeam aiTeam)
 		{
-			if (aiTeam == AITeam.Ally && mCurrentTeam == AITeam.Enemy)
-			{
-				SoundManager.I.PlaySFX(SoundManager.SFXType.Convert, 0.7f);
-			}
-
 			mCurrentTeam = aiTeam;
 			mDirectionTextures = mTeamSkins[(int)aiTeam];
 		}
@@ -339,6 +338,13 @@
 		public void SetBeingGrappled(bool grap)
 		{
 			mBeingGrappled = grap;
+		}
+
+		public int GiveScore()
+		{
+			int score = mScoreToGive;
+			mScoreToGive = 0;
+			return score;
 		}
 
 		#endregion rUtil
