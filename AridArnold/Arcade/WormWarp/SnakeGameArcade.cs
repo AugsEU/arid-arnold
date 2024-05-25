@@ -57,7 +57,7 @@ namespace WormWarp
 			return mScreenTarget;
 		}
 
-		public override int GetScore()
+		public override ulong GetScore()
 		{
 			return mGameToEmulate.GetScore();
 		}

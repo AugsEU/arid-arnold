@@ -48,7 +48,7 @@
 		bool mBeingGrappled = false;
 		bool mIsUzi = false;
 
-		int mScoreToGive;
+		ulong mScoreToGive;
 
 		Texture2D mPentagram;
 
@@ -171,11 +171,16 @@
 
 				if (mIsUzi)
 				{
-					mShootDuration = RandomManager.I.GetWorld().GetFloatRange(500.0f, 3000.0f);
+					mShootDuration = RandomManager.I.GetWorld().GetFloatRange(1000.0f, 3000.0f);
 				}
 				else
 				{
-					mShootDuration = RandomManager.I.GetWorld().GetFloatRange(1500.0f, 5000.0f);
+					mShootDuration = RandomManager.I.GetWorld().GetFloatRange(2500.0f, 5000.0f);
+				}
+
+				if(mCurrentTeam == AITeam.Ally)
+				{
+					mShootDuration *= 0.8f; // Allies shoot more
 				}
 			}
 
@@ -270,8 +275,14 @@
 
 		public override void Kill()
 		{
+			if(mIsDead == true)
+			{
+				return;
+			}
+
 			mIsDead = true;
 			mDeadTimer.Start();
+			RunManager.I.AddScore(mScoreToGive, mCentreOfMass);
 		}
 
 		#endregion rUpdate
@@ -340,9 +351,9 @@
 			mBeingGrappled = grap;
 		}
 
-		public int GiveScore()
+		public ulong GiveScore()
 		{
-			int score = mScoreToGive;
+			ulong score = mScoreToGive;
 			mScoreToGive = 0;
 			return score;
 		}

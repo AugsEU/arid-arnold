@@ -1,4 +1,6 @@
-﻿namespace DeathRide
+﻿using static System.Formats.Asn1.AsnWriter;
+
+namespace DeathRide
 {
 	class RunManager : Singleton<RunManager>
 	{
@@ -6,7 +8,7 @@
 		int mRoundNumber;
 		bool mRunStarted = false;
 		bool mExitRequested = false;
-		int mScore;
+		ulong mScore;
 
 
 		public bool HasStarted()
@@ -66,12 +68,23 @@
 			return mRoundNumber;
 		}
 
-		public void AddScore(int delta)
+		public void AddScore(ulong delta, Vector2 pos)
 		{
-			mScore += delta;
+			delta = (ulong)(delta * (1.0f + mRoundNumber));
+			FXManager.I.AddTextScroller(Color.IndianRed, pos, "+" + delta.ToString());
+
+			if (mScore + delta < mScore)
+			{
+				// E MODE REACHED
+				mScore = ulong.MaxValue;
+			}
+			else
+			{
+				mScore += delta;
+			}
 		}
 
-		public int GetScore()
+		public ulong GetScore()
 		{
 			return mScore;
 		}

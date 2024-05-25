@@ -136,16 +136,14 @@ namespace DeathRide
 							scrollPos.Y += 16.0f;
 						}
 
-						int score = mGrappledEntity.GiveScore();
-						score *= mFireCombo;
-						score *= (1 + (RunManager.I.GetRounds() / 2));
+						ulong score = mGrappledEntity.GiveScore();
+						score *= (ulong)mFireCombo;
 
 						SoundManager.I.PlaySFX(SoundManager.SFXType.Convert, 0.7f, 0.0f, 0.0f);
 
 						if (score > 0)
 						{
-							FXManager.I.AddTextScroller(Color.IndianRed, scrollPos, "+" + score);
-							RunManager.I.AddScore(score);
+							RunManager.I.AddScore(score, scrollPos);
 						}
 					}
 					mGrappledEntity.SetTeam(AITeam.Ally);

@@ -38,7 +38,6 @@ namespace HorsesAndGun
 
 		//Score
 		MonoTimer mScoreTimer;
-		bool mNewHighScore;
 
 		//Game over
 		List<Vector2> mGameOverPoints;
@@ -104,7 +103,6 @@ namespace HorsesAndGun
 
 		public override void OnActivate()
 		{
-			mNewHighScore = false;
 			ScoreManager.I.ResetScore();
 			mScoreTimer.FullReset();
 
@@ -164,7 +162,6 @@ namespace HorsesAndGun
 				{
 					SoundManager.I.StopMusic();
 					SoundManager.I.PlaySFX(SoundManager.SFXType.GameOver, 0.5f);
-					mNewHighScore = ScoreManager.I.CheckHighScore();
 					mGameOverFadeTimer.Start();
 					mGunReloadTimer.Stop();
 				}
@@ -294,7 +291,7 @@ namespace HorsesAndGun
 			mTopSky.Draw(info);
 			//mTopSkyCloud1.Draw(info);
 			mTopSkyCloud2.Draw(info);
-			string scoreStr = "Score: " + ScoreManager.I.GetCurrentScore() + "    High score:" + ScoreManager.I.GetHighScore();
+			string scoreStr = "Score: " + ScoreManager.I.GetCurrentScore();
 			Util.DrawStringCentred(info.spriteBatch, pixelFont, new Vector2(SCREEN_WIDTH / 2.0f + 1.0f, 15.0f + 1.0f), new Color(50, 25, 0), scoreStr);
 			Util.DrawStringCentred(info.spriteBatch, pixelFont, new Vector2(SCREEN_WIDTH / 2.0f, 15.0f), Color.SaddleBrown, scoreStr);
 
@@ -358,16 +355,6 @@ namespace HorsesAndGun
 			if (falpha == 1.0f)
 			{
 				Util.DrawStringCentred(info.spriteBatch, smallPixelFont, centre + new Vector2(0.0f, 130.0f), textColor, "Click to continue...");
-			}
-
-			if (mNewHighScore)
-			{
-				textColor = new Color(Color.Salmon, falpha);
-				Util.DrawStringCentred(info.spriteBatch, pixelFont, centre + new Vector2(0.0f, 30.0f), textColor, "New high score: " + ScoreManager.I.GetHighScore() + "!");
-			}
-			else
-			{
-				Util.DrawStringCentred(info.spriteBatch, pixelFont, centre + new Vector2(0.0f, 30.0f), textColor, "High score: " + ScoreManager.I.GetHighScore());
 			}
 		}
 

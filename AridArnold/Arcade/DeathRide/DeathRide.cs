@@ -70,7 +70,7 @@ namespace DeathRide
 			return screenTargetRef;
 		}
 
-		public override int GetScore()
+		public override ulong GetScore()
 		{
 			return RunManager.I.GetScore();
 		}

@@ -55,8 +55,7 @@
 
 		int mTargetWidth = 0;
 
-		int mCurrScore;
-		int mHighScore;
+		ulong mCurrScore;
 
 		Vector2 mBGPos;
 
@@ -86,7 +85,6 @@
 		public void ResetGame()
 		{
 			mMainCamera = new Camera(0f, 0f);
-			mHighScore = 0;
 			mCurrScore = 0;
 			mRequestQuit = false;
 			InitMenu();
@@ -162,11 +160,6 @@
 			MediaPlayer.IsRepeating = true;
 
 			mGameState = GameState.GS_MAIN;
-
-			if (mHighScore < mCurrScore)
-			{
-				mHighScore = mCurrScore;
-			}
 			mCurrScore = 0;
 			mCurrentStep = -1;
 		}
@@ -342,7 +335,7 @@
 					{
 						sfx = SFX_TYPE.ST_DIMENSION;
 					}
-					AddScore(10 * mSnakeGames.Count, Color.MediumVioletRed, idx);
+					AddScore((ulong)(10 * mSnakeGames.Count), Color.MediumVioletRed, idx);
 					AddNewSnakeGame();
 					AddNewApple();
 					break;
@@ -351,7 +344,7 @@
 					{
 						sfx = SFX_TYPE.ST_PICKUP;
 					}
-					AddScore(5 * mSnakeGames.Count, Color.Wheat, idx);
+					AddScore((ulong)(5 * mSnakeGames.Count), Color.Wheat, idx);
 					AddNewApple();
 					break;
 			}
@@ -362,7 +355,7 @@
 		/// <summary>
 		/// Add score to player
 		/// </summary>
-		void AddScore(int numpts, Color col, int i)
+		void AddScore(ulong numpts, Color col, int i)
 		{
 			mScoreMarkers.Add(new Uptext(mSnakeGames[i].GetSnakeHeadPos(), "+" + numpts.ToString(), col));
 			mCurrScore += numpts;
@@ -461,18 +454,7 @@
 				DrawRect(spriteBatch, screenBlank, blankCol, mGameOverOpacity);
 
 				DrawString(spriteBatch, "GAME OVER!", new Vector2(SCREEN_WIDTH / 2.0f, TOP_PAD * 0.94f), Color.Wheat, 1.5f, true);
-				DrawString(spriteBatch, "Final Score:" + mCurrScore, new Vector2(SCREEN_WIDTH / 2.0f, 1.45f * TOP_PAD), Color.Wheat, 0.5f, true);
-
-				if (mCurrScore > mHighScore)
-				{
-					DrawString(spriteBatch, "New high score!", new Vector2(SCREEN_WIDTH / 2.0f, 1.7f * TOP_PAD), Color.HotPink, 0.5f, true);
-				}
-				else
-				{
-					DrawString(spriteBatch, "High Score:" + mHighScore, new Vector2(SCREEN_WIDTH / 2.0f, 1.7f * TOP_PAD), Color.Wheat, 0.5f, true);
-				}
-
-				DrawString(spriteBatch, "Press space to continue...", new Vector2(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT - TOP_PAD * 0.7f), Color.Wheat, 0.5f, true);
+				DrawString(spriteBatch, "Final Score:" + mCurrScore, new Vector2(SCREEN_WIDTH / 2.0f, 3.45f * TOP_PAD), Color.Wheat, 1.0f, true);
 			}
 		}
 
@@ -515,7 +497,7 @@
 		/// <summary>
 		/// Get current player score
 		/// </summary>
-		public int GetScore()
+		public ulong GetScore()
 		{
 			return mCurrScore;
 		}

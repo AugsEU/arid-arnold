@@ -36,7 +36,7 @@
 
 		public abstract void Update(GameTime gameTime);
 
-		public abstract int GetScore();
+		public abstract ulong GetScore();
 
 		public abstract RenderTarget2D DrawToRenderTarget(DrawInfo info);
 	}

@@ -269,7 +269,7 @@
 			}
 
 			
-			MonoDraw.DrawShadowString(info, smallFont, new Vector2(770.0f, 7.0f), Color.White, "Score: " + RunManager.I.GetScore().ToString(), DrawLayer.SubEntity);
+			MonoDraw.DrawShadowString(info, smallFont, new Vector2(650.0f, 7.0f), Color.White, "Score: " + RunManager.I.GetScore().ToString(), DrawLayer.SubEntity);
 
 			DrawHealthBar(info, new Vector2(44.0f, 18.0f));
 		}

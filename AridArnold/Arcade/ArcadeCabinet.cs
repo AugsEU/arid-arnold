@@ -2,13 +2,8 @@
 {
 	struct HighScore
 	{
-		public int mScore;
+		public ulong mScore;
 		public string mInitials;
-
-		public int Diff(HighScore other)
-		{
-			return mScore - other.mScore;
-		}
 	}
 
 	/// <summary>
@@ -52,7 +47,7 @@
 		Rect2f mScreenSpace;
 
 		// Highscore submission
-		int mPendingNewHighScore = -1;
+		ulong mPendingNewHighScore = 0;
 		string mPendingNewInitials = "AAA";
 		int mPendingCursorPos = 0;
 		PercentageTimer mBlinkTimer;
@@ -86,7 +81,7 @@
 		public void ResetCabinet()
 		{
 			mCurrScreen = ArcadeCabScreen.TitleScreen;
-			mPendingNewHighScore = -1;
+			mPendingNewHighScore = 0;
 			mLoadedGame.ResetGame();
 		}
 
@@ -95,7 +90,7 @@
 		/// <summary>
 		/// Add new high score, taking into account ordering.
 		/// </summary>
-		protected void AddHighScore(int score, string initials)
+		protected void AddHighScore(ulong score, string initials)
 		{
 			initials = initials.ToUpperInvariant();
 
@@ -105,7 +100,7 @@
 
 			for(int i = 0; i < mHighScores.Count + 1; i++)
 			{
-				if (i == mHighScores.Count || newScore.Diff(mHighScores[i]) > 0)
+				if (i == mHighScores.Count || newScore.mScore > mHighScores[i].mScore)
 				{
 					mHighScores.Insert(i, newScore);
 					break;
@@ -178,7 +173,7 @@
 			{
 				mCurrScreen = ArcadeCabScreen.ScoreScreen;
 
-				int newScore = mLoadedGame.GetScore();
+				ulong newScore = mLoadedGame.GetScore();
 
 				bool addNewHighScore = mHighScores.Count == 0 || mHighScores[mHighScores.Count - 1].mScore < newScore;
 				
@@ -205,7 +200,7 @@
 				if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
 				{
 					AddHighScore(mPendingNewHighScore, mPendingNewInitials);
-					mPendingNewHighScore = -1;
+					mPendingNewHighScore = 0;
 				}
 				else if (InputManager.I.KeyPressed(AridArnoldKeys.ArnoldUp))
 				{

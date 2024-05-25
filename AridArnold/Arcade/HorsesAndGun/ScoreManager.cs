@@ -2,12 +2,10 @@
 {
 	internal class ScoreManager : Singleton<ScoreManager>
 	{
-		int mCurrentScore;
-		int mHighScore;
+		ulong mCurrentScore;
 
 		public ScoreManager()
 		{
-			mHighScore = 0;
 			mCurrentScore = 0;
 		}
 
@@ -16,35 +14,18 @@
 			mCurrentScore = 0;
 		}
 
-		public void AddCurrentScore(int score)
+		public void AddCurrentScore(ulong score)
 		{
 			mCurrentScore += score;
 		}
 
-		public int GetCurrentScore()
+		public ulong GetCurrentScore()
 		{
 			return mCurrentScore;
 		}
 
-		public int GetHighScore()
-		{
-			return mHighScore;
-		}
-
-		public bool CheckHighScore()
-		{
-			if (mCurrentScore > mHighScore)
-			{
-				mHighScore = mCurrentScore;
-				return true;
-			}
-
-			return false;
-		}
-
 		public void ResetAll()
 		{
-			mHighScore = 0;
 			mCurrentScore = 0;
 		}
 	}
