@@ -245,7 +245,7 @@ namespace HorsesAndGun
 			}
 		}
 
-		private Point MakeHorseOrderValid(Horse horse, ref HorseOrder order)
+		public Point MakeHorseOrderValid(Horse horse, ref HorseOrder order)
 		{
 			if (order.type == HorseOrderType.moveTile)
 			{
@@ -335,6 +335,12 @@ namespace HorsesAndGun
 
 		private TrackTile CreateNextTrackTile(int trackNum)
 		{
+			//Ensure baseline
+			if (RandomManager.I.GetRandBool(15))
+			{
+				return new BasicTile(mContentManager);
+			}
+
 			//Plus tile
 			if (RandomManager.I.GetRandBool(20))
 			{
@@ -365,6 +371,25 @@ namespace HorsesAndGun
 				}
 
 				return new UpDownTile(mContentManager, goUp);
+			}
+
+			//Score
+			if (RandomManager.I.GetRandBool(40))
+			{
+				bool forReal = true;
+				switch (trackNum)
+				{
+					case 0: forReal = true; break;
+					case 1: forReal = RandomManager.I.GetRandBool(95); break;
+					case 2: forReal = RandomManager.I.GetRandBool(80); break;
+					case 3: forReal = RandomManager.I.GetRandBool(70); break;
+					case 4: forReal = RandomManager.I.GetRandBool(60); break;
+				}
+
+				if (forReal)
+				{
+					return new ScoreTile(mContentManager, RandomManager.I.GetRandBool(50));
+				}
 			}
 
 
@@ -428,6 +453,29 @@ namespace HorsesAndGun
 		public Vector2 GetTilePos(int track, int tile)
 		{
 			return mDynamicOffset + TRACK_ORIGIN + PADDING + track * TRACK_OFFSET + tile * TILE_OFFSET;
+		}
+
+		public Horse GetProjectedHorseHit(int track)
+		{
+			int closestHorseIdx = int.MaxValue;
+			Horse bestHorse = null;
+
+			for(int h = 0; h < mHorses.Length; h++)
+			{
+				Horse horse = mHorses[h];
+				Point coord = horse.GetCurrentPoint();
+			
+				if(coord.Y == track)
+				{
+					if(bestHorse == null || coord.X < closestHorseIdx)
+					{
+						bestHorse = horse;
+						closestHorseIdx = coord.X;
+					}
+				}
+			}
+
+			return bestHorse;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace HorsesAndGun
 {
@@ -21,6 +22,7 @@ namespace HorsesAndGun
 		int mGunLane;
 		Texture2D mGunTexture;
 		Texture2D mGunBarrelTexture;
+		Texture2D mDestinationCursor;
 		Animator mShootAnim;
 		MonoTimer mGunReloadTimer;
 		double mGunReloadTime;
@@ -43,6 +45,7 @@ namespace HorsesAndGun
 		List<Vector2> mGameOverPoints;
 		MonoTimer mGameOverFadeTimer;
 		const double mGameOverFadeTime = 2400.0;
+		bool mRequestedExit = false;
 
 
 
@@ -66,6 +69,7 @@ namespace HorsesAndGun
 			mGunTexture = content.Load<Texture2D>("Arcade/HorsesAndGun/gun");
 			mGunBarrelTexture = content.Load<Texture2D>("Arcade/HorsesAndGun/gun_barrel");
 			mGameOverCross = content.Load<Texture2D>("Arcade/HorsesAndGun/dead_x");
+			mDestinationCursor = content.Load<Texture2D>("Arcade/HorsesAndGun/cursor");
 
 			mTopSky = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/sky_1"), content.Load<Texture2D>("Arcade/HorsesAndGun/sky_2"), Vector2.Zero, 70);
 			mTopSkyCloud1 = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_1"), content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_1"), Vector2.Zero, 130);
@@ -120,6 +124,7 @@ namespace HorsesAndGun
 			mReadyTimer.Start();
 
 			mTrackManager.Init();
+			mRequestedExit = false;
 		}
 
 		public override void OnDeactivate()
@@ -130,6 +135,11 @@ namespace HorsesAndGun
 		private bool IsGameOver()
 		{
 			return mGameOverPoints != null && mGameOverPoints.Count > 0;
+		}
+
+		public bool IsExitRequested()
+		{
+			return mRequestedExit;
 		}
 
 		public void FastReload()
@@ -168,9 +178,9 @@ namespace HorsesAndGun
 
 				if (GetGameOverPercent() == 1.0f)
 				{
-					if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick))
+					if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
 					{
-						ScreenManager.I.ActivateScreen(ScreenType.RossButtonsScreen);
+						mRequestedExit = true;
 					}
 				}
 				return;
@@ -210,17 +220,29 @@ namespace HorsesAndGun
 			EntityManager.I.Update(gameTime);
 
 			HandleInput(gameTime);
-
-			DecideGunPosition();
 		}
 
 		private void HandleInput(GameTime gameTime)
 		{
-			bool lClick = AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick);
-			if (lClick && GetReloadPercent() == 1.0f)
+			bool fireGun = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.UseItem);
+			bool up = AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.ArnoldUp);
+			bool down = AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.ArnoldDown);
+
+			if (fireGun && GetReloadPercent() == 1.0f)
 			{
 				FireGun(gameTime);
 			}
+
+			if(up && !down)
+			{
+				mGunLane--;
+			}
+			else if(down && !up)
+			{
+				mGunLane++;
+			}
+
+			mGunLane = Math.Clamp(mGunLane, 0, NUM_LANES-1);
 		}
 
 		private void FireGun(GameTime gameTime)
@@ -258,15 +280,6 @@ namespace HorsesAndGun
 			}
 
 			return 1.0f;
-		}
-
-		public void DecideGunPosition()
-		{
-			Point mousePos = AridArnold.InputManager.I.GetMouseWorldPoint();
-
-			mGunLane = Math.Max(0, (mousePos.Y - 29) / 50);
-
-			mGunLane = Math.Min(mGunLane, NUM_LANES - 1);
 		}
 
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
@@ -351,11 +364,6 @@ namespace HorsesAndGun
 			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre + new Vector2(0.0f, -130.0f), textColor, "GAME OVER!");
 
 			Util.DrawStringCentred(info.spriteBatch, pixelFont, centre, textColor, "Score: " + ScoreManager.I.GetCurrentScore());
-
-			if (falpha == 1.0f)
-			{
-				Util.DrawStringCentred(info.spriteBatch, smallPixelFont, centre + new Vector2(0.0f, 130.0f), textColor, "Click to continue...");
-			}
 		}
 
 		private void DrawGun(DrawInfo info)
@@ -373,6 +381,34 @@ namespace HorsesAndGun
 			}
 
 			info.spriteBatch.Draw(gunTex, startPoint, Color.White);
+
+			DrawGunCursor(info);
+		}
+
+		void DrawGunCursor(DrawInfo info)
+		{
+			if(GetReloadPercent() != 1.0f)
+			{
+				return;
+			}
+
+			int currDiceVal = mDiceQueue.PeekDice(0).Value;
+			HorseOrder mimicOrder = new HorseOrder(HorseOrderType.moveTile, currDiceVal);
+
+			Horse horseWeWillHit = mTrackManager.GetProjectedHorseHit(mGunLane);
+
+			if(horseWeWillHit is null || horseWeWillHit.HasOrder())
+			{
+				return;
+			}
+
+			Point dest = mTrackManager.MakeHorseOrderValid(horseWeWillHit, ref mimicOrder);
+
+			Vector2 drawPos = mTrackManager.GetTilePos(dest.Y, dest.X);
+			drawPos.X += 16.0f;
+			drawPos.Y += 15.0f;
+
+			info.spriteBatch.Draw(mDestinationCursor, drawPos, Color.White * 0.5f);
 		}
 
 		private void DrawDice(DrawInfo info)

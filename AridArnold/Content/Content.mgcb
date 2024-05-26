@@ -12551,3 +12551,15 @@
 #begin Text/EN/Arcade/HorsesAndGun/Title.txt
 /copy:Text/EN/Arcade/HorsesAndGun/Title.txt
 
+#begin Arcade/HorsesAndGun/Tiles/big_score_tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/big_score_tile.png
+
+#begin Arcade/HorsesAndGun/Tiles/small_score_tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/small_score_tile.png
+

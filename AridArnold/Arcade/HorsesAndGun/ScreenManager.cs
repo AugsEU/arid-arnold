@@ -5,12 +5,7 @@ namespace HorsesAndGun
 {
 	enum ScreenType
 	{
-		// ROSS BUTTON SCREEN FOR TESTING //
-		RossButtonsScreen,
-		Options,
-		StatsScreen,
 		MainGame,
-		EndGame,
 		None
 	}
 
@@ -22,13 +17,7 @@ namespace HorsesAndGun
 		public void LoadAllScreens(ContentManager content, GraphicsDeviceManager deviceManager)
 		{
 			mScreens.Clear();
-
-			// ROSS BUTTON SCREEN FOR TESTING //
-			LoadScreen(ScreenType.RossButtonsScreen, new RossButtonsScreen(content, deviceManager), content);
-			LoadScreen(ScreenType.Options, new OptionsScreen(content, deviceManager), content);
-			LoadScreen(ScreenType.StatsScreen, new StatsScreen(content, deviceManager), content);
 			LoadScreen(ScreenType.MainGame, new MainGameScreen(content, deviceManager), content);
-			LoadScreen(ScreenType.EndGame, new EndGameScreen(content, deviceManager), content);
 		}
 
 		private void LoadScreen(ScreenType type, Screen screen, ContentManager content)

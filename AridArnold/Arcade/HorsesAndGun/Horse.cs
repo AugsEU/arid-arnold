@@ -297,6 +297,11 @@ namespace HorsesAndGun
 			mReservedTrack = mTrackIndex;
 		}
 
+		public bool HasOrder()
+		{
+			return mCurrentOrder.type != HorseOrderType.none;
+		}
+
 		public Point GetReservedPoint()
 		{
 			return new Point(mReservedTile, mReservedTrack);
