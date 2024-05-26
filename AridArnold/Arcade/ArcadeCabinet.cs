@@ -129,9 +129,11 @@
 			switch (mCurrScreen)
 			{
 				case ArcadeCabScreen.TitleScreen:
+					MediaPlayer.IsMuted = true;
 					UpdateTitleScreen(gameTime);
 					break;
 				case ArcadeCabScreen.Gameplay:
+					MediaPlayer.IsMuted = false;
 					UpdateGameScreen(gameTime);
 					break;
 				case ArcadeCabScreen.ScoreScreen:
@@ -142,6 +144,13 @@
 			if(mBlinkTimer.GetPercentageF() >= 1.0f)
 			{
 				mBlinkTimer.Reset();
+			}
+
+			if (InputManager.I.KeyPressed(AridArnoldKeys.Pause))
+			{
+				mLoadedGame.ResetGame();
+				MediaPlayer.Stop();
+				ScreenManager.I.ActivateScreen(ScreenType.Game); // Go back to game screen.
 			}
 		}
 

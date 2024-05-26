@@ -474,6 +474,9 @@
 				case EntityData.EntityClass.kPillarPot:
 					entity = new PillarPot(worldPosition, data.mIntParams[0]);
 					break;
+				case EntityData.EntityClass.kWorldCabinet:
+					entity = new WorldArcadeCabinet(worldPosition, (ArcadeGameType)data.mIntParams[0]);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

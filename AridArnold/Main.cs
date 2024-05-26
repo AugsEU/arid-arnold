@@ -107,9 +107,7 @@
 
 			// Temp
 			CampaignManager.I.LoadCampaign("MainCampaign");
-			ArcadeGameScreen debugScreen = ScreenManager.I.GetScreen(ScreenType.ArcadeGame) as ArcadeGameScreen;
-			debugScreen.ActivateGame(ArcadeGameType.HorsesAndGun);
-			ScreenManager.I.ActivateScreen(ScreenType.ArcadeGame);
+			ScreenManager.I.ActivateScreen(ScreenType.Game);
 		}
 
 		/// <summary>
@@ -175,11 +173,6 @@
 			if (key == Keys.Enter && alt)
 			{
 				ToggleFullscreen();
-			}
-
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
-			{
-				Exit();
 			}
 		}
 

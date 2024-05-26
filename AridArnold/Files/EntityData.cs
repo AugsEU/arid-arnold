@@ -43,6 +43,7 @@
 			kTimeMachine,
 			kPlantPot,
 			kPillarPot,
+			kWorldCabinet,
 			kUtilityClassEnd
 		}
 

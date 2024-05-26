@@ -17,8 +17,8 @@ namespace DeathRide
 
 		public override void ResetGame()
 		{
-			RunManager.I.ResetNoEffects();
 			SoundManager.I.StopMusic();
+			RunManager.I.ResetNoEffects();
 			ScreenManager.I.ActivateScreen(ScreenType.Game);
 			base.ResetGame();
 		}

@@ -12569,3 +12569,36 @@
 /processorParam:PremultiplyAlpha=False
 /build:Arcade/HorsesAndGun/SilverBullet.png
 
+#begin Arcade/WorldCabinet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WorldCabinet.png
+
+#begin Arcade/WorldCabinetDeathRide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WorldCabinetDeathRide.png
+
+#begin Arcade/WorldCabinetHorse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WorldCabinetHorse.png
+
+#begin Arcade/WorldCabinetSnake.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/WorldCabinetSnake.png
+
+#begin Text/EN/Arcade/PlayDeathRide.txt
+/copy:Text/EN/Arcade/PlayDeathRide.txt
+
+#begin Text/EN/Arcade/PlayHorse.txt
+/copy:Text/EN/Arcade/PlayHorse.txt
+
+#begin Text/EN/Arcade/PlaySnake.txt
+/copy:Text/EN/Arcade/PlaySnake.txt
+

@@ -27,8 +27,6 @@
 		PercentageTimer mWinTimer;
 		PercentageTimer mLossTimer;
 
-		bool mIsPaused = false;
-
 		#endregion rMembers
 
 
@@ -116,16 +114,6 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Pause))
-			{
-				mIsPaused = !mIsPaused;
-			}
-
-			if (mIsPaused)
-			{
-				return;
-			}
-
 			FXManager.I.Update(gameTime);
 
 			if (mLossTimer.IsPlaying() || mWinTimer.IsPlaying())
@@ -232,40 +220,32 @@
 			SpriteFont font = FontManager.I.GetFont("Scream-36");
 			Vector2 centre = new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT) * 0.5f;
 
-			if (mIsPaused)
+			if (mReadyGoTimer.GetElapsedMs() < GetReadyTime() + GO_TIME)
 			{
-				MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new Color(10, 10, 10, 100), DrawLayer.Text);
-				MonoDraw.DrawShadowStringCentred(info, font, centre, Color.White, "Paused", DrawLayer.Text);
+				DrawReadyGoText(info);
 			}
-			else
-			{
-				if (mReadyGoTimer.GetElapsedMs() < GetReadyTime() + GO_TIME)
-				{
-					DrawReadyGoText(info);
-				}
 
-				if (mWinTimer.IsPlaying())
+			if (mWinTimer.IsPlaying())
+			{
+				float flash = mWinTimer.GetPercentageF() % 0.5f;
+				Color textColor = Color.Wheat;
+				if (flash > 0.25f)
 				{
-					float flash = mWinTimer.GetPercentageF() % 0.5f;
-					Color textColor = Color.Wheat;
-					if (flash > 0.25f)
-					{
-						textColor = Color.IndianRed;
-					}
-					MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new Color(10, 10, 10, 100), DrawLayer.Text);
-					MonoDraw.DrawShadowStringCentred(info, font, centre, textColor, "Round Won", DrawLayer.Text);
+					textColor = Color.IndianRed;
 				}
-				else if (mLossTimer.IsPlaying())
+				MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new Color(10, 10, 10, 100), DrawLayer.Text);
+				MonoDraw.DrawShadowStringCentred(info, font, centre, textColor, "Round Won", DrawLayer.Text);
+			}
+			else if (mLossTimer.IsPlaying())
+			{
+				float flash = mLossTimer.GetPercentageF() % 0.5f;
+				Color textColor = Color.Orange;
+				if (flash > 0.25f)
 				{
-					float flash = mLossTimer.GetPercentageF() % 0.5f;
-					Color textColor = Color.Orange;
-					if (flash > 0.25f)
-					{
-						textColor = Color.IndianRed;
-					}
-					MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new Color(10, 10, 10, 100), DrawLayer.Text);
-					MonoDraw.DrawShadowStringCentred(info, font, centre, textColor, "Round Lost", DrawLayer.Text);
+					textColor = Color.IndianRed;
 				}
+				MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), new Color(10, 10, 10, 100), DrawLayer.Text);
+				MonoDraw.DrawShadowStringCentred(info, font, centre, textColor, "Round Lost", DrawLayer.Text);
 			}
 
 			
