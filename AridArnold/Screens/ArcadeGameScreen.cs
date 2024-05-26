@@ -17,7 +17,7 @@ namespace AridArnold
 		{
 			mCabinets = new ArcadeCabinet[MonoAlg.EnumLength(typeof(ArcadeGameType))];
 			mCabinets[(int)ArcadeGameType.DeathRide]    = new DeathRideCabinet(graphics, Main.GetMainContentManager());
-			//mGames[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGun.HorsesAndGun(graphics, Main.GetMainContentManager());
+			mCabinets[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGunCabinet(graphics, Main.GetMainContentManager());
 			mCabinets[(int)ArcadeGameType.WormWarp] = new WormWarpCabinet(graphics, Main.GetMainContentManager());
 			mActiveCabinet = -1;
 		}

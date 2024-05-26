@@ -108,7 +108,7 @@
 			// Temp
 			CampaignManager.I.LoadCampaign("MainCampaign");
 			ArcadeGameScreen debugScreen = ScreenManager.I.GetScreen(ScreenType.ArcadeGame) as ArcadeGameScreen;
-			debugScreen.ActivateGame(ArcadeGameType.DeathRide);
+			debugScreen.ActivateGame(ArcadeGameType.HorsesAndGun);
 			ScreenManager.I.ActivateScreen(ScreenType.ArcadeGame);
 		}
 

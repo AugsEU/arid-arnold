@@ -13,6 +13,42 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Arcade/Cabinets/DeathRide.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/Cabinets/DeathRide.png
+
+#begin Arcade/Cabinets/HorsesAndGun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/Cabinets/HorsesAndGun.png
+
+#begin Arcade/Cabinets/WormWarp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/Cabinets/WormWarp.png
+
 #begin Arcade/DeathRide/Backgrounds/GameOver.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -791,6 +827,1089 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Arcade/DeathRide/UI/TitleLogo.png
+
+#begin Arcade/HorsesAndGun/cursor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/cursor.png
+
+#begin Arcade/HorsesAndGun/dead_x.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dead_x.png
+
+#begin Arcade/HorsesAndGun/dice_side_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dice_side_1.png
+
+#begin Arcade/HorsesAndGun/dice_side_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dice_side_2.png
+
+#begin Arcade/HorsesAndGun/dice_side_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dice_side_3.png
+
+#begin Arcade/HorsesAndGun/dice_side_4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dice_side_4.png
+
+#begin Arcade/HorsesAndGun/dice_side_5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dice_side_5.png
+
+#begin Arcade/HorsesAndGun/dice_side_6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dice_side_6.png
+
+#begin Arcade/HorsesAndGun/Dice1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Dice1.png
+
+#begin Arcade/HorsesAndGun/Dice2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Dice2.png
+
+#begin Arcade/HorsesAndGun/Dice3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Dice3.png
+
+#begin Arcade/HorsesAndGun/Dice4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Dice4.png
+
+#begin Arcade/HorsesAndGun/Dice5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Dice5.png
+
+#begin Arcade/HorsesAndGun/Dice6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Dice6.png
+
+#begin Arcade/HorsesAndGun/dust_cloud_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dust_cloud_1.png
+
+#begin Arcade/HorsesAndGun/dust_cloud_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/dust_cloud_2.png
+
+#begin Arcade/HorsesAndGun/Fonts/Pixica.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Arcade/HorsesAndGun/Fonts/Pixica.spritefont
+
+#begin Arcade/HorsesAndGun/Fonts/Pixica-Small.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Arcade/HorsesAndGun/Fonts/Pixica-Small.spritefont
+
+#begin Arcade/HorsesAndGun/ground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/ground.png
+
+#begin Arcade/HorsesAndGun/gun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun.png
+
+#begin Arcade/HorsesAndGun/gun_barrel.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun_barrel.png
+
+#begin Arcade/HorsesAndGun/gun-fire1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire1.png
+
+#begin Arcade/HorsesAndGun/gun-fire10.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire10.png
+
+#begin Arcade/HorsesAndGun/gun-fire2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire2.png
+
+#begin Arcade/HorsesAndGun/gun-fire3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire3.png
+
+#begin Arcade/HorsesAndGun/gun-fire4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire4.png
+
+#begin Arcade/HorsesAndGun/gun-fire5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire5.png
+
+#begin Arcade/HorsesAndGun/gun-fire6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire6.png
+
+#begin Arcade/HorsesAndGun/gun-fire7.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire7.png
+
+#begin Arcade/HorsesAndGun/gun-fire8.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire8.png
+
+#begin Arcade/HorsesAndGun/gun-fire9.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun-fire9.png
+
+#begin Arcade/HorsesAndGun/help-screen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/help-screen.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_1.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_10.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_10.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_11.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_11.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_12.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_12.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_2.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_3.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_4.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_5.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_6.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_7.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_7.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_8.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_8.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_jump_9.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_jump_9.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_1.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_10.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_10.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_11.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_11.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_12.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_12.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_2.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_3.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_4.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_5.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_6.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_7.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_7.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_8.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_8.png
+
+#begin Arcade/HorsesAndGun/Horse/horse_run_9.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse_run_9.png
+
+#begin Arcade/HorsesAndGun/Horse/horse-stand1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse-stand1.png
+
+#begin Arcade/HorsesAndGun/Horse/horse-stand2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse-stand2.png
+
+#begin Arcade/HorsesAndGun/Horse/horse-stand3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Horse/horse-stand3.png
+
+#begin Arcade/HorsesAndGun/main_bg.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/main_bg.png
+
+#begin Arcade/HorsesAndGun/main_logo.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/main_logo.png
+
+#begin Arcade/HorsesAndGun/menu_background.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/menu_background.png
+
+#begin Arcade/HorsesAndGun/Music/Horses and gun.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Arcade/HorsesAndGun/Music/Horses and gun.ogg
+
+#begin Arcade/HorsesAndGun/scrolling_clouds_temp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/scrolling_clouds_temp.png
+
+#begin Arcade/HorsesAndGun/SFX/GameOverSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/HorsesAndGun/SFX/GameOverSFX.wav
+
+#begin Arcade/HorsesAndGun/SFX/getherdone.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/HorsesAndGun/SFX/getherdone.wav
+
+#begin Arcade/HorsesAndGun/SFX/gunsfx.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/HorsesAndGun/SFX/gunsfx.wav
+
+#begin Arcade/HorsesAndGun/SFX/levelupsfx.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/HorsesAndGun/SFX/levelupsfx.wav
+
+#begin Arcade/HorsesAndGun/SFX/reloadsfx.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/HorsesAndGun/SFX/reloadsfx.wav
+
+#begin Arcade/HorsesAndGun/sky_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/sky_1.png
+
+#begin Arcade/HorsesAndGun/sky_2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/sky_2.png
+
+#begin Arcade/HorsesAndGun/temp_button.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/temp_button.png
+
+#begin Arcade/HorsesAndGun/Tiles/basic_tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/basic_tile.png
+
+#begin Arcade/HorsesAndGun/Tiles/fast_reload.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/fast_reload.png
+
+#begin Arcade/HorsesAndGun/Tiles/plus_one_tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/plus_one_tile.png
+
+#begin Arcade/HorsesAndGun/Tiles/plus_three_tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/plus_three_tile.png
+
+#begin Arcade/HorsesAndGun/Tiles/plus_two_tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/plus_two_tile.png
+
+#begin Arcade/HorsesAndGun/Tiles/tile_death.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/tile_death.png
+
+#begin Arcade/HorsesAndGun/Tiles/tile_go_down.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/tile_go_down.png
+
+#begin Arcade/HorsesAndGun/Tiles/tile_go_up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/Tiles/tile_go_up.png
+
+#begin Arcade/HorsesAndGun/wooden_button.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/wooden_button.png
+
+#begin Arcade/WormWarp/Fonts/PixelFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Arcade/WormWarp/Fonts/PixelFont.spritefont
+
+#begin Arcade/WormWarp/Music/GameJam21.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Arcade/WormWarp/Music/GameJam21.ogg
+
+#begin Arcade/WormWarp/Music/GJ Main.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Arcade/WormWarp/Music/GJ Main.ogg
+
+#begin Arcade/WormWarp/SFX/GameOverSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/WormWarp/SFX/GameOverSFX.wav
+
+#begin Arcade/WormWarp/SFX/NewDimensionSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/WormWarp/SFX/NewDimensionSFX.wav
+
+#begin Arcade/WormWarp/SFX/PointGetSFX.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Arcade/WormWarp/SFX/PointGetSFX.wav
+
+#begin Arcade/WormWarp/Textures/AppleDimension.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/AppleDimension.png
+
+#begin Arcade/WormWarp/Textures/AppleNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/AppleNormal.png
+
+#begin Arcade/WormWarp/Textures/GrassTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/GrassTile.png
+
+#begin Arcade/WormWarp/Textures/SnakeBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/SnakeBackground.png
+
+#begin Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
+
+#begin Arcade/WormWarp/Textures/SnakeBody.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/SnakeBody.png
+
+#begin Arcade/WormWarp/Textures/SnakeCorner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/SnakeCorner.png
+
+#begin Arcade/WormWarp/Textures/SnakeDead.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/SnakeDead.png
+
+#begin Arcade/WormWarp/Textures/SnakeHead.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/SnakeHead.png
+
+#begin Arcade/WormWarp/Textures/SnakeTail.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/WormWarp/Textures/SnakeTail.png
 
 #begin Arnold/Androld.mtp
 /copy:Arnold/Androld.mtp
@@ -7186,6 +8305,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Pixica.spritefont
 
+#begin Fonts/PixicaMassive.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMassive.spritefont
+
 #begin Fonts/PixicaMedium.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -9559,6 +10685,36 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Text/EN/Arcade/DeathRide/Title.txt
+/copy:Text/EN/Arcade/DeathRide/Title.txt
+
+#begin Text/EN/Arcade/GoNext.txt
+/copy:Text/EN/Arcade/GoNext.txt
+
+#begin Text/EN/Arcade/HighScores.txt
+/copy:Text/EN/Arcade/HighScores.txt
+
+#begin Text/EN/Arcade/InsertCoin.txt
+/copy:Text/EN/Arcade/InsertCoin.txt
+
+#begin Text/EN/Arcade/InvalidCoin.txt
+/copy:Text/EN/Arcade/InvalidCoin.txt
+
+#begin Text/EN/Arcade/NewHighScore.txt
+/copy:Text/EN/Arcade/NewHighScore.txt
+
+#begin Text/EN/Arcade/NewScore.txt
+/copy:Text/EN/Arcade/NewScore.txt
+
+#begin Text/EN/Arcade/SubmitName.txt
+/copy:Text/EN/Arcade/SubmitName.txt
+
+#begin Text/EN/Arcade/SubmitScore.txt
+/copy:Text/EN/Arcade/SubmitScore.txt
+
+#begin Text/EN/Arcade/WormWarp/Title.txt
+/copy:Text/EN/Arcade/WormWarp/Title.txt
+
 #begin Text/EN/InGame/PromptEnter.txt
 /copy:Text/EN/InGame/PromptEnter.txt
 
@@ -11392,618 +12548,6 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Arcade/HorsesAndGun/cursor.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/cursor.png
-
-#begin Arcade/HorsesAndGun/dead_x.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dead_x.png
-
-#begin Arcade/HorsesAndGun/Dice1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Dice1.png
-
-#begin Arcade/HorsesAndGun/Dice2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Dice2.png
-
-#begin Arcade/HorsesAndGun/Dice3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Dice3.png
-
-#begin Arcade/HorsesAndGun/Dice4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Dice4.png
-
-#begin Arcade/HorsesAndGun/Dice5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Dice5.png
-
-#begin Arcade/HorsesAndGun/Dice6.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Dice6.png
-
-#begin Arcade/HorsesAndGun/dice_side_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dice_side_1.png
-
-#begin Arcade/HorsesAndGun/dice_side_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dice_side_2.png
-
-#begin Arcade/HorsesAndGun/dice_side_3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dice_side_3.png
-
-#begin Arcade/HorsesAndGun/dice_side_4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dice_side_4.png
-
-#begin Arcade/HorsesAndGun/dice_side_5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dice_side_5.png
-
-#begin Arcade/HorsesAndGun/dice_side_6.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dice_side_6.png
-
-#begin Arcade/HorsesAndGun/dust_cloud_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dust_cloud_1.png
-
-#begin Arcade/HorsesAndGun/dust_cloud_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/dust_cloud_2.png
-
-#begin Arcade/HorsesAndGun/ground.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/ground.png
-
-#begin Arcade/HorsesAndGun/gun-fire1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire1.png
-
-#begin Arcade/HorsesAndGun/gun-fire10.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire10.png
-
-#begin Arcade/HorsesAndGun/gun-fire2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire2.png
-
-#begin Arcade/HorsesAndGun/gun-fire3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire3.png
-
-#begin Arcade/HorsesAndGun/gun-fire4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire4.png
-
-#begin Arcade/HorsesAndGun/gun-fire5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire5.png
-
-#begin Arcade/HorsesAndGun/gun-fire6.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire6.png
-
-#begin Arcade/HorsesAndGun/gun-fire7.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire7.png
-
-#begin Arcade/HorsesAndGun/gun-fire8.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire8.png
-
-#begin Arcade/HorsesAndGun/gun-fire9.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun-fire9.png
-
-#begin Arcade/HorsesAndGun/gun.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun.png
-
-#begin Arcade/HorsesAndGun/gun_barrel.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/gun_barrel.png
-
-#begin Arcade/HorsesAndGun/help-screen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/help-screen.png
-
-#begin Arcade/HorsesAndGun/main_bg.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/main_bg.png
-
-#begin Arcade/HorsesAndGun/main_logo.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/main_logo.png
-
-#begin Arcade/HorsesAndGun/menu_background.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/menu_background.png
-
-#begin Arcade/HorsesAndGun/scrolling_clouds_temp.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/scrolling_clouds_temp.png
-
-#begin Arcade/HorsesAndGun/sky_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/sky_1.png
-
-#begin Arcade/HorsesAndGun/sky_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/sky_2.png
-
-#begin Arcade/HorsesAndGun/temp_button.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/temp_button.png
-
-#begin Arcade/HorsesAndGun/wooden_button.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/wooden_button.png
-
-#begin Arcade/HorsesAndGun/Fonts/Pixica-Small.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/build:Arcade/HorsesAndGun/Fonts/Pixica-Small.spritefont
-
-#begin Arcade/HorsesAndGun/Fonts/Pixica.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/build:Arcade/HorsesAndGun/Fonts/Pixica.spritefont
-
-#begin Arcade/HorsesAndGun/Horse/horse-stand1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse-stand1.png
-
-#begin Arcade/HorsesAndGun/Horse/horse-stand2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse-stand2.png
-
-#begin Arcade/HorsesAndGun/Horse/horse-stand3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse-stand3.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_1.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_10.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_10.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_11.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_11.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_12.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_12.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_2.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_3.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_4.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_5.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_6.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_6.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_7.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_7.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_8.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_8.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_jump_9.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_jump_9.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_1.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_10.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_10.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_11.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_11.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_12.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_12.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_2.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_3.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_4.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_5.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_6.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_6.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_7.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_7.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_8.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_8.png
-
-#begin Arcade/HorsesAndGun/Horse/horse_run_9.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Horse/horse_run_9.png
-
-#begin Arcade/HorsesAndGun/Music/Horses and gun.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/build:Arcade/HorsesAndGun/Music/Horses and gun.ogg
-
-#begin Arcade/HorsesAndGun/SFX/GameOverSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/HorsesAndGun/SFX/GameOverSFX.wav
-
-#begin Arcade/HorsesAndGun/SFX/getherdone.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/HorsesAndGun/SFX/getherdone.wav
-
-#begin Arcade/HorsesAndGun/SFX/gunsfx.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/HorsesAndGun/SFX/gunsfx.wav
-
-#begin Arcade/HorsesAndGun/SFX/levelupsfx.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/HorsesAndGun/SFX/levelupsfx.wav
-
-#begin Arcade/HorsesAndGun/SFX/reloadsfx.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/HorsesAndGun/SFX/reloadsfx.wav
-
-#begin Arcade/HorsesAndGun/Tiles/basic_tile.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/basic_tile.png
-
-#begin Arcade/HorsesAndGun/Tiles/fast_reload.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/fast_reload.png
-
-#begin Arcade/HorsesAndGun/Tiles/plus_one_tile.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/plus_one_tile.png
-
-#begin Arcade/HorsesAndGun/Tiles/plus_three_tile.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/plus_three_tile.png
-
-#begin Arcade/HorsesAndGun/Tiles/plus_two_tile.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/plus_two_tile.png
-
-#begin Arcade/HorsesAndGun/Tiles/tile_death.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/tile_death.png
-
-#begin Arcade/HorsesAndGun/Tiles/tile_go_down.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/tile_go_down.png
-
-#begin Arcade/HorsesAndGun/Tiles/tile_go_up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/HorsesAndGun/Tiles/tile_go_up.png
-
-#begin Arcade/WormWarp/Fonts/PixelFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/build:Arcade/WormWarp/Fonts/PixelFont.spritefont
-
-#begin Arcade/WormWarp/Music/GameJam21.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/build:Arcade/WormWarp/Music/GameJam21.ogg
-
-#begin Arcade/WormWarp/Music/GJ Main.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/build:Arcade/WormWarp/Music/GJ Main.ogg
-
-#begin Arcade/WormWarp/SFX/GameOverSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/WormWarp/SFX/GameOverSFX.wav
-
-#begin Arcade/WormWarp/SFX/NewDimensionSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/WormWarp/SFX/NewDimensionSFX.wav
-
-#begin Arcade/WormWarp/SFX/PointGetSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/build:Arcade/WormWarp/SFX/PointGetSFX.wav
-
-#begin Arcade/WormWarp/Textures/AppleDimension.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/AppleDimension.png
-
-#begin Arcade/WormWarp/Textures/AppleNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/AppleNormal.png
-
-#begin Arcade/WormWarp/Textures/GrassTile.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/GrassTile.png
-
-#begin Arcade/WormWarp/Textures/SnakeBackground.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/SnakeBackground.png
-
-#begin Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
-
-#begin Arcade/WormWarp/Textures/SnakeBody.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/SnakeBody.png
-
-#begin Arcade/WormWarp/Textures/SnakeCorner.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/SnakeCorner.png
-
-#begin Arcade/WormWarp/Textures/SnakeDead.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/SnakeDead.png
-
-#begin Arcade/WormWarp/Textures/SnakeHead.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/SnakeHead.png
-
-#begin Arcade/WormWarp/Textures/SnakeTail.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/WormWarp/Textures/SnakeTail.png
-
-#begin Arcade/Cabinets/WormWarp.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/Cabinets/WormWarp.png
-
-#begin Text/EN/Arcade/InsertCoin.txt
-/copy:Text/EN/Arcade/InsertCoin.txt
-
-#begin Text/EN/Arcade/InvalidCoin.txt
-/copy:Text/EN/Arcade/InvalidCoin.txt
-
-#begin Text/EN/Arcade/WormWarp/Title.txt
-/copy:Text/EN/Arcade/WormWarp/Title.txt
-
-#begin Text/EN/Arcade/GoNext.txt
-/copy:Text/EN/Arcade/GoNext.txt
-
-#begin Text/EN/Arcade/HighScores.txt
-/copy:Text/EN/Arcade/HighScores.txt
-
-#begin Text/EN/Arcade/SubmitScore.txt
-/copy:Text/EN/Arcade/SubmitScore.txt
-
-#begin Text/EN/Arcade/SubmitName.txt
-/copy:Text/EN/Arcade/SubmitName.txt
-
-#begin Text/EN/Arcade/NewHighScore.txt
-/copy:Text/EN/Arcade/NewHighScore.txt
-
-#begin Fonts/PixicaMassive.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/build:Fonts/PixicaMassive.spritefont
-
-#begin Arcade/Cabinets/DeathRide.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arcade/Cabinets/DeathRide.png
-
-#begin Text/EN/Arcade/DeathRide/Title.txt
-/copy:Text/EN/Arcade/DeathRide/Title.txt
-
-#begin Text/EN/Arcade/NewScore.txt
-/copy:Text/EN/Arcade/NewScore.txt
+#begin Text/EN/Arcade/HorsesAndGun/Title.txt
+/copy:Text/EN/Arcade/HorsesAndGun/Title.txt
 
