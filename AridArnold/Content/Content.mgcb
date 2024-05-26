@@ -12563,3 +12563,9 @@
 /processorParam:PremultiplyAlpha=False
 /build:Arcade/HorsesAndGun/Tiles/small_score_tile.png
 
+#begin Arcade/HorsesAndGun/SilverBullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/SilverBullet.png
+

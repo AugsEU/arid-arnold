@@ -86,6 +86,24 @@
 
 
 		/// <summary>
+		/// Get screen of type with cast for free.
+		/// </summary>
+		public T GetScreen<T>() where T : Screen
+		{
+			foreach (var item in mScreens)
+			{
+				if (item.Value is T returnValue)
+				{
+					return returnValue;
+				}
+			}
+
+			return null;
+		}
+
+
+
+		/// <summary>
 		/// Get the currently active screen
 		/// </summary>
 		/// <returns>Active screen refernece, null if there is none.</returns>

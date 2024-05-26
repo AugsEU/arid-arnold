@@ -23,9 +23,11 @@ namespace HorsesAndGun
 		Texture2D mGunTexture;
 		Texture2D mGunBarrelTexture;
 		Texture2D mDestinationCursor;
+		Texture2D mSilverBulletIcon;
 		Animator mShootAnim;
 		MonoTimer mGunReloadTimer;
 		double mGunReloadTime;
+		int mGunFrenzy = 0;
 		const double NORMAL_RELOAD_TIME = 3000.0;
 
 		//Dice
@@ -70,6 +72,7 @@ namespace HorsesAndGun
 			mGunBarrelTexture = content.Load<Texture2D>("Arcade/HorsesAndGun/gun_barrel");
 			mGameOverCross = content.Load<Texture2D>("Arcade/HorsesAndGun/dead_x");
 			mDestinationCursor = content.Load<Texture2D>("Arcade/HorsesAndGun/cursor");
+			mSilverBulletIcon = content.Load<Texture2D>("Arcade/HorsesAndGun/SilverBullet");
 
 			mTopSky = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/sky_1"), content.Load<Texture2D>("Arcade/HorsesAndGun/sky_2"), Vector2.Zero, 70);
 			mTopSkyCloud1 = new ScrollingImage(content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_1"), content.Load<Texture2D>("Arcade/HorsesAndGun/dust_cloud_1"), Vector2.Zero, 130);
@@ -125,6 +128,7 @@ namespace HorsesAndGun
 
 			mTrackManager.Init();
 			mRequestedExit = false;
+			mGunFrenzy = 0;
 		}
 
 		public override void OnDeactivate()
@@ -144,10 +148,9 @@ namespace HorsesAndGun
 
 		public void FastReload()
 		{
-			if (mGunReloadTimer.IsPlaying())
-			{
-				mGunReloadTimer.SetTimeSpeed(9.0);
-			}
+			mGunFrenzy = Math.Max(mGunFrenzy, 0);
+			mGunFrenzy += 3;
+			mGunFrenzy = Math.Min(mGunFrenzy, 6); // Only 6 shots in a revolver
 		}
 
 		public override void Update(GameTime gameTime)
@@ -259,6 +262,11 @@ namespace HorsesAndGun
 			//Timer stuff
 			mGunReloadTimer.FullReset();
 			mGunReloadTimer.Start();
+			if(mGunFrenzy > 0)
+			{
+				mGunReloadTimer.SetTimeSpeed(9.0);
+			}
+			mGunFrenzy--;
 			mShootAnim.Play();
 		}
 
@@ -368,6 +376,7 @@ namespace HorsesAndGun
 
 		private void DrawGun(DrawInfo info)
 		{
+			SpriteFont pixelFont = FontManager.I.GetFont("Pixica Micro-24");
 			Vector2 startPoint = new Vector2(0.0f, 29.0f);
 			Vector2 spacing = new Vector2(0.0f, 50.0f);
 
@@ -378,6 +387,15 @@ namespace HorsesAndGun
 			if (GetReloadPercent() != 1.0f)
 			{
 				gunTex = mShootAnim.GetCurrentTexture();
+			}
+
+			Vector2 silverBulletBasePos = startPoint + new Vector2(33.0f, 3.0f);
+
+			for(int i = 0; i < mGunFrenzy; i++)
+			{
+				info.spriteBatch.Draw(mSilverBulletIcon, silverBulletBasePos, Color.White);
+
+				silverBulletBasePos.X += 8.0f;
 			}
 
 			info.spriteBatch.Draw(gunTex, startPoint, Color.White);
