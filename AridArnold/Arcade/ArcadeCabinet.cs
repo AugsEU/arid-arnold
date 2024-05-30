@@ -287,7 +287,7 @@
 		/// </summary>
 		void DrawGameScreen(DrawInfo info)
 		{
-			float scale = (float)mGameOutput.Width / mScreenSpace.Width;
+			float scale = mScreenSpace.Width / (float)mGameOutput.Width;
 
 			MonoDraw.DrawTexture(info, mGameOutput, mScreenSpace.min, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, DrawLayer.Background);
 		}
