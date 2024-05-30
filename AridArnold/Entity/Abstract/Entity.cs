@@ -477,6 +477,9 @@
 				case EntityData.EntityClass.kWorldCabinet:
 					entity = new WorldArcadeCabinet(worldPosition, (ArcadeGameType)data.mIntParams[0]);
 					break;
+				case EntityData.EntityClass.kArcadeBuilding:
+					entity = new ArcadeBuilding(worldPosition);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

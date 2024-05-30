@@ -12602,3 +12602,39 @@
 #begin Text/EN/Arcade/PlaySnake.txt
 /copy:Text/EN/Arcade/PlaySnake.txt
 
+#begin Arcade/Building/Exterior.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Building/Exterior.png
+
+#begin Arcade/Building/Interior1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Building/Interior1.png
+
+#begin Arcade/Building/Interior2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Building/Interior2.png
+
+#begin Arcade/Building/Sign1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Building/Sign1.png
+
+#begin Arcade/Building/Sign2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Building/Sign2.png
+
+#begin Arcade/Building/Sign3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/Building/Sign3.png
+

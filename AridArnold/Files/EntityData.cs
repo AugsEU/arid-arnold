@@ -44,6 +44,7 @@
 			kPlantPot,
 			kPillarPot,
 			kWorldCabinet,
+			kArcadeBuilding,
 			kUtilityClassEnd
 		}
 
