@@ -12638,3 +12638,33 @@
 /processorParam:PremultiplyAlpha=False
 /build:Arcade/Building/Sign3.png
 
+#begin NPC/Bouncer/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Bouncer/Default.png
+
+#begin NPC/Bouncer/JumpDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Bouncer/JumpDown.png
+
+#begin NPC/Bouncer/JumpUp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Bouncer/JumpUp.png
+
+#begin NPC/Bouncer/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Bouncer/TalkAngry.png
+
+#begin NPC/Bouncer/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Bouncer/TalkNormal.png
+

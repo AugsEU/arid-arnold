@@ -30,6 +30,7 @@
 			kSimpleNPC = kNPCClassStart,
 			kBickDogel,
 			kFireBarrel,
+			kBouncer,
 			kNPCClassEnd,
 
 			// Utility

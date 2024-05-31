@@ -8,6 +8,7 @@ namespace AridArnold
 
 		Animator mInteriorAnim;
 		Animator mSignAnim;
+		TextInfoBubble mEnterBubble;
 
 		public ArcadeBuilding(Vector2 pos) : base(pos)
 		{

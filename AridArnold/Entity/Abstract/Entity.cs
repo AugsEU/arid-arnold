@@ -442,6 +442,9 @@
 				case EntityData.EntityClass.kFireBarrel:
 					entity = new FireBarrel(worldPosition);
 					break;
+				case EntityData.EntityClass.kBouncer:
+					entity = new Bouncer(worldPosition);
+					break;
 
 				// Utility
 				case EntityData.EntityClass.kArnoldSpawner:

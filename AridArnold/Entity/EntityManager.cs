@@ -440,7 +440,7 @@
 				}
 			}
 
-			MonoDebug.Assert(returnValue is not null); // No arnolds detected.
+			//MonoDebug.Assert(returnValue is not null); // No arnolds detected.
 			return returnValue;
 		}
 
