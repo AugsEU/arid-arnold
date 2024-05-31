@@ -12668,3 +12668,36 @@
 /processorParam:PremultiplyAlpha=False
 /build:NPC/Bouncer/TalkNormal.png
 
+#begin BG/Arcade/Arcade.mlo
+/copy:BG/Arcade/Arcade.mlo
+
+#begin BG/Arcade/ArcadeBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/ArcadeBG.png
+
+#begin Tiles/WW7/PlasticFloor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/WW7/PlasticFloor.png
+
+#begin Campaigns/MainCampaign/Hub/0703.aux
+/copy:Campaigns/MainCampaign/Hub/0703.aux
+
+#begin Campaigns/MainCampaign/Hub/0703.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0703.png
+
+#begin Campaigns/MainCampaign/Themes/ArcadeLevel.xml
+/copy:Campaigns/MainCampaign/Themes/ArcadeLevel.xml
+
+#begin Tiles/WW7/RedBeam.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/WW7/RedBeam.png
+
