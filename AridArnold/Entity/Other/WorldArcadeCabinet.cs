@@ -13,6 +13,7 @@ namespace AridArnold
 		{
 			mGameType = type;
 			mPosition.Y -= 4.0f;
+			mPosition.X += 2.0f;
 			mStaticTimer = new MonoTimer();
 			mStaticTimer.Start();
 		}

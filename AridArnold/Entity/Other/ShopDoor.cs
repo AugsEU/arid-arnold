@@ -20,6 +20,8 @@
 		Texture2D mClosedTexture;
 		Texture2D mArrowTexture;
 		bool mDoorOpen;
+		Vector2 mArnoldWarpPoint;
+		int mLevelLoadID;
 
 		#endregion rMembers
 
@@ -32,9 +34,11 @@
 		/// <summary>
 		/// Create shop door
 		/// </summary>
-		public ShopDoor(Vector2 pos) : base(pos)
+		public ShopDoor(Vector2 pos, int toID, float arnoldX, float arnoldY) : base(pos)
 		{
 			mDoorOpen = false;
+			mLevelLoadID = toID;
+			mArnoldWarpPoint = new Vector2(arnoldX, arnoldY);
 		}
 
 
@@ -74,10 +78,29 @@
 		/// </summary>
 		void OpenDoor()
 		{
+			if(mDoorOpen)
+			{
+				return;
+			}
+
 			mDoorOpen = true;
 			mTexture = mOpenTexture;
 
 			EventManager.I.TriggerEvent(EventType.ShopDoorOpen);
+
+			if(CampaignManager.I.GetCurrentLevelType() == AuxData.LevelType.Hub)
+			{
+				HubDirectLoader toHub = new HubDirectLoader(mLevelLoadID);
+				Arnold arnold = EntityManager.I.FindArnold(); // OK because in hub.
+
+				if(arnold is not null)
+				{
+					toHub.AddPersistentEntities(arnold);
+					arnold.SetPos(mArnoldWarpPoint);
+				}
+
+				CampaignManager.I.QueueLoadSequence(toHub);
+			}
 		}
 
 

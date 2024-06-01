@@ -5,14 +5,23 @@ namespace AridArnold
 	{
 		static Vector2 SIGN_OFFSET = new Vector2(-8.0f, -42.0f);
 		static Vector2 INTERIOR_OFFSET = new Vector2(2.0f, 24.0f);
+		static Vector2 PROMPT_OFFSET = new Vector2(156.0f, 47.0f);
 
 		Animator mInteriorAnim;
 		Animator mSignAnim;
 		TextInfoBubble mEnterBubble;
 
-		public ArcadeBuilding(Vector2 pos) : base(pos)
+		int mArcadeInteriorID;
+		Vector2 mArnoldWarpPoint;
+
+		public ArcadeBuilding(Vector2 pos, int toID, float arnoldX, float arnoldY) : base(pos)
 		{
 			mPosition.Y -= 70.0f;
+			SpriteFont bubbleFont = FontManager.I.GetFont("Pixica-12");
+			mEnterBubble = new TextInfoBubble(mPosition + PROMPT_OFFSET, BubbleStyle.DefaultPrompt, bubbleFont, "InGame.ArcadeEnter", Color.White);
+
+			mArcadeInteriorID = toID;
+			mArnoldWarpPoint = new Vector2(arnoldX, arnoldY);
 		}
 
 
@@ -37,14 +46,63 @@ namespace AridArnold
 		{
 			mInteriorAnim.Update(gameTime);
 			mSignAnim.Update(gameTime);
+
+			mEnterBubble.Update(gameTime);
+			if (mPlayerNear)
+			{
+				mEnterBubble.Open();
+				if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+				{
+					EnterArcadeBuilding();
+				}
+			}
+			else
+			{
+				mEnterBubble.Close();
+			}
+
 			base.Update(gameTime);
 		}
+
+
+
+		/// <summary>
+		/// Hacky function to enter the arcade buidling.
+		/// </summary>
+		void EnterArcadeBuilding()
+		{
+			HubDirectLoader toHub = new HubDirectLoader(mArcadeInteriorID);
+			Arnold arnold = EntityManager.I.FindArnold(); // OK because in hub.
+
+			if (arnold is not null)
+			{
+				toHub.AddPersistentEntities(arnold);
+				arnold.SetPos(mArnoldWarpPoint);
+			}
+
+			CampaignManager.I.QueueLoadSequence(toHub);
+		}
+
+
+		public override Rect2f ColliderBounds()
+		{
+			Vector2 basePos = mPosition + new Vector2(155.0f, 66.0f);
+			Vector2 maxPos = basePos + new Vector2(14.0f, 20.0f);
+			Rect2f collider = new Rect2f(basePos, maxPos);
+
+			MonoDebug.AddDebugRect(collider, Color.Red);
+
+			return collider;
+		}
+
+
 
 		public override void Draw(DrawInfo info)
 		{
 			MonoDraw.DrawTextureDepth(info, mInteriorAnim.GetCurrentTexture(), mPosition + INTERIOR_OFFSET, DrawLayer.SubEntity);
 			MonoDraw.DrawTextureDepth(info, mTexture, mPosition, DrawLayer.SubEntity);
 			MonoDraw.DrawTextureDepth(info, mSignAnim.GetCurrentTexture(), mPosition + SIGN_OFFSET, DrawLayer.SubEntity);
+			mEnterBubble.Draw(info);
 		}
 	}
 }

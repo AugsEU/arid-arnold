@@ -277,6 +277,21 @@ namespace AridArnold
 			mGameplayState = newState;
 		}
 
+
+
+		/// <summary>
+		/// Get loaded level type
+		/// </summary>
+		public AuxData.LevelType GetCurrentLevelType()
+		{
+			if(mCurrentLevel is null)
+			{
+				return AuxData.LevelType.Empty;
+			}
+
+			return mCurrentLevel.GetAuxData().GetLevelType();
+		}
+
 		#endregion rLevel
 
 

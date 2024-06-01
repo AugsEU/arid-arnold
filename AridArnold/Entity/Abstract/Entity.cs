@@ -457,7 +457,7 @@
 					entity = new KeyDoor(worldPosition, data.mIntParams[0]);
 					break;
 				case EntityData.EntityClass.kShopDoor:
-					entity = new ShopDoor(worldPosition);
+					entity = new ShopDoor(worldPosition, data.mIntParams[0], data.mFloatParams[0], data.mFloatParams[1]);
 					break;
 				case EntityData.EntityClass.kItemStand:
 					entity = new ItemStand(worldPosition, data.mIntParams[0]);
@@ -481,7 +481,7 @@
 					entity = new WorldArcadeCabinet(worldPosition, (ArcadeGameType)data.mIntParams[0]);
 					break;
 				case EntityData.EntityClass.kArcadeBuilding:
-					entity = new ArcadeBuilding(worldPosition);
+					entity = new ArcadeBuilding(worldPosition, data.mIntParams[0], data.mFloatParams[0], data.mFloatParams[1]);
 					break;
 				default:
 					throw new NotImplementedException();

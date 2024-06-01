@@ -12701,3 +12701,6 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/WW7/RedBeam.png
 
+#begin Text/EN/InGame/ArcadeEnter.txt
+/copy:Text/EN/InGame/ArcadeEnter.txt
+
