@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.5">BG\Arcade\ArcadeCabsOn</texture>
+	<texture time="0.5">BG\Arcade\ArcadeCabsOff</texture>
+</animation>

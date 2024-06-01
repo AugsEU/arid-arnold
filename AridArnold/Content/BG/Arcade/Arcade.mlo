@@ -6,4 +6,90 @@
 		<depth>Background</depth>
 		<texture>BG/Arcade/ArcadeBG</texture>
 	</element>
+
+	<!-- Exit -->
+	<element type="animator">
+		<x>472.0</x>
+		<y>375.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/ExitFlash.max</anim>
+	</element>
+
+	<!-- Pinball -->
+	<element type="animator">
+		<x>289.0</x>
+		<y>218.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/PinballFlash.max</anim>
+	</element>
+
+	<!-- Arcade Cab -->
+	<element type="animator">
+		<x>249.0</x>
+		<y>382.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/ArcadeCabFlash.max</anim>
+	</element>
+
+	<!-- Lights -->
+	<element type="animator">
+		<x>62.0</x>
+		<y>135.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>108.0</x>
+		<y>135.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>154.0</x>
+		<y>135.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>200.0</x>
+		<y>135.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>246.0</x>
+		<y>135.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>292.0</x>
+		<y>135.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>351.0</x>
+		<y>302.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>397.0</x>
+		<y>302.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>443.0</x>
+		<y>302.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
+	<element type="animator">
+		<x>489.0</x>
+		<y>302.0</y>
+		<depth>Background</depth>
+		<anim>BG/Arcade/LightFlash.max</anim>
+	</element>
 </root>

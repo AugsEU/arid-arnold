@@ -12704,3 +12704,63 @@
 #begin Text/EN/InGame/ArcadeEnter.txt
 /copy:Text/EN/InGame/ArcadeEnter.txt
 
+#begin BG/Arcade/ArcadeCabFlash.max
+/copy:BG/Arcade/ArcadeCabFlash.max
+
+#begin BG/Arcade/ArcadeCabsOff.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/ArcadeCabsOff.png
+
+#begin BG/Arcade/ArcadeCabsOn.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/ArcadeCabsOn.png
+
+#begin BG/Arcade/ExitFlash.max
+/copy:BG/Arcade/ExitFlash.max
+
+#begin BG/Arcade/ExitOff.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/ExitOff.png
+
+#begin BG/Arcade/ExitOn.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/ExitOn.png
+
+#begin BG/Arcade/LightFlash.max
+/copy:BG/Arcade/LightFlash.max
+
+#begin BG/Arcade/LightOff.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/LightOff.png
+
+#begin BG/Arcade/LightOn.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/LightOn.png
+
+#begin BG/Arcade/PinballFlash.max
+/copy:BG/Arcade/PinballFlash.max
+
+#begin BG/Arcade/PinballOff.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/PinballOff.png
+
+#begin BG/Arcade/PinballOn.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Arcade/PinballOn.png
+

@@ -78,6 +78,7 @@ namespace AridArnold
 			{
 				toHub.AddPersistentEntities(arnold);
 				arnold.SetPos(mArnoldWarpPoint);
+				arnold.SetVelocity(Vector2.Zero);
 			}
 
 			CampaignManager.I.QueueLoadSequence(toHub);
@@ -89,8 +90,6 @@ namespace AridArnold
 			Vector2 basePos = mPosition + new Vector2(155.0f, 66.0f);
 			Vector2 maxPos = basePos + new Vector2(14.0f, 20.0f);
 			Rect2f collider = new Rect2f(basePos, maxPos);
-
-			MonoDebug.AddDebugRect(collider, Color.Red);
 
 			return collider;
 		}

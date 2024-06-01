@@ -97,6 +97,7 @@
 				{
 					toHub.AddPersistentEntities(arnold);
 					arnold.SetPos(mArnoldWarpPoint);
+					arnold.SetVelocity(Vector2.Zero);
 				}
 
 				CampaignManager.I.QueueLoadSequence(toHub);
