@@ -17,8 +17,7 @@ namespace AridArnold
 		public ArcadeBuilding(Vector2 pos, int toID, float arnoldX, float arnoldY) : base(pos)
 		{
 			mPosition.Y -= 70.0f;
-			SpriteFont bubbleFont = FontManager.I.GetFont("Pixica-12");
-			mEnterBubble = new TextInfoBubble(mPosition + PROMPT_OFFSET, BubbleStyle.DefaultPrompt, bubbleFont, "InGame.ArcadeEnter", Color.White);
+			mEnterBubble = new TextInfoBubble(mPosition + PROMPT_OFFSET, "InGame.ArcadeEnter");
 
 			mArcadeInteriorID = toID;
 			mArnoldWarpPoint = new Vector2(arnoldX, arnoldY);
@@ -47,18 +46,10 @@ namespace AridArnold
 			mInteriorAnim.Update(gameTime);
 			mSignAnim.Update(gameTime);
 
-			mEnterBubble.Update(gameTime);
-			if (mPlayerNear)
+			mEnterBubble.Update(gameTime, mPlayerNear);
+			if (mPlayerNear && InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
 			{
-				mEnterBubble.Open();
-				if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
-				{
-					EnterArcadeBuilding();
-				}
-			}
-			else
-			{
-				mEnterBubble.Close();
+				EnterArcadeBuilding();
 			}
 
 			base.Update(gameTime);

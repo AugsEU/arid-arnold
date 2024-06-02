@@ -96,9 +96,19 @@
 
 		#region rUpdate
 
-		public void Update(GameTime gameTime)
+		public void Update(GameTime gameTime, bool open)
 		{
 			float dt = Util.GetDeltaT(gameTime);
+
+			if(open)
+			{
+				Open();
+			}
+			else
+			{
+				Close();
+			}
+
 			switch (mState)
 			{
 				case BubbleState.Opening:
@@ -196,7 +206,7 @@
 		/// <summary>
 		/// Open this bubble
 		/// </summary>
-		public void Open()
+		private void Open()
 		{
 			if (mState != BubbleState.Open)
 			{
@@ -208,7 +218,7 @@
 		/// <summary>
 		/// Close this bubble
 		/// </summary>
-		public void Close()
+		private void Close()
 		{
 			if (mState != BubbleState.Closed)
 			{

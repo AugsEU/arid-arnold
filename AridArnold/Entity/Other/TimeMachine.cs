@@ -48,8 +48,7 @@
 				offset.Y = -40.0f;
 			}
 
-			SpriteFont bubbleFont = FontManager.I.GetFont("Pixica-12");
-			mUsePrompt = new TextInfoBubble(pos + offset, BubbleStyle.DefaultPrompt, bubbleFont, "InGame.TimeMachine", Color.White);
+			mUsePrompt = new TextInfoBubble(pos + offset, "InGame.TimeMachine");
 		}
 
 
@@ -92,16 +91,7 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			mUsePrompt.Update(gameTime);
-
-			if (IsPlayerNear())
-			{
-				mUsePrompt.Open();
-			}
-			else
-			{
-				mUsePrompt.Close();
-			}
+			mUsePrompt.Update(gameTime, IsPlayerNear());
 
 			base.Update(gameTime);
 		}

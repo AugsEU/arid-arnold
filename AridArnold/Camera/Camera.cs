@@ -266,6 +266,16 @@
 
 
 		/// <summary>
+		/// Force camera to move to position
+		/// </summary>
+		public void ForcePosition(Vector2 position)
+		{
+			mCurrentSpec.mPosition = position;
+		}
+
+
+
+		/// <summary>
 		/// Get copy of previous render target
 		/// </summary>
 		public RenderTarget2D GetPrevRenderTarget()

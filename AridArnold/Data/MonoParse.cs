@@ -214,5 +214,27 @@ namespace AridArnold
 			ret.mFlipSpike = node["flipSpike"] is not null;
 			return ret;
 		}
+
+
+
+
+
+		/// <summary>
+		/// Parse xml node into speechbox style
+		/// </summary>
+		static public TextBoxStyle GetTextBoxStyle(XmlNode node)
+		{
+			TextBoxStyle ret = TextBoxStyle.DefaultStyle;
+
+			string fontKey = GetString(node["font"]);
+			if (fontKey.Length > 0)
+			{
+				ret.mFont = FontManager.I.GetFont(fontKey);
+			}
+
+			ret.mLeading = GetFloat(node["leading"], ret.mLeading);
+			ret.mKerning = GetFloat(node["kerning"], ret.mKerning);
+			return ret;
+		}
 	}
 }

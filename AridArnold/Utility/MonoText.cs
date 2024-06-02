@@ -29,6 +29,21 @@ namespace AridArnold
 		}
 
 
+
+		/// <summary>
+		/// Can we line break on this character?
+		/// </summary>
+		/// <param name="character"></param>
+		/// <returns></returns>
+		public static bool LineBreakOnChar(char character)
+		{
+			return character == '\n' ||
+			character == ' ' ||
+			character == '\0';
+		}
+
+
+
 		/// <summary>
 		/// Go to next letter in alphabet
 		/// </summary>

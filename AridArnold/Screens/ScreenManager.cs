@@ -11,6 +11,7 @@
 		GameOver,
 		CinematicScreen,
 		ArcadeGame,
+		GameManuals,
 		None
 	}
 
@@ -45,6 +46,7 @@
 			LoadScreen(ScreenType.LevelStart, new StartLevelScreen(deviceManager));
 			LoadScreen(ScreenType.CinematicScreen, new CinematicScreen(deviceManager));
 			LoadScreen(ScreenType.ArcadeGame, new ArcadeGameScreen(deviceManager));
+			LoadScreen(ScreenType.GameManuals, new ArcadeManualsScreen(deviceManager));
 		}
 
 

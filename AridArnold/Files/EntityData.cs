@@ -46,6 +46,7 @@
 			kPillarPot,
 			kWorldCabinet,
 			kArcadeBuilding,
+			kManualReader,
 			kUtilityClassEnd
 		}
 

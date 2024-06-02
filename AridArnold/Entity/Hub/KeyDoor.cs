@@ -117,15 +117,8 @@
 			}
 			else
 			{
-				mHelpBubble.Update(gameTime);
-				if (EntityManager.I.AnyNearMe(INFO_DISTANCE, this, typeof(Arnold), typeof(Androld)))
-				{
-					mHelpBubble.Open();
-				}
-				else
-				{
-					mHelpBubble.Close();
-				}
+				bool showInfo = EntityManager.I.AnyNearMe(INFO_DISTANCE, this, typeof(Arnold), typeof(Androld));
+				mHelpBubble.Update(gameTime, showInfo);
 			}
 
 

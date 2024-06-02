@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>Arcade/Manuals/ManualBG</texture>
+	</element>
+
+	<element type="textBlock">
+		<x>100.0</x>
+		<y>100.0</y>
+		<depth>BackgroundElement</depth>
+		<width>150.0</width>
+		<stringID>NPC.Tome.LastMonarch</stringID>
+	</element>
+</root>

@@ -112,15 +112,7 @@
 			}
 
 			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)PermanentCollectable.Door);
-			if (IsPlayerNear())
-			{
-				mHelpBubble.Open();
-			}
-			else
-			{
-				mHelpBubble.Close();
-			}
-			mHelpBubble.Update(gameTime);
+			mHelpBubble.Update(gameTime, IsPlayerNear());
 
 			base.Update(gameTime);
 		}

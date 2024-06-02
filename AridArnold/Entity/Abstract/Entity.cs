@@ -483,6 +483,9 @@
 				case EntityData.EntityClass.kArcadeBuilding:
 					entity = new ArcadeBuilding(worldPosition, data.mIntParams[0], data.mFloatParams[0], data.mFloatParams[1]);
 					break;
+				case EntityData.EntityClass.kManualReader:
+					entity = new ManualReader(worldPosition);
+					break;
 				default:
 					throw new NotImplementedException();
 			}

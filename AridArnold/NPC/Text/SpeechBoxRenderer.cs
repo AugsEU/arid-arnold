@@ -390,22 +390,6 @@
 		}
 
 
-		/// <summary>
-		/// Returns true if char ends word
-		/// </summary>
-		bool CharEndsWord(char charToPrint)
-		{
-			if (charToPrint == '\n' ||
-				charToPrint == ' ' ||
-				charToPrint == '\0')
-			{
-				return true;
-			}
-
-			return false;
-		}
-
-
 
 		/// <summary>
 		/// Calculates size of new line.
@@ -441,12 +425,12 @@
 			float endOfWordX = mCharHead.X;
 			char currentChar = mCurrentBlock.GetTextChar(charIndex);
 
-			while (!CharEndsWord(currentChar))
+			while (!MonoText.LineBreakOnChar(currentChar))
 			{
 				charIndex++;
 				currentChar = mCurrentBlock.GetTextChar(charIndex);
 
-				if (CharEndsWord(currentChar))
+				if (MonoText.LineBreakOnChar(currentChar))
 				{
 					break;
 				}

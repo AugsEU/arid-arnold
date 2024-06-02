@@ -20,7 +20,6 @@ namespace AridArnold
 
 		public override void LoadContent()
 		{
-			SpriteFont bubbleFont = FontManager.I.GetFont("Pixica-12");
 			Vector2 bubblePos = mPosition + new Vector2(6.0f, -2.0f);
 			string strID = "Arcade.PlayDeathRide";
 			switch (mGameType)
@@ -42,20 +41,12 @@ namespace AridArnold
 					break;
 			}
 
-			mBubble = new TextInfoBubble(bubblePos, BubbleStyle.DefaultPrompt, bubbleFont, strID, Color.White);
+			mBubble = new TextInfoBubble(bubblePos, strID);
 		}
 
 		public override void Update(GameTime gameTime)
 		{
-			mBubble.Update(gameTime);
-			if(mPlayerNear)
-			{
-				mBubble.Open();
-			}
-			else
-			{
-				mBubble.Close();
-			}
+			mBubble.Update(gameTime, mPlayerNear);
 			base.Update(gameTime);
 		}
 
