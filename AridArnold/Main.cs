@@ -81,6 +81,8 @@
 			Window.AllowUserResizing = true;
 			Window.Title = "Arid Arnold";
 
+			InputManager.I.Init();
+
 			base.Initialize();
 		}
 
@@ -97,7 +99,6 @@
 			FontManager.I.LoadAllFonts();
 			ScreenManager.I.LoadAllScreens(mGraphicsManager);
 			GhostManager.I.Load();
-			InputManager.I.Init();
 			CameraManager.I.Init();
 
 			mDummyTexture = new Texture2D(GraphicsDevice, 1, 1);

@@ -1,0 +1,5 @@
+﻿<α[140B09]>If you pick up a blue fruit your game will split in two. From here, you will be controlling both worms at the same time. If either collides with itself, you lose.
+
+As more worms get added, you will score more points per fruit.
+
+Tip: When going off the edge you will emerge at another random side of the square.

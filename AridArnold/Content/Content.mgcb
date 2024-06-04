@@ -12998,3 +12998,21 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Text/EN/Arcade/WormWarp/Basics.txt
+/copy:Text/EN/Arcade/WormWarp/Basics.txt
+
+#begin Text/EN/Arcade/WormWarp/ManualSplash.txt
+/copy:Text/EN/Arcade/WormWarp/ManualSplash.txt
+
+#begin Text/EN/Arcade/WormWarp/Multiverse.txt
+/copy:Text/EN/Arcade/WormWarp/Multiverse.txt
+
+#begin Text/EN/Arcade/WormWarp/Advanced.txt
+/copy:Text/EN/Arcade/WormWarp/Advanced.txt
+
+#begin Text/EN/Arcade/HorsesAndGun/ManualSplash.txt
+/copy:Text/EN/Arcade/HorsesAndGun/ManualSplash.txt
+
+#begin Text/EN/Arcade/HorsesAndGun/Basics.txt
+/copy:Text/EN/Arcade/HorsesAndGun/Basics.txt
+

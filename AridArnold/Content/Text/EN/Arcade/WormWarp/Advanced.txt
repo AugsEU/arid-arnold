@@ -1,0 +1,7 @@
+﻿<α[140B09]>Advanced tips:
+
+-Aligning your worms will make it easier to manage them.
+
+-As worms go off the edge of their square, they will likely change direction. This makes them mis-aligned with the rest of the worms.
+
+-A worm can only turn in right angles, so not every input will change the direction of every worm. Use this to send inputs to only certain worms.

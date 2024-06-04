@@ -8,7 +8,7 @@ namespace AridArnold
 	{
 		#region rConstants
 
-		const float SCROLL_SPEED = 22.0f;
+		const float SCROLL_SPEED = 42.0f;
 		const float MAX_SCROLL = 1288.0f;
 		const double LERP_TIME = 900.0;
 		const int NUM_MANUALS = 3;
@@ -138,12 +138,12 @@ namespace AridArnold
 
 			StartScreenSpriteBatch(info);
 
-			// BG
-			MonoDraw.DrawTexture(info, mOverlay, basePosition);
+			// Overlay
+			MonoDraw.DrawTextureDepth(info, mOverlay, basePosition, DrawLayer.Front);
 
 			// Selector
 			Vector2 selectorPos = CalcSelectorPos();
-			MonoDraw.DrawTexture(info, mSelector, basePosition + selectorPos);
+			MonoDraw.DrawTextureDepth(info, mSelector, basePosition + selectorPos, DrawLayer.Front);
 
 			// Layout
 			mManualPages.Draw(info);
@@ -159,7 +159,10 @@ namespace AridArnold
 		/// </summary>
 		Vector2 CalcSelectorPos()
 		{
-			return new Vector2(0.0f, 0.0f);
+			float t = SlideLerp(mLerpTimer.GetPercentageF());
+			Vector2 basePos = new Vector2(65.0f + 278.0f * mSelectedColumn, 14.0f);
+			Vector2 finalPos = new Vector2(65.0f + 278.0f * mTargetColumn, 14.0f);
+			return MonoMath.Lerp(basePos, finalPos, t);
 		}
 
 
@@ -184,8 +187,9 @@ namespace AridArnold
 		/// </summary>
 		float SlideLerp(float t)
 		{
+			const float a = 2.2f;
 			t = t * t;
-			t *= 2.4f - 1.4f * t;
+			t *= (a * t * t - (2 * a + 1.0f) * t + a + 2.0f);
 			return t;
 		}
 

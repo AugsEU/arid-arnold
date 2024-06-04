@@ -147,9 +147,13 @@
 				mScreens[mActiveScreen].OnDeactivate();
 			}
 
+			Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+			screenCam.Reset();
+
 			mActiveScreen = type;
 
 			mScreens[type].OnActivate();
+
 		}
 
 		#endregion rUtility

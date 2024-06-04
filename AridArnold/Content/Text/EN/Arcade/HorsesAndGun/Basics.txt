@@ -1,0 +1,10 @@
+﻿<α[140B09]>Controls:
+[{Key.ArnoldUp}] - Move Gun Up
+[{Key.ArnoldDown}] - Move Gun Down
+[{Key.UseItem}] - Fire Gun
+
+Fire your dice-gun at the horses. When a die hits a horse, it will move that many spaces forwards. 
+
+Ex: If a die showing a 3 hits a horse, it will move 3 spaces forwards.
+
+If a horse falls off the left edge of the screen, it's GAME OVER!
