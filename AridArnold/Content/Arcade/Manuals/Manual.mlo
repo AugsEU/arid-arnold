@@ -59,4 +59,36 @@
 		<width>370.0</width>
 		<stringID>Arcade.HorsesAndGun.Basics</stringID>
 	</element>
+	<element type="textBlock">
+		<x>1523.0</x>
+		<y>763.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>280.0</width>
+		<stringID>Arcade.HorsesAndGun.SymbolExplanation</stringID>
+	</element>
+	<element type="textBlock">
+		<x>1050.0</x>
+		<y>885.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>330.0</width>
+		<stringID>Arcade.HorsesAndGun.TilesExplain</stringID>
+	</element>
+	<element type="textBlock">
+		<x>1496.0</x>
+		<y>885.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>300.0</width>
+		<stringID>Arcade.HorsesAndGun.TileTypes</stringID>
+	</element>
+	<element type="textBlock">
+		<x>1050.0</x>
+		<y>1340.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>770.0</width>
+		<stringID>Arcade.HorsesAndGun.AdvancedTips</stringID>
+	</element>
 </root>

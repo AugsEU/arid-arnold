@@ -21,7 +21,7 @@
 
 		protected override void DrawCabinetBG(DrawInfo info)
 		{
-			MonoDraw.DrawTextureDepth(info, mBGTexture, Vector2.Zero, DrawLayer.Front);
+			//MonoDraw.DrawTextureDepth(info, mBGTexture, Vector2.Zero, DrawLayer.Front);
 		}
 
 		protected override void DrawTitleScreen(DrawInfo info)

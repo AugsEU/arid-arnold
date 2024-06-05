@@ -1,0 +1,11 @@
+﻿<α[140B09]>Advanced tips:
+
+-A horse can't move on to a tile already occupied by another horse.
+
+-Try to avoid having multiple horses on the same track.
+
+-The higher tracks have fewer skulls and more points.
+
+-You can load up to six silver bullets at once.
+
+-The red marker isn't always accurate, things could change by the time the die reaches the horse.

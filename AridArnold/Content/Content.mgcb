@@ -13016,3 +13016,51 @@
 #begin Text/EN/Arcade/HorsesAndGun/Basics.txt
 /copy:Text/EN/Arcade/HorsesAndGun/Basics.txt
 
+#begin Text/EN/Arcade/HorsesAndGun/SymbolExplanation.txt
+/copy:Text/EN/Arcade/HorsesAndGun/SymbolExplanation.txt
+
+#begin Text/EN/Arcade/HorsesAndGun/TilesExplain.txt
+/copy:Text/EN/Arcade/HorsesAndGun/TilesExplain.txt
+
+#begin Text/EN/Arcade/HorsesAndGun/TileTypes.txt
+/copy:Text/EN/Arcade/HorsesAndGun/TileTypes.txt
+
+#begin Arcade/HorsesAndGun/Tiles/big_score_tile - Copy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/big_score_tile - Copy.png
+
+#begin Arcade/HorsesAndGun/Tiles/fast_reload - Copy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/fast_reload - Copy.png
+
+#begin Arcade/HorsesAndGun/Tiles/plus_one_tile - Copy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/plus_one_tile - Copy.png
+
+#begin Arcade/HorsesAndGun/Tiles/small_score_tile - Copy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/small_score_tile - Copy.png
+
+#begin Arcade/HorsesAndGun/Tiles/tile_death - Copy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/tile_death - Copy.png
+
+#begin Arcade/HorsesAndGun/Tiles/tile_go_down - Copy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arcade/HorsesAndGun/Tiles/tile_go_down - Copy.png
+
+#begin Text/EN/Arcade/HorsesAndGun/AdvancedTips.txt
+/copy:Text/EN/Arcade/HorsesAndGun/AdvancedTips.txt
+

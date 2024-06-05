@@ -1,0 +1,9 @@
+﻿<α[140B09]>-Moves the horse additional spaces
+
+-Causes a game over
+
+-Moves the horse up or down a track
+
+-Grants extra points
+
+-Loads your gun with 3 silver bullets, after firing them you will reload much faster. 
