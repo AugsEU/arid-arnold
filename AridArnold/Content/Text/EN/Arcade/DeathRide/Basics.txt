@@ -1,0 +1,13 @@
+﻿<α[260A00]>Controls:
+[{Key.ArnoldUp}] - Move Up
+[{Key.ArnoldDown}] - Move Down
+[{Key.ArnoldLeft}] - Move Left
+[{Key.ArnoldRight}] - Move Right
+[{Key.UseItem}] - Use Grapple
+
+
+
+
+Dodge the enemy bullets and capture all the enemies to finish each round.
+
+You cannot kill enemies directly, instead you convert them to allies using your grapple. Hold the grapple key to hook on to an enemy. Then do a full circle to convert them.

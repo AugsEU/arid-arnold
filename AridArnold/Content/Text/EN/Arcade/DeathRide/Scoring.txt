@@ -1,0 +1,9 @@
+﻿<α[260A00]>Combo:
+
+After grappling an enemy, your wheels will light aflame. If you capture another enemy before they go out, it will add to your combo.
+Every 3rd enemy in your combo will grant you +1 HP.
+
+Scoring:
+
+For each enemy captured you will gain
+(Base Score) * (Combo) * (Round number)

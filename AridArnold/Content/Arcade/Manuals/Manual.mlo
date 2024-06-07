@@ -34,7 +34,7 @@
 	</element>
 	<element type="textBlock">
 		<x>90.0</x>
-		<y>1340.0</y>
+		<y>1310.0</y>
 		<font>Pixica-24</font>
 		<depth>BackgroundElement</depth>
 		<width>770.0</width>
@@ -85,10 +85,52 @@
 	</element>
 	<element type="textBlock">
 		<x>1050.0</x>
-		<y>1340.0</y>
+		<y>1310.0</y>
 		<font>Pixica-24</font>
 		<depth>BackgroundElement</depth>
 		<width>770.0</width>
 		<stringID>Arcade.HorsesAndGun.AdvancedTips</stringID>
+	</element>
+
+	<!-- Death Ride -->
+	<element type="textBlock">
+		<x>2140.0</x>
+		<y>280.0</y>
+		<font>Pixica-12</font>
+		<depth>BackgroundElement</depth>
+		<width>640.0</width>
+		<stringID>Arcade.DeathRide.Blurb</stringID>
+	</element>
+	<element type="textBlock">
+		<x>2010.0</x>
+		<y>455.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>720.0</width>
+		<stringID>Arcade.DeathRide.Basics</stringID>
+	</element>
+	<element type="textBlock">
+		<x>2075.0</x>
+		<y>880.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>720.0</width>
+		<stringID>Arcade.DeathRide.EntityTypes</stringID>
+	</element>
+	<element type="textBlock">
+		<x>2302.0</x>
+		<y>880.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>485.0</width>
+		<stringID>Arcade.DeathRide.Scoring</stringID>
+	</element>
+	<element type="textBlock">
+		<x>2010.0</x>
+		<y>1310.0</y>
+		<font>Pixica-24</font>
+		<depth>BackgroundElement</depth>
+		<width>770.0</width>
+		<stringID>Arcade.DeathRide.Advanced</stringID>
 	</element>
 </root>

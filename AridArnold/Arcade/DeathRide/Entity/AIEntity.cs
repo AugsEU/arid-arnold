@@ -282,7 +282,10 @@
 
 			mIsDead = true;
 			mDeadTimer.Start();
-			RunManager.I.AddScore(mScoreToGive, mCentreOfMass);
+			if (mCurrentTeam == AITeam.Enemy)
+			{
+				RunManager.I.AddScore(mScoreToGive, mCentreOfMass);
+			}
 		}
 
 		#endregion rUpdate

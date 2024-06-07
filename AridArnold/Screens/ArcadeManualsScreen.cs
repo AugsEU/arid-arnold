@@ -87,10 +87,11 @@ namespace AridArnold
 			
 			if(mLerpTimer.IsPlaying())
 			{
-				if(mLerpTimer.GetPercentageF() >= 1.0f)
+				if (mLerpTimer.GetPercentageF() >= 1.0f)
 				{
 					mLerpTimer.FullReset();
 					mSelectedColumn = mTargetColumn;
+					mDownwardsOffset = 0.0f;
 				}
 				return;
 			}
@@ -136,7 +137,7 @@ namespace AridArnold
 			Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 			screenCam.ForcePosition(basePosition);
 
-			StartScreenSpriteBatch(info);
+			StartScreenSpriteBatch(info, new Color(219, 209, 192));
 
 			// Overlay
 			MonoDraw.DrawTextureDepth(info, mOverlay, basePosition, DrawLayer.Front);
@@ -173,12 +174,15 @@ namespace AridArnold
 		/// <returns></returns>
 		Vector2 CalcManualsPosition()
 		{
-			float t = SlideLerp(mLerpTimer.GetPercentageF());
+			float slideT = SlideLerp(mLerpTimer.GetPercentageF());
 
-			Vector2 basePos = new Vector2(960.0f * mSelectedColumn, mDownwardsOffset - 89.0f);
-			Vector2 finalPos = new Vector2(960.0f * mTargetColumn, mDownwardsOffset - 89.0f);
+			float downOffsetT = Math.Clamp(mLerpTimer.GetPercentageF() * 3.0f, 0.0f, 1.0f);
+			float downOffset = (1.0f - MonoMath.SmoothZeroToOne(downOffsetT)) * mDownwardsOffset;
 
-			return MonoMath.Lerp(basePos, finalPos, t);
+			Vector2 basePos = new Vector2(960.0f * mSelectedColumn, downOffset - 89.0f);
+			Vector2 finalPos = new Vector2(960.0f * mTargetColumn, downOffset - 89.0f);
+
+			return MonoMath.Lerp(basePos, finalPos, slideT);
 		}
 
 
@@ -188,6 +192,12 @@ namespace AridArnold
 		float SlideLerp(float t)
 		{
 			const float a = 2.2f;
+			if (mDownwardsOffset > 60.0f)
+			{
+				t *= 1.5f;
+				t -= 0.5f;
+			}
+			t = Math.Clamp(t, 0.0f, 1.0f);
 			t = t * t;
 			t *= (a * t * t - (2 * a + 1.0f) * t + a + 2.0f);
 			return t;

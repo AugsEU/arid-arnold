@@ -1,6 +1,4 @@
-﻿using static System.Formats.Asn1.AsnWriter;
-
-namespace DeathRide
+﻿namespace DeathRide
 {
 	class RunManager : Singleton<RunManager>
 	{
@@ -71,7 +69,11 @@ namespace DeathRide
 		public void AddScore(ulong delta, Vector2 pos)
 		{
 			delta = (ulong)(delta * (1.0f + mRoundNumber));
-			FXManager.I.AddTextScroller(Color.IndianRed, pos, "+" + delta.ToString());
+
+			if (delta > 0)
+			{
+				FXManager.I.AddTextScroller(Color.IndianRed, pos, "+" + delta.ToString());
+			}
 
 			if (mScore + delta < mScore)
 			{

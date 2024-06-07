@@ -256,6 +256,16 @@
 		}
 
 
+		/// <summary>
+		/// Start sprite batch for this screen
+		/// </summary>
+		/// <param name="info"></param>
+		protected void StartScreenSpriteBatch(DrawInfo info, Color clearCol)
+		{
+			CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera).StartSpriteBatch(info, new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT), mScreenTarget, clearCol);
+		}
+
+
 
 		/// <summary>
 		/// Sprite screen sprite batch.

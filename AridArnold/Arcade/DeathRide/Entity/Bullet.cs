@@ -98,12 +98,7 @@
 				{
 					AIEntity aiEntity = (AIEntity)entity;
 
-					if (aiEntity.GetTeam() == AITeam.Ally && mTeam == AITeam.Enemy)
-					{
-						aiEntity.SetTeam(AITeam.Enemy);
-						hit = true;
-					}
-					else if (aiEntity.GetTeam() == AITeam.Enemy && mTeam == AITeam.Ally)
+					if (aiEntity.GetTeam() != mTeam)
 					{
 						aiEntity.Kill();
 						hit = true;

@@ -1,0 +1,17 @@
+﻿<α[260A00]>Player
+
+
+
+Ally
+
+
+
+Enemy
+
+
+
+Ally Bullet
+
+
+
+Enemy Bullet
