@@ -119,6 +119,15 @@
 		}
 
 
+		/// <summary>
+		/// Draw a texture at a position(with layer depth).
+		/// </summary>
+		public static void DrawTextureDepthScale(DrawInfo info, Texture2D texture2D, Vector2 position, float scale, DrawLayer depth)
+		{
+			info.spriteBatch.Draw(texture2D, position, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, GetDepth(depth));
+		}
+
+
 
 		/// <summary>
 		/// Draw a texture at a position(all options).
@@ -484,6 +493,34 @@
 			int count = source.Width * source.Height;
 			Color[] data = new Color[count];
 			source.GetData<Color>(data);
+			dest.SetData(data);
+
+			return dest;
+		}
+
+
+
+		/// <summary>
+		/// Make texture greyscale
+		/// </summary>
+		public static Texture2D MakeTextureGreyscale(GraphicsDevice graphics, Texture2D source)
+		{
+			// Recreate texture
+			Texture2D dest = new Texture2D(graphics, source.Width, source.Height);
+			int count = source.Width * source.Height;
+			Color[] data = new Color[count];
+			source.GetData<Color>(data);
+			
+			// Make greyscale
+			for(int i = 0; i < count; i++)
+			{
+				Color col = data[i];
+				float lum = 0.2126f * col.R + 0.7152f * col.G + 0.0722f * col.B;
+				lum = Math.Clamp(lum, 0.0f, 255.0f) / 255.0f;
+				data[i] = new Color(lum, lum, lum, col.A / 255.0f);
+			}
+
+			// Save to dest
 			dest.SetData(data);
 
 			return dest;

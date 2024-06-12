@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>UI/UIBG</texture>
+	</element>
+	
+	<element type="vitalSigns">
+		<x>9.0</x>
+		<y>6.0</y>
+		<depth>BackgroundElement</depth>
+	</element>
+	<element type="4DLocator">
+		<x>9.0</x>
+		<y>230.0</y>
+		<depth>BackgroundElement</depth>
+	</element>
+	<element type="satelliteGPS">
+		<x>9.0</x>
+		<y>355.0</y>
+		<depth>BackgroundElement</depth>
+	</element>
+
+	<element type="galaxPanel">
+		<x>761.0</x>
+		<y>6.0</y>
+		<depth>BackgroundElement</depth>
+	</element>
+	<element type="inventory">
+		<x>761.0</x>
+		<y>52.0</y>
+		<depth>BackgroundElement</depth>
+	</element>
+	<element type="chronometer">
+		<x>761.0</x>
+		<y>237.0</y>
+		<depth>BackgroundElement</depth>
+	</element>
+	<element type="powerItems">
+		<x>761.0</x>
+		<y>395.0</y>
+		<depth>BackgroundElement</depth>
+	</element>
+</root>

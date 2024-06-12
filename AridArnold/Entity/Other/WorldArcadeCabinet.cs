@@ -65,7 +65,7 @@ namespace AridArnold
 			mBubble.Draw(info);
 			MonoDraw.DrawTexture(info, mTexture, mPosition);
 
-			Color[] staticColors = { new Color(38, 38, 38), Color.DarkGray };
+			Color[] staticColors = { new Color(55, 55, 55), Color.DarkGray };
 
 			int colorIdx = mStaticTimer.GetElapsedMs() % 150.0 > 75.0 ? 1 : 0;
 			for(int y = 0; y < 6; y++)

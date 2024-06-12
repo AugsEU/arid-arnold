@@ -1,0 +1,22 @@
+-Vital Signs Monitor
+    -Display currnent lives out of 5
+-4D Locator
+    -Display time-age graph
+-Satellite GPS
+    -Displays world name
+    -Displays nearby rooms (optional)
+    -Displays level sequence position
+
+
+-Pause menu
+    -Pause button
+-Inventory
+    -Num keys
+    -Num bottles
+    -Other 1 time items
+-Chronometer
+    -Current level time
+    -Time to beat
+-Current Item slot
+    -Shows item
+    -And description

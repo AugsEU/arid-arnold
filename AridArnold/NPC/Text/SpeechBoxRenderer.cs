@@ -208,6 +208,21 @@
 
 
 		/// <summary>
+		/// Calculate the scroll speed
+		/// </summary>
+		float CalcScrollSpeed(float dt)
+		{
+			float baseSpeed = mStyle.mScrollSpeed;
+			if (IsTextFinished())
+			{
+				return baseSpeed;
+			}
+
+			return baseSpeed;
+		}
+
+
+		/// <summary>
 		/// Move everything up by a certain amount
 		/// </summary>
 		public void DisplaceVertically(float dy)

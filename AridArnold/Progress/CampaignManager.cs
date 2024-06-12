@@ -15,7 +15,7 @@ namespace AridArnold
 		#region rConstants
 
 		const int START_LIVES = 3;
-		public const int MAX_LIVES = 7;
+		const int MAX_LIVES = 7;
 
 		#endregion rConstants
 
@@ -78,10 +78,10 @@ namespace AridArnold
 			mHubReturnInfo = null;
 			mCurrLives = START_LIVES;
 #if DEBUG_LOADER
-			CollectableManager.I.ChangePermanentItem(0x0300, 10);
+			CollectableManager.I.ChangePermanentItem(0x0300, 100);
 			CollectableManager.I.ChangePermanentItem(0x0000, 100);
-			TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 0);
-			QueueLoadSequence(new HubDirectLoader(703));
+			TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
+			QueueLoadSequence(new HubDirectLoader(102));
 			//QueueLoadSequence(new LevelDirectLoader(911));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
@@ -197,6 +197,7 @@ namespace AridArnold
 		{
 			if (level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub)
 			{
+				mCurrLives = START_LIVES;
 				SetGameplayState(GameplayState.HubWorld);
 			}
 			else
@@ -365,6 +366,16 @@ namespace AridArnold
 		public int GetLives()
 		{
 			return mCurrLives;
+		}
+
+
+
+		/// <summary>
+		/// Get current maximum lives
+		/// </summary>
+		public int GetMaxLives()
+		{
+			return MAX_LIVES;
 		}
 
 

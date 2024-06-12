@@ -29,9 +29,7 @@
 
 		LoadingSequence mLoadSequence;
 
-		Layout mHubUI;
-		Layout mLoadingUI;
-		Layout mLevelUI;
+		Layout mMainUI;
 
 		#endregion rMembers
 
@@ -73,9 +71,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mHubUI = new Layout("Layouts/MainHub.mlo");
-			mLevelUI = new Layout("Layouts/MainLevel.mlo");
-			mLoadingUI = new Layout("Layouts/MainLoading.mlo");
+			mMainUI = new Layout("Layouts/MainGame.mlo");
 		}
 
 		#endregion
@@ -97,6 +93,8 @@
 				CheckForLoadSequence();
 			}
 
+			mMainUI.Update(gameTime);
+
 			if (mLoadSequence is not null)
 			{
 				mLoadSequence.Update(gameTime);
@@ -108,7 +106,6 @@
 			}
 			else
 			{
-				GetCurrentUI().Update(gameTime);
 				GameUpdate(gameTime);
 			}
 		}
@@ -265,7 +262,7 @@
 			//Draw out the game area
 			StartScreenSpriteBatch(info);
 
-			GetCurrentUI().Draw(info);
+			mMainUI.Draw(info);
 			DrawGameArea(info);
 
 			EndScreenSpriteBatch(info);
@@ -403,29 +400,6 @@
 
 
 		#region rUtil
-
-		/// <summary>
-		/// Get current layout
-		/// </summary>
-		private Layout GetCurrentUI()
-		{
-			if (mLoadSequence is not null)
-			{
-				return mLoadingUI;
-			}
-
-			CampaignManager.GameplayState state = CampaignManager.I.GetGameplayState();
-
-			switch (state)
-			{
-				case CampaignManager.GameplayState.HubWorld:
-					return mHubUI;
-				case CampaignManager.GameplayState.LevelSequence:
-					return mLevelUI;
-			}
-
-			throw new NotImplementedException();
-		}
 
 		/// <summary>
 		/// Area of the screen we actually play the game in

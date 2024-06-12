@@ -8646,40 +8646,89 @@
 /processorParam:TextureFormat=Color
 /build:FireBarrel/Barrel4.png
 
-#begin Fonts/Pixica.spritefont
+#begin Fonts/Pixica12.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/Pixica.spritefont
+/build:Fonts/Pixica12.spritefont
 
-#begin Fonts/PixicaMassive.spritefont
+#begin Fonts/Pixica12b.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/PixicaMassive.spritefont
+/build:Fonts/Pixica12b.spritefont
 
-#begin Fonts/PixicaMedium.spritefont
+#begin Fonts/Pixica24.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/PixicaMedium.spritefont
+/build:Fonts/Pixica24.spritefont
 
-#begin Fonts/PixicaMicro.spritefont
+#begin Fonts/Pixica24b.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/PixicaMicro.spritefont
+/build:Fonts/Pixica24b.spritefont
 
-#begin Fonts/PixicaSmall.spritefont
+#begin Fonts/Pixica36.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Fonts/PixicaSmall.spritefont
+/build:Fonts/Pixica36.spritefont
+
+#begin Fonts/Pixica36b.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Pixica36b.spritefont
+
+#begin Fonts/PixicaMicro12.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMicro12.spritefont
+
+#begin Fonts/PixicaMicro12b.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMicro12b.spritefont
+
+#begin Fonts/PixicaMicro24.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMicro24.spritefont
+
+#begin Fonts/PixicaMicro24b.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMicro24b.spritefont
+
+#begin Fonts/PixicaMicro36.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMicro36.spritefont
+
+#begin Fonts/PixicaMicro36b.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/PixicaMicro36b.spritefont
 
 #begin GravityOrb/OrbBase.png
 /importer:TextureImporter
@@ -8884,6 +8933,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Items/RedKey/Key.png
+
+#begin Layouts/MainGame.mlo
+/copy:Layouts/MainGame.mlo
 
 #begin Layouts/MainHub.mlo
 /copy:Layouts/MainHub.mlo
@@ -11093,8 +11145,20 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Text/EN/Arcade/DeathRide/Advanced.txt
+/copy:Text/EN/Arcade/DeathRide/Advanced.txt
+
+#begin Text/EN/Arcade/DeathRide/Basics.txt
+/copy:Text/EN/Arcade/DeathRide/Basics.txt
+
 #begin Text/EN/Arcade/DeathRide/Blurb.txt
 /copy:Text/EN/Arcade/DeathRide/Blurb.txt
+
+#begin Text/EN/Arcade/DeathRide/EntityTypes.txt
+/copy:Text/EN/Arcade/DeathRide/EntityTypes.txt
+
+#begin Text/EN/Arcade/DeathRide/Scoring.txt
+/copy:Text/EN/Arcade/DeathRide/Scoring.txt
 
 #begin Text/EN/Arcade/DeathRide/Title.txt
 /copy:Text/EN/Arcade/DeathRide/Title.txt
@@ -13007,6 +13071,102 @@
 /processorParam:TextureFormat=Color
 /build:UI/ArnoldLifeEmpty.png
 
+#begin UI/InGame/4DLocatorBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/4DLocatorBG.png
+
+#begin UI/InGame/ChronometerBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/ChronometerBG.png
+
+#begin UI/InGame/EmptyLifeArnold.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/EmptyLifeArnold.png
+
+#begin UI/InGame/GalaxBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/GalaxBG.png
+
+#begin UI/InGame/InventoryBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/InventoryBG.png
+
+#begin UI/InGame/PowerItemBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/PowerItemBG.png
+
+#begin UI/InGame/SatelliteBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/SatelliteBG.png
+
+#begin UI/InGame/VitalsSignsBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/VitalsSignsBG.png
+
 #begin UI/ItemFrame.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13030,16 +13190,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Text/EN/Arcade/DeathRide/Basics.txt
-/copy:Text/EN/Arcade/DeathRide/Basics.txt
-
-#begin Text/EN/Arcade/DeathRide/EntityTypes.txt
-/copy:Text/EN/Arcade/DeathRide/EntityTypes.txt
-
-#begin Text/EN/Arcade/DeathRide/Scoring.txt
-/copy:Text/EN/Arcade/DeathRide/Scoring.txt
-
-#begin Text/EN/Arcade/DeathRide/Advanced.txt
-/copy:Text/EN/Arcade/DeathRide/Advanced.txt
 

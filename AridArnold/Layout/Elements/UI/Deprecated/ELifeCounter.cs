@@ -1,4 +1,5 @@
-﻿namespace AridArnold
+﻿#if DEPRECATED_UI
+namespace AridArnold
 {
 	class ELifeCounter : LayElement
 	{
@@ -37,3 +38,4 @@
 		}
 	}
 }
+#endif // DEPRECATED_UI

@@ -14,7 +14,8 @@
 		Key,
 		Door,
 		LevelLock,
-		Coin
+		Coin,
+		WaterBottle
 	}
 
 
