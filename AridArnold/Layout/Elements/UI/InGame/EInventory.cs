@@ -2,10 +2,10 @@
 {
 	class EInventory : UIPanelBase
 	{
-		static Vector2 WATER_BOTTLE_OFFSET = new Vector2(19.0f, 33.0f);
+		static Vector2 WATER_BOTTLE_OFFSET = new Vector2(20.0f, 33.0f);
 		static Vector2 KEY_OFFSET = new Vector2(80.0f, 33.0f);
 		static Vector2 COIN_OFFSET = new Vector2(138.0f, 33.0f);
-		static Vector2 COLLECTIBLE_TEXT_ORIGIN = new Vector2(38.0f, 79.0f);
+		static Vector2 COLLECTIBLE_TEXT_ORIGIN = new Vector2(37.0f, 79.0f);
 		static Color TEXT_COLOR = new Color(127, 127, 127);
 
 		// Data
@@ -62,13 +62,13 @@
 			Vector2 textPos = COLLECTIBLE_TEXT_ORIGIN + GetPosition();
 
 			// Water
-			int numWater = (int)CollectableManager.I.GetCollected((UInt16)PermanentCollectable.WaterBottle);
+			int numWater = (int)CollectableManager.I.GetNumCollected(PermanentCollectable.WaterBottle);
 			MonoDraw.DrawTextureDepthScale(info, mWaterBottleTexture, WATER_BOTTLE_OFFSET + GetPosition(), 2.0f, GetDepth());
 			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, TEXT_COLOR, numWater.ToString(), GetDepth());
 			textPos.X += 59.0f;
 
 			// Keys
-			int numKeys = (int)CollectableManager.I.GetCollected((UInt16)PermanentCollectable.Key);
+			int numKeys = (int)CollectableManager.I.GetNumCollected((UInt16)PermanentCollectable.Key);
 			MonoDraw.DrawTextureDepthScale(info, mKeyTexture, KEY_OFFSET + GetPosition(), 2.0f, GetDepth());
 			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, TEXT_COLOR, numKeys.ToString(), GetDepth());
 			textPos.X += 59.0f;
@@ -76,7 +76,7 @@
 			// Coins
 			if (mCoinTexture is not null)
 			{
-				int numCoins = (int)CollectableManager.I.GetCollected(CampaignManager.I.GetCurrCoinID());
+				int numCoins = (int)CollectableManager.I.GetNumCollected(CampaignManager.I.GetCurrCoinID());
 				string coinString = string.Format("{0}$", numCoins);
 
 				SpriteFont waterFont = mLargeFont;

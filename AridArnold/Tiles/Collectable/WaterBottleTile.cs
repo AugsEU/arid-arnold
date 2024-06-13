@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Water bottle tile. Needed to complete most levels.
 	/// </summary>
-	class WaterBottleTile : TransientCollectableTile
+	class WaterBottleTile : PermCollectSimpleTile
 	{
 		/// <summary>
 		/// Tile with start position
@@ -21,16 +21,20 @@
 		public override void LoadContent()
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Bottle");
+			mFullAnim = MonoData.I.LoadAnimator("Tiles/Bottle");
+			mGhostAnim = MonoData.I.LoadAnimator("Tiles/BottleGhost");
 		}
 
-		protected override TransientCollectable GetCollectableType()
+		protected override PermanentCollectable GetCollectableType()
 		{
-			return TransientCollectable.WaterBottle;
+			return PermanentCollectable.WaterBottle;
 		}
 
-		public override void OnCollect()
+		protected override void OnCollect()
 		{
 			FXManager.I.AddAnimator(mPosition, "Tiles/BottleFade.max", DrawLayer.TileEffects);
+			CollectableManager.I.CollectTransientItem(TransientCollectable.WaterBottle);
+			base.OnCollect();
 		}
 
 		public override float GetRotation()

@@ -41,7 +41,7 @@
 		/// <returns>Level completion status</returns>
 		protected override void UpdateInternal(GameTime gameTime)
 		{
-			if (CollectableManager.I.GetCollected(TransientCollectable.WaterBottle) >= mNumWaterNeeded)
+			if (CollectableManager.I.GetNumCollected(TransientCollectable.WaterBottle) >= mNumWaterNeeded)
 			{
 				mLevelStatus = LevelStatus.Win;
 			}

@@ -50,7 +50,7 @@
 			}
 			if (entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
-				if (mIsGhost == false)
+				 if (mIsGhost == false)
 				{
 					CollectableManager.I.CollectPermanentItem(mTileMapIndex, GetItemType());
 				}

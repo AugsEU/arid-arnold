@@ -99,7 +99,7 @@
 		bool CanPurchase(Item item)
 		{
 			UInt16 coinID = CampaignManager.I.GetCurrCoinID();
-			uint currentMoney = CollectableManager.I.GetCollected(coinID);
+			uint currentMoney = CollectableManager.I.GetNumCollected(coinID);
 
 			if (mActiveItem is not null)
 			{

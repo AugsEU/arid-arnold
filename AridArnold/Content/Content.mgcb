@@ -13191,3 +13191,9 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Tiles/BottleGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/BottleGhost.png
+

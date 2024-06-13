@@ -40,7 +40,7 @@
 		/// </summary>
 		public KeyDoor(Vector2 pos, int numRequired) : base(pos)
 		{
-			mHasKeysRequired = CollectableManager.I.GetCollected((UInt16)PermanentCollectable.Key) >= numRequired;
+			mHasKeysRequired = CollectableManager.I.GetNumCollected((UInt16)PermanentCollectable.Key) >= numRequired;
 			mDisplayDigits = MonoMath.GetDigits(numRequired);
 			// Can't display more than 3 digits
 			MonoDebug.Assert(mDisplayDigits.Length <= 3);

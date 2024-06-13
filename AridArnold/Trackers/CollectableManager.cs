@@ -62,8 +62,6 @@
 
 
 
-
-
 		/// <summary>
 		/// Collect an item of a certain type
 		/// </summary>
@@ -117,7 +115,7 @@
 		/// </summary>
 		/// <param name="type">Type to check</param>
 		/// <returns>Number of collected items of type</returns>
-		public uint GetCollected(TransientCollectable type)
+		public uint GetNumCollected(TransientCollectable type)
 		{
 			uint result = 0;
 			mTransientCollectables.TryGetValue(type, out result);
@@ -129,11 +127,22 @@
 		/// <summary>
 		/// Get number of collected items of type
 		/// </summary>
-		public uint GetCollected(UInt16 type)
+		public uint GetNumCollected(UInt16 type)
 		{
 			uint result = 0;
 			mPermanentCollectables.TryGetValue(type, out result);
 			return result;
+		}
+
+
+
+		/// <summary>
+		/// Get number of collected items of type
+		/// </summary>
+		public uint GetNumCollected(PermanentCollectable type, byte impl = 0)
+		{
+			UInt16 key = (UInt16)(((UInt16)type << 8) | impl);
+			return GetNumCollected(key);
 		}
 
 

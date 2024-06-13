@@ -39,11 +39,11 @@
 				//If there is actually a life increase
 				if (livesBefore < CampaignManager.I.GetLives())
 				{
-					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.OliveDrab, entity.GetPos(), "+1 Life");
+					FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.OliveDrab, entity.GetPos(), "+1 Life");
 				}
 				else
 				{
-					FXManager.I.AddTextScroller(FontManager.I.GetFont("Pixica Micro-24"), Color.White, entity.GetPos(), "+0 Lives");
+					FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.White, entity.GetPos(), "+0 Lives");
 				}
 			}
 

@@ -45,7 +45,7 @@
 		public override void LoadContent()
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/ItemStand");
-			mFont = FontManager.I.GetFont("Pixica Micro-24");
+			mFont = FontManager.I.GetFont("PixicaMicro-24");
 		}
 
 		#endregion rInit

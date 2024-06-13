@@ -38,14 +38,14 @@
 
 		public override void Draw(DrawInfo info)
 		{
-			int numKeys = (int)CollectableManager.I.GetCollected((UInt16)PermanentCollectable.Key);
+			int numKeys = (int)CollectableManager.I.GetNumCollected((UInt16)PermanentCollectable.Key);
 			Vector2 position = GetPosition();
 
 			DrawCollectable(info, position, mKeyTexture, numKeys);
 			position.Y += SPACING;
 			if (mCoinAnim != null)
 			{
-				int numCoins = (int)CollectableManager.I.GetCollected(CampaignManager.I.GetCurrCoinID());
+				int numCoins = (int)CollectableManager.I.GetNumCollected(CampaignManager.I.GetCurrCoinID());
 				DrawCollectable(info, position, mCoinAnim.GetCurrentTexture(), numCoins);
 				position.Y += SPACING;
 			}

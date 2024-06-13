@@ -7,7 +7,7 @@
 
 		public ETimingDisplay(XmlNode rootNode) : base(rootNode)
 		{
-			mFont = FontManager.I.GetFont("Pixica Micro-24");
+			mFont = FontManager.I.GetFont("PixicaMicro-24");
 		}
 
 		public override void Draw(DrawInfo info)

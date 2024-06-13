@@ -88,7 +88,7 @@ namespace AridArnold
 #if DEBUG_ELEC
 		public override void DrawExtra(DrawInfo info)
 		{
-			SpriteFont spriteFont = FontManager.I.GetFont("Pixica Micro-12");
+			SpriteFont spriteFont = FontManager.I.GetFont("PixicaMicro-12");
 			float elecValue = TileManager.I.GetEMField().GetValue(mTileMapIndex).mElectric;
 
 			MonoDraw.DrawStringCentred(info, spriteFont, mPosition + new Vector2(8.0f, 8.0f), Color.Black, elecValue.ToString("0.0"));
