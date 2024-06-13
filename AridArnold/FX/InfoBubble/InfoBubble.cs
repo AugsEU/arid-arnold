@@ -21,7 +21,7 @@
 	{
 		#region rConstants
 
-		const float MOVE_SPEED = 30.1f;
+		const float DEFAULT_MOVE_SPEED = 30.1f;
 		protected const float ANGULAR_SPEED = 0.7f;
 		const float AMPLITUDE = 1.5f;
 		const int BORDER_WIDTH = 2;
@@ -63,6 +63,8 @@
 
 		float mWaveAngle;
 		float mWaveSpeed;
+
+		protected float mExpandSpeed = DEFAULT_MOVE_SPEED;
 
 		#endregion rMembers
 
@@ -114,11 +116,11 @@
 				case BubbleState.Opening:
 					if (mCurrentSize.X < mTargetSize.X)
 					{
-						mCurrentSize.X += MOVE_SPEED * dt;
+						mCurrentSize.X += mExpandSpeed * dt;
 					}
 					else if (mCurrentSize.Y < mTargetSize.Y)
 					{
-						mCurrentSize.Y += MOVE_SPEED * dt;
+						mCurrentSize.Y += mExpandSpeed * dt;
 					}
 					else
 					{
@@ -137,11 +139,11 @@
 				case BubbleState.Closing:
 					if (mCurrentSize.Y > 0.0f)
 					{
-						mCurrentSize.Y -= MOVE_SPEED * dt;
+						mCurrentSize.Y -= mExpandSpeed * dt;
 					}
 					else if (mCurrentSize.X > 0.0f)
 					{
-						mCurrentSize.X -= MOVE_SPEED * dt;
+						mCurrentSize.X -= mExpandSpeed * dt;
 					}
 					else
 					{

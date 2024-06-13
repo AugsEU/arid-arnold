@@ -382,13 +382,7 @@
 			}
 			else
 			{
-				string levelCompleteMsg = "Level complete";
-
-				// To do: Do we need checkpoints?
-				//if (ProgressManager.I.GetCurrentLevel() is CollectFlagLevel)
-				//{
-				//	levelCompleteMsg = "Checkpoint!";
-				//}
+				string levelCompleteMsg = LanguageManager.I.GetText("InGame.LevelComplete");
 				FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.Wheat, arnold.GetPos(), levelCompleteMsg);
 			}
 		}

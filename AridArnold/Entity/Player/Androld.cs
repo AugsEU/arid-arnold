@@ -36,7 +36,7 @@
 		/// <summary>
 		/// Can we use an item right now?
 		/// </summary>
-		protected override bool CanUseItem()
+		public override bool CanUseItem()
 		{
 			// Androld can't use an item
 			return false;

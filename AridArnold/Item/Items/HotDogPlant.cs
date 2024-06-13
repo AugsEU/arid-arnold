@@ -50,9 +50,9 @@
 			return mNumHotDogs > 0;
 		}
 
-		public override string GetItemTitle()
+		public override string GetTitle()
 		{
-			string baseText = base.GetItemTitle();
+			string baseText = base.GetTitle();
 			if (mNumHotDogs > 0)
 			{
 				baseText = string.Format("{0} ({1})", baseText, mNumHotDogs);

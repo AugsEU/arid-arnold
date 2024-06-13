@@ -36,15 +36,22 @@
 				CampaignManager.I.GainLife();
 				mEnabled = false;
 
+				string lifeStr;
+				Color tickerColor;
+
 				//If there is actually a life increase
 				if (livesBefore < CampaignManager.I.GetLives())
 				{
-					FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.OliveDrab, entity.GetPos(), "+1 Life");
+					lifeStr = LanguageManager.I.GetText("InGame.LifeGain");
+					tickerColor = Color.OliveDrab;
 				}
 				else
 				{
-					FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.White, entity.GetPos(), "+0 Lives");
+					lifeStr = LanguageManager.I.GetText("InGame.NoLifeGain");
+					tickerColor = Color.Wheat;
 				}
+
+				FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), tickerColor, entity.GetPos(), lifeStr);
 			}
 
 			base.OnEntityIntersect(entity);

@@ -182,5 +182,21 @@ namespace AridArnold
 
 			return value64;
 		}
+
+
+
+		/// <summary>
+		/// Check if two objects are of the same type.
+		/// Null is not the same as anything
+		/// </summary>
+		public static bool TypeCompare(object a, object b)
+		{
+			if (a == null || b == null)
+			{
+				return false;
+			}
+
+			return a.GetType() == b.GetType();
+		}
 	}
 }

@@ -115,7 +115,7 @@
 		/// <summary>
 		/// Purchase an item
 		/// </summary>
-		public void PurchaseItem(Item item)
+		public void PurchaseItem(Item item, Vector2 tickerPos)
 		{
 			if (CanPurchase(item) == false)
 			{
@@ -123,14 +123,28 @@
 				return;
 			}
 
+
+			// Already have this item.
+			if(MonoAlg.TypeCompare(item, mActiveItem))
+			{
+				return;
+			}
+
 			if (mActiveItem is not null)
 			{
+				string refundStr = LanguageManager.I.GetText("InGame.Refund") + mActiveItem.GetPrice();
+				FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.DeepSkyBlue, tickerPos, refundStr, 2.0f, 10.0f, 40.0f);
+				tickerPos.Y += 14.0f;
+
 				RefundItem(mActiveItem);
 			}
 
 			mActiveItem = item;
 			SpendMoney(item.GetPrice());
 			mCoinsOwed += item.GetPrice();
+
+			string spendStr = LanguageManager.I.GetText("InGame.Spent") + mActiveItem.GetPrice();
+			FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.Crimson, tickerPos, spendStr, 2.0f, 10.0f, 40.0f);
 		}
 
 

@@ -213,6 +213,37 @@
 			info.spriteBatch.DrawString(font, text, drawPosition, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
+
+
+		/// <summary>
+		/// Draw a string centred at a position
+		/// </summary>
+		public static void DrawParagraphCentred(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, float lineHeight, DrawLayer depth = DrawLayer.Bubble)
+		{
+			string accumulatedStr = "";
+			for (int c = 0; c < text.Length; c++)
+			{
+				char newChar = text[c];
+				if (newChar == '\n')
+				{
+					DrawStringCentred(info, font, position, color, accumulatedStr, depth);
+					accumulatedStr = "";
+					position.Y += lineHeight;
+				}
+				else
+				{
+					accumulatedStr += newChar;
+				}
+			}
+
+			if (accumulatedStr.Length > 0)
+			{
+				DrawStringCentred(info, font, position, color, accumulatedStr, depth);
+			}
+		}
+
+
+
 		/// <summary>
 		/// Draw a string at position(top left)
 		/// </summary>

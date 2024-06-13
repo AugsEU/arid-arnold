@@ -13215,3 +13215,21 @@
 #begin Text/EN/Items/RedKeyTitle.txt
 /copy:Text/EN/Items/RedKeyTitle.txt
 
+#begin Text/EN/InGame/LevelComplete.txt
+/copy:Text/EN/InGame/LevelComplete.txt
+
+#begin Text/EN/InGame/LifeGain.txt
+/copy:Text/EN/InGame/LifeGain.txt
+
+#begin Text/EN/InGame/NoLifeGain.txt
+/copy:Text/EN/InGame/NoLifeGain.txt
+
+#begin Text/EN/InGame/Refund.txt
+/copy:Text/EN/InGame/Refund.txt
+
+#begin Text/EN/InGame/Spent.txt
+/copy:Text/EN/InGame/Spent.txt
+
+#begin Text/EN/InGame/PromptItem.txt
+/copy:Text/EN/InGame/PromptItem.txt
+

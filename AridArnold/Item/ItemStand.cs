@@ -7,6 +7,8 @@
 	{
 		#region rConstants
 
+		static Vector2 INFO_BUBBLE_OFFSET = new Vector2(8.0f, -28.0f);
+		static Vector2 SPENDING_TICKER_OFFSET = new Vector2(54.0f, 0.0f);
 		const float ANGULAR_SPEED = 0.5f;
 		const float AMPLITUDE = 1.5f;
 
@@ -21,6 +23,7 @@
 		Item mItem;
 		float mAngle;
 		SpriteFont mFont;
+		ItemStandInfoBubble mInfoBubble;
 
 		#endregion rMembers
 
@@ -37,6 +40,8 @@
 		public ItemStand(Vector2 pos, int itemType) : base(pos)
 		{
 			mItem = Item.CreateItem((Item.ItemType)itemType);
+
+			mInfoBubble = new ItemStandInfoBubble(pos + INFO_BUBBLE_OFFSET, BubbleStyle.DefaultPrompt, mItem.GetTitle(), mItem.GetDescription());
 		}
 
 		/// <summary>
@@ -65,6 +70,8 @@
 			float dt = Util.GetDeltaT(gameTime);
 			mAngle += ANGULAR_SPEED * dt;
 
+			mInfoBubble.Update(gameTime, mPlayerNear);
+
 			base.Update(gameTime);
 		}
 
@@ -75,7 +82,10 @@
 		/// </summary>
 		protected override void OnPlayerInteract()
 		{
-			ItemManager.I.PurchaseItem(mItem);
+			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			{
+				ItemManager.I.PurchaseItem(mItem, mPosition + SPENDING_TICKER_OFFSET);
+			}
 		}
 
 
@@ -129,6 +139,8 @@
 			pricePos.Y -= 10.0f;
 			pricePos.X = mPosition.X + mTexture.Width / 2.0f;
 			MonoDraw.DrawStringCentred(info, mFont, pricePos, Color.White, mItem.GetPrice().ToString(), DrawLayer.Default);
+
+			mInfoBubble.Draw(info);
 		}
 
 		#endregion rDraw

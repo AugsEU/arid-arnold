@@ -82,6 +82,11 @@
 		/// <param name="levelWin">Did we win the level?</param>
 		public void EndLevel(bool levelWin)
 		{
+			if(mInputFile is null || mOutputFile is null)
+			{
+				return;
+			}
+
 			if (levelWin)
 			{
 				//Check if we have set a new record
@@ -216,7 +221,7 @@
 		/// <returns>Integer frame count between output and input file times</returns>
 		public int? GetTimeDifference()
 		{
-			if (mInputFile.IsEmpty() || mOutputFile.IsEmpty() || mRecording == false)
+			if (mInputFile is null || mOutputFile is null || mInputFile.IsEmpty() || mOutputFile.IsEmpty() || mRecording == false)
 			{
 				return null;
 			}

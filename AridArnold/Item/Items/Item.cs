@@ -81,7 +81,7 @@
 		/// <summary>
 		/// Get item name string
 		/// </summary>
-		public virtual string GetItemTitle()
+		public virtual string GetTitle()
 		{
 			return mTitle;
 		}
@@ -91,7 +91,7 @@
 		/// <summary>
 		/// Get the item's description
 		/// </summary>
-		public virtual string GetItemDescription()
+		public virtual string GetDescription()
 		{
 			return mDescription;
 		}
@@ -110,7 +110,7 @@
 		/// </summary>
 		public virtual bool CanUseItem(Arnold arnoldUsingItem)
 		{
-			return true;
+			return arnoldUsingItem.CanUseItem();
 		}
 
 

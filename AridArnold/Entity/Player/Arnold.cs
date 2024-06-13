@@ -480,7 +480,7 @@
 		/// <summary>
 		/// Can we use item
 		/// </summary>
-		protected virtual bool CanUseItem()
+		public virtual bool CanUseItem()
 		{
 			return mOnGround;
 		}
