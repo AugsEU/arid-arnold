@@ -91,6 +91,7 @@
 			mNumberTextures[9] = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorNine");
 
 			mTexture = mClosedTexture;
+			CheckCompletion();
 		}
 
 		#endregion rInitialisation
@@ -111,10 +112,20 @@
 				return;
 			}
 
-			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)PermanentCollectable.Door);
+			CheckCompletion();
 			mHelpBubble.Update(gameTime, IsPlayerNear());
 
 			base.Update(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Check if door has been completed yet.
+		/// </summary>
+		private void CheckCompletion()
+		{
+			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)PermanentCollectable.Door);
 		}
 
 

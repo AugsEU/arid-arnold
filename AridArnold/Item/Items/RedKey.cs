@@ -2,7 +2,7 @@
 {
 	internal class RedKey : Item
 	{
-		public RedKey()
+		public RedKey() : base("Items.RedKeyTitle", "Items.RedKeyDesc")
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/RedKey/Key");
 		}

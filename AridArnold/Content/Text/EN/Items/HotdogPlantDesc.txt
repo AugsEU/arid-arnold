@@ -1,0 +1,2 @@
+Use once to gain 1 life.
++1 extra life gained per level completed.

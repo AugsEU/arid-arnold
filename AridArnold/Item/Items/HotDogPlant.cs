@@ -6,7 +6,7 @@
 		Texture2D[] mPlantTextures;
 		Level mCurrLevel;
 
-		public HotDogPlant()
+		public HotDogPlant() : base("Items.HotdogPlantTitle", "Items.HotdogPlantDesc")
 		{
 			mNumHotDogs = 0;
 
@@ -48,6 +48,16 @@
 		public override bool CanUseItem(Arnold arnoldUsingItem)
 		{
 			return mNumHotDogs > 0;
+		}
+
+		public override string GetItemTitle()
+		{
+			string baseText = base.GetItemTitle();
+			if (mNumHotDogs > 0)
+			{
+				baseText = string.Format("{0} ({1})", baseText, mNumHotDogs);
+			}
+			return baseText;
 		}
 
 		public override bool RegenerateAfterDeath()

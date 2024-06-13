@@ -13197,3 +13197,21 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/BottleGhost.png
 
+#begin UI/InGame/ItemUsableFrame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/ItemUsableFrame.png
+
+#begin Text/EN/Items/HotdogPlantDesc.txt
+/copy:Text/EN/Items/HotdogPlantDesc.txt
+
+#begin Text/EN/Items/HotdogPlantTitle.txt
+/copy:Text/EN/Items/HotdogPlantTitle.txt
+
+#begin Text/EN/Items/RedKeyDesc.txt
+/copy:Text/EN/Items/RedKeyDesc.txt
+
+#begin Text/EN/Items/RedKeyTitle.txt
+/copy:Text/EN/Items/RedKeyTitle.txt
+
