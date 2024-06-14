@@ -33,7 +33,7 @@
 		/// Is the input currently down?
 		/// </summary>
 		/// <returns>True if the input is currently held</returns>
-		abstract public bool IsInputDown();
+		abstract protected bool PollInput();
 
 
 
@@ -49,13 +49,24 @@
 
 
 		/// <summary>
+		/// Is this key down at all?
+		/// </summary>
+		/// <returns></returns>
+		public bool InputDown()
+		{
+			return mCurrentState;
+		}
+
+
+
+		/// <summary>
 		/// Update key state
 		/// </summary>
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
 			mPreviousState = mCurrentState;
-			mCurrentState = IsInputDown();
+			mCurrentState = PollInput();
 		}
 	}
 
@@ -73,7 +84,7 @@
 			mInputKey = inputKey;
 		}
 
-		public override bool IsInputDown()
+		protected override bool PollInput()
 		{
 			return Keyboard.GetState().IsKeyDown(mInputKey);
 		}
@@ -98,7 +109,7 @@
 			mMouseButton = mouseBtn;
 		}
 
-		public override bool IsInputDown()
+		protected override bool PollInput()
 		{
 			switch (mMouseButton)
 			{

@@ -5,7 +5,7 @@
 		static Vector2 USE_FRAME_OFFSET = new Vector2(52.0f, 26.0f);
 		static Vector2 ITEM_OFFSET = new Vector2(62.0f, 36.0f);
 		static Vector2 TEXT_OFFSET = new Vector2(95.0f, 124.0f);
-		static Vector2 BUTTON_PROMPT = new Vector2(85.0f, 2.0f);
+		static Vector2 BUTTON_PROMPT = new Vector2(182.0f, 2.0f);
 
 		SpriteFont mFont;
 		Texture2D mItemUsableFrame;
@@ -58,14 +58,14 @@
 
 			if (mCurrItem is not null)
 			{
-				Color textColor = new Color(127, 127, 127);
+				Color textColor = PANEL_WHITE;
 				Texture2D itemTex = mCurrItem.GetTexture();
 				if (CanAnyArnoldUseItem())
 				{
 					string useItemStr = LanguageManager.I.GetText("InGame.PromptItem");
 					MonoDraw.DrawTextureDepth(info, mItemUsableFrame, GetPosition() + USE_FRAME_OFFSET, GetDepth());
-					MonoDraw.DrawString(info, mFont, useItemStr, BUTTON_PROMPT + GetPosition(), textColor, GetDepth());
-					textColor = new Color(255, 182, 0);
+					MonoDraw.DrawStringRight(info, mFont, BUTTON_PROMPT + GetPosition(), textColor, useItemStr, GetDepth());
+					textColor = PANEL_GOLD;
 				}
 
 				MonoDraw.DrawTextureDepthScale(info, itemTex, GetPosition() + ITEM_OFFSET, 4.0f, GetDepth());

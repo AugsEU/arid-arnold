@@ -13233,3 +13233,12 @@
 #begin Text/EN/InGame/PromptItem.txt
 /copy:Text/EN/InGame/PromptItem.txt
 
+#begin Text/EN/InGame/LevelPB.txt
+/copy:Text/EN/InGame/LevelPB.txt
+
+#begin Text/EN/InGame/LevelTime.txt
+/copy:Text/EN/InGame/LevelTime.txt
+
+#begin Text/EN/InGame/GlobalTime.txt
+/copy:Text/EN/InGame/GlobalTime.txt
+

@@ -160,6 +160,7 @@
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
 			ItemManager.I.Update(gameTime);
+			FlagsManager.I.Update(gameTime);
 
 			level.Update(gameTime);
 
@@ -378,7 +379,7 @@
 					frameDiff = -frameDiff;
 				}
 
-				FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), textCol, arnold.GetPos(), prefix + GhostManager.I.FrameTimeToString(frameDiff));
+				FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), textCol, arnold.GetPos(), prefix + MonoText.GetTimeTextFromFrames(frameDiff));
 			}
 			else
 			{

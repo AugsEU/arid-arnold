@@ -49,12 +49,12 @@ namespace AridArnold
 
 			foreach ((string, int) runTime in mRunTimes)
 			{
-				string timingStr = GhostManager.I.FrameTimeToString(runTime.Item2);
+				string timingStr = MonoText.GetTimeTextFromFrames(runTime.Item2);
 				output += runTime.Item1 + " - " + timingStr + "\n";
 				totalTime += runTime.Item2;
 			}
 
-			output += "Total: " + GhostManager.I.FrameTimeToString(totalTime) + "\n";
+			output += "Total: " + MonoText.GetTimeTextFromFrames(totalTime) + "\n";
 
 			// Terrible
 			return output.Split("\n");

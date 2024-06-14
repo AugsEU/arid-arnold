@@ -5,6 +5,16 @@
 	/// </summary>
 	public class Main : Game
 	{
+		#region rTypes
+
+
+
+		#endregion rTypes
+
+
+
+
+
 		#region rConstants
 
 		private const int FRAME_SLOWDOWN = 1;
@@ -26,7 +36,7 @@
 		private Rectangle mOutputRectSize;
 		private int mSlowDownCount;
 		private Texture2D mDummyTexture;
-		private bool mIsInputFrame = true;
+		private bool mInLoadingSection = true;
 
 
 		// Hack
@@ -50,7 +60,7 @@
 			IsMouseVisible = true;
 			//XNA
 
-			mIsInputFrame = true;
+			mInLoadingSection = true;
 
 			LanguageManager.I.LoadLanguage(LanguageManager.LanguageType.English);
 
@@ -108,6 +118,7 @@
 
 			// Temp
 			CampaignManager.I.LoadCampaign("MainCampaign");
+			FlagsManager.I.Init();
 			ScreenManager.I.ActivateScreen(ScreenType.Game);
 		}
 
@@ -149,7 +160,11 @@
 				}
 
 				Screen screen = ScreenManager.I.GetActiveScreen();
-				InputManager.I.Update(gameTime);
+
+				if (!mInLoadingSection)
+				{
+					InputManager.I.Update(gameTime);
+				}
 
 				if (screen is not null)
 				{
@@ -355,8 +370,7 @@
 		/// </summary>
 		public static void LoadingScreenBegin()
 		{
-			sSelf.IsFixedTimeStep = false;
-			sSelf.mIsInputFrame = false;
+			sSelf.mInLoadingSection = true;
 		}
 
 
@@ -366,8 +380,17 @@
 		/// </summary>
 		public static void LoadingScreenEnd()
 		{
-			sSelf.IsFixedTimeStep = true;
-			sSelf.mIsInputFrame = true;
+			sSelf.mInLoadingSection = false;
+		}
+
+
+
+		/// <summary>
+		/// Are we loading something right now?
+		/// </summary>
+		public static bool IsLoadingSection()
+		{
+			return sSelf.mInLoadingSection;
 		}
 
 		#endregion rUtility

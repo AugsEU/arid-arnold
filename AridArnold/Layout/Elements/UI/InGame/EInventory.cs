@@ -6,7 +6,6 @@
 		static Vector2 KEY_OFFSET = new Vector2(80.0f, 33.0f);
 		static Vector2 COIN_OFFSET = new Vector2(138.0f, 33.0f);
 		static Vector2 COLLECTIBLE_TEXT_ORIGIN = new Vector2(37.0f, 79.0f);
-		static Color TEXT_COLOR = new Color(127, 127, 127);
 
 		// Data
 		Level mPrevLevel;
@@ -64,13 +63,13 @@
 			// Water
 			int numWater = (int)CollectableManager.I.GetNumCollected(PermanentCollectable.WaterBottle);
 			MonoDraw.DrawTextureDepthScale(info, mWaterBottleTexture, WATER_BOTTLE_OFFSET + GetPosition(), 2.0f, GetDepth());
-			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, TEXT_COLOR, numWater.ToString(), GetDepth());
+			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, PANEL_WHITE, numWater.ToString(), GetDepth());
 			textPos.X += 59.0f;
 
 			// Keys
 			int numKeys = (int)CollectableManager.I.GetNumCollected((UInt16)PermanentCollectable.Key);
 			MonoDraw.DrawTextureDepthScale(info, mKeyTexture, KEY_OFFSET + GetPosition(), 2.0f, GetDepth());
-			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, TEXT_COLOR, numKeys.ToString(), GetDepth());
+			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, PANEL_WHITE, numKeys.ToString(), GetDepth());
 			textPos.X += 59.0f;
 
 			// Coins
@@ -86,7 +85,7 @@
 				}
 
 				MonoDraw.DrawTextureDepthScale(info, mCoinTexture, COIN_OFFSET + GetPosition(), 2.0f, GetDepth());
-				MonoDraw.DrawStringCentred(info, waterFont, textPos, TEXT_COLOR, coinString, GetDepth());
+				MonoDraw.DrawStringCentred(info, waterFont, textPos, PANEL_WHITE, coinString, GetDepth());
 			}
 			
 		}

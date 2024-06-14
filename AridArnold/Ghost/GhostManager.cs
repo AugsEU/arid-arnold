@@ -194,7 +194,7 @@
 		/// <returns>Formatted current time</returns>
 		public string GetTime()
 		{
-			return FrameTimeToString(mOutputFile.GetFrameCount());
+			return MonoText.GetTimeTextFromFrames(mOutputFile.GetFrameCount());
 		}
 
 
@@ -205,12 +205,12 @@
 		/// <returns>Formatted time to beat.</returns>
 		public string GetTimeToBeat()
 		{
-			if (mInputFile.IsEmpty())
+			if (mInputFile is null || mInputFile.IsEmpty())
 			{
 				return "";
 			}
 
-			return FrameTimeToString(mInputFile.GetFrameCount());
+			return MonoText.GetTimeTextFromFrames(mInputFile.GetFrameCount());
 		}
 
 
@@ -230,29 +230,13 @@
 		}
 
 
-
 		/// <summary>
-		/// Format time (in frames) into a string
-		/// TO DO: Put this in utils.
+		/// Are we actually recording anything?
 		/// </summary>
-		/// <param name="frame">Time in frames</param>
-		/// <returns>Formatted time string.</returns>
-		public string FrameTimeToString(int frame)
+		/// <returns></returns>
+		public bool IsRecording()
 		{
-			int ms = (int)(frame * (1000.0f / 60.0f));
-			int cs = ms / 10;
-			int s = cs / 100;
-			int m = s / 60;
-
-
-			if (m == 0)
-			{
-				return String.Format("{0:D2} : {1:D2}", s, cs % 100);
-			}
-			else
-			{
-				return String.Format("{0:D} : {1:D2} : {2:D2}", m, s % 60, cs % 100);
-			}
+			return mRecording && mOutputFile is not null;
 		}
 
 		#endregion rUtility

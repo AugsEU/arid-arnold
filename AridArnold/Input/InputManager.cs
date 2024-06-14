@@ -36,6 +36,7 @@
 
 		MouseState mMouseState;
 		InputBindingMap mInputBindings = new InputBindingMap();
+		int mInputUpdateIndex = 0;
 
 		#endregion rMembers
 
@@ -54,6 +55,7 @@
 			SetDefaultBindings();
 
 			mMouseState = new MouseState();
+			mInputUpdateIndex = 0;
 		}
 
 
@@ -100,6 +102,7 @@
 			}
 
 			mMouseState = Mouse.GetState();
+			mInputUpdateIndex++;
 		}
 
 
@@ -175,6 +178,16 @@
 		public Point GetMouseWorldPoint()
 		{
 			return new Point((int)GetMouseWorldPos().X, (int)GetMouseWorldPos().Y);
+		}
+
+
+
+		/// <summary>
+		/// Over how many frames have we made inputs?
+		/// </summary>
+		public int GetNumberOfInputFrames()
+		{
+			return mInputUpdateIndex;
 		}
 
 		#endregion rKeySense

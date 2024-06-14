@@ -1,1 +1,1 @@
-Press [{Key.UseItem}].
+[{Key.UseItem}]

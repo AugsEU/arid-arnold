@@ -57,7 +57,7 @@
 		/// <returns>True if any input in the list is currently held</returns>
 		public bool AnyKeyHeld()
 		{
-			return mBindings.Exists(x => x.IsInputDown());
+			return mBindings.Exists(x => x.InputDown());
 		}
 
 

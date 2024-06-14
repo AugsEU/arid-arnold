@@ -2,6 +2,8 @@
 {
 	class ETimingDisplay : LayElement
 	{
+		static Vector2 LEVEL_TIMER_OFFSET = new Vector2(95.0f, 25.0f);
+
 		SpriteFont mFont;
 		int mFrames;
 
@@ -12,10 +14,14 @@
 
 		public override void Draw(DrawInfo info)
 		{
+
+
+
+
 			string timeStr = GhostManager.I.GetTime();
 			string toBeatStr = GhostManager.I.GetTimeToBeat();
 
-			Vector2 pos = GetPosition();
+			Vector2 pos = GetPosition() + LEVEL_TIMER_OFFSET;
 			MonoDraw.DrawStringCentred(info, mFont, pos, GetColor(), "Time:", GetDepth());
 			pos.Y += 12.0f;
 			MonoDraw.DrawStringCentred(info, mFont, pos, GetColor(), timeStr, GetDepth());

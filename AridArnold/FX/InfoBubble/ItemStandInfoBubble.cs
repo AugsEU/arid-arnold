@@ -3,8 +3,6 @@
 	internal class ItemStandInfoBubble : InfoBubble
 	{
 		const int PADDING = 7;
-		static Color TITLE_COLOR = new Color(255, 182, 0);
-		static Color BODY_COLOR = new Color(127, 127, 127);
 
 		SpriteFont mFont;
 		string mTitle;
@@ -56,12 +54,12 @@
 			origin.Y += PADDING;
 
 			// Title
-			MonoDraw.DrawStringCentred(info, mFont, origin, TITLE_COLOR, mTitle, DrawLayer.Bubble);
+			MonoDraw.DrawStringCentred(info, mFont, origin, UIPanelBase.PANEL_GOLD, mTitle, DrawLayer.Bubble);
 
 			origin.Y += descSize.Y * 1.5f;
 
 			// Description
-			MonoDraw.DrawParagraphCentred(info, mFont, origin, BODY_COLOR, mDescription, descSize.Y, DrawLayer.Bubble);
+			MonoDraw.DrawParagraphCentred(info, mFont, origin, UIPanelBase.PANEL_WHITE, mDescription, descSize.Y, DrawLayer.Bubble);
 		}
 
 		protected override void UpdateInternal()
