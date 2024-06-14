@@ -30,7 +30,10 @@
 			{
 				string toBeatTitle = LanguageManager.I.GetText("InGame.LevelPB");
 				string toBeatStr = GhostManager.I.GetTimeToBeat();
-				DrawTimer(info, toBeatTitle, toBeatStr, pos, Color.Olive);
+				if (toBeatStr != "")
+				{
+					DrawTimer(info, toBeatTitle, toBeatStr, pos, Color.Olive);
+				}
 				pos.Y -= 36.0f;
 
 				string timeTitle = LanguageManager.I.GetText("InGame.LevelTime");

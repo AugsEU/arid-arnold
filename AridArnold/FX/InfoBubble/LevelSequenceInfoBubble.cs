@@ -6,12 +6,15 @@
 		const int ICON_WIDTH = 11;
 		const int ICON_SPACING = 5;
 
+		// Public static hack
+		static Texture2D mLevelIcon = null;
+		static Texture2D mShopIcon = null;
+		static Texture2D mWaterIcon = null;
+		static Texture2D mFlagIcon = null;
+		static Texture2D mEmptyIcon = null;
+
 		List<Level> mLevelSequence;
-		Texture2D mLevelIcon;
-		Texture2D mShopIcon;
-		Texture2D mWaterIcon;
-		Texture2D mFlagIcon;
-		Texture2D mEmptyIcon;
+
 
 		public LevelSequenceInfoBubble(List<Level> levelSequence, Vector2 botCentre, BubbleStyle style) : base(botCentre, style)
 		{
@@ -41,7 +44,7 @@
 				offset.X += ICON_SPACING + ICON_WIDTH;
 			}
 		}
-		Texture2D GetIconForLevel(AuxData.LevelType levelType)
+		public static Texture2D GetIconForLevel(AuxData.LevelType levelType)
 		{
 			switch (levelType)
 			{

@@ -13242,3 +13242,45 @@
 #begin Text/EN/InGame/GlobalTime.txt
 /copy:Text/EN/InGame/GlobalTime.txt
 
+#begin UI/InGame/CompassArrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/CompassArrow.png
+
+#begin UI/InGame/CompassCentre.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/CompassCentre.png
+
+#begin UI/InGame/SequenceArrowEnd.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SequenceArrowEnd.png
+
+#begin UI/InGame/SequenceArrowMid.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SequenceArrowMid.png
+
+#begin UI/InGame/SequenceArrowStart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SequenceArrowStart.png
+
+#begin UI/InGame/SequenceTileOff.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SequenceTileOff.png
+
+#begin UI/InGame/SequenceTileOn.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SequenceTileOn.png
+

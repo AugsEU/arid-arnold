@@ -146,5 +146,25 @@
 
 			base.Draw(info);
 		}
+
+
+		public int GetExitID(int idx)
+		{
+			switch (idx)
+			{
+				case 0:
+					return mTopID;
+				case 1:
+					return mRightID;
+				case 2:
+					return mBottomID;
+				case 3:
+					return mLeftID;
+				default:
+					break;
+			}
+
+			throw new NotImplementedException();
+		}
 	}
 }

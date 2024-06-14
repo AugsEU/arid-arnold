@@ -99,7 +99,7 @@
 		public override void OnEntityIntersect(Entity entity)
 		{
 			float minVel = 19.5f;
-			float alpha = 1.4f;
+			float alpha = 1.45f;
 
 			if (entity is PlatformingEntity)
 			{

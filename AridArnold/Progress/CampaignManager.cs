@@ -70,7 +70,7 @@ namespace AridArnold
 			mRootPath = "Campaigns/" + campaignPath + "/";
 			mMetaData = new CampaignMetaData("Content/" + mRootPath);
 
-			mLevelSequence = new List<Level>();
+			mLevelSequence = null;
 			mGameplayState = GameplayState.HubWorld;
 
 			mSeenCinematics = new HashSet<UInt64>();
@@ -81,7 +81,7 @@ namespace AridArnold
 			CollectableManager.I.ChangePermanentItem(0x0300, 100);
 			CollectableManager.I.ChangePermanentItem(0x0000, 100);
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
-			QueueLoadSequence(new HubDirectLoader(102));
+			QueueLoadSequence(new HubDirectLoader(301));
 			//QueueLoadSequence(new LevelDirectLoader(911));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
@@ -349,7 +349,18 @@ namespace AridArnold
 			{
 				// Collect "door"
 				CollectableManager.I.CollectPermanentItem(mPrevDoorPos, (UInt16)PermanentCollectable.Door);
+				mLevelSequence = null;
 			}
+		}
+
+
+
+		/// <summary>
+		/// Returns reference to level sequence list
+		/// </summary>
+		public List<Level> GetLevelSequence()
+		{
+			return mLevelSequence;
 		}
 
 		#endregion rLevelSequence
