@@ -22,7 +22,6 @@ namespace AridArnold
 
 		byte[] mTransitionTable;
 		int mAnimFrameLength;
-		ushort mParticleLifetime;
 		Texture2D mTexture;
 		Point mBaseSize;
 
@@ -37,13 +36,12 @@ namespace AridArnold
 		/// <summary>
 		/// Create particle set
 		/// </summary>
-		public ParticleSet(string texturePath, Point baseSize, byte[] transitionTable, int animFrameLength, ushort particleLifetime)
+		public ParticleSet(string texturePath, Point baseSize, byte[] transitionTable, int animFrameLength)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>(texturePath);
 			mTransitionTable = transitionTable;
 			mBaseSize = baseSize;
 			mAnimFrameLength = animFrameLength;
-			mParticleLifetime = particleLifetime;
 
 			mParticles = new Particle[MAX_PARTICLES];
 			mParticleHead = 0;
@@ -68,12 +66,16 @@ namespace AridArnold
 				ref Particle particleRef = ref mParticles[i];
 				particleRef.mPosition += dt * particleRef.mVelocity;
 
-				ushort particleAge = particleRef.mAge++;
-				if(particleAge >= mParticleLifetime || particleAge == ushort.MaxValue || FXManager.I.OutsideFXRegion(particleRef.mPosition))
+				ushort particleAge = particleRef.mLifetime;
+				if(particleAge == 0 || FXManager.I.OutsideFXRegion(particleRef.mPosition))
 				{
 					RemoveParticle(i);
 					i--;
 					continue;
+				}
+				else
+				{
+					particleRef.mLifetime--;
 				}
 				
 				if(particleAge % mAnimFrameLength == 0)

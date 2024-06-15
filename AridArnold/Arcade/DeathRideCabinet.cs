@@ -26,8 +26,8 @@
 
 		protected override void DrawTitleScreen(DrawInfo info)
 		{
-			SpriteFont bigFont = FontManager.I.GetFont("Pixica-32");
-			SpriteFont font = FontManager.I.GetFont("Pixica-24");
+			SpriteFont bigFont = FontManager.I.GetFont("Pixica", 32);
+			SpriteFont font = FontManager.I.GetFont("Pixica", 24);
 			Vector2 textPos = DEATH_SCREEN_SPACE.min;
 			textPos.X += DEATH_SCREEN_SPACE.Width * 0.5f;
 

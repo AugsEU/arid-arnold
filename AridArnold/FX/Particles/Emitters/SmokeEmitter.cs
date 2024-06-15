@@ -32,7 +32,7 @@ namespace AridArnold
 				Vector2 vel = new Vector2(xDiff / STACK_TIGHTNESS, -(rng.GetUnitFloat() * 2.0f + 0.5f));
 				position.X += xDiff;
 			
-				Particle newParticle = new Particle(color, position, vel, textureIndex);
+				Particle newParticle = new Particle(color, position, vel, textureIndex, SmokeParticleSet.SMOKE_LIFETIME);
 				ParticleManager.I.AddParticle(ref newParticle, ParticleManager.ParticleType.kSmoke);
 			}
 		}

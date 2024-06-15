@@ -9,7 +9,8 @@
 
 		public enum ParticleType
 		{
-			kSmoke
+			kSmoke,
+			kDust
 		}
 
 		#endregion rTypes
@@ -37,6 +38,7 @@
 		{
 			mParticleSets = new ParticleSet[MonoAlg.EnumLength(typeof(ParticleType))];
 			mParticleSets[(int)ParticleType.kSmoke] = new SmokeParticleSet();
+			mParticleSets[(int)ParticleType.kDust] = new DustParticleSet();
 		}
 
 		#endregion rInit

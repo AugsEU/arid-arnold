@@ -5,7 +5,7 @@ namespace AridArnold
 {
 	abstract class CollidingParticleSet : ParticleSet
 	{
-		protected CollidingParticleSet(string texturePath, Point baseSize, byte[] transitionTable, int animFrameLength, ushort particleLifetime) : base(texturePath, baseSize, transitionTable, animFrameLength, particleLifetime)
+		protected CollidingParticleSet(string texturePath, Point baseSize, byte[] transitionTable, int animFrameLength) : base(texturePath, baseSize, transitionTable, animFrameLength)
 		{
 		}
 

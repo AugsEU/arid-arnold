@@ -13284,3 +13284,9 @@
 /processorParam:PremultiplyAlpha=False
 /build:UI/InGame/SequenceTileOn.png
 
+#begin Particles/DustSet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Particles/DustSet.png
+

@@ -75,6 +75,8 @@
 
 			mItemToUse = null;
 			LayerOptIn(InteractionLayer.kPlayer);
+
+			SetDustIntensity(15.0f);
 		}
 
 

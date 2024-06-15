@@ -49,6 +49,9 @@ namespace AridArnold
 		// Ice
 		protected int mIceWalking;
 
+		// Particles
+		float mDustIntensity;
+
 		#endregion rMembers
 
 
@@ -89,6 +92,9 @@ namespace AridArnold
 			// Allow things to make you change direction for a certain number of frames.
 			mAllowChangeDirFrames = 0;
 
+			// Default no dust
+			mDustIntensity = 0.0f;
+
 			// Opt into this by default
 			LayerOptIn(InteractionLayer.kGravityOrb);
 		}
@@ -122,6 +128,11 @@ namespace AridArnold
 			{
 				mUpdatesSinceGrounded = 0;
 				mUpdatesSinceJump = int.MaxValue;
+
+				if (mWalkDirection != WalkDirection.None && mVelocity.LengthSquared() > 0.5f)
+				{
+					EmitWalkDust();
+				}
 			}
 			else if (mUpdatesSinceGrounded != int.MaxValue)
 			{
@@ -271,6 +282,12 @@ namespace AridArnold
 			{
 				case CollisionType.Ground:
 					mOnGround = true;
+
+					float downVel = Vector2.Dot(mVelocity, GravityVecNorm());
+					if(mUpdatesSinceGrounded > 4 && downVel > mJumpSpeed * 0.5f)
+					{
+						EmitDustLand();
+					}
 					break;
 				case CollisionType.Ceiling:
 					if (mOnGround == false)
@@ -413,6 +430,82 @@ namespace AridArnold
 		#endregion rDraw
 
 
+
+		#region rParticles
+
+		/// <summary>
+		/// Set out of 100 how many dust particles to spawn
+		/// </summary>
+		protected void SetDustIntensity(float intensity)
+		{
+			mDustIntensity = intensity;
+		}
+
+
+
+		/// <summary>
+		/// Spawn dust from walking.
+		/// </summary>
+		void EmitWalkDust()
+		{
+			if (!RandomManager.I.GetDraw().PercentChance(mDustIntensity))
+			{
+				return;
+			}
+
+			Vector2[] footPositions = GetFeetCheckPoints();
+			footPositions[1] -= GravityVecNorm() * 1.5f;
+
+			MonoDebug.AddDebugRect(new Rect2f(footPositions[1], 2.0f, 2.0f), Color.Red);
+			DustUtil.EmitDust(footPositions[1], -GravityVecNorm());
+		}
+
+
+
+		/// <summary>
+		/// Spawn dust cloud at arnold's feet for big landings
+		/// </summary>
+		void EmitDustLand()
+		{
+			if (mDustIntensity == 0.0f)
+			{
+				return;
+			}
+
+			Vector2[] footPositions = GetFeetCheckPoints(0.0f);
+
+			for(int i = 0; i < footPositions.Length; i++)
+			{
+				Vector2 spot = footPositions[i];
+
+				DustUtil.EmitDust(spot, -GravityVecNorm());
+			}
+		}
+
+
+		/// <summary>
+		/// Spawn dust cloud at arnold's feet for big landings
+		/// </summary>
+		void EmitDustJump()
+		{
+			if (mDustIntensity == 0.0f)
+			{
+				return;
+			}
+			EmitDustLand();
+
+			Vector2[] footPositions = GetFeetCheckPoints(1.0f);
+
+			for (int i = 0; i < footPositions.Length; i++)
+			{
+				if (i == 1) continue;
+				Vector2 spot = footPositions[i];
+				spot -= GravityVecNorm();
+				DustUtil.EmitDust(spot, -GravityVecNorm());
+			}
+		}
+
+		#endregion rParticles
 
 
 
@@ -603,6 +696,11 @@ namespace AridArnold
 			if (gravVelocity.Y < mJumpSpeed)
 			{
 				mVelocity = -mJumpSpeed * GravityVecNorm();
+
+				if (mUpdatesSinceJump > 10)
+				{
+					EmitDustJump();
+				}
 			}
 
 			mUpdatesSinceJump = 0;
@@ -821,6 +919,9 @@ namespace AridArnold
 		}
 
 		#endregion rUtility
+
+
+
 
 
 		#region rSpacial

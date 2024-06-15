@@ -1,15 +1,15 @@
 ﻿
 namespace AridArnold
 {
-	internal class SmokeParticleSet : CollidingParticleSet
+	internal class DustParticleSet : ParticleSet
 	{
-		public const ushort SMOKE_LIFETIME = 240;
+		public const ushort DUST_LIFETIME = 40;
 
-		public SmokeParticleSet() : base(
-			"Particles/SmokeSet",
+		public DustParticleSet() : base(
+			"Particles/DustSet",
 			new Point(3, 3),
-			new byte[] { 0, 2, 1, 3, 4}, 
-			33)
+			new byte[] { 0, 2, 1 }, 
+			20)
 		{
 		}
 
@@ -20,7 +20,7 @@ namespace AridArnold
 				ref Particle particleRef = ref mParticles[i];
 				
 				// Make older particles get smaller
-				if(particleRef.mLifetime < SMOKE_LIFETIME / 2 && particleRef.mLifetime % 20 == 0 && particleRef.mTextureIndex != 0)
+				if(particleRef.mLifetime < DUST_LIFETIME / 2 && particleRef.mLifetime % 20 == 0 && particleRef.mTextureIndex != 0)
 				{
 					particleRef.mTextureIndex -= 1;
 				}

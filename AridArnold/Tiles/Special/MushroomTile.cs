@@ -172,7 +172,49 @@
 				if (didBounce)
 				{
 					mBounceAnim.Play();
+					EmitSpores();
 				}
+			}
+		}
+
+
+
+		/// <summary>
+		/// Emit spore particles
+		/// </summary>
+		void EmitSpores()
+		{
+			Vector2 start = GetCentre();
+			Vector2 end = GetCentre();
+
+			switch (mRotation)
+			{
+				case CardinalDirection.Down:
+				case CardinalDirection.Up:
+					start.X -= 5.0f;
+					end.X += 5.0f;
+					break;
+				case CardinalDirection.Right:
+				case CardinalDirection.Left:
+					start.Y -= 5.0f;
+					end.Y += 5.0f;
+					break;
+			}
+
+			Vector2 side = start - end;
+			side.Normalize();
+
+			for(float t = 0.0f; t <= 1.0f; t+= 0.1f)
+			{
+				Vector2 pos = MonoMath.Lerp(start, end, t);
+				pos -= Util.GetNormal(mRotation) * 5.0f;
+
+				Vector2 dir = -Util.GetNormal(mRotation);
+				dir += (0.5f - t) * side;
+				dir.Normalize();
+				dir *= 0.8f;
+
+				DustUtil.EmitSpore(pos, dir);
 			}
 		}
 
