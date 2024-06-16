@@ -54,6 +54,8 @@
 		public Trundle(Vector2 pos) : base(pos + new Vector2(0.0f, 9.0f), TRUNDLE_WALK_SPEED, TRUNDLE_JUMP_SPEED, TRUNDLE_WIDTH_REDUCTION, TRUNDLE_HEIGHT_REDUCTION)
 		{
 			mStateMachine = new StateMachine<State>(State.Wait);
+
+			SetDustIntensity(10.0f);
 		}
 
 		/// <summary>
