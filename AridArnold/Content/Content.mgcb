@@ -94,7 +94,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/Cabinets/DeathRide.png
 
 #begin Arcade/Cabinets/HorsesAndGun.png
@@ -106,7 +106,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/Cabinets/HorsesAndGun.png
 
 #begin Arcade/Cabinets/WormWarp.png
@@ -118,7 +118,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/Cabinets/WormWarp.png
 
 #begin Arcade/DeathRide/Backgrounds/GameOver.png
@@ -130,7 +130,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/DeathRide/Backgrounds/GameOver.png
 
 #begin Arcade/DeathRide/Backgrounds/GameScreen.png
@@ -142,7 +142,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/DeathRide/Backgrounds/GameScreen.png
 
 #begin Arcade/DeathRide/Backgrounds/Skyline.png
@@ -1043,7 +1043,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/HorsesAndGun/ground.png
 
 #begin Arcade/HorsesAndGun/gun.png
@@ -1523,7 +1523,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/HorsesAndGun/main_bg.png
 
 #begin Arcade/HorsesAndGun/main_logo.png
@@ -1778,7 +1778,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/Manuals/ManualBG.png
 
 #begin Arcade/Manuals/Overlay.png
@@ -1790,7 +1790,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/Manuals/Overlay.png
 
 #begin Arcade/Manuals/Selector.png
@@ -1935,7 +1935,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/WormWarp/Textures/SnakeBackground.png
 
 #begin Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
@@ -1947,7 +1947,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:Arcade/WormWarp/Textures/SnakeBackgroundAnimated.png
 
 #begin Arcade/WormWarp/Textures/SnakeBody.png
@@ -2319,7 +2319,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Arcade/ArcadeBG.png
 
 #begin BG/Arcade/ArcadeCabFlash.max
@@ -2439,7 +2439,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Buk/BG.png
 
 #begin BG/Buk/Buk.mlo
@@ -2457,7 +2457,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Cinematics/OpeningBG.png
 
 #begin BG/Heaven/Heaven.mlo
@@ -2472,7 +2472,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Heaven/HeavenBG.png
 
 #begin BG/Heaven/HeavenHub.mlo
@@ -2592,7 +2592,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Hell/HellBG.png
 
 #begin BG/Hell/HellHub.mlo
@@ -3606,7 +3606,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color16Bit
 /build:BG/Lab/H401.png
 
 #begin BG/Lab/H402.mlo
@@ -3621,7 +3621,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/H402.png
 
 #begin BG/Lab/H403.mlo
@@ -3636,7 +3636,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/H403.png
 
 #begin BG/Lab/L401.mlo
@@ -3651,7 +3651,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L401.png
 
 #begin BG/Lab/L402.mlo
@@ -3666,7 +3666,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L402.png
 
 #begin BG/Lab/L403.mlo
@@ -3681,7 +3681,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L403.png
 
 #begin BG/Lab/L404.mlo
@@ -3696,7 +3696,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L404.png
 
 #begin BG/Lab/L405.mlo
@@ -3711,7 +3711,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L405.png
 
 #begin BG/Lab/L406.mlo
@@ -3726,7 +3726,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L406.png
 
 #begin BG/Lab/L407.mlo
@@ -3741,7 +3741,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L407.png
 
 #begin BG/Lab/L408.mlo
@@ -3756,7 +3756,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L408.png
 
 #begin BG/Lab/L409.mlo
@@ -3771,7 +3771,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L409.png
 
 #begin BG/Lab/L410.mlo
@@ -3786,7 +3786,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L410.png
 
 #begin BG/Lab/L411.mlo
@@ -3801,7 +3801,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L411.png
 
 #begin BG/Lab/L412.mlo
@@ -3816,7 +3816,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L412.png
 
 #begin BG/Lab/L413.mlo
@@ -3831,7 +3831,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L413.png
 
 #begin BG/Lab/L414.mlo
@@ -3846,7 +3846,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L414.png
 
 #begin BG/Lab/L415.mlo
@@ -3861,7 +3861,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Lab/L415.png
 
 #begin BG/Lab/WashingMachine/Spin1.png
@@ -3924,7 +3924,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Library/BG.png
 
 #begin BG/Library/BigCog.png
@@ -3963,7 +3963,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Mirror/BG.png
 
 #begin BG/Mirror/BushFace.png
@@ -4047,7 +4047,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Mountain/BGSummer.png
 
 #begin BG/Mountain/BGWinter.png
@@ -4059,7 +4059,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Mountain/BGWinter.png
 
 #begin BG/Mountain/ClockFace.png
@@ -4071,7 +4071,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/Mountain/ClockFace.png
 
 #begin BG/Mountain/LevelFrame.png
@@ -4182,7 +4182,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/SteamPlant/BG1.png
 
 #begin BG/SteamPlant/BG2.png
@@ -4194,7 +4194,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/SteamPlant/BG2.png
 
 #begin BG/SteamPlant/Dial1.png
@@ -4491,7 +4491,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/WW7/CityBG.png
 
 #begin BG/WW7/CityForeground.png
@@ -4503,7 +4503,7 @@
 /processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/WW7/CityForeground.png
 
 #begin BG/WW7/Clouds0.png
@@ -4680,7 +4680,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:BG/WW7/SewerBG.png
 
 #begin BG/WW7/TowerBlinker.max
@@ -13230,6 +13230,6 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 

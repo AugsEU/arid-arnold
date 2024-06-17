@@ -3,7 +3,7 @@ namespace AridArnold
 {
 	class SmokeEmitter : ParticleEmitter
 	{
-		static Color[] COLOR_TABLE = new Color[]
+		static Color[] SMOKE_COLORS = new Color[]
 		{
 			new Color(0x919191u),
 			new Color(0x565656u),
@@ -11,8 +11,16 @@ namespace AridArnold
 			new Color(0x202020u),
 		};
 
+		Color[] mColorPalette;
+
 		public SmokeEmitter(Vector2 source) : base(source)
 		{
+			mColorPalette = SMOKE_COLORS;
+		}
+
+		public SmokeEmitter(Vector2 source, Color[] palette) : base(source)
+		{
+			mColorPalette = palette;
 		}
 
 		public override void Update(GameTime gameTime)
@@ -25,7 +33,7 @@ namespace AridArnold
 			if(rng.PercentChance(EMIT_CHANCE))
 			{
 				byte textureIndex = (byte)(rng.GetIntRange(0, 4));
-				Color color = COLOR_TABLE[rng.GetIntRange(0, COLOR_TABLE.Length-1)];
+				Color color = SMOKE_COLORS[rng.GetIntRange(0, SMOKE_COLORS.Length-1)];
 
 				float xDiff = rng.GetFloatRange(-X_DIFF_VAR, X_DIFF_VAR);
 				Vector2 position = mSource;
