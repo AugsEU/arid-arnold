@@ -1,7 +1,7 @@
 ﻿
 namespace AridArnold
 {
-	class SmokeEmitter : ParticleEmitter
+	class BoxSmokeEmitter : ParticleEmitter
 	{
 		static Color[] SMOKE_COLORS = new Color[]
 		{
@@ -12,15 +12,18 @@ namespace AridArnold
 		};
 
 		Color[] mColorPalette;
+		Rect2f mRect;
 
-		public SmokeEmitter(Vector2 source) : base(source)
+		public BoxSmokeEmitter(Rect2f box)
 		{
 			mColorPalette = SMOKE_COLORS;
+			mRect = box;
 		}
 
-		public SmokeEmitter(Vector2 source, Color[] palette) : base(source)
+		public BoxSmokeEmitter(Rect2f box, Color[] palette)
 		{
 			mColorPalette = palette;
+			mRect = box;
 		}
 
 		public override void Update(GameTime gameTime)
@@ -36,7 +39,7 @@ namespace AridArnold
 				Color color = SMOKE_COLORS[rng.GetIntRange(0, SMOKE_COLORS.Length-1)];
 
 				float xDiff = rng.GetFloatRange(-X_DIFF_VAR, X_DIFF_VAR);
-				Vector2 position = mSource;
+				Vector2 position = mPoint;
 				Vector2 vel = new Vector2(xDiff / STACK_TIGHTNESS, -(rng.GetUnitFloat() * 2.0f + 0.5f));
 				position.X += xDiff;
 			

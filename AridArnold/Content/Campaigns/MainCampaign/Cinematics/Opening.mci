@@ -208,7 +208,7 @@
 		<!-- Barbara lands -->
 		<CC_SetActorProps frames="2000,6760">
 			<actor>Barbara</actor>
-			<tex>NPC/Barbara/Stand1</tex>
+			<tex>NPC/Barbara/Default</tex>
 			<facing>left</facing>
 		</CC_SetActorProps>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <animation variation="45.0">
-	<main>NPC/Barbara/Default</main>
-	<alt>NPC/Barbara/Itch.max</alt>
+	<main>NPC/LazyMan/Breathe.max</main>
+	<alt>NPC/LazyMan/Itch.max</alt>
 </animation>

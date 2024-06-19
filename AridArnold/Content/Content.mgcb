@@ -8976,59 +8976,8 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/Land1.png
 
-#begin NPC/Barbara/LookUp.max
-/copy:NPC/Barbara/LookUp.max
-
-#begin NPC/Barbara/LookUp1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/LookUp1.png
-
-#begin NPC/Barbara/LookUp2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/LookUp2.png
-
-#begin NPC/Barbara/Stand1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/Stand1.png
-
 #begin NPC/Barbara/StandTalk.max
 /copy:NPC/Barbara/StandTalk.max
-
-#begin NPC/Barbara/StandTalk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/StandTalk1.png
 
 #begin NPC/Barbara/TalkAngry.png
 /importer:TextureImporter
@@ -9053,21 +9002,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Barbara/TalkNormal.png
-
-#begin NPC/Barbara/Toe.max
-/copy:NPC/Barbara/Toe.max
-
-#begin NPC/Barbara/ToeExtend1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Barbara/ToeExtend1.png
 
 #begin NPC/BoilerMan/BoilerMan.mtn
 /copy:NPC/BoilerMan/BoilerMan.mtn
@@ -10328,6 +10262,90 @@
 
 #begin NPC/Vagabond/Vagabond.mtn
 /copy:NPC/Vagabond/Vagabond.mtn
+
+#begin NPC/Witch/Breathe.max
+/copy:NPC/Witch/Breathe.max
+
+#begin NPC/Witch/Breathe1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Witch/Breathe1.png
+
+#begin NPC/Witch/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Witch/Default.png
+
+#begin NPC/Witch/Idle.mia
+/copy:NPC/Witch/Idle.mia
+
+#begin NPC/Witch/Itch.max
+/copy:NPC/Witch/Itch.max
+
+#begin NPC/Witch/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Witch/Itch1.png
+
+#begin NPC/Witch/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Witch/TalkAngry.png
+
+#begin NPC/Witch/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Witch/TalkNormal.png
+
+#begin NPC/Witch/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Witch/Walk1.png
+
+#begin NPC/Witch/Witch.mtn
+/copy:NPC/Witch/Witch.mtn
 
 #begin NPC/Zippy/Default.png
 /importer:TextureImporter

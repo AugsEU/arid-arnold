@@ -4,13 +4,13 @@ namespace AridArnold
 	internal class FireBarrel : Entity
 	{
 		Animator mFireAnim;
-		SmokeEmitter mSmokeEmitter;
+		PointSmokeEmitter mSmokeEmitter;
 
 		public FireBarrel(Vector2 pos) : base(pos)
 		{
 			mPosition.Y -= 7.0f;
 			Vector2 smokePos = mPosition + new Vector2(5.0f, 7.0f);
-			mSmokeEmitter = new SmokeEmitter(smokePos);
+			mSmokeEmitter = new PointSmokeEmitter(smokePos);
 		}
 
 		public override void LoadContent()
