@@ -262,7 +262,8 @@ namespace WormWarp
 				int NewEdge = 0;
 				do
 				{
-					NewEdge = edges[Utilities.RNG.Next(0, edges.Count)];
+					AridArnold.MonoRandom rng = AridArnold.RandomManager.I.GetWorld();
+					NewEdge = edges[rng.GetIntRange(0, edges.Count-1)];
 					out_pos = GenerateEdgePos(offset, NewEdge);
 					edges.Remove(NewEdge);
 

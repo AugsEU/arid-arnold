@@ -6,8 +6,6 @@ namespace WormWarp
 {
 	class Utilities
 	{
-		static public Random RNG = new Random();
-
 		static public Rectangle getBounds(Vector2 Offset, int x, int y, int bwidth, int bheight)
 		{
 			return new Rectangle((int)Offset.X + x * bwidth, (int)Offset.Y + y * bheight, bwidth, bheight);

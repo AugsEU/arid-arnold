@@ -9762,18 +9762,6 @@
 /processorParam:TextureFormat=Color
 /build:NPC/LazyMan/TalkNormal.png
 
-#begin NPC/LazyMan/Walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/LazyMan/Walk1.png
-
 #begin NPC/Poisson/Breathe.max
 /copy:NPC/Poisson/Breathe.max
 
@@ -10263,21 +10251,6 @@
 #begin NPC/Vagabond/Vagabond.mtn
 /copy:NPC/Vagabond/Vagabond.mtn
 
-#begin NPC/Witch/Breathe.max
-/copy:NPC/Witch/Breathe.max
-
-#begin NPC/Witch/Breathe1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Witch/Breathe1.png
-
 #begin NPC/Witch/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -10293,9 +10266,6 @@
 #begin NPC/Witch/Idle.mia
 /copy:NPC/Witch/Idle.mia
 
-#begin NPC/Witch/Itch.max
-/copy:NPC/Witch/Itch.max
-
 #begin NPC/Witch/Itch1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -10307,6 +10277,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Witch/Itch1.png
+
+#begin NPC/Witch/Move.max
+/copy:NPC/Witch/Move.max
 
 #begin NPC/Witch/TalkAngry.png
 /importer:TextureImporter
@@ -10331,18 +10304,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Witch/TalkNormal.png
-
-#begin NPC/Witch/Walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Witch/Walk1.png
 
 #begin NPC/Witch/Witch.mtn
 /copy:NPC/Witch/Witch.mtn

@@ -359,12 +359,12 @@ namespace DeathRide
 
 			if (x_far < x_near)
 			{
-				MonoAlg.Swap(ref x_near, ref x_far);
+				AridArnold.MonoAlg.Swap(ref x_near, ref x_far);
 			}
 
 			if (y_far < y_near)
 			{
-				MonoAlg.Swap(ref y_near, ref y_far);
+				AridArnold.MonoAlg.Swap(ref y_near, ref y_far);
 			}
 
 

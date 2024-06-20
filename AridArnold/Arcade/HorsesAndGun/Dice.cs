@@ -33,8 +33,9 @@ namespace HorsesAndGun
 
 		public void Roll()
 		{
-			int Rand1 = RandomManager.I.GetIntInRange(1, 6);
-			int Rand2 = RandomManager.I.GetIntInRange(1, 6);
+			AridArnold.MonoRandom rng = AridArnold.RandomManager.I.GetWorld();
+			int Rand1 = rng.GetIntRange(1, 6);
+			int Rand2 = rng.GetIntRange(1, 6);
 
 			mValue = Math.Min(Rand1, Rand2);
 		}

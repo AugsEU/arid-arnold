@@ -70,8 +70,9 @@
 		{
 			while (TWIDTH * THEIGHT > mSnake.Positions.Count)
 			{
-				int x = Utilities.RNG.Next(0, TWIDTH);
-				int y = Utilities.RNG.Next(0, THEIGHT);
+				AridArnold.MonoRandom rng = AridArnold.RandomManager.I.GetWorld();
+				int x = rng.GetIntRange(0, TWIDTH - 1);
+				int y = rng.GetIntRange(0, THEIGHT - 1);
 
 				mApple.position = new Vector2(x, y);
 				mApple.type = type;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <animation variation="45.0">
-	<main>NPC/LazyMan/Breathe.max</main>
-	<alt>NPC/LazyMan/Itch.max</alt>
+	<main>NPC/Witch/Default</main>
+	<alt>NPC/Witch/Move.max</alt>
 </animation>

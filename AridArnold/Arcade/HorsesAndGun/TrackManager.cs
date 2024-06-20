@@ -335,22 +335,24 @@ namespace HorsesAndGun
 
 		private TrackTile CreateNextTrackTile(int trackNum)
 		{
+			AridArnold.MonoRandom rng = AridArnold.RandomManager.I.GetWorld();
+
 			//Ensure baseline
-			if (RandomManager.I.GetRandBool(15))
+			if (rng.PercentChance(15.0f))
 			{
 				return new BasicTile(mContentManager);
 			}
 
 			//Plus tile
-			if (RandomManager.I.GetRandBool(20))
+			if (rng.PercentChance(20.0f))
 			{
 				int moveAmount = 1;
 				switch (trackNum)
 				{
-					case 0: moveAmount = RandomManager.I.GetIntInRange(2, 3); break;
-					case 1: moveAmount = RandomManager.I.GetIntInRange(2, 3); break;
-					case 2: moveAmount = RandomManager.I.GetIntInRange(1, 3); break;
-					case 3: moveAmount = RandomManager.I.GetIntInRange(1, 2); break;
+					case 0: moveAmount = rng.GetIntRange(2, 3); break;
+					case 1: moveAmount = rng.GetIntRange(2, 3); break;
+					case 2: moveAmount = rng.GetIntRange(1, 3); break;
+					case 3: moveAmount = rng.GetIntRange(1, 2); break;
 					case 4: moveAmount = 1; break;
 				}
 
@@ -358,15 +360,15 @@ namespace HorsesAndGun
 			}
 
 			//Up down
-			if (RandomManager.I.GetRandBool(35))
+			if (rng.PercentChance(35.0f))
 			{
 				bool goUp = true;
 				switch (trackNum)
 				{
 					case 0: goUp = false; break;
-					case 1: goUp = RandomManager.I.GetRandBool(20); break;
-					case 2: goUp = RandomManager.I.GetRandBool(60); break;
-					case 3: goUp = RandomManager.I.GetRandBool(90); break;
+					case 1: goUp = rng.PercentChance(20.0f); break;
+					case 2: goUp = rng.PercentChance(60.0f); break;
+					case 3: goUp = rng.PercentChance(90.0f); break;
 					case 4: goUp = true; break;
 				}
 
@@ -374,36 +376,36 @@ namespace HorsesAndGun
 			}
 
 			//Score
-			if (RandomManager.I.GetRandBool(40))
+			if (rng.PercentChance(40.0f))
 			{
 				bool forReal = true;
 				switch (trackNum)
 				{
 					case 0: forReal = true; break;
-					case 1: forReal = RandomManager.I.GetRandBool(95); break;
-					case 2: forReal = RandomManager.I.GetRandBool(80); break;
-					case 3: forReal = RandomManager.I.GetRandBool(70); break;
-					case 4: forReal = RandomManager.I.GetRandBool(60); break;
+					case 1: forReal = rng.PercentChance(95.0f); break;
+					case 2: forReal = rng.PercentChance(80.0f); break;
+					case 3: forReal = rng.PercentChance(70.0f); break;
+					case 4: forReal = rng.PercentChance(60.0f); break;
 				}
 
 				if (forReal)
 				{
-					return new ScoreTile(mContentManager, RandomManager.I.GetRandBool(50));
+					return new ScoreTile(mContentManager, rng.PercentChance(50));
 				}
 			}
 
 
 			//Fast reload
-			if (RandomManager.I.GetRandBool(40))
+			if (rng.PercentChance(40.0f))
 			{
 				bool forReal = true;
 				switch (trackNum)
 				{
 					case 0: forReal = true; break;
-					case 1: forReal = RandomManager.I.GetRandBool(95); break;
-					case 2: forReal = RandomManager.I.GetRandBool(80); break;
-					case 3: forReal = RandomManager.I.GetRandBool(70); break;
-					case 4: forReal = RandomManager.I.GetRandBool(60); break;
+					case 1: forReal = rng.PercentChance(95.0f); break;
+					case 2: forReal = rng.PercentChance(80.0f); break;
+					case 3: forReal = rng.PercentChance(70.0f); break;
+					case 4: forReal = rng.PercentChance(60.0f); break;
 				}
 
 				if (forReal)
@@ -413,15 +415,15 @@ namespace HorsesAndGun
 			}
 
 			//Death
-			if (RandomManager.I.GetRandBool(50))
+			if (rng.PercentChance(50.0f))
 			{
 				bool forReal = true;
 				switch (trackNum)
 				{
-					case 0: forReal = RandomManager.I.GetRandBool(40); break;
-					case 1: forReal = RandomManager.I.GetRandBool(50); break;
-					case 2: forReal = RandomManager.I.GetRandBool(60); break;
-					case 3: forReal = RandomManager.I.GetRandBool(90); break;
+					case 0: forReal = rng.PercentChance(40.0f); break;
+					case 1: forReal = rng.PercentChance(50.0f); break;
+					case 2: forReal = rng.PercentChance(60.0f); break;
+					case 3: forReal = rng.PercentChance(90.0f); break;
 					case 4: forReal = true; break;
 				}
 

@@ -33,6 +33,8 @@
 		Texture2D mAngryTexture;
 		Texture2D mMouthClosedTexture;
 
+
+
 		// Talking
 		bool mTalking;
 		string mTalkText;

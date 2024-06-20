@@ -70,16 +70,16 @@
 
 			mShootBulletTimer = new MonoTimer();
 			mShootBulletTimer.Start();
-			mShootDuration = RandomManager.I.GetWorld().GetFloatRange(3500.0f, 12000.0f);
+			mShootDuration = AridArnold.RandomManager.I.GetWorld().GetFloatRange(3500.0f, 12000.0f);
 
-			mDirectShotTimer = new PercentageTimer(DIRECT_SHOT_TIMEOUT + RandomManager.I.GetWorld().GetFloatRange(200.0f, 800.0f));
+			mDirectShotTimer = new PercentageTimer(DIRECT_SHOT_TIMEOUT + AridArnold.RandomManager.I.GetWorld().GetFloatRange(200.0f, 800.0f));
 			mDirectShotTimer.Start();
 
 			mDeadTimer = new PercentageTimer(DEATH_FLASH_TIME);
 
 			if (RunManager.I.GetRounds() > 3)
 			{
-				mIsUzi = RandomManager.I.GetWorld().PercentChance(30.0f);
+				mIsUzi = AridArnold.RandomManager.I.GetWorld().PercentChance(30.0f);
 			}
 		}
 
@@ -171,11 +171,11 @@
 
 				if (mIsUzi)
 				{
-					mShootDuration = RandomManager.I.GetWorld().GetFloatRange(1000.0f, 3000.0f);
+					mShootDuration = AridArnold.RandomManager.I.GetWorld().GetFloatRange(1000.0f, 3000.0f);
 				}
 				else
 				{
-					mShootDuration = RandomManager.I.GetWorld().GetFloatRange(2500.0f, 5000.0f);
+					mShootDuration = AridArnold.RandomManager.I.GetWorld().GetFloatRange(2500.0f, 5000.0f);
 				}
 
 				if(mCurrentTeam == AITeam.Ally)
@@ -246,11 +246,11 @@
 			{
 				if (mStopped)
 				{
-					mStopDuration = RandomManager.I.GetWorld().GetFloatRange(1500.0f, 2500.0f);
+					mStopDuration = AridArnold.RandomManager.I.GetWorld().GetFloatRange(1500.0f, 2500.0f);
 				}
 				else
 				{
-					mStopDuration = RandomManager.I.GetWorld().GetFloatRange(10500.0f, 25500.0f);
+					mStopDuration = AridArnold.RandomManager.I.GetWorld().GetFloatRange(10500.0f, 25500.0f);
 				}
 			}
 
@@ -336,9 +336,9 @@
 
 			mCurrentTarget = AITargetManager.I.GiveMeATarget();
 
-			if (RandomManager.I.GetWorld().PercentChance(10.0f))
+			if (AridArnold.RandomManager.I.GetWorld().PercentChance(10.0f))
 			{
-				mStopDuration = RandomManager.I.GetWorld().GetFloatRange(1500.0f, 2500.0f);
+				mStopDuration = AridArnold.RandomManager.I.GetWorld().GetFloatRange(1500.0f, 2500.0f);
 				mStopped = true;
 				mStopTimer.Reset();
 			}

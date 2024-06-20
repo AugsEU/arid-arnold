@@ -11,7 +11,7 @@
 		List<Animator> mVariationAnims;
 		int mCurrentVariation;
 		float mVariationChance;
-		MonoRandom mRandom;
+		AridArnold.MonoRandom mRandom;
 
 		#endregion rMembers
 
@@ -31,7 +31,7 @@
 			mVariationAnims = new List<Animator>();
 			mCurrentVariation = -1;
 
-			mRandom = new MonoRandom();
+			mRandom = new AridArnold.MonoRandom();
 
 			foreach (Animator animator in variationAnimators)
 			{

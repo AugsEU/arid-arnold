@@ -81,8 +81,6 @@
 
 		void SpawnInitialEntities()
 		{
-			RandomManager.I.GetWorld().ChugNumber(DateTime.Now.Millisecond);
-
 			AITargetManager.I.Init();
 			Vector2 playerSpawn = new Vector2(100.0f, 400.0f);
 			mPlayer = new Player(playerSpawn, 0.0f);

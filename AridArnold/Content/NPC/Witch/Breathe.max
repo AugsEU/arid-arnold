@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<animation type="oneshot">
-	<texture time="0.9">NPC/LazyMan/Default</texture>
-	<texture time="0.9">NPC/LazyMan/Breathe1</texture>
-</animation>

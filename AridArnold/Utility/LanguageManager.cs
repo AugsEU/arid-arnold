@@ -112,7 +112,6 @@
 				return "";
 			}
 
-
 			string rawText;
 
 			if (!mKeyCache.TryGetValue(ID, out rawText))

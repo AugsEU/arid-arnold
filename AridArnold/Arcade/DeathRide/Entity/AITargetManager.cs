@@ -46,7 +46,7 @@
 
 		Vector2 GetRandomPoint()
 		{
-			return RandomManager.I.GetWorld().GetRandomPoint(TARGET_AREA);
+			return AridArnold.RandomManager.I.GetWorld().PointIn(TARGET_AREA);
 		}
 
 		public void ReportReachedPoint(Vector2 point)

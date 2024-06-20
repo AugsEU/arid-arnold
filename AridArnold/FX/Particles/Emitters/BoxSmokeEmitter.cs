@@ -3,48 +3,40 @@ namespace AridArnold
 {
 	class BoxSmokeEmitter : ParticleEmitter
 	{
-		static Color[] SMOKE_COLORS = new Color[]
-		{
-			new Color(0x919191u),
-			new Color(0x565656u),
-			new Color(0x2A2A2Au),
-			new Color(0x202020u),
-		};
-
-		Color[] mColorPalette;
 		Rect2f mRect;
 
-		public BoxSmokeEmitter(Rect2f box)
+		public BoxSmokeEmitter(Rect2f box, float emitStr = DEFAULT_EMIT_STR) : base(EmitterColors.SMOKE_COLORS, emitStr)
 		{
-			mColorPalette = SMOKE_COLORS;
 			mRect = box;
 		}
 
-		public BoxSmokeEmitter(Rect2f box, Color[] palette)
+		public BoxSmokeEmitter(Rect2f box, Color[] palette, float emitStr = DEFAULT_EMIT_STR) : base(palette, emitStr)
 		{
-			mColorPalette = palette;
 			mRect = box;
 		}
 
 		public override void Update(GameTime gameTime)
 		{
-			const float STACK_TIGHTNESS = 15.0f;
-			const float EMIT_CHANCE = 6.0f;
-			const float X_DIFF_VAR = 3.0f;
+			const float X_DIFF_VAR = 0.2f;
 
 			MonoRandom rng = RandomManager.I.GetDraw();
-			if(rng.PercentChance(EMIT_CHANCE))
-			{
-				byte textureIndex = (byte)(rng.GetIntRange(0, 4));
-				Color color = SMOKE_COLORS[rng.GetIntRange(0, SMOKE_COLORS.Length-1)];
 
-				float xDiff = rng.GetFloatRange(-X_DIFF_VAR, X_DIFF_VAR);
-				Vector2 position = mPoint;
-				Vector2 vel = new Vector2(xDiff / STACK_TIGHTNESS, -(rng.GetUnitFloat() * 2.0f + 0.5f));
-				position.X += xDiff;
-			
-				Particle newParticle = new Particle(color, position, vel, textureIndex, SmokeParticleSet.SMOKE_LIFETIME);
-				ParticleManager.I.AddParticle(ref newParticle, ParticleManager.ParticleType.kSmoke);
+			float triggerTimes = mRect.Height * mRect.Width / 2.0f;
+
+			for(float t = 0.0f; t < triggerTimes; t++)
+			{
+				Vector2 position = rng.PointIn(mRect);
+				if (ShouldTrigger(rng))
+				{
+					byte textureIndex = (byte)(rng.GetIntRange(0, 4));
+					Color color = GetRndColor(rng);
+
+					float xDiff = rng.GetFloatRange(-X_DIFF_VAR, X_DIFF_VAR);
+
+					Vector2 vel = new Vector2(xDiff, -(rng.GetUnitFloat() * 2.0f + 0.5f));
+					Particle newParticle = new Particle(color, position, vel, textureIndex, SmokeParticleSet.SMOKE_LIFETIME);
+					ParticleManager.I.AddParticle(ref newParticle, ParticleManager.ParticleType.kSmoke);
+				}
 			}
 		}
 	}

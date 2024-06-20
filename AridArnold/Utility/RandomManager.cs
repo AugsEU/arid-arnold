@@ -35,7 +35,8 @@
 		/// </summary>
 		public MonoRandom()
 		{
-			mSeed = new Random().Next();
+			// Get ingame time as seed. This is deterministic.
+			mSeed = InputManager.I.GetNumberOfInputFrames();
 		}
 
 
@@ -85,9 +86,14 @@
 
 			mSeed = (A * lo) - (R * hi);
 
-			if (mSeed <= 0)
+			if (mSeed < 0)
 			{
 				mSeed = mSeed + M;
+			}
+			
+			if(mSeed == 0)
+			{
+				mSeed = 1;
 			}
 
 			return mSeed;
@@ -149,6 +155,32 @@
 		public bool PercentChance(float percent)
 		{
 			return GetFloatRange(0.0f, 100.0f) < percent;
+		}
+
+
+
+		/// <summary>
+		/// Gets point in rectangle
+		/// </summary>
+		public Vector2 PointIn(Rect2f rect)
+		{
+			float x = GetFloatRange(rect.min.X, rect.max.X);
+			float y = GetFloatRange(rect.min.Y, rect.max.Y);
+
+			return new Vector2(x, y);
+		}
+
+
+
+		/// <summary>
+		/// Gets point in rectangle
+		/// </summary>
+		public Vector2 PointIn(Rectangle rect)
+		{
+			float x = GetFloatRange(rect.X, rect.X + rect.Width);
+			float y = GetFloatRange(rect.Y, rect.Y + rect.Height);
+
+			return new Vector2(x, y);
 		}
 
 		#endregion rAccessors

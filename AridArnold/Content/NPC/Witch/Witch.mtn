@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <simpleTalkNPC>
-	<name>Scholar</name>
+	<name>Witch</name>
 	<textStyle>
-		<fillColor>1E1E1EA2</fillColor>
-		<borderColor>382222</borderColor>
+		<fillColor>2A1223A2</fillColor>
+		<borderColor>7325c6</borderColor>
 	</textStyle>
+	<emitters>
+		<emitter type="SmokeBox">
+			<x></x>
+			<y></y>
+			<width></width>
+			<height></height>
+			<colors>
+				<color></color>
+				<color></color>
+				<color></color>
+				<color></color>
+			</colors>
+			<intensity>4.0</intensity>
+		</emitter>
+	</emitters>
 </simpleTalkNPC>
