@@ -93,6 +93,19 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Parse point from xml node. Default = zero
+		/// </summary>
+		static public Rect2f GetRect2f(XmlNode node)
+		{
+			XmlNode wNode = node.SelectSingleNode("width");
+			XmlNode hNode = node.SelectSingleNode("height");
+
+			return new Rect2f(GetVector(node), GetFloat(wNode), GetFloat(hNode));
+		}
+
+
+
+		/// <summary>
 		/// Parse draw layer from xml node. Default = Default Layer
 		/// </summary>
 		static public DrawLayer GetDrawLayer(XmlNode node, DrawLayer defaultVal = DrawLayer.Default)

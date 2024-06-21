@@ -6,18 +6,14 @@
 		<borderColor>7325c6</borderColor>
 	</textStyle>
 	<emitters>
-		<emitter type="SmokeBox">
-			<x></x>
-			<y></y>
-			<width></width>
-			<height></height>
+		<emitter type="SmokePoint">
+			<x>9.0</x>
+			<y>-3.0</y>
 			<colors>
-				<color></color>
-				<color></color>
-				<color></color>
-				<color></color>
+				<color>7325C6</color>
+				<color>8E5CC4</color>
 			</colors>
-			<intensity>4.0</intensity>
+			<intensity>4.2</intensity>
 		</emitter>
 	</emitters>
 </simpleTalkNPC>

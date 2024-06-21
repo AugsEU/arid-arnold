@@ -34,5 +34,38 @@
 		}
 
 		public abstract void Update(GameTime gameTime);
+
+		public abstract void SetPos(Vector2 origin);
+
+
+		public abstract Vector2 GetPos();
+
+		public static ParticleEmitter FromXML(XmlNode node)
+		{
+			string type = node.Attributes["type"].Value.ToLower();
+
+			XmlNode colorsNode = node["colors"];
+
+			List<Color> colors = new List<Color>();
+			foreach(XmlNode colorNode in colorsNode.ChildNodes)
+			{
+				colors.Add(MonoParse.GetColor(colorNode, Color.White));
+			}
+
+			float intensity = MonoParse.GetFloat(node["intensity"]);
+			Color[] palette = colors.ToArray();
+
+			switch (type)
+			{
+				case "smokebox":
+					return BoxSmokeEmitter.FromXML(node, palette, intensity);
+				case "smokepoint":
+					return PointSmokeEmitter.FromXML(node, palette, intensity);
+				default:
+					break;
+			}
+
+			throw new NotImplementedException();
+		}
 	}
 }

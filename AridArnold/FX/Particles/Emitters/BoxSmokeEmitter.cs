@@ -39,5 +39,24 @@ namespace AridArnold
 				}
 			}
 		}
+
+		public static BoxSmokeEmitter FromXML(XmlNode node, Color[] palette, float intensity)
+		{
+			Rect2f box = MonoParse.GetRect2f(node);
+
+			return new BoxSmokeEmitter(box, palette, intensity);
+		}
+
+		public override void SetPos(Vector2 origin)
+		{
+			Vector2 offset = mRect.max - mRect.min;
+			mRect.min = origin;
+			mRect.max = origin + offset;
+		}
+
+		public override Vector2 GetPos()
+		{
+			return mRect.min;
+		}
 	}
 }

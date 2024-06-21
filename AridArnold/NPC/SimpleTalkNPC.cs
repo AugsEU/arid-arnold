@@ -33,7 +33,8 @@
 		Texture2D mAngryTexture;
 		Texture2D mMouthClosedTexture;
 
-
+		// Particles
+		List<ParticleEmitter> mAuxEmitters;
 
 		// Talking
 		bool mTalking;
@@ -70,7 +71,7 @@
 			mWalkSpeed = WALK_SPEED;
 			mIsWalkingType = false;
 
-
+			mAuxEmitters = new List<ParticleEmitter>();
 		}
 
 
@@ -119,7 +120,39 @@
 				}
 			}
 
+			XmlNode emittersNode = rootNode["emitters"];
+			if(emittersNode is not null)
+			{
+				LoadEmitters(emittersNode);
+			}
+
 			base.LoadContent();
+		}
+
+
+
+		/// <summary>
+		/// Load particle emitters
+		/// </summary>
+		void LoadEmitters(XmlNode emittersNode)
+		{
+			foreach(XmlNode emitterNode in  emittersNode.ChildNodes)
+			{
+				ParticleEmitter emitter = ParticleEmitter.FromXML(emitterNode);
+
+				// Assumes gravity is down...
+				Vector2 relativePos = emitter.GetPos();
+				if(mPrevDirection == WalkDirection.Left)
+				{
+					relativePos.X = ColliderBounds().Width - relativePos.X;
+				}
+
+				relativePos += mPosition;
+
+				emitter.SetPos(relativePos);
+
+				mAuxEmitters.Add(emitter);
+			}
 		}
 
 
@@ -220,6 +253,10 @@
 			}
 
 			mIdleAnimation.Update(gameTime);
+			foreach(ParticleEmitter emitter in mAuxEmitters)
+			{
+				emitter.Update(gameTime);
+			}
 
 			base.Update(gameTime);
 		}

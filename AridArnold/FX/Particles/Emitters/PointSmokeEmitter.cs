@@ -20,7 +20,7 @@ namespace AridArnold
 			const float X_DIFF_VAR = 0.2f;
 
 			MonoRandom rng = RandomManager.I.GetDraw();
-			if(ShouldTrigger(rng))
+			if (ShouldTrigger(rng))
 			{
 				byte textureIndex = (byte)(rng.GetIntRange(0, 4));
 				Color color = GetRndColor(rng);
@@ -29,10 +29,27 @@ namespace AridArnold
 				Vector2 position = mPoint;
 				Vector2 vel = new Vector2(xDiff, -(rng.GetUnitFloat() * 2.0f + 0.5f));
 				position.X += xDiff;
-			
+
 				Particle newParticle = new Particle(color, position, vel, textureIndex, SmokeParticleSet.SMOKE_LIFETIME);
 				ParticleManager.I.AddParticle(ref newParticle, ParticleManager.ParticleType.kSmoke);
 			}
+		}
+
+		public static PointSmokeEmitter FromXML(XmlNode node, Color[] palette, float intensity)
+		{
+			Vector2 position = MonoParse.GetVector(node);
+			
+			return new PointSmokeEmitter(position, palette, intensity);
+		}
+
+		public override void SetPos(Vector2 origin)
+		{
+			mPoint = origin;
+		}
+
+		public override Vector2 GetPos()
+		{
+			return mPoint;
 		}
 	}
 }
