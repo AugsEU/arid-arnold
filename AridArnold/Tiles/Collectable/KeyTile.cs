@@ -13,9 +13,9 @@
 			base.LoadContent();
 		}
 
-		protected override PermanentCollectable GetCollectableType()
+		protected override CollectableCategory GetCollectableType()
 		{
-			return PermanentCollectable.Key;
+			return CollectableCategory.Key;
 		}
 
 		protected override void OnCollect()

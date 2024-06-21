@@ -125,7 +125,7 @@
 		/// </summary>
 		private void CheckCompletion()
 		{
-			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)PermanentCollectable.Door);
+			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)CollectableCategory.Door);
 		}
 
 

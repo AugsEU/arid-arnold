@@ -40,7 +40,7 @@
 		/// </summary>
 		public KeyDoor(Vector2 pos, int numRequired) : base(pos)
 		{
-			mHasKeysRequired = CollectableManager.I.GetNumCollected((UInt16)PermanentCollectable.Key) >= numRequired;
+			mHasKeysRequired = CollectableManager.I.GetNumCollected((UInt16)CollectableCategory.Key) >= numRequired;
 			mDisplayDigits = MonoMath.GetDigits(numRequired);
 			// Can't display more than 3 digits
 			MonoDebug.Assert(mDisplayDigits.Length <= 3);
@@ -142,7 +142,7 @@
 		/// </summary>
 		void UnlockDoor()
 		{
-			CollectableManager.I.CollectPermanentItem(mTileCoord, GetCollectType());
+			CollectableManager.I.CollectSpecificItem(GetCollectType(), mTileCoord);
 			mUnlockAnim.Play();
 			mIsUnlocking = true;
 		}
@@ -199,7 +199,7 @@
 
 		UInt16 GetCollectType()
 		{
-			return (UInt16)PermanentCollectable.LevelLock;
+			return (UInt16)CollectableCategory.LevelLock;
 		}
 
 		#endregion rCollect

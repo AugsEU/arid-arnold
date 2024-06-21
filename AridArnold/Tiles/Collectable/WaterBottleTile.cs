@@ -25,9 +25,9 @@
 			mGhostAnim = MonoData.I.LoadAnimator("Tiles/BottleGhost");
 		}
 
-		protected override PermanentCollectable GetCollectableType()
+		protected override CollectableCategory GetCollectableType()
 		{
-			return PermanentCollectable.WaterBottle;
+			return CollectableCategory.WaterBottle;
 		}
 
 		protected override void OnCollect()

@@ -13212,3 +13212,12 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Text/EN/NPC/Witch/LevelOne.txt
+/copy:Text/EN/NPC/Witch/LevelOne.txt
+
+#begin Text/EN/NPC/Witch/NoWater.txt
+/copy:Text/EN/NPC/Witch/NoWater.txt
+
+#begin Text/EN/NPC/Witch/ThirstQuench1.txt
+/copy:Text/EN/NPC/Witch/ThirstQuench1.txt
+

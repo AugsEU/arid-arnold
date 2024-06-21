@@ -1,6 +1,9 @@
 ﻿
 namespace AridArnold
 {
+	/// <summary>
+	/// Script used for testing.
+	/// </summary>
 	internal class CoinFlipScript : OneShotScript
 	{
 		public CoinFlipScript(SmartTextBlock parentBlock, string[] args) : base(parentBlock, args)

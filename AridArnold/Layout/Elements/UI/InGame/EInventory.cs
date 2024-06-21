@@ -61,13 +61,13 @@
 			Vector2 textPos = COLLECTIBLE_TEXT_ORIGIN + GetPosition();
 
 			// Water
-			int numWater = (int)CollectableManager.I.GetNumCollected(PermanentCollectable.WaterBottle);
+			int numWater = (int)CollectableManager.I.GetNumCollected(CollectableCategory.WaterBottle);
 			MonoDraw.DrawTextureDepthScale(info, mWaterBottleTexture, WATER_BOTTLE_OFFSET + GetPosition(), 2.0f, GetDepth());
 			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, PANEL_WHITE, numWater.ToString(), GetDepth());
 			textPos.X += 59.0f;
 
 			// Keys
-			int numKeys = (int)CollectableManager.I.GetNumCollected((UInt16)PermanentCollectable.Key);
+			int numKeys = (int)CollectableManager.I.GetNumCollected((UInt16)CollectableCategory.Key);
 			MonoDraw.DrawTextureDepthScale(info, mKeyTexture, KEY_OFFSET + GetPosition(), 2.0f, GetDepth());
 			MonoDraw.DrawStringCentred(info, mLargeFont, textPos, PANEL_WHITE, numKeys.ToString(), GetDepth());
 			textPos.X += 59.0f;

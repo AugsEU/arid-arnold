@@ -1,0 +1,4 @@
+﻿Want to double or nothing?
+{Str.InGame.PromptEnter}
+<ζ01[1][4][NPC.Witch.NoWater][]> 
+Well done!

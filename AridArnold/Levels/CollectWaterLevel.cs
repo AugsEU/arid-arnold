@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Level type where you have to collect water to win.
 	/// </summary>
-	class CollectWaterLevel : Level
+	class CollectWaterLevel : ChallengeLevel
 	{
 		#region rMembers
 
@@ -41,7 +41,7 @@
 		/// <returns>Level completion status</returns>
 		protected override void UpdateInternal(GameTime gameTime)
 		{
-			if (CollectableManager.I.GetNumCollected(TransientCollectable.WaterBottle) >= mNumWaterNeeded)
+			if (CollectableManager.I.GetNumTransient(TransientCollectable.WaterBottle) >= mNumWaterNeeded)
 			{
 				mLevelStatus = LevelStatus.Win;
 			}

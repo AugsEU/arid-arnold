@@ -4,9 +4,8 @@
 	{
 		#region rMembers
 
-		Item mRegenItem;
+		Item mItemAtLevelStart;
 		Item mActiveItem;
-		int mCoinsOwed;
 
 		#endregion rMembers
 
@@ -17,24 +16,10 @@
 		#region rInit
 
 		/// <summary>
-		/// Called when a level sequence starts
-		/// </summary>
-		public void SequenceBegin()
-		{
-			mCoinsOwed = 0;
-		}
-
-
-
-		/// <summary>
 		/// Called when a level sequence ends.
 		/// </summary>
-		public void SequenceEnd(bool success)
+		public void SequenceEnd()
 		{
-			if (success == false)
-			{
-				RefundMoney(mCoinsOwed);
-			}
 			mActiveItem = null;
 		}
 
@@ -44,7 +29,7 @@
 		/// </summary>
 		public void LevelBegin()
 		{
-			mRegenItem = mActiveItem;
+			mItemAtLevelStart = mActiveItem;
 		}
 
 
@@ -54,12 +39,12 @@
 		/// </summary>
 		public void LevelEnd(bool success)
 		{
-			if (mRegenItem is not null && mRegenItem.RegenerateAfterDeath())
+			if (mItemAtLevelStart is not null && mItemAtLevelStart.RegenerateAfterDeath())
 			{
 				// Regenerate the item
 				if (!success)
 				{
-					mActiveItem = mRegenItem;
+					mActiveItem = mItemAtLevelStart;
 				}
 			}
 		}
@@ -78,7 +63,7 @@
 		void SpendMoney(int amount)
 		{
 			UInt16 coinID = CampaignManager.I.GetCurrCoinID();
-			CollectableManager.I.ChangePermanentItem(coinID, -amount);
+			CollectableManager.I.IncPermanentCount(coinID, -amount);
 		}
 
 
@@ -141,7 +126,6 @@
 
 			mActiveItem = item;
 			SpendMoney(item.GetPrice());
-			mCoinsOwed += item.GetPrice();
 
 			string spendStr = LanguageManager.I.GetText("InGame.Spent") + mActiveItem.GetPrice();
 			FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.Crimson, tickerPos, spendStr, 2.0f, 10.0f, 40.0f);
@@ -155,7 +139,6 @@
 		void RefundItem(Item item)
 		{
 			RefundMoney(item.GetPrice());
-			mCoinsOwed -= item.GetPrice();
 		}
 
 		#endregion rPurchase

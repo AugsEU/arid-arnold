@@ -16,9 +16,9 @@
 			base.LoadContent();
 		}
 
-		protected override PermanentCollectable GetCollectableType()
+		protected override CollectableCategory GetCollectableType()
 		{
-			return PermanentCollectable.Coin;
+			return CollectableCategory.Coin;
 		}
 
 		protected override byte GetImplByte()

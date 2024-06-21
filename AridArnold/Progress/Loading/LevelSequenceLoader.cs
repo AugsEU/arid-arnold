@@ -14,6 +14,7 @@
 			Level nextLevel = CampaignManager.I.GetNextLevelInSequence();
 			MonoDebug.Assert(nextLevel != null);
 			LoadLevel(nextLevel);
+			CollectableManager.I.NotifyLevelBegin();
 
 			GoToFadeIn();
 		}

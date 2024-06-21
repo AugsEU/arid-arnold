@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Level where you collect a flag to win.
 	/// </summary>
-	class CollectKeyLevel : Level
+	class CollectKeyLevel : ChallengeLevel
 	{
 		#region rInitialisation
 

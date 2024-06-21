@@ -1,26 +1,10 @@
 ﻿namespace AridArnold
 {
-	/// <summary>
-	/// Types of objects we can collect that are gone at the end of the level
-	/// </summary>
-	enum TransientCollectable
-	{
-		WaterBottle,
-		Flag
-	}
-
-	enum PermanentCollectable : byte
-	{
-		Key,
-		Door,
-		LevelLock,
-		Coin,
-		WaterBottle
-	}
-
-
-
-
+	// A collectable ID represents a type of collectable.
+	// First 8 bytes are the category of collectable.
+	// Next 8 bytes are the "implementation", used for sub-types.
+	// Coins are all the same category but use the "implementation" for their sub-type
+	using CollectableID = UInt16;
 
 	/// <summary>
 	/// Manages all items collected within a level and outside
@@ -29,11 +13,12 @@
 	{
 		#region rMembers
 
+		// These are cleared at the end of the level. Mainly used to keep track of level objectives
 		Dictionary<TransientCollectable, uint> mTransientCollectables = new Dictionary<TransientCollectable, uint>();
 
-		// Note: UInt16 == PermaenetCollectable type but C# has no type def >:| very angry bad language why
-		Dictionary<UInt16, uint> mPermanentCollectables = new Dictionary<UInt16, uint>();
-		HashSet<UInt64> mSpecificCollected = new HashSet<UInt64>();
+		PermanentCollectableState mCurrent = new PermanentCollectableState();
+		PermanentCollectableState mStartSequence = new PermanentCollectableState();
+		PermanentCollectableState mStartLevel = new PermanentCollectableState();
 
 		#endregion rMembers
 
@@ -46,8 +31,133 @@
 		/// <summary>
 		/// Collect an item of a certain type
 		/// </summary>
-		/// <param name="type">Type of collectable</param>
-		/// <param name="number"></param>
+		public void CollectSpecificItem(CollectableID type, Point pos)
+		{
+			int levelID = CampaignManager.I.GetCurrentLevel().GetID();
+			SpecificCollectableID specificID = new SpecificCollectableID(type, pos, levelID);
+			bool addedResult = mCurrent.mSpecificCollected.Add(specificID);
+
+			if(addedResult)
+			{
+				// This was a new collectable, increment count.
+				IncPermanentCount(type, 1);
+			}
+			else
+			{
+				MonoDebug.Log("Warning: Re-collecting permanent collectable.");
+			}
+		}
+
+
+
+		/// <summary>
+		/// Gain or remove from permanent count
+		/// </summary>
+		public void IncPermanentCount(CollectableID type, int delta)
+		{
+			if (mCurrent.mCollectableCounts.TryGetValue(type, out uint currentCount))
+			{
+				MonoDebug.Assert(delta >= 0 || currentCount >= -delta);
+				mCurrent.mCollectableCounts[type] = (uint)(currentCount + delta);
+			}
+			else
+			{
+				MonoDebug.Assert(delta >= 0);
+				mCurrent.mCollectableCounts.Add(type, (uint)delta);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Set permanent count
+		/// </summary>
+		public void SetPermanentCount(CollectableID type, uint num)
+		{
+			mCurrent.mCollectableCounts[type] = num;
+		}
+
+
+
+		/// <summary>
+		/// Get number of collected items of type
+		/// </summary>
+		public uint GetNumCollected(CollectableID type)
+		{
+			uint result = 0;
+			mCurrent.mCollectableCounts.TryGetValue(type, out result);
+			return result;
+		}
+
+
+
+		/// <summary>
+		/// Get number of collected items of type
+		/// </summary>
+		public uint GetNumCollected(CollectableCategory type, byte impl = 0)
+		{
+			CollectableID key = GetCollectableID(type, impl);
+			return GetNumCollected(key);
+		}
+
+
+
+		/// <summary>
+		/// Do we have a specific collectable?
+		/// </summary>
+		public bool HasSpecific(Point pos, UInt16 type)
+		{
+			int levelID = CampaignManager.I.GetCurrentLevel().GetID();
+			SpecificCollectableID specificID = new SpecificCollectableID(type, pos, levelID);
+			return mCurrent.mSpecificCollected.Contains(specificID);
+		}
+
+
+
+		/// <summary>
+		/// Generate collectable ID
+		/// </summary>
+		static public CollectableID GetCollectableID(CollectableCategory category, byte impl = 0)
+		{
+			UInt16 categoryBytes = (UInt16)category;
+			return (UInt16)(categoryBytes | impl << 8);
+		}
+
+		#endregion rCollection
+
+
+
+		#region rLevelSequence
+
+		public void NotifySequenceBegin()
+		{
+			mStartSequence.CopyFrom(ref mCurrent);
+		}
+
+		public void NotifyLevelBegin()
+		{
+			mStartLevel.CopyFrom(ref mCurrent);
+		}
+
+		public void NotifyLevelFail()
+		{
+			mCurrent.CopyFrom(ref mStartLevel);
+		}
+
+		public void NotifySequenceFail()
+		{
+			mCurrent.CopyFrom(ref mStartSequence);
+		}
+
+		#endregion rLevelSequence
+
+
+
+		#region rTransientItems
+
+		/// <summary>
+		/// Increment transient collectable
+		/// </summary>
 		public void CollectTransientItem(TransientCollectable type, uint number = 1)
 		{
 			if (mTransientCollectables.TryGetValue(type, out uint currentCount))
@@ -63,96 +173,15 @@
 
 
 		/// <summary>
-		/// Collect an item of a certain type
-		/// </summary>
-		public void CollectPermanentItem(Point pos, UInt16 type)
-		{
-			if (mPermanentCollectables.TryGetValue(type, out uint currentCount))
-			{
-				mPermanentCollectables[type] = currentCount + 1;
-			}
-			else
-			{
-				mPermanentCollectables.Add(type, 1);
-			}
-
-			mSpecificCollected.Add(CalculateSpecificID(pos, type));
-		}
-
-
-
-		/// <summary>
-		/// Gain or remove from permanent count
-		/// </summary>
-		public void ChangePermanentItem(UInt16 type, int delta)
-		{
-			if (mPermanentCollectables.TryGetValue(type, out uint currentCount))
-			{
-				MonoDebug.Assert(currentCount >= -delta);
-				mPermanentCollectables[type] = (uint)(currentCount + delta);
-			}
-			else
-			{
-				MonoDebug.Assert(delta >= 0);
-				mPermanentCollectables.Add(type, (uint)delta);
-			}
-		}
-
-
-
-		/// <summary>
-		/// Set permanent count
-		/// </summary>
-		public void SetPermanentItem(UInt16 type, uint num)
-		{
-			mPermanentCollectables[type] = num;
-		}
-
-
-
-		/// <summary>
 		/// Get number of collected items of type
 		/// </summary>
 		/// <param name="type">Type to check</param>
 		/// <returns>Number of collected items of type</returns>
-		public uint GetNumCollected(TransientCollectable type)
+		public uint GetNumTransient(TransientCollectable type)
 		{
 			uint result = 0;
 			mTransientCollectables.TryGetValue(type, out result);
 			return result;
-		}
-
-
-
-		/// <summary>
-		/// Get number of collected items of type
-		/// </summary>
-		public uint GetNumCollected(UInt16 type)
-		{
-			uint result = 0;
-			mPermanentCollectables.TryGetValue(type, out result);
-			return result;
-		}
-
-
-
-		/// <summary>
-		/// Get number of collected items of type
-		/// </summary>
-		public uint GetNumCollected(PermanentCollectable type, byte impl = 0)
-		{
-			UInt16 key = (UInt16)(((UInt16)type << 8) | impl);
-			return GetNumCollected(key);
-		}
-
-
-
-		/// <summary>
-		/// Do we have a specific collectable?
-		/// </summary>
-		public bool HasSpecific(Point pos, UInt16 type)
-		{
-			return mSpecificCollected.Contains(CalculateSpecificID(pos, type));
 		}
 
 
@@ -165,25 +194,6 @@
 			mTransientCollectables.Clear();
 		}
 
-
-
-		/// <summary>
-		/// Calculate hash of sorts.
-		/// </summary>
-		UInt64 CalculateSpecificID(Point pos, UInt16 type)
-		{
-			byte xPos = (byte)pos.X;
-			byte yPos = (byte)pos.Y;
-			UInt32 levelID = (UInt32)(CampaignManager.I.GetCurrentLevel().GetID());
-
-			UInt64 ret = ((UInt64)xPos << 56) |
-						 ((UInt64)yPos << 48) |
-						 ((UInt64)levelID << 16) |
-						 type;
-
-			return ret;
-		}
-
-		#endregion rCollection
+		#endregion rTransientItems
 	}
 }

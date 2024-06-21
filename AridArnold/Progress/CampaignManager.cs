@@ -12,18 +12,6 @@ namespace AridArnold
 
 	class CampaignManager : Singleton<CampaignManager>
 	{
-		#region rConstants
-
-		const int START_LIVES = 3;
-		const int MAX_LIVES = 7;
-
-		#endregion rConstants
-
-
-
-
-
-
 		#region rTypes
 
 		public enum GameplayState
@@ -54,6 +42,9 @@ namespace AridArnold
 
 		HashSet<UInt64> mSeenCinematics;
 
+		// Current lives
+		int mMaxLives;
+
 		#endregion rMembers
 
 
@@ -76,10 +67,11 @@ namespace AridArnold
 			mSeenCinematics = new HashSet<UInt64>();
 
 			mHubReturnInfo = null;
-			mCurrLives = START_LIVES;
+			mMaxLives = 7;
+			mCurrLives = GetStartLives();
 #if DEBUG_LOADER
-			CollectableManager.I.ChangePermanentItem(0x0300, 100);
-			CollectableManager.I.ChangePermanentItem(0x0000, 100);
+			CollectableManager.I.IncPermanentCount(0x0300, 100);
+			CollectableManager.I.IncPermanentCount(0x0000, 100);
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 			QueueLoadSequence(new HubDirectLoader(102));
 			//QueueLoadSequence(new LevelDirectLoader(201));
@@ -197,7 +189,7 @@ namespace AridArnold
 		{
 			if (level.GetAuxData().GetLevelType() == AuxData.LevelType.Hub)
 			{
-				mCurrLives = START_LIVES;
+				mCurrLives = GetStartLives();
 				SetGameplayState(GameplayState.HubWorld);
 			}
 			else
@@ -266,7 +258,7 @@ namespace AridArnold
 					mHubReturnInfo = retInfo;
 
 					// Set lives
-					mCurrLives = START_LIVES;
+					mCurrLives = GetStartLives();
 				}
 				else if (newState == GameplayState.HubWorld)
 				{
@@ -308,7 +300,9 @@ namespace AridArnold
 		{
 			mLevelSequence = sequence;
 			mPrevDoorPos = entryPoint;
-			ItemManager.I.SequenceBegin();
+
+			// Inform others
+			CollectableManager.I.NotifySequenceBegin();
 		}
 
 
@@ -344,13 +338,20 @@ namespace AridArnold
 		/// </summary>
 		public void EndSequence(bool success)
 		{
-			ItemManager.I.SequenceEnd(success);
+			ItemManager.I.SequenceEnd();
 			if (success)
 			{
 				// Collect "door"
-				CollectableManager.I.CollectPermanentItem(mPrevDoorPos, (UInt16)PermanentCollectable.Door);
-				mLevelSequence = null;
+				UInt16 doorID = CollectableManager.GetCollectableID(CollectableCategory.Door);
+				CollectableManager.I.CollectSpecificItem(doorID, mPrevDoorPos);
 			}
+			else
+			{
+				CollectableManager.I.NotifySequenceFail();
+			}
+
+			// Clear level sequence
+			mLevelSequence = null;
 		}
 
 
@@ -372,6 +373,15 @@ namespace AridArnold
 		#region rLives
 
 		/// <summary>
+		/// How many lives to start with?
+		/// </summary>
+		public int GetStartLives()
+		{
+			return (mMaxLives + 1) / 2;
+		}
+
+
+		/// <summary>
 		/// Get how many lives we have.
 		/// </summary>
 		public int GetLives()
@@ -386,7 +396,7 @@ namespace AridArnold
 		/// </summary>
 		public int GetMaxLives()
 		{
-			return MAX_LIVES;
+			return mMaxLives;
 		}
 
 
@@ -396,13 +406,14 @@ namespace AridArnold
 		/// </summary>
 		public bool CanLoseLives()
 		{
-			if (mGameplayState == GameplayState.HubWorld || mLevelSequence.Count == 0)
+			if(mLevelSequence is null || mCurrentLevel is null)
 			{
 				return false;
 			}
 
 			//Can't lose lives on the first level
-			return !object.ReferenceEquals(mCurrentLevel, mLevelSequence[0]);
+			return !object.ReferenceEquals(mCurrentLevel, mLevelSequence[0]) &&
+				mCurrentLevel.CanLoseLives();
 		}
 
 
@@ -412,7 +423,7 @@ namespace AridArnold
 		/// </summary>
 		public bool IsGameover()
 		{
-			return mCurrLives <= 0;
+			return mCurrLives < 0;
 		}
 
 
@@ -435,10 +446,7 @@ namespace AridArnold
 		/// </summary>
 		public void GainLife()
 		{
-			if (mCurrLives < MAX_LIVES)
-			{
-				mCurrLives++;
-			}
+			GainLives(1);
 		}
 
 
@@ -448,7 +456,7 @@ namespace AridArnold
 		/// <param name="numLives"></param>
 		public void GainLives(int numLives)
 		{
-			mCurrLives = Math.Min(mCurrLives + numLives, MAX_LIVES);
+			mCurrLives = Math.Min(mCurrLives + numLives, mMaxLives);
 		}
 
 		#endregion rLives
@@ -474,7 +482,7 @@ namespace AridArnold
 		/// </summary>
 		public UInt16 GetCurrCoinID()
 		{
-			return (UInt16)(((UInt16)PermanentCollectable.Coin << 8) | GetCurrCoinImpl());
+			return CollectableManager.GetCollectableID(CollectableCategory.Coin, GetCurrCoinImpl());
 		}
 
 

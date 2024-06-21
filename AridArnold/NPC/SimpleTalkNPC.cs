@@ -34,7 +34,7 @@
 		Texture2D mMouthClosedTexture;
 
 		// Particles
-		List<ParticleEmitter> mAuxEmitters;
+		List<ParticleEmitter> mEmitters;
 
 		// Talking
 		bool mTalking;
@@ -71,7 +71,7 @@
 			mWalkSpeed = WALK_SPEED;
 			mIsWalkingType = false;
 
-			mAuxEmitters = new List<ParticleEmitter>();
+			mEmitters = new List<ParticleEmitter>();
 		}
 
 
@@ -151,7 +151,7 @@
 
 				emitter.SetPos(relativePos);
 
-				mAuxEmitters.Add(emitter);
+				mEmitters.Add(emitter);
 			}
 		}
 
@@ -253,7 +253,7 @@
 			}
 
 			mIdleAnimation.Update(gameTime);
-			foreach(ParticleEmitter emitter in mAuxEmitters)
+			foreach(ParticleEmitter emitter in mEmitters)
 			{
 				emitter.Update(gameTime);
 			}

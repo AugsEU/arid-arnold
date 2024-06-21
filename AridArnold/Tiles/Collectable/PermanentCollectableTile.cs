@@ -11,12 +11,12 @@
 
 		public PermanentCollectableTile(Vector2 pos) : base(pos)
 		{
-			mIsGhost = CollectableManager.I.HasSpecific(mTileMapIndex, GetItemType());
+			mIsGhost = CollectableManager.I.HasSpecific(mTileMapIndex, GetItemID());
 			mExitAnim = null;
 			mHasBeenCollected = false;
 		}
 
-		protected abstract PermanentCollectable GetCollectableType();
+		protected abstract CollectableCategory GetCollectableType();
 
 		protected virtual byte GetImplByte() { return 0; }
 
@@ -32,14 +32,12 @@
 			base.Update(gameTime);
 		}
 
-		private UInt16 GetItemType()
+		private UInt16 GetItemID()
 		{
-			byte item = (byte)GetCollectableType();
+			CollectableCategory category = GetCollectableType();
 			byte impl = GetImplByte();
 
-			UInt16 ret = (UInt16)((item << 8) | impl);
-
-			return ret;
+			return CollectableManager.GetCollectableID(category, impl);
 		}
 
 		public override void OnEntityIntersect(Entity entity)
@@ -50,9 +48,9 @@
 			}
 			if (entity.OnInteractLayer(InteractionLayer.kPlayer))
 			{
-				 if (mIsGhost == false)
+				if (mIsGhost == false)
 				{
-					CollectableManager.I.CollectPermanentItem(mTileMapIndex, GetItemType());
+					CollectableManager.I.CollectSpecificItem(GetItemID(), mTileMapIndex);
 				}
 				OnCollect();
 

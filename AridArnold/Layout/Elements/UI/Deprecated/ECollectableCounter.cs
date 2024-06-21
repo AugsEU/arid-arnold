@@ -38,7 +38,7 @@
 
 		public override void Draw(DrawInfo info)
 		{
-			int numKeys = (int)CollectableManager.I.GetNumCollected((UInt16)PermanentCollectable.Key);
+			int numKeys = (int)CollectableManager.I.GetNumCollected((UInt16)CollectableCategory.Key);
 			Vector2 position = GetPosition();
 
 			DrawCollectable(info, position, mKeyTexture, numKeys);

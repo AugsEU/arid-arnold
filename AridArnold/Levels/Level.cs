@@ -78,11 +78,11 @@
 
 			// Clear state
 			EntityManager.I.ClearEntities();
-			CollectableManager.I.ClearTransient();
 			FXManager.I.Clear();
 			EventManager.I.ResetAllEvents();
+			CollectableManager.I.ClearTransient();
 
-			// Re-Load BG
+			// Re-Load BG (hack)
 			mBGLayout = new Layout(mLayoutPath);
 
 			// Load theme
@@ -122,11 +122,8 @@
 		/// <summary>
 		/// Unload all stuff
 		/// </summary>
-		public void End()
+		public virtual void End()
 		{
-			bool success = mLevelStatus == LevelStatus.Win;
-			GhostManager.I.EndLevel(success);
-			ItemManager.I.LevelEnd(success);
 			mActive = false;
 			mTheme.Unload();
 		}
@@ -264,6 +261,15 @@
 		public LevelTheme GetTheme()
 		{
 			return mTheme;
+		}
+
+
+		/// <summary>
+		/// By default a level is neutral.
+		/// </summary>
+		public virtual bool CanLoseLives()
+		{
+			return false;
 		}
 
 		#endregion rUtility
