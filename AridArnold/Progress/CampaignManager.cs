@@ -66,10 +66,8 @@ namespace AridArnold
 
 			mSeenCinematics = new HashSet<UInt64>();
 
-			mHubReturnInfo = null;
-			mMaxLives = 7;
-			mCurrLives = GetStartLives();
 #if DEBUG_LOADER
+			mMaxLives = 1;
 			CollectableManager.I.IncPermanentCount(0x0300, 100);
 			CollectableManager.I.IncPermanentCount(0x0000, 100);
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
@@ -77,7 +75,10 @@ namespace AridArnold
 			//QueueLoadSequence(new LevelDirectLoader(201));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
+			mMaxLives = 0;
 #endif
+			mHubReturnInfo = null;
+			mCurrLives = GetStartLives();
 			mPrevDoorPos = Point.Zero;
 		}
 
@@ -397,6 +398,16 @@ namespace AridArnold
 		public int GetMaxLives()
 		{
 			return mMaxLives;
+		}
+
+
+
+		/// <summary>
+		/// Get current maximum lives
+		/// </summary>
+		public void GiveMaxLifeLevel()
+		{
+			++mMaxLives;
 		}
 
 

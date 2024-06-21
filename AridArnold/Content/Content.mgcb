@@ -11409,6 +11409,18 @@
 #begin Text/EN/NPC/Vagabond/Heckle.txt
 /copy:Text/EN/NPC/Vagabond/Heckle.txt
 
+#begin Text/EN/NPC/Witch/1AlreadyQuench.txt
+/copy:Text/EN/NPC/Witch/1AlreadyQuench.txt
+
+#begin Text/EN/NPC/Witch/1NeedWater.txt
+/copy:Text/EN/NPC/Witch/1NeedWater.txt
+
+#begin Text/EN/NPC/Witch/1Script.txt
+/copy:Text/EN/NPC/Witch/1Script.txt
+
+#begin Text/EN/NPC/Witch/NoWater.txt
+/copy:Text/EN/NPC/Witch/NoWater.txt
+
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
 
@@ -13212,12 +13224,6 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Text/EN/NPC/Witch/LevelOne.txt
-/copy:Text/EN/NPC/Witch/LevelOne.txt
-
-#begin Text/EN/NPC/Witch/NoWater.txt
-/copy:Text/EN/NPC/Witch/NoWater.txt
-
-#begin Text/EN/NPC/Witch/ThirstQuench1.txt
-/copy:Text/EN/NPC/Witch/ThirstQuench1.txt
+#begin Text/EN/NPC/Witch/1ThirstQuench.txt
+/copy:Text/EN/NPC/Witch/1ThirstQuench.txt
 

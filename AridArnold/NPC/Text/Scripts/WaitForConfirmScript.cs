@@ -7,6 +7,7 @@ namespace AridArnold
 	abstract class WaitForConfirmScript : TextScript
 	{
 		bool mConfirmPressed = false;
+		bool mFirstUpdateDone = false;
 
 		protected WaitForConfirmScript(SmartTextBlock parentBlock, string[] args) : base(parentBlock, args)
 		{
@@ -19,6 +20,12 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			if(!mFirstUpdateDone)
+			{
+				DoFirstUpdate();
+				mFirstUpdateDone = true;
+			}
+
 			if(InputManager.I.KeyHeld(AridArnoldKeys.Confirm))
 			{
 				mConfirmPressed = true;
@@ -28,6 +35,16 @@ namespace AridArnold
 		public bool ConfirmPressed()
 		{
 			return mConfirmPressed;
+		}
+
+		public override bool IsFinished()
+		{
+			return mConfirmPressed;
+		}
+
+		protected virtual void DoFirstUpdate()
+		{
+
 		}
 	}
 }

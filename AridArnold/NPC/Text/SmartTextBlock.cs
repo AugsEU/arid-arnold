@@ -24,7 +24,9 @@ namespace AridArnold
 
 		static readonly Type[] SCRIPT_TYPES = 
 		{ 
-			typeof(CoinFlipScript)
+			typeof(CoinFlipScript),
+			typeof(GiveMaxLivesScript),
+			typeof(WitchIntroScript)
 		};
 
 		#endregion rConstants
@@ -447,6 +449,7 @@ namespace AridArnold
 					}
 				}
 				scriptArgs.Add(argument);
+				mRawCharHead++;
 			}
 
 			mCurrentScript = (TextScript)Activator.CreateInstance(SCRIPT_TYPES[scriptIndex], this, scriptArgs.ToArray());
