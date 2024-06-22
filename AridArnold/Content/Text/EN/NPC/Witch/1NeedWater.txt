@@ -1,1 +1,2 @@
 ﻿Ahh... so thirsty... Only 4 bottles of water could replenish me.
+{Str.NPC.Witch.PromptEnter}

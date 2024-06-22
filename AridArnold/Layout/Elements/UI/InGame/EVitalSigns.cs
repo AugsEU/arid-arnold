@@ -19,29 +19,39 @@ namespace AridArnold
 		LifeIconPack mFullLifeOld;
 		Texture2D mEmptyLife;
 
+		SpriteFont mFont;
+		string mOfflineText;
+
 		public EVitalSigns(XmlNode rootNode) : base(rootNode, "UI/InGame/VitalsSignsBG")
 		{
 			mFullLifeYoung = new LifeIconPack("Arnold/ArnoldStand");
 			mFullLifeOld = new LifeIconPack("Arnold/ArnoldOldStand");
 			mEmptyLife = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/EmptyLifeArnold");
+			mFont = FontManager.I.GetFont("Pixica", 24, true);
+			mOfflineText = LanguageManager.I.GetText("InGame.Offline");
 		}
 
 
 		public override void Update(GameTime gameTime)
 		{
-
 			base.Update(gameTime);
 		}
 
 
+		protected override bool IsUnlocked()
+		{
+			return CampaignManager.I.GetMaxLives() > 0;
+		}
 
 		public override void Draw(DrawInfo info)
 		{
+			if (!ShouldDraw()) return;
 			base.Draw(info);
 
 			bool isActive = CampaignManager.I.CanLoseLives();
 			int currLives = CampaignManager.I.GetLives();
 			int maxLives = CampaignManager.I.GetMaxLives();
+
 
 			Vector2 drawPos = GetPosition();
 			drawPos += new Vector2(130.0f, 10.0f);
@@ -80,7 +90,7 @@ namespace AridArnold
 				return mFullLifeYoung;
 			}
 
-			return mFullLifeYoung;
+			return mFullLifeOld;
 		}
 	}
 }

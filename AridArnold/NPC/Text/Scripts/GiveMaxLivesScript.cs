@@ -1,4 +1,5 @@
-﻿namespace AridArnold
+﻿
+namespace AridArnold
 {
 	class GiveMaxLivesScript : OneShotScript
 	{
@@ -21,6 +22,16 @@
 
 			// Always the same string
 			mNotEnoughWater = LanguageManager.I.GetText("NPC.Witch.NoWater");
+		}
+
+		public override void Update(GameTime gameTime)
+		{
+			// Accept automatically if no water required.
+			if (mWaterNeeded == 0)
+			{
+				ForceConfirm();
+			}
+			base.Update(gameTime);
 		}
 
 		protected override void DoOneShot()

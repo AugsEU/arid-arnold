@@ -67,7 +67,7 @@ namespace AridArnold
 			mSeenCinematics = new HashSet<UInt64>();
 
 #if DEBUG_LOADER
-			mMaxLives = 1;
+			mMaxLives = 0;
 			CollectableManager.I.IncPermanentCount(0x0300, 100);
 			CollectableManager.I.IncPermanentCount(0x0000, 100);
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
@@ -408,6 +408,7 @@ namespace AridArnold
 		public void GiveMaxLifeLevel()
 		{
 			++mMaxLives;
+			mCurrLives = GetStartLives();
 		}
 
 

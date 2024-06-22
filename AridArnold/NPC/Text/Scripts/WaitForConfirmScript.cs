@@ -18,6 +18,11 @@ namespace AridArnold
 			return !mConfirmPressed;
 		}
 
+		protected void ForceConfirm()
+		{
+			mConfirmPressed = true;
+		}
+
 		public override void Update(GameTime gameTime)
 		{
 			if(!mFirstUpdateDone)

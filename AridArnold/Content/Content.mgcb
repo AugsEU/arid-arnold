@@ -13227,3 +13227,18 @@
 #begin Text/EN/NPC/Witch/1ThirstQuench.txt
 /copy:Text/EN/NPC/Witch/1ThirstQuench.txt
 
+#begin Text/EN/NPC/Witch/1ThristQuench.txt
+/copy:Text/EN/NPC/Witch/1ThristQuench.txt
+
+#begin Text/EN/NPC/Witch/PromptEnter.txt
+/copy:Text/EN/NPC/Witch/PromptEnter.txt
+
+#begin Text/EN/NPC/Barbara/LifeScript.txt
+/copy:Text/EN/NPC/Barbara/LifeScript.txt
+
+#begin Text/EN/NPC/Barbara/Rebirth.txt
+/copy:Text/EN/NPC/Barbara/Rebirth.txt
+
+#begin Text/EN/InGame/Offline.txt
+/copy:Text/EN/InGame/Offline.txt
+
