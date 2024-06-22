@@ -1,0 +1,3 @@
+﻿The cave drips such salty water. Why did I drink so much of it?
+Say, would you have 20 bottles of fresh water to spare?
+{Str.NPC.Witch.PromptEnter}

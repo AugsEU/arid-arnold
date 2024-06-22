@@ -1,0 +1,3 @@
+﻿Oh, a friendly face. A rare sight around these parts. I spent quite some time travelling here, and I'm all out of water.
+Could you part with 25 bottles for me? I can grant you a blessing in return.
+{Str.NPC.Witch.PromptEnter}

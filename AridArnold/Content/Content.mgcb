@@ -11127,6 +11127,9 @@
 #begin Text/EN/InGame/NoLifeGain.txt
 /copy:Text/EN/InGame/NoLifeGain.txt
 
+#begin Text/EN/InGame/Offline.txt
+/copy:Text/EN/InGame/Offline.txt
+
 #begin Text/EN/InGame/PromptEnter.txt
 /copy:Text/EN/InGame/PromptEnter.txt
 
@@ -11163,6 +11166,9 @@
 #begin Text/EN/NPC/Barbara/Home.txt
 /copy:Text/EN/NPC/Barbara/Home.txt
 
+#begin Text/EN/NPC/Barbara/LifeScript.txt
+/copy:Text/EN/NPC/Barbara/LifeScript.txt
+
 #begin Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
 /copy:Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
 
@@ -11171,6 +11177,9 @@
 
 #begin Text/EN/NPC/Barbara/Opening/WaterLine.txt
 /copy:Text/EN/NPC/Barbara/Opening/WaterLine.txt
+
+#begin Text/EN/NPC/Barbara/Rebirth.txt
+/copy:Text/EN/NPC/Barbara/Rebirth.txt
 
 #begin Text/EN/NPC/Barbara/ScriptTest.txt
 /copy:Text/EN/NPC/Barbara/ScriptTest.txt
@@ -11418,8 +11427,74 @@
 #begin Text/EN/NPC/Witch/1Script.txt
 /copy:Text/EN/NPC/Witch/1Script.txt
 
+#begin Text/EN/NPC/Witch/1ThirstQuench.txt
+/copy:Text/EN/NPC/Witch/1ThirstQuench.txt
+
+#begin Text/EN/NPC/Witch/2AlreadyQuench.txt
+/copy:Text/EN/NPC/Witch/2AlreadyQuench.txt
+
+#begin Text/EN/NPC/Witch/2NeedWater.txt
+/copy:Text/EN/NPC/Witch/2NeedWater.txt
+
+#begin Text/EN/NPC/Witch/2Script.txt
+/copy:Text/EN/NPC/Witch/2Script.txt
+
+#begin Text/EN/NPC/Witch/2ThirstQuench.txt
+/copy:Text/EN/NPC/Witch/2ThirstQuench.txt
+
+#begin Text/EN/NPC/Witch/3AlreadyQuench.txt
+/copy:Text/EN/NPC/Witch/3AlreadyQuench.txt
+
+#begin Text/EN/NPC/Witch/3NeedWater.txt
+/copy:Text/EN/NPC/Witch/3NeedWater.txt
+
+#begin Text/EN/NPC/Witch/3Script.txt
+/copy:Text/EN/NPC/Witch/3Script.txt
+
+#begin Text/EN/NPC/Witch/3ThirstQuench.txt
+/copy:Text/EN/NPC/Witch/3ThirstQuench.txt
+
+#begin Text/EN/NPC/Witch/4AlreadyQuench.txt
+/copy:Text/EN/NPC/Witch/4AlreadyQuench.txt
+
+#begin Text/EN/NPC/Witch/4NeedWater.txt
+/copy:Text/EN/NPC/Witch/4NeedWater.txt
+
+#begin Text/EN/NPC/Witch/4Script.txt
+/copy:Text/EN/NPC/Witch/4Script.txt
+
+#begin Text/EN/NPC/Witch/4ThirstQuench.txt
+/copy:Text/EN/NPC/Witch/4ThirstQuench.txt
+
+#begin Text/EN/NPC/Witch/5AlreadyQuench.txt
+/copy:Text/EN/NPC/Witch/5AlreadyQuench.txt
+
+#begin Text/EN/NPC/Witch/5NeedWater.txt
+/copy:Text/EN/NPC/Witch/5NeedWater.txt
+
+#begin Text/EN/NPC/Witch/5Script.txt
+/copy:Text/EN/NPC/Witch/5Script.txt
+
+#begin Text/EN/NPC/Witch/5ThirstQuench.txt
+/copy:Text/EN/NPC/Witch/5ThirstQuench.txt
+
+#begin Text/EN/NPC/Witch/6AlreadyQuench.txt
+/copy:Text/EN/NPC/Witch/6AlreadyQuench.txt
+
+#begin Text/EN/NPC/Witch/6NeedWater.txt
+/copy:Text/EN/NPC/Witch/6NeedWater.txt
+
+#begin Text/EN/NPC/Witch/6Script.txt
+/copy:Text/EN/NPC/Witch/6Script.txt
+
+#begin Text/EN/NPC/Witch/6ThirstQuench.txt
+/copy:Text/EN/NPC/Witch/6ThirstQuench.txt
+
 #begin Text/EN/NPC/Witch/NoWater.txt
 /copy:Text/EN/NPC/Witch/NoWater.txt
+
+#begin Text/EN/NPC/Witch/PromptEnter.txt
+/copy:Text/EN/NPC/Witch/PromptEnter.txt
 
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
@@ -13223,22 +13298,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Text/EN/NPC/Witch/1ThirstQuench.txt
-/copy:Text/EN/NPC/Witch/1ThirstQuench.txt
-
-#begin Text/EN/NPC/Witch/1ThristQuench.txt
-/copy:Text/EN/NPC/Witch/1ThristQuench.txt
-
-#begin Text/EN/NPC/Witch/PromptEnter.txt
-/copy:Text/EN/NPC/Witch/PromptEnter.txt
-
-#begin Text/EN/NPC/Barbara/LifeScript.txt
-/copy:Text/EN/NPC/Barbara/LifeScript.txt
-
-#begin Text/EN/NPC/Barbara/Rebirth.txt
-/copy:Text/EN/NPC/Barbara/Rebirth.txt
-
-#begin Text/EN/InGame/Offline.txt
-/copy:Text/EN/InGame/Offline.txt
 

@@ -1,0 +1,3 @@
+﻿Would you look at all these gadgets? I'm thinking I went into the wrong field becoming a witch and all.
+I'm cooking up some experiments over here, you know, trying to learn a thing or two about chemistry. But I need 25 bottles of distilled water, I'll make it worth your while.
+{Str.NPC.Witch.PromptEnter}

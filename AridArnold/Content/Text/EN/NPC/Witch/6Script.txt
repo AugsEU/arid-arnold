@@ -1,0 +1,2 @@
+﻿<ζ02[6][NPC.Witch.6NeedWater][NPC.Witch.6AlreadyQuench]> 
+<ζ01[6][30][NPC.Witch.6ThirstQuench]> 
