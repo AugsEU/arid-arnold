@@ -9,7 +9,21 @@
 	enum FlagCategory : UInt32
 	{
 		kWaterCollected = 0,
+		kCurses,
 		kMaxFlagCategory
+	}
+
+	/// <summary>
+	/// Different types of curses/blessings
+	/// </summary>
+	enum CurseFlagTypes : UInt32
+	{
+		kCurseGiven = 0,
+		kBlessingLives,
+		kBlessingMoney,
+		kCurseLives,
+		kCurseMoney,
+		kMaxCurse
 	}
 
 

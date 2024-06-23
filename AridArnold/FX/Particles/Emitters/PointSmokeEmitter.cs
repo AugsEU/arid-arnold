@@ -42,14 +42,16 @@ namespace AridArnold
 			return new PointSmokeEmitter(position, palette, intensity);
 		}
 
-		public override void SetPos(Vector2 origin)
-		{
-			mPoint = origin;
-		}
 
-		public override Vector2 GetPos()
+		public override void BindToNPC(SimpleTalkNPC npc)
 		{
-			return mPoint;
+			Rect2f collider = npc.ColliderBounds();
+
+			if (npc.GetPrevWalkDirection() == WalkDirection.Left)
+			{
+				mPoint.X = collider.Width - mPoint.X;
+			}
+			mPoint += collider.min;
 		}
 	}
 }

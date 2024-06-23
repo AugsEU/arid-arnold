@@ -456,7 +456,6 @@ namespace AridArnold
 			Vector2[] footPositions = GetFeetCheckPoints();
 			footPositions[1] -= GravityVecNorm() * 1.5f;
 
-			MonoDebug.AddDebugRect(new Rect2f(footPositions[1], 2.0f, 2.0f), Color.Red);
 			DustUtil.EmitDust(footPositions[1], -GravityVecNorm());
 		}
 

@@ -1,2 +1,2 @@
-﻿<ζ02[0][NPC.Barbara.SteamPlant][NPC.Barbara.SteamPlant]> 
+﻿<ζ02[kWaterCollected][0][NPC.Barbara.SteamPlant][NPC.Barbara.SteamPlant]> 
 <ζ01[0][0][NPC.Barbara.Rebirth]> Find my sisters, they can strengthen the power of my blessing.

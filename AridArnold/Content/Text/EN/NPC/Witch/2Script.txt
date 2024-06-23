@@ -1,2 +1,2 @@
-﻿<ζ02[2][NPC.Witch.2NeedWater][NPC.Witch.2AlreadyQuench]> 
+﻿<ζ02[kWaterCollected][2][NPC.Witch.2AlreadyQuench][NPC.Witch.2NeedWater]> 
 <ζ01[2][15][NPC.Witch.2ThirstQuench]> 

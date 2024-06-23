@@ -26,7 +26,8 @@ namespace AridArnold
 		{ 
 			typeof(CoinFlipScript),
 			typeof(GiveMaxLivesScript),
-			typeof(WitchIntroScript)
+			typeof(CheckFlagScript),
+			typeof(GiveCurseScript)
 		};
 
 		#endregion rConstants

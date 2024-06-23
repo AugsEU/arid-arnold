@@ -139,17 +139,7 @@
 			foreach(XmlNode emitterNode in  emittersNode.ChildNodes)
 			{
 				ParticleEmitter emitter = ParticleEmitter.FromXML(emitterNode);
-
-				// Assumes gravity is down...
-				Vector2 relativePos = emitter.GetPos();
-				if(mPrevDirection == WalkDirection.Left)
-				{
-					relativePos.X = ColliderBounds().Width - relativePos.X;
-				}
-
-				relativePos += mPosition;
-
-				emitter.SetPos(relativePos);
+				emitter.BindToNPC(this);
 
 				mEmitters.Add(emitter);
 			}

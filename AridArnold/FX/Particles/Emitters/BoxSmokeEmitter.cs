@@ -47,16 +47,21 @@ namespace AridArnold
 			return new BoxSmokeEmitter(box, palette, intensity);
 		}
 
-		public override void SetPos(Vector2 origin)
+		public override void BindToNPC(SimpleTalkNPC npc)
 		{
+			Rect2f collider = npc.ColliderBounds();
+
 			Vector2 offset = mRect.max - mRect.min;
+
+			Vector2 origin = mRect.min;
+			if (npc.GetPrevWalkDirection() == WalkDirection.Left)
+			{
+				origin.X = collider.Width - mRect.Width - origin.X;
+			}
+			origin += collider.min;
+
 			mRect.min = origin;
 			mRect.max = origin + offset;
-		}
-
-		public override Vector2 GetPos()
-		{
-			return mRect.min;
 		}
 	}
 }

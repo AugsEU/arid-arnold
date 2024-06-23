@@ -35,10 +35,7 @@
 
 		public abstract void Update(GameTime gameTime);
 
-		public abstract void SetPos(Vector2 origin);
-
-
-		public abstract Vector2 GetPos();
+		public abstract void BindToNPC(SimpleTalkNPC npc);
 
 		public static ParticleEmitter FromXML(XmlNode node)
 		{

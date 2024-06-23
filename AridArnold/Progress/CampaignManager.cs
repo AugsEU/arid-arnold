@@ -67,12 +67,12 @@ namespace AridArnold
 			mSeenCinematics = new HashSet<UInt64>();
 
 #if DEBUG_LOADER
-			mMaxLives = 0;
+			mMaxLives = 7;
 			CollectableManager.I.IncPermanentCount(0x0300, 100);
 			CollectableManager.I.IncPermanentCount(0x0000, 100);
 			CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
-			TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
-			QueueLoadSequence(new HubDirectLoader(102));
+			TimeZoneManager.I.SetCurrentTimeZoneAndAge(2, 1);
+			QueueLoadSequence(new HubDirectLoader(801));
 			//QueueLoadSequence(new LevelDirectLoader(201));
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
@@ -379,7 +379,21 @@ namespace AridArnold
 		/// </summary>
 		public int GetStartLives()
 		{
-			return (mMaxLives + 1) / 2;
+			int baseLives = (mMaxLives + 1) / 2;
+
+			if(FlagsManager.I.CheckFlag(FlagCategory.kCurses, (UInt32)CurseFlagTypes.kBlessingLives))
+			{
+				baseLives += 1;
+			}
+			else if (FlagsManager.I.CheckFlag(FlagCategory.kCurses, (UInt32)CurseFlagTypes.kCurseLives))
+			{
+				baseLives -= 2;
+			}
+
+			baseLives = Math.Max(baseLives, 1);
+			baseLives = Math.Min(baseLives, mMaxLives);
+
+			return baseLives;
 		}
 
 

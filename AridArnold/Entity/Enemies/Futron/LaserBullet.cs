@@ -152,8 +152,6 @@
 				texToDraw = mExplodingAnim.GetCurrentTexture();
 				drawPos = mExplosionCentre;
 
-				MonoDebug.AddDebugRect(new Rect2f(mExplosionCentre, 1.0f, 1.0f), Color.Red);
-
 				switch (mDirection)
 				{
 					case CardinalDirection.Up:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<animation type="oneshot">
+<animation type="repeat">
 	<texture time="0.5">NPC/Floatoto/Default</texture>
 	<texture time="0.5">NPC/Floatoto/Float1</texture>
 </animation>

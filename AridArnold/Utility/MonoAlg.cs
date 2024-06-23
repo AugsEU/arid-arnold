@@ -198,5 +198,17 @@ namespace AridArnold
 
 			return a.GetType() == b.GetType();
 		}
+
+
+
+		/// <summary>
+		/// Get subset of array
+		/// </summary>
+		public static T[] GetSubArray<T>(T[] source, int startIndex, int length)
+		{
+			T[] result = new T[length];
+			Array.Copy(source, startIndex, result, 0, length);
+			return result;
+		}
 	}
 }

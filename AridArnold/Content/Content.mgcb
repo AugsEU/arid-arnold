@@ -9288,6 +9288,63 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Bouncer/TalkNormal.png
 
+#begin NPC/DevilHead/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilHead/Default.png
+
+#begin NPC/DevilHead/DevilHead.mtn
+/copy:NPC/DevilHead/DevilHead.mtn
+
+#begin NPC/DevilHead/Float.max
+/copy:NPC/DevilHead/Float.max
+
+#begin NPC/DevilHead/Float1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilHead/Float1.png
+
+#begin NPC/DevilHead/Idle.mia
+/copy:NPC/DevilHead/Idle.mia
+
+#begin NPC/DevilHead/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilHead/TalkAngry.png
+
+#begin NPC/DevilHead/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilHead/TalkNormal.png
+
 #begin NPC/Dialog/DialogSpikeBorder.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11243,6 +11300,18 @@
 
 #begin Text/EN/NPC/BossMan/WhoDis.txt
 /copy:Text/EN/NPC/BossMan/WhoDis.txt
+
+#begin Text/EN/NPC/DevilHead/DealDone.txt
+/copy:Text/EN/NPC/DevilHead/DealDone.txt
+
+#begin Text/EN/NPC/DevilHead/DealIntro.txt
+/copy:Text/EN/NPC/DevilHead/DealIntro.txt
+
+#begin Text/EN/NPC/DevilHead/DealScript.txt
+/copy:Text/EN/NPC/DevilHead/DealScript.txt
+
+#begin Text/EN/NPC/DevilHead/Heckle.txt
+/copy:Text/EN/NPC/DevilHead/Heckle.txt
 
 #begin Text/EN/NPC/Dok/GravityConfusion.txt
 /copy:Text/EN/NPC/Dok/GravityConfusion.txt
@@ -13298,4 +13367,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
+
+#begin Text/EN/NPC/DevilHead/BlessingLives.txt
+/copy:Text/EN/NPC/DevilHead/BlessingLives.txt
+
+#begin Text/EN/NPC/DevilHead/BlessingMoney.txt
+/copy:Text/EN/NPC/DevilHead/BlessingMoney.txt
+
+#begin Text/EN/NPC/DevilHead/CurseLives.txt
+/copy:Text/EN/NPC/DevilHead/CurseLives.txt
+
+#begin Text/EN/NPC/DevilHead/CurseMoney.txt
+/copy:Text/EN/NPC/DevilHead/CurseMoney.txt
 
