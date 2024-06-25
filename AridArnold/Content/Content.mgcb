@@ -13380,3 +13380,57 @@
 #begin Text/EN/NPC/DevilHead/CurseMoney.txt
 /copy:Text/EN/NPC/DevilHead/CurseMoney.txt
 
+#begin NPC/DevilSister/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/DevilSister/Default.png
+
+#begin NPC/DevilSister/DevilSister.mtn
+/copy:NPC/DevilSister/DevilSister.mtn
+
+#begin NPC/DevilSister/Float.max
+/copy:NPC/DevilSister/Float.max
+
+#begin NPC/DevilSister/Float1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/DevilSister/Float1.png
+
+#begin NPC/DevilSister/Idle.mia
+/copy:NPC/DevilSister/Idle.mia
+
+#begin NPC/DevilSister/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/DevilSister/TalkAngry.png
+
+#begin NPC/DevilSister/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/DevilSister/TalkNormal.png
+
+#begin Text/EN/NPC/DevilSister/BlessingLives.txt
+/copy:Text/EN/NPC/DevilSister/BlessingLives.txt
+
+#begin Text/EN/NPC/DevilSister/BlessingMoney.txt
+/copy:Text/EN/NPC/DevilSister/BlessingMoney.txt
+
+#begin Text/EN/NPC/DevilSister/CurseLives.txt
+/copy:Text/EN/NPC/DevilSister/CurseLives.txt
+
+#begin Text/EN/NPC/DevilSister/CurseMoney.txt
+/copy:Text/EN/NPC/DevilSister/CurseMoney.txt
+
+#begin Text/EN/NPC/DevilSister/DealIntro.txt
+/copy:Text/EN/NPC/DevilSister/DealIntro.txt
+
+#begin Text/EN/NPC/DevilSister/DealScript.txt
+/copy:Text/EN/NPC/DevilSister/DealScript.txt
+
+#begin Text/EN/NPC/DevilSister/Heckle.txt
+/copy:Text/EN/NPC/DevilSister/Heckle.txt
+

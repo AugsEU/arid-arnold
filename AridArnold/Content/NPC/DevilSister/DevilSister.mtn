@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Devil Sister</name>
+	<textStyle>
+		<fillColor>473C2DA2</fillColor>
+		<borderColor>28221A</borderColor>
+	</textStyle>
+	<emitters>
+		<emitter type="SmokeBox">
+			<x>0.0</x>
+			<y>0.0</y>
+			<width>14.0</width>
+			<height>14.0</height>
+			<colors>
+				<color>7C0000</color>
+				<color>CE3D35</color>
+				<color>91534F</color>
+			</colors>
+			<intensity>0.05</intensity>
+		</emitter>
+	</emitters>
+</simpleTalkNPC>

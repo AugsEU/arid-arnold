@@ -1,0 +1,1 @@
+﻿<ζ02[kCurses][0][][NPC.DevilSister.DealIntro]> <ζ02[kCurses][1][NPC.DevilSister.BlessingLives][]> <ζ02[kCurses][2][NPC.DevilSister.BlessingMoney][]> <ζ02[kCurses][3][NPC.DevilSister.CurseLives][]> <ζ02[kCurses][4][NPC.DevilSister.CurseMoney][]> 
