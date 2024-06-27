@@ -1,0 +1,2 @@
+﻿<ζ02[kKeyItems][0][NPC.Thornforge.KeyAlreadyGot][NPC.Thornforge.KeyIntro]> 
+<ζ04[kKeyItems][0][true]> 

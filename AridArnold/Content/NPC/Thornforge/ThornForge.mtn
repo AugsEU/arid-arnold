@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Thornforge</name>
+	<textStyle>
+		<fillColor>7F3B1EA2</fillColor>
+		<borderColor>491111</borderColor>
+	</textStyle>
+</simpleTalkNPC>

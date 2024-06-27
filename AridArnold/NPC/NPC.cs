@@ -236,6 +236,7 @@
 			Vector2 dialogPosition = mPosition + DIALOG_OFFSET;
 			float maxX = FXManager.I.GetDrawableSize().X - mStyle.mWidth - 20.0f;
 			dialogPosition.X = MathF.Min(dialogPosition.X, maxX);
+			dialogPosition.Y -= ColliderBounds().Height * 0.5f;
 
 			float spikeOffset = mPosition.X - dialogPosition.X + 17.0f;
 

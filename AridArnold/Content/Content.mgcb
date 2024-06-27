@@ -13434,3 +13434,63 @@
 #begin Text/EN/NPC/DevilSister/Heckle.txt
 /copy:Text/EN/NPC/DevilSister/Heckle.txt
 
+#begin NPC/Thornforge/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Thornforge/Default.png
+
+#begin NPC/Thornforge/HammerHit1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Thornforge/HammerHit1.png
+
+#begin NPC/Thornforge/HammerHit2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Thornforge/HammerHit2.png
+
+#begin NPC/Thornforge/HammerHit3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Thornforge/HammerHit3.png
+
+#begin NPC/Thornforge/HammerSpark.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Thornforge/HammerSpark.png
+
+#begin NPC/Thornforge/HitHammer.max
+/copy:NPC/Thornforge/HitHammer.max
+
+#begin NPC/Thornforge/Idle.mia
+/copy:NPC/Thornforge/Idle.mia
+
+#begin NPC/Thornforge/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Thornforge/TalkAngry.png
+
+#begin NPC/Thornforge/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Thornforge/TalkNormal.png
+
+#begin NPC/Thornforge/ThornForge.mtn
+/copy:NPC/Thornforge/ThornForge.mtn
+
+#begin Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
+/copy:Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
+
+#begin Text/EN/NPC/Thornforge/KeyIntro.txt
+/copy:Text/EN/NPC/Thornforge/KeyIntro.txt
+
+#begin Text/EN/NPC/Thornforge/KeyScript.txt
+/copy:Text/EN/NPC/Thornforge/KeyScript.txt
+

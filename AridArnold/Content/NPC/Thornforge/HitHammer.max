@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.2">NPC/Thornforge/Default</texture>
+	<texture time="0.2">NPC/Thornforge/HammerHit1</texture>
+	<texture time="0.2">NPC/Thornforge/HammerHit2</texture>
+	<texture time="0.4">NPC/Thornforge/HammerHit3</texture>
+	<texture time="0.08">NPC/Thornforge/HammerHit2</texture>
+	<texture time="0.08">NPC/Thornforge/HammerHit1</texture>
+	<texture time="0.1">NPC/Thornforge/HammerSpark</texture>
+	<texture time="0.2">NPC/Thornforge/Default</texture>
+	<texture time="0.2">NPC/Thornforge/HammerHit1</texture>
+	<texture time="0.2">NPC/Thornforge/HammerHit2</texture>
+	<texture time="0.4">NPC/Thornforge/HammerHit3</texture>
+	<texture time="0.08">NPC/Thornforge/HammerHit2</texture>
+	<texture time="0.08">NPC/Thornforge/HammerHit1</texture>
+	<texture time="0.1">NPC/Thornforge/HammerSpark</texture>
+</animation>
