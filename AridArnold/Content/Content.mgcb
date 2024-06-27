@@ -13494,3 +13494,33 @@
 #begin Text/EN/NPC/Thornforge/KeyScript.txt
 /copy:Text/EN/NPC/Thornforge/KeyScript.txt
 
+#begin NPC/Papy/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Papy/Default.png
+
+#begin NPC/Papy/Idle.mia
+/copy:NPC/Papy/Idle.mia
+
+#begin NPC/Papy/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Papy/TalkAngry.png
+
+#begin NPC/Papy/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Papy/TalkNormal.png
+
+#begin NPC/Papy/Vagabond.mtn
+/copy:NPC/Papy/Vagabond.mtn
+
+#begin Text/EN/NPC/Papy/HellTalk.txt
+/copy:Text/EN/NPC/Papy/HellTalk.txt
+
+#begin NPC/Papy/Papy.mtn
+/copy:NPC/Papy/Papy.mtn
+
