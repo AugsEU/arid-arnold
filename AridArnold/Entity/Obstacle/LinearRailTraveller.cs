@@ -277,12 +277,12 @@
 
 				while (bNode.mWaitTime == 0)
 				{
-					RailNode cNode = mData.GetNode(next + 1 % numNodes);
+					RailNode cNode = mData.GetNode((next + 1) % numNodes);
 					Vector2 cPos = GetNodePosition(cNode);
 
 					float distToLine = Vector2.Dot((cPos - aPos), perpLineDir);
 
-					if (distToLine > 0.1f)
+					if (MathF.Abs(distToLine) > 0.1f)
 					{
 						// Points not co-linear
 						break;

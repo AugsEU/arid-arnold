@@ -13548,3 +13548,12 @@
 #begin Text/EN/InGame/UseKey.txt
 /copy:Text/EN/InGame/UseKey.txt
 
+#begin Campaigns/MainCampaign/Levels/0513.aux
+/copy:Campaigns/MainCampaign/Levels/0513.aux
+
+#begin Campaigns/MainCampaign/Levels/0513.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0513.png
+
