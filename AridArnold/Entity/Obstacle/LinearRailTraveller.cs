@@ -44,6 +44,7 @@
 		int mSize;
 		RailType mType;
 		List<RailNode> mRailNodes;
+		Vector2? mPrevDrawnOffset;
 
 		#endregion rMembers
 
@@ -88,6 +89,28 @@
 
 		#endregion rUtil
 
+
+		#region rDraw
+
+		//Hacks to avoid redrawing the same rail at the same offset multiple times.
+		public bool CanDrawAt(Vector2 offset)
+		{
+			if(mPrevDrawnOffset.HasValue)
+			{
+				return false;
+			}
+
+			mPrevDrawnOffset = offset;
+			return true;
+		}
+
+		public void NotifyEndDrawCycle()
+		{
+			mPrevDrawnOffset = null;
+		}
+
+
+		#endregion rDraw
 
 
 
@@ -258,6 +281,10 @@
 		/// </summary>
 		public override void Draw(DrawInfo info, Vector2 offset)
 		{
+			if(!mData.CanDrawAt(offset))
+			{
+				return;
+			}
 			int numSegs = GetNumDrawSegments();
 			int numNodes = mData.GetCount();
 

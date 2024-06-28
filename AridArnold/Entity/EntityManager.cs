@@ -279,6 +279,13 @@
 				if (!entity.IsEnabled()) continue;
 				entity.Draw(info);
 			}
+
+			// Weird rail hack...
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
+			foreach(var railData in currLevel.GetAuxData().GetRailsData())
+			{
+				railData.NotifyEndDrawCycle();
+			}
 		}
 
 		#endregion rDraw
