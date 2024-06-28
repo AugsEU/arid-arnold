@@ -38,9 +38,10 @@
 		/// <summary>
 		/// Enabled in "winter"
 		/// </summary>
-		protected override int GetOnSeason()
+		protected override bool IsExtended()
 		{
-			return 0;
+			int time = TimeZoneManager.I.GetCurrentTimeZone();
+			return time <= 0;
 		}
 
 		#endregion rUtility

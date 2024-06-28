@@ -13524,3 +13524,27 @@
 #begin NPC/Papy/Papy.mtn
 /copy:NPC/Papy/Papy.mtn
 
+#begin GreatGate/GateBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:GreatGate/GateBack.png
+
+#begin GreatGate/GateFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:GreatGate/GateFront.png
+
+#begin GreatGate/Opening.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:GreatGate/Opening.png
+
+#begin Text/EN/InGame/GetKey.txt
+/copy:Text/EN/InGame/GetKey.txt
+
+#begin Text/EN/InGame/UseKey.txt
+/copy:Text/EN/InGame/UseKey.txt
+

@@ -28,7 +28,7 @@
 		/// </summary>
 		public ExtenderEntity(Vector2 pos, int length) : base(pos, walkSpeed: 9.5f)
 		{
-			mIsExtended = TimeZoneManager.I.GetCurrentTimeZone() == GetOnSeason();
+			mIsExtended = IsExtended();
 			mLength = length;
 			mPrevDirection = WalkDirection.Right;
 		}
@@ -89,6 +89,7 @@
 		/// </summary>
 		private void UpdatePush(GameTime gameTime)
 		{
+			mIsExtended = IsExtended();
 			if (mIsExtended)
 			{
 				PushInDir(WalkDirection.None);
@@ -173,7 +174,7 @@
 		/// </summary>
 		protected override void OnTimeChange(GameTime gameTime)
 		{
-			mIsExtended = TimeZoneManager.I.GetCurrentTimeZone() == GetOnSeason();
+			mIsExtended = IsExtended();
 
 			int maxCounter = 0;
 
@@ -282,9 +283,9 @@
 		#region rUtility
 
 		/// <summary>
-		/// Get the season where we are extended
+		/// Check if we are extended
 		/// </summary>
-		protected abstract int GetOnSeason();
+		protected abstract bool IsExtended();
 
 		#endregion rUtility
 	}

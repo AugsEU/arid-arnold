@@ -11,6 +11,7 @@
 		kWaterCollected = 0,
 		kCurses,
 		kKeyItems,
+		kUnlockedGreatGate,
 		kMaxFlagCategory
 	}
 

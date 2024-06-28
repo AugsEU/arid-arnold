@@ -445,6 +445,9 @@
 				case EntityData.EntityClass.kBouncer:
 					entity = new Bouncer(worldPosition);
 					break;
+				case EntityData.EntityClass.kGreatGate:
+					entity = new GreatGate(worldPosition);
+					break;
 
 				// Utility
 				case EntityData.EntityClass.kArnoldSpawner:

@@ -89,9 +89,20 @@
 
 
 		/// <summary>
+		/// Set flag to tre/false
+		/// </summary>
+		public void SetFlag(FlagCategory category, bool value)
+		{
+			UInt64 rawFlag = GetRawFlag(category, 0);
+			SetFlag(rawFlag, value);
+		}
+
+
+
+		/// <summary>
 		/// Get raw flag from category + impl data
 		/// </summary>
-		public UInt64 GetRawFlag(FlagCategory category, UInt32 impl)
+		public UInt64 GetRawFlag(FlagCategory category, UInt32 impl = 0)
 		{
 			UInt64 categoryBytes = (UInt64)category;
 			UInt64 implExpanded = (UInt64)impl;
@@ -114,7 +125,7 @@
 		/// <summary>
 		/// Is this flag set?
 		/// </summary>
-		public bool CheckFlag(FlagCategory flag, UInt32 impl)
+		public bool CheckFlag(FlagCategory flag, UInt32 impl = 0)
 		{
 			UInt64 rawFlag = (UInt64)GetRawFlag(flag, impl);
 			return CheckFlag(rawFlag);

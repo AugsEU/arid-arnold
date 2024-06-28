@@ -110,6 +110,7 @@
 			ScreenManager.I.LoadAllScreens(mGraphicsManager);
 			GhostManager.I.Load();
 			CameraManager.I.Init();
+			FlagsManager.I.Init();
 
 			mDummyTexture = new Texture2D(GraphicsDevice, 1, 1);
 			mDummyTexture.SetData(new Color[] { Color.White });
@@ -118,7 +119,6 @@
 
 			// Temp
 			CampaignManager.I.LoadCampaign("MainCampaign");
-			FlagsManager.I.Init();
 			ScreenManager.I.ActivateScreen(ScreenType.Game);
 		}
 

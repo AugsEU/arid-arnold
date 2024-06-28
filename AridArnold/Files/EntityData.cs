@@ -31,6 +31,7 @@
 			kBickDogel,
 			kFireBarrel,
 			kBouncer,
+			kGreatGate,
 			kNPCClassEnd,
 
 			// Utility
