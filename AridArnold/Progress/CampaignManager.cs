@@ -72,10 +72,10 @@ namespace AridArnold
 			CollectableManager.I.IncPermanentCount(0x0000, 100);
 			CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(2, 1);
-			QueueLoadSequence(new HubDirectLoader(802));
-			//QueueLoadSequence(new LevelDirectLoader(513));
+			//QueueLoadSequence(new HubDirectLoader(802));
+			QueueLoadSequence(new LevelDirectLoader(513));
 
-			//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
+			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 			mMaxLives = 0;

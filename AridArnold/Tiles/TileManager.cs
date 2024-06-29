@@ -159,6 +159,8 @@
 						return new TeleportPipe(position);
 					case 0xB90D00u:
 						return new LavaTile(position);
+					case 0x00FFFFu:
+						return new KeyItemTile(position, (KeyItemFlagType)param);
 					//Electricity
 					case 0x61AD65u:
 						return new PermElectricButton((CardinalDirection)param, position);

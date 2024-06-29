@@ -18,7 +18,8 @@
 		static Vector2 KEY_OFFSET = new Vector2(80.0f, 33.0f);
 		static Vector2 COIN_OFFSET = new Vector2(138.0f, 33.0f);
 		static Vector2 COLLECTIBLE_TEXT_ORIGIN = new Vector2(37.0f, 79.0f);
-		static Vector2 KEY_ITEM_OFFSET = new Vector2(10.0f, 96.0f);
+
+		static Vector2 KEY_ITEM_OFFSET = new Vector2(8.0f, 93.0f);
 		static float KEY_ITEM_DISPLACEMENT = 13.0f;
 
 		// Data
@@ -135,7 +136,7 @@
 				{
 					ref KeyItemUI keyItemUI = ref mKeyItemInfo[i];
 					MonoDraw.DrawTextureDepth(info, keyItemUI.mTexture, pos, GetDepth());
-					MonoDraw.DrawString(info, mSmallFont, keyItemUI.mLocString, pos + new Vector2(17.0f, -3.0f), PANEL_WHITE, GetDepth());
+					MonoDraw.DrawString(info, mSmallFont, keyItemUI.mLocString, pos + new Vector2(19.0f, 0.0f), PANEL_WHITE, GetDepth());
 				}
 
 				pos.Y += KEY_ITEM_DISPLACEMENT;
