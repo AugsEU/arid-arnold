@@ -78,7 +78,7 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			bool hasGreatKey = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagTypes.kGatewayKey);
+			bool hasGreatKey = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey);
 			bool openFlag = FlagsManager.I.CheckFlag(FlagCategory.kUnlockedGreatGate);
 			if (!mIsUnlocked)
 			{
@@ -112,7 +112,7 @@
 
 		protected override void OnPlayerInteract()
 		{
-			bool hasGreatKey = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagTypes.kGatewayKey);
+			bool hasGreatKey = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey);
 			if (hasGreatKey)
 			{
 				FlagsManager.I.SetFlag(FlagCategory.kUnlockedGreatGate, true);

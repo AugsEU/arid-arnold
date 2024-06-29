@@ -13557,3 +13557,57 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Levels/0513.png
 
+#begin UI/InGame/CoinPurse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/CoinPurse.png
+
+#begin UI/InGame/DemonToken.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/DemonToken.png
+
+#begin UI/InGame/GenerationalJeans.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/GenerationalJeans.png
+
+#begin UI/InGame/GreatKey.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/GreatKey.png
+
+#begin UI/InGame/HorseToken.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/HorseToken.png
+
+#begin UI/InGame/SerpentToken.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SerpentToken.png
+
+#begin Text/EN/UI/KeyItem/CoinPurse.txt
+/copy:Text/EN/UI/KeyItem/CoinPurse.txt
+
+#begin Text/EN/UI/KeyItem/DemonToken.txt
+/copy:Text/EN/UI/KeyItem/DemonToken.txt
+
+#begin Text/EN/UI/KeyItem/GatewayKey.txt
+/copy:Text/EN/UI/KeyItem/GatewayKey.txt
+
+#begin Text/EN/UI/KeyItem/HorseToken.txt
+/copy:Text/EN/UI/KeyItem/HorseToken.txt
+
+#begin Text/EN/UI/KeyItem/RippedJeans.txt
+/copy:Text/EN/UI/KeyItem/RippedJeans.txt
+
+#begin Text/EN/UI/KeyItem/SerpentToken.txt
+/copy:Text/EN/UI/KeyItem/SerpentToken.txt
+
