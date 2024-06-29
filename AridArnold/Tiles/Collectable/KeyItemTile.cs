@@ -7,6 +7,13 @@
 		public KeyItemTile(Vector2 pos, KeyItemFlagType type) : base(pos)
 		{
 			mFlagType = type;
+
+			//Hack to stop jeans from re-appearing.
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
+			if(currLevel is HubLevel && FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)mFlagType))
+			{
+				pEnabled = false;
+			}
 		}
 
 		public override void LoadContent()

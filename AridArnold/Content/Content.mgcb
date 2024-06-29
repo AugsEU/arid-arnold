@@ -13611,3 +13611,9 @@
 #begin Text/EN/UI/KeyItem/SerpentToken.txt
 /copy:Text/EN/UI/KeyItem/SerpentToken.txt
 
+#begin Tiles/Buk/CaveFaded.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Buk/CaveFaded.png
+

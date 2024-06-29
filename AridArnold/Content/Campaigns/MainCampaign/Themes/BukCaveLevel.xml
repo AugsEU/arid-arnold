@@ -3,6 +3,8 @@
 	<name>Buk's Cave</name>
 	<exitColour>18151E</exitColour>
 	<path from="Wall">Cave</path>
+	<path from="ApparentWall">Cave</path>
+	<path from="FadedWall">CaveFaded</path>
 	<path from="Platform">CavePlatform</path>
 	<path from="OtherWorldWall">../Library/Wood</path>
 	<path from="CoinFull">GemFull</path>
