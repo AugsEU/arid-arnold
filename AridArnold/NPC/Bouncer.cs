@@ -9,6 +9,9 @@ namespace AridArnold
 		#region rConstants
 
 		const float BODY_BLOCK_RANGE = 48.0f;
+		const string NOT_ALLOWED_STR_ID = "NPC.Bouncer.NotAllowed";
+		const string ALLOWED_STR_ID = "NPC.Bouncer.Allowed";
+
 
 		#endregion rConstants
 
@@ -21,6 +24,8 @@ namespace AridArnold
 		Texture2D mExclaimTex;
 		Texture2D mJumpUpTex;
 		Texture2D mJumpDownTex;
+		bool mSentDialogBox;
+
 
 		#endregion rMembers
 
@@ -44,6 +49,7 @@ namespace AridArnold
 			mOnGround = true;
 
 			mJumpSpeed = 23.0f;
+			mSentDialogBox = false;
 		}
 
 		#endregion rInit
@@ -59,7 +65,8 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			if(!LetArnoldThrough())
+			bool letThrough = LetArnoldThrough();
+			if (!LetArnoldThrough())
 			{
 				//Block player...
 				Rect2f blockingRect = new Rect2f(new Vector2(mPosition.X, 0.0f), 10.0f, 5000.0f);
@@ -67,6 +74,21 @@ namespace AridArnold
 
 				// Meet arnold's height.
 				MeetArnoldHeight();
+			}
+
+			if (IsTalking() || EntityManager.I.AnyNearMe(28.0f, this, typeof(Arnold), typeof(Androld)))
+			{
+				if (!mSentDialogBox)
+				{
+					string strID = letThrough ? ALLOWED_STR_ID : NOT_ALLOWED_STR_ID;
+					AddDialogBox(strID);
+				}
+
+				mSentDialogBox = true;
+			}
+			else
+			{
+				mSentDialogBox = false;
 			}
 
 			base.Update(gameTime);
@@ -79,7 +101,7 @@ namespace AridArnold
 		/// </summary>
 		bool LetArnoldThrough()
 		{
-			return true;
+			return FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans);
 		}
 
 

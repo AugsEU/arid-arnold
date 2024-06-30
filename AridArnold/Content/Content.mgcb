@@ -13617,3 +13617,15 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/Buk/CaveFaded.png
 
+#begin Text/EN/NPC/Bouncer/Allowed.txt
+/copy:Text/EN/NPC/Bouncer/Allowed.txt
+
+#begin Text/EN/NPC/Bouncer/NotAllowed.txt
+/copy:Text/EN/NPC/Bouncer/NotAllowed.txt
+
+#begin Tiles/Lab/LabWallFaded.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Lab/LabWallFaded.png
+

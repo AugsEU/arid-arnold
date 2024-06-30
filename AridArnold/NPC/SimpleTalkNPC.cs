@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		const float TALK_DISTANCE = 29.0f;
+		const float TALK_DISTANCE = 27.0f;
 		const float WALK_FREQUENCY = 10000.0f;
 		const float WALK_SPEED = 3.0f;
 
