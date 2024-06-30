@@ -138,13 +138,17 @@
 
 		#region rUpdate
 
+		static DateTime debugNow = DateTime.Now;
+
 		/// <summary>
 		/// Update game. It updates in fixed intervals, even if the frame time was way longer.
 		/// </summary>
 		/// <param name="gameTime"></param>
 		protected override void Update(GameTime gameTime)
 		{
-			gameTime.ElapsedGameTime = TargetElapsedTime;
+			//gameTime.ElapsedGameTime = TargetElapsedTime; This isn't needed with fixed time step
+
+			TimeSpan now = DateTime.Now - debugNow;
 
 			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
 			if (mSlowDownCount == 0)
@@ -371,6 +375,7 @@
 		public static void LoadingScreenBegin()
 		{
 			sSelf.mInLoadingSection = true;
+			sSelf.IsFixedTimeStep = false;
 		}
 
 
@@ -381,6 +386,8 @@
 		public static void LoadingScreenEnd()
 		{
 			sSelf.mInLoadingSection = false;
+			sSelf.IsFixedTimeStep = true;
+			sSelf.ResetElapsedTime();
 		}
 
 

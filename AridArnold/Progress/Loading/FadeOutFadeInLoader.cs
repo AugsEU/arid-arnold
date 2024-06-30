@@ -7,7 +7,9 @@
 		protected enum LoadingState
 		{
 			FadeOut,
+			PreLevelLoad,
 			LoadingLevel,
+			PostLevelLoad,
 			FadeIn,
 			Done
 		}
@@ -55,12 +57,33 @@
 					UpdateFade(mFadeOut, gameTime);
 					break;
 
-				case LoadingState.LoadingLevel:
-					mNumUpdatesLoading++;
-					if (mNumUpdatesLoading == 5)
+				case LoadingState.PreLevelLoad:
+					if(mNumUpdatesLoading == 0)
 					{
-						LevelLoadUpdate(gameTime);
+						Main.LoadingScreenBegin();
 					}
+					else if(mNumUpdatesLoading >= 2)
+					{
+						mLoadingState = LoadingState.LoadingLevel;
+						GC.Collect();
+					}
+					mNumUpdatesLoading++;
+					break;
+
+				case LoadingState.LoadingLevel:
+					LevelLoadUpdate(gameTime);
+					break;
+
+				case LoadingState.PostLevelLoad:
+					if(mNumUpdatesLoading == 1)
+					{
+						Main.LoadingScreenEnd();
+					}
+					else if (mNumUpdatesLoading >= 2)
+					{
+						mLoadingState = LoadingState.FadeIn;
+					}
+					mNumUpdatesLoading++;
 					break;
 
 				case LoadingState.FadeIn:
@@ -76,11 +99,6 @@
 			if (fade is null || fade.Finished())
 			{
 				mLoadingState++;
-				if (mLoadingState == LoadingState.LoadingLevel)
-				{
-					Main.LoadingScreenBegin();
-					GC.Collect();
-				}
 				return;
 			}
 
@@ -93,10 +111,10 @@
 			return mLoadingState == LoadingState.Done;
 		}
 
-		protected void GoToFadeIn()
+		protected void NotifyFinishedLoading()
 		{
-			mLoadingState = LoadingState.FadeIn;
-			Main.LoadingScreenEnd();
+			mLoadingState = LoadingState.PostLevelLoad;
+			mNumUpdatesLoading = 0;
 		}
 
 		#endregion rUpdate
@@ -142,7 +160,7 @@
 		protected override void LevelLoadUpdate(GameTime gameTime)
 		{
 			DoLevelLoad();
-			GoToFadeIn();
+			NotifyFinishedLoading();
 		}
 
 		protected abstract void DoLevelLoad();

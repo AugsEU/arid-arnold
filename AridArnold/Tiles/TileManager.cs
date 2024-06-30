@@ -771,8 +771,6 @@
 			Rect2f collider = entity.ColliderBounds();
 			Vector2 centrePos = collider.Centre;
 
-			//MonoDebug.Log("COLLIDER: {0} {1}", collider.Width.ToString(), collider.Height.ToString());
-
 			if (collider.Width > 16.0f || collider.Height > 16.0f || !IsInTileMap(centrePos))
 			{
 				return;

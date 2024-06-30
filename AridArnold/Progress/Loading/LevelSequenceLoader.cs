@@ -16,7 +16,7 @@
 			LoadLevel(nextLevel);
 			CollectableManager.I.NotifyLevelBegin();
 
-			GoToFadeIn();
+			NotifyFinishedLoading();
 		}
 	}
 }
