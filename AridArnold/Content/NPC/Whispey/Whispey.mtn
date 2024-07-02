@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Whispey</name>
+	<textStyle>
+		<scrollSpeed>0.55</scrollSpeed>
+		<framesPerLetter>5</framesPerLetter>
+		<fillColor>5D6060A2</fillColor>
+		<borderColor>A43030</borderColor>
+	</textStyle>
+</simpleTalkNPC>

@@ -6306,6 +6306,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0512.png
 
+#begin Campaigns/MainCampaign/Levels/0513.aux
+/copy:Campaigns/MainCampaign/Levels/0513.aux
+
+#begin Campaigns/MainCampaign/Levels/0513.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0513.png
+
 #begin Campaigns/MainCampaign/Levels/0601.aux
 /copy:Campaigns/MainCampaign/Levels/0601.aux
 
@@ -8730,6 +8745,42 @@
 /processorParam:TextureFormat=Color
 /build:GravityOrb/OrbUpActive.png
 
+#begin GreatGate/GateBack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GreatGate/GateBack.png
+
+#begin GreatGate/GateFront.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GreatGate/GateFront.png
+
+#begin GreatGate/Opening.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:GreatGate/Opening.png
+
 #begin Icon.ico
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9345,6 +9396,63 @@
 /processorParam:TextureFormat=Color
 /build:NPC/DevilHead/TalkNormal.png
 
+#begin NPC/DevilSister/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilSister/Default.png
+
+#begin NPC/DevilSister/DevilSister.mtn
+/copy:NPC/DevilSister/DevilSister.mtn
+
+#begin NPC/DevilSister/Float.max
+/copy:NPC/DevilSister/Float.max
+
+#begin NPC/DevilSister/Float1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilSister/Float1.png
+
+#begin NPC/DevilSister/Idle.mia
+/copy:NPC/DevilSister/Idle.mia
+
+#begin NPC/DevilSister/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilSister/TalkAngry.png
+
+#begin NPC/DevilSister/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/DevilSister/TalkNormal.png
+
 #begin NPC/Dialog/DialogSpikeBorder.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9819,6 +9927,51 @@
 /processorParam:TextureFormat=Color
 /build:NPC/LazyMan/TalkNormal.png
 
+#begin NPC/Papy/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Papy/Default.png
+
+#begin NPC/Papy/Idle.mia
+/copy:NPC/Papy/Idle.mia
+
+#begin NPC/Papy/Papy.mtn
+/copy:NPC/Papy/Papy.mtn
+
+#begin NPC/Papy/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Papy/TalkAngry.png
+
+#begin NPC/Papy/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Papy/TalkNormal.png
+
+#begin NPC/Papy/Vagabond.mtn
+/copy:NPC/Papy/Vagabond.mtn
+
 #begin NPC/Poisson/Breathe.max
 /copy:NPC/Poisson/Breathe.max
 
@@ -10149,6 +10302,99 @@
 /processorParam:TextureFormat=Color
 /build:NPC/SciOld/TalkNormal.png
 
+#begin NPC/Thornforge/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Thornforge/Default.png
+
+#begin NPC/Thornforge/HammerHit1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Thornforge/HammerHit1.png
+
+#begin NPC/Thornforge/HammerHit2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Thornforge/HammerHit2.png
+
+#begin NPC/Thornforge/HammerHit3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Thornforge/HammerHit3.png
+
+#begin NPC/Thornforge/HammerSpark.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Thornforge/HammerSpark.png
+
+#begin NPC/Thornforge/HitHammer.max
+/copy:NPC/Thornforge/HitHammer.max
+
+#begin NPC/Thornforge/Idle.mia
+/copy:NPC/Thornforge/Idle.mia
+
+#begin NPC/Thornforge/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Thornforge/TalkAngry.png
+
+#begin NPC/Thornforge/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Thornforge/TalkNormal.png
+
+#begin NPC/Thornforge/ThornForge.mtn
+/copy:NPC/Thornforge/ThornForge.mtn
+
 #begin NPC/Tome/Default0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -10307,6 +10553,63 @@
 
 #begin NPC/Vagabond/Vagabond.mtn
 /copy:NPC/Vagabond/Vagabond.mtn
+
+#begin NPC/Whispey/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Whispey/Default.png
+
+#begin NPC/Whispey/FishFlop.max
+/copy:NPC/Whispey/FishFlop.max
+
+#begin NPC/Whispey/Idle.mia
+/copy:NPC/Whispey/Idle.mia
+
+#begin NPC/Whispey/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Whispey/Idle1.png
+
+#begin NPC/Whispey/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Whispey/TalkAngry.png
+
+#begin NPC/Whispey/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Whispey/TalkNormal.png
+
+#begin NPC/Whispey/Whispey.mtn
+/copy:NPC/Whispey/Whispey.mtn
 
 #begin NPC/Witch/Default.png
 /importer:TextureImporter
@@ -11094,6 +11397,15 @@
 #begin Text/EN/Arcade/DeathRide/Title.txt
 /copy:Text/EN/Arcade/DeathRide/Title.txt
 
+#begin Text/EN/Arcade/GetDemonToken.txt
+/copy:Text/EN/Arcade/GetDemonToken.txt
+
+#begin Text/EN/Arcade/GetHorseToken.txt
+/copy:Text/EN/Arcade/GetHorseToken.txt
+
+#begin Text/EN/Arcade/GetSerpentToken.txt
+/copy:Text/EN/Arcade/GetSerpentToken.txt
+
 #begin Text/EN/Arcade/GoNext.txt
 /copy:Text/EN/Arcade/GoNext.txt
 
@@ -11166,6 +11478,9 @@
 #begin Text/EN/InGame/ArcadeEnter.txt
 /copy:Text/EN/InGame/ArcadeEnter.txt
 
+#begin Text/EN/InGame/GetKey.txt
+/copy:Text/EN/InGame/GetKey.txt
+
 #begin Text/EN/InGame/GlobalTime.txt
 /copy:Text/EN/InGame/GlobalTime.txt
 
@@ -11204,6 +11519,9 @@
 
 #begin Text/EN/InGame/TimeMachine.txt
 /copy:Text/EN/InGame/TimeMachine.txt
+
+#begin Text/EN/InGame/UseKey.txt
+/copy:Text/EN/InGame/UseKey.txt
 
 #begin Text/EN/Items/HotdogPlantDesc.txt
 /copy:Text/EN/Items/HotdogPlantDesc.txt
@@ -11301,6 +11619,24 @@
 #begin Text/EN/NPC/BossMan/WhoDis.txt
 /copy:Text/EN/NPC/BossMan/WhoDis.txt
 
+#begin Text/EN/NPC/Bouncer/Allowed.txt
+/copy:Text/EN/NPC/Bouncer/Allowed.txt
+
+#begin Text/EN/NPC/Bouncer/NotAllowed.txt
+/copy:Text/EN/NPC/Bouncer/NotAllowed.txt
+
+#begin Text/EN/NPC/DevilHead/BlessingLives.txt
+/copy:Text/EN/NPC/DevilHead/BlessingLives.txt
+
+#begin Text/EN/NPC/DevilHead/BlessingMoney.txt
+/copy:Text/EN/NPC/DevilHead/BlessingMoney.txt
+
+#begin Text/EN/NPC/DevilHead/CurseLives.txt
+/copy:Text/EN/NPC/DevilHead/CurseLives.txt
+
+#begin Text/EN/NPC/DevilHead/CurseMoney.txt
+/copy:Text/EN/NPC/DevilHead/CurseMoney.txt
+
 #begin Text/EN/NPC/DevilHead/DealDone.txt
 /copy:Text/EN/NPC/DevilHead/DealDone.txt
 
@@ -11312,6 +11648,27 @@
 
 #begin Text/EN/NPC/DevilHead/Heckle.txt
 /copy:Text/EN/NPC/DevilHead/Heckle.txt
+
+#begin Text/EN/NPC/DevilSister/BlessingLives.txt
+/copy:Text/EN/NPC/DevilSister/BlessingLives.txt
+
+#begin Text/EN/NPC/DevilSister/BlessingMoney.txt
+/copy:Text/EN/NPC/DevilSister/BlessingMoney.txt
+
+#begin Text/EN/NPC/DevilSister/CurseLives.txt
+/copy:Text/EN/NPC/DevilSister/CurseLives.txt
+
+#begin Text/EN/NPC/DevilSister/CurseMoney.txt
+/copy:Text/EN/NPC/DevilSister/CurseMoney.txt
+
+#begin Text/EN/NPC/DevilSister/DealIntro.txt
+/copy:Text/EN/NPC/DevilSister/DealIntro.txt
+
+#begin Text/EN/NPC/DevilSister/DealScript.txt
+/copy:Text/EN/NPC/DevilSister/DealScript.txt
+
+#begin Text/EN/NPC/DevilSister/Heckle.txt
+/copy:Text/EN/NPC/DevilSister/Heckle.txt
 
 #begin Text/EN/NPC/Dok/GravityConfusion.txt
 /copy:Text/EN/NPC/Dok/GravityConfusion.txt
@@ -11427,6 +11784,9 @@
 #begin Text/EN/NPC/LazyMan/Talk.txt
 /copy:Text/EN/NPC/LazyMan/Talk.txt
 
+#begin Text/EN/NPC/Papy/HellTalk.txt
+/copy:Text/EN/NPC/Papy/HellTalk.txt
+
 #begin Text/EN/NPC/Poisson/CaveTalk.txt
 /copy:Text/EN/NPC/Poisson/CaveTalk.txt
 
@@ -11463,6 +11823,15 @@
 #begin Text/EN/NPC/SciOld/WorldWar1.txt
 /copy:Text/EN/NPC/SciOld/WorldWar1.txt
 
+#begin Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
+/copy:Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
+
+#begin Text/EN/NPC/Thornforge/KeyIntro.txt
+/copy:Text/EN/NPC/Thornforge/KeyIntro.txt
+
+#begin Text/EN/NPC/Thornforge/KeyScript.txt
+/copy:Text/EN/NPC/Thornforge/KeyScript.txt
+
 #begin Text/EN/NPC/Tome/AgeExplain.txt
 /copy:Text/EN/NPC/Tome/AgeExplain.txt
 
@@ -11486,6 +11855,12 @@
 
 #begin Text/EN/NPC/Vagabond/Heckle.txt
 /copy:Text/EN/NPC/Vagabond/Heckle.txt
+
+#begin Text/EN/NPC/Whispey/Heckle.txt
+/copy:Text/EN/NPC/Whispey/Heckle.txt
+
+#begin Text/EN/NPC/Whispey/Heretic.txt
+/copy:Text/EN/NPC/Whispey/Heretic.txt
 
 #begin Text/EN/NPC/Witch/1AlreadyQuench.txt
 /copy:Text/EN/NPC/Witch/1AlreadyQuench.txt
@@ -11598,6 +11973,24 @@
 #begin Text/EN/UI/Controls.txt
 /copy:Text/EN/UI/Controls.txt
 
+#begin Text/EN/UI/KeyItem/CoinPurse.txt
+/copy:Text/EN/UI/KeyItem/CoinPurse.txt
+
+#begin Text/EN/UI/KeyItem/DemonToken.txt
+/copy:Text/EN/UI/KeyItem/DemonToken.txt
+
+#begin Text/EN/UI/KeyItem/GatewayKey.txt
+/copy:Text/EN/UI/KeyItem/GatewayKey.txt
+
+#begin Text/EN/UI/KeyItem/HorseToken.txt
+/copy:Text/EN/UI/KeyItem/HorseToken.txt
+
+#begin Text/EN/UI/KeyItem/RippedJeans.txt
+/copy:Text/EN/UI/KeyItem/RippedJeans.txt
+
+#begin Text/EN/UI/KeyItem/SerpentToken.txt
+/copy:Text/EN/UI/KeyItem/SerpentToken.txt
+
 #begin Tiles/air.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11687,6 +12080,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Buk/cave.png
+
+#begin Tiles/Buk/CaveFaded.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Buk/CaveFaded.png
 
 #begin Tiles/Buk/CavePlatform.png
 /importer:TextureImporter
@@ -12468,6 +12873,18 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Lab/LabWall4.png
 
+#begin Tiles/Lab/LabWallFaded.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Lab/LabWallFaded.png
+
 #begin Tiles/Lab/NukeOff.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13176,6 +13593,18 @@
 /processorParam:TextureFormat=Color
 /build:UI/InGame/ChronometerBG.png
 
+#begin UI/InGame/CoinPurse.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/CoinPurse.png
+
 #begin UI/InGame/CompassArrow.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13200,6 +13629,18 @@
 /processorParam:TextureFormat=Color
 /build:UI/InGame/CompassCentre.png
 
+#begin UI/InGame/DemonToken.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/DemonToken.png
+
 #begin UI/InGame/EmptyLifeArnold.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13223,6 +13664,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/InGame/GalaxBG.png
+
+#begin UI/InGame/GenerationalJeans.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/GenerationalJeans.png
+
+#begin UI/InGame/GreatKey.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/GreatKey.png
+
+#begin UI/InGame/HorseToken.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/HorseToken.png
 
 #begin UI/InGame/InventoryBG.png
 /importer:TextureImporter
@@ -13332,6 +13809,18 @@
 /processorParam:TextureFormat=Color
 /build:UI/InGame/SequenceTileOn.png
 
+#begin UI/InGame/SerpentToken.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/SerpentToken.png
+
 #begin UI/InGame/VitalsSignsBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13367,307 +13856,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Text/EN/NPC/DevilHead/BlessingLives.txt
-/copy:Text/EN/NPC/DevilHead/BlessingLives.txt
-
-#begin Text/EN/NPC/DevilHead/BlessingMoney.txt
-/copy:Text/EN/NPC/DevilHead/BlessingMoney.txt
-
-#begin Text/EN/NPC/DevilHead/CurseLives.txt
-/copy:Text/EN/NPC/DevilHead/CurseLives.txt
-
-#begin Text/EN/NPC/DevilHead/CurseMoney.txt
-/copy:Text/EN/NPC/DevilHead/CurseMoney.txt
-
-#begin NPC/DevilSister/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/DevilSister/Default.png
-
-#begin NPC/DevilSister/DevilSister.mtn
-/copy:NPC/DevilSister/DevilSister.mtn
-
-#begin NPC/DevilSister/Float.max
-/copy:NPC/DevilSister/Float.max
-
-#begin NPC/DevilSister/Float1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/DevilSister/Float1.png
-
-#begin NPC/DevilSister/Idle.mia
-/copy:NPC/DevilSister/Idle.mia
-
-#begin NPC/DevilSister/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/DevilSister/TalkAngry.png
-
-#begin NPC/DevilSister/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/DevilSister/TalkNormal.png
-
-#begin Text/EN/NPC/DevilSister/BlessingLives.txt
-/copy:Text/EN/NPC/DevilSister/BlessingLives.txt
-
-#begin Text/EN/NPC/DevilSister/BlessingMoney.txt
-/copy:Text/EN/NPC/DevilSister/BlessingMoney.txt
-
-#begin Text/EN/NPC/DevilSister/CurseLives.txt
-/copy:Text/EN/NPC/DevilSister/CurseLives.txt
-
-#begin Text/EN/NPC/DevilSister/CurseMoney.txt
-/copy:Text/EN/NPC/DevilSister/CurseMoney.txt
-
-#begin Text/EN/NPC/DevilSister/DealIntro.txt
-/copy:Text/EN/NPC/DevilSister/DealIntro.txt
-
-#begin Text/EN/NPC/DevilSister/DealScript.txt
-/copy:Text/EN/NPC/DevilSister/DealScript.txt
-
-#begin Text/EN/NPC/DevilSister/Heckle.txt
-/copy:Text/EN/NPC/DevilSister/Heckle.txt
-
-#begin NPC/Thornforge/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Thornforge/Default.png
-
-#begin NPC/Thornforge/HammerHit1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Thornforge/HammerHit1.png
-
-#begin NPC/Thornforge/HammerHit2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Thornforge/HammerHit2.png
-
-#begin NPC/Thornforge/HammerHit3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Thornforge/HammerHit3.png
-
-#begin NPC/Thornforge/HammerSpark.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Thornforge/HammerSpark.png
-
-#begin NPC/Thornforge/HitHammer.max
-/copy:NPC/Thornforge/HitHammer.max
-
-#begin NPC/Thornforge/Idle.mia
-/copy:NPC/Thornforge/Idle.mia
-
-#begin NPC/Thornforge/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Thornforge/TalkAngry.png
-
-#begin NPC/Thornforge/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Thornforge/TalkNormal.png
-
-#begin NPC/Thornforge/ThornForge.mtn
-/copy:NPC/Thornforge/ThornForge.mtn
-
-#begin Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
-/copy:Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
-
-#begin Text/EN/NPC/Thornforge/KeyIntro.txt
-/copy:Text/EN/NPC/Thornforge/KeyIntro.txt
-
-#begin Text/EN/NPC/Thornforge/KeyScript.txt
-/copy:Text/EN/NPC/Thornforge/KeyScript.txt
-
-#begin NPC/Papy/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Papy/Default.png
-
-#begin NPC/Papy/Idle.mia
-/copy:NPC/Papy/Idle.mia
-
-#begin NPC/Papy/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Papy/TalkAngry.png
-
-#begin NPC/Papy/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Papy/TalkNormal.png
-
-#begin NPC/Papy/Vagabond.mtn
-/copy:NPC/Papy/Vagabond.mtn
-
-#begin Text/EN/NPC/Papy/HellTalk.txt
-/copy:Text/EN/NPC/Papy/HellTalk.txt
-
-#begin NPC/Papy/Papy.mtn
-/copy:NPC/Papy/Papy.mtn
-
-#begin GreatGate/GateBack.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:GreatGate/GateBack.png
-
-#begin GreatGate/GateFront.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:GreatGate/GateFront.png
-
-#begin GreatGate/Opening.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:GreatGate/Opening.png
-
-#begin Text/EN/InGame/GetKey.txt
-/copy:Text/EN/InGame/GetKey.txt
-
-#begin Text/EN/InGame/UseKey.txt
-/copy:Text/EN/InGame/UseKey.txt
-
-#begin Campaigns/MainCampaign/Levels/0513.aux
-/copy:Campaigns/MainCampaign/Levels/0513.aux
-
-#begin Campaigns/MainCampaign/Levels/0513.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0513.png
-
-#begin UI/InGame/CoinPurse.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/InGame/CoinPurse.png
-
-#begin UI/InGame/DemonToken.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/InGame/DemonToken.png
-
-#begin UI/InGame/GenerationalJeans.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/InGame/GenerationalJeans.png
-
-#begin UI/InGame/GreatKey.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/InGame/GreatKey.png
-
-#begin UI/InGame/HorseToken.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/InGame/HorseToken.png
-
-#begin UI/InGame/SerpentToken.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/InGame/SerpentToken.png
-
-#begin Text/EN/UI/KeyItem/CoinPurse.txt
-/copy:Text/EN/UI/KeyItem/CoinPurse.txt
-
-#begin Text/EN/UI/KeyItem/DemonToken.txt
-/copy:Text/EN/UI/KeyItem/DemonToken.txt
-
-#begin Text/EN/UI/KeyItem/GatewayKey.txt
-/copy:Text/EN/UI/KeyItem/GatewayKey.txt
-
-#begin Text/EN/UI/KeyItem/HorseToken.txt
-/copy:Text/EN/UI/KeyItem/HorseToken.txt
-
-#begin Text/EN/UI/KeyItem/RippedJeans.txt
-/copy:Text/EN/UI/KeyItem/RippedJeans.txt
-
-#begin Text/EN/UI/KeyItem/SerpentToken.txt
-/copy:Text/EN/UI/KeyItem/SerpentToken.txt
-
-#begin Tiles/Buk/CaveFaded.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Buk/CaveFaded.png
-
-#begin Text/EN/NPC/Bouncer/Allowed.txt
-/copy:Text/EN/NPC/Bouncer/Allowed.txt
-
-#begin Text/EN/NPC/Bouncer/NotAllowed.txt
-/copy:Text/EN/NPC/Bouncer/NotAllowed.txt
-
-#begin Tiles/Lab/LabWallFaded.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Lab/LabWallFaded.png
-
-#begin NPC/Whispey/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Whispey/Default.png
-
-#begin NPC/Whispey/Dok.mtn
-/copy:NPC/Whispey/Dok.mtn
-
-#begin NPC/Whispey/Idle.mia
-/copy:NPC/Whispey/Idle.mia
-
-#begin NPC/Whispey/StickSmack.max
-/copy:NPC/Whispey/StickSmack.max
-
-#begin NPC/Whispey/StickUp.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Whispey/StickUp.png
-
-#begin NPC/Whispey/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Whispey/TalkAngry.png
-
-#begin NPC/Whispey/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Whispey/TalkNormal.png
-
-#begin Text/EN/Arcade/GetDemonToken.txt
-/copy:Text/EN/Arcade/GetDemonToken.txt
-
-#begin Text/EN/Arcade/GetHorseToken.txt
-/copy:Text/EN/Arcade/GetHorseToken.txt
-
-#begin Text/EN/Arcade/GetSerpentToken.txt
-/copy:Text/EN/Arcade/GetSerpentToken.txt
 
