@@ -7,7 +7,9 @@ namespace AridArnold
 	{
 		ArcadeGameType mGameType;
 		MonoTimer mStaticTimer;
-		TextInfoBubble mBubble;
+		TextInfoBubble mPlayBubble;
+		TextInfoBubble mGetTokenBubble;
+		KeyItemFlagType mRequiredItem;
 
 		public WorldArcadeCabinet(Vector2 pos, ArcadeGameType type) : base(pos)
 		{
@@ -16,42 +18,65 @@ namespace AridArnold
 			mPosition.X += 2.0f;
 			mStaticTimer = new MonoTimer();
 			mStaticTimer.Start();
+
+			mRequiredItem = KeyItemFlagType.kMaxKeyItems;
 		}
 
 		public override void LoadContent()
 		{
 			Vector2 bubblePos = mPosition + new Vector2(6.0f, -2.0f);
-			string strID = "Arcade.PlayDeathRide";
+			string playStrID = "Arcade.PlayDeathRide";
+			string getStrID = "Arcade.GetDemonToken";
 			switch (mGameType)
 			{
 				case ArcadeGameType.DeathRide:
 					mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/WorldCabinetDeathRide");
-					strID = "Arcade.PlayDeathRide";
+
+					playStrID = "Arcade.PlayDeathRide";
+					getStrID = "Arcade.GetDemonToken";
+
+					mRequiredItem = KeyItemFlagType.kDemonToken;
 					break;
 				case ArcadeGameType.HorsesAndGun:
 					mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/WorldCabinetHorse");
-					strID = "Arcade.PlayHorse";
+
+					playStrID = "Arcade.PlayHorse";
+					getStrID = "Arcade.GetHorseToken";
+
+					mRequiredItem = KeyItemFlagType.kHorseToken;
 					break;
 				case ArcadeGameType.WormWarp:
 					mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/WorldCabinetSnake");
-					strID = "Arcade.PlaySnake";
+					
+					playStrID = "Arcade.PlaySnake";
+					getStrID = "Arcade.GetSerpentToken";
+
+					mRequiredItem = KeyItemFlagType.kSerpentToken;
 					break;
 				default:
 					mTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/WorldCabinet");
 					break;
 			}
 
-			mBubble = new TextInfoBubble(bubblePos, strID);
+			mPlayBubble = new TextInfoBubble(bubblePos, playStrID);
+			mGetTokenBubble = new TextInfoBubble(bubblePos, getStrID);
 		}
 
 		public override void Update(GameTime gameTime)
 		{
-			mBubble.Update(gameTime, mPlayerNear);
+			bool hasReqItem = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)mRequiredItem);
+			mPlayBubble.Update(gameTime, mPlayerNear && hasReqItem);
+			mGetTokenBubble.Update(gameTime, mPlayerNear && !hasReqItem);
 			base.Update(gameTime);
 		}
 
 		protected override void OnPlayerInteract()
 		{
+			bool hasReqItem = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)mRequiredItem);
+			if (!hasReqItem)
+			{
+				return;
+			}
 			if(InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
 			{
 				ArcadeGameScreen arcadeGameScreen = ScreenManager.I.GetScreen<ArcadeGameScreen>();
@@ -62,7 +87,8 @@ namespace AridArnold
 
 		public override void Draw(DrawInfo info)
 		{
-			mBubble.Draw(info);
+			mPlayBubble.Draw(info);
+			mGetTokenBubble.Draw(info);
 			MonoDraw.DrawTexture(info, mTexture, mPosition);
 
 			Color[] staticColors = { new Color(55, 55, 55), Color.DarkGray };

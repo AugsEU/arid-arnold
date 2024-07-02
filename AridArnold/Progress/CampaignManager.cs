@@ -76,6 +76,8 @@ namespace AridArnold
 			//QueueLoadSequence(new LevelDirectLoader(513));
 
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
+			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
+			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 			mMaxLives = 0;

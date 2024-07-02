@@ -13629,3 +13629,45 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/Lab/LabWallFaded.png
 
+#begin NPC/Whispey/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Whispey/Default.png
+
+#begin NPC/Whispey/Dok.mtn
+/copy:NPC/Whispey/Dok.mtn
+
+#begin NPC/Whispey/Idle.mia
+/copy:NPC/Whispey/Idle.mia
+
+#begin NPC/Whispey/StickSmack.max
+/copy:NPC/Whispey/StickSmack.max
+
+#begin NPC/Whispey/StickUp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Whispey/StickUp.png
+
+#begin NPC/Whispey/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Whispey/TalkAngry.png
+
+#begin NPC/Whispey/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Whispey/TalkNormal.png
+
+#begin Text/EN/Arcade/GetDemonToken.txt
+/copy:Text/EN/Arcade/GetDemonToken.txt
+
+#begin Text/EN/Arcade/GetHorseToken.txt
+/copy:Text/EN/Arcade/GetHorseToken.txt
+
+#begin Text/EN/Arcade/GetSerpentToken.txt
+/copy:Text/EN/Arcade/GetSerpentToken.txt
+
