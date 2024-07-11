@@ -9855,6 +9855,63 @@
 /processorParam:TextureFormat=Color
 /build:NPC/GrillVogel/Talk1.png
 
+#begin NPC/Keen/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Keen/Default.png
+
+#begin NPC/Keen/Idle.mia
+/copy:NPC/Keen/Idle.mia
+
+#begin NPC/Keen/Idle1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Keen/Idle1.png
+
+#begin NPC/Keen/Keen.mtn
+/copy:NPC/Keen/Keen.mtn
+
+#begin NPC/Keen/Lights.max
+/copy:NPC/Keen/Lights.max
+
+#begin NPC/Keen/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Keen/TalkAngry.png
+
+#begin NPC/Keen/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Keen/TalkNormal.png
+
 #begin NPC/LazyMan/Breathe.max
 /copy:NPC/LazyMan/Breathe.max
 
@@ -9968,9 +10025,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Papy/TalkNormal.png
-
-#begin NPC/Papy/Vagabond.mtn
-/copy:NPC/Papy/Vagabond.mtn
 
 #begin NPC/Poisson/Breathe.max
 /copy:NPC/Poisson/Breathe.max
@@ -11777,6 +11831,12 @@
 
 #begin Text/EN/NPC/GrillVogel/Intro7.txt
 /copy:Text/EN/NPC/GrillVogel/Intro7.txt
+
+#begin Text/EN/NPC/Keen/Conquest.txt
+/copy:Text/EN/NPC/Keen/Conquest.txt
+
+#begin Text/EN/NPC/Keen/Heckle.txt
+/copy:Text/EN/NPC/Keen/Heckle.txt
 
 #begin Text/EN/NPC/LazyMan/Heckle.txt
 /copy:Text/EN/NPC/LazyMan/Heckle.txt

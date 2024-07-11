@@ -67,17 +67,19 @@ namespace AridArnold
 			mSeenCinematics = new HashSet<UInt64>();
 
 #if DEBUG_LOADER
-			mMaxLives = 7;
+			mMaxLives = 0;
 			CollectableManager.I.IncPermanentCount(0x0300, 100);
 			CollectableManager.I.IncPermanentCount(0x0000, 100);
-			CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
-			TimeZoneManager.I.SetCurrentTimeZoneAndAge(-1, 0);
-			QueueLoadSequence(new HubDirectLoader(901));
-			//QueueLoadSequence(new LevelDirectLoader(513));
+			//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
+			TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
+			//QueueLoadSequence(new HubDirectLoader(902));
+			QueueLoadSequence(new LevelDirectLoader(602));
 
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
+			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kDemonToken, true);
+			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kHorseToken, true);
 #else
 			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 			mMaxLives = 0;
