@@ -13959,6 +13959,15 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Text/EN/NPC/Keen/OpenGate.txt
+/copy:Text/EN/NPC/Keen/OpenGate.txt
+
+#begin Text/EN/NPC/Keen/OpenGateScript.txt
+/copy:Text/EN/NPC/Keen/OpenGateScript.txt
+
+#begin Text/EN/NPC/Keen/Where.txt
+/copy:Text/EN/NPC/Keen/Where.txt
+
 #begin Text/EN/NPC/YoungDok/GateScript.txt
 /copy:Text/EN/NPC/YoungDok/GateScript.txt
 

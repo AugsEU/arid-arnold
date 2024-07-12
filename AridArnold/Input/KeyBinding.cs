@@ -86,6 +86,10 @@
 
 		protected override bool PollInput()
 		{
+			if(mInputKey == Keys.Up && Keyboard.GetState().IsKeyDown(mInputKey))
+			{
+				MonoDebug.Log("ENTER HIT");
+			}
 			return Keyboard.GetState().IsKeyDown(mInputKey);
 		}
 

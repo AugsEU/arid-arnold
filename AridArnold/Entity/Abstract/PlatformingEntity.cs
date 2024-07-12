@@ -179,7 +179,7 @@ namespace AridArnold
 				}
 				else
 				{
-					if (!mOnGround)
+					if (!mOnGround && !CanWalkDirChange())
 					{
 						SetWalkDirectionFromSideVel();
 					}
@@ -212,11 +212,11 @@ namespace AridArnold
 			Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
 			float prevSideVel = Vector2.Dot(mPrevVelocity, sideVec);
 
-			if (prevSideVel > mWalkSpeed * 0.5f)
+			if (prevSideVel > mWalkSpeed * 0.85f)
 			{
 				mWalkDirection = WalkDirection.Right;
 			}
-			else if (prevSideVel < -mWalkSpeed * 0.5f)
+			else if (prevSideVel < -mWalkSpeed * 0.85f)
 			{
 				mWalkDirection = WalkDirection.Left;
 			}
