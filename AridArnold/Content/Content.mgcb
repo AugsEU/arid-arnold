@@ -10722,6 +10722,48 @@
 #begin NPC/Witch/Witch.mtn
 /copy:NPC/Witch/Witch.mtn
 
+#begin NPC/YoungDok/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/YoungDok/Default.png
+
+#begin NPC/YoungDok/Idle.mia
+/copy:NPC/YoungDok/Idle.mia
+
+#begin NPC/YoungDok/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/YoungDok/TalkAngry.png
+
+#begin NPC/YoungDok/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/YoungDok/TalkNormal.png
+
+#begin NPC/YoungDok/YoungDok.mtn
+/copy:NPC/YoungDok/YoungDok.mtn
+
 #begin NPC/Zippy/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13916,4 +13958,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
+
+#begin Text/EN/NPC/YoungDok/GateScript.txt
+/copy:Text/EN/NPC/YoungDok/GateScript.txt
+
+#begin Text/EN/NPC/YoungDok/GatherKey.txt
+/copy:Text/EN/NPC/YoungDok/GatherKey.txt
+
+#begin Text/EN/NPC/YoungDok/Peace.txt
+/copy:Text/EN/NPC/YoungDok/Peace.txt
+
+#begin Text/EN/NPC/YoungDok/UseKey.txt
+/copy:Text/EN/NPC/YoungDok/UseKey.txt
 

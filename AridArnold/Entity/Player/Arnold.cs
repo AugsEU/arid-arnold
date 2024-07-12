@@ -256,12 +256,12 @@
 			}
 			else if (CanWalkDirChange() || mOnGround)
 			{
+				HandleWalkInput();
+
 				if (jump && mOnGround)
 				{
 					Jump();
 				}
-
-				HandleWalkInput();
 			}
 			else if (IsGroundedSince(COYOTE_TIME) && !HasJumpedInTheLast(COYOTE_TIME + 1) && !HasFallThroughInLast(COYOTE_TIME + 1))
 			{

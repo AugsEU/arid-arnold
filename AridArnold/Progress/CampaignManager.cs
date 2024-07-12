@@ -73,11 +73,11 @@ namespace AridArnold
 			CollectableManager.I.IncPermanentCount(0x0300, 100);
 			CollectableManager.I.IncPermanentCount(0x0000, 100);
 			//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
-			TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
-			//QueueLoadSequence(new HubDirectLoader(902));
-			QueueLoadSequence(new LevelDirectLoader(702));
+			TimeZoneManager.I.SetCurrentTimeZoneAndAge(-1, 0);
+			QueueLoadSequence(new HubDirectLoader(902));
+			//QueueLoadSequence(new LevelDirectLoader(603));
 
-			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
+			//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kDemonToken, true);

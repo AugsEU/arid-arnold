@@ -174,7 +174,8 @@
 		/// </summary>
 		void HandleInput()
 		{
-			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel))
+			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel) &&
+				CampaignManager.I.GetGameplayState() != CampaignManager.GameplayState.HubWorld)
 			{
 				EntityManager.I.FindArnold().Kill();
 			}

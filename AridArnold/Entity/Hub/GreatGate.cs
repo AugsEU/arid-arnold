@@ -80,30 +80,37 @@
 		{
 			bool hasGreatKey = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey);
 			bool openFlag = FlagsManager.I.CheckFlag(FlagCategory.kUnlockedGreatGate);
-			if (!mIsUnlocked)
+
+			// Add default collider
+			Rect2f collision = ColliderBounds();
+			collision.min.X += 25.0f;
+
+			if (mIsUnlocked)
+			{
+				// Raise collision to open up gate
+				collision.max.Y -= 47.0f;
+			}
+			else
 			{
 				if(openFlag && !mUnlockDoorTimer.IsPlaying())
 				{
 					mUnlockDoorTimer.FullReset();
 					mUnlockDoorTimer.Start();
 				}
-
-				// Add collision
-				Rect2f collision = ColliderBounds();
-
-				collision.min.X += 25.0f;
-
-				RectangleColliderSubmission submission = new RectangleColliderSubmission(collision);
-				EntityManager.I.AddColliderSubmission(submission);
 			}
 
-			if(mUnlockDoorTimer.IsPlaying() && mUnlockDoorTimer.GetPercentageF() >= 1.0f)
+
+
+			RectangleColliderSubmission submission = new RectangleColliderSubmission(collision);
+			EntityManager.I.AddColliderSubmission(submission);
+
+			if (mUnlockDoorTimer.IsPlaying() && mUnlockDoorTimer.GetPercentageF() >= 1.0f)
 			{
 				if(openFlag)
 					mIsUnlocked = openFlag;
 			}
 
-			mUseKeyInfoBubble.Update(gameTime, IsPlayerNear() && hasGreatKey && !mIsUnlocked);
+			mUseKeyInfoBubble.Update(gameTime, IsPlayerNear() && hasGreatKey && !mIsUnlocked && !mUnlockDoorTimer.IsPlaying());
 			mGetKeyInfoBubble.Update(gameTime, IsPlayerNear() && !hasGreatKey && !mIsUnlocked);
 
 			base.Update(gameTime);

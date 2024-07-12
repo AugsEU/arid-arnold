@@ -181,14 +181,7 @@ namespace AridArnold
 				{
 					if (!mOnGround)
 					{
-						if (prevSideVel > mWalkSpeed * 0.5f)
-						{
-							mWalkDirection = WalkDirection.Right;
-						}
-						else if (prevSideVel < -mWalkSpeed * 0.5f)
-						{
-							mWalkDirection = WalkDirection.Left;
-						}
+						SetWalkDirectionFromSideVel();
 					}
 
 					motorDirection = mWalkDirection;
@@ -206,6 +199,27 @@ namespace AridArnold
 
 			mOnGround = false;
 			base.OrderedUpdate(gameTime);
+		}
+
+
+
+		/// <summary>
+		/// Set "motor" based on sideways velocity.
+		/// </summary>
+		private void SetWalkDirectionFromSideVel()
+		{
+			Vector2 downVec = GravityVecNorm();
+			Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
+			float prevSideVel = Vector2.Dot(mPrevVelocity, sideVec);
+
+			if (prevSideVel > mWalkSpeed * 0.5f)
+			{
+				mWalkDirection = WalkDirection.Right;
+			}
+			else if (prevSideVel < -mWalkSpeed * 0.5f)
+			{
+				mWalkDirection = WalkDirection.Left;
+			}
 		}
 
 
