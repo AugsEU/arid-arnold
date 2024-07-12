@@ -9,9 +9,9 @@
 	enum FlagCategory : UInt32
 	{
 		kWaterCollected = 0,
-		kCurses,
-		kKeyItems,
-		kUnlockedGreatGate,
+		kCurses = 1,
+		kKeyItems = 2,
+		kUnlockedGreatGate = 3,
 		kMaxFlagCategory
 	}
 
@@ -23,10 +23,10 @@
 	enum CurseFlagTypes : UInt32
 	{
 		kCurseGiven = 0,
-		kBlessingLives,
-		kBlessingMoney,
-		kCurseLives,
-		kCurseMoney,
+		kBlessingLives = 1,
+		kBlessingMoney = 2,
+		kCurseLives = 3,
+		kCurseMoney = 4,
 		kMaxCurse
 	}
 
@@ -37,12 +37,12 @@
 	/// </summary>
 	enum KeyItemFlagType : UInt32
 	{
-		kGatewayKey,
-		kCoinPurse,
-		kRippedJeans,
-		kSerpentToken,
-		kHorseToken,
-		kDemonToken,
+		kGatewayKey = 0,
+		kCoinPurse = 1,
+		kRippedJeans = 2,
+		kSerpentToken = 3,
+		kHorseToken = 4,
+		kDemonToken = 5,
 		kMaxKeyItems,
 	}
 
