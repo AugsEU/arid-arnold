@@ -67,13 +67,15 @@ namespace AridArnold
 			mSeenCinematics = new HashSet<UInt64>();
 
 #if DEBUG_LOADER
+
+
 			mMaxLives = 0;
 			CollectableManager.I.IncPermanentCount(0x0300, 100);
 			CollectableManager.I.IncPermanentCount(0x0000, 100);
 			//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
 			TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
 			//QueueLoadSequence(new HubDirectLoader(902));
-			QueueLoadSequence(new LevelDirectLoader(602));
+			QueueLoadSequence(new LevelDirectLoader(702));
 
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);

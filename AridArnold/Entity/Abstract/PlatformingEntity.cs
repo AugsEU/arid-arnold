@@ -165,13 +165,14 @@ namespace AridArnold
 
 			Vector2 downVec = GravityVecNorm();
 			Vector2 sideVec = new Vector2(MathF.Abs(downVec.Y), MathF.Abs(downVec.X));
-			float sideVel = Vector2.Dot(mPrevVelocity, sideVec);
+			float prevSideVel = Vector2.Dot(mPrevVelocity, sideVec);
+			float currSideVel = Vector2.Dot(mVelocity, sideVec);
 
 			if (!mUseRealPhysics)
 			{
 				WalkDirection motorDirection = WalkDirection.None;
 				// Ice
-				if (mIceWalking > 0 && IsGroundedSince(4) && MathF.Abs(sideVel) > 0.5f * mWalkSpeed)
+				if (mIceWalking > 0 && IsGroundedSince(4) && MathF.Abs(prevSideVel) > 0.5f * mWalkSpeed)
 				{
 					motorDirection = mPrevDirection;
 					MonoDebug.Assert(motorDirection != WalkDirection.None);
@@ -180,14 +181,14 @@ namespace AridArnold
 				{
 					if (!mOnGround)
 					{
-						//if (sideVel > mWalkSpeed * 0.5f)
-						//{
-						//	mWalkDirection = WalkDirection.Right;
-						//}
-						//else if (sideVel < -mWalkSpeed * 0.5f)
-						//{
-						//	mWalkDirection = WalkDirection.Left;
-						//}
+						if (prevSideVel > mWalkSpeed * 0.5f)
+						{
+							mWalkDirection = WalkDirection.Right;
+						}
+						else if (prevSideVel < -mWalkSpeed * 0.5f)
+						{
+							mWalkDirection = WalkDirection.Left;
+						}
 					}
 
 					motorDirection = mWalkDirection;

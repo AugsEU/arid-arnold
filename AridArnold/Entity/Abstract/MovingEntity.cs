@@ -230,6 +230,7 @@
 		/// </summary>
 		public virtual void OverrideVelocity(Vector2 vel)
 		{
+			mPrevVelocity = vel;
 			mVelocity = vel;
 		}
 
