@@ -10,6 +10,7 @@
 
 		public GravityTile(Vector2 pos) : base(pos, 0, 0, 4.5f)
 		{
+			mUseRealPhysics = true;
 		}
 
 		public override void LoadContent()
