@@ -5166,6 +5166,66 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0703.png
 
+#begin Campaigns/MainCampaign/Hub/0704.aux
+/copy:Campaigns/MainCampaign/Hub/0704.aux
+
+#begin Campaigns/MainCampaign/Hub/0704.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0704.png
+
+#begin Campaigns/MainCampaign/Hub/0705.aux
+/copy:Campaigns/MainCampaign/Hub/0705.aux
+
+#begin Campaigns/MainCampaign/Hub/0705.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0705.png
+
+#begin Campaigns/MainCampaign/Hub/0706.aux
+/copy:Campaigns/MainCampaign/Hub/0706.aux
+
+#begin Campaigns/MainCampaign/Hub/0706.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0706.png
+
+#begin Campaigns/MainCampaign/Hub/0707.aux
+/copy:Campaigns/MainCampaign/Hub/0707.aux
+
+#begin Campaigns/MainCampaign/Hub/0707.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0707.png
+
 #begin Campaigns/MainCampaign/Hub/0801.aux
 /copy:Campaigns/MainCampaign/Hub/0801.aux
 
@@ -7388,6 +7448,9 @@
 
 #begin Campaigns/MainCampaign/Themes/WW7Level.xml
 /copy:Campaigns/MainCampaign/Themes/WW7Level.xml
+
+#begin Campaigns/MainCampaign/Themes/WW7LevelConcrete.xml
+/copy:Campaigns/MainCampaign/Themes/WW7LevelConcrete.xml
 
 #begin Enemies/Futron-Gun/bullet.png
 /importer:TextureImporter
@@ -11880,6 +11943,15 @@
 #begin Text/EN/NPC/Keen/Heckle.txt
 /copy:Text/EN/NPC/Keen/Heckle.txt
 
+#begin Text/EN/NPC/Keen/OpenGate.txt
+/copy:Text/EN/NPC/Keen/OpenGate.txt
+
+#begin Text/EN/NPC/Keen/OpenGateScript.txt
+/copy:Text/EN/NPC/Keen/OpenGateScript.txt
+
+#begin Text/EN/NPC/Keen/Where.txt
+/copy:Text/EN/NPC/Keen/Where.txt
+
 #begin Text/EN/NPC/LazyMan/Heckle.txt
 /copy:Text/EN/NPC/LazyMan/Heckle.txt
 
@@ -12041,6 +12113,18 @@
 
 #begin Text/EN/NPC/Witch/PromptEnter.txt
 /copy:Text/EN/NPC/Witch/PromptEnter.txt
+
+#begin Text/EN/NPC/YoungDok/GateScript.txt
+/copy:Text/EN/NPC/YoungDok/GateScript.txt
+
+#begin Text/EN/NPC/YoungDok/GatherKey.txt
+/copy:Text/EN/NPC/YoungDok/GatherKey.txt
+
+#begin Text/EN/NPC/YoungDok/Peace.txt
+/copy:Text/EN/NPC/YoungDok/Peace.txt
+
+#begin Text/EN/NPC/YoungDok/UseKey.txt
+/copy:Text/EN/NPC/YoungDok/UseKey.txt
 
 #begin Text/EN/NPC/Zippy/BufferJumps.txt
 /copy:Text/EN/NPC/Zippy/BufferJumps.txt
@@ -13515,6 +13599,18 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/WW7/beam.png
 
+#begin Tiles/WW7/BlackTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/WW7/BlackTile.png
+
 #begin Tiles/WW7/ChipFull.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13562,6 +13658,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/WW7/gravel.png
+
+#begin Tiles/WW7/GravelFaded.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/WW7/GravelFaded.png
 
 #begin Tiles/WW7/PlasticFloor.png
 /importer:TextureImporter
@@ -13959,30 +14067,36 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Text/EN/NPC/Keen/OpenGate.txt
-/copy:Text/EN/NPC/Keen/OpenGate.txt
-
-#begin Text/EN/NPC/Keen/OpenGateScript.txt
-/copy:Text/EN/NPC/Keen/OpenGateScript.txt
-
-#begin Text/EN/NPC/Keen/Where.txt
-/copy:Text/EN/NPC/Keen/Where.txt
-
-#begin Text/EN/NPC/YoungDok/GateScript.txt
-/copy:Text/EN/NPC/YoungDok/GateScript.txt
-
-#begin Text/EN/NPC/YoungDok/GatherKey.txt
-/copy:Text/EN/NPC/YoungDok/GatherKey.txt
-
-#begin Text/EN/NPC/YoungDok/Peace.txt
-/copy:Text/EN/NPC/YoungDok/Peace.txt
-
-#begin Text/EN/NPC/YoungDok/UseKey.txt
-/copy:Text/EN/NPC/YoungDok/UseKey.txt
-
-#begin Tiles/WW7/GravelFaded.png
+#begin Tiles/SteamPlant/DecrodedGirder.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Tiles/WW7/GravelFaded.png
+/build:Tiles/SteamPlant/DecrodedGirder.png
+
+#begin Tiles/SteamPlant/DecrodedSteel.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/SteamPlant/DecrodedSteel.png
+
+#begin Campaigns/MainCampaign/Hub/0105.aux
+/copy:Campaigns/MainCampaign/Hub/0105.aux
+
+#begin Campaigns/MainCampaign/Hub/0105.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0105.png
+
+#begin Campaigns/MainCampaign/Themes/AbSteamPlantLevel.xml
+/copy:Campaigns/MainCampaign/Themes/AbSteamPlantLevel.xml
+
+#begin BG/SteamPlant/AbBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/SteamPlant/AbBG.png
+
+#begin BG/SteamPlant/AbSteamPlant.mlo
+/copy:BG/SteamPlant/AbSteamPlant.mlo
 

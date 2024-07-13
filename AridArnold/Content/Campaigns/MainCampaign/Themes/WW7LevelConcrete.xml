@@ -4,9 +4,10 @@
 	<exitColour>2B2B3F</exitColour>
 	<path from="Wall">Gravel</path>
 	<path from="WallSecondary">Concrete</path>
-	<path from="ApparentWall">Gravel</path>
+	<path from="ApparentWall">Concrete</path>
 	<path from="FadedWall">GravelFaded</path>
 	<path from="Platform">Beam</path>
 	<path from="CoinFull">ChipFull</path>
 	<path from="CoinGhost">ChipGhost</path>
+	<path from="OtherWorldWall">BlackTile</path>
 </theme>

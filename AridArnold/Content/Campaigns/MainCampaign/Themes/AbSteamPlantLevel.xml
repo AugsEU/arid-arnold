@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>Steam Plant</name>
+	<exitColour>102951</exitColour>
+	<path from="Wall">DecrodedSteel</path>
+	<path from="Platform">DecrodedGirder</path>
+	<path from="CoinFull">BoltFull</path>
+	<path from="CoinGhost">BoltGhost</path>
+</theme>
