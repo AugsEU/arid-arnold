@@ -13980,3 +13980,9 @@
 #begin Text/EN/NPC/YoungDok/UseKey.txt
 /copy:Text/EN/NPC/YoungDok/UseKey.txt
 
+#begin Tiles/WW7/GravelFaded.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/WW7/GravelFaded.png
+
