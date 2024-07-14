@@ -25,6 +25,9 @@ namespace AridArnold
 		#endregion rMembers
 
 
+
+
+
 		#region rInit
 
 		/// <summary>
@@ -89,6 +92,8 @@ namespace AridArnold
 
 
 
+
+
 		#region rDraw
 
 		/// <summary>
@@ -108,12 +113,40 @@ namespace AridArnold
 		#endregion rDraw
 
 
+
+
+
+		#region rUtil
+
+		/// <summary>
+		/// Get element by it's ID
+		/// </summary>
+		public LayElement GetElementByID(string ID)
+		{
+			// To do: We could make this O(1) but I don't care to at the moment.
+			foreach (LayElement element in mElements)
+			{
+				if(element.GetID() == ID)
+				{
+					return element;
+				}
+			}
+
+			return null;
+		}
+
+		#endregion rUtil
+
+
+
+
+
 		#region rFactory
 
 		/// <summary>
 		/// Element factory from node
 		/// </summary>
-		private static LayElement GenerateElement(XmlNode node)
+		private LayElement GenerateElement(XmlNode node)
 		{
 			if (sElementNameMapping.Count == 0)
 			{
@@ -127,7 +160,7 @@ namespace AridArnold
 				throw new Exception("Do not recognise UI element: " + nodeType);
 			}
 
-			return (LayElement)Activator.CreateInstance(elementType, node);
+			return (LayElement)Activator.CreateInstance(elementType, node, this);
 		}
 
 		/// <summary>
@@ -148,42 +181,5 @@ namespace AridArnold
 		}
 
 		#endregion rFactory
-	}
-
-	/// <summary>
-	/// Element in our layout
-	/// </summary>
-	abstract class LayElement
-	{
-		Vector2 mPos;
-		DrawLayer mDepth;
-		Color mColor;
-		float mScale;
-		bool mVisible;
-
-		public LayElement(XmlNode rootNode)
-		{
-			mPos = MonoParse.GetVector(rootNode);
-			mDepth = MonoParse.GetDrawLayer(rootNode["depth"]);
-			mScale = MonoParse.GetFloat(rootNode["scale"], 1.0f);
-			mColor = MonoParse.GetColor(rootNode["color"], Color.White);
-			mVisible = true;
-		}
-
-		public virtual void Update(GameTime gameTime) { }
-
-		public virtual void Draw(DrawInfo info) { }
-
-		public DrawLayer GetDepth() { return mDepth; }
-
-		public float GetScale() { return mScale; }
-
-		public Vector2 GetPosition() { return mPos; }
-
-		public Color GetColor() { return mColor; }
-
-		public bool IsVisible() { return mVisible; }
-
-		public void SetVisible(bool visible) { mVisible = visible; }
 	}
 }

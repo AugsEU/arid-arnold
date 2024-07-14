@@ -8,7 +8,7 @@
 		int mPrevTimezone;
 		int mPrevAge;
 
-		public E4DLocator(XmlNode rootNode) : base(rootNode, "UI/InGame/4DLocatorBG")
+		public E4DLocator(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/4DLocatorBG", parent)
 		{
 			mFlashTimer = new PercentageTimer(200.0);
 			mTravelTimer = new PercentageTimer(1500.0);

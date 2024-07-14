@@ -37,7 +37,7 @@
 		// Special items
 		KeyItemUI[] mKeyItemInfo;
 
-		public EInventory(XmlNode rootNode) : base(rootNode, "UI/InGame/InventoryBG")
+		public EInventory(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/InventoryBG", parent)
 		{
 			mLargeFont = FontManager.I.GetFont("Pixica", 24, true);
 			mSmallFont = FontManager.I.GetFont("Pixica", 12, true);

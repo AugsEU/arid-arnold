@@ -1,8 +1,10 @@
-﻿namespace AridArnold
+﻿using System.Xml.Linq;
+
+namespace AridArnold
 {
 	class EGalaxPanel : UIPanelBase
 	{
-		public EGalaxPanel(XmlNode rootNode) : base(rootNode, "UI/InGame/GalaxBG")
+		public EGalaxPanel(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/GalaxBG", parent)
 		{
 
 		}

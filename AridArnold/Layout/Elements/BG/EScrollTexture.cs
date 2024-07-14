@@ -7,7 +7,7 @@ namespace AridArnold
 		Vector2 mScrollSpeed;
 		Vector2 mBasePosition;
 
-		public EScrollTexture(XmlNode rootNode) : base(rootNode)
+		public EScrollTexture(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mTexture = MonoParse.GetTexture(rootNode["texture"]);
 			mScrollSpeed = MonoParse.GetVector(rootNode["speed"]);

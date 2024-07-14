@@ -5,7 +5,7 @@
 	/// </summary>
 	abstract class EDrawTexture : LayElement
 	{
-		public EDrawTexture(XmlNode node) : base(node)
+		public EDrawTexture(XmlNode node, Layout parent) : base(node, parent)
 		{
 		}
 

@@ -13,7 +13,7 @@ namespace AridArnold
 		string mStringID;
 		TextAlign mAlign;
 
-		public EText(XmlNode rootNode) : base(rootNode)
+		public EText(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			string fontName = MonoParse.GetString(rootNode["font"], "Pixica-24");
 			mFont = FontManager.I.GetFont(fontName);

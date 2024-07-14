@@ -8,7 +8,7 @@
 		Level mCurrLevel;
 		Animator mCoinAnim;
 
-		public ECollectableCounter(XmlNode rootNode) : base(rootNode)
+		public ECollectableCounter(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mFont = FontManager.I.GetFont("Pixica-24");
 			mKeyTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/KeyFull");

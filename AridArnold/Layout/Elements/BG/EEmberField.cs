@@ -6,7 +6,7 @@
 
 		EmberRect[] mEmberRects;
 
-		public EEmberField(XmlNode rootNode) : base(rootNode)
+		public EEmberField(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			Rectangle emberSizeRect = MonoParse.GetRectangle(rootNode);
 

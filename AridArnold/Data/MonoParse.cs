@@ -53,6 +53,29 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Parse a string attribute
+		/// </summary>
+		static public string GetStringAttrib(XmlNode node, string attribID, string defaultVal = "")
+		{
+			if (node is null)
+			{
+				return defaultVal;
+			}
+
+			attribID = attribID.ToLower();
+			XmlAttribute attribObj = node.Attributes[attribID];
+
+			if(attribObj is null)
+			{
+				return defaultVal;
+			}
+
+			return attribObj.Value;
+		}
+
+
+
+		/// <summary>
 		/// Parse vector from xml node. Default = Zero
 		/// </summary>
 		static public Vector2 GetVector(XmlNode node)

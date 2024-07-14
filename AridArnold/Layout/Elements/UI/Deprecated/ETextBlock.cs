@@ -8,7 +8,7 @@ namespace AridArnold
 	{
 		SimpleTextBoxRenderer mTextRenderer;
 
-		public ETextBlock(XmlNode rootNode) : base(rootNode)
+		public ETextBlock(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			string strID = MonoParse.GetString(rootNode["stringID"]);
 			float width = MonoParse.GetFloat(rootNode["width"]);

@@ -5,13 +5,24 @@
 	/// </summary>
 	enum ScreenType
 	{
+		// Menu
 		Title,
-		LevelStart,
+		MainMenu,
+		NewGame,
+		LoadGame,
+		Options,
+
+		// In Game
 		Game,
-		GameOver,
 		CinematicScreen,
 		ArcadeGame,
 		GameManuals,
+
+		// Deprecated
+		GameOver,
+		LevelStart,
+
+		// Type
 		None
 	}
 
@@ -41,12 +52,22 @@
 		{
 			mScreens.Clear();
 
+			//Menu
+			LoadScreen(ScreenType.Title, new TitleScreen(deviceManager));
+			LoadScreen(ScreenType.MainMenu, new MainMenuScreen(deviceManager));
+			LoadScreen(ScreenType.NewGame, new NewGameScreen(deviceManager));
+			LoadScreen(ScreenType.LoadGame, new LoadGameScreen(deviceManager));
+			LoadScreen(ScreenType.Options, new OptionsScreen(deviceManager));
+
+			// InGame
 			LoadScreen(ScreenType.Game, new GameScreen(deviceManager));
-			LoadScreen(ScreenType.GameOver, new GameOverScreen(deviceManager));
-			LoadScreen(ScreenType.LevelStart, new StartLevelScreen(deviceManager));
 			LoadScreen(ScreenType.CinematicScreen, new CinematicScreen(deviceManager));
 			LoadScreen(ScreenType.ArcadeGame, new ArcadeGameScreen(deviceManager));
 			LoadScreen(ScreenType.GameManuals, new ArcadeManualsScreen(deviceManager));
+
+			// Deprecated
+			LoadScreen(ScreenType.GameOver, new GameOverScreen(deviceManager));
+			LoadScreen(ScreenType.LevelStart, new StartLevelScreen(deviceManager));
 		}
 
 

@@ -6,7 +6,7 @@ namespace AridArnold
 		SpriteFont mFont;
 		SpriteFont mSmallFont;
 
-		public EWorldInfo(XmlNode rootNode) : base(rootNode)
+		public EWorldInfo(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mFont = FontManager.I.GetFont("Pixica-24");
 			mSmallFont = FontManager.I.GetFont("Pixica-12");

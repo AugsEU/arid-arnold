@@ -11,7 +11,7 @@ namespace AridArnold
 
 		LeafRect[] mLeafRects;
 
-		public EMirrorBG(XmlNode rootNode) : base(rootNode)
+		public EMirrorBG(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			Rectangle leafSizeRect = MonoParse.GetRectangle(rootNode);
 

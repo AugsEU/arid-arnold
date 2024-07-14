@@ -7,7 +7,7 @@
 	{
 		Texture2D mTexture;
 
-		public ETexture(XmlNode node) : base(node)
+		public ETexture(XmlNode node, Layout parent) : base(node, parent)
 		{
 			mTexture = MonoParse.GetTexture(node["texture"]);
 		}

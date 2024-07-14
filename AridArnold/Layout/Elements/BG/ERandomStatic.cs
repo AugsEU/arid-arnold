@@ -8,7 +8,7 @@ namespace AridArnold
 		Rectangle mScreenSpan;
 		Color mPixelColour;
 
-		public ERandomStatic(XmlNode rootNode) : base(rootNode)
+		public ERandomStatic(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			int width = MonoParse.GetInt(rootNode["width"]);
 			int height = MonoParse.GetInt(rootNode["height"]);

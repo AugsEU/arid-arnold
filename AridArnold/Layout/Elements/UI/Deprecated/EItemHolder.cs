@@ -5,7 +5,7 @@
 		Texture2D mFrame;
 		Item mCurrItem;
 
-		public EItemHolder(XmlNode rootNode) : base(rootNode)
+		public EItemHolder(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mFrame = MonoData.I.MonoGameLoad<Texture2D>("UI/ItemFrame");
 			mCurrItem = null;

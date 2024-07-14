@@ -7,7 +7,7 @@
 		SpriteFont mFont;
 		int mFrames;
 
-		public ETimingDisplay(XmlNode rootNode) : base(rootNode)
+		public ETimingDisplay(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mFont = FontManager.I.GetFont("PixicaMicro-24");
 		}

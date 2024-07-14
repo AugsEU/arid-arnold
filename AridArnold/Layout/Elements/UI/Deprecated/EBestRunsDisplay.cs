@@ -10,7 +10,7 @@ namespace AridArnold
 		SpriteFont mBigFont;
 		List<(string, int)> mRunTimes;
 
-		public EBestRunsDisplay(XmlNode rootNode) : base(rootNode)
+		public EBestRunsDisplay(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mFont = FontManager.I.GetFont("Pixica-12");
 			mBigFont = FontManager.I.GetFont("Pixica-24");

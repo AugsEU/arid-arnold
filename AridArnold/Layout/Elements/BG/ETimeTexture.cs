@@ -4,7 +4,7 @@
 	{
 		int mTimeZone = 0;
 
-		public ETimeTexture(XmlNode node) : base(node)
+		public ETimeTexture(XmlNode node, Layout parent) : base(node, parent)
 		{
 			mTimeZone = MonoParse.GetInt(node["time"]);
 			SetVisible(mTimeZone == TimeZoneManager.I.GetCurrentTimeZone());

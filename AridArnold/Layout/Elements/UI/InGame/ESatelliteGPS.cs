@@ -17,7 +17,7 @@
 		Texture2D mSequenceArrowEnd;
 
 
-		public ESatelliteGPS(XmlNode rootNode) : base(rootNode, "UI/InGame/SatelliteBG")
+		public ESatelliteGPS(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/SatelliteBG", parent)
 		{
 			mFont = FontManager.I.GetFont("Pixica", 24, true);
 

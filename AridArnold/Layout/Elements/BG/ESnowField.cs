@@ -7,7 +7,7 @@
 		SnowRect[] mSnowRects;
 		int mTimeZone = 0;
 
-		public ESnowField(XmlNode rootNode) : base(rootNode)
+		public ESnowField(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			Rectangle snowSizeRect = MonoParse.GetRectangle(rootNode);
 

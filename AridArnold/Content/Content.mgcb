@@ -14100,3 +14100,30 @@
 #begin BG/SteamPlant/AbSteamPlant.mlo
 /copy:BG/SteamPlant/AbSteamPlant.mlo
 
+#begin NPC/Sign/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Sign/Default.png
+
+#begin NPC/Sign/Idle.mia
+/copy:NPC/Sign/Idle.mia
+
+#begin NPC/Sign/Lights.max
+/copy:NPC/Sign/Lights.max
+
+#begin NPC/Sign/Sign.mtn
+/copy:NPC/Sign/Sign.mtn
+
+#begin NPC/Sign/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Sign/TalkAngry.png
+
+#begin NPC/Sign/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Sign/TalkNormal.png
+

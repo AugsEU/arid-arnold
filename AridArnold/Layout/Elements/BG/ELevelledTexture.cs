@@ -2,7 +2,7 @@
 {
 	internal class ELevelledTexture : ETexture
 	{
-		public ELevelledTexture(XmlNode node) : base(node)
+		public ELevelledTexture(XmlNode node, Layout parent) : base(node, parent)
 		{
 		}
 

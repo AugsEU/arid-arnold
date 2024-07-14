@@ -11,7 +11,7 @@
 		Texture2D mItemUsableFrame;
 		Item mCurrItem;
 
-		public EPowerItems(XmlNode rootNode) : base(rootNode, "UI/InGame/PowerItemBG")
+		public EPowerItems(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/PowerItemBG", parent)
 		{
 			mItemUsableFrame = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/ItemUsableFrame");
 			mFont = FontManager.I.GetFont("Pixica", 12, true);

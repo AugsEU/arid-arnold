@@ -22,7 +22,7 @@ namespace AridArnold
 		SpriteFont mFont;
 		string mOfflineText;
 
-		public EVitalSigns(XmlNode rootNode) : base(rootNode, "UI/InGame/VitalsSignsBG")
+		public EVitalSigns(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/VitalsSignsBG", parent)
 		{
 			mFullLifeYoung = new LifeIconPack("Arnold/ArnoldStand");
 			mFullLifeOld = new LifeIconPack("Arnold/ArnoldOldStand");

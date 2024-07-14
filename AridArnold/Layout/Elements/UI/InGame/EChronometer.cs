@@ -8,7 +8,7 @@
 		SpriteFont mBigFont;
 		int mFrames;
 
-		public EChronometer(XmlNode rootNode) : base(rootNode, "UI/InGame/ChronometerBG")
+		public EChronometer(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/ChronometerBG", parent)
 		{
 			mFont = FontManager.I.GetFont("PixicaMicro", 24);
 			mBigFont = FontManager.I.GetFont("PixicaMicro", 24, true);

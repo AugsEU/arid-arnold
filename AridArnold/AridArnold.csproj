@@ -31,5 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Fonts\" />
+    <Folder Include="Layout\Elements\UI\Menu\" />
   </ItemGroup>
 </Project>

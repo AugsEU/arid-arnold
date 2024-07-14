@@ -1,10 +1,12 @@
-﻿namespace AridArnold
+﻿using System.Xml.Linq;
+
+namespace AridArnold
 {
 	internal class EWaterLeak : LayElement
 	{
 		WaterLeakFX mWaterLeak;
 
-		public EWaterLeak(XmlNode rootNode) : base(rootNode)
+		public EWaterLeak(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			float distance = MonoParse.GetFloat(rootNode["distance"]);
 			Color secColor = MonoParse.GetColor(rootNode["secondaryColor"]);

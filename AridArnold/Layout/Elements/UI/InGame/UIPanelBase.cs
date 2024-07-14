@@ -14,7 +14,7 @@ namespace AridArnold
 		MonoTimer mUnlockFlashTimer;
 		bool mPrevIsUnlocked;
 
-		protected UIPanelBase(XmlNode rootNode, string bgPath) : base(rootNode)
+		protected UIPanelBase(XmlNode rootNode, string bgPath, Layout parent) : base(rootNode, parent)
 		{
 			mPanelBG = MonoData.I.MonoGameLoad<Texture2D>(bgPath);
 			mUnlockFlashTimer = new MonoTimer();

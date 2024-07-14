@@ -12,7 +12,7 @@ namespace AridArnold
 		float mCurrentLockout = LOCK_OUT_MIN;
 		AnimationData[] mPlaneAnimators;
 
-		public EWW7Planes(XmlNode rootNode) : base(rootNode)
+		public EWW7Planes(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mPlanes = new List<WW7Plane>();
 			mPlaneLockoutTimer = new MonoTimer();

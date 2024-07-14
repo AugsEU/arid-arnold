@@ -12,7 +12,7 @@ namespace AridArnold
 		float mCurrentLockout = LOCK_OUT_MIN;
 		AnimationData[] mDemonAnimations;
 
-		public EHellDemons(XmlNode rootNode) : base(rootNode)
+		public EHellDemons(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mDemons = new List<HellDemon>();
 			mDemonLockoutTimer = new MonoTimer();

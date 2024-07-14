@@ -4,7 +4,7 @@
 	{
 		Animator mAnim;
 
-		public EAnimator(XmlNode node) : base(node)
+		public EAnimator(XmlNode node, Layout parent) : base(node, parent)
 		{
 			string animPath = node["anim"].InnerText;
 			mAnim = MonoData.I.LoadAnimator(animPath);

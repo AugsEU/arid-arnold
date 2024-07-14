@@ -1,11 +1,13 @@
 ﻿
+using System.Xml.Linq;
+
 namespace AridArnold
 {
 	internal class ELevelGoal : LayElement
 	{
 		SpriteFont mFont;
 
-		public ELevelGoal(XmlNode rootNode) : base(rootNode)
+		public ELevelGoal(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mFont = FontManager.I.GetFont("Pixica-12");
 		}
