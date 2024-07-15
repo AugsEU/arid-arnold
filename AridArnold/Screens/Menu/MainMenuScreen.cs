@@ -12,12 +12,11 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			throw new NotImplementedException();
 		}
 
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
-			throw new NotImplementedException();
+			return mScreenTarget;
 		}
 	}
 }

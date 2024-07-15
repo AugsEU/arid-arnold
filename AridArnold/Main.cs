@@ -117,9 +117,16 @@
 
 			LoadGlobalContent();
 
-			// Temp
-			CampaignManager.I.LoadCampaign("MainCampaign");
-			ScreenManager.I.ActivateScreen(ScreenType.Game);
+			if (BF.DEBUG_LOADER)
+			{
+				// Temp
+				CampaignManager.I.LoadCampaign("MainCampaign");
+				ScreenManager.I.ActivateScreen(ScreenType.Game);
+			}
+			else
+			{
+				ScreenManager.I.ActivateScreen(ScreenType.Title);
+			}
 		}
 
 		/// <summary>

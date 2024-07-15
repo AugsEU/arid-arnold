@@ -14127,3 +14127,84 @@
 /processorParam:PremultiplyAlpha=False
 /build:NPC/Sign/TalkNormal.png
 
+#begin Text/EN/UI/IcefishSoftware.txt
+/copy:Text/EN/UI/IcefishSoftware.txt
+
+#begin Text/EN/UI/Presents.txt
+/copy:Text/EN/UI/Presents.txt
+
+#begin Text/EN/UI/Menu/Back.txt
+/copy:Text/EN/UI/Menu/Back.txt
+
+#begin Text/EN/UI/Menu/Begin.txt
+/copy:Text/EN/UI/Menu/Begin.txt
+
+#begin Text/EN/UI/Menu/ClairaudienceOption.txt
+/copy:Text/EN/UI/Menu/ClairaudienceOption.txt
+
+#begin Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
+/copy:Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
+
+#begin Text/EN/UI/Menu/EarPowerOption.txt
+/copy:Text/EN/UI/Menu/EarPowerOption.txt
+
+#begin Text/EN/UI/Menu/EarPowerOptionDesc.txt
+/copy:Text/EN/UI/Menu/EarPowerOptionDesc.txt
+
+#begin Text/EN/UI/Menu/EnterName.txt
+/copy:Text/EN/UI/Menu/EnterName.txt
+
+#begin Text/EN/UI/Menu/Exit.txt
+/copy:Text/EN/UI/Menu/Exit.txt
+
+#begin Text/EN/UI/Menu/GameTitle.txt
+/copy:Text/EN/UI/Menu/GameTitle.txt
+
+#begin Text/EN/UI/Menu/ImpatientOption.txt
+/copy:Text/EN/UI/Menu/ImpatientOption.txt
+
+#begin Text/EN/UI/Menu/ImpatientOptionDesc.txt
+/copy:Text/EN/UI/Menu/ImpatientOptionDesc.txt
+
+#begin Text/EN/UI/Menu/LoadGame.txt
+/copy:Text/EN/UI/Menu/LoadGame.txt
+
+#begin Text/EN/UI/Menu/LoadGameTitle.txt
+/copy:Text/EN/UI/Menu/LoadGameTitle.txt
+
+#begin Text/EN/UI/Menu/NewGame.txt
+/copy:Text/EN/UI/Menu/NewGame.txt
+
+#begin Text/EN/UI/Menu/NewGameTitle.txt
+/copy:Text/EN/UI/Menu/NewGameTitle.txt
+
+#begin Text/EN/UI/Menu/No.txt
+/copy:Text/EN/UI/Menu/No.txt
+
+#begin Text/EN/UI/Menu/Options.txt
+/copy:Text/EN/UI/Menu/Options.txt
+
+#begin Text/EN/UI/Menu/OptionsTitle.txt
+/copy:Text/EN/UI/Menu/OptionsTitle.txt
+
+#begin Text/EN/UI/Menu/SpeedRunMode.txt
+/copy:Text/EN/UI/Menu/SpeedRunMode.txt
+
+#begin Text/EN/UI/Menu/VisionOption.txt
+/copy:Text/EN/UI/Menu/VisionOption.txt
+
+#begin Text/EN/UI/Menu/VisionOptionPerfect.txt
+/copy:Text/EN/UI/Menu/VisionOptionPerfect.txt
+
+#begin Text/EN/UI/Menu/VisionOptionPerfectDesc.txt
+/copy:Text/EN/UI/Menu/VisionOptionPerfectDesc.txt
+
+#begin Text/EN/UI/Menu/VisionOptionSretch.txt
+/copy:Text/EN/UI/Menu/VisionOptionSretch.txt
+
+#begin Text/EN/UI/Menu/VisionOptionSretchDesc.txt
+/copy:Text/EN/UI/Menu/VisionOptionSretchDesc.txt
+
+#begin Text/EN/UI/Menu/Yes.txt
+/copy:Text/EN/UI/Menu/Yes.txt
+

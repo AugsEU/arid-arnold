@@ -1,0 +1,1 @@
+Maximise image size while still preserving proportions. Recommended.

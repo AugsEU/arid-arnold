@@ -1,6 +1,4 @@
-﻿#define DEBUG_LOADER
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	struct HubReturnInfo
 	{
@@ -66,24 +64,27 @@ namespace AridArnold
 
 			mSeenCinematics = new HashSet<UInt64>();
 
-#if DEBUG_LOADER
-			mMaxLives = 0;
-			CollectableManager.I.IncPermanentCount(0x0300, 100);
-			CollectableManager.I.IncPermanentCount(0x0000, 100);
-			//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
-			TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
-			QueueLoadSequence(new HubDirectLoader(105));
-			//QueueLoadSequence(new LevelDirectLoader(603));
+			if (BF.DEBUG_LOADER)
+			{
+				mMaxLives = 0;
+				CollectableManager.I.IncPermanentCount(0x0300, 100);
+				CollectableManager.I.IncPermanentCount(0x0000, 100);
+				//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
+				QueueLoadSequence(new HubDirectLoader(105));
+				//QueueLoadSequence(new LevelDirectLoader(603));
 
-			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
-			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
-			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
-			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kDemonToken, true);
-			FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kHorseToken, true);
-#else
-			QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
-			mMaxLives = 0;
-#endif
+				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
+				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
+				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
+				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kDemonToken, true);
+				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kHorseToken, true);
+			}
+			else
+			{
+				QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
+				mMaxLives = 0;
+			}
 			mHubReturnInfo = null;
 			mCurrLives = GetStartLives();
 			mPrevDoorPos = Point.Zero;
