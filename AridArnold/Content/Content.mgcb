@@ -14208,3 +14208,6 @@
 #begin Text/EN/UI/Menu/Yes.txt
 /copy:Text/EN/UI/Menu/Yes.txt
 
+#begin Layouts/MainMenu.mlo
+/copy:Layouts/MainMenu.mlo
+

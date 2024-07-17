@@ -70,8 +70,8 @@
 				CollectableManager.I.IncPermanentCount(0x0300, 100);
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
 				//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
-				QueueLoadSequence(new HubDirectLoader(105));
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
+				QueueLoadSequence(new HubDirectLoader(104));
 				//QueueLoadSequence(new LevelDirectLoader(603));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
