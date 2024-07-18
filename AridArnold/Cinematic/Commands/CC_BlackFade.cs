@@ -15,7 +15,7 @@
 		public CC_BlackFade(XmlNode cmdNode, GameCinematic parent) : base(cmdNode, parent)
 		{
 			mType = ReadFadeType(cmdNode["type"].InnerText);
-			mToBlack = new ScreenStars(10.0f, 0.0f, false);
+			mToBlack = new ScreenStars();
 		}
 
 		FadeCmdType ReadFadeType(string fadeStr)

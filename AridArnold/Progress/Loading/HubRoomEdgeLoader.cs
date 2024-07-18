@@ -10,9 +10,9 @@
 		public HubRoomEdgeLoader(int levelID, CardinalDirection arriveFrom) : base(levelID)
 		{
 			mArriveFrom = arriveFrom;
-			mFadeIn = new ScreenWipe(arriveFrom, FADE_SPEED, false);
+			mFadeIn = new FadeFX(new ScreenWipe(arriveFrom), FADE_SPEED, false);
 			CardinalDirection opposite = Util.InvertDirection(arriveFrom);
-			mFadeOut = new ScreenWipe(opposite, FADE_SPEED, true);
+			mFadeOut = new FadeFX(new ScreenWipe(opposite), FADE_SPEED, true);
 		}
 
 		protected override void PostLevelLoad()

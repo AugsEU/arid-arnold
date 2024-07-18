@@ -4,8 +4,8 @@
 	{
 		public LevelSequenceLoader() : base(0)
 		{
-			mFadeOut = new ScreenStars(10.0f, 0.1f, true);
-			mFadeIn = new ScreenStars(10.0f, 0.1f, false);
+			mFadeOut = new FadeFX(new ScreenStars(), 0.1f, true);
+			mFadeIn = new FadeFX(new ScreenStars(), 0.1f, false);
 		}
 
 		protected override void LevelLoadUpdate(GameTime gameTime)

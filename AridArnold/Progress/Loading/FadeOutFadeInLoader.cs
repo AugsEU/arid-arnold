@@ -23,8 +23,8 @@
 		#region rMembers
 
 		private LoadingState mLoadingState;
-		protected ScreenFade mFadeIn;
-		protected ScreenFade mFadeOut;
+		protected FadeFX mFadeIn;
+		protected FadeFX mFadeOut;
 		int mNumUpdatesLoading;
 
 		#endregion rMembers
@@ -94,7 +94,7 @@
 
 		protected abstract void LevelLoadUpdate(GameTime gameTime);
 
-		void UpdateFade(ScreenFade fade, GameTime gameTime)
+		void UpdateFade(FadeFX fade, GameTime gameTime)
 		{
 			if (fade is null || fade.Finished())
 			{
@@ -127,7 +127,7 @@
 
 		public override void Draw(DrawInfo info)
 		{
-			ScreenFade currFade = null;
+			FadeFX currFade = null;
 			switch (mLoadingState)
 			{
 				case LoadingState.FadeOut:
