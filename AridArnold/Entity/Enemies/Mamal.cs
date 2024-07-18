@@ -79,6 +79,8 @@
 		/// <param name="gameTime"></param>
 		public override void Update(GameTime gameTime)
 		{
+			mStateMachine.Update(gameTime);
+
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
 			base.Update(gameTime);

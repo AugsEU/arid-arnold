@@ -38,6 +38,8 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			mPlaneLockoutTimer.Update(gameTime);
+
 			if (mCurrentLockout < mPlaneLockoutTimer.GetElapsedMs())
 			{
 				SpawnPlane();

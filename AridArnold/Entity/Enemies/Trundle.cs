@@ -58,6 +58,8 @@
 			SetDustIntensity(10.0f);
 		}
 
+
+
 		/// <summary>
 		/// Load trundle textures and animations
 		/// </summary>
@@ -86,6 +88,23 @@
 		}
 
 		#endregion rInitialise
+
+
+
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// Update trundle
+		/// </summary>
+		public override void Update(GameTime gameTime)
+		{
+			mStateMachine.Update(gameTime);
+			base.Update(gameTime);
+		}
+
+		#endregion rUpdate
 
 
 

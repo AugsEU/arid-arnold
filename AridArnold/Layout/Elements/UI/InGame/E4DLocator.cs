@@ -22,6 +22,9 @@
 
 		public override void Update(GameTime gameTime)
 		{
+			mFlashTimer.Update(gameTime);
+			mTravelTimer.Update(gameTime);
+
 			int timeNow = TimeZoneManager.I.GetCurrentTimeZone();
 			int ageNow = TimeZoneManager.I.GetCurrentPlayerAge();
 

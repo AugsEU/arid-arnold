@@ -66,6 +66,7 @@
 		public override void Update(GameTime gameTime)
 		{
 			mOnAnim.Update(gameTime);
+			mSpawnTimer.Update(gameTime);
 
 			//Check surrounding tiles.
 			EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);

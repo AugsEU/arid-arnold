@@ -43,6 +43,8 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			mDemonLockoutTimer.Update(gameTime);
+
 			if (mCurrentLockout < mDemonLockoutTimer.GetElapsedMs())
 			{
 				SpawnDemon();

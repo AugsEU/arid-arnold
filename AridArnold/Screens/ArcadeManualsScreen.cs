@@ -75,6 +75,8 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mLerpTimer.Update(gameTime);
+
 			float dt = Util.GetDeltaT(gameTime);
 
 			mManualPages.Update(gameTime);

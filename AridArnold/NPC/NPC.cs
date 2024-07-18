@@ -65,6 +65,8 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mMouthTimer.Update(gameTime);
+
 			foreach (SpeechBoxRenderer renderer in mTextBlocks)
 			{
 				renderer.Update(gameTime);

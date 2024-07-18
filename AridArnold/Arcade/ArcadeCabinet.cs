@@ -126,6 +126,8 @@
 		/// </summary>
 		public void Update(GameTime gameTime)
 		{
+			mBlinkTimer.Update(gameTime);
+
 			switch (mCurrScreen)
 			{
 				case ArcadeCabScreen.TitleScreen:

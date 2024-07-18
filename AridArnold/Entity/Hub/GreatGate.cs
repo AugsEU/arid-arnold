@@ -78,6 +78,8 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mUnlockDoorTimer.Update(gameTime);
+
 			bool hasGreatKey = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey);
 			bool openFlag = FlagsManager.I.CheckFlag(FlagCategory.kUnlockedGreatGate);
 

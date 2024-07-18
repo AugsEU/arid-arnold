@@ -47,6 +47,8 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			mTimer.Update(gameTime);
+
 			if (mTimer.GetElapsedMs() > 2000 || InputManager.I.KeyPressed(AridArnoldKeys.Confirm) || InputManager.I.KeyPressed(AridArnoldKeys.ArnoldJump))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.Game);

@@ -161,7 +161,6 @@
 			if (mSlowDownCount == 0)
 			{
 				//Record elapsed time
-				TimeManager.I.Update(gameTime);
 				CameraManager.I.UpdateAllCameras(gameTime);
 
 				KeyboardState keyboardState = Keyboard.GetState();

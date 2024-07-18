@@ -24,6 +24,12 @@ namespace AridArnold
 			mScreenRefreshTimer.Start();
 		}
 
+		public override void Update(GameTime gameTime)
+		{
+			mScreenRefreshTimer.Update(gameTime);
+			base.Update(gameTime);
+		}
+
 		public override void Draw(DrawInfo info)
 		{
 			int randSeed = (int)(GetPosition().X + GetPosition().Y + mScreenRefreshTimer.GetElapsedMs() / mScreenRefreshRate);

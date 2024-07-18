@@ -88,6 +88,8 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			mLevelEndTimer.Update(gameTime);
+
 			if (mLoadSequence is null)
 			{
 				CheckForLoadSequence();

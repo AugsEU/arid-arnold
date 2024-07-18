@@ -38,6 +38,19 @@
 
 
 
+		#region rUpdate
+
+		/// <summary>
+		/// Update state machine timer
+		/// </summary>
+		public void Update(GameTime gameTime)
+		{
+			mTimer.Update(gameTime);
+		}
+
+		#endregion rUpdate
+
+
 
 		#region rStateChanges
 

@@ -113,6 +113,8 @@ namespace AridArnold
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			mTimerSinceDeath.Update(gameTime);
+
 			//Death
 			if (mTimerSinceDeath.IsPlaying())
 			{

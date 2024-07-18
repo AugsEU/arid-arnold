@@ -31,7 +31,6 @@
 		/// </summary>
 		public Nuke(Vector2 position) : base(position)
 		{
-			mExplodeTimer = new MonoTimer();
 			mExploded = false;
 		}
 
@@ -60,6 +59,8 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mExplodeTimer.Update(gameTime);
+
 			//Check surrounding tiles.
 			EMField.ScanResults scan = TileManager.I.GetEMField().ScanAdjacent(mTileMapIndex);
 

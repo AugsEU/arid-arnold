@@ -54,6 +54,9 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mStateMachine.Update(gameTime);
+			mShootTimer.Update(gameTime);
+
 			mShootTimer.Start();
 			switch (mStateMachine.GetState())
 			{

@@ -30,6 +30,8 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			mFadeInTimer.Update(gameTime);
+
 			if (Main.IsLoadingSection())
 			{
 				Main.LoadingScreenEnd();

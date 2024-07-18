@@ -32,6 +32,7 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			mFadeTimer.Update(gameTime);
 		}
 	}
 

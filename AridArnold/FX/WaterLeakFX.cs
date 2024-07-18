@@ -50,6 +50,8 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mTimer.Update(gameTime);
+
 			if ((float)mTimer.GetElapsedMs() > mDropTime)
 			{
 				AddDewDrop();

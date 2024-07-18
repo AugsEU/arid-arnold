@@ -70,6 +70,8 @@
 			mTotalDistanceTravelled += mPos.Y - mPrevPos.Y;
 
 			DecideState();
+
+			mTimer.Update(gameTime);
 		}
 
 		void DecideState()

@@ -14211,3 +14211,18 @@
 #begin Layouts/MainMenu.mlo
 /copy:Layouts/MainMenu.mlo
 
+#begin UI/Menu/Steamplant/MainMenuBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/Menu/Steamplant/MainMenuBG.png
+
+#begin UI/Menu/SteamPlant/MainMenuBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/Menu/SteamPlant/MainMenuBG.png
+
+#begin UI/Menu/SteamPlant/MenuBG.mlo
+/copy:UI/Menu/SteamPlant/MenuBG.mlo
+

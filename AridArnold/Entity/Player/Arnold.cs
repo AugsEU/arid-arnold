@@ -158,6 +158,9 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			mTimerSinceStart.Update(gameTime);
+			mUseItemTimer.Update(gameTime);
+
 			//Start
 			if (mTimerSinceStart.IsPlaying() == false)
 			{
@@ -181,6 +184,7 @@
 					SendPlayerDeathEvent();
 				}
 
+				mTimerSinceDeath.Update(gameTime);
 				return;
 			}
 

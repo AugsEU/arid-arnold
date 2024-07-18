@@ -44,6 +44,7 @@
 		/// </summary>
 		public void Update(GameTime gameTime)
 		{
+			mLifeTimer.Update(gameTime);
 		}
 
 

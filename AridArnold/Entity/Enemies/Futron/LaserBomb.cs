@@ -146,6 +146,8 @@
 				mTraceLength = 0.0f;
 			}
 			mPrevVelDirection = mVelocity;
+
+			mDeathTimer.Update(gameTime);
 		}
 
 		#endregion rUpdate

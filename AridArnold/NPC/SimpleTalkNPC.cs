@@ -207,6 +207,8 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mWalkTimer.Update(gameTime);
+
 			float talkDistance = TALK_DISTANCE;
 			if (mTalking)
 			{

@@ -73,6 +73,8 @@
 		/// <param name="gameTime"></param>
 		public override void Update(GameTime gameTime)
 		{
+			mTimeSinceOn.Update(gameTime);
+
 			if (!mPoweredOn)
 			{
 				//Collider

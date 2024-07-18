@@ -23,6 +23,8 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			mUnlockFlashTimer.Update(gameTime);
+
 			bool isUnlocked = IsUnlocked();
 			if(!mPrevIsUnlocked && isUnlocked)
 			{

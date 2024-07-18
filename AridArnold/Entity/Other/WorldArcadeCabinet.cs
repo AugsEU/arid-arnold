@@ -64,6 +64,8 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			mStaticTimer.Update(gameTime);
+
 			bool hasReqItem = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)mRequiredItem);
 			mPlayBubble.Update(gameTime, mPlayerNear && hasReqItem);
 			mGetTokenBubble.Update(gameTime, mPlayerNear && !hasReqItem);

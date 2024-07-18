@@ -108,8 +108,11 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			mStateMachine.Update(gameTime);
+
 			mShootGunAnim.Update(gameTime);
 			mShootTimer.Start();
+			mShootTimer.Update(gameTime);
 
 			base.Update(gameTime);
 		}
