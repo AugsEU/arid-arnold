@@ -60,7 +60,7 @@
 			IsMouseVisible = true;
 			//XNA
 
-			mInLoadingSection = true;
+			mInLoadingSection = false;
 
 			LanguageManager.I.LoadLanguage(LanguageManager.LanguageType.English);
 
@@ -120,8 +120,8 @@
 			if (BF.DEBUG_LOADER)
 			{
 				// Temp
-				CampaignManager.I.LoadCampaign("MainCampaign");
-				ScreenManager.I.ActivateScreen(ScreenType.Game);
+				//CampaignManager.I.LoadCampaign("MainCampaign");
+				ScreenManager.I.ActivateScreen(ScreenType.MainMenu);
 			}
 			else
 			{

@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
-    <element type="testButton">
+	<element type="testButton" id="newGameBtn">
 		<x>100.0</x>
 		<y>100.0</y>
-        <text></text>
+		<text>UI.Menu.NewGame</text>
+		<down>loadGameBtn</down>
 	</element>
+	<element type="testButton" id="loadGameBtn">
+		<x>100.0</x>
+		<y>200.0</y>
+		<text>UI.Menu.LoadGame</text>
+		<up>newGameBtn</up>
+	</element>
+
+	
 </root>

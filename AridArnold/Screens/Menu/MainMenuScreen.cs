@@ -164,6 +164,11 @@ namespace AridArnold
 			mBGLayout.Draw(info);
 			DrawFade(info);
 
+#if DEBUG
+			// Debug stuff
+			MonoDebug.DrawDebugRects(info);
+#endif
+
 			EndScreenSpriteBatch(info);
 
 			return mScreenTarget;

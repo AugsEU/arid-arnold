@@ -121,7 +121,7 @@
 
 #if DEBUG
 			// Debug
-			mInputBindings.Add(AridArnoldKeys.SkipLevel, new InputBindSet(new KeyBinding(Keys.P)));
+			mInputBindings.Add(InputAction.SkipLevel, new InputBindSet(new KeyBinding(Keys.P)));
 #endif // DEBUG
 
 			DefineBindingGang(BindingGang.SysUp, InputAction.SysUp, InputAction.ArnoldUp);

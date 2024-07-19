@@ -182,7 +182,7 @@
 				EntityManager.I.FindArnold().Kill();
 			}
 #if DEBUG
-			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
+			else if (InputManager.I.KeyPressed(InputAction.SkipLevel))
 			{
 				LevelWin();
 			}

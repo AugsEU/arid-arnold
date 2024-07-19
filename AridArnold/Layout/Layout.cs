@@ -25,6 +25,7 @@ namespace AridArnold
 		// We allow exactly 1 element to be selected per layout.
 		// Perhaps a bit hacky but it works.
 		NavElement mSelectedNavElement;
+		bool mBlockElementSelection = false;
 
 		#endregion rMembers
 
@@ -161,6 +162,10 @@ namespace AridArnold
 		/// </summary>
 		public void SetSelectedElement(NavElement navElement)
 		{
+			if(mBlockElementSelection)
+			{
+				return;
+			}
 			mSelectedNavElement = navElement;
 		}
 
@@ -175,6 +180,16 @@ namespace AridArnold
 			NavElement navElement = (NavElement)GetElementByID(elemID);
 
 			mSelectedNavElement = navElement;
+		}
+
+
+
+		/// <summary>
+		/// Call this to block selection for this layout.
+		/// </summary>
+		public void SetSelectionBlocker(bool block)
+		{
+			mBlockElementSelection = block;
 		}
 
 		#endregion rUtil
