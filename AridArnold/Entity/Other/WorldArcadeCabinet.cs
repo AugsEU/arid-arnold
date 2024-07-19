@@ -79,7 +79,7 @@ namespace AridArnold
 			{
 				return;
 			}
-			if(InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			if(InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				ArcadeGameScreen arcadeGameScreen = ScreenManager.I.GetScreen<ArcadeGameScreen>();
 				arcadeGameScreen.ActivateGame(mGameType);

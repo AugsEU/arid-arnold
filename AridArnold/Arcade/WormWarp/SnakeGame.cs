@@ -180,10 +180,10 @@
 
 			UpdateResult update_res = UpdateResult.UR_NORMAL;
 
-			bool up = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldUp);
-			bool left = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldLeft);
-			bool down = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldDown);
-			bool right = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldRight);
+			bool up = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldUp);
+			bool left = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldLeft);
+			bool down = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldDown);
+			bool right = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldRight);
 
 			if (up && !down)
 			{

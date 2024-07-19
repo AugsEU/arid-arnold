@@ -181,7 +181,7 @@ namespace HorsesAndGun
 
 				if (GetGameOverPercent() == 1.0f)
 				{
-					if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
+					if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Confirm))
 					{
 						mRequestedExit = true;
 					}
@@ -227,9 +227,9 @@ namespace HorsesAndGun
 
 		private void HandleInput(GameTime gameTime)
 		{
-			bool fireGun = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.UseItem);
-			bool up = AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.ArnoldUp);
-			bool down = AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.ArnoldDown);
+			bool fireGun = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.UseItem);
+			bool up = AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.ArnoldUp);
+			bool down = AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.ArnoldDown);
 
 			if (fireGun && GetReloadPercent() == 1.0f)
 			{

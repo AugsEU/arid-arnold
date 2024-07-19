@@ -148,7 +148,7 @@
 				mBlinkTimer.Reset();
 			}
 
-			if (InputManager.I.KeyPressed(AridArnoldKeys.Pause))
+			if (InputManager.I.KeyPressed(InputAction.Pause))
 			{
 				mLoadedGame.ResetGame();
 				MediaPlayer.Stop();
@@ -163,7 +163,7 @@
 		/// </summary>
 		public void UpdateTitleScreen(GameTime gameTime)
 		{
-			if(InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			if(InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				mCurrScreen = ArcadeCabScreen.Gameplay;
 				mLoadedGame.ResetGame();
@@ -208,37 +208,37 @@
 			{
 				char selChar = mPendingNewInitials[mPendingCursorPos];
 
-				if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+				if (InputManager.I.KeyPressed(InputAction.Confirm))
 				{
 					AddHighScore(mPendingNewHighScore, mPendingNewInitials);
 					mPendingNewHighScore = 0;
 				}
-				else if (InputManager.I.KeyPressed(AridArnoldKeys.ArnoldUp))
+				else if (InputManager.I.KeyPressed(InputAction.ArnoldUp))
 				{
 					char newChar = MonoText.IncrementInAlphabet(selChar);
 					MonoText.ReplaceChar(ref mPendingNewInitials, newChar, mPendingCursorPos);
 				}
-				else if (InputManager.I.KeyPressed(AridArnoldKeys.ArnoldDown))
+				else if (InputManager.I.KeyPressed(InputAction.ArnoldDown))
 				{
 					char newChar = MonoText.DecrementInAlphabet(selChar);
 					MonoText.ReplaceChar(ref mPendingNewInitials, newChar, mPendingCursorPos);
 				}
-				else if (InputManager.I.KeyPressed(AridArnoldKeys.ArnoldRight))
+				else if (InputManager.I.KeyPressed(InputAction.ArnoldRight))
 				{
 					mPendingCursorPos++;
 				}
-				else if(InputManager.I.KeyPressed(AridArnoldKeys.ArnoldLeft))
+				else if(InputManager.I.KeyPressed(InputAction.ArnoldLeft))
 				{
 					mPendingCursorPos--;
 				}
-				else if (InputManager.I.KeyPressed(AridArnoldKeys.ArnoldRight))
+				else if (InputManager.I.KeyPressed(InputAction.ArnoldRight))
 				{
 					mPendingCursorPos++;
 				}
 
 				mPendingCursorPos = (mPendingCursorPos+3) % 3;
 			}
-			else if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			else if (InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				mCurrScreen = ArcadeCabScreen.TitleScreen;
 			}

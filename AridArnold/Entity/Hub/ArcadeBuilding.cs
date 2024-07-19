@@ -47,7 +47,7 @@ namespace AridArnold
 			mSignAnim.Update(gameTime);
 
 			mEnterBubble.Update(gameTime, mPlayerNear);
-			if (mPlayerNear && InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			if (mPlayerNear && InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				EnterArcadeBuilding();
 			}

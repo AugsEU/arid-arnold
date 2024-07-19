@@ -31,7 +31,7 @@ namespace AridArnold
 				mFirstUpdateDone = true;
 			}
 
-			if(InputManager.I.KeyHeld(AridArnoldKeys.Confirm))
+			if(InputManager.I.KeyHeld(InputAction.Confirm))
 			{
 				mConfirmPressed = true;
 			}

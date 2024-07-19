@@ -22,6 +22,10 @@ namespace AridArnold
 
 		List<LayElement> mElements;
 
+		// We allow exactly 1 element to be selected per layout.
+		// Perhaps a bit hacky but it works.
+		NavElement mSelectedNavElement;
+
 		#endregion rMembers
 
 
@@ -123,6 +127,11 @@ namespace AridArnold
 		/// </summary>
 		public LayElement GetElementByID(string ID)
 		{
+			if(ID is null || ID.Length == 0)
+			{
+				return null;
+			}
+
 			// To do: We could make this O(1) but I don't care to at the moment.
 			foreach (LayElement element in mElements)
 			{
@@ -133,6 +142,39 @@ namespace AridArnold
 			}
 
 			return null;
+		}
+
+
+
+		/// <summary>
+		/// Get the current navigation element selected
+		/// </summary>
+		public NavElement GetSelectedElement()
+		{
+			return mSelectedNavElement;
+		}
+
+
+
+		/// <summary>
+		/// Select nav element
+		/// </summary>
+		public void SetSelectedElement(NavElement navElement)
+		{
+			mSelectedNavElement = navElement;
+		}
+
+
+
+		/// <summary>
+		/// Select nav element by ID
+		/// </summary>
+		public void SetSelectedElement(string elemID)
+		{
+			// Note: unsafe cast because we want a crash if this is the wrong type.
+			NavElement navElement = (NavElement)GetElementByID(elemID);
+
+			mSelectedNavElement = navElement;
 		}
 
 		#endregion rUtil

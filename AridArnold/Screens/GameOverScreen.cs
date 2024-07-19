@@ -29,7 +29,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm) || InputManager.I.KeyPressed(AridArnoldKeys.ArnoldJump))
+			if (InputManager.I.KeyPressed(InputAction.Confirm) || InputManager.I.KeyPressed(InputAction.ArnoldJump))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.LevelStart);
 			}

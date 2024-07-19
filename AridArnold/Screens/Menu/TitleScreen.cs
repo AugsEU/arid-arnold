@@ -37,7 +37,7 @@ namespace AridArnold
 				Main.LoadingScreenEnd();
 			}
 
-			if(InputManager.I.KeyPressed(AridArnoldKeys.Confirm) || mFadeInTimer.GetPercentageF() >= 1.0f)
+			if(InputManager.I.KeyPressed(InputAction.Confirm) || mFadeInTimer.GetPercentageF() >= 1.0f)
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.MainMenu);
 			}

@@ -41,7 +41,7 @@
 		{
 			mCurrentCinematic.Update(gameTime);
 
-			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			if (InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				mCurrentCinematic.SkipToEnd();
 			}

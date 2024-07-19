@@ -3,6 +3,7 @@
 	<element type="texture">
 		<x>0.0</x>
 		<y>0.0</y>
+		<scale>2.0</scale>
 		<depth>Background</depth>
 		<texture>UI/Menu/SteamPlant/MainMenuBG</texture>
 	</element>

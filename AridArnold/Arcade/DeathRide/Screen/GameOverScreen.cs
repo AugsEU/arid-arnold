@@ -42,7 +42,7 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			if(AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
+			if(AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Confirm))
 			{
 				RunManager.I.RequestExit();
 			}

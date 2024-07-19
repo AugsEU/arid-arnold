@@ -295,7 +295,7 @@
 			else if (mGameState == GameState.GS_GAMEOVER)
 			{
 				mGameOverOpacity = Math.Min(mGameOverOpacity + 0.2f * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f), 0.6f);
-				if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.Confirm))
+				if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Confirm))
 				{
 					mRequestQuit = true;
 				}

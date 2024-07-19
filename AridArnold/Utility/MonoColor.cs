@@ -53,9 +53,9 @@ namespace AridArnold
 		/// <param name="bright">Brightness factor from 0 to 1</param>
 		public static void BrightenColour(ref Color col, float bright)
 		{
-			col.R = (byte)((col.R * (1 - bright)) + (255 * bright));
-			col.G = (byte)((col.G * (1 - bright)) + (255 * bright));
-			col.B = (byte)((col.B * (1 - bright)) + (255 * bright));
+			col.R = (byte)((col.R * (1.0f - bright)) + (255.0f * bright));
+			col.G = (byte)((col.G * (1.0f - bright)) + (255.0f * bright));
+			col.B = (byte)((col.B * (1.0f - bright)) + (255.0f * bright));
 		}
 	}
 }

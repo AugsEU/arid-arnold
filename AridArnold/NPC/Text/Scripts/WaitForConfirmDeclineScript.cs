@@ -31,11 +31,11 @@ namespace AridArnold
 				return;
 			}
 
-			if (InputManager.I.KeyHeld(AridArnoldKeys.Confirm))
+			if (InputManager.I.KeyHeld(InputAction.Confirm))
 			{
 				mScriptState = ScriptAcceptState.Accepted;
 			}
-			else if(InputManager.I.KeyHeld(AridArnoldKeys.UseItem))
+			else if(InputManager.I.KeyHeld(InputAction.UseItem))
 			{
 				mScriptState = ScriptAcceptState.Declined;
 			}

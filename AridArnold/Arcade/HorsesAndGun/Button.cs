@@ -41,7 +41,7 @@ namespace HorsesAndGun
 			{
 				mIsMouseOverButton = true;
 
-				if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.LeftClick))
+				if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.SysLClick))
 				{
 					mOnMouseClick?.Invoke(this, new EventArgs());
 				}

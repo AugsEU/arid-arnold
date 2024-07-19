@@ -1,30 +1,58 @@
 ﻿namespace AridArnold
 {
 	using Microsoft.Xna.Framework.Input;
-	using InputBindingMap = Dictionary<AridArnoldKeys, InputBindSet>;
-	using InputBindingPair = KeyValuePair<AridArnoldKeys, InputBindSet>;
+	using InputBindingMap = Dictionary<InputAction, InputBindSet>;
+	using InputBindingPair = KeyValuePair<InputAction, InputBindSet>;
+	using InputBindingGangList = Dictionary<BindingGang, InputAction[]>;
+	using System.Linq;
 
-	enum AridArnoldKeys
+	/// <summary>
+	/// Represents the types of actions an input can be bound to.
+	/// </summary>
+	enum InputAction
 	{
-		//Menu
-		Confirm,
-		Pause,
-		RestartLevel,
-		SkipLevel,
+		//System - These are not rebindable keys which are used for core menu navigation.
+		SysUp,
+		SysDown,
+		SysLeft,
+		SysRight,
+		SysConfirm,
+
+		SysLClick,
+		SysRClick,
 
 		//Arnold
-		ArnoldLeft,
-		ArnoldRight,
 		ArnoldUp,
 		ArnoldDown,
+		ArnoldLeft,
+		ArnoldRight,
 		ArnoldJump,
-
-		//Mouse
-		LeftClick,
-		RightClick,
+		UseItem,
 
 		//Game
-		UseItem
+		RestartLevel,
+		Confirm,
+		Pause,
+
+#if DEBUG
+		// Debug
+		SkipLevel,
+#endif // DEBUG
+	}
+
+
+
+	/// <summary>
+	/// A binding gang is a set of multiple actions that represent vaguely similar things. The reason is that we want to accept either SysUp or ArnoldUp for navigating menus
+	/// </summary>
+	enum BindingGang
+	{
+		//System - These are not rebindable keys which are used for core menu navigation.
+		SysUp,
+		SysDown,
+		SysLeft,
+		SysRight,
+		SysConfirm,
 	}
 
 	/// <summary>
@@ -36,6 +64,7 @@
 
 		MouseState mMouseState;
 		InputBindingMap mInputBindings = new InputBindingMap();
+		InputBindingGangList mBindingGangs = new InputBindingGangList();
 		int mInputUpdateIndex = 0;
 
 		#endregion rMembers
@@ -65,24 +94,62 @@
 		/// </summary>
 		public void SetDefaultBindings()
 		{
-			mInputBindings.Add(AridArnoldKeys.Confirm, new InputBindSet(new KeyBinding(Keys.Enter)));
-			mInputBindings.Add(AridArnoldKeys.Pause, new InputBindSet(new KeyBinding(Keys.Escape)));
-			mInputBindings.Add(AridArnoldKeys.RestartLevel, new InputBindSet(new KeyBinding(Keys.R)));
+			// System
+			SetBinding(InputAction.SysConfirm, new KeyBinding(Keys.Enter), new PadBinding(Buttons.A), new PadBinding(Buttons.Start));
+			SetBinding(InputAction.SysUp, new KeyBinding(Keys.Up), new PadBinding(Buttons.DPadUp));
+			SetBinding(InputAction.SysDown, new KeyBinding(Keys.Down), new PadBinding(Buttons.DPadDown));
+			SetBinding(InputAction.SysLeft, new KeyBinding(Keys.Left), new PadBinding(Buttons.DPadLeft));
+			SetBinding(InputAction.SysRight, new KeyBinding(Keys.Right), new PadBinding(Buttons.DPadRight));
+
+			SetBinding(InputAction.SysLClick, new MouseBtnBinding(MouseButton.Left));
+			SetBinding(InputAction.SysRClick, new MouseBtnBinding(MouseButton.Right));
+
+
+			// Arnold
+			SetBinding(InputAction.ArnoldUp, new KeyBinding(Keys.Up), new PadBinding(Buttons.DPadUp));
+			SetBinding(InputAction.ArnoldDown, new KeyBinding(Keys.Down), new PadBinding(Buttons.DPadDown));
+			SetBinding(InputAction.ArnoldLeft, new KeyBinding(Keys.Left), new PadBinding(Buttons.DPadLeft));
+			SetBinding(InputAction.ArnoldRight, new KeyBinding(Keys.Right), new PadBinding(Buttons.DPadRight));
+
+			SetBinding(InputAction.ArnoldJump, new KeyBinding(Keys.Space), new PadBinding(Buttons.A));
+
+			// Game
+			SetBinding(InputAction.Confirm, new KeyBinding(Keys.Enter), new PadBinding(Buttons.Y));
+			SetBinding(InputAction.Pause, new KeyBinding(Keys.Escape), new PadBinding(Buttons.Start));
+			SetBinding(InputAction.RestartLevel, new KeyBinding(Keys.R), new PadBinding(Buttons.Back));
+			SetBinding(InputAction.UseItem, new KeyBinding(Keys.LeftShift), new PadBinding(Buttons.B));
+
+#if DEBUG
+			// Debug
 			mInputBindings.Add(AridArnoldKeys.SkipLevel, new InputBindSet(new KeyBinding(Keys.P)));
+#endif // DEBUG
 
-			mInputBindings.Add(AridArnoldKeys.ArnoldLeft, new InputBindSet(new KeyBinding(Keys.Left)));
-			mInputBindings.Add(AridArnoldKeys.ArnoldRight, new InputBindSet(new KeyBinding(Keys.Right)));
-			mInputBindings.Add(AridArnoldKeys.ArnoldUp, new InputBindSet(new KeyBinding(Keys.Up)));
-			mInputBindings.Add(AridArnoldKeys.ArnoldDown, new InputBindSet(new KeyBinding(Keys.Down)));
-			mInputBindings.Add(AridArnoldKeys.ArnoldJump, new InputBindSet(new KeyBinding(Keys.Space)));
-
-			mInputBindings.Add(AridArnoldKeys.LeftClick, new InputBindSet(new MouseBtnBinding(MouseButton.Left)));
-			mInputBindings.Add(AridArnoldKeys.RightClick, new InputBindSet(new MouseBtnBinding(MouseButton.Right)));
-
-			mInputBindings.Add(AridArnoldKeys.UseItem, new InputBindSet(new KeyBinding(Keys.LeftShift)));
+			DefineBindingGang(BindingGang.SysUp, InputAction.SysUp, InputAction.ArnoldUp);
+			DefineBindingGang(BindingGang.SysDown, InputAction.SysDown, InputAction.ArnoldDown);
+			DefineBindingGang(BindingGang.SysLeft, InputAction.SysLeft, InputAction.ArnoldLeft);
+			DefineBindingGang(BindingGang.SysRight, InputAction.SysRight, InputAction.ArnoldRight);
+			DefineBindingGang(BindingGang.SysConfirm, InputAction.SysConfirm, InputAction.ArnoldJump);
 		}
 
-		#endregion rInitialisation
+
+		/// <summary>
+		/// Overwrite an input action with a new set of bindings
+		/// </summary>
+		public void SetBinding(InputAction key, params InputBinding[] bindings)
+		{
+			mInputBindings.Add(key, new InputBindSet(bindings));
+		}
+
+
+		/// <summary>
+		/// Define a binding gang. Never set by user
+		/// </summary>
+		public void DefineBindingGang(BindingGang gang, params InputAction[] actions)
+		{
+			mBindingGangs.Add(gang, actions);
+		}
+
+#endregion rInitialisation
 
 
 
@@ -112,7 +179,7 @@
 		/// </summary>
 		/// <param name="key">Key to check</param>
 		/// <returns>True if it was pressed in the last update</returns>
-		public bool KeyPressed(AridArnoldKeys key)
+		public bool KeyPressed(InputAction key)
 		{
 			return mInputBindings[key].AnyKeyPressed();
 		}
@@ -124,7 +191,7 @@
 		/// </summary>
 		/// <param name="key">Key to check</param>
 		/// <returns>True if it was pressed in the last update</returns>
-		public bool KeyHeld(AridArnoldKeys key)
+		public bool KeyHeld(InputAction key)
 		{
 			return mInputBindings[key].AnyKeyHeld();
 		}
@@ -132,9 +199,33 @@
 
 
 		/// <summary>
+		/// Any inputs in this gang have been pressed in the last frame?
+		/// </summary>
+		public bool AnyGangPressed(BindingGang gang)
+		{
+			InputAction[] gangMembers = null;
+			if(!mBindingGangs.TryGetValue(gang, out gangMembers))
+			{
+				return false;
+			}
+
+			foreach(var action in gangMembers)
+			{
+				if(KeyPressed(action))
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+
+
+		/// <summary>
 		/// Get set of input bindings for a certain action type
 		/// </summary>
-		public InputBindSet GetInputBindSet(AridArnoldKeys key)
+		public InputBindSet GetInputBindSet(InputAction key)
 		{
 			return mInputBindings[key];
 		}
@@ -168,6 +259,17 @@
 			float scaleFactor = screenRect.Width / Screen.SCREEN_WIDTH;
 
 			return new Vector2(mousePos.X, mousePos.Y) / scaleFactor;
+		}
+
+
+
+		/// <summary>
+		/// Is the mouse in this rectangle?
+		/// </summary>
+		public bool MouseInRect(Rect2f rect)
+		{
+			Vector2 mousePos = GetMouseWorldPos();
+			return Collision2D.BoxVsPoint(rect, mousePos);
 		}
 
 

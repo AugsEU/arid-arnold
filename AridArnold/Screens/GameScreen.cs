@@ -176,15 +176,17 @@
 		/// </summary>
 		void HandleInput()
 		{
-			if (InputManager.I.KeyPressed(AridArnoldKeys.RestartLevel) &&
+			if (InputManager.I.KeyPressed(InputAction.RestartLevel) &&
 				CampaignManager.I.GetGameplayState() != CampaignManager.GameplayState.HubWorld)
 			{
 				EntityManager.I.FindArnold().Kill();
 			}
+#if DEBUG
 			else if (InputManager.I.KeyPressed(AridArnoldKeys.SkipLevel))
 			{
 				LevelWin();
 			}
+#endif // DEBUG
 		}
 
 
@@ -245,7 +247,7 @@
 			mLevelEndTimer.FullReset();
 		}
 
-		#endregion rUpdate
+#endregion rUpdate
 
 
 

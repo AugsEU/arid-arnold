@@ -45,9 +45,9 @@
 		PercentageTimer mUseItemTimer;
 
 		// Inputs(can change based on camera angle etc)
-		AridArnoldKeys mLeftKey;
-		AridArnoldKeys mRightKey;
-		AridArnoldKeys mDownKey;
+		InputAction mLeftKey;
+		InputAction mRightKey;
+		InputAction mDownKey;
 
 		#endregion rMembers
 
@@ -69,9 +69,9 @@
 
 			mUseItemTimer = new PercentageTimer(USE_ITEM_TIME);
 
-			mLeftKey = AridArnoldKeys.ArnoldLeft;
-			mRightKey = AridArnoldKeys.ArnoldRight;
-			mDownKey = AridArnoldKeys.ArnoldDown;
+			mLeftKey = InputAction.ArnoldLeft;
+			mRightKey = InputAction.ArnoldRight;
+			mDownKey = InputAction.ArnoldDown;
 
 			mItemToUse = null;
 			LayerOptIn(InteractionLayer.kPlayer);
@@ -248,7 +248,7 @@
 		{
 			UpdateArnoldKeys();
 
-			bool jump = InputManager.I.KeyHeld(AridArnoldKeys.ArnoldJump);
+			bool jump = InputManager.I.KeyHeld(InputAction.ArnoldJump);
 			bool fallthrough = InputManager.I.KeyHeld(mDownKey);
 
 			if (jump && fallthrough)
@@ -284,7 +284,7 @@
 			}
 
 			// Items
-			bool useItem = InputManager.I.KeyPressed(AridArnoldKeys.UseItem);
+			bool useItem = InputManager.I.KeyPressed(InputAction.UseItem);
 			if (CanUseItem() && useItem)
 			{
 				Item activeItem = ItemManager.I.GetActiveItem();
@@ -549,25 +549,25 @@
 			switch ((camDir, gravityDir))
 			{
 				case (CardinalDirection.Up, CardinalDirection.Up):
-					mLeftKey = AridArnoldKeys.ArnoldLeft;
-					mRightKey = AridArnoldKeys.ArnoldRight;
-					mDownKey = AridArnoldKeys.ArnoldUp;
+					mLeftKey = InputAction.ArnoldLeft;
+					mRightKey = InputAction.ArnoldRight;
+					mDownKey = InputAction.ArnoldUp;
 					break;
 				case (CardinalDirection.Up, CardinalDirection.Right):
-					mLeftKey = AridArnoldKeys.ArnoldUp;
-					mRightKey = AridArnoldKeys.ArnoldDown;
-					mDownKey = AridArnoldKeys.ArnoldRight;
+					mLeftKey = InputAction.ArnoldUp;
+					mRightKey = InputAction.ArnoldDown;
+					mDownKey = InputAction.ArnoldRight;
 					break;
 				case (CardinalDirection.Right, CardinalDirection.Left):
 				case (CardinalDirection.Up, CardinalDirection.Down):
-					mLeftKey = AridArnoldKeys.ArnoldLeft;
-					mRightKey = AridArnoldKeys.ArnoldRight;
-					mDownKey = AridArnoldKeys.ArnoldDown;
+					mLeftKey = InputAction.ArnoldLeft;
+					mRightKey = InputAction.ArnoldRight;
+					mDownKey = InputAction.ArnoldDown;
 					break;
 				case (CardinalDirection.Up, CardinalDirection.Left):
-					mLeftKey = AridArnoldKeys.ArnoldUp;
-					mRightKey = AridArnoldKeys.ArnoldDown;
-					mDownKey = AridArnoldKeys.ArnoldLeft;
+					mLeftKey = InputAction.ArnoldUp;
+					mRightKey = InputAction.ArnoldDown;
+					mDownKey = InputAction.ArnoldLeft;
 					break;
 				case (CardinalDirection.Right, CardinalDirection.Up):
 					break;
@@ -577,9 +577,9 @@
 					break;
 				case (CardinalDirection.Left, CardinalDirection.Right):
 				case (CardinalDirection.Down, CardinalDirection.Up):
-					mLeftKey = AridArnoldKeys.ArnoldRight;
-					mRightKey = AridArnoldKeys.ArnoldLeft;
-					mDownKey = AridArnoldKeys.ArnoldDown;
+					mLeftKey = InputAction.ArnoldRight;
+					mRightKey = InputAction.ArnoldLeft;
+					mDownKey = InputAction.ArnoldDown;
 					break;
 				case (CardinalDirection.Down, CardinalDirection.Right):
 					break;

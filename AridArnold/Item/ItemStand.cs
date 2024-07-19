@@ -82,7 +82,7 @@
 		/// </summary>
 		protected override void OnPlayerInteract()
 		{
-			if (InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			if (InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				ItemManager.I.PurchaseItem(mItem, mPosition + SPENDING_TICKER_OFFSET);
 			}

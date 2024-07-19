@@ -81,7 +81,7 @@ namespace AridArnold
 
 			mManualPages.Update(gameTime);
 
-			if (InputManager.I.KeyPressed(AridArnoldKeys.Pause))
+			if (InputManager.I.KeyPressed(InputAction.Pause))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
 				return;
@@ -98,21 +98,21 @@ namespace AridArnold
 				return;
 			}
 
-			if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldLeft) && mSelectedColumn > 0)
+			if (InputManager.I.KeyHeld(InputAction.ArnoldLeft) && mSelectedColumn > 0)
 			{
 				mTargetColumn = mSelectedColumn - 1;
 				mLerpTimer.Start();
 			}
-			else if(InputManager.I.KeyHeld(AridArnoldKeys.ArnoldRight) && mSelectedColumn < NUM_MANUALS - 1)
+			else if(InputManager.I.KeyHeld(InputAction.ArnoldRight) && mSelectedColumn < NUM_MANUALS - 1)
 			{
 				mTargetColumn = mSelectedColumn + 1;
 				mLerpTimer.Start();
 			}
-			else if(InputManager.I.KeyHeld(AridArnoldKeys.ArnoldUp))
+			else if(InputManager.I.KeyHeld(InputAction.ArnoldUp))
 			{
 				mDownwardsOffset -= SCROLL_SPEED * dt;
 			}
-			else if (InputManager.I.KeyHeld(AridArnoldKeys.ArnoldDown))
+			else if (InputManager.I.KeyHeld(InputAction.ArnoldDown))
 			{
 				mDownwardsOffset += SCROLL_SPEED * dt;
 			}

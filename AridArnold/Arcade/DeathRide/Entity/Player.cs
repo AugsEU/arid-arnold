@@ -174,10 +174,10 @@ namespace DeathRide
 
 		void HandleKeys(GameTime gameTime)
 		{
-			bool up = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldUp);
-			bool down = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldDown);
-			bool left = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldLeft);
-			bool right = AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.ArnoldRight);
+			bool up = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldUp);
+			bool down = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldDown);
+			bool left = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldLeft);
+			bool right = AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.ArnoldRight);
 
 			SetAcelerate(true);
 
@@ -232,12 +232,12 @@ namespace DeathRide
 		{
 			float dt = Util.GetDeltaT(gameTime);
 
-			if (AridArnold.InputManager.I.KeyPressed(AridArnold.AridArnoldKeys.UseItem))
+			if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.UseItem))
 			{
 				BeginGrapple();
 			}
 				
-			if (!AridArnold.InputManager.I.KeyHeld(AridArnold.AridArnoldKeys.UseItem))
+			if (!AridArnold.InputManager.I.KeyHeld(AridArnold.InputAction.UseItem))
 			{
 				EndGrapple();
 			}

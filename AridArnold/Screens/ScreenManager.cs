@@ -186,6 +186,7 @@
 
 		public const int SCREEN_WIDTH = 960;
 		public const int SCREEN_HEIGHT = 540;
+		public static Rectangle SCREEN_RECTANGLE = new Rectangle(0,0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 		#endregion rConstants
 

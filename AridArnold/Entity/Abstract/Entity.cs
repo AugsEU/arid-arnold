@@ -161,7 +161,7 @@
 				return;
 			}
 
-			bool activate = InputManager.I.KeyHeld(AridArnoldKeys.Confirm);
+			bool activate = InputManager.I.KeyHeld(InputAction.Confirm);
 
 			if (activate)
 			{

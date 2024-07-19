@@ -19,7 +19,7 @@ namespace AridArnold
 		public override void Update(GameTime gameTime)
 		{
 			mInfoBubble.Update(gameTime, IsPlayerNear());
-			if(IsPlayerNear() && InputManager.I.KeyPressed(AridArnoldKeys.Confirm))
+			if(IsPlayerNear() && InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.GameManuals);
 			}

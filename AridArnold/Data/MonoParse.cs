@@ -157,6 +157,20 @@ namespace AridArnold
 		}
 
 
+		/// <summary>
+		/// Parse texture from xml node. Default = Dummy
+		/// </summary>
+		static public Texture2D GetTexture(XmlNode node, Texture2D defaultValue)
+		{
+			if (node is null)
+			{
+				return defaultValue;
+			}
+
+			return MonoData.I.MonoGameLoad<Texture2D>(node.InnerText);
+		}
+
+
 
 		/// <summary>
 		/// Parse hex colour from xml node. Default = Black
@@ -184,6 +198,22 @@ namespace AridArnold
 			}
 
 			return MonoColor.HEXToColor(node.InnerXml);
+		}
+
+
+		/// <summary>
+		/// Parse fontID node into sprite font
+		/// </summary>
+		static public SpriteFont GetFont(XmlNode node, string defaultFontID)
+		{
+			string fontID = GetString(node, "");
+
+			if (node is null || fontID.Length == 0)
+			{
+				return FontManager.I.GetFont(defaultFontID);
+			}
+
+			return FontManager.I.GetFont(fontID);
 		}
 
 

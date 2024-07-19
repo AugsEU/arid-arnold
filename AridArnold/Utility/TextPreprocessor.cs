@@ -60,7 +60,7 @@
 			else if(subCode.StartsWith("Key."))
 			{
 				subCode = subCode.Substring(4);
-				AridArnoldKeys key = MonoAlg.GetEnumFromString<AridArnoldKeys>(subCode);
+				InputAction key = MonoAlg.GetEnumFromString<InputAction>(subCode);
 				return InputManager.I.GetInputBindSet(key).ToString();
 			}
 
