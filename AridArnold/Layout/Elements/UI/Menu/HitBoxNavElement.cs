@@ -4,13 +4,13 @@
 namespace AridArnold
 {
 	/// <summary>
-	/// Layout element that we can navigate around with D-pad(for menus) and interact with by clicking or hitten the enter button.
+	/// Layout element that we can navigate around with D-pad(for menus) and has a hitbox area.
 	/// </summary>
-	abstract class ActionableNavElement : NavElement
+	abstract class HitBoxNavElement : NavElement
 	{
 		protected Vector2 mSize;
 
-		protected ActionableNavElement(XmlNode rootNode, Layout parent) : base(rootNode, parent)
+		protected HitBoxNavElement(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mSize = new Vector2();
 			mSize.X = MonoParse.GetFloat(rootNode["width"]);
@@ -27,7 +27,5 @@ namespace AridArnold
 
 			base.Update(gameTime);
 		}
-
-		public abstract void DoAction();
 	}
 }
