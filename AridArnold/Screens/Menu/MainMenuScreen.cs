@@ -38,7 +38,7 @@ namespace AridArnold
 
 		#region rConstants
 
-		const double FADE_TIME = 2000.0;
+		const double FADE_TIME = 1200.0;
 
 		#endregion rConstants
 

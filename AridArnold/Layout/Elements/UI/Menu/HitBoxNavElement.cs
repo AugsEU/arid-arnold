@@ -22,7 +22,7 @@ namespace AridArnold
 			Rect2f rect = new Rect2f(GetPosition(), mSize.X, mSize.Y);
 			if(InputManager.I.MouseInRect(rect))
 			{
-				SetSelected(this);
+				GetParent().SetSelectedElement(this);
 			}
 
 			base.Update(gameTime);

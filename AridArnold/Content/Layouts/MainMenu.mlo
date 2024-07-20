@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
 	<element type="testButton" id="newGameBtn">
-		<x>100.0</x>
-		<y>100.0</y>
+		<x>480.0</x>
+		<y>160.0</y>
 		<text>UI.Menu.NewGame</text>
+		<up>exitBtn</up>
 		<down>loadGameBtn</down>
 	</element>
 	<element type="testButton" id="loadGameBtn">
-		<x>100.0</x>
+		<x>480.0</x>
 		<y>200.0</y>
 		<text>UI.Menu.LoadGame</text>
 		<up>newGameBtn</up>
+		<down>optionsBtn</down>
 	</element>
-
-	
+	<element type="testButton" id="optionsBtn">
+		<x>480.0</x>
+		<y>300.0</y>
+		<text>UI.Menu.Options</text>
+		<up>loadGameBtn</up>
+		<down>exitBtn</down>
+	</element>
+	<element type="testButton" id="exitBtn">
+		<x>480.0</x>
+		<y>340.0</y>
+		<text>UI.Menu.Exit</text>
+		<up>optionsBtn</up>
+		<down>newGameBtn</down>
+	</element>
 </root>

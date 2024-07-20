@@ -66,6 +66,9 @@ namespace AridArnold
 			{
 				// By font if we have no texture
 				mSize = mFont.MeasureString(mDisplayText);
+
+				// Centre horizontally
+				mPos.X -= mSize.X * 0.5f;
 			}
 		}
 
@@ -186,7 +189,7 @@ namespace AridArnold
 				modText = string.Format(".{0}.", modText);
 			}
 
-			MonoDraw.DrawStringCentred(info, mFont, textPos, textColor, modText, GetDepth());
+			MonoDraw.DrawStringCentredShadow(info, mFont, textPos, textColor, modText, GetDepth());
 		}
 
 

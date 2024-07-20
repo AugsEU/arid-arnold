@@ -41,33 +41,21 @@ namespace AridArnold
 
 		void CheckNavigation(BindingGang gang, string navElementID)
 		{
-			NavElement navElement = FindNavElement(navElementID);
-			if (InputManager.I.AnyGangPressed(gang) && navElement is not null)
+			if(!IsSelected())
 			{
-				SetSelected(navElement);
+				// Not selected, don't do nav
+				return;
+			}
+
+			if (InputManager.I.AnyGangPressed(gang))
+			{
+				GetParent().SetSelectedElement(navElementID);
 			}
 		}
 
 		public bool IsSelected()
 		{
 			return object.ReferenceEquals(GetParent().GetSelectedElement(), this);
-		}
-
-		NavElement FindNavElement(string navID)
-		{
-			if(navID is null || navID.Length == 0)
-			{
-				return null;
-			}
-
-			LayElement elementByID = GetParent().GetElementByID(navID);
-
-			return (NavElement)elementByID; // Note: Unsafe cast because we want to crash if the type is wrong.
-		}
-
-		protected void SetSelected(NavElement navElement)
-		{
-			GetParent().SetSelectedElement(navElement);
 		}
 	}
 }

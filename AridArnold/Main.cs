@@ -120,7 +120,7 @@
 			if (BF.DEBUG_LOADER)
 			{
 				// Temp
-				//CampaignManager.I.LoadCampaign("MainCampaign");
+				// CampaignManager.I.LoadCampaign("MainCampaign");
 				ScreenManager.I.ActivateScreen(ScreenType.MainMenu);
 			}
 			else

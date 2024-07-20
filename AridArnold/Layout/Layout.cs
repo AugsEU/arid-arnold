@@ -25,6 +25,7 @@ namespace AridArnold
 		// We allow exactly 1 element to be selected per layout.
 		// Perhaps a bit hacky but it works.
 		NavElement mSelectedNavElement;
+		NavElement mPendingNavElement; // We don't want to change the selected element more than once per frame.
 		bool mBlockElementSelection = false;
 
 		#endregion rMembers
@@ -40,6 +41,9 @@ namespace AridArnold
 		/// </summary>
 		public Layout(string layoutFile)
 		{
+			mPendingNavElement = null;
+			mSelectedNavElement = null;
+
 			layoutFile = "Content/" + layoutFile;
 
 			mElements = new List<LayElement>();
@@ -87,6 +91,9 @@ namespace AridArnold
 		/// </summary>
 		public void Update(GameTime gameTime)
 		{
+			// Only change this once per frame.
+			mSelectedNavElement = mPendingNavElement;
+
 			foreach (LayElement element in mElements)
 			{
 				element.Update(gameTime);
@@ -166,7 +173,7 @@ namespace AridArnold
 			{
 				return;
 			}
-			mSelectedNavElement = navElement;
+			mPendingNavElement = navElement;
 		}
 
 
@@ -179,7 +186,7 @@ namespace AridArnold
 			// Note: unsafe cast because we want a crash if this is the wrong type.
 			NavElement navElement = (NavElement)GetElementByID(elemID);
 
-			mSelectedNavElement = navElement;
+			SetSelectedElement(navElement);
 		}
 
 

@@ -7,7 +7,7 @@
 	{
 		Layout mParent;
 		string mID;
-		Vector2 mPos;
+		protected Vector2 mPos;
 		DrawLayer mDepth;
 		Color mColor;
 		float mScale;
