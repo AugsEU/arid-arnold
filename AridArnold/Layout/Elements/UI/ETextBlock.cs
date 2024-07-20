@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace AridArnold
 {
 	/// <summary>
@@ -6,15 +8,22 @@ namespace AridArnold
 	/// </summary>
 	class ETextBlock : LayElement
 	{
+		TextBoxStyle mTextBoxStyle;
+		float mWidth;
 		SimpleTextBoxRenderer mTextRenderer;
 
 		public ETextBlock(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			string strID = MonoParse.GetString(rootNode["stringID"]);
-			float width = MonoParse.GetFloat(rootNode["width"]);
-			TextBoxStyle style = MonoParse.GetTextBoxStyle(rootNode);
+			mWidth = MonoParse.GetFloat(rootNode["width"]);
+			mTextBoxStyle = MonoParse.GetTextBoxStyle(rootNode);
 
-			mTextRenderer = new SimpleTextBoxRenderer(strID, GetPosition(), width, style);
+			SetText(strID);
+		}
+
+		public void SetText(string textID)
+		{
+			mTextRenderer = new SimpleTextBoxRenderer(textID, GetPosition(), mWidth, mTextBoxStyle);
 		}
 
 		public override void Update(GameTime gameTime)

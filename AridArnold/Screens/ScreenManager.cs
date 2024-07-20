@@ -217,8 +217,6 @@
 			mScreenTarget = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
 
-
-
 		/// <summary>
 		/// Load content for this screen
 		/// </summary>

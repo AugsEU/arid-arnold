@@ -1,31 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
-	<element type="testButton" id="newGameBtn">
+	<!-- Main Menu -->
+	<element type="messageButton" id="newGameBtn">
 		<x>480.0</x>
 		<y>160.0</y>
+		<msg>gokNewGameArea</msg>
 		<text>UI.Menu.NewGame</text>
 		<up>exitBtn</up>
 		<down>loadGameBtn</down>
 	</element>
-	<element type="testButton" id="loadGameBtn">
+	<element type="messageButton" id="loadGameBtn">
 		<x>480.0</x>
 		<y>200.0</y>
+		<msg>gokLoadGameArea</msg>
 		<text>UI.Menu.LoadGame</text>
 		<up>newGameBtn</up>
 		<down>optionsBtn</down>
 	</element>
-	<element type="testButton" id="optionsBtn">
+	<element type="messageButton" id="optionsBtn">
 		<x>480.0</x>
 		<y>300.0</y>
+		<msg>gokOptionsArea</msg>
 		<text>UI.Menu.Options</text>
 		<up>loadGameBtn</up>
 		<down>exitBtn</down>
 	</element>
-	<element type="testButton" id="exitBtn">
+	<element type="exitButton" id="exitBtn">
 		<x>480.0</x>
 		<y>340.0</y>
 		<text>UI.Menu.Exit</text>
 		<up>optionsBtn</up>
 		<down>newGameBtn</down>
+	</element>
+
+	<!-- New Game -->
+	<element type="messageButton" id="beginGameBtn">
+		<x>320.0</x>
+		<y>-160.0</y>
+		<msg>gokMainArea</msg>
+		<text>UI.Menu.NewGame</text>
+		<left>backBtn</left>
+		<right>backBtn</right>
+	</element>
+	<element type="messageButton" id="backBtn">
+		<x>640.0</x>
+		<y>-160.0</y>
+		<msg>gokMainArea</msg>
+		<text>UI.Menu.Back</text>
+		<left>beginGameBtn</left>
+		<right>beginGameBtn</right>
 	</element>
 </root>

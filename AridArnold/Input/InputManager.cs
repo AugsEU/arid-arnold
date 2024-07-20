@@ -251,14 +251,34 @@
 		/// <summary>
 		/// Get mouse position in "world" units. Accounting for scale. Use this one if in doubt.
 		/// </summary>
-		public Vector2 GetMouseWorldPos()
+		public Vector2 GetMouseWorldPos(Camera relativeToCam = null)
 		{
 			Point mousePos = GetMousePos();
 
 			Rectangle screenRect = Main.GetGameDrawArea();
 			float scaleFactor = screenRect.Width / Screen.SCREEN_WIDTH;
 
-			return new Vector2(mousePos.X, mousePos.Y) / scaleFactor;
+			Vector2 posVec = new Vector2(mousePos.X, mousePos.Y);
+
+			if (relativeToCam is not null)
+			{
+				CameraSpec spec = relativeToCam.GetCurrentSpec();
+
+				posVec += spec.mPosition;
+				scaleFactor *= spec.mZoom;
+			}
+
+			return posVec / scaleFactor;
+		}
+
+
+
+		/// <summary>
+		/// Get mouse position in "world" units. Accounting for scale. Use this one if in doubt.
+		/// </summary>
+		public Vector2 GetMouseWorldPos(CameraManager.CameraInstance instance)
+		{
+			return GetMouseWorldPos(CameraManager.I.GetCamera(instance));
 		}
 
 
@@ -266,9 +286,9 @@
 		/// <summary>
 		/// Is the mouse in this rectangle?
 		/// </summary>
-		public bool MouseInRect(Rect2f rect)
+		public bool MouseInRect(Rect2f rect, CameraManager.CameraInstance instance = CameraManager.CameraInstance.ScreenCamera)
 		{
-			Vector2 mousePos = GetMouseWorldPos();
+			Vector2 mousePos = GetMouseWorldPos(instance);
 			return Collision2D.BoxVsPoint(rect, mousePos);
 		}
 
@@ -277,9 +297,10 @@
 		/// <summary>
 		/// Get mouse position in "world" units. Accounting for scale. Use this one if in doubt.
 		/// </summary>
-		public Point GetMouseWorldPoint()
+		public Point GetMouseWorldPoint(CameraManager.CameraInstance instance = CameraManager.CameraInstance.ScreenCamera)
 		{
-			return new Point((int)GetMouseWorldPos().X, (int)GetMouseWorldPos().Y);
+			Vector2 mousePos = GetMouseWorldPos(instance);
+			return new Point((int)mousePos.X, (int)mousePos.Y);
 		}
 
 

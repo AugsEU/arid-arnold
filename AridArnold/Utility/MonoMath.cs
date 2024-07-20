@@ -179,6 +179,18 @@
 		}
 
 
+		/// <summary>
+		/// Goes from 0 to 1, but starts sharp.
+		/// </summary>
+		public static float LeapZeroToSmoothOne(float t)
+		{
+			t -= 1.0f;
+			t *= -t;
+			t += 1.0f;
+			return t;
+		}
+
+
 
 		/// <summary>
 		/// Biject float into a fixed region.

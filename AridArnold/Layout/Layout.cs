@@ -4,6 +4,36 @@ using System.Reflection;
 namespace AridArnold
 {
 	/// <summary>
+	/// Message sent by an element
+	/// </summary>
+	struct ElementMsg
+	{
+		public LayElement mSender;
+		public string mMessage;
+
+		public ElementMsg(LayElement sender, string message)
+		{
+			mSender = sender;
+			mMessage = message;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj is ElementMsg)
+			{
+				ElementMsg other = (ElementMsg)obj;
+				return mSender.Equals(other.mSender) && mMessage.Equals(other.mMessage);
+			}
+			return false;
+		}
+
+		public override int GetHashCode()
+		{
+			return (mSender, mMessage).GetHashCode();
+		}
+	}
+
+	/// <summary>
 	/// Represents a layout of elements
 	/// </summary>
 	internal class Layout
@@ -28,6 +58,8 @@ namespace AridArnold
 		NavElement mPendingNavElement; // We don't want to change the selected element more than once per frame.
 		bool mBlockElementSelection = false;
 
+		Queue<ElementMsg> mMessageQueue;
+
 		#endregion rMembers
 
 
@@ -43,6 +75,8 @@ namespace AridArnold
 		{
 			mPendingNavElement = null;
 			mSelectedNavElement = null;
+
+			mMessageQueue = new Queue<ElementMsg>();
 
 			layoutFile = "Content/" + layoutFile;
 
@@ -197,6 +231,34 @@ namespace AridArnold
 		public void SetSelectionBlocker(bool block)
 		{
 			mBlockElementSelection = block;
+		}
+
+
+		/// <summary>
+		/// Add message to queue
+		/// </summary>
+		public void QueueMessage(LayElement element, string msg)
+		{
+			ElementMsg newMsg = new ElementMsg(element, msg);
+			if (!mMessageQueue.Contains(newMsg))
+			{
+				mMessageQueue.Enqueue(newMsg);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Try to get the latest message in queue
+		/// </summary>
+		public ElementMsg? PopMessage()
+		{
+			if(mMessageQueue.Count == 0)
+			{
+				return null;
+			}
+
+			return mMessageQueue.Dequeue();
 		}
 
 		#endregion rUtil

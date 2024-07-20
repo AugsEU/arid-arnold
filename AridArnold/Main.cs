@@ -406,6 +406,12 @@
 			return sSelf.mInLoadingSection;
 		}
 
+
+		public static void ExitGame()
+		{
+			sSelf.Exit();
+		}
+
 		#endregion rUtility
 	}
 }

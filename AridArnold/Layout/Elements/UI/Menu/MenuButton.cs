@@ -39,7 +39,7 @@ namespace AridArnold
 		/// </summary>
 		public MenuButton(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
-			mClickTimer = new PercentageTimer(300.0);
+			mClickTimer = new PercentageTimer(150.0);
 
 			mTexture = MonoParse.GetTexture(rootNode["texture"], null);
 

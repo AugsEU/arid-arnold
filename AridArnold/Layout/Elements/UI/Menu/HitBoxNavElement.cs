@@ -1,7 +1,4 @@
-﻿
-
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Layout element that we can navigate around with D-pad(for menus) and has a hitbox area.

@@ -88,6 +88,17 @@
 			mElapsedTimeMs = 0.0;
 		}
 
+
+
+		/// <summary>
+		/// Play timer from 0
+		/// </summary>
+		public void ResetStart()
+		{
+			Reset();
+			Start();
+		}
+
 		#endregion rUpdate
 
 
