@@ -253,11 +253,12 @@ namespace AridArnold
 					mMenuLayout.SetSelectedElement("newGameBtn");
 					break;
 				case MainMenuArea.kNewGameArea:
-					mMenuLayout.SetSelectedElement("beginGameBtn");
+					mMenuLayout.SetSelectedElement("speedRunOpt");
 					break;
 				case MainMenuArea.kLoadGameArea:
 					break;
 				case MainMenuArea.kOptionsArea:
+					mMenuLayout.SetSelectedElement("visionOpt");
 					break;
 				case MainMenuArea.kRebindArea:
 					break;

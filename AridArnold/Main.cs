@@ -92,6 +92,7 @@
 			Window.Title = "Arid Arnold";
 
 			InputManager.I.Init();
+			OptionsManager.I.Init();
 
 			base.Initialize();
 		}
@@ -260,7 +261,7 @@
 				// Draw!
 				screenCam.StartSpriteBatch(frameInfo, new Vector2(screenRect.X, screenRect.Y), null, Color.Black);
 
-				Rectangle destRect = DrawScreenPixelPerfect(frameInfo, finalFrame);
+				Rectangle destRect = GetFinalDrawDest(frameInfo, finalFrame);
 				MonoDraw.DrawTexture(frameInfo, finalFrame, destRect);
 				mOutputRectSize = destRect;
 
@@ -272,6 +273,24 @@
 			MonoDraw.FlushRender();
 		}
 
+
+		/// <summary>
+		/// Get rectangle bounds we should draw to
+		/// </summary>
+		Rectangle GetFinalDrawDest(DrawInfo info, RenderTarget2D screen)
+		{
+			switch (OptionsManager.I.GetVision())
+			{
+				case VisionOption.kPerfect:
+					return DrawScreenPixelPerfect(info, screen);
+				case VisionOption.kStretch:
+					return DrawScreenStretch(info, screen);
+				default:
+					break;
+			}
+
+			throw new NotImplementedException();
+		}
 
 
 		/// <summary>
@@ -289,6 +308,16 @@
 			int finalHeight = screen.Height * multiplier;
 
 			return new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
+		}
+
+
+
+		/// <summary>
+		/// Draw render target with the largest possible scaling
+		/// </summary>
+		private Rectangle DrawScreenStretch(DrawInfo info, RenderTarget2D screen)
+		{
+			return info.device.PresentationParameters.Bounds;
 		}
 
 

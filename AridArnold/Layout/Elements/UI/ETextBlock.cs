@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Shows a block of text with linebreaks and all.

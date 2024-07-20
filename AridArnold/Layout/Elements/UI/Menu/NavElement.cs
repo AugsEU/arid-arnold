@@ -41,7 +41,7 @@ namespace AridArnold
 
 		void CheckNavigation(BindingGang gang, string navElementID)
 		{
-			if(!IsSelected())
+			if(!IsSelected() || navElementID.Length == 0)
 			{
 				// Not selected, don't do nav
 				return;

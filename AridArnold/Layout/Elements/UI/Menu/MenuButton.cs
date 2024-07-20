@@ -49,26 +49,29 @@ namespace AridArnold
 
 			mDefaultColor = MonoParse.GetColor(rootNode["textColor"], Color.Gray);
 
-			// Creat hover color by brightening the default, or by loading from XML
+			// Create hover color by brightening the default, or by loading from XML
 			Color hoverDefault = mDefaultColor;
 			MonoColor.BrightenColour(ref hoverDefault, 1.0f);
 			mHoverColor = MonoParse.GetColor(rootNode["textHoverColor"], hoverDefault);
 
 			// Set size if not already set
-			if(mTexture is not null)
+			if (mSize.X == 0.0f && mSize.Y == 0.0f)
 			{
-				// By texture if we have one
-				Vector2 texSize = CalcTextureSize();
-				if (mSize.X == 0.0f) mSize.X = mTexture.Width;
-				if (mSize.Y == 0.0f) mSize.Y = mTexture.Height / (int)HoverState.NumHoverStates; // Texture is in 3 parts
-			}
-			else
-			{
-				// By font if we have no texture
-				mSize = mFont.MeasureString(mDisplayText);
+				if (mTexture is not null)
+				{
+					// By texture if we have one
+					Vector2 texSize = CalcTextureSize();
+					mSize.X = mTexture.Width;
+					mSize.Y = mTexture.Height / (int)HoverState.NumHoverStates; // Texture is in 3 parts
+				}
+				else
+				{
+					// By font if we have no texture
+					mSize = mFont.MeasureString(mDisplayText);
 
-				// Centre horizontally
-				mPos.X -= mSize.X * 0.5f;
+					// Centre horizontally
+					mPos.X -= mSize.X * 0.5f;
+				}
 			}
 		}
 

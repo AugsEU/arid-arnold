@@ -34,20 +34,55 @@
 	</element>
 
 	<!-- New Game -->
+	<element type="speedRunOption" id="speedRunOpt">
+		<x>480.0</x>
+		<y>-360.0</y>
+		<text>UI.Menu.SpeedRunMode</text>
+		<up>beginGameBtn</up>
+		<down>profileNameOpt</down>
+	</element>
+	<element type="profileNameOption" id="profileNameOpt">
+		<x>480.0</x>
+		<y>-320.0</y>
+		<text>UI.Menu.ProfileName</text>
+		<up>speedRunOpt</up>
+		<down>beginGameBtn</down>
+	</element>
 	<element type="messageButton" id="beginGameBtn">
 		<x>320.0</x>
 		<y>-160.0</y>
 		<msg>gokMainArea</msg>
 		<text>UI.Menu.NewGame</text>
-		<left>backBtn</left>
-		<right>backBtn</right>
+		<up>profileNameOpt</up>
+		<down>speedRunOpt</down>
+		<left>ngBackBtn</left>
+		<right>ngBackBtn</right>
 	</element>
-	<element type="messageButton" id="backBtn">
+	<element type="messageButton" id="ngBackBtn">
 		<x>640.0</x>
 		<y>-160.0</y>
 		<msg>gokMainArea</msg>
 		<text>UI.Menu.Back</text>
+		<up>profileNameOpt</up>
+		<down>speedRunOpt</down>
 		<left>beginGameBtn</left>
 		<right>beginGameBtn</right>
+	</element>
+
+	<!-- Options -->
+	<element type="visionOption" id="visionOpt">
+		<x>480.0</x>
+		<y>720.0</y>
+		<text>UI.Menu.VisionOption</text>
+		<up>optBackBtn</up>
+		<down>optBackBtn</down>
+	</element>
+	<element type="messageButton" id="optBackBtn">
+		<x>640.0</x>
+		<y>920.0</y>
+		<msg>gokMainArea</msg>
+		<text>UI.Menu.Back</text>
+		<up>visionOpt</up>
+		<down>visionOpt</down>
 	</element>
 </root>

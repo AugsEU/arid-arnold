@@ -14226,3 +14226,9 @@
 #begin UI/Menu/SteamPlant/MenuBG.mlo
 /copy:UI/Menu/SteamPlant/MenuBG.mlo
 
+#begin Text/EN/UI/ProfileNames.txt
+/copy:Text/EN/UI/ProfileNames.txt
+
+#begin Text/EN/UI/Menu/ProfileName.txt
+/copy:Text/EN/UI/Menu/ProfileName.txt
+
