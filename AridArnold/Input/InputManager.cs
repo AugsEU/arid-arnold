@@ -256,19 +256,19 @@
 			Point mousePos = GetMousePos();
 
 			Rectangle screenRect = Main.GetGameDrawArea();
-			float scaleFactor = screenRect.Width / Screen.SCREEN_WIDTH;
+			float scaleFactor = (float)screenRect.Width / (float)Screen.SCREEN_WIDTH;
 
-			Vector2 posVec = new Vector2(mousePos.X, mousePos.Y);
+			Vector2 worldPosVec = new Vector2(mousePos.X, mousePos.Y) / scaleFactor;
 
 			if (relativeToCam is not null)
 			{
 				CameraSpec spec = relativeToCam.GetCurrentSpec();
 
-				posVec += spec.mPosition;
-				scaleFactor *= spec.mZoom;
+				worldPosVec += spec.mPosition;
+				worldPosVec *= spec.mZoom;
 			}
 
-			return posVec / scaleFactor;
+			return worldPosVec;
 		}
 
 

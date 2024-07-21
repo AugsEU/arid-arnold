@@ -6,31 +6,42 @@ namespace AridArnold
 {
 	abstract class MenuOption : HitBoxNavElement
 	{
+		#region rConstants
+
 		const float DEFAULT_OPTION_WIDTH = 800.0f;
 		const float DEFAULT_OPTION_SPACING_PERCENT = 0.8f;
 
+		#endregion rConstants
+
+
+
+
+		#region rMembers
+
 		SpriteFont mFont;
 		string mDisplayText;
-		string[] mOptionStrs;
+		
 		Color mDefaultColor;
 		Color mHoverColor;
 		int mSelectedOption;
 
 		Vector2 mOptionCenPoint;
 
-		public MenuOption(XmlNode rootNode, Layout parent, string[] optionIDs, bool isLoc = false) : base(rootNode, parent)
+		#endregion rMembers
+
+
+
+
+		#region rInit
+
+		/// <summary>
+		/// Create a menu option
+		/// </summary>
+		public MenuOption(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
 			mFont = MonoParse.GetFont(rootNode["font"], "Pixica-36");
 			string textID = MonoParse.GetString(rootNode["text"]);
 			mDisplayText = LanguageManager.I.GetText(textID);
-
-			// Parse options and localise if needed
-			mOptionStrs = new string[optionIDs.Length];
-			for (int i = 0; i < optionIDs.Length; i++)
-			{
-				string locStr = isLoc ? optionIDs[i] : LanguageManager.I.GetText(optionIDs[i]);
-				mOptionStrs[i] = string.Format("<{0}>", locStr);
-			}
 
 			mDefaultColor = MonoParse.GetColor(rootNode["textColor"], Color.Gray);
 			// Create hover color by brightening the default, or by loading from XML
@@ -57,8 +68,22 @@ namespace AridArnold
 			mSelectedOption = 0;
 		}
 
+		#endregion rInit
+
+
+
+
+
+		#region rUpdate
+
+		/// <summary>
+		/// Update the menu option
+		/// </summary>
+		/// <param name="gameTime"></param>
 		public override void Update(GameTime gameTime)
 		{
+			SyncOption();
+
 			int prevOption = mSelectedOption;
 			if (IsSelected())
 			{
@@ -66,13 +91,14 @@ namespace AridArnold
 				{
 					mSelectedOption--;
 				}
-				else if (InputManager.I.AnyGangPressed(BindingGang.SysRight))
+				else if (InputManager.I.AnyGangPressed(BindingGang.SysRight) || MouseClicked())
 				{
 					mSelectedOption++;
 				}
 			}
 
-			mSelectedOption = (mSelectedOption + mOptionStrs.Length) % mOptionStrs.Length;
+			int numOptions = GetNumOptions();
+			mSelectedOption = (mSelectedOption + numOptions) % numOptions;
 
 			if(mSelectedOption != prevOption)
 			{
@@ -82,8 +108,31 @@ namespace AridArnold
 			base.Update(gameTime);
 		}
 
+
+
+		/// <summary>
+		/// Called when a new option is selected
+		/// </summary>
 		protected abstract void OnOptionSelect(int optionIdx);
 
+
+
+		/// <summary>
+		/// Called every update to sync this UI widget with the underlying value
+		/// </summary>
+		protected abstract void SyncOption();
+
+		#endregion rUpdate
+
+
+
+
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw the widget
+		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
 			Vector2 textPos = GetPosition();
@@ -94,13 +143,49 @@ namespace AridArnold
 			textPos.Y += mSize.Y * 0.5f;
 
 			MonoDraw.DrawStringCentredShadow(info, mFont, textPos, textColor, modText, GetDepth());
-			MonoDraw.DrawStringCentredShadow(info, mFont, mOptionCenPoint, textColor, mOptionStrs[mSelectedOption], GetDepth());
+			MonoDraw.DrawStringCentredShadow(info, mFont, mOptionCenPoint, textColor, GetOptionStr(mSelectedOption), GetDepth());
 			base.Draw(info);
 		}
 
+		#endregion rDraw
+
+
+
+
+
+		#region rUtil
+
+		/// <summary>
+		/// Get the index of the selected option
+		/// </summary>
 		public int GetSelectedOptionIdx()
 		{
 			return mSelectedOption;
 		}
+
+
+
+		/// <summary>
+		/// Set the selected option index
+		/// </summary>
+		public void SetSelectedOptionsIdx(int idx)
+		{
+			mSelectedOption = idx;
+		}
+
+
+		/// <summary>
+		/// How many options do we have?
+		/// </summary>
+		protected abstract int GetNumOptions();
+
+
+
+		/// <summary>
+		/// Get string to display for nth option
+		/// </summary>
+		protected abstract string GetOptionStr(int optionIdx);
+
+		#endregion rUtil
 	}
 }

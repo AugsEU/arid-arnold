@@ -7,6 +7,10 @@ namespace AridArnold
 		{
 		}
 
+		protected override void SyncOption()
+		{
+		}
+
 		protected override void OnOptionYesNo(bool isYes)
 		{
 		}

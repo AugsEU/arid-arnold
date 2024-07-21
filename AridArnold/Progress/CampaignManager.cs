@@ -26,6 +26,9 @@
 
 		#region rMembers
 
+		string mProfileName = null;
+		bool mSpeedrunMode = false;
+
 		string mRootPath;
 		CampaignMetaData mMetaData;
 
@@ -115,6 +118,46 @@
 		public TimeZoneOverride? GetTimeOverride(int fromTime, int toTime)
 		{
 			return mMetaData.GetTimeOverride(fromTime, toTime);
+		}
+
+
+
+		/// <summary>
+		/// Get the current loaded profile
+		/// </summary>
+		public string GetLoadedProfileName()
+		{
+			return mProfileName;
+		}
+
+
+
+		/// <summary>
+		/// Set the current profile name
+		/// </summary>
+		public void SetLoadedProfileName(string profileName)
+		{
+			mProfileName = profileName;
+		}
+
+
+
+		/// <summary>
+		/// Are we in speedrun mode?
+		/// </summary>
+		public bool IsSpeedrunMode()
+		{
+			return mSpeedrunMode;
+		}
+
+
+
+		/// <summary>
+		/// Turn speedrun mode on or off
+		/// </summary>
+		public void SetSpeedrunMode(bool isOn)
+		{
+			mSpeedrunMode = isOn;
 		}
 
 		#endregion rAccess

@@ -37,7 +37,10 @@ namespace AridArnold
 				Main.LoadingScreenEnd();
 			}
 
-			if(InputManager.I.KeyPressed(InputAction.Confirm) || mFadeInTimer.GetPercentageF() >= 1.0f)
+			bool generalConfirm = InputManager.I.AnyGangPressed(BindingGang.SysConfirm);
+			bool mouseClick = InputManager.I.KeyPressed(InputAction.SysLClick);
+
+			if (generalConfirm || mouseClick || mFadeInTimer.GetPercentageF() >= 1.0f)
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.MainMenu);
 			}

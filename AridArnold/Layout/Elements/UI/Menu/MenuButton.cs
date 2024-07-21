@@ -88,8 +88,6 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			Rect2f rect = new Rect2f(GetPosition(), mSize.X, mSize.Y);
-
 			mClickTimer.Update(gameTime);
 
 			if (mClickTimer.IsPlaying())
@@ -109,7 +107,7 @@ namespace AridArnold
 			else if (IsSelected())
 			{
 				bool enterKey = InputManager.I.AnyGangPressed(BindingGang.SysConfirm);
-				bool mouseClick = InputManager.I.KeyPressed(InputAction.SysLClick) && InputManager.I.MouseInRect(rect);
+				bool mouseClick = MouseClicked();
 
 				if (enterKey || mouseClick)
 				{

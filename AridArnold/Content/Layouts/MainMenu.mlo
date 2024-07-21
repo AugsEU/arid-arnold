@@ -72,9 +72,30 @@
 	<!-- Options -->
 	<element type="visionOption" id="visionOpt">
 		<x>480.0</x>
-		<y>720.0</y>
+		<y>680.0</y>
 		<text>UI.Menu.VisionOption</text>
 		<up>optBackBtn</up>
+		<down>masterVolOpt</down>
+	</element>
+	<element type="masterVolOption" id="masterVolOpt">
+		<x>480.0</x>
+		<y>720.0</y>
+		<text>UI.Menu.EarPowerOption</text>
+		<up>visionOpt</up>
+		<down>musicVolOpt</down>
+	</element>
+	<element type="musicVolOption" id="musicVolOpt">
+		<x>480.0</x>
+		<y>760.0</y>
+		<text>UI.Menu.ClairaudienceOption</text>
+		<up>masterVolOpt</up>
+		<down>impatientOpt</down>
+	</element>
+	<element type="impatientOption" id="impatientOpt">
+		<x>480.0</x>
+		<y>800.0</y>
+		<text>UI.Menu.ImpatientOption</text>
+		<up>musicVolOpt</up>
 		<down>optBackBtn</down>
 	</element>
 	<element type="messageButton" id="optBackBtn">
@@ -82,7 +103,7 @@
 		<y>920.0</y>
 		<msg>gokMainArea</msg>
 		<text>UI.Menu.Back</text>
-		<up>visionOpt</up>
+		<up>impatientOpt</up>
 		<down>visionOpt</down>
 	</element>
 </root>

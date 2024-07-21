@@ -2,7 +2,7 @@
 
 namespace AridArnold
 {
-	internal class EProfileNameOption : MenuOption
+	internal class EProfileNameOption : StringOption
 	{
 		/// Weird hack due to init order so this has to be static
 		static string[] mPossibleProfileNames = null;
@@ -12,6 +12,11 @@ namespace AridArnold
 		}
 
 		protected override void OnOptionSelect(int optionIdx)
+		{
+
+		}
+
+		protected override void SyncOption()
 		{
 
 		}

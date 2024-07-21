@@ -5,7 +5,16 @@
 	/// </summary>
 	abstract class HitBoxNavElement : NavElement
 	{
+		// Number of pixels the mouse has to move to register as "unfrozen"
+		const float FREEZE_UNLOCK_DIST = 3.0f;
+
 		protected Vector2 mSize;
+
+		// Keep track of this so that if the mouse isn't moving we don't still select things.
+		Vector2 mMouseFreezePos = Vector2.Zero;
+
+		// Has the mouse clicked us this frame?
+		bool mHasMouseClick = false;
 
 		protected HitBoxNavElement(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
@@ -16,13 +25,34 @@
 
 		public override void Update(GameTime gameTime)
 		{
+			mHasMouseClick = false;
+
 			Rect2f rect = new Rect2f(GetPosition(), mSize.X, mSize.Y);
-			if(InputManager.I.MouseInRect(rect))
+			Vector2 mousePos = InputManager.I.GetMouseWorldPos(CameraManager.CameraInstance.ScreenCamera);
+			bool mouseIntersect = Collision2D.BoxVsPoint(rect, mousePos);
+
+			if(mouseIntersect)
 			{
-				GetParent().SetSelectedElement(this);
+				mHasMouseClick = InputManager.I.KeyPressed(InputAction.SysLClick);
+			}
+
+			float distFromFreezePoint = (mousePos - mMouseFreezePos).Length();
+			if (mMouseFreezePos == Vector2.Zero || distFromFreezePoint > FREEZE_UNLOCK_DIST)
+			{
+				if (mouseIntersect)
+				{
+					GetParent().SetSelectedElement(this);
+				}
+
+				mMouseFreezePos = mousePos;
 			}
 
 			base.Update(gameTime);
+		}
+
+		protected bool MouseClicked()
+		{
+			return mHasMouseClick;
 		}
 	}
 }

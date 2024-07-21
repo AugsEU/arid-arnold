@@ -317,7 +317,14 @@
 		/// </summary>
 		private Rectangle DrawScreenStretch(DrawInfo info, RenderTarget2D screen)
 		{
-			return info.device.PresentationParameters.Bounds;
+			Rectangle screenRect = info.device.PresentationParameters.Bounds;
+
+			float multiplier = MathF.Min((float)screenRect.Width / (float)screen.Width, (float)screenRect.Height / (float)screen.Height);
+
+			int finalWidth = (int)(screen.Width * multiplier);
+			int finalHeight = (int)(screen.Height * multiplier);
+
+			return new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
 		}
 
 

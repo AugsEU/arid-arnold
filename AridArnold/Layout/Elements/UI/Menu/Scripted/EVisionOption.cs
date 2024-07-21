@@ -4,12 +4,18 @@ namespace AridArnold
 	/// <summary>
 	/// Button that exits the game when clicked
 	/// </summary>
-	internal class EVisionOption : MenuOption
+	internal class EVisionOption : StringOption
 	{
 		static string[] VISION_OPTIONS = { "UI.Menu.VisionOptionPerfect", "UI.Menu.VisionOptionSretch" };
 
 		public EVisionOption(XmlNode rootNode, Layout parent) : base(rootNode, parent, VISION_OPTIONS)
 		{
+		}
+
+		protected override void SyncOption()
+		{
+			int setIdx = (int)OptionsManager.I.GetVision();
+			SetSelectedOptionsIdx(setIdx);
 		}
 
 		protected override void OnOptionSelect(int optionIdx)
