@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
 
 namespace AridArnold
 {
@@ -9,11 +10,13 @@ namespace AridArnold
 	struct ElementMsg
 	{
 		public LayElement mSender;
+		public string mHeader;
 		public string mMessage;
 
-		public ElementMsg(LayElement sender, string message)
+		public ElementMsg(LayElement sender, string header, string message)
 		{
 			mSender = sender;
+			mHeader = header;
 			mMessage = message;
 		}
 
@@ -22,14 +25,14 @@ namespace AridArnold
 			if (obj is ElementMsg)
 			{
 				ElementMsg other = (ElementMsg)obj;
-				return mSender.Equals(other.mSender) && mMessage.Equals(other.mMessage);
+				return mSender.Equals(other.mSender) && mHeader.Equals(other.mHeader) && mMessage.Equals(other.mMessage);
 			}
 			return false;
 		}
 
 		public override int GetHashCode()
 		{
-			return (mSender, mMessage).GetHashCode();
+			return (mSender, mMessage, mHeader).GetHashCode();
 		}
 	}
 
@@ -237,9 +240,9 @@ namespace AridArnold
 		/// <summary>
 		/// Add message to queue
 		/// </summary>
-		public void QueueMessage(LayElement element, string msg)
+		public void QueueMessage(LayElement element, string hdr, string msg)
 		{
-			ElementMsg newMsg = new ElementMsg(element, msg);
+			ElementMsg newMsg = new ElementMsg(element, hdr, msg);
 			if (!mMessageQueue.Contains(newMsg))
 			{
 				mMessageQueue.Enqueue(newMsg);

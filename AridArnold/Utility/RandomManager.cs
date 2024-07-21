@@ -191,8 +191,14 @@
 	/// </summary>
 	internal class RandomManager : Singleton<RandomManager>
 	{
-		MonoRandom mWorldRandom = new MonoRandom();
-		MonoRandom mDrawRandom = new MonoRandom();
+		MonoRandom mWorldRandom = new MonoRandom(0);
+		MonoRandom mDrawRandom = new MonoRandom(0);
+
+		public void ResetToDefault()
+		{
+			mWorldRandom = new MonoRandom(0);
+			mDrawRandom = new MonoRandom(0);
+		}
 
 		public MonoRandom GetWorld()
 		{

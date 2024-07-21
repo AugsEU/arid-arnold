@@ -31,6 +31,8 @@
 
 		Layout mMainUI;
 
+		FadeFX mFadeInFx;
+
 		#endregion rMembers
 
 
@@ -53,6 +55,8 @@
 			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			TileManager.I.Init(new Vector2(-TILE_SIZE, -TILE_SIZE), TILE_SIZE);
 			TimeZoneManager.I.Init();
+
+			mFadeInFx = new FadeFX(new ScreenStars(), 0.1f, true);
 		}
 
 
@@ -62,6 +66,7 @@
 		/// </summary>
 		public override void OnActivate()
 		{
+			mFadeInFx = new FadeFX(new ScreenStars(10.0f, SCREEN_RECTANGLE));
 		}
 
 
@@ -88,6 +93,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			mFadeInFx.Update(gameTime);
 			mLevelEndTimer.Update(gameTime);
 
 			if (mLoadSequence is null)
@@ -268,6 +274,10 @@
 			//Draw out the game area
 			StartScreenSpriteBatch(info);
 
+			if (!mFadeInFx.Finished())
+			{
+				mFadeInFx.Draw(info);
+			}
 			mMainUI.Draw(info);
 			DrawGameArea(info);
 

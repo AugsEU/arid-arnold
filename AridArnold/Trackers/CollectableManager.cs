@@ -23,6 +23,18 @@
 		#endregion rMembers
 
 
+		#region rInit
+
+		public void ResetToDefault()
+		{
+			mTransientCollectables = new Dictionary<TransientCollectable, uint>();
+
+			mCurrent = new PermanentCollectableState();
+			mStartSequence = new PermanentCollectableState();
+			mStartLevel = new PermanentCollectableState();
+		}
+
+		#endregion rInit
 
 
 

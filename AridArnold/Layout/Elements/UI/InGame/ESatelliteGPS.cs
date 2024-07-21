@@ -54,7 +54,7 @@
 			if (currLevel is not null)
 			{
 				string worldName = currLevel.GetTheme().GetDisplayName();
-				MonoDraw.DrawStringCentred(info, mFont, GetPosition() + WORLD_TITLE_OFFSET, PANEL_GOLD, worldName, DrawLayer.Front);
+				MonoDraw.DrawStringCentred(info, mFont, GetPosition() + WORLD_TITLE_OFFSET, PANEL_GOLD, worldName, DrawLayer.Bubble);
 			}
 		}
 

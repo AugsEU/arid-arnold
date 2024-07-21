@@ -19,6 +19,7 @@
 		public void Init()
 		{
 			mCurrentTimeZone = 0;
+			mCurrentPlayerAge = 0;
 		}
 
 		#endregion rInit

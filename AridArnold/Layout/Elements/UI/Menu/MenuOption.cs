@@ -1,8 +1,4 @@
-﻿
-using Microsoft.Xna.Framework.Graphics;
-using System.Text.RegularExpressions;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	abstract class MenuOption : HitBoxNavElement
 	{

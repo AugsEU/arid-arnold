@@ -448,6 +448,22 @@
 			sSelf.Exit();
 		}
 
+
+		/// <summary>
+		/// Make sure every manager that controls state is reset.
+		/// </summary>
+		public static void DefaultGameplayManagers()
+		{
+			RandomManager.I.ResetToDefault();
+			CollectableManager.I.ResetToDefault();
+			TimeZoneManager.I.Init();
+			EventManager.I.ResetAllEvents();
+			EntityManager.I.ClearEntities();
+			FlagsManager.I.Init();
+			ItemManager.I.ResetToDefault();
+			FXManager.I.Clear();
+		}
+
 		#endregion rUtility
 	}
 }

@@ -16,6 +16,15 @@
 		#region rInit
 
 		/// <summary>
+		/// Reset this completely
+		/// </summary>
+		public void ResetToDefault()
+		{
+			mItemAtLevelStart = null;
+			mActiveItem = null;
+		}
+
+		/// <summary>
 		/// Called when a level sequence ends.
 		/// </summary>
 		public void SequenceEnd()

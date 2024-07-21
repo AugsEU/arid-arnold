@@ -4,7 +4,7 @@
 	<element type="messageButton" id="newGameBtn">
 		<x>480.0</x>
 		<y>160.0</y>
-		<msg>gokNewGameArea</msg>
+		<msg>go:kNewGameArea</msg>
 		<text>UI.Menu.NewGame</text>
 		<up>exitBtn</up>
 		<down>loadGameBtn</down>
@@ -12,7 +12,7 @@
 	<element type="messageButton" id="loadGameBtn">
 		<x>480.0</x>
 		<y>200.0</y>
-		<msg>gokLoadGameArea</msg>
+		<msg>go:kLoadGameArea</msg>
 		<text>UI.Menu.LoadGame</text>
 		<up>newGameBtn</up>
 		<down>optionsBtn</down>
@@ -20,7 +20,7 @@
 	<element type="messageButton" id="optionsBtn">
 		<x>480.0</x>
 		<y>300.0</y>
-		<msg>gokOptionsArea</msg>
+		<msg>go:kOptionsArea</msg>
 		<text>UI.Menu.Options</text>
 		<up>loadGameBtn</up>
 		<down>exitBtn</down>
@@ -51,8 +51,8 @@
 	<element type="messageButton" id="beginGameBtn">
 		<x>320.0</x>
 		<y>-160.0</y>
-		<msg>gokMainArea</msg>
-		<text>UI.Menu.NewGame</text>
+		<msg>lo:MainCampaign</msg>
+		<text>UI.Menu.Begin</text>
 		<up>profileNameOpt</up>
 		<down>speedRunOpt</down>
 		<left>ngBackBtn</left>
@@ -61,7 +61,7 @@
 	<element type="messageButton" id="ngBackBtn">
 		<x>640.0</x>
 		<y>-160.0</y>
-		<msg>gokMainArea</msg>
+		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
 		<up>profileNameOpt</up>
 		<down>speedRunOpt</down>
@@ -101,7 +101,7 @@
 	<element type="messageButton" id="optBackBtn">
 		<x>640.0</x>
 		<y>920.0</y>
-		<msg>gokMainArea</msg>
+		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
 		<up>impatientOpt</up>
 		<down>visionOpt</down>

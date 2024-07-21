@@ -28,7 +28,7 @@ namespace AridArnold
 		{
 			kFadeIn,
 			kActive,
-			kFadeOut,
+			kFadeOutNewCampaign,
 		}
 
 		#endregion rType
@@ -65,6 +65,10 @@ namespace AridArnold
 		MainMenuArea mCurrentMenuArea;
 		MainMenuArea mNextMenuArea;
 		PercentageTimer mTransitionTimer;
+
+
+		// Campaign load
+		string mPendingCampaignLoad = null;
 
 
 		// Fade
@@ -119,7 +123,7 @@ namespace AridArnold
 		/// </summary>
 		public override void OnActivate()
 		{
-			SetFadeState(FadeState.kFadeIn);
+			StartFade(FadeState.kFadeIn);
 			FinishTransitionTo(MainMenuArea.kMainArea);
 
 			base.OnActivate();
@@ -149,21 +153,33 @@ namespace AridArnold
 		/// </summary>
 		public void UpdateScreenFade(GameTime gameTime)
 		{
-			switch (mFadeState)
+			// Move the fade to the camera
+			if(mFadeTimer.IsPlaying())
 			{
-				case FadeState.kFadeIn:
-					if(mFadeTimer.GetPercentageF() >= 1.0f)
-					{
+				Camera myCamera = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+				Vector2 position = myCamera.GetCurrentSpec().mPosition;
+				Rectangle screenRectWithCamera = new Rectangle((int)position.X, (int)position.Y, SCREEN_WIDTH, SCREEN_HEIGHT);
+				mScreenFade.SetArea(screenRectWithCamera);
+			}
+
+			if (mFadeTimer.GetPercentageF() >= 1.0f)
+			{
+				// Do thing at end.
+				switch (mFadeState)
+				{
+					case FadeState.kFadeIn:
 						mFadeState = FadeState.kActive;
-						mFadeTimer.Stop();
-					}
-					break;
-				case FadeState.kActive:
-					break;
-				case FadeState.kFadeOut:
-					break;
-				default:
-					throw new NotImplementedException();
+						break;
+					case FadeState.kActive:
+						break;
+					case FadeState.kFadeOutNewCampaign:
+						StartNewCampaign(mPendingCampaignLoad);
+						break;
+					default:
+						throw new NotImplementedException();
+				}
+
+				mFadeTimer.FullReset();
 			}
 		}
 
@@ -195,12 +211,21 @@ namespace AridArnold
 		/// </summary>
 		void ProcessMessage(ElementMsg msg)
 		{
+			string msgHeader = msg.mHeader;
 			string msgStr = msg.mMessage;
-			if(msgStr.StartsWith("go"))
+
+			switch (msgHeader)
 			{
-				string enumStr = msgStr.Substring(2);
-				MainMenuArea newArea = MonoAlg.GetEnumFromString<MainMenuArea>(enumStr);
-				QueueAreaTransition(newArea);
+				case "go": // Go to sub-screen
+					MainMenuArea newArea = MonoAlg.GetEnumFromString<MainMenuArea>(msgStr);
+					QueueAreaTransition(newArea);
+					break;
+				case "lo": // Load campaign
+					mPendingCampaignLoad = msgStr;
+					StartFade(FadeState.kFadeOutNewCampaign);
+					break;
+				default:
+					break;
 			}
 		}
 
@@ -304,6 +329,8 @@ namespace AridArnold
 
 
 
+
+
 		#region rDraw
 
 		/// <summary>
@@ -341,7 +368,7 @@ namespace AridArnold
 					break;
 				case FadeState.kActive:
 					break;
-				case FadeState.kFadeOut:
+				case FadeState.kFadeOutNewCampaign:
 					mScreenFade.DrawAtTime(info, mFadeTimer.GetPercentageF());
 					break;
 				default:
@@ -360,11 +387,27 @@ namespace AridArnold
 		/// <summary>
 		/// Enter fade transition
 		/// </summary>
-		void SetFadeState(FadeState state)
+		void StartFade(FadeState state)
 		{
 			mFadeState = state;
-			mFadeTimer.FullReset();
-			mFadeTimer.Start();
+			mFadeTimer.ResetStart();
+		}
+
+
+
+		/// <summary>
+		/// Load a campaign
+		/// </summary>
+		void StartNewCampaign(string campaignName)
+		{
+			// Reset everything...
+			Main.DefaultGameplayManagers();
+
+			// Create campaign from meta file
+			CampaignManager.I.LoadCampaign(campaignName);
+
+			// Activate the gameplay screen.
+			ScreenManager.I.ActivateScreen(ScreenType.Game);
 		}
 
 		#endregion rUtility
