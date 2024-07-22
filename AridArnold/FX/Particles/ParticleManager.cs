@@ -32,6 +32,14 @@
 		#region rInit
 
 		/// <summary>
+		/// Initialise particle manager on launch
+		/// </summary>
+		public ParticleManager()
+		{
+			Init();
+		}
+
+		/// <summary>
 		/// Create all particle info
 		/// </summary>
 		public void Init()

@@ -5,6 +5,7 @@
 	using InputBindingPair = KeyValuePair<InputAction, InputBindSet>;
 	using InputBindingGangList = Dictionary<BindingGang, InputAction[]>;
 	using System.Linq;
+	using Microsoft.Xna.Framework;
 
 	/// <summary>
 	/// Represents the types of actions an input can be bound to.
@@ -54,6 +55,8 @@
 		SysRight,
 		SysConfirm,
 	}
+
+
 
 	/// <summary>
 	/// Singleton that manages inputs.
@@ -149,7 +152,7 @@
 			mBindingGangs.Add(gang, actions);
 		}
 
-#endregion rInitialisation
+		#endregion rInitialisation
 
 
 
@@ -314,5 +317,44 @@
 		}
 
 		#endregion rKeySense
+
+
+
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read binary segment
+		/// </summary>
+		public void ReadFromBinary(BinaryReader br)
+		{
+			mInputBindings = new InputBindingMap();
+			int numBindings = br.ReadInt32();
+			for(int i = 0; i < numBindings; i++)
+			{
+				InputAction action = (InputAction)br.ReadInt32();
+				InputBindSet newSet = InputBindSet.ReadFromBinary(br);
+				mInputBindings.Add(action, newSet);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Write binary segment
+		/// </summary>
+		public void WriteFromBinary(BinaryWriter bw)
+		{
+			bw.Write(mInputBindings.Count());
+			foreach (InputBindingPair keyBindPair in mInputBindings)
+			{
+				InputAction actionEnum = keyBindPair.Key;
+				bw.Write((int)actionEnum);
+				keyBindPair.Value.WriteFromBinary(bw);
+			}
+		}
+
+		#endregion rSerial
 	}
 }

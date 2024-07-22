@@ -1,0 +1,33 @@
+GLOBAL SAVE FORMAT VERSION 1:
+
+META
+{
+    MAGIC - string (gas)
+    VERSION - int32
+}
+
+NUM WORLDS REACHED - int32
+{
+    WORLD NAME - string   
+}
+
+OPTIONS
+{
+    VISION - int32
+    MASTER VOL - float32
+    MUSIC VOL - float32
+    IMPATIENT - bool
+}
+
+INPUT
+{
+    NUM BINDING MAP - int32
+    {
+        INPUT ACTION - int32
+        NUM BINDINGS - int32
+        {
+            BINDING TYPE - int32
+            BUTTON INDEX - int32
+        }
+    }
+}

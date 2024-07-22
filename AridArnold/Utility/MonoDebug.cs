@@ -57,6 +57,12 @@ namespace AridArnold
 				Log(msg, args);
 				Break("Assertion failed.");
 			}
+#else
+			if (!condition)
+			{
+				string errorMsg = string.Format(msg, args);
+				throw new Exception(errorMsg);
+			}
 #endif
 		}
 

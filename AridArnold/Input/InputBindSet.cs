@@ -26,6 +26,17 @@
 			mBindings = new List<InputBinding>(bindings);
 		}
 
+
+
+		/// <summary>
+		/// Init set with a list of bindings
+		/// </summary>
+		/// <param name="bindings">List of bindings</param>
+		public InputBindSet(List<InputBinding> bindings)
+		{
+			mBindings = bindings;
+		}
+
 		#endregion rInitialisation
 
 
@@ -94,5 +105,58 @@
 		}
 
 		#endregion rUtility
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read binary segment
+		/// </summary>
+		public static InputBindSet ReadFromBinary(BinaryReader br)
+		{
+			List<InputBinding> inputBindings = new List<InputBinding>();
+			int numButtons = br.ReadInt32();
+			for(int i = 0; i < numButtons; i++)
+			{
+				InputBinding binding = null;
+				InputBindingType bindingType = (InputBindingType)br.ReadInt32();
+				switch (bindingType)
+				{
+					case InputBindingType.kKeyboard:
+						binding = new KeyBinding(br);
+						break;
+					case InputBindingType.kGamepad:
+						binding = new PadBinding(br);
+						break;
+					case InputBindingType.kMouse:
+						binding = new MouseBtnBinding(br);
+						break;
+					default:
+						throw new Exception("Invalid input type detected");
+				}
+				MonoDebug.Assert(binding is not null, "Corrupted global save.");
+				inputBindings.Add(binding);
+			}
+
+			return new InputBindSet(inputBindings);
+		}
+
+
+
+		/// <summary>
+		/// Write binary segment
+		/// </summary>
+		public void WriteFromBinary(BinaryWriter bw)
+		{
+			bw.Write((int)mBindings.Count);
+			foreach(InputBinding binding in mBindings)
+			{
+				int bindingTypeInt = (int)binding.GetBindingType();
+				bw.Write(bindingTypeInt);
+				binding.WriteFromBinary(bw);
+			}
+		}
+
+		#endregion rSerial
 	}
 }

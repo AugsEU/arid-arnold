@@ -10,16 +10,34 @@ namespace AridArnold
 
 	class OptionsManager : Singleton<OptionsManager>
 	{
+		#region rMembers
+
 		VisionOption mVision;
 		float mMasterVolume;
 		float mMusicVolume;
 		bool mImpatientPlayer;
 
+		#endregion rMembers
+
+
+
+
+
+		#region rInit
+
+		/// <summary>
+		/// Initialise options with defaults
+		/// </summary>
 		public void Init()
 		{
 			SetDefaults();
 		}
 
+
+
+		/// <summary>
+		/// Reset all settings to default
+		/// </summary>
 		public void SetDefaults()
 		{
 			mVision = VisionOption.kPerfect;
@@ -27,6 +45,11 @@ namespace AridArnold
 			mMusicVolume = 0.5f;
 			mImpatientPlayer = false;
 		}
+
+		#endregion rInit
+
+
+		#region rSGetter
 
 		public VisionOption GetVision() { return mVision; }
 		public void SetVision(VisionOption vision) { mVision = vision; }
@@ -41,5 +64,39 @@ namespace AridArnold
 
 		public bool GetImpatientPlayer() { return mImpatientPlayer; }
 		public void SetImpatientPlayer(bool impatientPlayer) { mImpatientPlayer = impatientPlayer; }
+
+		#endregion rSGetter
+
+
+
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read binary segment
+		/// </summary>
+		public void ReadFromBinary(BinaryReader br)
+		{
+			mVision = (VisionOption)br.ReadInt32();
+			mMasterVolume = br.ReadSingle();
+			mMusicVolume = br.ReadSingle();
+			mImpatientPlayer = br.ReadBoolean();
+		}
+
+
+
+		/// <summary>
+		/// Write binary segment
+		/// </summary>
+		public void WriteFromBinary(BinaryWriter bw)
+		{
+			bw.Write((Int32)mVision);
+			bw.Write(mMasterVolume);
+			bw.Write(mMusicVolume);
+			bw.Write(mImpatientPlayer);
+		}
+
+		#endregion rSerial
 	}
 }

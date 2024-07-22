@@ -275,6 +275,7 @@ namespace AridArnold
 			switch (area)
 			{
 				case MainMenuArea.kMainArea:
+					SaveManager.I.SaveGlobalSettings();// Just got back from options menu or something. Good time to save.
 					mMenuLayout.SetSelectedElement("newGameBtn");
 					break;
 				case MainMenuArea.kNewGameArea:

@@ -118,6 +118,9 @@
 
 			LoadGlobalContent();
 
+			DefaultGameplayManagers();
+			SaveManager.I.LoadGlobalSettings();
+
 			if (BF.DEBUG_LOADER)
 			{
 				// Temp
