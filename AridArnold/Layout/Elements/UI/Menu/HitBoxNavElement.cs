@@ -54,5 +54,15 @@
 		{
 			return mHasMouseClick;
 		}
+
+		protected void SetSize(Vector2 size)
+		{
+			mSize = size;
+		}
+
+		public Vector2 GetSize()
+		{
+			return mSize;
+		}
 	}
 }

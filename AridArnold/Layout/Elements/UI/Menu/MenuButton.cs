@@ -21,7 +21,7 @@ namespace AridArnold
 
 		#region rMembers
 
-		Texture2D mTexture;
+		protected Texture2D mTexture;
 
 		PercentageTimer mClickTimer;
 		SpriteFont mFont;
@@ -60,9 +60,8 @@ namespace AridArnold
 				if (mTexture is not null)
 				{
 					// By texture if we have one
-					Vector2 texSize = CalcTextureSize();
 					mSize.X = mTexture.Width;
-					mSize.Y = mTexture.Height / (int)HoverState.NumHoverStates; // Texture is in 3 parts
+					mSize.Y = mTexture.Height;
 				}
 				else
 				{
@@ -139,10 +138,8 @@ namespace AridArnold
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			Vector2 centrePos = GetPosition() + mSize * 0.5f;
-
-			DrawButtonTexture(info, centrePos);
-			DrawButtonString(info, centrePos);
+			DrawButtonTexture(info);
+			DrawButtonString(info);
 
 			base.Draw(info);
 		}
@@ -152,20 +149,27 @@ namespace AridArnold
 		/// <summary>
 		/// Draw the button's texture
 		/// </summary>
-		void DrawButtonTexture(DrawInfo info, Vector2 centrePos)
+		void DrawButtonTexture(DrawInfo info)
 		{
 			if (mTexture is null)
 			{
 				return;
 			}
 
-			Vector2 textureSize = CalcTextureSize();
-			Vector2 texPosition = centrePos - textureSize * 0.5f;
+			HoverState hoverState = GetHoverState();
+			Vector2 texPosition = GetPosition();
+			Color texColor = GetButtonColor();
 
-			int srcRectIdx = (int)GetHoverState();
-			Rectangle srcRect = new Rectangle(0, (int)(textureSize.Y * srcRectIdx), (int)textureSize.X, (int)textureSize.Y);
+			if (hoverState == HoverState.kPress)
+			{
+				texPosition.Y += 2.0f;
+			}
 
-			MonoDraw.DrawTexture(info, mTexture, texPosition, srcRect, GetColor(), 0.0f, Vector2.Zero, GetScale(), SpriteEffects.None, GetDepth());
+			Vector2 shadowPos = texPosition + new Vector2(2.0f, 2.0f);
+			Color shadowColor = texColor * 0.2f;
+
+			MonoDraw.DrawTexture(info, mTexture, shadowPos, null, shadowColor, 0.0f, Vector2.Zero, 1.0f, GetSpriteEffect(), GetDepth());
+			MonoDraw.DrawTexture(info, mTexture, texPosition, null, texColor, 0.0f, Vector2.Zero, 1.0f, GetSpriteEffect(), GetDepth());
 		}
 
 
@@ -173,12 +177,12 @@ namespace AridArnold
 		/// <summary>
 		/// Draw the button's text
 		/// </summary>
-		void DrawButtonString(DrawInfo info, Vector2 centrePos)
+		void DrawButtonString(DrawInfo info)
 		{
 			HoverState hoverState = GetHoverState();
-			Vector2 textPos = centrePos;
+			Vector2 textPos = GetPosition() + mSize * 0.5f;
 			string modText = mDisplayText;
-			Color textColor = GetTextColor();
+			Color textColor = GetButtonColor();
 
 			if (hoverState == HoverState.kPress)
 			{
@@ -198,7 +202,7 @@ namespace AridArnold
 		/// <summary>
 		/// Calculate the text color
 		/// </summary>
-		Color GetTextColor()
+		Color GetButtonColor()
 		{
 			HoverState hoverState = GetHoverState();
 			switch (hoverState)
@@ -225,22 +229,6 @@ namespace AridArnold
 		#region rUtil
 
 		/// <summary>
-		/// Calculate the effective texture size, since it is split in 3
-		/// </summary>
-		Vector2 CalcTextureSize()
-		{
-			if (mTexture is null)
-			{
-				return Vector2.Zero;
-			}
-
-			// Get size of displayed texture area
-			return new Vector2(mTexture.Width, mTexture.Height / (int)HoverState.NumHoverStates);
-		}
-
-
-
-		/// <summary>
 		/// Calculate which hover state we are in
 		/// </summary>
 		protected HoverState GetHoverState()
@@ -256,6 +244,14 @@ namespace AridArnold
 			}
 
 			return HoverState.kDefault;
+		}
+
+		/// <summary>
+		/// Get sprite effects to draw button texture
+		/// </summary>
+		protected virtual SpriteEffects GetSpriteEffect()
+		{
+			return SpriteEffects.None;
 		}
 
 		#endregion rUtil

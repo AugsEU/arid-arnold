@@ -46,5 +46,7 @@
 		public Layout GetParent() { return mParent; }
 
 		public string GetID() { return mID; }
+
+		public void SetPos(Vector2 pos) { mPos = pos; }
 	}
 }

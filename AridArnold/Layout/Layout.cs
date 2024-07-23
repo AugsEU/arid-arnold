@@ -237,6 +237,17 @@ namespace AridArnold
 		}
 
 
+
+		/// <summary>
+		/// Call this to block selection for this layout.
+		/// </summary>
+		public bool IsSelectionBlocked()
+		{
+			return mBlockElementSelection;
+		}
+
+
+
 		/// <summary>
 		/// Add message to queue
 		/// </summary>

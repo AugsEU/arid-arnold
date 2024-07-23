@@ -106,4 +106,14 @@
 		<up>impatientOpt</up>
 		<down>visionOpt</down>
 	</element>
+
+	<!-- LoadGame -->
+	<element type="messageButton" id="loadBackBtn">
+		<x>-320.0</x>
+		<y>380.0</y>
+		<msg>go:kMainArea</msg>
+		<text>UI.Menu.Back</text>
+		<up>impatientOpt</up>
+		<down>visionOpt</down>
+	</element>
 </root>
