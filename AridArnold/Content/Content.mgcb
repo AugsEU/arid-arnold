@@ -14232,3 +14232,24 @@
 #begin Text/EN/UI/Menu/ProfileName.txt
 /copy:Text/EN/UI/Menu/ProfileName.txt
 
+#begin Layouts/PauseMenuHub.mlo
+/copy:Layouts/PauseMenuHub.mlo
+
+#begin Layouts/PauseMenuLevel.mlo
+/copy:Layouts/PauseMenuLevel.mlo
+
+#begin Layouts/PauseMenuOptions.mlo
+/copy:Layouts/PauseMenuOptions.mlo
+
+#begin Text/EN/UI/Menu/Pause.txt
+/copy:Text/EN/UI/Menu/Pause.txt
+
+#begin Text/EN/UI/Menu/Resume.txt
+/copy:Text/EN/UI/Menu/Resume.txt
+
+#begin Text/EN/UI/Menu/ReturnToHub.txt
+/copy:Text/EN/UI/Menu/ReturnToHub.txt
+
+#begin Text/EN/UI/Menu/SaveAndQuit.txt
+/copy:Text/EN/UI/Menu/SaveAndQuit.txt
+

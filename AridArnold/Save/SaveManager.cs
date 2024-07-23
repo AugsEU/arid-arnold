@@ -17,7 +17,7 @@
 
 		GlobalSaveInfo mGlobalSaveInfo;
 		
-		// Non real profile we might create
+		// Current profile that's loaded.
 		ProfileSaveInfo mPendingProfileSave;
 
 		#endregion rMembers
@@ -69,7 +69,7 @@
 
 
 
-		#region rProfileCreation
+		#region rProfile
 
 		/// <summary>
 		/// Load a new potential profile name
@@ -77,8 +77,21 @@
 		public void NewProfileName(string newProfileName)
 		{
 			string fileName = string.Format("{0}.bin", newProfileName);
+
+			fileName = MonoData.SanitiseFileName(fileName);
+
 			mPendingProfileSave = new ProfileSaveInfo(fileName);
 			mPendingProfileSave.SetProfileName(newProfileName);
+		}
+
+
+
+		/// <summary>
+		/// Save the current profile.
+		/// </summary>
+		public void SaveProfile()
+		{
+			mPendingProfileSave.Save();
 		}
 
 		#endregion rProfileCreation

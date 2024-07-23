@@ -23,6 +23,7 @@
 		TileEffects,
 		Projectiles,
 		Bubble,
+		PauseMenu,
 		Front,
 		NumLayers
 	}

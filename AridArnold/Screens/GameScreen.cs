@@ -33,6 +33,8 @@
 
 		FadeFX mFadeInFx;
 
+		PauseMenu mPauseMenu;
+
 		#endregion rMembers
 
 
@@ -57,6 +59,8 @@
 			TimeZoneManager.I.Init();
 
 			mFadeInFx = new FadeFX(new ScreenStars(), 0.1f, true);
+
+			mPauseMenu = new PauseMenu();
 		}
 
 
@@ -67,6 +71,7 @@
 		public override void OnActivate()
 		{
 			mFadeInFx = new FadeFX(new ScreenStars(10.0f, SCREEN_RECTANGLE));
+			mPauseMenu.Close();
 		}
 
 
@@ -112,6 +117,10 @@
 					mLoadSequence = null;
 				}
 			}
+			else if(mPauseMenu.IsOpen())
+			{
+				mPauseMenu.Update(gameTime);
+			}
 			else
 			{
 				GameUpdate(gameTime);
@@ -127,6 +136,13 @@
 		{
 			if (CameraManager.I.BlockUpdateRequested())
 			{
+				return;
+			}
+
+			if (InputManager.I.KeyHeld(InputAction.Pause) && AllowPauseMenu())
+			{
+				// Open pause menu and immediately abort the update.
+				mPauseMenu.Open();
 				return;
 			}
 
@@ -185,7 +201,15 @@
 			if (InputManager.I.KeyPressed(InputAction.RestartLevel) &&
 				CampaignManager.I.GetGameplayState() != CampaignManager.GameplayState.HubWorld)
 			{
-				EntityManager.I.FindArnold().Kill();
+				for (int i = 0; i < EntityManager.I.GetEntityNum(); i++)
+				{
+					Entity entity = EntityManager.I.GetEntity(i);
+					if (entity is Arnold arnold)
+					{
+						// Kill all arnolds
+						arnold.Kill();
+					}
+				}
 			}
 #if DEBUG
 			else if (InputManager.I.KeyPressed(InputAction.SkipLevel))
@@ -193,6 +217,43 @@
 				LevelWin();
 			}
 #endif // DEBUG
+		}
+
+
+
+		/// <summary>
+		/// Are we allowed to open the pause menu?
+		/// </summary>
+		bool AllowPauseMenu()
+		{
+			if(EventManager.I.IsAnyEventHappening())
+			{
+				// Wait for events to avoid weird saving jank.
+				return false;
+			}
+
+			bool anyArnolds = false;
+			for(int i = 0; i < EntityManager.I.GetEntityNum(); i++)
+			{
+				Entity entity = EntityManager.I.GetEntity(i);
+				if(entity is Arnold arnold)
+				{
+					anyArnolds = true; // Found one.
+					// Sorry not while you are dying...
+					if (arnold.IsDying())
+					{
+						return false;
+					}
+				}
+			}
+
+			if(!anyArnolds)
+			{
+				// No arnolds, wait for one to spawn so we can save it.
+				return false;
+			}
+
+			return true;
 		}
 
 
@@ -280,6 +341,8 @@
 			}
 			mMainUI.Draw(info);
 			DrawGameArea(info);
+
+			mPauseMenu.Draw(info);
 
 			EndScreenSpriteBatch(info);
 

@@ -20,6 +20,7 @@
 		Color mDefaultColor;
 		Color mHoverColor;
 		int mSelectedOption;
+		bool mFirstUpdate;
 
 		Vector2 mOptionCenPoint;
 
@@ -62,6 +63,7 @@
 			mOptionCenPoint.Y += mSize.Y * 0.5f;
 
 			mSelectedOption = 0;
+			mFirstUpdate = true;
 		}
 
 		#endregion rInit
@@ -96,12 +98,14 @@
 			int numOptions = GetNumOptions();
 			mSelectedOption = (mSelectedOption + numOptions) % numOptions;
 
-			if(mSelectedOption != prevOption)
+			if(mSelectedOption != prevOption || mFirstUpdate)
 			{
 				OnOptionSelect(mSelectedOption);
 			}
 
 			base.Update(gameTime);
+
+			mFirstUpdate = false;
 		}
 
 

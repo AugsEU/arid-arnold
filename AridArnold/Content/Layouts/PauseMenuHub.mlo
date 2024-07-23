@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="messageButton" id="resumeBtn">
+		<x>480.0</x>
+		<y>160.0</y>
+		<font>PixicaMicro-36</font>
+		<depth>PauseMenu</depth>
+		<msg>cl:cl</msg>
+		<text>UI.Menu.Resume</text>
+		<up>saveBtn</up>
+		<down>optionsBtn</down>
+	</element>
+	<element type="messageButton" id="optionsBtn">
+		<x>480.0</x>
+		<y>200.0</y>
+		<font>PixicaMicro-36</font>
+		<depth>PauseMenu</depth>
+		<msg>go:kOptions</msg>
+		<text>UI.Menu.Options</text>
+		<up>resumeBtn</up>
+		<down>saveBtn</down>
+	</element>
+	<element type="messageButton" id="saveBtn">
+		<x>480.0</x>
+		<y>240.0</y>
+		<font>PixicaMicro-36</font>
+		<depth>PauseMenu</depth>
+		<msg>sc:MainMenu</msg>
+		<text>UI.Menu.SaveAndQuit</text>
+		<up>optionsBtn</up>
+		<down>resumeBtn</down>
+	</element>
+</root>

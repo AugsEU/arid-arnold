@@ -70,5 +70,18 @@
 				mEventFlags[i].mTrigger = false;
 			}
 		}
+
+		public bool IsAnyEventHappening()
+		{
+			for (int i = 0; i < mEventFlags.Length; i++)
+			{
+				if(mEventFlags[i].mSignal || mEventFlags[i].mTrigger)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
 	}
 }

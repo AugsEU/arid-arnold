@@ -144,7 +144,7 @@ namespace AridArnold
 			UpdateTransition(gameTime);
 
 			mFadeTimer.Update(gameTime);
-			UpdateScreenFade(gameTime);
+			UpdateScreenFade();
 		}
 
 
@@ -152,7 +152,7 @@ namespace AridArnold
 		/// <summary>
 		/// Update screen fade logic
 		/// </summary>
-		public void UpdateScreenFade(GameTime gameTime)
+		public void UpdateScreenFade()
 		{
 			// Move the fade to the camera
 			if(mFadeTimer.IsPlaying())
@@ -393,6 +393,7 @@ namespace AridArnold
 		{
 			mFadeState = state;
 			mFadeTimer.ResetStart();
+			UpdateScreenFade();
 		}
 
 

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text.RegularExpressions;
 
 namespace AridArnold
 {
@@ -279,6 +280,16 @@ namespace AridArnold
 			}
 
 			throw new Exception("DATA ERROR: Child path not part of base path." + basePath + " | " + childPath);
+		}
+
+
+		public static string SanitiseFileName(string fileName)
+		{
+			// Remove invalid characters
+			string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+			string invalidRegStr = string.Format(@"[{0}]+", invalidChars);
+
+			return Regex.Replace(fileName, invalidRegStr, "S");
 		}
 
 		#endregion rPaths

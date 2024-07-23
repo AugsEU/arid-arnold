@@ -377,6 +377,16 @@ namespace AridArnold
 			mTimerSinceDeath.Start();
 		}
 
+
+
+		/// <summary>
+		/// Are we dying?
+		/// </summary>
+		public bool IsDying()
+		{
+			return mTimerSinceDeath.IsPlaying();
+		}
+
 		#endregion rUpdate
 
 
