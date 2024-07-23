@@ -74,7 +74,7 @@ namespace AridArnold
 
 		protected override string GetRelativeFolder()
 		{
-			return "globalSave\\";
+			return "globalSave/";
 		}
 	}
 }

@@ -26,16 +26,14 @@
 
 		#region rMembers
 
-		string mProfileName = null;
 		bool mSpeedrunMode = false;
 
-		string mRootPath;
+		string mCampaignName;
 		CampaignMetaData mMetaData;
 
 		GameplayState mGameplayState;
 		Level mCurrentLevel;
 		List<Level> mLevelSequence;
-		int mCurrLives;
 
 		LoadingSequence mQueuedLoad;
 		HubReturnInfo? mHubReturnInfo;
@@ -44,6 +42,7 @@
 		HashSet<UInt64> mSeenCinematics;
 
 		// Current lives
+		int mCurrLives;
 		int mMaxLives;
 
 		#endregion rMembers
@@ -55,18 +54,11 @@
 		#region rInit
 
 		/// <summary>
-		/// Load a campaign from the folder.
+		/// Begin a fresh campaign
 		/// </summary>
-		public void LoadCampaign(string campaignPath)
+		public void BeginCampaign(string campaignPath)
 		{
-			mRootPath = "Campaigns/" + campaignPath + "/";
-			mMetaData = new CampaignMetaData("Content/" + mRootPath);
-
-			mLevelSequence = null;
-			mGameplayState = GameplayState.HubWorld;
-
-			mSeenCinematics = new HashSet<UInt64>();
-
+			LoadCampaign(campaignPath);
 			if (BF.DEBUG_LOADER)
 			{
 				mMaxLives = 0;
@@ -88,8 +80,24 @@
 				QueueLoadSequence(new HubDirectLoader(mMetaData.GetStartRoomID()));
 				mMaxLives = 0;
 			}
-			mHubReturnInfo = null;
+
+			mSeenCinematics = new HashSet<UInt64>();
 			mCurrLives = GetStartLives();
+		}
+
+		/// <summary>
+		/// Load a campaign from the folder.
+		/// </summary>
+		public void LoadCampaign(string campaignPath)
+		{
+			mCampaignName = campaignPath;
+			string contentPath = Path.Join("Content/", GetRootPath());
+			mMetaData = new CampaignMetaData(contentPath);
+
+			mLevelSequence = null;
+			mGameplayState = GameplayState.HubWorld;
+
+			mHubReturnInfo = null;
 			mPrevDoorPos = Point.Zero;
 		}
 
@@ -118,26 +126,6 @@
 		public TimeZoneOverride? GetTimeOverride(int fromTime, int toTime)
 		{
 			return mMetaData.GetTimeOverride(fromTime, toTime);
-		}
-
-
-
-		/// <summary>
-		/// Get the current loaded profile
-		/// </summary>
-		public string GetLoadedProfileName()
-		{
-			return mProfileName;
-		}
-
-
-
-		/// <summary>
-		/// Set the current profile name
-		/// </summary>
-		public void SetLoadedProfileName(string profileName)
-		{
-			mProfileName = profileName;
 		}
 
 
@@ -173,7 +161,9 @@
 		/// </summary>
 		string GetHubRoomPath(int roomId)
 		{
-			return mRootPath + "Hub/" + roomId.ToString().PadLeft(4, '0');
+			string roomIdStr = roomId.ToString().PadLeft(4, '0');
+			string relHubPath = string.Format("/Hub/{0}", roomIdStr);
+			return Path.Join(GetRootPath(), relHubPath);
 		}
 
 
@@ -183,13 +173,29 @@
 		/// </summary>
 		public string GetLevelPath(int roomId)
 		{
-			return mRootPath + "Levels/" + roomId.ToString().PadLeft(4, '0');
+			string roomIdStr = roomId.ToString().PadLeft(4, '0');
+			string relLevelPath = string.Format("/Levels/{0}", roomIdStr);
+			return Path.Join(GetRootPath(), relLevelPath);
 		}
 
 
+
+		/// <summary>
+		/// Get path for a theme
+		/// </summary>
 		public string GetThemePath(string fileName)
 		{
-			return mRootPath + "/Themes/" + fileName + ".xml";
+			string relThemePath = string.Format("/Themes/{1}.xml", GetRootPath(), fileName);
+			return Path.Join(GetRootPath(), relThemePath);
+		}
+
+
+		/// <summary>
+		/// Get a root path
+		/// </summary>
+		public string GetRootPath()
+		{
+			return string.Format("Campaigns/{0}", mCampaignName);
 		}
 
 		#endregion rPath
@@ -588,5 +594,92 @@
 		}
 
 		#endregion rCinematics
+
+
+
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read from a binary file
+		/// </summary>
+		public void ReadBinary(BinaryReader br)
+		{
+			// Load campaign by name
+			string campaignName = br.ReadString();
+			LoadCampaign(campaignName);
+
+			// Get ready to load the hub room
+			int hubRoomID = br.ReadInt32();
+			LoadingSequence loadSequence = new HubDirectLoader(hubRoomID);
+
+			// General info
+			mMaxLives = br.ReadInt32();
+
+			// Cinematic
+			mSeenCinematics.Clear();
+			int numCine = br.ReadInt32();
+			for(int i = 0; i < numCine; i++)
+			{
+				UInt64 seenCineID = br.ReadUInt64();
+				mSeenCinematics.Add(seenCineID);
+			}
+
+			// Arnold
+			CardinalDirection gravityDir = (CardinalDirection)br.ReadInt32();
+			WalkDirection prevWalkDir = (WalkDirection)br.ReadInt32();
+			float posX = br.ReadSingle();
+			float posY = br.ReadSingle();
+			Vector2 arnoldPos = new Vector2(posX, posY);
+
+			Arnold arnold = new Arnold(arnoldPos);
+			arnold.SetGravity(gravityDir);
+			arnold.SetPrevWalkDirection(prevWalkDir);
+
+			loadSequence.AddPersistentEntities(arnold);
+
+			QueueLoadSequence(loadSequence);
+		}
+
+
+
+		/// <summary>
+		/// Write to a binary file
+		/// </summary>
+		public void WriteBinary(BinaryWriter bw)
+		{
+			MonoDebug.Assert(GetCurrentLevelType() == AuxData.LevelType.Hub, "Cannot save game outside of hub level.");
+			
+			// Load data to be saved
+			int currLevelId = mCurrentLevel.GetID();
+
+			// General info
+			bw.Write(mCampaignName);
+			bw.Write(currLevelId);
+			bw.Write(mMaxLives);
+
+			// Cinematics
+			int numCinematicsSeen = mSeenCinematics.Count;
+			bw.Write(numCinematicsSeen);
+			foreach(UInt64 cineID in mSeenCinematics)
+			{
+				bw.Write(cineID);
+			}
+
+			// Arnold...
+			Arnold currArnold = EntityManager.I.FindArnold();
+
+			CardinalDirection gravityDir = currArnold.GetGravityDir();
+			WalkDirection prevWalkDir = currArnold.GetPrevWalkDirection();
+			Vector2 position = currArnold.GetPos();
+
+			bw.Write((int)gravityDir);
+			bw.Write((int)prevWalkDir);
+			bw.Write(position.X);
+			bw.Write(position.Y);
+		}
+
+		#endregion rSerial
 	}
 }

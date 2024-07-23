@@ -1,0 +1,62 @@
+PROFILE SAVE FORMAT VERSION 1:
+
+META
+{
+    MAGIC - string (pas)
+    VERSION - int32
+}
+
+PROFILE
+{
+    NAME - string
+    NUM UPDATES - int32
+}
+
+TIME ZONE MANAGER
+{
+    TIME ZONE - int32
+    PLAYER AGE - int32
+}
+
+COLLECTABLE MANAGER
+{
+    CURRENT STATE
+    {
+        NUM COLLECTABLE COUNTS - int32
+        {
+            COLLECTABLE ID - uint16
+            COUNT - uint32
+        }
+        NUM SPECIFIC COLLECTED - int32
+        {
+            COLLECTABLE ID - uint16
+            SPECIFIC ID - uint64
+        }
+    }
+}
+
+FLAGS MANAGER
+{
+    NUM FLAGS - int32
+    {
+        FLAG ID - uint64
+    }
+}
+
+CAMPAIGN MANAGER
+{
+    CAMPAIGN NAME - string
+    CURRENT LEVEL ID - int32
+    MAX LIVES - int32
+    NUM SEEN CINEMATIC - int32
+    {
+        SEEN CINEMATIC ID - uint64
+    }
+    ARNOLD
+    {
+        GRAVITY DIR - int32
+        PREV WALK DIR - int32
+        POS X - float32
+        POS Y - float32
+    }
+}

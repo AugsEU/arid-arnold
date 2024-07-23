@@ -132,5 +132,41 @@
 		}
 
 		#endregion rFlags
+
+
+
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read from a binary file
+		/// </summary>
+		public void ReadBinary(BinaryReader br)
+		{
+			mFlagPot.Clear();
+			int numFlags = br.ReadInt32();
+			for(int i = 0; i < numFlags; i++)
+			{
+				UInt64 flagID = br.ReadUInt64();
+				mFlagPot.Add(flagID);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Write to a binary file
+		/// </summary>
+		public void WriteBinary(BinaryWriter bw)
+		{
+			bw.Write((int)mFlagPot.Count);
+			foreach(UInt64 flagID in mFlagPot)
+			{
+				bw.Write(flagID);
+			}
+		}
+
+		#endregion rSerial
 	}
 }

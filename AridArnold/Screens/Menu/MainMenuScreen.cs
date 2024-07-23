@@ -100,8 +100,6 @@ namespace AridArnold
 		/// </summary>
 		public override void LoadContent()
 		{
-			mMenuLayout = new Layout("Layouts/MainMenu.mlo");
-
 			// Temp
 			mBGLayout = new Layout("UI/Menu/SteamPlant/MenuBG.mlo");
 
@@ -123,6 +121,9 @@ namespace AridArnold
 		/// </summary>
 		public override void OnActivate()
 		{
+			// Reload the menu
+			mMenuLayout = new Layout("Layouts/MainMenu.mlo");
+
 			StartFade(FadeState.kFadeIn);
 			FinishTransitionTo(MainMenuArea.kMainArea);
 
@@ -405,7 +406,7 @@ namespace AridArnold
 			Main.DefaultGameplayManagers();
 
 			// Create campaign from meta file
-			CampaignManager.I.LoadCampaign(campaignName);
+			CampaignManager.I.BeginCampaign(campaignName);
 
 			// Activate the gameplay screen.
 			ScreenManager.I.ActivateScreen(ScreenType.Game);

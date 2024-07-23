@@ -13,7 +13,7 @@ namespace AridArnold
 
 		protected override void OnOptionSelect(int optionIdx)
 		{
-			CampaignManager.I.SetLoadedProfileName(GetOptionStr(optionIdx));
+			SaveManager.I.NewProfileName(GetOptionStr(optionIdx));
 		}
 
 		protected override void SyncOption()

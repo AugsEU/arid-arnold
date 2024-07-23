@@ -207,5 +207,61 @@
 		}
 
 		#endregion rTransientItems
+
+
+
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read from a binary file
+		/// </summary>
+		public void ReadBinary(BinaryReader br)
+		{
+			ResetToDefault();
+
+			int numCollectableCounts = br.ReadInt32();
+			for(int i = 0; i < numCollectableCounts; i++)
+			{
+				CollectableID collectableID = br.ReadUInt16();
+				uint count = br.ReadUInt32();
+				mCurrent.mCollectableCounts.Add(collectableID, count);
+			}
+
+			int numSpecificCollected = br.ReadInt32();
+			for (int i = 0; i < numSpecificCollected; i++)
+			{
+				CollectableID collectableID = br.ReadUInt16();
+				UInt64 specificId= br.ReadUInt64();
+				mCurrent.mSpecificCollected.Add(new SpecificCollectableID(collectableID, specificId));
+			}
+		}
+
+
+
+		/// <summary>
+		/// Write to a binary file
+		/// </summary>
+		public void WriteBinary(BinaryWriter bw)
+		{
+			int numCollectableCounts = mCurrent.mCollectableCounts.Count;
+			bw.Write(numCollectableCounts);
+			foreach(var countValuePair in mCurrent.mCollectableCounts)
+			{
+				bw.Write(countValuePair.Key);
+				bw.Write(countValuePair.Value);
+			}
+
+			int numSpecificCollected = mCurrent.mSpecificCollected.Count;
+			bw.Write(numSpecificCollected);
+			foreach(var specificValuePair in mCurrent.mSpecificCollected)
+			{
+				bw.Write(specificValuePair.mCollectableID);
+				bw.Write(specificValuePair.mSpecificID);
+			}
+		}
+
+		#endregion rSerial
 	}
 }

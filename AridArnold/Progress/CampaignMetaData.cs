@@ -31,8 +31,9 @@ namespace AridArnold
 		/// </summary>
 		public CampaignMetaData(string campaignRoot)
 		{
+			string metaPath = Path.Join(campaignRoot, "/Meta.xml");
 			XmlDocument xmlDoc = new XmlDocument();
-			xmlDoc.Load(campaignRoot + "Meta.xml");
+			xmlDoc.Load(metaPath);
 			XmlNode rootNode = xmlDoc.LastChild;
 
 			LoadBasicData(rootNode);

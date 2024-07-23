@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using static AridArnold.ProfileSaveInfo;
+
+namespace AridArnold
 {
 	class TimeZoneManager : Singleton<TimeZoneManager>
 	{
@@ -107,5 +109,33 @@
 		}
 
 		#endregion rTime
+
+
+
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read from a binary file
+		/// </summary>
+		public void ReadBinary(BinaryReader br)
+		{
+			mCurrentTimeZone = br.ReadInt32();
+			mCurrentPlayerAge = br.ReadInt32();
+		}
+
+
+
+		/// <summary>
+		/// Write to a binary file
+		/// </summary>
+		public void WriteBinary(BinaryWriter bw)
+		{
+			bw.Write(mCurrentTimeZone);
+			bw.Write(mCurrentPlayerAge);
+		}
+
+		#endregion rSerial
 	}
 }
