@@ -169,7 +169,7 @@
 						{
 							platformingEntity.SetPrevWalkDirFromVelocity();
 							platformingEntity.SetWalkDirection(WalkDirection.None);
-							platformingEntity.SetVelocity(Vector2.Zero);
+							platformingEntity.OverrideVelocity(Vector2.Zero);
 							platformingEntity.SetGrounded(false);
 							platformingEntity.ResetAllJumpHelpers();
 						}
