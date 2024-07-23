@@ -11,6 +11,7 @@ namespace AridArnold
 
 		const string PROFILE_SAVE_MAGIC = "pas";
 		const int PROFILE_SAVE_VER = 1;
+		const int RELOAD_FRAME_PENALTY = 121; // 2 seconds added just for reloading to avoid weird strats.
 
 		ReadMode mReadMode;
 
@@ -60,7 +61,7 @@ namespace AridArnold
 			FlagsManager.I.ReadBinary(br);
 			CampaignManager.I.ReadBinary(br);
 
-			InputManager.I.LoadInputFrames(mNumInputUpdates);
+			InputManager.I.LoadInputFrames(mNumInputUpdates + RELOAD_FRAME_PENALTY);
 		}
 
 		protected override void WriteBinary(BinaryWriter bw)
