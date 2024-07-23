@@ -173,6 +173,12 @@
 
 			mMouseState = Mouse.GetState();
 			mInputUpdateIndex++;
+
+			// If you leave the game open for more than a year then maybe we should stop...
+			if(mInputUpdateIndex == int.MaxValue-32)
+			{
+				Main.ExitGame();
+			}
 		}
 
 
@@ -263,6 +269,9 @@
 
 			Vector2 worldPosVec = new Vector2(mousePos.X, mousePos.Y) / scaleFactor;
 
+			worldPosVec.X = Math.Clamp(worldPosVec.X, 0.0f, Screen.SCREEN_WIDTH);
+			worldPosVec.Y = Math.Clamp(worldPosVec.Y, 0.0f, Screen.SCREEN_HEIGHT);
+
 			if (relativeToCam is not null)
 			{
 				CameraSpec spec = relativeToCam.GetCurrentSpec();
@@ -314,6 +323,15 @@
 		public int GetNumberOfInputFrames()
 		{
 			return mInputUpdateIndex;
+		}
+
+
+		/// <summary>
+		/// Frames
+		/// </summary>
+		public void LoadInputFrames(int frames)
+		{
+			mInputUpdateIndex = frames;
 		}
 
 		#endregion rKeySense
