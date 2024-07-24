@@ -23,11 +23,11 @@ namespace AridArnold
 
 		protected Texture2D mTexture;
 
-		PercentageTimer mClickTimer;
-		SpriteFont mFont;
-		string mDisplayText;
-		Color mDefaultColor;
-		Color mHoverColor;
+		protected PercentageTimer mClickTimer;
+		protected SpriteFont mFont;
+		protected string mDisplayText;
+		protected Color mDefaultColor;
+		protected Color mHoverColor;
 
 		#endregion rMembers
 
@@ -49,10 +49,8 @@ namespace AridArnold
 
 			mDefaultColor = MonoParse.GetColor(rootNode["textColor"], Color.Gray);
 
-			// Create hover color by brightening the default, or by loading from XML
-			Color hoverDefault = mDefaultColor;
-			MonoColor.BrightenColour(ref hoverDefault, 1.0f);
-			mHoverColor = MonoParse.GetColor(rootNode["textHoverColor"], hoverDefault);
+			// Create hover color
+			mHoverColor = MonoParse.GetColor(rootNode["textHoverColor"], Color.White);
 
 			// Set size if not already set
 			if (mSize.X == 0.0f && mSize.Y == 0.0f)
@@ -72,6 +70,16 @@ namespace AridArnold
 					mPos.X -= mSize.X * 0.5f;
 				}
 			}
+		}
+
+		protected MenuButton(string id, Vector2 pos, Vector2 size, string fontID, Layout parent) : base(id, pos, size, parent)
+		{
+			mSize = size;
+			mTexture = null;
+			mFont = FontManager.I.GetFont(fontID);
+			mDefaultColor = Color.Gray;
+			mHoverColor = Color.White;
+			mClickTimer = new PercentageTimer(150.0);
 		}
 
 		#endregion rInit
@@ -202,7 +210,7 @@ namespace AridArnold
 		/// <summary>
 		/// Calculate the text color
 		/// </summary>
-		Color GetButtonColor()
+		protected Color GetButtonColor()
 		{
 			HoverState hoverState = GetHoverState();
 			switch (hoverState)

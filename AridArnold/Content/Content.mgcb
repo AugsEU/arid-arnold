@@ -14253,3 +14253,9 @@
 #begin Text/EN/UI/Menu/SaveAndQuit.txt
 /copy:Text/EN/UI/Menu/SaveAndQuit.txt
 
+#begin UI/Menu/ScrollArrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/Menu/ScrollArrow.png
+

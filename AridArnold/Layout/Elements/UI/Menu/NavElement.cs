@@ -8,10 +8,10 @@ namespace AridArnold
 	abstract class NavElement : LayElement
 	{
 		// Elements we can navigate to
-		string mUpNavID;
-		string mDownNavID;
-		string mLeftNavID;
-		string mRightNavID;
+		protected string mUpNavID;
+		protected string mDownNavID;
+		protected string mLeftNavID;
+		protected string mRightNavID;
 
 		public NavElement(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
@@ -26,6 +26,14 @@ namespace AridArnold
 			{
 				parent.SetSelectedElement(this);
 			}
+		}
+
+		public NavElement(string id, Vector2 pos, Layout parent) : base(id, pos, parent)
+		{
+			mUpNavID = "";
+			mDownNavID = "";
+			mLeftNavID = "";
+			mRightNavID = "";
 		}
 
 
@@ -56,6 +64,35 @@ namespace AridArnold
 		public bool IsSelected()
 		{
 			return object.ReferenceEquals(GetParent().GetSelectedElement(), this);
+		}
+
+		public void LinkUp(string upId)
+		{
+			mUpNavID = upId;
+		}
+
+		public void LinkDown(string downId)
+		{
+			mDownNavID = downId;
+		}
+
+		public void LinkLeft(string leftId)
+		{
+			mLeftNavID = leftId;
+		}
+
+		public void LinkRight(string rightId)
+		{
+			mRightNavID = rightId;
+		}
+
+		public void Link(NavElement up, NavElement down)
+		{
+			up.LinkDown(GetID());
+			mUpNavID = up.GetID();
+
+			mDownNavID = down.GetID();
+			down.LinkUp(GetID());
 		}
 	}
 }

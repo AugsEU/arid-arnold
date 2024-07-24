@@ -20,6 +20,8 @@
 		// Current profile that's loaded.
 		ProfileSaveInfo mPendingProfileSave;
 
+		List<ProfileSaveInfo> mExistingProfiles;
+
 		#endregion rMembers
 
 
@@ -35,6 +37,41 @@
 		{
 			mGlobalSaveInfo = new GlobalSaveInfo(GLOBAL_SAVE_FILE_NAME);
 			mPendingProfileSave = new ProfileSaveInfo(PROFILE_SAVE_DEFAULT_NAME);
+
+			mExistingProfiles = new List<ProfileSaveInfo>();
+		}
+
+
+
+		/// <summary>
+		/// Scan the profiles folder for the profiles.
+		/// </summary>
+		public void ScanExistingProfiles()
+		{
+			mExistingProfiles.Clear();
+
+			string baseDirectory = Path.Join("data/", ProfileSaveInfo.PROFILE_SAVE_FOLDER);
+			string[] files = Directory.GetFiles(baseDirectory, "*.bin", SearchOption.AllDirectories);
+
+			foreach (string fileDir in files)
+			{
+				string relativePath = Path.GetRelativePath(baseDirectory, fileDir);
+
+				ProfileSaveInfo profileSaveInfo = new ProfileSaveInfo(relativePath);
+				profileSaveInfo.SetReadMode(ProfileSaveInfo.ReadMode.kMetaOnly);
+				profileSaveInfo.Load();
+				mExistingProfiles.Add(profileSaveInfo);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Get list of save files.
+		/// </summary>
+		public List<ProfileSaveInfo> GetSaveFileList()
+		{
+			return mExistingProfiles;
 		}
 
 		#endregion rInit

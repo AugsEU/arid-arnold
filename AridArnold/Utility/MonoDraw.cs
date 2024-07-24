@@ -344,6 +344,43 @@
 
 
 		/// <summary>
+		/// Draw a simple rectangle with a shadow.
+		/// </summary>
+		public static void DrawRectShadow(DrawInfo info, Rect2f rect2f, Color col, Color shadowCol, Vector2 displacement, DrawLayer depth)
+		{
+			Rect2f shadowRect = rect2f;
+			shadowRect.min += displacement;
+			shadowRect.max += displacement;
+			DrawRectDepth(info, rect2f.ToRectangle(), col, depth);
+			DrawRectDepth(info, shadowRect.ToRectangle(), shadowCol, depth);
+		}
+
+
+
+		/// <summary>
+		/// Draw a simple rectangle hollow. Used mostly for debugging
+		/// </summary>
+		public static void DrawRectHollow(DrawInfo info, Rect2f rect2f, float thickness, Color col, Color shadowCol, Vector2 shadowDisp, DrawLayer depth)
+		{
+			Vector2 tl = MonoMath.Round(new Vector2(rect2f.min.X, rect2f.min.Y));
+			Vector2 tr = MonoMath.Round(new Vector2(rect2f.max.X, rect2f.min.Y));
+			Vector2 br = MonoMath.Round(new Vector2(rect2f.max.X, rect2f.max.Y));
+			Vector2 bl = MonoMath.Round(new Vector2(rect2f.min.X, rect2f.max.Y));
+
+			Rect2f topEdge = new Rect2f(tl, tr + new Vector2(-thickness, thickness));
+			Rect2f rightEdge = new Rect2f(tr + new Vector2(-thickness, 0.0f), br + new Vector2(0.0f, -thickness));
+			Rect2f bottomEdge = new Rect2f(bl + new Vector2(thickness, thickness), br);
+			Rect2f leftEdge = new Rect2f(tl + new Vector2(0.0f, thickness), bl + new Vector2(thickness, 0.0f));
+
+			DrawRectShadow(info, topEdge, col, shadowCol, shadowDisp, depth);
+			DrawRectShadow(info, rightEdge, col, shadowCol, shadowDisp, depth);
+			DrawRectShadow(info, bottomEdge, col, shadowCol, shadowDisp, depth);
+			DrawRectShadow(info, leftEdge, col, shadowCol, shadowDisp, depth);
+		}
+
+
+
+		/// <summary>
 		/// Draw a dot at a position.
 		/// </summary>
 		public static void DrawDot(DrawInfo info, Vector2 point, Color col)

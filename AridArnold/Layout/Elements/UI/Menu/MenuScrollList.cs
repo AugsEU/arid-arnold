@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Xna.Framework;
+
 namespace AridArnold
 {
 	class MenuScrollList : LayElement
@@ -12,9 +14,12 @@ namespace AridArnold
 		#endregion rConstants
 
 
+
+
+
 		#region rMembers
 
-		Vector2 mSize;
+		protected Vector2 mSize;
 
 		List<HitBoxNavElement> mChildren;
 		ScrollArrow mUpArrow;
@@ -25,6 +30,9 @@ namespace AridArnold
 		int mTopItemIndex = 0;
 		int mBottomItemIndex = 0;
 		float mItemSpacing = -1.0f;
+
+		string mUpNav;
+		string mDownNav;
 
 		#endregion rMembers
 
@@ -51,9 +59,36 @@ namespace AridArnold
 
 			arrowPos.Y += mSize.Y + ARROW_PADDING * 2.0f;
 			mDownArrow.SetPos(arrowPos);
+
+			mUpNav = MonoParse.GetString(rootNode["up"]);
+			mDownNav = MonoParse.GetString(rootNode["down"]);
+		}
+
+
+
+		/// <summary>
+		/// Link all children together. Call after adding all your elements
+		/// </summary>
+		public void LinkAllElements()
+		{
+			if(mChildren.Count >= 1)
+			{
+				mChildren[0].LinkUp(mUpNav);
+				mChildren[mChildren.Count - 1].LinkDown(mDownNav);
+			}
+
+			for(int i = 1; i < mChildren.Count - 1; i++)
+			{
+				HitBoxNavElement prevElement = mChildren[i - 1];
+				HitBoxNavElement nextElement = mChildren[i + 1];
+
+				mChildren[i].Link(prevElement, nextElement);
+			}
 		}
 
 		#endregion rInit
+
+
 
 
 
@@ -67,10 +102,13 @@ namespace AridArnold
 			CalculateTopAndBottomIdx();
 			PositionElements();
 
-			for (int i = mTopItemIndex; i <= mBottomItemIndex; i++)
+			for (int i = mTopItemIndex; i <= mBottomItemIndex && i < mChildren.Count; i++)
 			{
 				mChildren[i].Update(gameTime);
 			}
+
+			mUpArrow.Update(gameTime);
+			mDownArrow.Update(gameTime);
 
 			base.Update(gameTime);
 		}
@@ -82,7 +120,7 @@ namespace AridArnold
 		/// </summary>
 		void CalculateTopAndBottomIdx()
 		{
-			if(mSelectedIndex < mTopItemIndex)
+			if(mSelectedIndex == 0 || mSelectedIndex < mTopItemIndex)
 			{
 				// Bounded by top
 				mTopItemIndex = mSelectedIndex;
@@ -98,6 +136,9 @@ namespace AridArnold
 				// Work our way up
 				mTopItemIndex = IterateUntilFull(mBottomItemIndex, -1);
 			}
+
+			mDownArrow.SetVisible(mBottomItemIndex > mSelectedIndex);
+			mUpArrow.SetVisible(mTopItemIndex > 0);
 		}
 
 
@@ -139,7 +180,12 @@ namespace AridArnold
 		/// </summary>
 		void PositionElements()
 		{
-			float centreX = mPos.X + mSize.X * 0.5f;
+			if(mChildren.Count == 0)
+			{
+				return;
+			}
+
+			float centreX = mSize.X * 0.5f;
 
 			int elementsToDisplay = mBottomItemIndex - mTopItemIndex + 1;
 			float totalHeight = 0.0f;
@@ -154,7 +200,7 @@ namespace AridArnold
 			for (int i = mTopItemIndex; i <= mBottomItemIndex; i++)
 			{
 				Vector2 elementSize = mChildren[i].GetSize();
-				Vector2 relPos = new Vector2(centreX - elementSize.X, yCursor);
+				Vector2 relPos = new Vector2(centreX - elementSize.X * 0.5f, yCursor);
 
 				mChildren[i].SetPos(relPos + GetPosition());
 
@@ -164,6 +210,49 @@ namespace AridArnold
 		}
 
 		#endregion rUpdate
+
+
+
+
+
+		#region rDraw
+
+		/// <summary>
+		/// Draw the elements
+		/// </summary>
+		public override void Draw(DrawInfo info)
+		{
+			mUpArrow.Draw(info);
+			mDownArrow.Draw(info);
+
+			for (int i = mTopItemIndex; i <= mBottomItemIndex && i < mChildren.Count; i++)
+			{
+				DrawChildElement(info, mChildren[i]);
+			}
+
+			//MonoDebug.AddDebugRect(new Rect2f(GetPosition(), mSize.X, mSize.Y), new Color(255, 0, 0, 100));
+
+			base.Draw(info);
+		}
+
+
+
+		/// <summary>
+		/// Draw a child element with a border
+		/// </summary>
+		void DrawChildElement(DrawInfo info, HitBoxNavElement element)
+		{
+			Color shadowColor = GetColor() * 0.2f;
+			Vector2 shadowDisp = new Vector2(2.0f, 2.0f);
+			MonoDraw.DrawRectHollow(info, element.GetRect2f(), 2.0f, GetColor(), shadowColor, shadowDisp, GetDepth());
+
+			element.Draw(info);
+		}
+
+		#endregion rDraw
+
+
+
 
 
 		#region rUtil

@@ -9,6 +9,7 @@ namespace AridArnold
 			kFull
 		}
 
+		public const string PROFILE_SAVE_FOLDER = "profileSave/";
 		const string PROFILE_SAVE_MAGIC = "pas";
 		const int PROFILE_SAVE_VER = 1;
 		const int RELOAD_FRAME_PENALTY = 121; // 2 seconds added just for reloading to avoid weird strats.
@@ -34,9 +35,19 @@ namespace AridArnold
 			mProfileName = profileName;
 		}
 
+		public string GetProfileName()
+		{
+			return mProfileName;
+		}
+
+		public string GetSaveTimeStr()
+		{
+			return MonoText.GetTimeTextFromFrames(mNumInputUpdates);
+		}
+
 		protected override string GetRelativeFolder()
 		{
-			return "profileSave/";
+			return PROFILE_SAVE_FOLDER;
 		}
 
 		protected override void ReadBinary(BinaryReader br)

@@ -121,11 +121,14 @@ namespace AridArnold
 		/// </summary>
 		public override void OnActivate()
 		{
+			SaveManager.I.ScanExistingProfiles();
+
 			// Reload the menu
 			mMenuLayout = new Layout("Layouts/MainMenu.mlo");
 
 			StartFade(FadeState.kFadeIn);
 			FinishTransitionTo(MainMenuArea.kMainArea);
+			
 
 			base.OnActivate();
 		}

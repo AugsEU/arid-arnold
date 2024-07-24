@@ -108,12 +108,17 @@
 	</element>
 
 	<!-- LoadGame -->
+	<element type="saveFileList" id="saveFileList">
+		<x>-880.0</x>
+		<y>40.0</y>
+		<width>800</width>
+		<height>300</height>
+		<down>loadBackBtn</down>
+	</element>
 	<element type="messageButton" id="loadBackBtn">
 		<x>-320.0</x>
 		<y>380.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
-		<up>impatientOpt</up>
-		<down>visionOpt</down>
 	</element>
 </root>

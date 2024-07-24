@@ -23,6 +23,11 @@
 			mSize.Y = MonoParse.GetFloat(rootNode["height"]);
 		}
 
+		protected HitBoxNavElement(string id, Vector2 pos, Vector2 size, Layout parent) : base(id, pos, parent)
+		{
+			mSize = size;
+		}
+
 		public override void Update(GameTime gameTime)
 		{
 			mHasMouseClick = false;
@@ -63,6 +68,14 @@
 		public Vector2 GetSize()
 		{
 			return mSize;
+		}
+
+		public Rect2f GetRect2f()
+		{
+			Vector2 min = GetPosition();
+			Vector2 max = min + mSize;
+
+			return new Rect2f(min, max);
 		}
 	}
 }

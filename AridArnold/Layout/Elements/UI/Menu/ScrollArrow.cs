@@ -5,7 +5,6 @@ namespace AridArnold
 	{
 		MenuScrollList mScrollList;
 		bool mIsUp;
-		bool mShow;
 
 		public ScrollArrow(XmlNode rootNode, Layout parent, MenuScrollList scrollList, bool up) : base(rootNode, parent)
 		{
@@ -15,14 +14,10 @@ namespace AridArnold
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>(arrowTexPath);
 		}
 
-		public void SetShow(bool show)
+		public override void Draw(DrawInfo info)
 		{
-			mShow = show;
-		}
-
-		public bool GetShow()
-		{
-			return mShow;
+			if (!IsVisible()) return;
+			base.Draw(info);
 		}
 
 		public override void DoAction()

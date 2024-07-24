@@ -5,13 +5,13 @@
 	/// </summary>
 	abstract class LayElement
 	{
-		Layout mParent;
-		string mID;
+		protected Layout mParent;
+		protected string mID;
 		protected Vector2 mPos;
-		DrawLayer mDepth;
-		Color mColor;
-		float mScale;
-		bool mVisible;
+		protected DrawLayer mDepth;
+		protected Color mColor;
+		protected float mScale;
+		protected bool mVisible;
 
 		public LayElement(XmlNode rootNode, Layout parent)
 		{
@@ -25,6 +25,18 @@
 			mVisible = true;
 			
 			mParent = parent;
+		}
+
+		protected LayElement(string id, Vector2 pos, Layout parent)
+		{
+			mID = id;
+			mPos = pos;
+			mParent = parent;
+
+			mDepth = DrawLayer.Default;
+			mColor = Color.White;
+			mScale = 1.0f;
+			mVisible = true;
 		}
 
 		public virtual void Update(GameTime gameTime) { }
