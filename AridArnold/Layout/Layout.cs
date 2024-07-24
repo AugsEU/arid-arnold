@@ -133,7 +133,10 @@ namespace AridArnold
 
 			foreach (LayElement element in mElements)
 			{
-				element.Update(gameTime);
+				if (element.IsEnabled())
+				{
+					element.Update(gameTime);
+				}
 			}
 		}
 
@@ -273,6 +276,15 @@ namespace AridArnold
 			}
 
 			return mMessageQueue.Dequeue();
+		}
+
+
+		/// <summary>
+		/// Add a child programatically
+		/// </summary>
+		public void AddChildDirect(LayElement element)
+		{
+			mElements.Add(element);
 		}
 
 		#endregion rUtil

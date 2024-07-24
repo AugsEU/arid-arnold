@@ -11,7 +11,7 @@ namespace AridArnold
 			List<ProfileSaveInfo> saveGames = SaveManager.I.GetSaveFileList();
 			for(int i = 0; i < saveGames.Count; i++)
 			{
-				string idStr = string.Format("{0}{1}", GetID(), i.ToString());
+				string idStr = GenerateChildId(i, saveGames.Count);
 				ProfileSaveInfo info = saveGames[i];
 				SaveGameEntry newEntry = new SaveGameEntry(idStr, Vector2.Zero, new Vector2(mSize.X, SAVE_FILE_ENTRY_HEIGHT), fontId, parent, info);
 				AddChild(newEntry);

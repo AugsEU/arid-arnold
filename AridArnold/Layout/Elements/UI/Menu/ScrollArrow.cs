@@ -12,11 +12,15 @@ namespace AridArnold
 
 			string arrowTexPath = MonoParse.GetString(rootNode["arrowTex"], "UI/Menu/ScrollArrow");
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>(arrowTexPath);
+
+			mSize.X = mTexture.Width;
+			mSize.Y = mTexture.Height;
+
+			mIsUp = up;
 		}
 
 		public override void Draw(DrawInfo info)
 		{
-			if (!IsVisible()) return;
 			base.Draw(info);
 		}
 
@@ -24,11 +28,11 @@ namespace AridArnold
 		{
 			if(mIsUp)
 			{
-				mScrollList.IncrementSelected(-1);
+				mScrollList.ScrollList(-1);
 			}
 			else
 			{
-				mScrollList.IncrementSelected(1);
+				mScrollList.ScrollList(1);
 			}
 		}
 

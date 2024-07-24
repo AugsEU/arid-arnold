@@ -12,6 +12,7 @@
 		protected Color mColor;
 		protected float mScale;
 		protected bool mVisible;
+		protected bool mEnabled;
 
 		public LayElement(XmlNode rootNode, Layout parent)
 		{
@@ -23,7 +24,8 @@
 			mID = MonoParse.GetStringAttrib(rootNode, "id", "Null ID");
 
 			mVisible = true;
-			
+			mEnabled = true;
+
 			mParent = parent;
 		}
 
@@ -51,7 +53,7 @@
 
 		public Color GetColor() { return mColor; }
 
-		public bool IsVisible() { return mVisible; }
+		public bool IsVisible() { return mVisible && mEnabled; }
 
 		public void SetVisible(bool visible) { mVisible = visible; }
 
@@ -60,5 +62,9 @@
 		public string GetID() { return mID; }
 
 		public void SetPos(Vector2 pos) { mPos = pos; }
+
+		public void SetEnabled(bool enabled) { mEnabled = enabled; }
+
+		public bool IsEnabled() { return mEnabled; }
 	}
 }

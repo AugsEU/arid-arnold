@@ -22,6 +22,9 @@ namespace AridArnold
 			// Say thanks.
 			string curseText = LanguageManager.I.GetText(GetCurseStringID(curse));
 			GetSmartTextBlock().AppendTextAtHead(curseText);
+
+			// Save game! Sorry, you are stuck with this blessing or curse.
+			SaveManager.I.SaveProfile();
 		}
 
 

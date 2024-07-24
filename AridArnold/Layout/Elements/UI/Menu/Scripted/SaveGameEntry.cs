@@ -13,7 +13,7 @@ namespace AridArnold
 
 		public override void DoAction()
 		{
-			// Load game or something...
+			SaveManager.I.LoadGame(mSaveFileRef);
 		}
 
 		public override void Draw(DrawInfo info)

@@ -62,6 +62,8 @@
 				profileSaveInfo.Load();
 				mExistingProfiles.Add(profileSaveInfo);
 			}
+
+			mExistingProfiles.Sort();
 		}
 
 
@@ -129,6 +131,19 @@
 		public void SaveProfile()
 		{
 			mPendingProfileSave.Save();
+		}
+
+
+		/// <summary>
+		/// Load a game from a save file.
+		/// </summary>
+		public void LoadGame(ProfileSaveInfo profileSaveInfo)
+		{
+			mPendingProfileSave = profileSaveInfo;
+			mPendingProfileSave.SetReadMode(ProfileSaveInfo.ReadMode.kFull);
+			Main.DefaultGameplayManagers();
+			mPendingProfileSave.Load();
+			ScreenManager.I.ActivateScreen(ScreenType.Game);
 		}
 
 		#endregion rProfileCreation

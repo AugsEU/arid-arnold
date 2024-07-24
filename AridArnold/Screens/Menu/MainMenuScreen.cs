@@ -286,6 +286,7 @@ namespace AridArnold
 					mMenuLayout.SetSelectedElement("speedRunOpt");
 					break;
 				case MainMenuArea.kLoadGameArea:
+					mMenuLayout.SetSelectedElement("saveFileLstTop");
 					break;
 				case MainMenuArea.kOptionsArea:
 					mMenuLayout.SetSelectedElement("visionOpt");

@@ -25,11 +25,8 @@ namespace AridArnold
 		ScrollArrow mUpArrow;
 		ScrollArrow mDownArrow;
 
-		int mSelectedIndex = 0;
-
 		int mTopItemIndex = 0;
-		int mBottomItemIndex = 0;
-		float mItemSpacing = -1.0f;
+		int mNumChildDisplay = 0;
 
 		string mUpNav;
 		string mDownNav;
@@ -51,11 +48,17 @@ namespace AridArnold
 
 			mUpArrow = new ScrollArrow(rootNode, parent, this, true);
 			mDownArrow = new ScrollArrow(rootNode, parent, this, false);
+			mUpArrow.LinkDown(GenerateChildId(0, 2));
+			mDownArrow.LinkUp(GenerateChildId(1, 2));
+			GetParent().AddChildDirect(mUpArrow);
+			GetParent().AddChildDirect(mDownArrow);
 
 			Vector2 arrowPos = GetPosition();
 			arrowPos.X += mSize.X * 0.5f;
+			arrowPos.X -= mUpArrow.GetSize().X * 0.5f;
 			arrowPos.Y -= ARROW_PADDING;
-			mUpArrow.SetPos(arrowPos);
+			
+			mUpArrow.SetPos(new Vector2(arrowPos.X, arrowPos.Y - mUpArrow.GetSize().Y));
 
 			arrowPos.Y += mSize.Y + ARROW_PADDING * 2.0f;
 			mDownArrow.SetPos(arrowPos);
@@ -99,12 +102,12 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			CalculateTopAndBottomIdx();
+			CalculateTopIndex();
 			PositionElements();
 
-			for (int i = mTopItemIndex; i <= mBottomItemIndex && i < mChildren.Count; i++)
+			for (int i = 0; i < mChildren.Count; i++)
 			{
-				mChildren[i].Update(gameTime);
+				mChildren[i].SetEnabled(mTopItemIndex <= i && i < mTopItemIndex + mNumChildDisplay);
 			}
 
 			mUpArrow.Update(gameTime);
@@ -118,59 +121,82 @@ namespace AridArnold
 		/// <summary>
 		/// Calculate the indicies of the top/bottom most visible elements
 		/// </summary>
-		void CalculateTopAndBottomIdx()
+		void CalculateTopIndex()
 		{
-			if(mSelectedIndex == 0 || mSelectedIndex < mTopItemIndex)
+			if(mChildren.Count == 0)
 			{
-				// Bounded by top
-				mTopItemIndex = mSelectedIndex;
-
-				// Work our way down to figure this out.
-				mBottomItemIndex = IterateUntilFull(mTopItemIndex, 1);
-			}
-			else if(mSelectedIndex > mBottomItemIndex)
-			{
-				// Bounded by bottom
-				mBottomItemIndex = mSelectedIndex;
-
-				// Work our way up
-				mTopItemIndex = IterateUntilFull(mBottomItemIndex, -1);
+				mDownArrow.SetVisible(false);
+				mUpArrow.SetVisible(false);
+				return;
 			}
 
-			mDownArrow.SetVisible(mBottomItemIndex > mSelectedIndex);
-			mUpArrow.SetVisible(mTopItemIndex > 0);
+			if(mNumChildDisplay == 0)
+			{
+				RecalculateNumShown();
+			}
+
+			int selectedItem = GetSelectedChildIdx();
+
+			if(selectedItem != -1)
+			{
+				if(selectedItem < mTopItemIndex)
+				{
+					mTopItemIndex = selectedItem;
+					RecalculateNumShown();
+				}
+				else
+				{
+					while(selectedItem >= mTopItemIndex + mNumChildDisplay)
+					{
+						mTopItemIndex++;
+						RecalculateNumShown();
+					}
+				}
+			}
+
+			mDownArrow.SetEnabled(mTopItemIndex + mNumChildDisplay < mChildren.Count);
+			mUpArrow.SetEnabled(mTopItemIndex > 0);
 		}
 
 
 
 		/// <summary>
-		/// Utility method to calculate indices
+		/// Based off the top index, how many should we be showing?
 		/// </summary>
-		int IterateUntilFull(int startIdx, int step)
+		void RecalculateNumShown()
 		{
-			float yCursor = mChildren[startIdx].GetSize().Y;
-			int returnIdx = startIdx;
-
-			int numIter = 0;
-			while (numIter++ < 500)
+			float yCursor = 0.0f;
+			int numShown = 0;
+			for(int i = mTopItemIndex; i < mChildren.Count; i++)
 			{
-				int nextIdx = returnIdx + step;
-				if (nextIdx < 0 || nextIdx >= mChildren.Count)
-				{
-					break;
-				}
-
-				yCursor += mChildren[nextIdx].GetSize().Y;
+				Vector2 childSize = mChildren[i].GetSize();
+				yCursor += childSize.Y;
 				if(yCursor > mSize.Y)
 				{
 					break;
 				}
-
-				returnIdx = nextIdx;
+				numShown++;
 			}
-			MonoDebug.Assert(numIter < 500, "Scroll area logic error");
 
-			return returnIdx;
+			mNumChildDisplay = numShown;
+		}
+
+
+
+		/// <summary>
+		/// Get selected child
+		/// </summary>
+		int GetSelectedChildIdx()
+		{
+			for(int i = 0; i < mChildren.Count; i++)
+			{
+				if (mChildren[i].IsSelected())
+				{
+					return i;
+				}
+			}
+
+			return -1;
 		}
 
 
@@ -187,17 +213,16 @@ namespace AridArnold
 
 			float centreX = mSize.X * 0.5f;
 
-			int elementsToDisplay = mBottomItemIndex - mTopItemIndex + 1;
 			float totalHeight = 0.0f;
-			for (int i = mTopItemIndex; i <= mBottomItemIndex; i++)
+			for (int i = mTopItemIndex; i < mTopItemIndex + mNumChildDisplay; i++)
 			{
 				totalHeight += mChildren[i].GetSize().Y;
 			}
 
-			float spacing = (mSize.Y - totalHeight) / (elementsToDisplay + 1);
+			float spacing = (mSize.Y - totalHeight) / (mNumChildDisplay + 1);
 
 			float yCursor = spacing;
-			for (int i = mTopItemIndex; i <= mBottomItemIndex; i++)
+			for (int i = mTopItemIndex; i < mTopItemIndex + mNumChildDisplay; i++)
 			{
 				Vector2 elementSize = mChildren[i].GetSize();
 				Vector2 relPos = new Vector2(centreX - elementSize.X * 0.5f, yCursor);
@@ -222,12 +247,9 @@ namespace AridArnold
 		/// </summary>
 		public override void Draw(DrawInfo info)
 		{
-			mUpArrow.Draw(info);
-			mDownArrow.Draw(info);
-
-			for (int i = mTopItemIndex; i <= mBottomItemIndex && i < mChildren.Count; i++)
+			for (int i = mTopItemIndex; i < mTopItemIndex + mNumChildDisplay; i++)
 			{
-				DrawChildElement(info, mChildren[i]);
+				DrawChildElementBox(info, mChildren[i]);
 			}
 
 			//MonoDebug.AddDebugRect(new Rect2f(GetPosition(), mSize.X, mSize.Y), new Color(255, 0, 0, 100));
@@ -240,13 +262,11 @@ namespace AridArnold
 		/// <summary>
 		/// Draw a child element with a border
 		/// </summary>
-		void DrawChildElement(DrawInfo info, HitBoxNavElement element)
+		void DrawChildElementBox(DrawInfo info, HitBoxNavElement element)
 		{
 			Color shadowColor = GetColor() * 0.2f;
 			Vector2 shadowDisp = new Vector2(2.0f, 2.0f);
 			MonoDraw.DrawRectHollow(info, element.GetRect2f(), 2.0f, GetColor(), shadowColor, shadowDisp, GetDepth());
-
-			element.Draw(info);
 		}
 
 		#endregion rDraw
@@ -258,26 +278,44 @@ namespace AridArnold
 		#region rUtil
 
 		/// <summary>
-		/// Increment selected element
+		/// Add a child to our list
 		/// </summary>
-		public void IncrementSelected(int increment)
+		protected void AddChild(HitBoxNavElement child)
 		{
-			if(GetParent().IsSelectionBlocked())
-			{
-				return;
-			}
-			mSelectedIndex += increment;
-			mSelectedIndex = Math.Clamp(mSelectedIndex, 0, mChildren.Count - 1);
+			child.SetEnabled(false);
+			mChildren.Add(child);
+			GetParent().AddChildDirect(child);
+		}
+
+
+		/// <summary>
+		/// Scroll this list.
+		/// </summary>
+		public void ScrollList(int delta)
+		{
+			mTopItemIndex += delta;
+			mTopItemIndex = Math.Clamp(mTopItemIndex, 0, mChildren.Count);
 		}
 
 
 
 		/// <summary>
-		/// Add a child to our list
+		/// Generate a standard child ID
 		/// </summary>
-		protected void AddChild(HitBoxNavElement child)
+		protected string GenerateChildId(int index, int count)
 		{
-			mChildren.Add(child);
+			string baseId = GetID();
+
+			if (index == 0)
+			{
+				return string.Format("{0}Top", baseId);
+			}
+			else if(index == count - 1)
+			{
+				return string.Format("{0}Bottom", baseId);
+			}
+
+			return string.Format("{0}{1}", baseId, index);
 		}
 
 		#endregion rUtil

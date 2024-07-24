@@ -1,7 +1,7 @@
 ﻿
 namespace AridArnold
 {
-	class ProfileSaveInfo : MonoReadWriteFile
+	class ProfileSaveInfo : MonoReadWriteFile, IComparable<ProfileSaveInfo>
 	{
 		public enum ReadMode
 		{
@@ -48,6 +48,14 @@ namespace AridArnold
 		protected override string GetRelativeFolder()
 		{
 			return PROFILE_SAVE_FOLDER;
+		}
+
+		public int CompareTo(ProfileSaveInfo other)
+		{
+			if (other == null)
+				return 1;
+
+			return other.mNumInputUpdates.CompareTo(mNumInputUpdates);
 		}
 
 		protected override void ReadBinary(BinaryReader br)

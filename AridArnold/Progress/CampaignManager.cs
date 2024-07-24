@@ -83,6 +83,7 @@
 
 			mSeenCinematics = new HashSet<UInt64>();
 			mCurrLives = GetStartLives();
+			InputManager.I.LoadInputFrames(0);
 		}
 
 		/// <summary>
@@ -616,9 +617,10 @@
 
 			// General info
 			mMaxLives = br.ReadInt32();
+			mCurrLives = GetStartLives();
 
 			// Cinematic
-			mSeenCinematics.Clear();
+			mSeenCinematics = new HashSet<UInt64>();
 			int numCine = br.ReadInt32();
 			for(int i = 0; i < numCine; i++)
 			{
@@ -636,6 +638,10 @@
 			Arnold arnold = new Arnold(arnoldPos);
 			arnold.SetGravity(gravityDir);
 			arnold.SetPrevWalkDirection(prevWalkDir);
+			arnold.LoadContent();
+
+			// Force this to avoid weird jank...
+			arnold.SetPos(arnoldPos);
 
 			loadSequence.AddPersistentEntities(arnold);
 
