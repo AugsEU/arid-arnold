@@ -287,6 +287,16 @@ namespace AridArnold
 			mElements.Add(element);
 		}
 
+
+
+		/// <summary>
+		/// Get list of elements in this layout
+		/// </summary>
+		public List<LayElement> GetElementList()
+		{
+			return mElements;
+		}
+
 		#endregion rUtil
 
 

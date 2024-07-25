@@ -160,8 +160,6 @@
 									mSpriteBatchOptions.mRasterizerState,
 									null,
 									CalculateMatrix(viewPortSize));
-
-
 		}
 
 

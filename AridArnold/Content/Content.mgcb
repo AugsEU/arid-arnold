@@ -14259,3 +14259,18 @@
 /processorParam:PremultiplyAlpha=False
 /build:UI/Menu/ScrollArrow.png
 
+#begin Campaigns/MainCampaign/Hub/0000.aux
+/copy:Campaigns/MainCampaign/Hub/0000.aux
+
+#begin Campaigns/MainCampaign/Hub/0000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0000.png
+
+#begin UI/Menu/SteamPlant/SidePanelBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/Menu/SteamPlant/SidePanelBG.png
+

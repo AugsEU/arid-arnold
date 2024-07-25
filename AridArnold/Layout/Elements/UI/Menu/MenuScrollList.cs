@@ -110,9 +110,6 @@ namespace AridArnold
 				mChildren[i].SetEnabled(mTopItemIndex <= i && i < mTopItemIndex + mNumChildDisplay);
 			}
 
-			mUpArrow.Update(gameTime);
-			mDownArrow.Update(gameTime);
-
 			base.Update(gameTime);
 		}
 
@@ -294,7 +291,7 @@ namespace AridArnold
 		public void ScrollList(int delta)
 		{
 			mTopItemIndex += delta;
-			mTopItemIndex = Math.Clamp(mTopItemIndex, 0, mChildren.Count);
+			mTopItemIndex = Math.Clamp(mTopItemIndex, 0, mChildren.Count-1);
 		}
 
 

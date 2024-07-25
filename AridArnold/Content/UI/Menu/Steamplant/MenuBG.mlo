@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
+	<!-- BG Layouts -->
+	<element type="subLayout">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<path>BG/SteamPlant/SteamPlant.mlo</path>
+	</element>
+
+	<!-- BG textures -->
 	<element type="texture">
 		<x>0.0</x>
 		<y>0.0</y>
-		<scale>2.0</scale>
-		<depth>Background</depth>
+		<scale>1.0</scale>
+		<depth>BackgroundElement</depth>
 		<texture>UI/Menu/SteamPlant/MainMenuBG</texture>
+	</element>
+	<element type="texture">
+		<x>-480.0</x>
+		<y>0.0</y>
+		<scale>1.0</scale>
+		<depth>BackgroundElement</depth>
+		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
+	</element>
+	<element type="texture">
+		<x>0.0</x>
+		<y>-270.0</y>
+		<scale>1.0</scale>
+		<depth>BackgroundElement</depth>
+		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
+	</element>
+	<element type="texture">
+		<x>0.0</x>
+		<y>270.0</y>
+		<scale>1.0</scale>
+		<depth>BackgroundElement</depth>
+		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
+	</element>
+	<element type="texture">
+		<x>0.0</x>
+		<y>540.0</y>
+		<scale>1.0</scale>
+		<depth>BackgroundElement</depth>
+		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
 	</element>
 </root>

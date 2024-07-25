@@ -13,6 +13,9 @@
 		#endregion rConstants
 
 
+
+
+
 		#region rMembers
 
 		GlobalSaveInfo mGlobalSaveInfo;
@@ -115,12 +118,48 @@
 		/// </summary>
 		public void NewProfileName(string newProfileName)
 		{
-			string fileName = string.Format("{0}.bin", newProfileName);
+			string fileName = ProfileNameToFileName(newProfileName);
+			int numberTries = 1;
 
-			fileName = MonoData.SanitiseFileName(fileName);
+			string modProf = newProfileName;
+
+			while (IsProfileUsed(fileName))
+			{
+				string chopProfileName = newProfileName.Substring(0, newProfileName.Length - 1);
+				modProf = string.Format("{0}{1}>", chopProfileName, numberTries);
+				fileName = ProfileNameToFileName(modProf);
+				numberTries++;
+
+				MonoDebug.Assert(numberTries < 1000, "Too many profile names. Maybe try deleting some ya doofus.");
+			}
+
 
 			mPendingProfileSave = new ProfileSaveInfo(fileName);
-			mPendingProfileSave.SetProfileName(newProfileName);
+			mPendingProfileSave.SetProfileName(modProf);
+		}
+
+
+
+		/// <summary>
+		/// Check if a profile file name has been used or not
+		/// </summary>
+		private bool IsProfileUsed(string fileName)
+		{
+			string baseDirectory = Path.Join("data/", ProfileSaveInfo.PROFILE_SAVE_FOLDER);
+			string fullPath = Path.Combine(baseDirectory, fileName);
+
+			return File.Exists(fullPath);
+		}
+
+
+
+		/// <summary>
+		/// Convert profile name into file name, e.g. <Arnold> -> SArnoldS.bin
+		/// </summary>
+		private string ProfileNameToFileName(string profileName)
+		{
+			string fileName = string.Format("{0}.bin", profileName);
+			return MonoData.SanitiseFileName(fileName);
 		}
 
 

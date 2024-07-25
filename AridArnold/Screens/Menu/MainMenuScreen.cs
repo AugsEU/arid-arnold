@@ -39,6 +39,7 @@ namespace AridArnold
 
 		#region rConstants
 
+		const float BG_SCALE_FACTOR = 2.0f;
 		const double FADE_TIME = 1200.0;
 		const double TRANSITION_TIME = 1100.0;
 		static Vector2[] MENU_AREAS_POSITIONS =
@@ -59,6 +60,9 @@ namespace AridArnold
 		#region rMembers
 
 		Layout mMenuLayout;
+
+		// BG
+		RenderTarget2D mBGTarget;
 		Layout mBGLayout;
 
 		// Area transition
@@ -91,6 +95,8 @@ namespace AridArnold
 		{
 			mFadeTimer = new PercentageTimer(FADE_TIME);
 			mTransitionTimer = new PercentageTimer(TRANSITION_TIME);
+
+			mBGTarget = new RenderTarget2D(graphics.GraphicsDevice, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 		}
 
 
@@ -312,6 +318,9 @@ namespace AridArnold
 
 			Camera camera = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 			camera.ForcePosition(pos);
+
+			Camera cameraBG = CameraManager.I.GetCamera(CameraManager.CameraInstance.MenuBGCamera);
+			cameraBG.ForcePosition(pos / BG_SCALE_FACTOR);
 		}
 
 
@@ -344,10 +353,14 @@ namespace AridArnold
 		/// </summary>
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
+			DrawBGToTarget(info);
+
 			StartScreenSpriteBatch(info);
 
+			Vector2 cameraPos = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera).GetCurrentSpec().mPosition;
+			MonoDraw.DrawTextureDepthScale(info, mBGTarget, cameraPos, BG_SCALE_FACTOR, DrawLayer.Background);
+
 			mMenuLayout.Draw(info);
-			mBGLayout.Draw(info);
 			DrawFade(info);
 
 #if DEBUG
@@ -360,6 +373,19 @@ namespace AridArnold
 			return mScreenTarget;
 		}
 
+
+		/// <summary>
+		/// Draw background to the render target
+		/// </summary>
+		void DrawBGToTarget(DrawInfo info)
+		{
+			Camera camBG = CameraManager.I.GetCamera(CameraManager.CameraInstance.MenuBGCamera);
+			camBG.StartSpriteBatch(info, new Vector2(mBGTarget.Width, mBGTarget.Height), mBGTarget, Color.Black);
+
+			mBGLayout.Draw(info);
+
+			camBG.EndSpriteBatch(info);
+		}
 
 
 		/// <summary>

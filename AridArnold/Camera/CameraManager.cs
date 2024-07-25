@@ -7,6 +7,7 @@
 		public enum CameraInstance
 		{
 			GameAreaCamera,
+			MenuBGCamera,
 			ScreenCamera,
 			GlobalCamera,
 			NumCameraInstances
