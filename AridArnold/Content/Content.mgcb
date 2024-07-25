@@ -14274,3 +14274,13 @@
 /processorParam:PremultiplyAlpha=False
 /build:UI/Menu/SteamPlant/SidePanelBG.png
 
+#begin Fonts/Pixica48.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:Fonts/Pixica48.spritefont
+
+#begin Fonts/Pixica48b.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:Fonts/Pixica48b.spritefont
+

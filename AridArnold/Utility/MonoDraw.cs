@@ -368,8 +368,8 @@
 			Vector2 bl = MonoMath.Round(new Vector2(rect2f.min.X, rect2f.max.Y));
 
 			Rect2f topEdge = new Rect2f(tl, tr + new Vector2(-thickness, thickness));
-			Rect2f rightEdge = new Rect2f(tr + new Vector2(-thickness, 0.0f), br + new Vector2(0.0f, -thickness));
-			Rect2f bottomEdge = new Rect2f(bl + new Vector2(thickness, thickness), br);
+			Rect2f rightEdge = new Rect2f(tr + new Vector2(-thickness, 0.0f), br);
+			Rect2f bottomEdge = new Rect2f(bl + new Vector2(0.0f, thickness), br);
 			Rect2f leftEdge = new Rect2f(tl + new Vector2(0.0f, thickness), bl + new Vector2(thickness, 0.0f));
 
 			DrawRectShadow(info, topEdge, col, shadowCol, shadowDisp, depth);

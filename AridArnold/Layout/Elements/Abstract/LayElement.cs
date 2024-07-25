@@ -61,7 +61,7 @@
 
 		public string GetID() { return mID; }
 
-		public void SetPos(Vector2 pos) { mPos = pos; }
+		public void SetPos(Vector2 pos) { mPos = MonoMath.Round(pos); }
 
 		public void SetEnabled(bool enabled) { mEnabled = enabled; }
 

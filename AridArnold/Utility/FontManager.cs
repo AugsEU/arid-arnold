@@ -26,10 +26,12 @@
 			mFonts.Add("Pixica-12", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica12"));
 			mFonts.Add("Pixica-24", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica24"));
 			mFonts.Add("Pixica-36", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica36"));
+			mFonts.Add("Pixica-48", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica48"));
 
 			mFonts.Add("Pixica-12-b", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica12b"));
 			mFonts.Add("Pixica-24-b", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica24b"));
 			mFonts.Add("Pixica-36-b", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica36b"));
+			mFonts.Add("Pixica-48-b", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Pixica48b"));
 
 			mFonts.Add("PixicaMicro-12", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaMicro12"));
 			mFonts.Add("PixicaMicro-24", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaMicro24"));

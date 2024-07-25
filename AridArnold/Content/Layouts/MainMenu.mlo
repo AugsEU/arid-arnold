@@ -34,6 +34,14 @@
 	</element>
 
 	<!-- New Game -->
+	<element type="text" id="newGameHdr">
+		<x>480.0</x>
+		<y>-477.0</y>
+		<stringID>UI.Menu.NewGameTitle</stringID>
+		<align>centre</align>
+		<shadow>true</shadow>
+		<font>Pixica-48-b</font>
+	</element>
 	<element type="speedRunOption" id="speedRunOpt">
 		<x>480.0</x>
 		<y>-360.0</y>
@@ -50,7 +58,7 @@
 	</element>
 	<element type="messageButton" id="beginGameBtn">
 		<x>320.0</x>
-		<y>-160.0</y>
+		<y>-84.0</y>
 		<msg>lo:MainCampaign</msg>
 		<text>UI.Menu.Begin</text>
 		<up>profileNameOpt</up>
@@ -60,7 +68,7 @@
 	</element>
 	<element type="messageButton" id="ngBackBtn">
 		<x>640.0</x>
-		<y>-160.0</y>
+		<y>-84.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
 		<up>profileNameOpt</up>
@@ -70,6 +78,14 @@
 	</element>
 
 	<!-- Options -->
+	<element type="text" id="optionsHdr">
+		<x>480.0</x>
+		<y>603.0</y>
+		<stringID>UI.Menu.OptionsTitle</stringID>
+		<align>centre</align>
+		<shadow>true</shadow>
+		<font>Pixica-48-b</font>
+	</element>
 	<element type="visionOption" id="visionOpt">
 		<x>480.0</x>
 		<y>680.0</y>
@@ -100,7 +116,7 @@
 	</element>
 	<element type="messageButton" id="optBackBtn">
 		<x>640.0</x>
-		<y>920.0</y>
+		<y>996.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
 		<up>impatientOpt</up>
@@ -108,9 +124,17 @@
 	</element>
 
 	<!-- LoadGame -->
+	<element type="text" id="loadGameHdr">
+		<x>-480.0</x>
+		<y>63.0</y>
+		<stringID>UI.Menu.LoadGameTitle</stringID>
+		<align>centre</align>
+		<shadow>true</shadow>
+		<font>Pixica-48-b</font>
+	</element>
 	<element type="saveFileList" id="saveFileLst">
 		<x>-880.0</x>
-		<y>40.0</y>
+		<y>152.0</y>
 		<width>800</width>
 		<height>300</height>
 		<up>loadBackBtn</up>
@@ -118,7 +142,7 @@
 	</element>
 	<element type="messageButton" id="loadBackBtn">
 		<x>-320.0</x>
-		<y>380.0</y>
+		<y>456.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
 		<up>saveFileLstBottom</up>

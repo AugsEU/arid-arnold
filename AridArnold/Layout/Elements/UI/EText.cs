@@ -12,6 +12,7 @@ namespace AridArnold
 		SpriteFont mFont;
 		string mStringID;
 		TextAlign mAlign;
+		bool mShadow;
 
 		public EText(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
@@ -21,6 +22,8 @@ namespace AridArnold
 
 			string alignStr = MonoParse.GetString(rootNode["align"]);
 			mAlign = alignStr == "centre" ? TextAlign.Centre : TextAlign.Left;
+
+			mShadow = rootNode["shadow"] is not null;
 		}
 
 		public override void Draw(DrawInfo info)
@@ -33,7 +36,14 @@ namespace AridArnold
 			}
 			else if(mAlign == TextAlign.Centre)
 			{
-				MonoDraw.DrawStringCentred(info, mFont, GetPosition(), GetColor(), str, GetDepth());
+				if(mShadow)
+				{
+					MonoDraw.DrawStringCentredShadow(info, mFont, GetPosition(), GetColor(), str, GetDepth());
+				}
+				else
+				{
+					MonoDraw.DrawStringCentred(info, mFont, GetPosition(), GetColor(), str, GetDepth());
+				}
 			}
 		}
 	}
