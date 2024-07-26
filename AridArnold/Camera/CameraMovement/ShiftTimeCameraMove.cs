@@ -8,11 +8,13 @@
 		float mStartRotation;
 		bool mForwards;
 		int mUnblockUpdateHack = 0;
+		TimeShiftFaderFX mTextureFader;
 
-		public ShiftTimeCameraMove(bool forwards) : base(TIME_TO_ROTATE)
+		public ShiftTimeCameraMove(bool forwards, TimeShiftFaderFX textureFader) : base(TIME_TO_ROTATE)
 		{
 			mStartRotation = 0.0f;
 			mForwards = forwards;
+			mTextureFader = textureFader;
 		}
 
 
@@ -36,6 +38,8 @@
 			mCurrentSpec.mPosition = 20.0f * waveP * new Vector2(RandomManager.I.GetDraw().GetUnitFloat(), RandomManager.I.GetDraw().GetUnitFloat());
 
 			mUnblockUpdateHack++;
+
+			mTextureFader.Update(gameTime);
 
 			base.UpdateInternal(gameTime);
 		}

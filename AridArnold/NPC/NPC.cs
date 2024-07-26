@@ -76,6 +76,11 @@
 
 			CheckForDeletion();
 
+			if(EventManager.I.IsSignaled(EventType.TimeChanged))
+			{
+				mTextBlocks.Clear();
+			}
+
 			base.Update(gameTime);
 		}
 

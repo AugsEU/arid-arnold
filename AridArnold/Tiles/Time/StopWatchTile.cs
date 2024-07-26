@@ -51,7 +51,7 @@
 				Arnold arnold = (Arnold)entity;
 				arnold.SetPrevWalkDirFromVelocity();
 				arnold.SetWalkDirection(WalkDirection.None);
-				arnold.SetVelocity(Vector2.Zero);
+				arnold.OverrideVelocity(Vector2.Zero);
 
 				ChangeTime();
 			}
@@ -82,9 +82,12 @@
 
 		void SimpleTimeChange(bool forwards)
 		{
+			TimeShiftFaderFX faderFX = new TimeShiftFaderFX();
+
 			// Queue camera move
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-			gameCam.QueueMovement(new ShiftTimeCameraMove(forwards));
+			gameCam.QueueMovement(new ShiftTimeCameraMove(forwards, faderFX));
+			FXManager.I.AddFX(faderFX);
 
 			if (forwards)
 			{
@@ -95,7 +98,6 @@
 				TimeZoneManager.I.AntiAgePlayer();
 			}
 
-			FXManager.I.AddFX(new TimeShiftFaderFX());
 
 			RefreshTexture();
 		}

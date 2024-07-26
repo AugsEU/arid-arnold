@@ -64,6 +64,7 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
+			mTextureFader.Update(gameTime);
 		}
 	}
 }

@@ -28,11 +28,13 @@ namespace AridArnold
 
 				LoadAsHubLevel();
 
+				TimeShiftFaderFX faderFX = new TimeShiftFaderFX();
+
 				// Queue camera move
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-				gameCam.QueueMovement(new ShiftTimeCameraMove(mForwards));
+				gameCam.QueueMovement(new ShiftTimeCameraMove(mForwards, faderFX));
 
-				FXManager.I.AddFX(new TimeShiftFaderFX());
+				FXManager.I.AddFX(faderFX);
 			}
 		}
 
