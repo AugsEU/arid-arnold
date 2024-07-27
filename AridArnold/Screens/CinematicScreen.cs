@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using Microsoft.Xna.Framework;
+
+namespace AridArnold
 {
 	class CinematicScreen : Screen
 	{
@@ -29,6 +31,8 @@
 		{
 			MonoDebug.Assert(mCurrentCinematic != null);
 			mCurrentCinematic.PlayFromStart();
+			FXManager.I.Init(SCREEN_WIDTH, SCREEN_HEIGHT);
+			FXManager.I.Clear();
 			base.OnActivate();
 		}
 
@@ -39,6 +43,7 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			FXManager.I.Update(gameTime);
 			mCurrentCinematic.Update(gameTime);
 
 			if (InputManager.I.KeyPressed(InputAction.Confirm))
@@ -78,6 +83,7 @@
 		{
 			StartScreenSpriteBatch(info);
 			mCurrentCinematic.Draw(info);
+			FXManager.I.Draw(info);
 			EndScreenSpriteBatch(info);
 
 			return mScreenTarget;

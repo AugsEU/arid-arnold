@@ -53,5 +53,10 @@ namespace AridArnold
 			}
 			mPoint += collider.min;
 		}
+
+		public override void MoveTo(Vector2 pos)
+		{
+			mPoint = pos;
+		}
 	}
 }

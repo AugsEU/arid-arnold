@@ -37,6 +37,8 @@
 
 		public abstract void BindToNPC(SimpleTalkNPC npc);
 
+		public abstract void MoveTo(Vector2 pos);
+
 		public static ParticleEmitter FromXML(XmlNode node)
 		{
 			string type = node.Attributes["type"].Value.ToLower();

@@ -445,6 +445,9 @@ namespace AridArnold
 
 			// Activate the gameplay screen.
 			ScreenManager.I.ActivateScreen(ScreenType.Game);
+
+			// Check for opening cutscene
+			CampaignManager.I.CheckCinematicTriggers(CinematicTrigger.TriggerType.Opening);
 		}
 
 		#endregion rUtility

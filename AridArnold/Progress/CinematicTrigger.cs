@@ -9,7 +9,8 @@
 
 		public enum TriggerType
 		{
-			LevelEnterFirst
+			Opening,
+			LevelEnterFirst,
 		}
 
 		#endregion rTypes
@@ -37,26 +38,9 @@
 		/// </summary>
 		public CinematicTrigger(string campaignRoot, XmlNode cineNode)
 		{
-			mType = GetTriggerTypeFromString(cineNode.Attributes["type"].Value);
+			mType = MonoParse.GetEnum<TriggerType>(cineNode.Attributes["type"]);
 			mLevelTrigger = MonoParse.GetInt(cineNode["level"]);
 			mCinematic = new GameCinematic(Path.Combine(campaignRoot, cineNode["cinematicPath"].InnerText));
-		}
-
-
-
-		/// <summary>
-		/// Parse string and convert to enum
-		/// </summary>
-		static TriggerType GetTriggerTypeFromString(string triggerType)
-		{
-			triggerType = triggerType.ToLower();
-			switch (triggerType)
-			{
-				case "levelenterfirst":
-					return TriggerType.LevelEnterFirst;
-			}
-
-			throw new NotImplementedException();
 		}
 
 		#endregion rInit
@@ -99,6 +83,8 @@
 					}
 
 					return CampaignManager.I.GetCurrentLevel().GetID() == mLevelTrigger;
+				case TriggerType.Opening:
+					return true;
 			}
 
 			throw new NotImplementedException();

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>BG/SteamPlant/BG1</texture>
+	</element>
+	<element type="animator">
+		<x>192.0</x>
+		<y>432.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Steamplant/BirthFire.max</anim>
+	</element>
+	<element type="emitter">
+		<emitter type="smokebox">
+			<x>192.0</x>
+			<y>416.0</y>
+			<width>80.0</width>
+			<height>16.0</height>
+			<colors>
+				<color>919191</color>
+				<color>565656</color>
+				<color>2A2A2A</color>
+				<color>202020</color>
+			</colors>
+			<intensity>0.02</intensity>
+		</emitter>
+	</element>
+	<element type="IdleAnim">
+		<x>200.0</x>
+		<y>394.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/DialIdle.mia</anim>
+	</element>
+	<element type="IdleAnim">
+		<x>288.0</x>
+		<y>88.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/ValveIdle.mia</anim>
+	</element>
+	<element type="IdleAnim">
+		<x>418.0</x>
+		<y>88.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/ValveIdle.mia</anim>
+	</element>
+	<element type="IdleAnim">
+		<x>284.0</x>
+		<y>226.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/ValveIdle.mia</anim>
+	</element>
+	<element type="IdleAnim">
+		<x>350.0</x>
+		<y>50.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/SteamPlant/SteamIdle.mia</anim>
+	</element>
+</root>

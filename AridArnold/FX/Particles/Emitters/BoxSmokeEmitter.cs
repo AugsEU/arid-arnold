@@ -63,5 +63,13 @@ namespace AridArnold
 			mRect.min = origin;
 			mRect.max = origin + offset;
 		}
+
+
+		public override void MoveTo(Vector2 pos)
+		{
+			Vector2 offset = mRect.max - mRect.min;
+			mRect.min = pos;
+			mRect.max = pos + offset;
+		}
 	}
 }

@@ -17,14 +17,17 @@ namespace AridArnold
 				ref Particle particleRef = ref mParticles[i];
 				Vector2 probePos = particleRef.mPosition;
 				probePos.X += dt * particleRef.mVelocity.X;
-				if(TileManager.I.GetTile(probePos).IsSolid())
+
+				Tile localTile = TileManager.I.GetTile(probePos);
+				if (localTile is not null && localTile.IsSolid())
 				{
 					particleRef.mVelocity.X = 0.0f;
 				}
 
 				probePos = particleRef.mPosition;
 				probePos.Y += dt * particleRef.mVelocity.Y;
-				if (TileManager.I.GetTile(probePos).IsSolid())
+				localTile = TileManager.I.GetTile(probePos);
+				if (localTile is not null && localTile.IsSolid())
 				{
 					particleRef.mVelocity.Y = 0.0f;
 				}

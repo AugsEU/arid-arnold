@@ -67,8 +67,8 @@
 		<y>-84.0</y>
 		<msg>lo:MainCampaign</msg>
 		<text>UI.Menu.Begin</text>
-		<up>profileNameOpt</up>
-		<down>speedRunOpt</down>
+		<up>speedRunOpt</up>
+		<down>profileNameOption</down>
 		<left>ngBackBtn</left>
 		<right>ngBackBtn</right>
 	</element>
@@ -77,8 +77,8 @@
 		<y>-84.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
-		<up>profileNameOpt</up>
-		<down>speedRunOpt</down>
+		<up>speedRunOpt</up>
+		<down>profileNameOption</down>
 		<left>beginGameBtn</left>
 		<right>beginGameBtn</right>
 	</element>

@@ -10,6 +10,7 @@
 		DrawLayer mInitialDrawLayer;
 		SpriteEffects mEffect;
 		Texture2D mDrawTexture;
+		List<ParticleEmitter> mEmitters;
 
 		#endregion rMembers
 
@@ -27,9 +28,28 @@
 			mName = actorNode["name"].InnerText;
 			mDrawLayer = MonoAlg.GetEnumFromString<DrawLayer>(actorNode["layer"].InnerText);
 			mInitialDrawLayer = mDrawLayer;
-			mPosition = MonoParse.GetVector(actorNode);
 			mDrawTexture = null;
 			mEffect = SpriteEffects.None;
+
+
+			mEmitters = new List<ParticleEmitter>();
+			XmlNode emittersNode = actorNode["emitters"];
+			if(emittersNode is not null)
+			{
+				LoadEmitters(emittersNode);
+			}
+
+
+			SetPosition(MonoParse.GetVector(actorNode));
+		}
+
+		void LoadEmitters(XmlNode emittersNode)
+		{
+			foreach (XmlNode emitterNode in emittersNode.ChildNodes)
+			{
+				ParticleEmitter emitter = ParticleEmitter.FromXML(emitterNode);
+				mEmitters.Add(emitter);
+			}
 		}
 
 		#endregion rInit
@@ -57,6 +77,25 @@
 
 
 
+		#region rUpdate
+
+		/// <summary>
+		/// Update the game
+		/// </summary>
+		public void Update(GameTime gameTime)
+		{
+			foreach(ParticleEmitter emitter in mEmitters)
+			{
+				emitter.Update(gameTime);
+			}
+		}
+
+		#endregion rUpdate
+
+
+
+
+
 		#region rUtil
 
 		/// <summary>
@@ -75,6 +114,10 @@
 		public void SetPosition(Vector2 pos)
 		{
 			mPosition = pos;
+			foreach(ParticleEmitter emitter in mEmitters)
+			{
+				emitter.MoveTo(mPosition);
+			}
 		}
 
 

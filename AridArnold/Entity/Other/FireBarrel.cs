@@ -15,12 +15,7 @@ namespace AridArnold
 
 		public override void LoadContent()
 		{
-			const float FT = 0.1f;
-			mFireAnim = new Animator(Animator.PlayType.Repeat,
-									("FireBarrel/Barrel1", FT),
-									("FireBarrel/Barrel2", FT),
-									("FireBarrel/Barrel3", FT),
-									("FireBarrel/Barrel4", FT));
+			mFireAnim = MonoData.I.LoadAnimator("FireBarrel/FireBarrel.max");
 			mFireAnim.Play();
 			mTexture = mFireAnim.GetTexture(0);
 		}

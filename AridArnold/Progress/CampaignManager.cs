@@ -65,9 +65,9 @@
 				CollectableManager.I.IncPermanentCount(0x0300, 100);
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
 				//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
-				//QueueLoadSequence(new HubDirectLoader(502));
-				QueueLoadSequence(new LevelDirectLoader(607));
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
+				QueueLoadSequence(new HubDirectLoader(101));
+				//QueueLoadSequence(new LevelDirectLoader(607));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
@@ -214,7 +214,7 @@
 		{
 			string startLevelPath = GetHubRoomPath(roomId);
 			mCurrentLevel = Level.LoadFromFile(startLevelPath, roomId);
-			//CheckCinematicTriggers(); TO DO: Think about this more...
+			CheckCinematicTriggers(CinematicTrigger.TriggerType.LevelEnterFirst);
 			return mCurrentLevel;
 		}
 
@@ -256,12 +256,6 @@
 				SetGameplayState(GameplayState.LevelSequence);
 			}
 			mCurrentLevel = level;
-
-			// TO DO: Think about this more.
-			if (level is HubLevel)
-			{
-				CheckCinematicTriggers();
-			}
 		}
 
 
@@ -581,12 +575,12 @@
 		/// <summary>
 		/// Check if cinematic triggers
 		/// </summary>
-		void CheckCinematicTriggers()
+		public void CheckCinematicTriggers(CinematicTrigger.TriggerType triggerType)
 		{
 			foreach (CinematicTrigger cinematicTrigger in mMetaData.GetCinematicTriggers())
 			{
 				UInt64 cineID = cinematicTrigger.GetTriggerID();
-				if (!mSeenCinematics.Contains(cineID) && cinematicTrigger.DoesTrigger(CinematicTrigger.TriggerType.LevelEnterFirst))
+				if (!mSeenCinematics.Contains(cineID) && cinematicTrigger.DoesTrigger(triggerType))
 				{
 					cinematicTrigger.PlayCinematic();
 					mSeenCinematics.Add(cineID);

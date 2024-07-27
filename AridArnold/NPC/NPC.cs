@@ -7,7 +7,7 @@
 	{
 		#region rConstants
 
-		const double MOUTH_OPEN_TIME = 400.0f;
+		public const double MOUTH_OPEN_TIME = 70.0;
 		static Vector2 DIALOG_OFFSET = new Vector2(-13.0f, -7.0f);
 
 		#endregion rConstants
@@ -180,7 +180,7 @@
 				mMouthTimer.Start();
 			}
 
-			if (mMouthTimer.IsPlaying() && mMouthTimer.GetElapsedMs() < 90.0)
+			if (mMouthTimer.IsPlaying() && mMouthTimer.GetElapsedMs() < MOUTH_OPEN_TIME)
 			{
 				switch (textMood)
 				{

@@ -14398,3 +14398,36 @@
 #begin Text/EN/UI/Menu/FullscreenOptionDesc.txt
 /copy:Text/EN/UI/Menu/FullscreenOptionDesc.txt
 
+#begin FireBarrel/FireBarrel.max
+/copy:FireBarrel/FireBarrel.max
+
+#begin BG/SteamPlant/BirthFire.max
+/copy:BG/SteamPlant/BirthFire.max
+
+#begin BG/SteamPlant/BirthFire1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/SteamPlant/BirthFire1.png
+
+#begin BG/SteamPlant/BirthFire2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/SteamPlant/BirthFire2.png
+
+#begin BG/SteamPlant/BirthFire3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/SteamPlant/BirthFire3.png
+
+#begin BG/SteamPlant/BirthFire4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/SteamPlant/BirthFire4.png
+
+#begin BG/SteamPlant/SteamPlantIntro.mlo
+/copy:BG/SteamPlant/SteamPlantIntro.mlo
+

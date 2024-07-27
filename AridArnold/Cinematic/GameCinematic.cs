@@ -167,6 +167,11 @@ namespace AridArnold
 		{
 			if (!mIsPlaying) return;
 
+			foreach(CinematicActor cinematicActor in mActors)
+			{
+				cinematicActor.Update(gameTime);
+			}
+
 #if DEBUG
 			DebugLoop:
 #endif
@@ -252,6 +257,10 @@ namespace AridArnold
 		{
 			int frameNum = GetFrameFromElapsedTime();
 
+			if(mLastFrameCompleted < 1)
+			{
+				return;
+			}
 			//MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(260.0f, 420.0f));
 
 			foreach (CinematicCommand command in mCommands)
