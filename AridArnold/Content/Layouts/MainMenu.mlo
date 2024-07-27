@@ -3,7 +3,7 @@
 	<!-- Main Menu -->
 	<element type="messageButton" id="newGameBtn">
 		<x>480.0</x>
-		<y>160.0</y>
+		<y>200.0</y>
 		<msg>go:kNewGameArea</msg>
 		<text>UI.Menu.NewGame</text>
 		<up>exitBtn</up>
@@ -11,7 +11,7 @@
 	</element>
 	<element type="messageButton" id="loadGameBtn">
 		<x>480.0</x>
-		<y>200.0</y>
+		<y>240.0</y>
 		<msg>go:kLoadGameArea</msg>
 		<text>UI.Menu.LoadGame</text>
 		<up>newGameBtn</up>
@@ -19,7 +19,7 @@
 	</element>
 	<element type="messageButton" id="optionsBtn">
 		<x>480.0</x>
-		<y>300.0</y>
+		<y>340.0</y>
 		<msg>go:kOptionsArea</msg>
 		<text>UI.Menu.Options</text>
 		<up>loadGameBtn</up>
@@ -27,11 +27,15 @@
 	</element>
 	<element type="exitButton" id="exitBtn">
 		<x>480.0</x>
-		<y>340.0</y>
+		<y>380.0</y>
 		<text>UI.Menu.Exit</text>
 		<up>optionsBtn</up>
 		<down>newGameBtn</down>
 	</element>
+
+
+
+
 
 	<!-- New Game -->
 	<element type="text" id="newGameHdr">
@@ -42,20 +46,22 @@
 		<shadow>true</shadow>
 		<font>Pixica-48-b</font>
 	</element>
+
+	<element type="profileNameOption" id="profileNameOpt">
+		<x>480.0</x>
+		<y>-400.0</y>
+		<text>UI.Menu.ProfileName</text>
+		<up>beginGameBtn</up>
+		<down>speedRunOpt</down>
+	</element>
 	<element type="speedRunOption" id="speedRunOpt">
 		<x>480.0</x>
 		<y>-360.0</y>
 		<text>UI.Menu.SpeedRunMode</text>
-		<up>beginGameBtn</up>
-		<down>profileNameOpt</down>
-	</element>
-	<element type="profileNameOption" id="profileNameOpt">
-		<x>480.0</x>
-		<y>-320.0</y>
-		<text>UI.Menu.ProfileName</text>
-		<up>speedRunOpt</up>
+		<up>profileNameOpt</up>
 		<down>beginGameBtn</down>
 	</element>
+
 	<element type="messageButton" id="beginGameBtn">
 		<x>320.0</x>
 		<y>-84.0</y>
@@ -76,52 +82,10 @@
 		<left>beginGameBtn</left>
 		<right>beginGameBtn</right>
 	</element>
+	
 
-	<!-- Options -->
-	<element type="text" id="optionsHdr">
-		<x>480.0</x>
-		<y>603.0</y>
-		<stringID>UI.Menu.OptionsTitle</stringID>
-		<align>centre</align>
-		<shadow>true</shadow>
-		<font>Pixica-48-b</font>
-	</element>
-	<element type="visionOption" id="visionOpt">
-		<x>480.0</x>
-		<y>680.0</y>
-		<text>UI.Menu.VisionOption</text>
-		<up>optBackBtn</up>
-		<down>masterVolOpt</down>
-	</element>
-	<element type="masterVolOption" id="masterVolOpt">
-		<x>480.0</x>
-		<y>720.0</y>
-		<text>UI.Menu.EarPowerOption</text>
-		<up>visionOpt</up>
-		<down>musicVolOpt</down>
-	</element>
-	<element type="musicVolOption" id="musicVolOpt">
-		<x>480.0</x>
-		<y>760.0</y>
-		<text>UI.Menu.ClairaudienceOption</text>
-		<up>masterVolOpt</up>
-		<down>impatientOpt</down>
-	</element>
-	<element type="impatientOption" id="impatientOpt">
-		<x>480.0</x>
-		<y>800.0</y>
-		<text>UI.Menu.ImpatientOption</text>
-		<up>musicVolOpt</up>
-		<down>optBackBtn</down>
-	</element>
-	<element type="messageButton" id="optBackBtn">
-		<x>640.0</x>
-		<y>996.0</y>
-		<msg>go:kMainArea</msg>
-		<text>UI.Menu.Back</text>
-		<up>impatientOpt</up>
-		<down>visionOpt</down>
-	</element>
+
+
 
 	<!-- LoadGame -->
 	<element type="text" id="loadGameHdr">
@@ -145,7 +109,207 @@
 		<y>456.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
-		<up>saveFileLstBottom</up>
+		<up>saveFileLstTop</up>
 		<down>saveFileLstTop</down>
+	</element>
+
+
+
+
+
+	<!-- Options -->
+	<element type="text" id="optionsHdr">
+		<x>480.0</x>
+		<y>603.0</y>
+		<stringID>UI.Menu.OptionsTitle</stringID>
+		<align>centre</align>
+		<shadow>true</shadow>
+		<font>Pixica-48-b</font>
+	</element>
+
+	<element type="visionOption" id="visionOpt">
+		<x>480.0</x>
+		<y>680.0</y>
+		<text>UI.Menu.VisionOption</text>
+		<explainBox>optionDescTxb</explainBox>
+		<up>optRebindBtn</up>
+		<down>masterVolOpt</down>
+	</element>
+	<element type="masterVolOption" id="masterVolOpt">
+		<x>480.0</x>
+		<y>720.0</y>
+		<text>UI.Menu.EarPowerOption</text>
+		<explainBox>optionDescTxb</explainBox>
+		<up>visionOpt</up>
+		<down>musicVolOpt</down>
+	</element>
+	<element type="musicVolOption" id="musicVolOpt">
+		<x>480.0</x>
+		<y>760.0</y>
+		<text>UI.Menu.ClairaudienceOption</text>
+		<explainBox>optionDescTxb</explainBox>
+		<up>masterVolOpt</up>
+		<down>impatientOpt</down>
+	</element>
+	<element type="impatientOption" id="impatientOpt">
+		<x>480.0</x>
+		<y>800.0</y>
+		<text>UI.Menu.ImpatientOption</text>
+		<explainBox>optionDescTxb</explainBox>
+		<up>musicVolOpt</up>
+		<down>fullScreenOpt</down>
+	</element>
+	<element type="fullscreenOption" id="fullScreenOpt">
+		<x>480.0</x>
+		<y>840.0</y>
+		<text>UI.Menu.FullscreenOption</text>
+		<explainBox>optionDescTxb</explainBox>
+		<up>impatientOpt</up>
+		<down>optRebindBtn</down>
+	</element>
+
+	<element type="textBlock" id="optionDescTxb">
+		<x>120.0</x>
+		<y>890.0</y>
+		<width>720</width>
+		<font>PixicaMicro-36</font>
+		<stringID></stringID>
+	</element>
+
+	<element type="messageButton" id="optRebindBtn">
+		<x>320.0</x>
+		<y>996.0</y>
+		<msg>go:kRebindArea</msg>
+		<text>UI.Menu.Rebind</text>
+		<up>impatientOpt</up>
+		<down>visionOpt</down>
+		<left>optBackBtn</left>
+		<right>optBackBtn</right>
+	</element>
+	<element type="messageButton" id="optBackBtn">
+		<x>640.0</x>
+		<y>996.0</y>
+		<msg>go:kMainArea</msg>
+		<text>UI.Menu.Back</text>
+		<up>impatientOpt</up>
+		<down>visionOpt</down>
+		<left>optRebindBtn</left>
+		<right>optRebindBtn</right>
+	</element>
+
+
+
+
+
+	<!-- Rebind inputs -->
+	<element type="text" id="rebindHdr">
+		<x>480.0</x>
+		<y>1143.0</y>
+		<stringID>UI.Menu.RebindTitle</stringID>
+		<align>centre</align>
+		<shadow>true</shadow>
+		<font>Pixica-48-b</font>
+	</element>
+
+	<element type="inputRebind" id="upRbnd">
+		<x>480.0</x>
+		<y>1220.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.ArnoldUp</text>
+		<bind>ArnoldUp</bind>
+		<up>rebindBackBtn</up>
+		<down>downRbnd</down>
+	</element>
+	<element type="inputRebind" id="downRbnd">
+		<x>480.0</x>
+		<y>1250.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.ArnoldDown</text>
+		<bind>ArnoldDown</bind>
+		<up>upRbnd</up>
+		<down>leftRbnd</down>
+	</element>
+	<element type="inputRebind" id="leftRbnd">
+		<x>480.0</x>
+		<y>1280.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.ArnoldLeft</text>
+		<bind>ArnoldLeft</bind>
+		<up>downRbnd</up>
+		<down>rightRbnd</down>
+	</element>
+	<element type="inputRebind" id="rightRbnd">
+		<x>480.0</x>
+		<y>1310.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.ArnoldRight</text>
+		<bind>ArnoldRight</bind>
+		<up>leftRbnd</up>
+		<down>jumpRbnd</down>
+	</element>
+	<element type="inputRebind" id="jumpRbnd">
+		<x>480.0</x>
+		<y>1340.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.ArnoldJump</text>
+		<bind>ArnoldJump</bind>
+		<up>rightRbnd</up>
+		<down>itemRbnd</down>
+	</element>
+	<element type="inputRebind" id="itemRbnd">
+		<x>480.0</x>
+		<y>1370.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.UseItem</text>
+		<bind>UseItem</bind>
+		<up>jumpRbnd</up>
+		<down>retryRbnd</down>
+	</element>
+	<element type="inputRebind" id="retryRbnd">
+		<x>480.0</x>
+		<y>1400.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.RestartLevel</text>
+		<bind>RestartLevel</bind>
+		<up>itemRbnd</up>
+		<down>confirmRbnd</down>
+	</element>
+	<element type="inputRebind" id="confirmRbnd">
+		<x>480.0</x>
+		<y>1430.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.Confirm</text>
+		<bind>Confirm</bind>
+		<up>retryRbnd</up>
+		<down>pauseRbnd</down>
+	</element>
+	<element type="inputRebind" id="pauseRbnd">
+		<x>480.0</x>
+		<y>1460.0</y>
+		<font>Pixica-24</font>
+		<text>Input.Actions.Pause</text>
+		<bind>Pause</bind>
+		<up>confirmRbnd</up>
+		<down>resetControlsBtn</down>
+	</element>
+
+	<element type="messageButton" id="rebindBackBtn">
+		<x>640.0</x>
+		<y>1536.0</y>
+		<msg>go:kOptionsArea</msg>
+		<text>UI.Menu.Back</text>
+		<up>pauseRbnd</up>
+		<down>upRbnd</down>
+		<left>resetControlsBtn</left>
+		<right>resetControlsBtn</right>
+	</element>
+	<element type="resetControlsBUtton" id="resetControlsBtn">
+		<x>320.0</x>
+		<y>1536.0</y>
+		<text>UI.Menu.Default</text>
+		<up>pauseRbnd</up>
+		<down>upRbnd</down>
+		<left>rebindBackBtn</left>
+		<right>rebindBackBtn</right>
 	</element>
 </root>

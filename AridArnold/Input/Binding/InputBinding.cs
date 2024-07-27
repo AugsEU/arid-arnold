@@ -13,6 +13,20 @@
 
 
 	/// <summary>
+	/// What kind of category does this binding fit into?
+	/// </summary>
+	enum BindingCategory
+	{
+		kKeyboard,
+		kGamepadButton,
+		kGamepadAxis,
+		kMouseButton
+	}
+
+
+
+
+	/// <summary>
 	/// Represents a single keybinding. Is either on or off
 	/// </summary>
 	abstract class InputBinding
@@ -74,6 +88,13 @@
 		/// Type enum for serialisation
 		/// </summary>
 		public abstract InputBindingType GetBindingType();
+
+
+
+		/// <summary>
+		/// What category does this fit into?
+		/// </summary>
+		public abstract BindingCategory GetBindingCategory();
 
 
 

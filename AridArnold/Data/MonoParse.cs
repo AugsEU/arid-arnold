@@ -201,6 +201,22 @@ namespace AridArnold
 		}
 
 
+
+		/// <summary>
+		/// Parse node as enum
+		/// </summary>
+		static public T GetEnum<T>(XmlNode node, T defaultValue = default(T))
+		{
+			if(node is null)
+			{
+				return defaultValue;
+			}
+
+			string enumStr = GetString(node);
+			return MonoAlg.GetEnumFromString<T>(enumStr);
+		}
+
+
 		/// <summary>
 		/// Parse fontID node into sprite font
 		/// </summary>

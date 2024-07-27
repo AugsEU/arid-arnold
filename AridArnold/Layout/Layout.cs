@@ -219,6 +219,16 @@ namespace AridArnold
 
 
 		/// <summary>
+		/// Force select nav element
+		/// </summary>
+		public void ForceSetSelectedElement(NavElement navElement)
+		{
+			mPendingNavElement = navElement;
+		}
+
+
+
+		/// <summary>
 		/// Select nav element by ID
 		/// </summary>
 		public void SetSelectedElement(string elemID)

@@ -16,5 +16,10 @@ namespace AridArnold
 		{
 			OptionsManager.I.SetMasterVolume(GetPercentage());
 		}
+
+		protected override string GetDescriptionStrID(int optionIdx)
+		{
+			return "UI.Menu.EarPowerOptionDesc";
+		}
 	}
 }

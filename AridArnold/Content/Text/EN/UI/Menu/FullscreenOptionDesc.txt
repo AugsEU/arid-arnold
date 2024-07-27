@@ -1,0 +1,1 @@
+Display the game in fullscreen or windowed

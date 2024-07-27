@@ -82,6 +82,9 @@ namespace AridArnold
 			mMasterVolume = br.ReadSingle();
 			mMusicVolume = br.ReadSingle();
 			mImpatientPlayer = br.ReadBoolean();
+
+			bool isFullScreen = br.ReadBoolean();
+			Main.SetFullScreen(isFullScreen);
 		}
 
 
@@ -95,6 +98,9 @@ namespace AridArnold
 			bw.Write(mMasterVolume);
 			bw.Write(mMusicVolume);
 			bw.Write(mImpatientPlayer);
+
+			bool isFullScreen = Main.IsFullScreen();
+			bw.Write(isFullScreen);
 		}
 
 		#endregion rSerial

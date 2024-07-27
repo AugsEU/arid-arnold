@@ -87,6 +87,35 @@
 
 
 
+
+		#region rBinding
+
+		/// <summary>
+		/// Add a new binding, overwriting those who have the same binding category
+		/// </summary>
+		public void AddRebinding(InputBinding binding)
+		{
+			BindingCategory newCategory = binding.GetBindingCategory();
+			for(int i = 0; i < mBindings.Count; i++)
+			{
+				if (mBindings[i].GetBindingCategory() == newCategory)
+				{
+					// Replace this
+					mBindings[i] = binding;
+					return;
+				}
+			}
+
+			// Otherwise add it to the list
+			mBindings.Add(binding);
+		}
+
+		#endregion rBinding
+
+
+
+
+
 		#region rUtility
 
 		/// <summary>
@@ -105,6 +134,9 @@
 		}
 
 		#endregion rUtility
+
+
+
 
 
 		#region rSerial

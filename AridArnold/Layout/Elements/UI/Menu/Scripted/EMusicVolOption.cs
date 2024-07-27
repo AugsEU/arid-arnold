@@ -16,5 +16,10 @@ namespace AridArnold
 		{
 			OptionsManager.I.SetMusicVolume(GetPercentage());
 		}
+
+		protected override string GetDescriptionStrID(int optionIdx)
+		{
+			return "UI.Menu.ClairaudienceOptionDesc";
+		}
 	}
 }

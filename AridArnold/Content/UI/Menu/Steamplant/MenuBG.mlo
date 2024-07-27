@@ -8,39 +8,59 @@
 		<path>BG/SteamPlant/SteamPlant.mlo</path>
 	</element>
 
+
+	<!-- NPCs -->
+	<element type="animator">
+		<x>34.0</x>
+		<y>93.0</y>
+		<anim>NPC/BossMan/JumpShout.max</anim>
+	</element>
+	<element type="idleAnim">
+		<x>317.0</x>
+		<y>235.0</y>
+		<anim>NPC/BoilerMan/Idle.mia</anim>
+		<flip>FlipHorizontally</flip>
+	</element>
+	<element type="idleAnim">
+		<x>16.0</x>
+		<y>239.0</y>
+		<anim>NPC/LazyMan/Idle.mia</anim>
+	</element>
+
 	<!-- BG textures -->
 	<element type="texture">
 		<x>0.0</x>
 		<y>0.0</y>
-		<scale>1.0</scale>
 		<depth>BackgroundElement</depth>
 		<texture>UI/Menu/SteamPlant/MainMenuBG</texture>
 	</element>
 	<element type="texture">
 		<x>-480.0</x>
 		<y>0.0</y>
-		<scale>1.0</scale>
 		<depth>BackgroundElement</depth>
 		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
 	</element>
 	<element type="texture">
 		<x>0.0</x>
 		<y>-270.0</y>
-		<scale>1.0</scale>
 		<depth>BackgroundElement</depth>
 		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
 	</element>
 	<element type="texture">
 		<x>0.0</x>
 		<y>270.0</y>
-		<scale>1.0</scale>
 		<depth>BackgroundElement</depth>
 		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
 	</element>
 	<element type="texture">
 		<x>0.0</x>
 		<y>540.0</y>
-		<scale>1.0</scale>
+		<depth>BackgroundElement</depth>
+		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
+	</element>
+	<element type="texture">
+		<x>0.0</x>
+		<y>810.0</y>
 		<depth>BackgroundElement</depth>
 		<texture>UI/Menu/SteamPlant/SidePanelBG</texture>
 	</element>

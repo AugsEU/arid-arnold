@@ -41,7 +41,7 @@ namespace AridArnold
 
 		const float BG_SCALE_FACTOR = 2.0f;
 		const double FADE_TIME = 1200.0;
-		const double TRANSITION_TIME = 1100.0;
+		const double TRANSITION_TIME = 900.0;
 		static Vector2[] MENU_AREAS_POSITIONS =
 		{
 			new Vector2(0.0f, 0.0f),		/* kMainArea */
@@ -134,7 +134,10 @@ namespace AridArnold
 
 			StartFade(FadeState.kFadeIn);
 			FinishTransitionTo(MainMenuArea.kMainArea);
-			
+
+			Camera cameraBG = CameraManager.I.GetCamera(CameraManager.CameraInstance.MenuBGCamera);
+			cameraBG.ForcePosition(Vector2.Zero);
+
 
 			base.OnActivate();
 		}
@@ -298,6 +301,7 @@ namespace AridArnold
 					mMenuLayout.SetSelectedElement("visionOpt");
 					break;
 				case MainMenuArea.kRebindArea:
+					mMenuLayout.SetSelectedElement("upRbnd");
 					break;
 				case MainMenuArea.kNumAreas:
 					break;

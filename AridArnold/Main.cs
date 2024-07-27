@@ -164,18 +164,17 @@
 			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
 			if (mSlowDownCount == 0)
 			{
+				if (InputManager.I.KeyPressed(InputAction.SysFullScreen))
+				{
+					ToggleFullscreen();
+				}
+
 				//Record elapsed time
 				CameraManager.I.UpdateAllCameras(gameTime);
 
-				KeyboardState keyboardState = Keyboard.GetState();
-				foreach (Keys key in keyboardState.GetPressedKeys())
-				{
-					HandleKeyPress(key);
-				}
-
 				Screen screen = ScreenManager.I.GetActiveScreen();
 
-				if (!mInLoadingSection)
+				if (!mInLoadingSection && this.IsActive)
 				{
 					InputManager.I.Update(gameTime);
 				}
@@ -187,48 +186,6 @@
 			}
 
 			base.Update(gameTime);
-		}
-
-
-
-		/// <summary>
-		/// Handle key press
-		/// </summary>
-		/// <param name="key">Keys pressed</param>
-		private void HandleKeyPress(Keys key)
-		{
-			KeyboardState keyboardState = Keyboard.GetState();
-
-			bool alt = keyboardState.IsKeyDown(Keys.LeftAlt) || keyboardState.IsKeyDown(Keys.RightAlt);
-			if (key == Keys.Enter && alt)
-			{
-				ToggleFullscreen();
-			}
-		}
-
-
-
-		/// <summary>
-		/// Enter/leave full screen
-		/// </summary>
-		private void ToggleFullscreen()
-		{
-			if (mGraphicsManager.IsFullScreen)
-			{
-				mGraphicsManager.IsFullScreen = false;
-				mGraphicsManager.PreferredBackBufferWidth = mWindowRect.Width;
-				mGraphicsManager.PreferredBackBufferHeight = mWindowRect.Height;
-			}
-			else
-			{
-				mWindowRect = GraphicsDevice.PresentationParameters.Bounds;
-				mGraphicsManager.IsFullScreen = true;
-
-				mGraphicsManager.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-				mGraphicsManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-			}
-
-			mGraphicsManager.ApplyChanges();
 		}
 
 		#endregion rUpdate
@@ -330,7 +287,36 @@
 			return new Rectangle((screenRect.Width - finalWidth) / 2, (screenRect.Height - finalHeight) / 2, finalWidth, finalHeight);
 		}
 
+		#endregion rDraw
 
+
+
+
+
+		#region rWindow
+
+		/// <summary>
+		/// Enter/leave full screen
+		/// </summary>
+		private void ToggleFullscreen()
+		{
+			if (mGraphicsManager.IsFullScreen)
+			{
+				mGraphicsManager.IsFullScreen = false;
+				mGraphicsManager.PreferredBackBufferWidth = mWindowRect.Width;
+				mGraphicsManager.PreferredBackBufferHeight = mWindowRect.Height;
+			}
+			else
+			{
+				mWindowRect = GraphicsDevice.PresentationParameters.Bounds;
+				mGraphicsManager.IsFullScreen = true;
+
+				mGraphicsManager.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+				mGraphicsManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			}
+
+			mGraphicsManager.ApplyChanges();
+		}
 
 		/// <summary>
 		/// Callback for re-sizing the screen
@@ -368,7 +354,29 @@
 			mGraphicsManager.ApplyChanges();
 		}
 
-		#endregion rDraw
+
+
+		/// <summary>
+		/// Set fullscreen directly
+		/// </summary>
+		public static void SetFullScreen(bool isFullScreen)
+		{
+			if(isFullScreen != sSelf.mGraphicsManager.IsFullScreen)
+			{
+				sSelf.ToggleFullscreen();
+			}
+		}
+
+
+		/// <summary>
+		/// Are we full screen?
+		/// </summary>
+		public static bool IsFullScreen()
+		{
+			return sSelf.mGraphicsManager.IsFullScreen;
+		}
+
+		#endregion rWindow
 
 
 
@@ -446,6 +454,9 @@
 		}
 
 
+		/// <summary>
+		/// Exit the game immediately
+		/// </summary>
 		public static void ExitGame()
 		{
 			sSelf.Exit();

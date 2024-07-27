@@ -7,6 +7,7 @@ namespace AridArnold
 	internal class EVisionOption : StringOption
 	{
 		static string[] VISION_OPTIONS = { "UI.Menu.VisionOptionPerfect", "UI.Menu.VisionOptionSretch" };
+		static string[] OPTIONS_DESC = { "UI.Menu.VisionOptionPerfectDesc", "UI.Menu.VisionOptionSretchDesc" };
 
 		public EVisionOption(XmlNode rootNode, Layout parent) : base(rootNode, parent, VISION_OPTIONS)
 		{
@@ -33,6 +34,11 @@ namespace AridArnold
 					break;
 			}
 			OptionsManager.I.SetVision(visionOption);
+		}
+
+		protected override string GetDescriptionStrID(int optionIdx)
+		{
+			return OPTIONS_DESC[optionIdx];
 		}
 	}
 }

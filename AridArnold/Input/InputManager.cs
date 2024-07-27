@@ -22,6 +22,8 @@
 		SysLClick,
 		SysRClick,
 
+		SysFullScreen,
+
 		//Arnold
 		ArnoldUp,
 		ArnoldDown,
@@ -70,6 +72,13 @@
 		InputBindingGangList mBindingGangs = new InputBindingGangList();
 		int mInputUpdateIndex = 0;
 
+		/// States used only for rebinding purposes. Not gameplay related.
+		KeyboardState mKeyboardState;
+		KeyboardState mPrevKeyboardState;
+
+		GamePadState[] mGamePadStates;
+		GamePadState[] mPrevGamePadStates;
+
 		#endregion rMembers
 
 
@@ -88,6 +97,12 @@
 
 			mMouseState = new MouseState();
 			mInputUpdateIndex = 0;
+
+			mKeyboardState = new KeyboardState();
+			mPrevKeyboardState = new KeyboardState();
+
+			mGamePadStates = new GamePadState[] { new GamePadState() , new GamePadState(), new GamePadState(), new GamePadState() };
+			mPrevGamePadStates = new GamePadState[] { new GamePadState(), new GamePadState(), new GamePadState(), new GamePadState() };
 		}
 
 
@@ -97,6 +112,9 @@
 		/// </summary>
 		public void SetDefaultBindings()
 		{
+			mInputBindings.Clear();
+			mBindingGangs.Clear();
+
 			// System
 			SetBinding(InputAction.SysConfirm, new KeyBinding(Keys.Enter), new PadBinding(Buttons.A), new PadBinding(Buttons.Start));
 			SetBinding(InputAction.SysUp, new KeyBinding(Keys.Up), new PadBinding(Buttons.DPadUp));
@@ -106,6 +124,8 @@
 
 			SetBinding(InputAction.SysLClick, new MouseBtnBinding(MouseButton.Left));
 			SetBinding(InputAction.SysRClick, new MouseBtnBinding(MouseButton.Right));
+
+			SetBinding(InputAction.SysFullScreen, new KeyBinding(Keys.F11), new KeyBinding(Keys.F12));
 
 
 			// Arnold
@@ -135,6 +155,7 @@
 		}
 
 
+
 		/// <summary>
 		/// Overwrite an input action with a new set of bindings
 		/// </summary>
@@ -142,6 +163,7 @@
 		{
 			mInputBindings.Add(key, new InputBindSet(bindings));
 		}
+
 
 
 		/// <summary>
@@ -171,7 +193,17 @@
 				keyBindPair.Value.Update(gameTime);
 			}
 
+			mPrevKeyboardState = mKeyboardState;
+			mKeyboardState = Keyboard.GetState();
+
+			for(int i = 0; i < 4; i++)
+			{
+				mPrevGamePadStates[i] = mGamePadStates[i];
+				mGamePadStates[i] = GamePad.GetState(i);
+			}
+
 			mMouseState = Mouse.GetState();
+
 			mInputUpdateIndex++;
 
 			// If you leave the game open for more than a year then maybe we should stop...
@@ -335,6 +367,85 @@
 		}
 
 		#endregion rKeySense
+
+
+
+
+
+		#region rRebind
+
+		/// <summary>
+		/// Find the first newly pressed key then add it to our input actions.
+		/// Returns true if we did rebind this action
+		/// </summary>
+		public bool AttemptRebind(InputAction action)
+		{
+			MonoDebug.Assert(mInputBindings.ContainsKey(action), "Invalid action rebind.");
+
+			Keys pressedKey = GetFirstNewlyPressedKey();
+			Buttons pressedButton = GetFirstNewlyPressedPadButton();
+
+			InputBinding newBinding = null;
+			if(pressedKey != Keys.None)
+			{
+				newBinding = new KeyBinding(pressedKey);
+			}
+			else if(pressedButton != Buttons.None)
+			{
+				newBinding = new PadBinding(pressedButton);
+			}
+
+			if (newBinding is not null)
+			{
+				InputBindSet bindingSet = mInputBindings[action];
+
+				bindingSet.AddRebinding(newBinding);
+				return true;
+			}
+
+			return false;
+		}
+
+
+
+		/// <summary>
+		/// Get first newly pressed key(for rebind detection)
+		/// </summary>
+		Keys GetFirstNewlyPressedKey()
+		{
+			Keys[] currPressedKeys = mKeyboardState.GetPressedKeys();
+			Keys[] prevPressedKeys = mPrevKeyboardState.GetPressedKeys();
+
+			return MonoAlg.GetFirstNewElement<Keys>(currPressedKeys, prevPressedKeys);
+		}
+
+
+
+		/// <summary>
+		/// Get first newly pressed key(for rebind detection)
+		/// </summary>
+		Buttons GetFirstNewlyPressedPadButton()
+		{
+			for(int i = 0; i < 4; i++)
+			{
+				ref GamePadState currState = ref mGamePadStates[i];
+				ref GamePadState prevState = ref mPrevGamePadStates[i];
+
+				// Check each button to see if it was newly pressed
+				foreach (Buttons button in Enum.GetValues(typeof(Buttons)))
+				{
+					// Check if the button is pressed in the current state but not in the previous state
+					if (currState.IsButtonDown(button) && !prevState.IsButtonDown(button))
+					{
+						return button;
+					}
+				}
+			}
+
+			return Buttons.None;
+		}
+
+		#endregion rRebind
 
 
 

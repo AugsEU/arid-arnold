@@ -31,12 +31,31 @@ namespace AridArnold
 
 		public override string ToString()
 		{
-			return mInputKey.ToString();
+			string stringID = string.Format("Input.Pad.{0}", mInputKey.ToString());
+			return LanguageManager.I.GetText(stringID);
 		}
 
 		public override InputBindingType GetBindingType()
 		{
 			return InputBindingType.kGamepad;
+		}
+
+		public override BindingCategory GetBindingCategory()
+		{
+			switch (mInputKey)
+			{
+				case Buttons.RightThumbstickUp:
+				case Buttons.RightThumbstickDown:
+				case Buttons.RightThumbstickRight:
+				case Buttons.RightThumbstickLeft:
+				case Buttons.LeftThumbstickUp:
+				case Buttons.LeftThumbstickDown:
+				case Buttons.LeftThumbstickRight:
+				case Buttons.LeftThumbstickLeft:
+					return BindingCategory.kGamepadAxis;
+			}
+
+			return BindingCategory.kGamepadButton;
 		}
 
 		public override void WriteFromBinary(BinaryWriter bw)

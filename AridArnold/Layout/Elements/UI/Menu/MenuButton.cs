@@ -55,23 +55,15 @@ namespace AridArnold
 			// Set size if not already set
 			if (mSize.X == 0.0f && mSize.Y == 0.0f)
 			{
-				if (mTexture is not null)
-				{
-					// By texture if we have one
-					mSize.X = mTexture.Width;
-					mSize.Y = mTexture.Height;
-				}
-				else
-				{
-					// By font if we have no texture
-					mSize = mFont.MeasureString(mDisplayText);
-
-					// Centre horizontally
-					mPos.X -= mSize.X * 0.5f;
-				}
+				RecalcSize();
 			}
 		}
 
+
+
+		/// <summary>
+		/// Make meun not from xml
+		/// </summary>
 		protected MenuButton(string id, Vector2 pos, Vector2 size, string fontID, Layout parent) : base(id, pos, size, parent)
 		{
 			mSize = size;
@@ -80,6 +72,29 @@ namespace AridArnold
 			mDefaultColor = Color.Gray;
 			mHoverColor = Color.White;
 			mClickTimer = new PercentageTimer(150.0);
+		}
+
+		/// <summary>
+		/// Recalculate the size of the hitbox
+		/// </summary>
+		protected void RecalcSize()
+		{
+			Vector2 prevSize = mSize;
+			if (mTexture is not null)
+			{
+				// By texture if we have one
+				mSize.X = mTexture.Width;
+				mSize.Y = mTexture.Height;
+			}
+			else
+			{
+				// By font if we have no texture
+				mSize = mFont.MeasureString(mDisplayText);
+			}
+
+
+			// Centre horizontally
+			mPos.X += (prevSize.X - mSize.X) * 0.5f;
 		}
 
 		#endregion rInit
@@ -116,7 +131,7 @@ namespace AridArnold
 				bool enterKey = InputManager.I.AnyGangPressed(BindingGang.SysConfirm);
 				bool mouseClick = MouseClicked();
 
-				if (enterKey || mouseClick)
+				if ((enterKey || mouseClick) && AllowClick())
 				{
 					mClickTimer.FullReset();
 					mClickTimer.Start();
@@ -132,6 +147,16 @@ namespace AridArnold
 		/// Do the button specific action
 		/// </summary>
 		public abstract void DoAction();
+
+
+
+		/// <summary>
+		/// Can we click at the moment?
+		/// </summary>
+		protected virtual bool AllowClick()
+		{
+			return true;
+		}
 
 		#endregion rUpdate
 

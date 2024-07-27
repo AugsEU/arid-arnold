@@ -17,6 +17,7 @@ OPTIONS
     MASTER VOL - float32
     MUSIC VOL - float32
     IMPATIENT - bool
+    FULLSCREEN - bool
 }
 
 INPUT

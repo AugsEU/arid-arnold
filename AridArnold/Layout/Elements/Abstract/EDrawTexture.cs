@@ -5,8 +5,12 @@
 	/// </summary>
 	abstract class EDrawTexture : LayElement
 	{
+		SpriteEffects mSpriteEffect;
+
 		public EDrawTexture(XmlNode node, Layout parent) : base(node, parent)
 		{
+			string flipStr = MonoParse.GetString(node["flip"], "None");
+			mSpriteEffect = MonoAlg.GetEnumFromString<SpriteEffects>(flipStr);
 		}
 
 		protected abstract Texture2D GetDrawTexture();
@@ -21,7 +25,7 @@
 			Vector2 rotDest = MonoMath.Rotate(rotOrigin, rotation);
 			Vector2 drawPos = GetPosition();
 			drawPos += rotOrigin - rotDest;
-			MonoDraw.DrawTexture(info, drawTex, drawPos, null, GetColor(), GetRotation(), Vector2.Zero, GetScale(), SpriteEffects.None, GetDepth());
+			MonoDraw.DrawTexture(info, drawTex, drawPos, null, GetColor(), GetRotation(), Vector2.Zero, GetScale(), mSpriteEffect, GetDepth());
 
 			base.Draw(info);
 		}

@@ -54,6 +54,10 @@
 			mExistingProfiles.Clear();
 
 			string baseDirectory = Path.Join("data/", ProfileSaveInfo.PROFILE_SAVE_FOLDER);
+			if(!Directory.Exists(baseDirectory))
+			{
+				return;
+			}
 			string[] files = Directory.GetFiles(baseDirectory, "*.bin", SearchOption.AllDirectories);
 
 			foreach (string fileDir in files)

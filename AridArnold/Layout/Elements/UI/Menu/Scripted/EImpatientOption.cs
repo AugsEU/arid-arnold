@@ -16,5 +16,10 @@ namespace AridArnold
 		{
 			SyncFromBool(OptionsManager.I.GetImpatientPlayer());
 		}
+
+		protected override string GetDescriptionStrID(int optionIdx)
+		{
+			return "UI.Menu.ImpatientOptionDesc";
+		}
 	}
 }

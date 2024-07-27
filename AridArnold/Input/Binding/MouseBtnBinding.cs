@@ -44,6 +44,11 @@
 			return InputBindingType.kMouse;
 		}
 
+		public override BindingCategory GetBindingCategory()
+		{
+			return BindingCategory.kMouseButton;
+		}
+
 		public override void WriteFromBinary(BinaryWriter bw)
 		{
 			bw.Write((int)mMouseButton);

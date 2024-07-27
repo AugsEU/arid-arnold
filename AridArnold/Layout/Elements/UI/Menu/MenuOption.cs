@@ -24,6 +24,8 @@
 
 		Vector2 mOptionCenPoint;
 
+		string mDescTextBlockID;
+
 		#endregion rMembers
 
 
@@ -55,7 +57,7 @@
 			}
 
 			// Centre horizontally
-			mPos.X -= mSize.X * 0.5f;
+			mPos.X -= mSize.X * (DEFAULT_OPTION_SPACING_PERCENT - 0.35f);
 
 			// Calculate where to centre options string.
 			mOptionCenPoint = mPos;
@@ -64,6 +66,8 @@
 
 			mSelectedOption = 0;
 			mFirstUpdate = true;
+
+			mDescTextBlockID = MonoParse.GetString(rootNode["explainBox"], "");
 		}
 
 		#endregion rInit
@@ -103,11 +107,40 @@
 				OnOptionSelect(mSelectedOption);
 			}
 
+			UpdateDescription(gameTime);
+
 			base.Update(gameTime);
 
 			mFirstUpdate = false;
 		}
 
+
+
+		/// <summary>
+		/// Update description box.
+		/// </summary>
+		private void UpdateDescription(GameTime gameTime)
+		{
+			if(mDescTextBlockID.Length == 0)
+			{
+				return;
+			}
+
+			ETextBlock textBlock = (ETextBlock)GetParent().GetElementByID(mDescTextBlockID);
+
+			if (IsSelected())
+			{
+				string descStrID = GetDescriptionStrID(mSelectedOption);
+				textBlock.QueueText(descStrID);
+			}
+
+			// Hack to un-show description 
+			NavElement selectedElement = GetParent().GetSelectedElement();
+			if(selectedElement is null || selectedElement is not MenuOption)
+			{
+				textBlock.QueueText("");
+			}
+		}
 
 
 		/// <summary>
@@ -185,6 +218,15 @@
 		/// Get string to display for nth option
 		/// </summary>
 		protected abstract string GetOptionStr(int optionIdx);
+
+
+		/// <summary>
+		/// Get a string id to display in the options description box.
+		/// </summary>
+		protected virtual string GetDescriptionStrID(int optionIdx)
+		{
+			return "";
+		}
 
 		#endregion rUtil
 	}

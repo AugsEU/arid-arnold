@@ -14284,3 +14284,117 @@
 /processor:FontDescriptionProcessor
 /build:Fonts/Pixica48b.spritefont
 
+#begin Text/EN/UI/Menu/Rebind.txt
+/copy:Text/EN/UI/Menu/Rebind.txt
+
+#begin Text/EN/UI/Menu/RebindTitle.txt
+/copy:Text/EN/UI/Menu/RebindTitle.txt
+
+#begin Text/EN/UI/Menu/Default.txt
+/copy:Text/EN/UI/Menu/Default.txt
+
+#begin Text/EN/Input/Pad/A.txt
+/copy:Text/EN/Input/Pad/A.txt
+
+#begin Text/EN/Input/Pad/B.txt
+/copy:Text/EN/Input/Pad/B.txt
+
+#begin Text/EN/Input/Pad/Back.txt
+/copy:Text/EN/Input/Pad/Back.txt
+
+#begin Text/EN/Input/Pad/BigButton.txt
+/copy:Text/EN/Input/Pad/BigButton.txt
+
+#begin Text/EN/Input/Pad/DPadDown.txt
+/copy:Text/EN/Input/Pad/DPadDown.txt
+
+#begin Text/EN/Input/Pad/DPadLeft.txt
+/copy:Text/EN/Input/Pad/DPadLeft.txt
+
+#begin Text/EN/Input/Pad/DPadRight.txt
+/copy:Text/EN/Input/Pad/DPadRight.txt
+
+#begin Text/EN/Input/Pad/DPadUp.txt
+/copy:Text/EN/Input/Pad/DPadUp.txt
+
+#begin Text/EN/Input/Pad/LeftShoulder.txt
+/copy:Text/EN/Input/Pad/LeftShoulder.txt
+
+#begin Text/EN/Input/Pad/LeftStick.txt
+/copy:Text/EN/Input/Pad/LeftStick.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickDown.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickDown.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickLeft.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickLeft.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickRight.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickRight.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickUp.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickUp.txt
+
+#begin Text/EN/Input/Pad/LeftTrigger.txt
+/copy:Text/EN/Input/Pad/LeftTrigger.txt
+
+#begin Text/EN/Input/Pad/RightShoulder.txt
+/copy:Text/EN/Input/Pad/RightShoulder.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickDown.txt
+/copy:Text/EN/Input/Pad/RightThumbstickDown.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickLeft.txt
+/copy:Text/EN/Input/Pad/RightThumbstickLeft.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickRight.txt
+/copy:Text/EN/Input/Pad/RightThumbstickRight.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickUp.txt
+/copy:Text/EN/Input/Pad/RightThumbstickUp.txt
+
+#begin Text/EN/Input/Pad/RightTrigger.txt
+/copy:Text/EN/Input/Pad/RightTrigger.txt
+
+#begin Text/EN/Input/Pad/Start.txt
+/copy:Text/EN/Input/Pad/Start.txt
+
+#begin Text/EN/Input/Pad/X.txt
+/copy:Text/EN/Input/Pad/X.txt
+
+#begin Text/EN/Input/Pad/Y.txt
+/copy:Text/EN/Input/Pad/Y.txt
+
+#begin Text/EN/Input/Actions/ArnoldDown.txt
+/copy:Text/EN/Input/Actions/ArnoldDown.txt
+
+#begin Text/EN/Input/Actions/ArnoldJump.txt
+/copy:Text/EN/Input/Actions/ArnoldJump.txt
+
+#begin Text/EN/Input/Actions/ArnoldLeft.txt
+/copy:Text/EN/Input/Actions/ArnoldLeft.txt
+
+#begin Text/EN/Input/Actions/ArnoldRight.txt
+/copy:Text/EN/Input/Actions/ArnoldRight.txt
+
+#begin Text/EN/Input/Actions/ArnoldUp.txt
+/copy:Text/EN/Input/Actions/ArnoldUp.txt
+
+#begin Text/EN/Input/Actions/Confirm.txt
+/copy:Text/EN/Input/Actions/Confirm.txt
+
+#begin Text/EN/Input/Actions/Pause.txt
+/copy:Text/EN/Input/Actions/Pause.txt
+
+#begin Text/EN/Input/Actions/RestartLevel.txt
+/copy:Text/EN/Input/Actions/RestartLevel.txt
+
+#begin Text/EN/Input/Actions/UseItem.txt
+/copy:Text/EN/Input/Actions/UseItem.txt
+
+#begin Text/EN/UI/Menu/FullscreenOption.txt
+/copy:Text/EN/UI/Menu/FullscreenOption.txt
+
+#begin Text/EN/UI/Menu/FullscreenOptionDesc.txt
+/copy:Text/EN/UI/Menu/FullscreenOptionDesc.txt
+

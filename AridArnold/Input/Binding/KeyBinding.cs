@@ -44,6 +44,11 @@
 			return InputBindingType.kKeyboard;
 		}
 
+		public override BindingCategory GetBindingCategory()
+		{
+			return BindingCategory.kKeyboard;
+		}
+
 		public override void WriteFromBinary(BinaryWriter bw)
 		{
 			bw.Write((int)mInputKey);

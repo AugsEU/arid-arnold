@@ -1,1 +1,2 @@
-Stretch the image to fit the screen. May cause distortion, not recommended.
+Set how the game is displayed.
+Distort the image to fit the screen maximally. Not recommended.

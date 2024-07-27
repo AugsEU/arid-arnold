@@ -210,5 +210,35 @@ namespace AridArnold
 			Array.Copy(source, startIndex, result, 0, length);
 			return result;
 		}
+
+
+
+		/// <summary>
+		/// Get the first element in curr that isn't in prev. O(n^2)
+		/// </summary>
+		public static T GetFirstNewElement<T>(T[] curr, T[] prev)
+		{
+			foreach (T currElement in curr)
+			{
+				bool isNewElement = true;
+
+				foreach (T prevElement in prev)
+				{
+					if (currElement.Equals(prevElement))
+					{
+						isNewElement = false;
+						break;
+					}
+				}
+
+				if (isNewElement)
+				{
+					return currElement;
+				}
+			}
+
+			// Return default value for type T, typically null for reference types or default(T) for value types
+			return default(T);
+		}
 	}
 }
