@@ -42,7 +42,7 @@
 			}
 
 			float distFromFreezePoint = (mousePos - mMouseFreezePos).Length();
-			if (mMouseFreezePos == Vector2.Zero || distFromFreezePoint > FREEZE_UNLOCK_DIST)
+			if ((mMouseFreezePos == Vector2.Zero || distFromFreezePoint > FREEZE_UNLOCK_DIST) && !IsBlockedOut())
 			{
 				if (mouseIntersect)
 				{

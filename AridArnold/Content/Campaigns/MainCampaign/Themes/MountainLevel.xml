@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <theme>
-	<name>The Lost Kingdom</name>
+	<name>Lost Kingdom</name>
 	<exitColour>3E3E3E</exitColour>
 	<path from="Wall">../Blank</path>
 	<path from="WallSecondary">../Blank</path>

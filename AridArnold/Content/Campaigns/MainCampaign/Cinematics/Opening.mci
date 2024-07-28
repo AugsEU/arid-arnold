@@ -69,16 +69,16 @@
 			<x>329</x>
 			<y>432</y>
 		</CC_SetActorProps>
-		<CC_AnimActor frames="0,6760">
+		<CC_AnimActor frames="0,7650">
 			<actor>Fire1</actor>
 			<anim>BG/Steamplant/BirthFire.max</anim>
 		</CC_AnimActor>
 
 		<!-- Setup -->
-		<CC_DisplayLayout frames="0,6760">
+		<CC_DisplayLayout frames="0,7650">
 			<layout>BG/SteamPlant/SteamPlant.mlo</layout>
 		</CC_DisplayLayout>
-		<CC_DisplayLayout frames="0,6760">
+		<CC_DisplayLayout frames="0,7650">
 			<layout>BG/Cinematics/OpeningBG.mlo</layout>
 		</CC_DisplayLayout>
 
@@ -93,7 +93,7 @@
 			<anim>NPC/BoilerMan/Idle.mia</anim>
 		</CC_IdleAnimActor>
 
-		<CC_SetActorProps frames="0,6760">
+		<CC_SetActorProps frames="0,7650">
 			<actor>BossMan</actor>
 			<x>287</x>
 			<y>126</y>
@@ -140,7 +140,7 @@
 		</CC_SetActorProps>
 
 		<!-- Boss: What's the issue? -->
-		<CC_SpawnTextbox frames="580">
+		<CC_SpawnTextbox frames="560">
 			<actor>BossMan</actor>
 			<mouthOpen>NPC/BossMan/TalkNormal</mouthOpen>
 			<mouthClosed>NPC/BossMan/Default</mouthClosed>
@@ -155,7 +155,7 @@
 		</CC_SpawnTextbox>
 
 		<!-- Boiler: Looks like we are out of water -->
-		<CC_SpawnTextbox frames="730">
+		<CC_SpawnTextbox frames="710">
 			<actor>BoilerMan</actor>
 			<mouthOpen>NPC/BoilerMan/TurnTalk1</mouthOpen>
 			<mouthClosed>NPC/BoilerMan/TurnTalk2</mouthClosed>
@@ -169,16 +169,10 @@
 		</CC_SpawnTextbox>
 
 		<!-- Boss: WHAAT?! -->
-		<CC_AnimActor frames="900,970">
+		<CC_SpawnTextbox frames="900">
 			<actor>BossMan</actor>
-			<anim>NPC/BossMan/JumpShout.max</anim>
-		</CC_AnimActor>
-		<CC_AnimActor frames="970,1240">
-			<actor>BossMan</actor>
-			<anim>NPC/BossMan/Talk.max</anim>
-		</CC_AnimActor>
-		<CC_SpawnTextbox frames="920">
-			<actor>BossMan</actor>
+			<mouthOpen>NPC/BossMan/TalkNormal</mouthOpen>
+			<mouthClosed>NPC/BossMan/Default</mouthClosed>
 
 			<text>NPC.BossMan.WhatJiggery</text>
 			<x>165</x>
@@ -188,9 +182,13 @@
 			<fillColor>0F102DA0</fillColor>
 			<flipSpike></flipSpike>
 		</CC_SpawnTextbox>
+		<CC_AnimActor frames="900,970">
+			<actor>BossMan</actor>
+			<anim>NPC/BossMan/JumpShout.max</anim>
+		</CC_AnimActor>
 
 		<!-- Boiler: I don't know what to tell you -->
-		<CC_SpawnTextbox frames="1350">
+		<CC_SpawnTextbox frames="1310">
 			<actor>BoilerMan</actor>
 			<mouthOpen>NPC/BoilerMan/TurnTalk1</mouthOpen>
 			<mouthClosed>NPC/BoilerMan/TurnTalk2</mouthClosed>
@@ -204,27 +202,27 @@
 		</CC_SpawnTextbox>
 
 		<!-- Strange noise, both look around -->
-		<CC_AnimActor frames="1600,1760">
+		<CC_AnimActor frames="1570,1730">
 			<actor>BoilerMan</actor>
 			<anim>NPC/BoilerMan/LookAround.max</anim>
 		</CC_AnimActor>
-		<CC_AnimActor frames="1600,1760">
+		<CC_AnimActor frames="1570,1730">
 			<actor>BossMan</actor>
 			<anim>NPC/BossMan/LookAround.max</anim>
 		</CC_AnimActor>
 
 		<!-- Set both looking right -->
-		<CC_SetActorProps frames="1770">
+		<CC_SetActorProps frames="1740">
 			<actor>BossMan</actor>
 			<facing>right</facing>
 		</CC_SetActorProps>
-		<CC_SetActorProps frames="1770">
+		<CC_SetActorProps frames="1740">
 			<actor>BoilerMan</actor>
 			<tex>NPC/BoilerMan/TurnTalk2</tex>
 		</CC_SetActorProps>
 
 		<!-- Camera pan -->
-		<CC_CameraLerp frames = "1620,1820">
+		<CC_CameraLerp frames = "1590,1790">
 			<start>
 				<x>-218</x>
 				<y>-185</y>
@@ -238,24 +236,24 @@
 		</CC_CameraLerp>
 
 		<!-- Barbara flies down -->
-		<CC_AnimActor frames="1720,1970">
+		<CC_AnimActor frames="1690,1940">
 			<actor>Barbara</actor>
 			<anim>NPC/Barbara/Fall.max</anim>
 		</CC_AnimActor>
-		<CC_ActorLeafFall frames="1720">
+		<CC_ActorLeafFall frames="1690">
 			<actor>Barbara</actor>
 			<x>360</x>
 			<y>0</y>
 			<yStop>127</yStop>
 		</CC_ActorLeafFall>
-		<CC_SetActorProps frames="1970">
+		<CC_SetActorProps frames="1940">
 			<actor>Barbara</actor>
 			<tex>NPC/Barbara/Land1</tex>
 			<facing>left</facing>
 		</CC_SetActorProps>
 
 		<!-- Barbara lands -->
-		<CC_SetActorProps frames="2000,6760">
+		<CC_SetActorProps frames="1970,7650">
 			<actor>Barbara</actor>
 			<tex>NPC/Barbara/Default</tex>
 			<facing>left</facing>
@@ -263,7 +261,7 @@
 
 
 		<!-- Barbara: I can get you your water -->
-		<CC_SpawnTextbox frames="2060">
+		<CC_SpawnTextbox frames="2010">
 			<actor>Barbara</actor>
 			<mouthOpen>NPC/Barbara/TalkNormal</mouthOpen>
 			<mouthClosed>NPC/Barbara/Default</mouthClosed>
@@ -278,7 +276,7 @@
 		</CC_SpawnTextbox>
 
 		<!-- Boss: Who are you? -->
-		<CC_SpawnTextbox frames="2210">
+		<CC_SpawnTextbox frames="2140">
 			<actor>BossMan</actor>
 			<mouthOpen>NPC/BossMan/TalkNormal</mouthOpen>
 			<mouthClosed>NPC/BossMan/Default</mouthClosed>
@@ -292,7 +290,7 @@
 		</CC_SpawnTextbox>
 
 		<!-- Barbara: Intro -->
-		<CC_SpawnTextbox frames="2360">
+		<CC_SpawnTextbox frames="2270">
 			<actor>Barbara</actor>
 			<mouthOpen>NPC/Barbara/TalkNormal</mouthOpen>
 			<mouthClosed>NPC/Barbara/Default</mouthClosed>
@@ -301,13 +299,14 @@
 			<x>225</x>
 			<y>115</y>
 			<spike>160</spike>
+			<framesPerLetter>4</framesPerLetter>
 			<borderColor>7325C6</borderColor>
 			<fillColor>2A1223A0</fillColor>
 			<flipSpike></flipSpike>
 		</CC_SpawnTextbox>
 
 		<!-- Boss: Summon the man -->
-		<CC_SpawnTextbox frames="3960">
+		<CC_SpawnTextbox frames="3785">
 			<actor>BossMan</actor>
 			<mouthOpen>NPC/BossMan/TalkNormal</mouthOpen>
 			<mouthClosed>NPC/BossMan/Default</mouthClosed>
@@ -319,33 +318,33 @@
 			<borderColor>3D41B5</borderColor>
 			<fillColor>0F102DA0</fillColor>
 		</CC_SpawnTextbox>
-		<CC_AnimActor frames="3950,3974">
+		<CC_AnimActor frames="3785,3810">
 			<actor>BossMan</actor>
 			<anim>NPC/BossMan/JumpShout.max</anim>
 		</CC_AnimActor>
 
 		<!-- Fade to black and back -->
-		<CC_BlackFade frames="4900,5050">
+		<CC_BlackFade frames="4590,4740">
 			<type>ToBlackTo</type>
 		</CC_BlackFade>
-		<CC_CameraSet frames="4975">
+		<CC_CameraSet frames="4665">
 			<x>-100</x>
 			<y>120</y>
 			<zoom>4.0</zoom>
 		</CC_CameraSet>
-		<CC_SetActorProps frames="4975,6760">
+		<CC_SetActorProps frames="4665,7650">
 			<actor>BossMan</actor>
 			<facing>right</facing>
 			<x>314</x>
 			<y>414</y>
 		</CC_SetActorProps>
-		<CC_SetActorProps frames="4975,6760">
+		<CC_SetActorProps frames="4665,7650">
 			<actor>Barbara</actor>
 			<facing>left</facing>
 			<x>410</x>
 			<y>415</y>
 		</CC_SetActorProps>
-		<CC_SetActorProps frames="4975">
+		<CC_SetActorProps frames="4665">
 			<actor>Arnold</actor>
 			<facing>right</facing>
 			<tex>Arnold/ArnoldStand</tex>
@@ -354,7 +353,7 @@
 		</CC_SetActorProps>
 
 		<!-- Arnold Summoning -->
-		<CC_SpawnTextbox frames="5150">
+		<CC_SpawnTextbox frames="4790">
 			<actor>Barbara</actor>
 			<mouthOpen>NPC/Barbara/TalkNormal</mouthOpen>
 			<mouthClosed>NPC/Barbara/Default</mouthClosed>
@@ -363,11 +362,12 @@
 			<x>275</x>
 			<y>405</y>
 			<spike>135</spike>
+			<framesPerLetter>4</framesPerLetter>
 			<borderColor>7325C6</borderColor>
 			<fillColor>2A1223A0</fillColor>
 			<flipSpike></flipSpike>
 		</CC_SpawnTextbox>
-		<CC_LerpActorPos frames="5400,5600">
+		<CC_LerpActorPos frames="5040,5300">
 			<actor>Arnold</actor>
 			<start>
 				<x>365</x>
@@ -378,12 +378,27 @@
 				<y>434</y>
 			</end>
 		</CC_LerpActorPos>
-		<CC_AnimActor frames="5470,6700">
+		<CC_AnimActor frames="5100,6000">
 			<actor>BossMan</actor>
 			<anim>NPC/BossMan/JumpShout.max</anim>
 		</CC_AnimActor>
 
-		<CC_BlackFade frames="6700,6760">
+		<!-- Welcome aboard arnold. -->
+		<CC_SpawnTextbox frames="6100">
+			<actor>BossMan</actor>
+			<mouthOpen>NPC/BossMan/TalkNormal</mouthOpen>
+			<mouthClosed>NPC/BossMan/Default</mouthClosed>
+
+			<text>NPC.BossMan.HireArnold</text>
+			<x>275</x>
+			<y>405</y>
+			<spike>55</spike>
+			<framesPerLetter>4</framesPerLetter>
+			<borderColor>3D41B5</borderColor>
+			<fillColor>0F102DA0</fillColor>
+		</CC_SpawnTextbox>
+
+		<CC_BlackFade frames="7500,7650">
 			<type>ToBlack</type>
 		</CC_BlackFade>
 

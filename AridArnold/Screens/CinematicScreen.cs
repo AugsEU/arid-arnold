@@ -82,9 +82,20 @@ namespace AridArnold
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
 			StartScreenSpriteBatch(info);
+
 			mCurrentCinematic.Draw(info);
 			FXManager.I.Draw(info);
+
+#if NO_DEBUG
+			CameraSpec screenCamSpec = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera).GetCurrentSpec();
+			string frameStr = string.Format("FR: {0}", mCurrentCinematic.GetFrameFromElapsedTime());
+			Vector2 textPos = screenCamSpec.mPosition + new Vector2(97.0f, 57.0f) * screenCamSpec.mZoom;
+			MonoDraw.DrawDebugText(info, frameStr, textPos);
+#endif // DEBUG
+
 			EndScreenSpriteBatch(info);
+
+
 
 			return mScreenTarget;
 		}

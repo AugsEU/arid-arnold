@@ -14431,3 +14431,9 @@
 #begin BG/SteamPlant/SteamPlantIntro.mlo
 /copy:BG/SteamPlant/SteamPlantIntro.mlo
 
+#begin Text/EN/NPC/BossMan/HireArnold.txt
+/copy:Text/EN/NPC/BossMan/HireArnold.txt
+
+#begin Text/EN/UI/Menu/Browse.txt
+/copy:Text/EN/UI/Menu/Browse.txt
+

@@ -1,5 +1,7 @@
 ﻿
 
+using static AridArnold.EMField;
+
 namespace AridArnold
 {
 	/// <summary>
@@ -7,18 +9,27 @@ namespace AridArnold
 	/// </summary>
 	abstract class NavElement : LayElement
 	{
+		public enum NavDir
+		{
+			kUp = 0,
+			kDown,
+			kLeft,
+			kRight
+		}
+
 		// Elements we can navigate to
-		protected string mUpNavID;
-		protected string mDownNavID;
-		protected string mLeftNavID;
-		protected string mRightNavID;
+		protected string[] mNavIDs;
+
+		protected bool mBlockedOut;
 
 		public NavElement(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
-			mUpNavID = MonoParse.GetString(rootNode["up"]);
-			mDownNavID = MonoParse.GetString(rootNode["down"]);
-			mLeftNavID = MonoParse.GetString(rootNode["left"]);
-			mRightNavID = MonoParse.GetString(rootNode["right"]);
+			mNavIDs = new string[4];
+
+			mNavIDs[(int)NavDir.kUp] = MonoParse.GetString(rootNode["up"]);
+			mNavIDs[(int)NavDir.kDown] = MonoParse.GetString(rootNode["down"]);
+			mNavIDs[(int)NavDir.kLeft] = MonoParse.GetString(rootNode["left"]);
+			mNavIDs[(int)NavDir.kRight] = MonoParse.GetString(rootNode["right"]);
 
 			// Select me if none selected.
 			NavElement selectedElement = parent.GetSelectedElement();
@@ -30,26 +41,28 @@ namespace AridArnold
 
 		public NavElement(string id, Vector2 pos, Layout parent) : base(id, pos, parent)
 		{
-			mUpNavID = "";
-			mDownNavID = "";
-			mLeftNavID = "";
-			mRightNavID = "";
+			mNavIDs = new string[4];
+			for (int i = 0; i < mNavIDs.Length; i++)
+			{
+				mNavIDs[i] = "";
+			}
 		}
 
 
 		public override void Update(GameTime gameTime)
 		{
-			CheckNavigation(BindingGang.SysUp, mUpNavID);
-			CheckNavigation(BindingGang.SysDown, mDownNavID);
-			CheckNavigation(BindingGang.SysLeft, mLeftNavID);
-			CheckNavigation(BindingGang.SysRight, mRightNavID);
+			CheckNavigation(BindingGang.SysUp, NavDir.kUp);
+			CheckNavigation(BindingGang.SysDown, NavDir.kDown);
+			CheckNavigation(BindingGang.SysLeft, NavDir.kLeft);
+			CheckNavigation(BindingGang.SysRight, NavDir.kRight);
 
 			base.Update(gameTime);
 		}
 
-		void CheckNavigation(BindingGang gang, string navElementID)
+		void CheckNavigation(BindingGang gang, NavDir dir)
 		{
-			if(!IsSelected() || navElementID.Length == 0)
+			string navElementID = mNavIDs[(int)dir];
+			if (!IsSelected() || navElementID.Length == 0)
 			{
 				// Not selected, don't do nav
 				return;
@@ -57,8 +70,29 @@ namespace AridArnold
 
 			if (InputManager.I.AnyGangPressed(gang))
 			{
-				GetParent().SetSelectedElement(navElementID);
+				NavElement nextElement = (NavElement)GetParent().GetElementByID(navElementID);
+				
+				while (nextElement is not null && nextElement.mBlockedOut)
+				{
+					nextElement = nextElement.GetLinkedElement(dir);
+				}
+
+				if (nextElement is not null)
+				{
+					GetParent().SetSelectedElement(nextElement);
+				}
 			}
+		}
+
+		public NavElement GetLinkedElement(NavDir dir)
+		{
+			string strID = mNavIDs[(int)dir];
+			if(strID.Length == 0)
+			{
+				return null;
+			}
+
+			return (NavElement)GetParent().GetElementByID(strID);
 		}
 
 		public bool IsSelected()
@@ -66,33 +100,20 @@ namespace AridArnold
 			return object.ReferenceEquals(GetParent().GetSelectedElement(), this);
 		}
 
-		public void LinkUp(string upId)
+		public bool IsBlockedOut()
 		{
-			mUpNavID = upId;
+			return mBlockedOut;
 		}
 
-		public void LinkDown(string downId)
+		public void Link(NavDir navDir, string id)
 		{
-			mDownNavID = downId;
+			mNavIDs[(int)navDir] = id;
 		}
 
-		public void LinkLeft(string leftId)
+		public void LinkUpDown(NavElement up, NavElement down)
 		{
-			mLeftNavID = leftId;
-		}
-
-		public void LinkRight(string rightId)
-		{
-			mRightNavID = rightId;
-		}
-
-		public void Link(NavElement up, NavElement down)
-		{
-			up.LinkDown(GetID());
-			mUpNavID = up.GetID();
-
-			mDownNavID = down.GetID();
-			down.LinkUp(GetID());
+			mNavIDs[(int)NavDir.kUp] = up is not null ? up.GetID() : "";
+			mNavIDs[(int)NavDir.kDown] = down is not null ? down.GetID() : "";
 		}
 	}
 }

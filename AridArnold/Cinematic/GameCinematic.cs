@@ -11,7 +11,7 @@ namespace AridArnold
 
 
 #if DEBUG
-		const int DEBUG_FRAME_SKIP = 0;
+		const int DEBUG_FRAME_SKIP = 6100;
 #endif
 
 		#endregion rConstant
@@ -165,7 +165,7 @@ namespace AridArnold
 		/// </summary>
 		public void Update(GameTime gameTime)
 		{
-			if (!mIsPlaying) return;
+			if (!mIsPlaying || gameTime.ElapsedGameTime.TotalMilliseconds <= 1.0) return;
 
 			foreach(CinematicActor cinematicActor in mActors)
 			{
@@ -261,7 +261,6 @@ namespace AridArnold
 			{
 				return;
 			}
-			//MonoDraw.DrawDebugText(info, "FR: " + frameNum.ToString(), new Vector2(260.0f, 420.0f));
 
 			foreach (CinematicCommand command in mCommands)
 			{
@@ -310,7 +309,7 @@ namespace AridArnold
 		/// <summary>
 		/// Get the frame we should be on given the time we have spent watching.
 		/// </summary>
-		int GetFrameFromElapsedTime()
+		public int GetFrameFromElapsedTime()
 		{
 			return (int)(mElapsedTime * CINE_FRAME_RATE + 0.0001); // Calculate frame we should be on.
 		}

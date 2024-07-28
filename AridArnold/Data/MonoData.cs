@@ -289,7 +289,7 @@ namespace AridArnold
 			string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
 			string invalidRegStr = string.Format(@"[{0}]+", invalidChars);
 
-			return Regex.Replace(fileName, invalidRegStr, "S");
+			return Regex.Replace(fileName, invalidRegStr, "");
 		}
 
 		#endregion rPaths

@@ -39,6 +39,11 @@ namespace AridArnold
 			mWorldReachedList = new List<WorldReachedInfo>();
 		}
 
+		public List<WorldReachedInfo> GetWorldReachedList()
+		{
+			return mWorldReachedList;
+		}
+
 		protected override void ReadBinary(BinaryReader br)
 		{
 			string magic = br.ReadString();

@@ -292,7 +292,7 @@ namespace AridArnold
 					mMenuLayout.SetSelectedElement("newGameBtn");
 					break;
 				case MainMenuArea.kNewGameArea:
-					mMenuLayout.SetSelectedElement("speedRunOpt");
+					mMenuLayout.SetSelectedElement("profileNameOpt");
 					break;
 				case MainMenuArea.kLoadGameArea:
 					mMenuLayout.SetSelectedElement("saveFileLstTop");

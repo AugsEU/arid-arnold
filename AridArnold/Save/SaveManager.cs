@@ -91,6 +91,11 @@
 
 		#region rGlobal
 
+		public GlobalSaveInfo GetGlobalSaveInfo()
+		{
+			return mGlobalSaveInfo;
+		}
+
 		/// <summary>
 		/// Save the global settings
 		/// </summary>

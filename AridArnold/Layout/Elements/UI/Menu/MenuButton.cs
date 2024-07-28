@@ -10,6 +10,7 @@ namespace AridArnold
 			kDefault,
 			kHover,
 			kPress,
+			kBlocked,
 			NumHoverStates
 		}
 
@@ -155,7 +156,7 @@ namespace AridArnold
 		/// </summary>
 		protected virtual bool AllowClick()
 		{
-			return true;
+			return !IsBlockedOut();
 		}
 
 		#endregion rUpdate
@@ -244,6 +245,7 @@ namespace AridArnold
 					return mDefaultColor;
 				case HoverState.kHover:
 					return mHoverColor;
+				case HoverState.kBlocked:
 				case HoverState.kPress:
 					Color newColor = mHoverColor * 0.2f;
 					newColor.A = mHoverColor.A;
@@ -266,6 +268,11 @@ namespace AridArnold
 		/// </summary>
 		protected HoverState GetHoverState()
 		{
+			if (IsBlockedOut())
+			{
+				return HoverState.kBlocked;
+			}
+
 			if (mClickTimer.IsPlaying())
 			{
 				return HoverState.kPress;

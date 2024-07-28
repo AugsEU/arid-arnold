@@ -48,8 +48,8 @@ namespace AridArnold
 
 			mUpArrow = new ScrollArrow(rootNode, parent, this, true);
 			mDownArrow = new ScrollArrow(rootNode, parent, this, false);
-			mUpArrow.LinkDown(GenerateChildId(0, 2));
-			mDownArrow.LinkUp(GenerateChildId(1, 2));
+			mUpArrow.Link(NavElement.NavDir.kDown, GenerateChildId(0, 2));
+			mDownArrow.Link(NavElement.NavDir.kUp, GenerateChildId(1, 2));
 			GetParent().AddChildDirect(mUpArrow);
 			GetParent().AddChildDirect(mDownArrow);
 
@@ -74,18 +74,18 @@ namespace AridArnold
 		/// </summary>
 		public void LinkAllElements()
 		{
-			if(mChildren.Count >= 1)
+			for(int i = 0; i < mChildren.Count; i++)
 			{
-				mChildren[0].LinkUp(mUpNav);
-				mChildren[mChildren.Count - 1].LinkDown(mDownNav);
+				HitBoxNavElement prevElement = i > 0 ? mChildren[i - 1] : null;
+				HitBoxNavElement nextElement = i < mChildren.Count - 1 ? mChildren[i + 1] : null;
+
+				mChildren[i].LinkUpDown(prevElement, nextElement);
 			}
 
-			for(int i = 1; i < mChildren.Count - 1; i++)
+			if (mChildren.Count >= 1)
 			{
-				HitBoxNavElement prevElement = mChildren[i - 1];
-				HitBoxNavElement nextElement = mChildren[i + 1];
-
-				mChildren[i].Link(prevElement, nextElement);
+				mChildren[0].Link(NavElement.NavDir.kUp, mUpNav);
+				mChildren[mChildren.Count - 1].Link(NavElement.NavDir.kDown, mDownNav);
 			}
 		}
 
@@ -303,11 +303,12 @@ namespace AridArnold
 		{
 			string baseId = GetID();
 
+			
 			if (index == 0)
 			{
 				return string.Format("{0}Top", baseId);
 			}
-			else if(index == count - 1)
+			else if (index == count - 1)
 			{
 				return string.Format("{0}Bottom", baseId);
 			}

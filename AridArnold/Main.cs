@@ -124,8 +124,13 @@
 			if (BF.DEBUG_LOADER)
 			{
 				// Temp
-				CampaignManager.I.BeginCampaign("MainCampaign");
-				ScreenManager.I.ActivateScreen(ScreenType.Game);
+				//CampaignManager.I.BeginCampaign("MainCampaign");
+				//ScreenManager.I.ActivateScreen(ScreenType.Game);
+
+				GameCinematic myCine = new GameCinematic("Content/Campaigns/MainCampaign/Cinematics/Opening.mci");
+				CinematicScreen cinematicScreen = ScreenManager.I.GetScreen(ScreenType.CinematicScreen) as CinematicScreen;
+				cinematicScreen.StartCinematic(myCine, ScreenManager.I.GetActiveScreenType());
+				ScreenManager.I.ActivateScreen(ScreenType.CinematicScreen);
 			}
 			else
 			{

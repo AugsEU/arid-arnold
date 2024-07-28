@@ -21,7 +21,7 @@
 				ret.mWidth = 230.1f;
 				ret.mLeading = 8.0f;
 				ret.mKerning = 1.0f;
-				ret.mScrollSpeed = 0.85f;
+				ret.mScrollSpeed = 1.0f;
 				ret.mFramesPerLetter = 3;
 				ret.mFillColor = new Color(0, 10, 20, 200);
 				ret.mBorderColor = new Color(56, 89, 122);
@@ -178,7 +178,7 @@
 		/// </summary>
 		void ScrollLettersUp(float dt)
 		{
-			float dy = -dt * mStyle.mScrollSpeed;
+			float dy = -dt * CalcScrollSpeed(dt);
 
 			foreach (SpeechBoxLetter letter in mLetters)
 			{
@@ -208,7 +208,8 @@
 
 
 		/// <summary>
-		/// Calculate the scroll speed
+		/// Calculate the scroll speed. The idea is that if we are going to run out of space we should speed things up a bit.
+		/// Or if we have too much space, slow things down.
 		/// </summary>
 		float CalcScrollSpeed(float dt)
 		{
@@ -216,6 +217,16 @@
 			if (IsTextFinished())
 			{
 				return baseSpeed;
+			}
+
+			float linesOverrunning = mCharHead.Y / GetNewLineSize() + 1.0f;
+			if(linesOverrunning >= -0.3f)
+			{
+				baseSpeed *= 1.0f + MonoMath.SquashToRange(linesOverrunning + 0.3f, 0.0f, 1.2f);
+			}
+			else if(linesOverrunning < -1.2f)
+			{
+				baseSpeed *= 0.7f;
 			}
 
 			return baseSpeed;

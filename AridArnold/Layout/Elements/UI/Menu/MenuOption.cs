@@ -172,6 +172,12 @@
 			string modText = mDisplayText;
 			Color textColor = IsSelected() ? mHoverColor : mDefaultColor;
 
+			if(mBlockedOut)
+			{
+				textColor = mHoverColor * 0.2f;
+				textColor.A = mHoverColor.A;
+			}
+
 			textPos.X += mFont.MeasureString(modText).X * 0.5f;
 			textPos.Y += mSize.Y * 0.5f;
 
