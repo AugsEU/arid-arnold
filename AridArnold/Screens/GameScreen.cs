@@ -71,6 +71,8 @@
 		public override void OnActivate()
 		{
 			mFadeInFx = new FadeFX(new ScreenStars(10.0f, SCREEN_RECTANGLE));
+
+			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			mPauseMenu.Close();
 		}
 

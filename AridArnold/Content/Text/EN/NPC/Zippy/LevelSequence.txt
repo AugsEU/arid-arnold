@@ -1,3 +1,5 @@
 ﻿Name's <γ>Zippy<ψ>, you look new around here. Like you were born yesterday, no no like you were born today!
-Well let me give you a tip: if you see a door with a number on it, that number corresponds to how many levels are behind that door.
-So if a door has a 3 on it, it means there's 3 levels behind that door. If you run out of lives you get kicked out, but if you complete all 3 levels you get to keep the rewards.
+Well let me give you a tip: if you see a door with a number on it, that number is how many levels are behind that door.
+
+So if a door has a 3 on it, it means there's 3 levels behind that door. If you run out of lives you get kicked out, but if you complete the levels you get to keep the rewards.
+Alls you have to do is press [{Key.Confirm}] to open them then you're off to the races my boy. 
