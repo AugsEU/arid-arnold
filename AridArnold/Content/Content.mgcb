@@ -14443,3 +14443,24 @@
 #begin Text/EN/NPC/BossMan/TalkToBarbara.txt
 /copy:Text/EN/NPC/BossMan/TalkToBarbara.txt
 
+#begin Campaigns/MainCampaign/Levels/0917.aux
+/copy:Campaigns/MainCampaign/Levels/0917.aux
+
+#begin Campaigns/MainCampaign/Levels/0917.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0917.png
+
+#begin Campaigns/MainCampaign/Levels/0918.aux
+/copy:Campaigns/MainCampaign/Levels/0918.aux
+
+#begin Campaigns/MainCampaign/Levels/0918.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/0918.png
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
+

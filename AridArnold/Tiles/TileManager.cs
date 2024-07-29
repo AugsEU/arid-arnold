@@ -134,7 +134,9 @@
 					case 0x303030u:
 						return new FakeTile(position);
 					case 0xA9A9A9u:
-						return new AnimatedPlatformTile((CardinalDirection)param, position);
+						return new AnimatedPlatformTile((CardinalDirection)param, position, "Platform");
+					case 0xAFAFAFu:
+						return new AnimatedPlatformTile((CardinalDirection)param, position, "OtherWorldPlatform");
 					//Collectable
 					case 0x0000FFu:
 						return new WaterBottleTile(position);

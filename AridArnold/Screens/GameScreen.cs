@@ -26,7 +26,6 @@
 
 		RenderTarget2D mGameArea;
 		private PercentageTimer mLevelEndTimer;
-
 		LoadingSequence mLoadSequence;
 
 		Layout mMainUI;
@@ -316,7 +315,7 @@
 			mLevelEndTimer.FullReset();
 		}
 
-#endregion rUpdate
+		#endregion rUpdate
 
 
 

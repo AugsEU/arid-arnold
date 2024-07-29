@@ -465,7 +465,10 @@
 		{
 			if (mOnGround && mUseItemTimer.IsPlaying())
 			{
+				// Base position
 				Vector2 itemPos = mPosition + ITEM_OFFSET;
+
+				// Make item travel up a bit
 				itemPos.Y -= 6.0f * mUseItemTimer.GetPercentageF();
 
 				MonoDraw.DrawTextureDepth(info, mItemToUse.GetTexture(), itemPos, DrawLayer.Player);

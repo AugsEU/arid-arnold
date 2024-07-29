@@ -90,9 +90,10 @@
 		/// <summary>
 		/// Init Animated platform with position and rotation.
 		/// </summary>
-		public AnimatedPlatformTile(CardinalDirection rotation, Vector2 position) : base(rotation, position)
+		public AnimatedPlatformTile(CardinalDirection rotation, Vector2 position, string animPath) : base(rotation, position)
 		{
-
+			mAnimation = MonoData.I.LoadAnimator(animPath);
+			mAnimation.Play();
 		}
 
 		/// <summary>
@@ -100,8 +101,6 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mAnimation = MonoData.I.LoadAnimator("Platform");
-			mAnimation.Play();
 			base.LoadContent();
 		}
 
