@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>Heaven</name>
+	<exitColour>423F63</exitColour>
+	<path from="Wall">HeavenBlock</path>
+	<path from="WallSecondary">Marble</path>
+	<path from="Platform">HeavenPlatform</path>
+
+	<path from="OtherWorldWall">../Library/Wood</path>
+	<path from="OtherWorldPlatform">../Library/WoodPlatform</path>
+
+	<path from="NPC/FallinFarry/Farry1">../../NPC/BabyFarry/Baby1</path>
+	<path from="NPC/FallinFarry/Farry2">../../NPC/BabyFarry/Baby2</path>
+	<path from="NPC/FallinFarry/Farry3">../../NPC/BabyFarry/Baby1</path>
+	<path from="NPC/FallinFarry/Farry4">../../NPC/BabyFarry/Baby2</path>
+
+	<path from="CoinFull">GoldCoin</path>
+	<path from="CoinGhost">GoldGhost</path>
+
+	<path from="PlantPot/PillarBase">MarblePillarBase</path>
+	<path from="PlantPot/PillarMiddle">MarblePillarMiddle</path>
+	<path from="PlantPot/PillarTop">MarblePillarTop</path>
+</theme>

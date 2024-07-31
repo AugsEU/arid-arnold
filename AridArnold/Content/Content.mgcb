@@ -14464,3 +14464,27 @@
 #begin Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
 
+#begin NPC/BabyFarry/Baby1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/BabyFarry/Baby1.png
+
+#begin NPC/BabyFarry/Baby2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/BabyFarry/Baby2.png
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinLibrary.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinLibrary.xml
+
+#begin BG/Heaven/HeavenRot.mlo
+/copy:BG/Heaven/HeavenRot.mlo
+
+#begin BG/Heaven/HeavenRotBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Heaven/HeavenRotBG.png
+

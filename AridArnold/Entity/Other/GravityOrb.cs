@@ -23,6 +23,7 @@
 		float mFloatAngle;
 
 		CardinalDirection mGravityDir;
+		Entity mActivatingEntity;
 
 		#endregion rMembers
 
@@ -101,6 +102,19 @@
 			mPushVelocity -= (mPushDisplacement) * dt;
 			mPushVelocity *= 0.99f;
 			mPushDisplacement += dt * mPushVelocity;
+
+			if (mActivatingEntity is not null)
+			{
+				Rect2f ourCollider = ColliderBounds();
+				Rect2f theirCollider = mActivatingEntity.ColliderBounds();
+
+				if(!Collision2D.BoxVsBox(ourCollider, theirCollider))
+				{
+					// Release the lockout
+					mActivatingEntity = null;
+				}
+			}
+
 		}
 
 
@@ -129,7 +143,8 @@
 		/// </summary>
 		void SetActive(Entity activatingEntity)
 		{
-			if (!IsActive())
+			// Do not allow activation if the activating entity hasn't left our collider yet.
+			if (!IsActive() && mActivatingEntity is null)
 			{
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 				gameCam.QueueMovement(new ShakeAndRotateTo(10.0f, GetTurnToAngle()));
@@ -140,6 +155,8 @@
 				Vector2 entityCentrePos = activatingEntity.GetCentrePos();
 				Vector2 entityPos = activatingEntity.GetPos();
 				activatingEntity.SetPos(entityPos + (orbCentrePos - entityCentrePos) * 0.5f);
+
+				mActivatingEntity = activatingEntity;
 			}
 
 			sActiveDirection = mGravityDir;

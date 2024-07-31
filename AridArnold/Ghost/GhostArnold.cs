@@ -76,7 +76,7 @@
 		public override Color GetDrawColor()
 		{
 			//Slight green.
-			return new Color(0.0f, 0.4f, 0.0f, 0.9f);
+			return new Color(0.0f, 0.7f, 0.0f, 0.9f);
 		}
 
 		#endregion
