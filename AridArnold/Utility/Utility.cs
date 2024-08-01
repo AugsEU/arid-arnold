@@ -152,7 +152,6 @@
 				case CardinalDirection.Down:
 					return card == CardinalDirection.Left ? WalkDirection.Left : WalkDirection.Right;
 				case CardinalDirection.Right:
-					return card == CardinalDirection.Up ? WalkDirection.Right : WalkDirection.Left;
 				case CardinalDirection.Left:
 					return card == CardinalDirection.Up ? WalkDirection.Left : WalkDirection.Right;
 			}

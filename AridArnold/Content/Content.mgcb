@@ -14491,3 +14491,18 @@
 #begin Campaigns/MainCampaign/Themes/HeavenFinCave.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenFinCave.xml
 
+#begin Campaigns/MainCampaign/Themes/HeavenFinMirror.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinMirror.xml
+
+#begin Tiles/Heaven/CobbleHeaven.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/CobbleHeaven.png
+
+#begin Tiles/Heaven/HeavenTreePlatform.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/HeavenTreePlatform.png
+
