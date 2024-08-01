@@ -14488,3 +14488,6 @@
 /processorParam:PremultiplyAlpha=False
 /build:BG/Heaven/HeavenRotBG.png
 
+#begin Campaigns/MainCampaign/Themes/HeavenFinCave.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinCave.xml
+

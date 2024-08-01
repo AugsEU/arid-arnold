@@ -48,6 +48,8 @@
 			mStyle.mFillColor = new Color(50, 50, 0, 60);
 
 			mStoryRandom = new MonoRandom();
+			mStoryRandom.ChugNumber((int)pos.X);
+			mStoryRandom.ChugNumber((int)pos.Y);
 		}
 
 
