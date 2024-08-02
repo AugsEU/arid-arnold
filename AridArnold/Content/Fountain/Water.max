@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="repeat">
+	<texture time="0.14">Fountain/Water1</texture>
+	<texture time="0.14">Fountain/Water2</texture>
+	<texture time="0.14">Fountain/Water3</texture>
+	<texture time="0.14">Fountain/Water4</texture>
+</animation>

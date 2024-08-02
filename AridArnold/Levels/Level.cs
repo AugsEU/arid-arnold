@@ -111,6 +111,7 @@
 			// Reset camera
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 			gameCam.Reset();
+			GravityOrb.sActiveDirection = CardinalDirection.Down; // HACK: Down is the default direction.
 
 			// Inform others
 			GhostManager.I.StartLevel(this);

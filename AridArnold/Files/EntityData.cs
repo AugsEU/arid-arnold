@@ -48,6 +48,7 @@
 			kWorldCabinet,
 			kArcadeBuilding,
 			kManualReader,
+			kFountain,
 			kUtilityClassEnd
 		}
 

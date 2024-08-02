@@ -14512,3 +14512,39 @@
 #begin Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
 
+#begin Fountain/Base.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Fountain/Base.png
+
+#begin Fountain/Water.max
+/copy:Fountain/Water.max
+
+#begin Fountain/Water1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Fountain/Water1.png
+
+#begin Fountain/Water2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Fountain/Water2.png
+
+#begin Fountain/Water3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Fountain/Water3.png
+
+#begin Fountain/Water4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Fountain/Water4.png
+
+#begin Text/EN/InGame/Bathe.txt
+/copy:Text/EN/InGame/Bathe.txt
+

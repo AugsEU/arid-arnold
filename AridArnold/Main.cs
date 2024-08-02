@@ -154,18 +154,12 @@
 
 		#region rUpdate
 
-		static DateTime debugNow = DateTime.Now;
-
 		/// <summary>
 		/// Update game. It updates in fixed intervals, even if the frame time was way longer.
 		/// </summary>
 		/// <param name="gameTime"></param>
 		protected override void Update(GameTime gameTime)
 		{
-			//gameTime.ElapsedGameTime = TargetElapsedTime; This isn't needed with fixed time step
-
-			TimeSpan now = DateTime.Now - debugNow;
-
 			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
 			if (mSlowDownCount == 0)
 			{
@@ -481,6 +475,10 @@
 			FlagsManager.I.Init();
 			ItemManager.I.ResetToDefault();
 			FXManager.I.Clear();
+
+			// Reset statics
+			GravityOrb.sActiveDirection = CardinalDirection.Down;
+			Entity.sHandleHead = 0;
 		}
 
 		#endregion rUtility

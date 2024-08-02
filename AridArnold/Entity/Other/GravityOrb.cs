@@ -14,7 +14,7 @@
 
 		#region rMembers
 
-		static CardinalDirection sActiveDirection = CardinalDirection.Down;
+		public static CardinalDirection sActiveDirection = CardinalDirection.Down;
 		Texture2D mActiveTexture;
 		Texture2D mInactiveTexture;
 		Vector2 mPushDisplacement;

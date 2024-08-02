@@ -17,7 +17,7 @@
 		#region rMembers
 
 		// Keep track for IDs. Might be problems if you spawn 2^64 entities in a single play session.
-		static UInt64 sHandleHead = 0;
+		public static UInt64 sHandleHead = 0;
 
 		protected UInt64 mHandle;
 		protected Vector2 mPosition;
@@ -488,6 +488,9 @@
 					break;
 				case EntityData.EntityClass.kManualReader:
 					entity = new ManualReader(worldPosition);
+					break;
+				case EntityData.EntityClass.kFountain:
+					entity = new Fountain(worldPosition);
 					break;
 				default:
 					throw new NotImplementedException();
