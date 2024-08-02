@@ -14509,3 +14509,6 @@
 #begin Campaigns/MainCampaign/Themes/HeavenFinLab.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenFinLab.xml
 
+#begin Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
+

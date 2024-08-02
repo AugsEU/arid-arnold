@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>Heaven</name>
+	<exitColour>423F63</exitColour>
+	<path from="Wall">HeavenBlock</path>
+	<path from="WallSecondary">Marble</path>
+	<path from="Platform">HeavenPlatform</path>
+
+	<path from="OtherWorldWall">../WW7/Concrete</path>
+	<path from="OtherWorldPlatform">../WW7/Beam</path>
+
+	<path from="CoinFull">GoldCoin</path>
+	<path from="CoinGhost">GoldGhost</path>
+
+	<path from="PlantPot/PillarBase">MarblePillarBase</path>
+	<path from="PlantPot/PillarMiddle">MarblePillarMiddle</path>
+	<path from="PlantPot/PillarTop">MarblePillarTop</path>
+</theme>
