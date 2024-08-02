@@ -14506,3 +14506,6 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/Heaven/HeavenTreePlatform.png
 
+#begin Campaigns/MainCampaign/Themes/HeavenFinLab.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinLab.xml
+
