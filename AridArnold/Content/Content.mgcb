@@ -14548,3 +14548,45 @@
 #begin Text/EN/InGame/Bathe.txt
 /copy:Text/EN/InGame/Bathe.txt
 
+#begin Arnold/HorseJumpDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arnold/HorseJumpDown.png
+
+#begin Arnold/HorseJumpUp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arnold/HorseJumpUp.png
+
+#begin Arnold/HorseRun1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arnold/HorseRun1.png
+
+#begin Arnold/HorseRun2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arnold/HorseRun2.png
+
+#begin Arnold/HorseRun3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arnold/HorseRun3.png
+
+#begin Arnold/HorseRun4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arnold/HorseRun4.png
+
+#begin Arnold/HorseStand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Arnold/HorseStand.png
+

@@ -400,7 +400,7 @@
 			{
 				// Player
 				case EntityData.EntityClass.kArnold:
-					entity = new Arnold(worldPosition);
+					entity = new Arnold(worldPosition, data.mIntParams[0] != 0);
 					break;
 				case EntityData.EntityClass.kAndrold:
 					entity = new Androld(worldPosition);

@@ -36,6 +36,7 @@
 
 		protected MonoTexturePack mYoungTexturePack;
 		protected MonoTexturePack mOldTexturePack;
+		protected MonoTexturePack mHorseTexturePack;
 
 		//Various timers.
 		protected PercentageTimer mTimerSinceStart;
@@ -49,6 +50,9 @@
 		InputAction mRightKey;
 		InputAction mDownKey;
 
+		// Horse
+		bool mHorseMode;
+
 		#endregion rMembers
 
 
@@ -61,7 +65,7 @@
 		/// Construct Arnold from position
 		/// </summary>
 		/// <param name="pos">Starting position</param>
-		public Arnold(Vector2 pos) : base(pos, ARNOLD_WALK_SPEED, ARNOLD_JUMP_SPEED, ARNOLD_GRAVITY)
+		public Arnold(Vector2 pos, bool horseMode = false) : base(pos, ARNOLD_WALK_SPEED, ARNOLD_JUMP_SPEED, ARNOLD_GRAVITY)
 		{
 			mPrevDirection = WalkDirection.Right;
 
@@ -77,6 +81,13 @@
 			LayerOptIn(InteractionLayer.kPlayer);
 
 			SetDustIntensity(15.0f);
+
+			mHorseMode = horseMode;
+			if (horseMode)
+			{
+				mWalkSpeed = ARNOLD_WALK_SPEED * 2.0f;
+
+			}
 		}
 
 
@@ -105,6 +116,7 @@
 		{
 			mYoungTexturePack = new MonoTexturePack("Arnold/YoungArnold.mtp");
 			mOldTexturePack = new MonoTexturePack("Arnold/OldArnold.mtp");
+			mHorseTexturePack = new MonoTexturePack("Arnold/HorseMode.mtp");
 		}
 
 

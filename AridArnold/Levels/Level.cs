@@ -302,6 +302,8 @@
 					return new HubLevel(auxData, id);
 				case AuxData.LevelType.Empty:
 					return new EmptyLevel(auxData, id);
+				case AuxData.LevelType.Fountain:
+					return new FountainLevel(auxData, id);
 			}
 
 			throw new NotImplementedException();

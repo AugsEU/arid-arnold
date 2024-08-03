@@ -10,7 +10,8 @@
 			CollectKey,
 			Shop,
 			Hub,
-			Empty
+			Empty,
+			Fountain,
 		}
 
 		#endregion rTypes

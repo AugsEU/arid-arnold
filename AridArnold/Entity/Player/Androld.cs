@@ -11,7 +11,7 @@
 		/// Construct Androld from position
 		/// </summary>
 		/// <param name="pos">Starting position</param>
-		public Androld(Vector2 pos) : base(pos)
+		public Androld(Vector2 pos) : base(pos, false)
 		{
 			//Immediately complete this timer.
 			mTimerSinceStart.SetComplete();
