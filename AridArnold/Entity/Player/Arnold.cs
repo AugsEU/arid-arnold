@@ -17,6 +17,7 @@
 		const float ARNOLD_GRAVITY = 4.35f;
 		const float ARNOLD_JUMP_SPEED = 25.0f;
 		const float ARNOLD_AIR_SPEED_BOOST = 0.015f;
+		const float HORSE_WALK_SPEED = 20.0f;
 
 		static Vector2 ITEM_OFFSET = new Vector2(-2.0f, -15.0f);
 
@@ -85,8 +86,7 @@
 			mHorseMode = horseMode;
 			if (horseMode)
 			{
-				mWalkSpeed = ARNOLD_WALK_SPEED * 2.0f;
-
+				mWalkSpeed = HORSE_WALK_SPEED;
 			}
 		}
 
@@ -225,11 +225,11 @@
 			if (mOnGround == false)
 			{
 				SetPrevWalkDirFromVelocity();
-				mWalkSpeed = ARNOLD_WALK_SPEED + ARNOLD_AIR_SPEED_BOOST;
+				mWalkSpeed = (mHorseMode ? HORSE_WALK_SPEED : ARNOLD_WALK_SPEED) + ARNOLD_AIR_SPEED_BOOST;
 			}
 			else
 			{
-				mWalkSpeed = ARNOLD_WALK_SPEED;
+				mWalkSpeed = (mHorseMode ? HORSE_WALK_SPEED : ARNOLD_WALK_SPEED);
 			}
 
 			if (CheckOffScreenDeath())
@@ -375,6 +375,12 @@
 		/// </summary>
 		void RefreshTexturePack()
 		{
+			if(mHorseMode)
+			{
+				LoadTexturePack(mHorseTexturePack);
+				return;
+			}
+
 			switch (TimeZoneManager.I.GetCurrentPlayerAge())
 			{
 				case 0:
@@ -540,6 +546,13 @@
 		/// <returns>Collider bounds</returns>
 		public override Rect2f ColliderBounds()
 		{
+			// Hack for horse mode
+			if(mHorseMode)
+			{
+				Vector2 min = mPosition + new Vector2(2.0f, 3.0f);
+				return new Rect2f(min, 18.0f, 20.0f);
+			}
+
 			if (GetGravityDir() == CardinalDirection.Left || GetGravityDir() == CardinalDirection.Right)
 			{
 				return new Rect2f(mPosition, mPosition + new Vector2(mTexture.Height, mTexture.Width));

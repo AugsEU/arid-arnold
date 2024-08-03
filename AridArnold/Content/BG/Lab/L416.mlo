@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<element type="texture">
+		<x>0.0</x>
+		<y>0.0</y>
+		<depth>Background</depth>
+		<texture>BG/Lab/L416</texture>
+	</element>
+
+	<!-- Computer -->
+	<element type="IdleAnim"> 
+		<x>349.0</x>
+		<y>94.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Computer/Screen.mia</anim>
+	</element>
+
+	<!-- Beaker -->
+	<element type="Animator">
+		<x>116.0</x>
+		<y>172.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Beaker/Boiling.max</anim>
+	</element>
+
+	<!-- Bunsen -->
+	<element type="Animator">
+		<x>79.0</x>
+		<y>182.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/Bunsen/Boiling.max</anim>
+	</element>
+
+	<!-- Cold War Computer -->
+	<element type="IdleAnim"> 
+		<x>134.0</x>
+		<y>298.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/ColdComputer/RandScreen.mia</anim>
+	</element>
+
+	<!-- Washing Machine -->
+	<element type="Animator">
+		<x>471.0</x>
+		<y>460.0</y>
+		<depth>BackgroundElement</depth>
+		<anim>BG/Lab/WashingMachine/WashingMachine.max</anim>
+	</element>
+</root>

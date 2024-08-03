@@ -2301,6 +2301,93 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/ArnoldUseItem.png
 
+#begin Arnold/HorseJumpDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/HorseJumpDown.png
+
+#begin Arnold/HorseJumpUp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/HorseJumpUp.png
+
+#begin Arnold/HorseMode.mtp
+/copy:Arnold/HorseMode.mtp
+
+#begin Arnold/HorseRun1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/HorseRun1.png
+
+#begin Arnold/HorseRun2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/HorseRun2.png
+
+#begin Arnold/HorseRun3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/HorseRun3.png
+
+#begin Arnold/HorseRun4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/HorseRun4.png
+
+#begin Arnold/HorseStand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/HorseStand.png
+
 #begin Arnold/OldArnold.mtp
 /copy:Arnold/OldArnold.mtp
 
@@ -2477,6 +2564,21 @@
 
 #begin BG/Heaven/HeavenHub.mlo
 /copy:BG/Heaven/HeavenHub.mlo
+
+#begin BG/Heaven/HeavenRot.mlo
+/copy:BG/Heaven/HeavenRot.mlo
+
+#begin BG/Heaven/HeavenRotBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Heaven/HeavenRotBG.png
 
 #begin BG/Hell/DemonMedium.max
 /copy:BG/Hell/DemonMedium.max
@@ -3864,6 +3966,36 @@
 /processorParam:TextureFormat=Color
 /build:BG/Lab/L415.png
 
+#begin BG/Lab/L416.mlo
+/copy:BG/Lab/L416.mlo
+
+#begin BG/Lab/L416.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Lab/L416.png
+
+#begin BG/Lab/L417.mlo
+/copy:BG/Lab/L417.mlo
+
+#begin BG/Lab/L417.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Lab/L417.png
+
 #begin BG/Lab/WashingMachine/Spin1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4173,6 +4305,21 @@
 /processorParam:TextureFormat=Color
 /build:BG/Mountain/SnowParticleSmall.png
 
+#begin BG/SteamPlant/AbBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/SteamPlant/AbBG.png
+
+#begin BG/SteamPlant/AbSteamPlant.mlo
+/copy:BG/SteamPlant/AbSteamPlant.mlo
+
 #begin BG/SteamPlant/BG1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4196,6 +4343,57 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:BG/SteamPlant/BG2.png
+
+#begin BG/SteamPlant/BirthFire.max
+/copy:BG/SteamPlant/BirthFire.max
+
+#begin BG/SteamPlant/BirthFire1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/SteamPlant/BirthFire1.png
+
+#begin BG/SteamPlant/BirthFire2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/SteamPlant/BirthFire2.png
+
+#begin BG/SteamPlant/BirthFire3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/SteamPlant/BirthFire3.png
+
+#begin BG/SteamPlant/BirthFire4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/SteamPlant/BirthFire4.png
 
 #begin BG/SteamPlant/Dial1.png
 /importer:TextureImporter
@@ -4370,6 +4568,9 @@
 
 #begin BG/SteamPlant/SteamPlant.mlo
 /copy:BG/SteamPlant/SteamPlant.mlo
+
+#begin BG/SteamPlant/SteamPlantIntro.mlo
+/copy:BG/SteamPlant/SteamPlantIntro.mlo
 
 #begin BG/SteamPlant/SteamPlantLeft.mlo
 /copy:BG/SteamPlant/SteamPlantLeft.mlo
@@ -4746,6 +4947,21 @@
 #begin Campaigns/MainCampaign/Cinematics/Opening.mci
 /copy:Campaigns/MainCampaign/Cinematics/Opening.mci
 
+#begin Campaigns/MainCampaign/Hub/0000.aux
+/copy:Campaigns/MainCampaign/Hub/0000.aux
+
+#begin Campaigns/MainCampaign/Hub/0000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0000.png
+
 #begin Campaigns/MainCampaign/Hub/0101.aux
 /copy:Campaigns/MainCampaign/Hub/0101.aux
 
@@ -4805,6 +5021,21 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0104.png
+
+#begin Campaigns/MainCampaign/Hub/0105.aux
+/copy:Campaigns/MainCampaign/Hub/0105.aux
+
+#begin Campaigns/MainCampaign/Hub/0105.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0105.png
 
 #begin Campaigns/MainCampaign/Hub/0201.aux
 /copy:Campaigns/MainCampaign/Hub/0201.aux
@@ -6186,6 +6417,36 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0415.png
 
+#begin Campaigns/MainCampaign/Levels/0416.aux
+/copy:Campaigns/MainCampaign/Levels/0416.aux
+
+#begin Campaigns/MainCampaign/Levels/0416.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0416.png
+
+#begin Campaigns/MainCampaign/Levels/0417.aux
+/copy:Campaigns/MainCampaign/Levels/0417.aux
+
+#begin Campaigns/MainCampaign/Levels/0417.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0417.png
+
 #begin Campaigns/MainCampaign/Levels/0501.aux
 /copy:Campaigns/MainCampaign/Levels/0501.aux
 
@@ -7326,6 +7587,36 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0916.png
 
+#begin Campaigns/MainCampaign/Levels/0917.aux
+/copy:Campaigns/MainCampaign/Levels/0917.aux
+
+#begin Campaigns/MainCampaign/Levels/0917.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0917.png
+
+#begin Campaigns/MainCampaign/Levels/0918.aux
+/copy:Campaigns/MainCampaign/Levels/0918.aux
+
+#begin Campaigns/MainCampaign/Levels/0918.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0918.png
+
 #begin Campaigns/MainCampaign/Levels/10000.aux
 /copy:Campaigns/MainCampaign/Levels/10000.aux
 
@@ -7419,11 +7710,32 @@
 #begin Campaigns/MainCampaign/Meta.xml
 /copy:Campaigns/MainCampaign/Meta.xml
 
+#begin Campaigns/MainCampaign/Themes/AbSteamPlantLevel.xml
+/copy:Campaigns/MainCampaign/Themes/AbSteamPlantLevel.xml
+
 #begin Campaigns/MainCampaign/Themes/ArcadeLevel.xml
 /copy:Campaigns/MainCampaign/Themes/ArcadeLevel.xml
 
 #begin Campaigns/MainCampaign/Themes/BukCaveLevel.xml
 /copy:Campaigns/MainCampaign/Themes/BukCaveLevel.xml
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinCave.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinCave.xml
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinLab.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinLab.xml
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinLibrary.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinLibrary.xml
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinMirror.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinMirror.xml
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
+
+#begin Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
 
 #begin Campaigns/MainCampaign/Themes/HeavenLevel.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenLevel.xml
@@ -8616,6 +8928,9 @@
 /processorParam:TextureFormat=Color
 /build:FireBarrel/Barrel4.png
 
+#begin FireBarrel/FireBarrel.max
+/copy:FireBarrel/FireBarrel.max
+
 #begin Fonts/Pixica12.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -8658,6 +8973,20 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Pixica36b.spritefont
 
+#begin Fonts/Pixica48.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Pixica48.spritefont
+
+#begin Fonts/Pixica48b.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Pixica48b.spritefont
+
 #begin Fonts/PixicaMicro12.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -8699,6 +9028,69 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Fonts/PixicaMicro36b.spritefont
+
+#begin Fountain/Base.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Fountain/Base.png
+
+#begin Fountain/Water.max
+/copy:Fountain/Water.max
+
+#begin Fountain/Water1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Fountain/Water1.png
+
+#begin Fountain/Water2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Fountain/Water2.png
+
+#begin Fountain/Water3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Fountain/Water3.png
+
+#begin Fountain/Water4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Fountain/Water4.png
 
 #begin GravityOrb/OrbBase.png
 /importer:TextureImporter
@@ -8943,6 +9335,18 @@
 #begin Layouts/MainGame.mlo
 /copy:Layouts/MainGame.mlo
 
+#begin Layouts/MainMenu.mlo
+/copy:Layouts/MainMenu.mlo
+
+#begin Layouts/PauseMenuHub.mlo
+/copy:Layouts/PauseMenuHub.mlo
+
+#begin Layouts/PauseMenuLevel.mlo
+/copy:Layouts/PauseMenuLevel.mlo
+
+#begin Layouts/PauseMenuOptions.mlo
+/copy:Layouts/PauseMenuOptions.mlo
+
 #begin Layouts/TitleScreen.mlo
 /copy:Layouts/TitleScreen.mlo
 
@@ -9017,6 +9421,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/Academic/Walk1.png
+
+#begin NPC/BabyFarry/Baby1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BabyFarry/Baby1.png
+
+#begin NPC/BabyFarry/Baby2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BabyFarry/Baby2.png
 
 #begin NPC/Barbara/Barbara.mtn
 /copy:NPC/Barbara/Barbara.mtn
@@ -10419,6 +10847,51 @@
 /processorParam:TextureFormat=Color
 /build:NPC/SciOld/TalkNormal.png
 
+#begin NPC/Sign/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Sign/Default.png
+
+#begin NPC/Sign/Idle.mia
+/copy:NPC/Sign/Idle.mia
+
+#begin NPC/Sign/Lights.max
+/copy:NPC/Sign/Lights.max
+
+#begin NPC/Sign/Sign.mtn
+/copy:NPC/Sign/Sign.mtn
+
+#begin NPC/Sign/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Sign/TalkAngry.png
+
+#begin NPC/Sign/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Sign/TalkNormal.png
+
 #begin NPC/Thornforge/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11637,6 +12110,9 @@
 #begin Text/EN/InGame/ArcadeEnter.txt
 /copy:Text/EN/InGame/ArcadeEnter.txt
 
+#begin Text/EN/InGame/Bathe.txt
+/copy:Text/EN/InGame/Bathe.txt
+
 #begin Text/EN/InGame/GetKey.txt
 /copy:Text/EN/InGame/GetKey.txt
 
@@ -11681,6 +12157,105 @@
 
 #begin Text/EN/InGame/UseKey.txt
 /copy:Text/EN/InGame/UseKey.txt
+
+#begin Text/EN/Input/Actions/ArnoldDown.txt
+/copy:Text/EN/Input/Actions/ArnoldDown.txt
+
+#begin Text/EN/Input/Actions/ArnoldJump.txt
+/copy:Text/EN/Input/Actions/ArnoldJump.txt
+
+#begin Text/EN/Input/Actions/ArnoldLeft.txt
+/copy:Text/EN/Input/Actions/ArnoldLeft.txt
+
+#begin Text/EN/Input/Actions/ArnoldRight.txt
+/copy:Text/EN/Input/Actions/ArnoldRight.txt
+
+#begin Text/EN/Input/Actions/ArnoldUp.txt
+/copy:Text/EN/Input/Actions/ArnoldUp.txt
+
+#begin Text/EN/Input/Actions/Confirm.txt
+/copy:Text/EN/Input/Actions/Confirm.txt
+
+#begin Text/EN/Input/Actions/Pause.txt
+/copy:Text/EN/Input/Actions/Pause.txt
+
+#begin Text/EN/Input/Actions/RestartLevel.txt
+/copy:Text/EN/Input/Actions/RestartLevel.txt
+
+#begin Text/EN/Input/Actions/UseItem.txt
+/copy:Text/EN/Input/Actions/UseItem.txt
+
+#begin Text/EN/Input/Pad/A.txt
+/copy:Text/EN/Input/Pad/A.txt
+
+#begin Text/EN/Input/Pad/B.txt
+/copy:Text/EN/Input/Pad/B.txt
+
+#begin Text/EN/Input/Pad/Back.txt
+/copy:Text/EN/Input/Pad/Back.txt
+
+#begin Text/EN/Input/Pad/BigButton.txt
+/copy:Text/EN/Input/Pad/BigButton.txt
+
+#begin Text/EN/Input/Pad/DPadDown.txt
+/copy:Text/EN/Input/Pad/DPadDown.txt
+
+#begin Text/EN/Input/Pad/DPadLeft.txt
+/copy:Text/EN/Input/Pad/DPadLeft.txt
+
+#begin Text/EN/Input/Pad/DPadRight.txt
+/copy:Text/EN/Input/Pad/DPadRight.txt
+
+#begin Text/EN/Input/Pad/DPadUp.txt
+/copy:Text/EN/Input/Pad/DPadUp.txt
+
+#begin Text/EN/Input/Pad/LeftShoulder.txt
+/copy:Text/EN/Input/Pad/LeftShoulder.txt
+
+#begin Text/EN/Input/Pad/LeftStick.txt
+/copy:Text/EN/Input/Pad/LeftStick.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickDown.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickDown.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickLeft.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickLeft.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickRight.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickRight.txt
+
+#begin Text/EN/Input/Pad/LeftThumbstickUp.txt
+/copy:Text/EN/Input/Pad/LeftThumbstickUp.txt
+
+#begin Text/EN/Input/Pad/LeftTrigger.txt
+/copy:Text/EN/Input/Pad/LeftTrigger.txt
+
+#begin Text/EN/Input/Pad/RightShoulder.txt
+/copy:Text/EN/Input/Pad/RightShoulder.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickDown.txt
+/copy:Text/EN/Input/Pad/RightThumbstickDown.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickLeft.txt
+/copy:Text/EN/Input/Pad/RightThumbstickLeft.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickRight.txt
+/copy:Text/EN/Input/Pad/RightThumbstickRight.txt
+
+#begin Text/EN/Input/Pad/RightThumbstickUp.txt
+/copy:Text/EN/Input/Pad/RightThumbstickUp.txt
+
+#begin Text/EN/Input/Pad/RightTrigger.txt
+/copy:Text/EN/Input/Pad/RightTrigger.txt
+
+#begin Text/EN/Input/Pad/Start.txt
+/copy:Text/EN/Input/Pad/Start.txt
+
+#begin Text/EN/Input/Pad/X.txt
+/copy:Text/EN/Input/Pad/X.txt
+
+#begin Text/EN/Input/Pad/Y.txt
+/copy:Text/EN/Input/Pad/Y.txt
 
 #begin Text/EN/Items/HotdogPlantDesc.txt
 /copy:Text/EN/Items/HotdogPlantDesc.txt
@@ -11766,8 +12341,17 @@
 #begin Text/EN/NPC/BossMan/Heckle.txt
 /copy:Text/EN/NPC/BossMan/Heckle.txt
 
+#begin Text/EN/NPC/BossMan/HireArnold.txt
+/copy:Text/EN/NPC/BossMan/HireArnold.txt
+
+#begin Text/EN/NPC/BossMan/StartScript.txt
+/copy:Text/EN/NPC/BossMan/StartScript.txt
+
 #begin Text/EN/NPC/BossMan/Summon.txt
 /copy:Text/EN/NPC/BossMan/Summon.txt
+
+#begin Text/EN/NPC/BossMan/TalkToBarbara.txt
+/copy:Text/EN/NPC/BossMan/TalkToBarbara.txt
 
 #begin Text/EN/NPC/BossMan/WhatJiggery.txt
 /copy:Text/EN/NPC/BossMan/WhatJiggery.txt
@@ -12159,6 +12743,9 @@
 #begin Text/EN/UI/Controls.txt
 /copy:Text/EN/UI/Controls.txt
 
+#begin Text/EN/UI/IcefishSoftware.txt
+/copy:Text/EN/UI/IcefishSoftware.txt
+
 #begin Text/EN/UI/KeyItem/CoinPurse.txt
 /copy:Text/EN/UI/KeyItem/CoinPurse.txt
 
@@ -12176,6 +12763,120 @@
 
 #begin Text/EN/UI/KeyItem/SerpentToken.txt
 /copy:Text/EN/UI/KeyItem/SerpentToken.txt
+
+#begin Text/EN/UI/Menu/Back.txt
+/copy:Text/EN/UI/Menu/Back.txt
+
+#begin Text/EN/UI/Menu/Begin.txt
+/copy:Text/EN/UI/Menu/Begin.txt
+
+#begin Text/EN/UI/Menu/Browse.txt
+/copy:Text/EN/UI/Menu/Browse.txt
+
+#begin Text/EN/UI/Menu/ClairaudienceOption.txt
+/copy:Text/EN/UI/Menu/ClairaudienceOption.txt
+
+#begin Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
+/copy:Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
+
+#begin Text/EN/UI/Menu/Default.txt
+/copy:Text/EN/UI/Menu/Default.txt
+
+#begin Text/EN/UI/Menu/EarPowerOption.txt
+/copy:Text/EN/UI/Menu/EarPowerOption.txt
+
+#begin Text/EN/UI/Menu/EarPowerOptionDesc.txt
+/copy:Text/EN/UI/Menu/EarPowerOptionDesc.txt
+
+#begin Text/EN/UI/Menu/EnterName.txt
+/copy:Text/EN/UI/Menu/EnterName.txt
+
+#begin Text/EN/UI/Menu/Exit.txt
+/copy:Text/EN/UI/Menu/Exit.txt
+
+#begin Text/EN/UI/Menu/FullscreenOption.txt
+/copy:Text/EN/UI/Menu/FullscreenOption.txt
+
+#begin Text/EN/UI/Menu/FullscreenOptionDesc.txt
+/copy:Text/EN/UI/Menu/FullscreenOptionDesc.txt
+
+#begin Text/EN/UI/Menu/GameTitle.txt
+/copy:Text/EN/UI/Menu/GameTitle.txt
+
+#begin Text/EN/UI/Menu/ImpatientOption.txt
+/copy:Text/EN/UI/Menu/ImpatientOption.txt
+
+#begin Text/EN/UI/Menu/ImpatientOptionDesc.txt
+/copy:Text/EN/UI/Menu/ImpatientOptionDesc.txt
+
+#begin Text/EN/UI/Menu/LoadGame.txt
+/copy:Text/EN/UI/Menu/LoadGame.txt
+
+#begin Text/EN/UI/Menu/LoadGameTitle.txt
+/copy:Text/EN/UI/Menu/LoadGameTitle.txt
+
+#begin Text/EN/UI/Menu/NewGame.txt
+/copy:Text/EN/UI/Menu/NewGame.txt
+
+#begin Text/EN/UI/Menu/NewGameTitle.txt
+/copy:Text/EN/UI/Menu/NewGameTitle.txt
+
+#begin Text/EN/UI/Menu/No.txt
+/copy:Text/EN/UI/Menu/No.txt
+
+#begin Text/EN/UI/Menu/Options.txt
+/copy:Text/EN/UI/Menu/Options.txt
+
+#begin Text/EN/UI/Menu/OptionsTitle.txt
+/copy:Text/EN/UI/Menu/OptionsTitle.txt
+
+#begin Text/EN/UI/Menu/Pause.txt
+/copy:Text/EN/UI/Menu/Pause.txt
+
+#begin Text/EN/UI/Menu/ProfileName.txt
+/copy:Text/EN/UI/Menu/ProfileName.txt
+
+#begin Text/EN/UI/Menu/Rebind.txt
+/copy:Text/EN/UI/Menu/Rebind.txt
+
+#begin Text/EN/UI/Menu/RebindTitle.txt
+/copy:Text/EN/UI/Menu/RebindTitle.txt
+
+#begin Text/EN/UI/Menu/Resume.txt
+/copy:Text/EN/UI/Menu/Resume.txt
+
+#begin Text/EN/UI/Menu/ReturnToHub.txt
+/copy:Text/EN/UI/Menu/ReturnToHub.txt
+
+#begin Text/EN/UI/Menu/SaveAndQuit.txt
+/copy:Text/EN/UI/Menu/SaveAndQuit.txt
+
+#begin Text/EN/UI/Menu/SpeedRunMode.txt
+/copy:Text/EN/UI/Menu/SpeedRunMode.txt
+
+#begin Text/EN/UI/Menu/VisionOption.txt
+/copy:Text/EN/UI/Menu/VisionOption.txt
+
+#begin Text/EN/UI/Menu/VisionOptionPerfect.txt
+/copy:Text/EN/UI/Menu/VisionOptionPerfect.txt
+
+#begin Text/EN/UI/Menu/VisionOptionPerfectDesc.txt
+/copy:Text/EN/UI/Menu/VisionOptionPerfectDesc.txt
+
+#begin Text/EN/UI/Menu/VisionOptionSretch.txt
+/copy:Text/EN/UI/Menu/VisionOptionSretch.txt
+
+#begin Text/EN/UI/Menu/VisionOptionSretchDesc.txt
+/copy:Text/EN/UI/Menu/VisionOptionSretchDesc.txt
+
+#begin Text/EN/UI/Menu/Yes.txt
+/copy:Text/EN/UI/Menu/Yes.txt
+
+#begin Text/EN/UI/Presents.txt
+/copy:Text/EN/UI/Presents.txt
+
+#begin Text/EN/UI/ProfileNames.txt
+/copy:Text/EN/UI/ProfileNames.txt
 
 #begin Tiles/air.png
 /importer:TextureImporter
@@ -12447,6 +13148,18 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Flag4.png
 
+#begin Tiles/Heaven/CobbleHeaven.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/CobbleHeaven.png
+
 #begin Tiles/Heaven/GoldCoin.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12494,6 +13207,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Heaven/HeavenPlatform.png
+
+#begin Tiles/Heaven/HeavenTreePlatform.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/HeavenTreePlatform.png
 
 #begin Tiles/Heaven/Marble.png
 /importer:TextureImporter
@@ -13539,6 +14264,30 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/SteamPlant/BoltGhost.png
 
+#begin Tiles/SteamPlant/DecrodedGirder.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/SteamPlant/DecrodedGirder.png
+
+#begin Tiles/SteamPlant/DecrodedSteel.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/SteamPlant/DecrodedSteel.png
+
 #begin Tiles/SteamPlant/girder.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -14055,6 +14804,45 @@
 /processorParam:TextureFormat=Color
 /build:UI/ItemFrame.png
 
+#begin UI/Menu/ScrollArrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Menu/ScrollArrow.png
+
+#begin UI/Menu/SteamPlant/MainMenuBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Menu/SteamPlant/MainMenuBG.png
+
+#begin UI/Menu/SteamPlant/MenuBG.mlo
+/copy:UI/Menu/SteamPlant/MenuBG.mlo
+
+#begin UI/Menu/SteamPlant/SidePanelBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Menu/SteamPlant/SidePanelBG.png
+
 #begin UI/UIBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -14066,527 +14854,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Tiles/SteamPlant/DecrodedGirder.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/SteamPlant/DecrodedGirder.png
-
-#begin Tiles/SteamPlant/DecrodedSteel.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/SteamPlant/DecrodedSteel.png
-
-#begin Campaigns/MainCampaign/Hub/0105.aux
-/copy:Campaigns/MainCampaign/Hub/0105.aux
-
-#begin Campaigns/MainCampaign/Hub/0105.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Hub/0105.png
-
-#begin Campaigns/MainCampaign/Themes/AbSteamPlantLevel.xml
-/copy:Campaigns/MainCampaign/Themes/AbSteamPlantLevel.xml
-
-#begin BG/SteamPlant/AbBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/SteamPlant/AbBG.png
-
-#begin BG/SteamPlant/AbSteamPlant.mlo
-/copy:BG/SteamPlant/AbSteamPlant.mlo
-
-#begin NPC/Sign/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Sign/Default.png
-
-#begin NPC/Sign/Idle.mia
-/copy:NPC/Sign/Idle.mia
-
-#begin NPC/Sign/Lights.max
-/copy:NPC/Sign/Lights.max
-
-#begin NPC/Sign/Sign.mtn
-/copy:NPC/Sign/Sign.mtn
-
-#begin NPC/Sign/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Sign/TalkAngry.png
-
-#begin NPC/Sign/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Sign/TalkNormal.png
-
-#begin Text/EN/UI/IcefishSoftware.txt
-/copy:Text/EN/UI/IcefishSoftware.txt
-
-#begin Text/EN/UI/Presents.txt
-/copy:Text/EN/UI/Presents.txt
-
-#begin Text/EN/UI/Menu/Back.txt
-/copy:Text/EN/UI/Menu/Back.txt
-
-#begin Text/EN/UI/Menu/Begin.txt
-/copy:Text/EN/UI/Menu/Begin.txt
-
-#begin Text/EN/UI/Menu/ClairaudienceOption.txt
-/copy:Text/EN/UI/Menu/ClairaudienceOption.txt
-
-#begin Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
-/copy:Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
-
-#begin Text/EN/UI/Menu/EarPowerOption.txt
-/copy:Text/EN/UI/Menu/EarPowerOption.txt
-
-#begin Text/EN/UI/Menu/EarPowerOptionDesc.txt
-/copy:Text/EN/UI/Menu/EarPowerOptionDesc.txt
-
-#begin Text/EN/UI/Menu/EnterName.txt
-/copy:Text/EN/UI/Menu/EnterName.txt
-
-#begin Text/EN/UI/Menu/Exit.txt
-/copy:Text/EN/UI/Menu/Exit.txt
-
-#begin Text/EN/UI/Menu/GameTitle.txt
-/copy:Text/EN/UI/Menu/GameTitle.txt
-
-#begin Text/EN/UI/Menu/ImpatientOption.txt
-/copy:Text/EN/UI/Menu/ImpatientOption.txt
-
-#begin Text/EN/UI/Menu/ImpatientOptionDesc.txt
-/copy:Text/EN/UI/Menu/ImpatientOptionDesc.txt
-
-#begin Text/EN/UI/Menu/LoadGame.txt
-/copy:Text/EN/UI/Menu/LoadGame.txt
-
-#begin Text/EN/UI/Menu/LoadGameTitle.txt
-/copy:Text/EN/UI/Menu/LoadGameTitle.txt
-
-#begin Text/EN/UI/Menu/NewGame.txt
-/copy:Text/EN/UI/Menu/NewGame.txt
-
-#begin Text/EN/UI/Menu/NewGameTitle.txt
-/copy:Text/EN/UI/Menu/NewGameTitle.txt
-
-#begin Text/EN/UI/Menu/No.txt
-/copy:Text/EN/UI/Menu/No.txt
-
-#begin Text/EN/UI/Menu/Options.txt
-/copy:Text/EN/UI/Menu/Options.txt
-
-#begin Text/EN/UI/Menu/OptionsTitle.txt
-/copy:Text/EN/UI/Menu/OptionsTitle.txt
-
-#begin Text/EN/UI/Menu/SpeedRunMode.txt
-/copy:Text/EN/UI/Menu/SpeedRunMode.txt
-
-#begin Text/EN/UI/Menu/VisionOption.txt
-/copy:Text/EN/UI/Menu/VisionOption.txt
-
-#begin Text/EN/UI/Menu/VisionOptionPerfect.txt
-/copy:Text/EN/UI/Menu/VisionOptionPerfect.txt
-
-#begin Text/EN/UI/Menu/VisionOptionPerfectDesc.txt
-/copy:Text/EN/UI/Menu/VisionOptionPerfectDesc.txt
-
-#begin Text/EN/UI/Menu/VisionOptionSretch.txt
-/copy:Text/EN/UI/Menu/VisionOptionSretch.txt
-
-#begin Text/EN/UI/Menu/VisionOptionSretchDesc.txt
-/copy:Text/EN/UI/Menu/VisionOptionSretchDesc.txt
-
-#begin Text/EN/UI/Menu/Yes.txt
-/copy:Text/EN/UI/Menu/Yes.txt
-
-#begin Layouts/MainMenu.mlo
-/copy:Layouts/MainMenu.mlo
-
-#begin UI/Menu/Steamplant/MainMenuBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/Menu/Steamplant/MainMenuBG.png
-
-#begin UI/Menu/SteamPlant/MainMenuBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/Menu/SteamPlant/MainMenuBG.png
-
-#begin UI/Menu/SteamPlant/MenuBG.mlo
-/copy:UI/Menu/SteamPlant/MenuBG.mlo
-
-#begin Text/EN/UI/ProfileNames.txt
-/copy:Text/EN/UI/ProfileNames.txt
-
-#begin Text/EN/UI/Menu/ProfileName.txt
-/copy:Text/EN/UI/Menu/ProfileName.txt
-
-#begin Layouts/PauseMenuHub.mlo
-/copy:Layouts/PauseMenuHub.mlo
-
-#begin Layouts/PauseMenuLevel.mlo
-/copy:Layouts/PauseMenuLevel.mlo
-
-#begin Layouts/PauseMenuOptions.mlo
-/copy:Layouts/PauseMenuOptions.mlo
-
-#begin Text/EN/UI/Menu/Pause.txt
-/copy:Text/EN/UI/Menu/Pause.txt
-
-#begin Text/EN/UI/Menu/Resume.txt
-/copy:Text/EN/UI/Menu/Resume.txt
-
-#begin Text/EN/UI/Menu/ReturnToHub.txt
-/copy:Text/EN/UI/Menu/ReturnToHub.txt
-
-#begin Text/EN/UI/Menu/SaveAndQuit.txt
-/copy:Text/EN/UI/Menu/SaveAndQuit.txt
-
-#begin UI/Menu/ScrollArrow.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/Menu/ScrollArrow.png
-
-#begin Campaigns/MainCampaign/Hub/0000.aux
-/copy:Campaigns/MainCampaign/Hub/0000.aux
-
-#begin Campaigns/MainCampaign/Hub/0000.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Hub/0000.png
-
-#begin UI/Menu/SteamPlant/SidePanelBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/Menu/SteamPlant/SidePanelBG.png
-
-#begin Fonts/Pixica48.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/build:Fonts/Pixica48.spritefont
-
-#begin Fonts/Pixica48b.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/build:Fonts/Pixica48b.spritefont
-
-#begin Text/EN/UI/Menu/Rebind.txt
-/copy:Text/EN/UI/Menu/Rebind.txt
-
-#begin Text/EN/UI/Menu/RebindTitle.txt
-/copy:Text/EN/UI/Menu/RebindTitle.txt
-
-#begin Text/EN/UI/Menu/Default.txt
-/copy:Text/EN/UI/Menu/Default.txt
-
-#begin Text/EN/Input/Pad/A.txt
-/copy:Text/EN/Input/Pad/A.txt
-
-#begin Text/EN/Input/Pad/B.txt
-/copy:Text/EN/Input/Pad/B.txt
-
-#begin Text/EN/Input/Pad/Back.txt
-/copy:Text/EN/Input/Pad/Back.txt
-
-#begin Text/EN/Input/Pad/BigButton.txt
-/copy:Text/EN/Input/Pad/BigButton.txt
-
-#begin Text/EN/Input/Pad/DPadDown.txt
-/copy:Text/EN/Input/Pad/DPadDown.txt
-
-#begin Text/EN/Input/Pad/DPadLeft.txt
-/copy:Text/EN/Input/Pad/DPadLeft.txt
-
-#begin Text/EN/Input/Pad/DPadRight.txt
-/copy:Text/EN/Input/Pad/DPadRight.txt
-
-#begin Text/EN/Input/Pad/DPadUp.txt
-/copy:Text/EN/Input/Pad/DPadUp.txt
-
-#begin Text/EN/Input/Pad/LeftShoulder.txt
-/copy:Text/EN/Input/Pad/LeftShoulder.txt
-
-#begin Text/EN/Input/Pad/LeftStick.txt
-/copy:Text/EN/Input/Pad/LeftStick.txt
-
-#begin Text/EN/Input/Pad/LeftThumbstickDown.txt
-/copy:Text/EN/Input/Pad/LeftThumbstickDown.txt
-
-#begin Text/EN/Input/Pad/LeftThumbstickLeft.txt
-/copy:Text/EN/Input/Pad/LeftThumbstickLeft.txt
-
-#begin Text/EN/Input/Pad/LeftThumbstickRight.txt
-/copy:Text/EN/Input/Pad/LeftThumbstickRight.txt
-
-#begin Text/EN/Input/Pad/LeftThumbstickUp.txt
-/copy:Text/EN/Input/Pad/LeftThumbstickUp.txt
-
-#begin Text/EN/Input/Pad/LeftTrigger.txt
-/copy:Text/EN/Input/Pad/LeftTrigger.txt
-
-#begin Text/EN/Input/Pad/RightShoulder.txt
-/copy:Text/EN/Input/Pad/RightShoulder.txt
-
-#begin Text/EN/Input/Pad/RightThumbstickDown.txt
-/copy:Text/EN/Input/Pad/RightThumbstickDown.txt
-
-#begin Text/EN/Input/Pad/RightThumbstickLeft.txt
-/copy:Text/EN/Input/Pad/RightThumbstickLeft.txt
-
-#begin Text/EN/Input/Pad/RightThumbstickRight.txt
-/copy:Text/EN/Input/Pad/RightThumbstickRight.txt
-
-#begin Text/EN/Input/Pad/RightThumbstickUp.txt
-/copy:Text/EN/Input/Pad/RightThumbstickUp.txt
-
-#begin Text/EN/Input/Pad/RightTrigger.txt
-/copy:Text/EN/Input/Pad/RightTrigger.txt
-
-#begin Text/EN/Input/Pad/Start.txt
-/copy:Text/EN/Input/Pad/Start.txt
-
-#begin Text/EN/Input/Pad/X.txt
-/copy:Text/EN/Input/Pad/X.txt
-
-#begin Text/EN/Input/Pad/Y.txt
-/copy:Text/EN/Input/Pad/Y.txt
-
-#begin Text/EN/Input/Actions/ArnoldDown.txt
-/copy:Text/EN/Input/Actions/ArnoldDown.txt
-
-#begin Text/EN/Input/Actions/ArnoldJump.txt
-/copy:Text/EN/Input/Actions/ArnoldJump.txt
-
-#begin Text/EN/Input/Actions/ArnoldLeft.txt
-/copy:Text/EN/Input/Actions/ArnoldLeft.txt
-
-#begin Text/EN/Input/Actions/ArnoldRight.txt
-/copy:Text/EN/Input/Actions/ArnoldRight.txt
-
-#begin Text/EN/Input/Actions/ArnoldUp.txt
-/copy:Text/EN/Input/Actions/ArnoldUp.txt
-
-#begin Text/EN/Input/Actions/Confirm.txt
-/copy:Text/EN/Input/Actions/Confirm.txt
-
-#begin Text/EN/Input/Actions/Pause.txt
-/copy:Text/EN/Input/Actions/Pause.txt
-
-#begin Text/EN/Input/Actions/RestartLevel.txt
-/copy:Text/EN/Input/Actions/RestartLevel.txt
-
-#begin Text/EN/Input/Actions/UseItem.txt
-/copy:Text/EN/Input/Actions/UseItem.txt
-
-#begin Text/EN/UI/Menu/FullscreenOption.txt
-/copy:Text/EN/UI/Menu/FullscreenOption.txt
-
-#begin Text/EN/UI/Menu/FullscreenOptionDesc.txt
-/copy:Text/EN/UI/Menu/FullscreenOptionDesc.txt
-
-#begin FireBarrel/FireBarrel.max
-/copy:FireBarrel/FireBarrel.max
-
-#begin BG/SteamPlant/BirthFire.max
-/copy:BG/SteamPlant/BirthFire.max
-
-#begin BG/SteamPlant/BirthFire1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/SteamPlant/BirthFire1.png
-
-#begin BG/SteamPlant/BirthFire2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/SteamPlant/BirthFire2.png
-
-#begin BG/SteamPlant/BirthFire3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/SteamPlant/BirthFire3.png
-
-#begin BG/SteamPlant/BirthFire4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/SteamPlant/BirthFire4.png
-
-#begin BG/SteamPlant/SteamPlantIntro.mlo
-/copy:BG/SteamPlant/SteamPlantIntro.mlo
-
-#begin Text/EN/NPC/BossMan/HireArnold.txt
-/copy:Text/EN/NPC/BossMan/HireArnold.txt
-
-#begin Text/EN/UI/Menu/Browse.txt
-/copy:Text/EN/UI/Menu/Browse.txt
-
-#begin Text/EN/NPC/BossMan/StartScript.txt
-/copy:Text/EN/NPC/BossMan/StartScript.txt
-
-#begin Text/EN/NPC/BossMan/TalkToBarbara.txt
-/copy:Text/EN/NPC/BossMan/TalkToBarbara.txt
-
-#begin Campaigns/MainCampaign/Levels/0917.aux
-/copy:Campaigns/MainCampaign/Levels/0917.aux
-
-#begin Campaigns/MainCampaign/Levels/0917.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0917.png
-
-#begin Campaigns/MainCampaign/Levels/0918.aux
-/copy:Campaigns/MainCampaign/Levels/0918.aux
-
-#begin Campaigns/MainCampaign/Levels/0918.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/0918.png
-
-#begin Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
-/copy:Campaigns/MainCampaign/Themes/HeavenFinSteam.xml
-
-#begin NPC/BabyFarry/Baby1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/BabyFarry/Baby1.png
-
-#begin NPC/BabyFarry/Baby2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/BabyFarry/Baby2.png
-
-#begin Campaigns/MainCampaign/Themes/HeavenFinLibrary.xml
-/copy:Campaigns/MainCampaign/Themes/HeavenFinLibrary.xml
-
-#begin BG/Heaven/HeavenRot.mlo
-/copy:BG/Heaven/HeavenRot.mlo
-
-#begin BG/Heaven/HeavenRotBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Heaven/HeavenRotBG.png
-
-#begin Campaigns/MainCampaign/Themes/HeavenFinCave.xml
-/copy:Campaigns/MainCampaign/Themes/HeavenFinCave.xml
-
-#begin Campaigns/MainCampaign/Themes/HeavenFinMirror.xml
-/copy:Campaigns/MainCampaign/Themes/HeavenFinMirror.xml
-
-#begin Tiles/Heaven/CobbleHeaven.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Heaven/CobbleHeaven.png
-
-#begin Tiles/Heaven/HeavenTreePlatform.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Heaven/HeavenTreePlatform.png
-
-#begin Campaigns/MainCampaign/Themes/HeavenFinLab.xml
-/copy:Campaigns/MainCampaign/Themes/HeavenFinLab.xml
-
-#begin Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
-/copy:Campaigns/MainCampaign/Themes/HeavenFinWW7.xml
-
-#begin Fountain/Base.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Fountain/Base.png
-
-#begin Fountain/Water.max
-/copy:Fountain/Water.max
-
-#begin Fountain/Water1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Fountain/Water1.png
-
-#begin Fountain/Water2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Fountain/Water2.png
-
-#begin Fountain/Water3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Fountain/Water3.png
-
-#begin Fountain/Water4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Fountain/Water4.png
-
-#begin Text/EN/InGame/Bathe.txt
-/copy:Text/EN/InGame/Bathe.txt
-
-#begin Arnold/HorseJumpDown.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/HorseJumpDown.png
-
-#begin Arnold/HorseJumpUp.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/HorseJumpUp.png
-
-#begin Arnold/HorseRun1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/HorseRun1.png
-
-#begin Arnold/HorseRun2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/HorseRun2.png
-
-#begin Arnold/HorseRun3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/HorseRun3.png
-
-#begin Arnold/HorseRun4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/HorseRun4.png
-
-#begin Arnold/HorseStand.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/HorseStand.png
 
