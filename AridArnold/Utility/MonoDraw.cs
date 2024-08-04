@@ -379,6 +379,15 @@
 		}
 
 
+		/// <summary>
+		/// Draw a line from point A by an angle.
+		/// </summary>
+		public static void DrawRectRot(DrawInfo info, Rectangle rect, float angle, Color col, DrawLayer depth = DrawLayer.Default)
+		{
+			Vector2 origin = new Vector2(0.5f, 0.5f);
+			info.spriteBatch.Draw(AridArnold.Main.GetDummyTexture(), rect, null, col, angle, origin, SpriteEffects.None, GetDepth(depth));
+		}
+
 
 		/// <summary>
 		/// Draw a dot at a position.

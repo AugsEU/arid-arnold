@@ -130,6 +130,17 @@
 
 
 		/// <summary>
+		/// Get's elapsed time
+		/// </summary>
+		/// <returns>Time in MS</returns>
+		public float GetElapsedMsF()
+		{
+			return (float)mElapsedTimeMs;
+		}
+
+
+
+		/// <summary>
 		/// Set elapsed milliseconds
 		/// </summary>
 		public void SetElapsedMs(double elapsed)

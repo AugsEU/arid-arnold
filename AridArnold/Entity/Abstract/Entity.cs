@@ -431,6 +431,9 @@
 				case EntityData.EntityClass.kRanger:
 					entity = new Ranger(worldPosition, data.mFloatParams[0], data.mFloatParams[1]);
 					break;
+				case EntityData.EntityClass.kDemonBoss:
+					entity = new DemonBoss(worldPosition);
+					break;
 
 				// NPC
 				case EntityData.EntityClass.kSimpleNPC:
@@ -454,7 +457,7 @@
 					entity = new ArnoldRespawn(worldPosition, data.mGravityDirection, data.mStartDirection);
 					break;
 				case EntityData.EntityClass.kSequenceDoor:
-					entity = new SequenceDoor(worldPosition, data.mIntParams, (int)data.mFloatParams[0]);
+					entity = new SequenceDoor(worldPosition, data.mIntParams, (int)data.mFloatParams[0], data.mFloatParams[1] != 0.0f);
 					break;
 				case EntityData.EntityClass.kLevelLock:
 					entity = new KeyDoor(worldPosition, data.mIntParams[0]);

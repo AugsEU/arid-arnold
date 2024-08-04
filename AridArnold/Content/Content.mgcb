@@ -14855,3 +14855,117 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Shared/Door/HorseDoorClosed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/Door/HorseDoorClosed.png
+
+#begin Shared/Door/HorseDoorOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Shared/Door/HorseDoorOpen.png
+
+#begin NPC/Likey/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Likey/Default.png
+
+#begin NPC/Likey/Idle.mia
+/copy:NPC/Likey/Idle.mia
+
+#begin NPC/Likey/Itch.max
+/copy:NPC/Likey/Itch.max
+
+#begin NPC/Likey/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Likey/Itch1.png
+
+#begin NPC/Likey/Likey.mtn
+/copy:NPC/Likey/Likey.mtn
+
+#begin NPC/Likey/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Likey/TalkAngry.png
+
+#begin NPC/Likey/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Likey/TalkNormal.png
+
+#begin NPC/Likey/Walk.max
+/copy:NPC/Likey/Walk.max
+
+#begin NPC/Likey/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/Likey/Walk1.png
+
+#begin Text/EN/NPC/Likey/Heckle.txt
+/copy:Text/EN/NPC/Likey/Heckle.txt
+
+#begin Text/EN/NPC/Likey/Horse.txt
+/copy:Text/EN/NPC/Likey/Horse.txt
+
+#begin DemonBoss/Face.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/Face.png
+
+#begin DemonBoss/Jaw.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/Jaw.png
+
+#begin DemonBoss/DeadEye.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/DeadEye.png
+
+#begin DemonBoss/Iris.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/Iris.png
+
+#begin DemonBoss/FireBall1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/FireBall1.png
+
+#begin DemonBoss/FireBall2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/FireBall2.png
+
+#begin DemonBoss/FireBall3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/FireBall3.png
+
+#begin DemonBoss/FireGrow1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/FireGrow1.png
+
+#begin DemonBoss/FireGrow2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:DemonBoss/FireGrow2.png
+

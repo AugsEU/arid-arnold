@@ -26,6 +26,7 @@
 		bool mAlreadyCompleted;
 		Point mTileCoord;
 		int mActiveTimeZone;
+		bool mHorseDoor;
 
 		List<Level> mLevelSequence;
 
@@ -41,7 +42,7 @@
 		/// Create sequence door
 		/// </summary>
 		/// <param name="levelSequence">List of level IDs</param>
-		public SequenceDoor(Vector2 pos, int[] levelSequence, int timeZone) : base(pos)
+		public SequenceDoor(Vector2 pos, int[] levelSequence, int timeZone, bool horseDoor) : base(pos)
 		{
 			mLevelSequence = new List<Level>();
 			for (int i = 0; i < levelSequence.Length; i++)
@@ -65,6 +66,8 @@
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
 
 			mActiveTimeZone = timeZone;
+
+			mHorseDoor = horseDoor;
 		}
 
 
@@ -74,8 +77,17 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorOpen");
-			mClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorClosed");
+			if (mHorseDoor)
+			{
+				mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/HorseDoorOpen");
+				mClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/HorseDoorClosed");
+			}
+			else
+			{
+				mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorOpen");
+				mClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorClosed");
+			}
+
 			mOutOfTimeTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/DoorOutOfTime");
 
 			mNumberTextures = new Texture2D[10];
@@ -176,7 +188,10 @@
 		public override void Draw(DrawInfo info)
 		{
 			Texture2D texture = IsInCorrectTimeZone() ? mTexture : mOutOfTimeTexture;
-			MonoDraw.DrawTextureDepth(info, texture, mPosition, DrawLayer.Default);
+
+			Vector2 texPos = mPosition + new Vector2(0.0f, 16.0f - texture.Height);
+
+			MonoDraw.DrawTextureDepth(info, texture, texPos, DrawLayer.Default);
 
 			if (mDoorOpen == false && IsInCorrectTimeZone())
 			{

@@ -328,6 +328,28 @@
 
 
 		/// <summary>
+		/// Gets the first tile of type T.(HACK)
+		/// </summary>
+		public T GetTile<T>() where T : Tile
+		{
+			Type tileType = typeof(T);
+			for (int x = 0; x < mTileMap.GetLength(0); x++)
+			{
+				for (int y = 0; y < mTileMap.GetLength(1); y++)
+				{
+					Tile myTile = mTileMap[x, y];
+					if(myTile.GetType() == tileType)
+					{
+						return (T)myTile;
+					}
+				}
+			}
+
+			return null;
+		}
+
+
+		/// <summary>
 		/// Get a tile at a world position with an offset in tiles
 		/// </summary>
 		/// <param name="pos">World position</param>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>SciFigh</name>
+	<textStyle>
+		<fillColor>3F393FAF</fillColor>
+		<borderColor>564E56</borderColor>
+	</textStyle>
+	<walk/>
+</simpleTalkNPC>

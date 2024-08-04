@@ -4,29 +4,42 @@ namespace AridArnold
 	class BoxSmokeEmitter : ParticleEmitter
 	{
 		Rect2f mRect;
+		MonoTimer mLockoutTimer;
 
 		public BoxSmokeEmitter(Rect2f box, float emitStr = DEFAULT_EMIT_STR) : base(EmitterColors.SMOKE_COLORS, emitStr)
 		{
 			mRect = box;
+			mLockoutTimer = new MonoTimer();
+			mLockoutTimer.Start();
 		}
 
 		public BoxSmokeEmitter(Rect2f box, Color[] palette, float emitStr = DEFAULT_EMIT_STR) : base(palette, emitStr)
 		{
 			mRect = box;
+			mLockoutTimer = new MonoTimer();
+			mLockoutTimer.Start();
 		}
 
 		public override void Update(GameTime gameTime)
 		{
-			const float X_DIFF_VAR = 0.2f;
-
 			MonoRandom rng = RandomManager.I.GetDraw();
 
-			float triggerTimes = mRect.Height * mRect.Width / 2.0f;
+			mLockoutTimer.Update(gameTime);
+			if (mLockoutTimer.GetElapsedMs() < rng.GetFloatRange(16.0f, 100.0f))
+			{
+				return;
+			}
+
+			mLockoutTimer.ResetStart();
+
+			const float X_DIFF_VAR = 0.2f;
+
+			float triggerTimes = MathF.Ceiling(mRect.Height * mRect.Width * (mIntensity / 100.0f));
 
 			for(float t = 0.0f; t < triggerTimes; t++)
 			{
 				Vector2 position = rng.PointIn(mRect);
-				if (ShouldTrigger(rng))
+				if (rng.PercentChance(50.0f))
 				{
 					byte textureIndex = (byte)(rng.GetIntRange(0, 4));
 					Color color = GetRndColor(rng);

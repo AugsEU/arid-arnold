@@ -15,7 +15,7 @@
 	{
 		public const float DEFAULT_EMIT_STR = 6.0f;
 		Color[] mPalette;
-		float mIntensity;
+		protected float mIntensity;
 
 		public ParticleEmitter(Color[] palette, float intensity = DEFAULT_EMIT_STR)
 		{

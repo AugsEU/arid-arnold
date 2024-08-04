@@ -24,6 +24,7 @@
 			kMamal,
 			kPapyras,
 			kRanger,
+			kDemonBoss,
 			kEnemyClassEnd,
 
 			//NPC
