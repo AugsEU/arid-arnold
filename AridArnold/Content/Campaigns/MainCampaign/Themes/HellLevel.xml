@@ -7,4 +7,7 @@
 	<path from="TimePlatform2">HellPlatform</path>
 	<path from="CoinFull">RockFull</path>
 	<path from="CoinGhost">RockGhost</path>
+
+	<path from="Shared/Door/HorseDoorOpen">BossDoorOpen</path>
+	<path from="Shared/Door/HorseDoorClosed">BossDoorClosed</path>
 </theme>

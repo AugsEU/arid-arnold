@@ -26,7 +26,7 @@
 		bool mAlreadyCompleted;
 		Point mTileCoord;
 		int mActiveTimeZone;
-		bool mHorseDoor;
+		bool mAltDoor;
 
 		List<Level> mLevelSequence;
 
@@ -67,7 +67,7 @@
 
 			mActiveTimeZone = timeZone;
 
-			mHorseDoor = horseDoor;
+			mAltDoor = horseDoor;
 		}
 
 
@@ -77,7 +77,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			if (mHorseDoor)
+			if (mAltDoor)
 			{
 				mOpenTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/HorseDoorOpen");
 				mClosedTexture = MonoData.I.MonoGameLoad<Texture2D>("Shared/Door/HorseDoorClosed");

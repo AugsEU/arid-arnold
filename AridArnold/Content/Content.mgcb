@@ -14969,3 +14969,15 @@
 /processorParam:PremultiplyAlpha=False
 /build:DemonBoss/FireGrow2.png
 
+#begin Tiles/Hell/BossDoorClosed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/BossDoorClosed.png
+
+#begin Tiles/Hell/BossDoorOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Hell/BossDoorOpen.png
+

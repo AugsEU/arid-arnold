@@ -1,0 +1,18 @@
+813 - Basic water level
+812 - Basic key level
+806 - Rats + Embers
+
+805 - GravTile + Pipes
+802 - GravTile + Button
+810 - GravTile + Button
+
+807 - Mirrored level
+811 - Opposing Arnolds Tutorial
+803 - Opposing Arnolds
+804 - Right angle arnolds
+
+801 - Laser + GravOrb
+808 - Laser + Mushrooms
+809 - Laser + Mushrooms + Pipe
+
+814 - BOSS BATTLE

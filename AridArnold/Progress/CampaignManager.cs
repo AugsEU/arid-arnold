@@ -66,8 +66,8 @@
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
 				//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(2, 1);
-				//QueueLoadSequence(new HubDirectLoader(814));
-				QueueLoadSequence(new LevelDirectLoader(814));
+				QueueLoadSequence(new HubDirectLoader(801));
+				//QueueLoadSequence(new LevelDirectLoader(810));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
