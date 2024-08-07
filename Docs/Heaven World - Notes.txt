@@ -1,0 +1,22 @@
+901 - Fish + Mushrooms
+911 - Fish + Mushrooms
+905 - Fish + Pipes
+902 - Bick dogel + Fish
+
+910 - Dual + Lasers
+
+906 - Robots + Pipes
+904 - Robots + Pipes
+903 - Gravtile + Mirror + Pipes
+
+907 - Pipes + Mirrors
+908 - Fish + Mirrors + Pipes
+909 - Fish + Mirrors + Pipes
+
+912 - Steam finale
+913 - Library finale
+914 - Cave finale
+915 - Mirror finale
+916 - Lab finale
+917 - WW7 finale
+918 - Fountain of water

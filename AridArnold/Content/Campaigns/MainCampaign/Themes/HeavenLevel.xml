@@ -13,4 +13,7 @@
 	<path from="PlantPot/PillarBase">MarblePillarBase</path>
 	<path from="PlantPot/PillarMiddle">MarblePillarMiddle</path>
 	<path from="PlantPot/PillarTop">MarblePillarTop</path>
+
+	<path from="Shared/Door/HorseDoorOpen">MarbleDoorOpen</path>
+	<path from="Shared/Door/HorseDoorClosed">MarbleDoorClosed</path>
 </theme>

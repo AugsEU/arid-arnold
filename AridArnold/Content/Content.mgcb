@@ -14981,3 +14981,15 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/Hell/BossDoorOpen.png
 
+#begin Tiles/Heaven/MarbleDoorClosed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/MarbleDoorClosed.png
+
+#begin Tiles/Heaven/MarbleDoorOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Heaven/MarbleDoorOpen.png
+
