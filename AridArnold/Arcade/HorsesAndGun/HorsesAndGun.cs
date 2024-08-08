@@ -4,7 +4,6 @@
 	{
 		public HorsesAndGun(GraphicsDeviceManager deviceManager, ContentManager content) : base(deviceManager, content)
 		{
-			SoundManager.I.LoadContent(content);
 			ScreenManager.I.LoadAllScreens(content, deviceManager);
 			FontManager.I.LoadAllFonts(content);
 
@@ -13,7 +12,7 @@
 
 		public override void ResetGame()
 		{
-			SoundManager.I.StopMusic();
+			// S TO DO SoundManager.I.StopMusic();
 			ScreenManager.I.ActivateScreen(ScreenType.MainGame);
 			ScoreManager.I.ResetAll();
 			base.ResetGame();

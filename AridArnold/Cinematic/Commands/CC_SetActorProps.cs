@@ -22,7 +22,7 @@ namespace AridArnold
 			}
 
 			mPosition = cmdNode["x"] is not null ? MonoParse.GetVector(cmdNode) : null;
-			mDrawLayer = cmdNode["layer"] is not null ? MonoAlg.GetEnumFromString<DrawLayer>(MonoParse.GetString(cmdNode["layer"])) : null;
+			mDrawLayer = cmdNode["layer"] is not null ? MonoEnum.GetEnumFromString<DrawLayer>(MonoParse.GetString(cmdNode["layer"])) : null;
 
 			XmlNode facingNode = cmdNode["facing"];
 

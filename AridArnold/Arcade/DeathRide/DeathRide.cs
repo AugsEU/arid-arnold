@@ -9,7 +9,6 @@ namespace DeathRide
 
 			FontManager.I.LoadAllFonts();
 			CameraManager.I.Init();
-			SoundManager.I.LoadContent(content);
 
 			ScreenManager.I.LoadAllScreens(deviceManager);
 			ScreenManager.I.ActivateScreen(ScreenType.Game);
@@ -17,7 +16,6 @@ namespace DeathRide
 
 		public override void ResetGame()
 		{
-			SoundManager.I.StopMusic();
 			RunManager.I.ResetNoEffects();
 			ScreenManager.I.ActivateScreen(ScreenType.Game);
 			base.ResetGame();

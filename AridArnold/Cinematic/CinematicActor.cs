@@ -26,7 +26,7 @@
 		public CinematicActor(XmlNode actorNode)
 		{
 			mName = actorNode["name"].InnerText;
-			mDrawLayer = MonoAlg.GetEnumFromString<DrawLayer>(actorNode["layer"].InnerText);
+			mDrawLayer = MonoEnum.GetEnumFromString<DrawLayer>(actorNode["layer"].InnerText);
 			mInitialDrawLayer = mDrawLayer;
 			mDrawTexture = null;
 			mEffect = SpriteEffects.None;

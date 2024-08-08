@@ -213,7 +213,7 @@ namespace AridArnold
 			}
 
 			string enumStr = GetString(node);
-			return MonoAlg.GetEnumFromString<T>(enumStr);
+			return MonoEnum.GetEnumFromString<T>(enumStr);
 		}
 
 

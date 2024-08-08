@@ -128,21 +128,6 @@
 		{
 			mBlinkTimer.Update(gameTime);
 
-			switch (mCurrScreen)
-			{
-				case ArcadeCabScreen.TitleScreen:
-					MediaPlayer.IsMuted = true;
-					UpdateTitleScreen(gameTime);
-					break;
-				case ArcadeCabScreen.Gameplay:
-					MediaPlayer.IsMuted = false;
-					UpdateGameScreen(gameTime);
-					break;
-				case ArcadeCabScreen.ScoreScreen:
-					UpdateScoreScreen(gameTime);
-					break;
-			}
-
 			if(mBlinkTimer.GetPercentageF() >= 1.0f)
 			{
 				mBlinkTimer.Reset();

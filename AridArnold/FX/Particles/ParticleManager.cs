@@ -44,7 +44,7 @@
 		/// </summary>
 		public void Init()
 		{
-			mParticleSets = new ParticleSet[MonoAlg.EnumLength(typeof(ParticleType))];
+			mParticleSets = new ParticleSet[MonoEnum.EnumLength(typeof(ParticleType))];
 			mParticleSets[(int)ParticleType.kSmoke] = new SmokeParticleSet();
 			mParticleSets[(int)ParticleType.kDust] = new DustParticleSet();
 		}

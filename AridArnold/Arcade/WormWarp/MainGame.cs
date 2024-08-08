@@ -40,7 +40,6 @@
 		Camera mMainCamera;
 		List<SnakeGame> mSnakeGames = new List<SnakeGame>();
 		Dictionary<string, Texture2D> mTextureDB;
-		Dictionary<string, SoundEffect> mSoundDB;
 		List<Uptext> mScoreMarkers = new List<Uptext>();
 		bool mRequestQuit = false;
 
@@ -101,7 +100,6 @@
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			mTextureDB = LoadTypeDB<Texture2D>(content, "Textures");
-			mSoundDB = LoadTypeDB<SoundEffect>(content, "SFX");
 
 			mMainSong = content.Load<Song>("Music/GJ Main");
 			mMenuSong = content.Load<Song>("Music/GameJam21");
@@ -153,11 +151,7 @@
 			mNumApplesPlaced = 0;
 			AddNewApple();
 
-			//Start music
-			MediaPlayer.Stop();
-			MediaPlayer.Volume = 0.15f;
-			MediaPlayer.Play(mMainSong);
-			MediaPlayer.IsRepeating = true;
+			//Start music - S TO DO.
 
 			mGameState = GameState.GS_MAIN;
 			mCurrScore = 0;
@@ -177,11 +171,7 @@
 
 			mGameState = GameState.GS_MAIN;
 
-			//Start music
-			MediaPlayer.Stop();
-			MediaPlayer.Volume = 0.2f;
-			MediaPlayer.Play(mMenuSong);
-			MediaPlayer.IsRepeating = true;
+			//Start music - S TO DO.
 		}
 
 
@@ -192,7 +182,6 @@
 		void InitGameOver()
 		{
 			mGameState = GameState.GS_GAMEOVER;
-			MediaPlayer.Stop();
 		}
 
 		#endregion rInit
@@ -208,18 +197,7 @@
 		/// </summary>
 		void PlaySFX(SFX_TYPE type)
 		{
-			switch (type)
-			{
-				case SFX_TYPE.ST_PICKUP:
-					mSoundDB["PointGetSFX"].Play(0.15f, 0.0f, 0.0f);
-					break;
-				case SFX_TYPE.ST_DIMENSION:
-					mSoundDB["NewDimensionSFX"].Play(0.2f, 0.0f, 0.0f);
-					break;
-				case SFX_TYPE.ST_GAMEOVER:
-					mSoundDB["GameOverSFX"].Play(0.7f, 0.0f, 0.0f);
-					break;
-			}
+			// S TO DO
 		}
 
 		#endregion rSound

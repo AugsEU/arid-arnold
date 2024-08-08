@@ -20,7 +20,7 @@ namespace HorsesAndGun.Tiles
 
 		public override void ApplyEffect(Horse horse, TrackManager trackManager)
 		{
-			SoundManager.I.PlaySFX(SoundManager.SFXType.TileActivate, 0.75f);
+			// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.TileActivate, 0.75f);
 			ScoreManager.I.AddCurrentScore(mScoreToGive);
 		}
 	}

@@ -1,0 +1,26 @@
+﻿using Microsoft.Xna.Framework.Graphics;
+
+namespace AridArnold
+{
+	/// <summary>
+	/// Represents the interface with the underlying system.
+	/// </summary>
+	abstract class SoundImplementation
+	{
+		public AudioBuffer LoadAudioBuffer(AridArnoldSFX aridArnoldSFX)
+		{
+			string filePath = MonoEnum.GetFilePath(aridArnoldSFX);
+			return MonoSound.Impl.LoadAudioBuffer(filePath);
+		}
+
+		abstract public AudioBuffer LoadAudioBuffer(string path);
+	}
+
+	static class MonoSound
+	{
+		// Swap this out to change implementation.
+		static MonoSoundImpl mImpl = new MonoSoundImpl();
+
+		public static SoundImplementation Impl { get { return mImpl; } }
+	}
+}

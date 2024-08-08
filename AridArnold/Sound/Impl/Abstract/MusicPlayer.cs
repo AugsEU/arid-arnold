@@ -1,0 +1,6 @@
+﻿namespace AridArnold
+{
+	class MusicPlayer
+	{
+	}
+}

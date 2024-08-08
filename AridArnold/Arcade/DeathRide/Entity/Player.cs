@@ -139,7 +139,7 @@ namespace DeathRide
 						ulong score = mGrappledEntity.GiveScore();
 						score *= (ulong)mFireCombo;
 
-						SoundManager.I.PlaySFX(SoundManager.SFXType.Convert, 0.7f, 0.0f, 0.0f);
+						// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.Convert, 0.7f, 0.0f, 0.0f);
 
 						if (score > 0)
 						{
@@ -453,7 +453,7 @@ namespace DeathRide
 			}
 			else if (delta < 0 && !mImmunityTimer.IsPlaying())
 			{
-				SoundManager.I.PlaySFX(SoundManager.SFXType.PlayerHit, 0.6f);
+				// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.PlayerHit, 0.6f);
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 
 				gameCam.QueueMovement(new DiminishCameraShake(1.5f, 3.0f, 25.0f));

@@ -355,7 +355,7 @@
 		/// </summary>
 		static public DrawLayer GetDrawLayer(string drawLayer)
 		{
-			return AridArnold.MonoAlg.GetEnumFromString<DrawLayer>(drawLayer);
+			return AridArnold.MonoEnum.GetEnumFromString<DrawLayer>(drawLayer);
 		}
 
 
