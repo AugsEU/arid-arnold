@@ -16,6 +16,13 @@
                 "PremultiplyAlpha": "False"
             }
         },
+        ".wav": 
+        {
+            "processorParams": 
+            {
+                "Quality": "Medium"
+            }
+        },
         ".txt": 
         {
             "copy": true
@@ -41,6 +48,14 @@
             "copy": true
         },
         ".mtn": 
+        {
+            "copy": true
+        },
+        ".mtp": 
+        {
+            "copy": true
+        },
+        ".ogg": 
         {
             "copy": true
         }

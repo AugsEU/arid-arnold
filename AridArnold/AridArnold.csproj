@@ -12,6 +12,9 @@
     <StartupObject>AridArnold.Program</StartupObject>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);WARN_UNIMPLEMENTED_SOUND</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
   </ItemGroup>
@@ -28,6 +31,7 @@
     <PackageReference Include="Contentless" Version="3.1.3" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+    <PackageReference Include="MonoSound" Version="1.7.1.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Fonts\" />

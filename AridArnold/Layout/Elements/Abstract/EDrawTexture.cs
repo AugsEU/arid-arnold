@@ -10,7 +10,7 @@
 		public EDrawTexture(XmlNode node, Layout parent) : base(node, parent)
 		{
 			string flipStr = MonoParse.GetString(node["flip"], "None");
-			mSpriteEffect = MonoAlg.GetEnumFromString<SpriteEffects>(flipStr);
+			mSpriteEffect = MonoEnum.GetEnumFromString<SpriteEffects>(flipStr);
 		}
 
 		protected abstract Texture2D GetDrawTexture();

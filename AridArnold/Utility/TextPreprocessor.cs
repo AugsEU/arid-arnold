@@ -58,7 +58,7 @@
 			else if(subCode.StartsWith("Key."))
 			{
 				subCode = subCode.Substring(4);
-				InputAction key = MonoAlg.GetEnumFromString<InputAction>(subCode);
+				InputAction key = MonoEnum.GetEnumFromString<InputAction>(subCode);
 				return InputManager.I.GetInputBindSet(key).ToString();
 			}
 

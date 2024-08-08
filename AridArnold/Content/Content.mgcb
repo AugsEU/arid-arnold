@@ -7764,6 +7764,114 @@
 #begin Campaigns/MainCampaign/Themes/WW7LevelConcrete.xml
 /copy:Campaigns/MainCampaign/Themes/WW7LevelConcrete.xml
 
+#begin DemonBoss/DeadEye.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/DeadEye.png
+
+#begin DemonBoss/Face.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/Face.png
+
+#begin DemonBoss/FireBall1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/FireBall1.png
+
+#begin DemonBoss/FireBall2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/FireBall2.png
+
+#begin DemonBoss/FireBall3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/FireBall3.png
+
+#begin DemonBoss/FireGrow1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/FireGrow1.png
+
+#begin DemonBoss/FireGrow2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/FireGrow2.png
+
+#begin DemonBoss/Iris.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/Iris.png
+
+#begin DemonBoss/Jaw.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DemonBoss/Jaw.png
+
 #begin Enemies/Futron-Gun/bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -10475,6 +10583,78 @@
 /processorParam:TextureFormat=Color
 /build:NPC/LazyMan/TalkNormal.png
 
+#begin NPC/Likey/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Likey/Default.png
+
+#begin NPC/Likey/Idle.mia
+/copy:NPC/Likey/Idle.mia
+
+#begin NPC/Likey/Itch.max
+/copy:NPC/Likey/Itch.max
+
+#begin NPC/Likey/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Likey/Itch1.png
+
+#begin NPC/Likey/Likey.mtn
+/copy:NPC/Likey/Likey.mtn
+
+#begin NPC/Likey/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Likey/TalkAngry.png
+
+#begin NPC/Likey/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Likey/TalkNormal.png
+
+#begin NPC/Likey/Walk.max
+/copy:NPC/Likey/Walk.max
+
+#begin NPC/Likey/Walk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Likey/Walk1.png
+
 #begin NPC/Papy/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11735,6 +11915,30 @@
 /processorParam:TextureFormat=Color
 /build:Shared/Door/DoorZero.png
 
+#begin Shared/Door/HorseDoorClosed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/Door/HorseDoorClosed.png
+
+#begin Shared/Door/HorseDoorOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/Door/HorseDoorOpen.png
+
 #begin Shared/Icons/LevelDefault.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12010,6 +12214,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
+
+#begin Sound/SFX/Test.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Medium
+/build:Sound/SFX/Test.wav
 
 #begin Text/EN/Arcade/DeathRide/Advanced.txt
 /copy:Text/EN/Arcade/DeathRide/Advanced.txt
@@ -12541,6 +12751,12 @@
 
 #begin Text/EN/NPC/LazyMan/Talk.txt
 /copy:Text/EN/NPC/LazyMan/Talk.txt
+
+#begin Text/EN/NPC/Likey/Heckle.txt
+/copy:Text/EN/NPC/Likey/Heckle.txt
+
+#begin Text/EN/NPC/Likey/Horse.txt
+/copy:Text/EN/NPC/Likey/Horse.txt
 
 #begin Text/EN/NPC/Papy/HellTalk.txt
 /copy:Text/EN/NPC/Papy/HellTalk.txt
@@ -13232,6 +13448,30 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Heaven/Marble.png
 
+#begin Tiles/Heaven/MarbleDoorClosed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/MarbleDoorClosed.png
+
+#begin Tiles/Heaven/MarbleDoorOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Heaven/MarbleDoorOpen.png
+
 #begin Tiles/Heaven/MarblePillarBase.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -13267,6 +13507,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Heaven/MarblePillarTop.png
+
+#begin Tiles/Hell/BossDoorClosed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Hell/BossDoorClosed.png
+
+#begin Tiles/Hell/BossDoorOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Hell/BossDoorOpen.png
 
 #begin Tiles/Hell/GravelWinter.png
 /importer:TextureImporter
@@ -14854,142 +15118,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Shared/Door/HorseDoorClosed.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/Door/HorseDoorClosed.png
-
-#begin Shared/Door/HorseDoorOpen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Shared/Door/HorseDoorOpen.png
-
-#begin NPC/Likey/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Likey/Default.png
-
-#begin NPC/Likey/Idle.mia
-/copy:NPC/Likey/Idle.mia
-
-#begin NPC/Likey/Itch.max
-/copy:NPC/Likey/Itch.max
-
-#begin NPC/Likey/Itch1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Likey/Itch1.png
-
-#begin NPC/Likey/Likey.mtn
-/copy:NPC/Likey/Likey.mtn
-
-#begin NPC/Likey/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Likey/TalkAngry.png
-
-#begin NPC/Likey/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Likey/TalkNormal.png
-
-#begin NPC/Likey/Walk.max
-/copy:NPC/Likey/Walk.max
-
-#begin NPC/Likey/Walk1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Likey/Walk1.png
-
-#begin Text/EN/NPC/Likey/Heckle.txt
-/copy:Text/EN/NPC/Likey/Heckle.txt
-
-#begin Text/EN/NPC/Likey/Horse.txt
-/copy:Text/EN/NPC/Likey/Horse.txt
-
-#begin DemonBoss/Face.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/Face.png
-
-#begin DemonBoss/Jaw.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/Jaw.png
-
-#begin DemonBoss/DeadEye.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/DeadEye.png
-
-#begin DemonBoss/Iris.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/Iris.png
-
-#begin DemonBoss/FireBall1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/FireBall1.png
-
-#begin DemonBoss/FireBall2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/FireBall2.png
-
-#begin DemonBoss/FireBall3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/FireBall3.png
-
-#begin DemonBoss/FireGrow1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/FireGrow1.png
-
-#begin DemonBoss/FireGrow2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:DemonBoss/FireGrow2.png
-
-#begin Tiles/Hell/BossDoorClosed.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Hell/BossDoorClosed.png
-
-#begin Tiles/Hell/BossDoorOpen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Hell/BossDoorOpen.png
-
-#begin Tiles/Heaven/MarbleDoorClosed.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Heaven/MarbleDoorClosed.png
-
-#begin Tiles/Heaven/MarbleDoorOpen.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Heaven/MarbleDoorOpen.png
 

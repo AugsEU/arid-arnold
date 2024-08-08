@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using MonoSound;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Program top level
@@ -93,6 +95,7 @@
 
 			InputManager.I.Init();
 			OptionsManager.I.Init();
+			SoundEffectManager.I.Init();
 
 			base.Initialize();
 		}
@@ -104,6 +107,8 @@
 		/// </summary>
 		protected override void LoadContent()
 		{
+			MonoSoundLibrary.Init(this);
+
 			MonoData.I.Init(Content);
 			mMainSpriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -479,6 +484,16 @@
 			// Reset statics
 			GravityOrb.sActiveDirection = CardinalDirection.Down;
 			Entity.sHandleHead = 0;
+		}
+
+
+
+		/// <summary>
+		/// Called on exit
+		/// </summary>
+		protected override void OnExiting(object sender, EventArgs args)
+		{
+			MonoSoundLibrary.DeInit();
 		}
 
 		#endregion rUtility

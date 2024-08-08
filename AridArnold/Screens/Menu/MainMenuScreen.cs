@@ -230,7 +230,7 @@ namespace AridArnold
 			switch (msgHeader)
 			{
 				case "go": // Go to sub-screen
-					MainMenuArea newArea = MonoAlg.GetEnumFromString<MainMenuArea>(msgStr);
+					MainMenuArea newArea = MonoEnum.GetEnumFromString<MainMenuArea>(msgStr);
 					QueueAreaTransition(newArea);
 					break;
 				case "lo": // Load campaign

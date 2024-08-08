@@ -549,7 +549,7 @@
 		/// </summary>
 		static public DrawLayer GetDrawLayer(string drawLayer)
 		{
-			return MonoAlg.GetEnumFromString<DrawLayer>(drawLayer);
+			return MonoEnum.GetEnumFromString<DrawLayer>(drawLayer);
 		}
 
 

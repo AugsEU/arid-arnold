@@ -9,7 +9,7 @@ namespace AridArnold
 
 		public CheckFlagScript(SmartTextBlock parentBlock, string[] args) : base(parentBlock, MonoAlg.GetSubArray(args, 2, 2))
 		{
-			mFlagCategory = MonoAlg.GetEnumFromString<FlagCategory>(args[0]);
+			mFlagCategory = MonoEnum.GetEnumFromString<FlagCategory>(args[0]);
 			mFlagImpl = uint.Parse(args[1], CultureInfo.InvariantCulture);
 		}
 

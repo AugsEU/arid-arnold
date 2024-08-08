@@ -139,7 +139,7 @@ namespace AridArnold
 			switch (msgHeader)
 			{
 				case "go": // Go to sub-screen
-					PauseSubMenu newSubMenu = MonoAlg.GetEnumFromString<PauseSubMenu>(msgStr);
+					PauseSubMenu newSubMenu = MonoEnum.GetEnumFromString<PauseSubMenu>(msgStr);
 					GoToSubMenu(newSubMenu);
 					break;
 				case "re": // return to hub or start of game
@@ -160,7 +160,7 @@ namespace AridArnold
 				case "sc": // Load new screen
 					Close();
 					SaveManager.I.SaveProfile();
-					ScreenType newScreenType = MonoAlg.GetEnumFromString<ScreenType>(msgStr);
+					ScreenType newScreenType = MonoEnum.GetEnumFromString<ScreenType>(msgStr);
 					ScreenManager.I.ActivateScreen(newScreenType);
 					break;
 			}

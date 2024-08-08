@@ -114,23 +114,6 @@ namespace AridArnold
 		}
 
 
-		/// <summary>
-		/// Get an enum from a string
-		/// </summary>
-		static public T GetEnumFromString<T>(string value)
-		{
-			return (T)Enum.Parse(typeof(T), value);
-		}
-
-
-		/// <summary>
-		/// Get number of length
-		/// </summary>
-		static public int EnumLength(Type enumType)
-		{
-			return Enum.GetNames(enumType).Length;
-		}
-
 
 		/// <summary>
 		/// Test if a value contains a flag.
@@ -239,6 +222,32 @@ namespace AridArnold
 
 			// Return default value for type T, typically null for reference types or default(T) for value types
 			return default(T);
+		}
+	}
+
+	/// <summary>
+	/// Compares distances for sorting.
+	/// </summary>
+	public class DistanceComparer : IComparer<Vector2>
+	{
+		private readonly Vector2 mTarget;
+
+		public DistanceComparer(Vector2 target)
+		{
+			mTarget = target;
+		}
+
+		public int Compare(Vector2 v1, Vector2 v2)
+		{
+			float dist1 = Vector2.DistanceSquared(v1, mTarget);
+			float dist2 = Vector2.DistanceSquared(v2, mTarget);
+
+			if (dist1 < dist2)
+				return -1;
+			else if (dist1 > dist2)
+				return 1;
+			else
+				return 0;
 		}
 	}
 }

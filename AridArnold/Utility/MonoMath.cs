@@ -193,6 +193,19 @@
 
 
 		/// <summary>
+		/// Skews range to lower end, such as with an exponential curve
+		/// </summary>
+		public static float FakeExpSquash(float min, float max, float t)
+		{
+			t -= min;
+			t /= (min - max);
+			t *= t;
+			return min * (1.0f - t) + max * t;
+		}
+
+
+
+		/// <summary>
 		/// Biject float into a fixed region.
 		/// </summary>
 		public static float SquashToRange(float value, float min, float max)

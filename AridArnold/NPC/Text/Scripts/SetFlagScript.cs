@@ -14,7 +14,7 @@ namespace AridArnold
 		public SetFlagScript(SmartTextBlock parentBlock, string[] args) : base(parentBlock, args)
 		{
 			MonoDebug.Assert(args.Length == 3);
-			mFlagCategory = MonoAlg.GetEnumFromString<FlagCategory>(args[0]);
+			mFlagCategory = MonoEnum.GetEnumFromString<FlagCategory>(args[0]);
 			mFlagImpl = uint.Parse(args[1], CultureInfo.InvariantCulture);
 			mFlagValue = args[2] == "1" || args[2].ToLower() == "true";
 		}

@@ -35,7 +35,7 @@
 
 		public EventManager()
 		{
-			mEventFlags = new EventFlag[MonoAlg.EnumLength(typeof(EventType))];
+			mEventFlags = new EventFlag[MonoEnum.EnumLength(typeof(EventType))];
 
 			for (int i = 0; i < mEventFlags.Length; i++)
 			{
