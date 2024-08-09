@@ -12215,6 +12215,12 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Sound/SFX/Futron/Laser.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Futron/Laser.wav
+
 #begin Sound/SFX/Test.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

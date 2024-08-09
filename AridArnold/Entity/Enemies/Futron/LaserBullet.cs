@@ -51,6 +51,11 @@
 																   , ("Enemies/Futron-Gun/Explode8", EFT));
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/bullet");
 
+			SpacialSFX laserTravel = new SpacialSFX(AridArnoldSFX.FutronLaser, mPosition, 1.0f, -0.1f, 0.1f);
+			laserTravel.GetBuffer().SetLoop(true);
+
+			LoadSFX(laserTravel, null);
+
 			if (mDirection == CardinalDirection.Left)
 			{
 				mPosition.X += mTexture.Width;

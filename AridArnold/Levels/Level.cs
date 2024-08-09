@@ -69,6 +69,8 @@
 		/// </summary>
 		public void Begin()
 		{
+			SFXManager.I.EndAllSFX(150.0f);
+
 			mLevelStatus = LevelStatus.Continue;
 			mActive = true;
 

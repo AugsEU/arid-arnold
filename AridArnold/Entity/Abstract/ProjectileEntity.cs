@@ -34,6 +34,9 @@
 		protected Vector2 mExplosionCentre;
 		protected Vector2 mExplosionNormal;
 
+		SpacialSFX mTravelSFX = null;
+		SpacialSFX mExplodeSFX = null;
+
 		#endregion rMembers
 
 
@@ -55,6 +58,23 @@
 
 			// Don't want gravity orb to affect us
 			LayerOptOut(InteractionLayer.kGravityOrb);
+		}
+
+
+
+		/// <summary>
+		/// Load in the sound effects
+		/// </summary>
+		public void LoadSFX(SpacialSFX travel, SpacialSFX explode)
+		{
+			mTravelSFX = travel;
+			mExplodeSFX = explode;
+
+			mTravelSFX.SetPosition(mPosition);
+			mTravelSFX.SetVelocity(mVelocity);
+
+			// Start playing immediately.
+			SFXManager.I.PlaySFX(mTravelSFX, 600.0f);
 		}
 
 		#endregion rInitialisation
@@ -93,6 +113,9 @@
 				return;
 			}
 
+			mTravelSFX?.SetVelocity(mVelocity);
+			mTravelSFX?.SetPosition(mPosition);
+
 			Vector2 prevDisp = VelocityToDisplacement(gameTime);
 			mPrevVelocity = mVelocity;
 			List<EntityCollision> collisions = new List<EntityCollision>();
@@ -122,6 +145,10 @@
 					mExplosionNormal = colResult.normal;
 					mState = ProjectileState.Exploding;
 					mExplodingAnim.Play();
+
+					mTravelSFX?.Stop(100.0f);
+					mExplodeSFX?.SetPosition(mPosition);
+					SFXManager.I.PlaySFX(mExplodeSFX);
 				}
 			}
 			else

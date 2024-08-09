@@ -1,30 +1,71 @@
-﻿namespace AridArnold
+﻿using System.Collections.Generic;
+
+namespace AridArnold
 {
 	internal class SpacialSFX : GameSFX
 	{
-		Vector2 mPositon;
-		Vector2 mVelocity;
+		const float DISTANCE_CUTOFF = 130.0f;
 
-		public SpacialSFX(AridArnoldSFX effect, Vector2 position, float minPitch = 0, float maxPitch = 0) : base(effect, minPitch, maxPitch)
+		Vector2 mPosition;
+		Vector2 mVelocity;
+		AudioPositionInfo mClosestListener;
+
+		public SpacialSFX(AridArnoldSFX effect, Vector2 position, float maxVol, float minPitch = 0, float maxPitch = 0) : base(effect, maxVol, minPitch, maxPitch)
 		{
 			mVelocity = Vector2.Zero;
 		}
 
-		public override void UpdateListeners(List<Vector2> listeners)
+		public override void UpdateListeners(List<AudioPositionInfo> listeners)
 		{
-			// Get clostest listener
-			Vector2 closestListener = MonoAlg.GetMin<Vector2>(ref listeners, new DistanceComparer(mPositon));
+			// Get emitters
+			AudioPositionInfo emitterInfo = new AudioPositionInfo(mPosition, mVelocity);
 
-			AudioPositionInfo listenerInfo = new AudioPositionInfo(closestListener, mVelocity);
-			AudioPositionInfo emitterInfo = new AudioPositionInfo(mPositon, Vector2.Zero);
-
-			mBuffer.SetListener(listenerInfo);
+			mBuffer.SetListeners(listeners.ToArray());
 			mBuffer.SetEmitter(emitterInfo);
+
+			mClosestListener = GetClosestListener(listeners);
+		}
+
+		AudioPositionInfo GetClosestListener(List<AudioPositionInfo> listeners)
+		{
+			if(listeners == null || listeners.Count == 0)
+			{
+				return new AudioPositionInfo(mPosition, mVelocity);
+			}
+
+			// Get clostest listener
+			int minValueIdx = 0;
+
+			Vector3 myPos3 = MonoMath.ToVec3(mPosition);
+			for (int i = 1; i < listeners.Count; i++)
+			{
+				Vector3 temp = listeners[i].mPosition;
+
+				if ((temp - myPos3).LengthSquared() < (listeners[minValueIdx].mPosition - myPos3).LengthSquared())
+				{
+					minValueIdx = i;
+				}
+			}
+
+			return listeners[minValueIdx];
+		}
+
+		protected override float DecideVolume()
+		{
+			float baseVolume = base.DecideVolume();
+
+			float distToClosest = (MonoMath.ToVec3(mPosition) - mClosestListener.mPosition).Length();
+
+			float t = (DISTANCE_CUTOFF - distToClosest) / DISTANCE_CUTOFF;
+			t = Math.Clamp(t, 0.0f, 1.0f);
+			float volMod = MathHelper.Lerp(0.0f, 1.0f, t);
+
+			return baseVolume * volMod;
 		}
 
 		public void SetPosition(Vector2 pos)
 		{
-			mPositon = pos;
+			mPosition = pos;
 		}
 
 		public void SetVelocity(Vector2 velocity)

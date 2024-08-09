@@ -52,6 +52,12 @@
 
 
 
+		public static Vector3 ToVec3(Vector2 vec)
+		{
+			return new Vector3(vec, 0.0f);
+		}
+
+
 		/// <summary>
 		/// Gets diff in direction between two vectors. 0 is no diff, 1 is max diff, 0.5 is perp
 		/// </summary>

@@ -95,7 +95,7 @@ namespace AridArnold
 
 			InputManager.I.Init();
 			OptionsManager.I.Init();
-			SoundEffectManager.I.Init();
+			SFXManager.I.Init();
 
 			base.Initialize();
 		}
@@ -107,7 +107,7 @@ namespace AridArnold
 		/// </summary>
 		protected override void LoadContent()
 		{
-			MonoSoundLibrary.Init(this);
+			MonoSound.Impl.Init(this);
 
 			MonoData.I.Init(Content);
 			mMainSpriteBatch = new SpriteBatch(GraphicsDevice);
@@ -165,6 +165,10 @@ namespace AridArnold
 		/// <param name="gameTime"></param>
 		protected override void Update(GameTime gameTime)
 		{
+			// Sound
+			SFXManager.I.Update(gameTime);
+			MonoSound.Impl.Update(gameTime);
+
 			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
 			if (mSlowDownCount == 0)
 			{
@@ -188,6 +192,7 @@ namespace AridArnold
 					screen.Update(gameTime);
 				}
 			}
+
 
 			base.Update(gameTime);
 		}
@@ -493,7 +498,7 @@ namespace AridArnold
 		/// </summary>
 		protected override void OnExiting(object sender, EventArgs args)
 		{
-			MonoSoundLibrary.DeInit();
+			MonoSound.Impl.OnExit(this);
 		}
 
 		#endregion rUtility

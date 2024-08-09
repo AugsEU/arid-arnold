@@ -170,6 +170,9 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			// We are listening...
+			SFXManager.I.AddListener(this);
+
 			mTimerSinceStart.Update(gameTime);
 			mUseItemTimer.Update(gameTime);
 
@@ -240,6 +243,11 @@
 			base.Update(gameTime);
 		}
 
+		public override void Kill()
+		{
+			SFXManager.I.EndAllSFX(160.0f);
+			base.Kill();
+		}
 
 		public override void OrderedUpdate(GameTime gameTime)
 		{

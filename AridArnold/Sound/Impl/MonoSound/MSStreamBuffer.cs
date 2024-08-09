@@ -125,7 +125,7 @@ namespace AridArnold
 #endif // WARN_UNIMPLEMENTED_SOUND
 		}
 
-		public override void SetListener(AudioPositionInfo info)
+		public override void SetListeners(params AudioPositionInfo[] infos)
 		{
 #if WARN_UNIMPLEMENTED_SOUND
 			throw new NotImplementedException();

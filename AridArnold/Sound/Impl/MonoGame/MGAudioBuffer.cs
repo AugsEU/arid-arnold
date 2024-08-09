@@ -36,7 +36,7 @@
 		string mPath;
 		SoundEffectInstance mSoundEffect;
 
-		AudioListener mListenerInfo = new AudioListener();
+		AudioListener[] mListenerInfos = new AudioListener[] { new AudioListener() };
 		AudioEmitter mEmitterInfo = new AudioEmitter();
 
 		#endregion rMembers
@@ -135,6 +135,7 @@
 		public override void Play()
 		{
 			mSoundEffect.Play();
+			Refresh3DParams();
 		}
 
 		/// <summary>
@@ -224,19 +225,25 @@
 			Refresh3DParams();
 		}
 
-		public override void SetListener(AudioPositionInfo info)
+		public override void SetListeners(params AudioPositionInfo[] infos)
 		{
-			mListenerInfo.Position = info.mPosition;
-			mListenerInfo.Up = info.mUp;
-			mListenerInfo.Forward = info.mForward;
-			mListenerInfo.Velocity = info.mVelocity;
+			mListenerInfos = new AudioListener[infos.Length];
+
+			for(int i = 0; i < infos.Length; i++)
+			{
+				mListenerInfos[i] = new AudioListener();
+				mListenerInfos[i].Position = infos[i].mPosition;
+				mListenerInfos[i].Up = infos[i].mUp;
+				mListenerInfos[i].Forward = infos[i].mForward;
+				mListenerInfos[i].Velocity = infos[i].mVelocity;
+			}
 
 			Refresh3DParams();
 		}
 
 		private void Refresh3DParams()
 		{
-			mSoundEffect.Apply3D(mListenerInfo, mEmitterInfo);
+			mSoundEffect.Apply3D(mListenerInfos, mEmitterInfo);
 		}
 
 		#endregion rUtil

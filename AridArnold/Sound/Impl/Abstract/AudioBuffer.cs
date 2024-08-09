@@ -46,7 +46,7 @@
 		/// Set information about who is listening.
 		/// </summary>
 		/// <param name="info"></param>
-		public abstract void SetListener(AudioPositionInfo info);
+		public abstract void SetListeners(params AudioPositionInfo[] infos);
 
 
 

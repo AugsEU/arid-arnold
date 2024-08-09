@@ -5,7 +5,7 @@
 	/// </summary>
 	class GameSFX : BufferPlayer
 	{
-		public GameSFX(AridArnoldSFX effect, float minPitch = 0.0f, float maxPitch = 0.0f) : base(MonoSound.Impl.LoadAudioBuffer(effect))
+		public GameSFX(AridArnoldSFX effect, float maxVol, float minPitch = 0.0f, float maxPitch = 0.0f) : base(MonoSound.Impl.LoadAudioBuffer(effect), maxVol)
 		{
 			if(maxPitch != minPitch)
 			{
@@ -16,7 +16,7 @@
 			}
 		}
 
-		public virtual void UpdateListeners(List<Vector2> listeners)
+		public virtual void UpdateListeners(List<AudioPositionInfo> listeners)
 		{
 			// By default do nothing.
 		}

@@ -707,8 +707,6 @@ namespace AridArnold
 		/// </summary>
 		protected void Jump()
 		{
-			SoundEffectManager.I.AddSoundEffect(new GameSFX(AridArnoldSFX.Test));
-
 			Vector2 gravVelocity = GetVelocityRelativeToGravity();
 
 			if (mIceWalking > 0)
