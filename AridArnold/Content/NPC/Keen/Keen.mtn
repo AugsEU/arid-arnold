@@ -4,5 +4,6 @@
 	<textStyle>
 		<fillColor>4F4FB5A2</fillColor>
 		<borderColor>0E0E38</borderColor>
+		<voice>NPC/Voice/RobotMale.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

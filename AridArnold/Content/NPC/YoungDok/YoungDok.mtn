@@ -6,5 +6,6 @@
 		<framesPerLetter>5</framesPerLetter>
 		<fillColor>1E1E28A2</fillColor>
 		<borderColor>004705</borderColor>
+		<voice>NPC/Voice/AltMale.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

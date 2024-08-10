@@ -4,6 +4,7 @@
 	<textStyle>
 		<fillColor>2A1223A2</fillColor>
 		<borderColor>7325c6</borderColor>
+		<voice>NPC/Voice/DefaultFemale.xml</voice>
 	</textStyle>
 	<emitters>
 		<emitter type="SmokePoint">

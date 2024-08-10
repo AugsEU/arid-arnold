@@ -4,5 +4,6 @@
 	<textStyle>
 		<fillColor>1E1E1EA2</fillColor>
 		<borderColor>382222</borderColor>
+		<voice>NPC/Voice/BickDogel.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

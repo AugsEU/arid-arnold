@@ -20,6 +20,7 @@
 
 		public virtual void Begin(double fadeInTime)
 		{
+			fadeInTime = Math.Max(fadeInTime, 33.0f);
 			mFadeTime = fadeInTime;
 			mFadeTimer.ResetStart();
 			ApplyVolume();

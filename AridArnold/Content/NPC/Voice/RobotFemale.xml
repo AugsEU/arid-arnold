@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <letter char="a">
+        <sfx>RobotVowelA</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="e">
+        <sfx>RobotVowelE</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="i">
+        <sfx>RobotVowelI</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="o">
+        <sfx>RobotVowelO</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="u">
+        <sfx>RobotVowelU</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <default>
+        <sfx>RobotConsonant</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </default>
+</root>

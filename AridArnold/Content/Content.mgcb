@@ -12215,11 +12215,41 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Sound/SFX/Futron/Bomb.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Futron/Bomb.wav
+
+#begin Sound/SFX/Futron/BombLand.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Futron/BombLand.wav
+
+#begin Sound/SFX/Futron/BombShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Futron/BombShoot.wav
+
 #begin Sound/SFX/Futron/Laser.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/SFX/Futron/Laser.wav
+
+#begin Sound/SFX/Futron/LaserLand.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Futron/LaserLand.wav
+
+#begin Sound/SFX/Futron/LaserShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Futron/LaserShoot.wav
 
 #begin Sound/SFX/Test.wav
 /importer:WavImporter
@@ -15124,4 +15154,151 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
+
+#begin NPC/Voice/DefaultMale.xml
+/copy:NPC/Voice/DefaultMale.xml
+
+#begin Sound/SFX/NPC/A.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/A.wav
+
+#begin Sound/SFX/NPC/E.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/E.wav
+
+#begin Sound/SFX/NPC/I.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/I.wav
+
+#begin Sound/SFX/NPC/O.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/O.wav
+
+#begin Sound/SFX/NPC/U.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/U.wav
+
+#begin NPC/Voice/DefaultFemale.xml
+/copy:NPC/Voice/DefaultFemale.xml
+
+#begin NPC/Voice/BickDogel.xml
+/copy:NPC/Voice/BickDogel.xml
+
+#begin NPC/Voice/AltFemale.xml
+/copy:NPC/Voice/AltFemale.xml
+
+#begin NPC/Voice/AltMale.xml
+/copy:NPC/Voice/AltMale.xml
+
+#begin NPC/Voice/Computer.xml
+/copy:NPC/Voice/Computer.xml
+
+#begin NPC/Voice/RobotFemale.xml
+/copy:NPC/Voice/RobotFemale.xml
+
+#begin NPC/Voice/RobotMale.xml
+/copy:NPC/Voice/RobotMale.xml
+
+#begin NPC/Voice/Tome.xml
+/copy:NPC/Voice/Tome.xml
+
+#begin Sound/SFX/NPC/AltA.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/AltA.wav
+
+#begin Sound/SFX/NPC/AltC.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/AltC.wav
+
+#begin Sound/SFX/NPC/AltE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/AltE.wav
+
+#begin Sound/SFX/NPC/AltI.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/AltI.wav
+
+#begin Sound/SFX/NPC/AltO.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/AltO.wav
+
+#begin Sound/SFX/NPC/AltU.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/AltU.wav
+
+#begin Sound/SFX/NPC/Beep.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/Beep.wav
+
+#begin Sound/SFX/NPC/C.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/C.wav
+
+#begin Sound/SFX/NPC/Chisel.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/Chisel.wav
+
+#begin Sound/SFX/NPC/RobotA.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/RobotA.wav
+
+#begin Sound/SFX/NPC/RobotC.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/RobotC.wav
+
+#begin Sound/SFX/NPC/RobotE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/RobotE.wav
+
+#begin Sound/SFX/NPC/RobotI.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/RobotI.wav
+
+#begin Sound/SFX/NPC/RobotO.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/RobotO.wav
+
+#begin Sound/SFX/NPC/RobotU.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/NPC/RobotU.wav
 

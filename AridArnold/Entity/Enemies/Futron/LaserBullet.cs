@@ -51,15 +51,18 @@
 																   , ("Enemies/Futron-Gun/Explode8", EFT));
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/bullet");
 
-			SpacialSFX laserTravel = new SpacialSFX(AridArnoldSFX.FutronLaser, mPosition, 1.0f, -0.1f, 0.1f);
-			laserTravel.GetBuffer().SetLoop(true);
-
-			LoadSFX(laserTravel, null);
-
 			if (mDirection == CardinalDirection.Left)
 			{
 				mPosition.X += mTexture.Width;
 			}
+
+			SpacialSFX laserTravel = new SpacialSFX(AridArnoldSFX.FutronLaser, mPosition, 0.5f, 0.0f, 0.1f);
+			laserTravel.GetBuffer().SetLoop(true);
+			SpacialSFX laserLand = new SpacialSFX(AridArnoldSFX.FutronLaserLand, mPosition, 0.3f, 0.0f, 0.1f);
+			LoadSFX(laserTravel, laserLand);
+
+			// Play this one to start things off.
+			SFXManager.I.PlaySFX(AridArnoldSFX.FutronLaserShoot, 0.05f, 0.0f, 0.1f);
 		}
 
 		#endregion rInitialisation

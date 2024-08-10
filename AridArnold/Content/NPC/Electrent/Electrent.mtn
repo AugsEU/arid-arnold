@@ -4,5 +4,6 @@
 	<textStyle>
 		<fillColor>000000E2</fillColor>
 		<borderColor>00560F</borderColor>
+		<voice>NPC/Voice/Computer.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

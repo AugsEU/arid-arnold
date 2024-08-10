@@ -5,13 +5,16 @@ namespace AridArnold
 	internal class SpacialSFX : GameSFX
 	{
 		const float DISTANCE_CUTOFF = 130.0f;
+		const float VOL_AT_CUTOFF = 0.1f;
 
 		Vector2 mPosition;
 		Vector2 mVelocity;
 		AudioPositionInfo mClosestListener;
+		float mDistanceCutoff = DISTANCE_CUTOFF;
 
 		public SpacialSFX(AridArnoldSFX effect, Vector2 position, float maxVol, float minPitch = 0, float maxPitch = 0) : base(effect, maxVol, minPitch, maxPitch)
 		{
+			mPosition = position;
 			mVelocity = Vector2.Zero;
 		}
 
@@ -53,12 +56,21 @@ namespace AridArnold
 		protected override float DecideVolume()
 		{
 			float baseVolume = base.DecideVolume();
-
 			float distToClosest = (MonoMath.ToVec3(mPosition) - mClosestListener.mPosition).Length();
 
-			float t = (DISTANCE_CUTOFF - distToClosest) / DISTANCE_CUTOFF;
-			t = Math.Clamp(t, 0.0f, 1.0f);
-			float volMod = MathHelper.Lerp(0.0f, 1.0f, t);
+			float t = (mDistanceCutoff - distToClosest) / mDistanceCutoff;
+			
+			float volMod = 1.0f;
+			if (t > 0.0f)
+			{
+				// Linear fall off.
+				volMod = MathHelper.Lerp(VOL_AT_CUTOFF, 1.0f, t);
+			}
+			else
+			{
+				// Slow fall off
+				volMod = (VOL_AT_CUTOFF) / (1.0f + VOL_AT_CUTOFF * t);
+			}
 
 			return baseVolume * volMod;
 		}
@@ -71,6 +83,11 @@ namespace AridArnold
 		public void SetVelocity(Vector2 velocity)
 		{
 			mVelocity = velocity;
+		}
+
+		public void SetDistanceCutoff(float distanceCutoff)
+		{
+			mDistanceCutoff = DISTANCE_CUTOFF;
 		}
 	}
 }

@@ -4,5 +4,6 @@
 	<textStyle>
 		<fillColor>0F102DA2</fillColor>
 		<borderColor>3D41B5</borderColor>
+		<voice>NPC/Voice/AltMale.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

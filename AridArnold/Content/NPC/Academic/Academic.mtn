@@ -4,6 +4,7 @@
 	<textStyle>
 		<fillColor>1E1E1EA2</fillColor>
 		<borderColor>3925BC</borderColor>
+		<voice>NPC/Voice/DefaultFemale.xml</voice>
 	</textStyle>
 	<walk/>
 </simpleTalkNPC>

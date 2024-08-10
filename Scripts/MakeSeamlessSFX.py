@@ -4,19 +4,13 @@ import os
 from pydub import AudioSegment
 from pydub.playback import play
 
-SAMPLE_SIZE_MULT = 1024
-
-def round_down_to_sample(number):
-    return int(math.floor(number / 1024) * 1024)
-
 def create_seamless_loop(input_file, output_file):
     # Load the audio file
     sound = AudioSegment.from_wav(input_file)
     
     duration = len(sound)
 
-    ideal_duration = round_down_to_sample(duration - (duration // 10))
-    fade_length = duration - ideal_duration
+    fade_length = (duration // 10)
 
     # Calc end chunk
     end_chunk = sound[-fade_length:]
@@ -28,9 +22,13 @@ def create_seamless_loop(input_file, output_file):
     
     # Combine the mixed part with the remaining original sound
     final_sound = start_chunk.overlay(end_chunk)
+
+    final_sound.sample_width = 2
+    final_sound.frame_rate = 48000
+    final_sound.channels=1
     
     # Export the new sound
-    final_sound.export(output_file, format="wav")
+    final_sound.export(output_file)
     
     print(f"Seamless loop created and saved as {output_file}")
 

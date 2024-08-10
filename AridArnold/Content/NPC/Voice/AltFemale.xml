@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <letter char="a">
+        <sfx>AltVowelA</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="e">
+        <sfx>AltVowelE</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="i">
+        <sfx>AltVowelI</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="o">
+        <sfx>AltVowelO</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <letter char="u">
+        <sfx>AltVowelU</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </letter>
+    <default>
+        <sfx>AltConsonant</sfx>
+        <vol>0.5</vol>
+        <pitchMin>0.35</pitchMin>
+        <pitchMax>0.45</pitchMax>
+    </default>
+</root>

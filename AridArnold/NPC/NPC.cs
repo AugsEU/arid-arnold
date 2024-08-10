@@ -87,7 +87,7 @@
 
 
 		/// <summary>
-		/// 
+		/// Untangle Text Boxes
 		/// </summary>
 		void UntangleTextBoxes(GameTime gameTime)
 		{

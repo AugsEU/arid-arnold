@@ -294,6 +294,13 @@ namespace AridArnold
 			ret.mFillColor = GetColor(node["fillColor"], ret.mFillColor);
 			ret.mBorderColor = GetColor(node["borderColor"], ret.mFillColor);
 			ret.mFlipSpike = node["flipSpike"] is not null;
+
+			string voicePath = GetString(node["voice"], "");
+			if(voicePath.Length > 0)
+			{
+				ret.mVoice = new Voice(voicePath);
+			}
+
 			return ret;
 		}
 

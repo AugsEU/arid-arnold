@@ -4,6 +4,7 @@
 	<textStyle>
 		<fillColor>D1C9B8A2</fillColor>
 		<borderColor>AA002B</borderColor>
+		<voice>NPC/Voice/RobotFemale.xml</voice>
 	</textStyle>
 	<walk/>
 </simpleTalkNPC>

@@ -11,6 +11,7 @@
 		public Color mBorderColor;
 		public Color mFillColor;
 		public bool mFlipSpike;
+		public Voice mVoice;
 
 		static public SpeechBoxStyle DefaultStyle
 		{
@@ -26,6 +27,7 @@
 				ret.mFillColor = new Color(0, 10, 20, 200);
 				ret.mBorderColor = new Color(56, 89, 122);
 				ret.mFlipSpike = false;
+				ret.mVoice = null;
 				return ret;
 			}
 		}
@@ -356,7 +358,9 @@
 			{
 				if (ShouldDrawChar(charToPrint))
 				{
-					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, GetCharPlacementPos(), mCurrentBlock.GetAnimation()));
+					// Draw
+					Vector2 charPos = GetCharPlacementPos();
+					mLetters.Add(new SpeechBoxLetter(mStyle.mFont, charToPrint, charPos, mCurrentBlock.GetAnimation()));
 					mLastDrawnCharHead = mCharHead;
 					mCharHead.X += GetCharWidth(charToPrint);
 
@@ -370,6 +374,12 @@
 						{
 							CRLF();
 						}
+					}
+
+					// Play sound.
+					if (mStyle.mVoice is not null)
+					{
+						mStyle.mVoice.PlaySoundFromLetter(GetAudioPosition(), charToPrint);
 					}
 				}
 			}
@@ -393,6 +403,16 @@
 		Vector2 GetCharShift()
 		{
 			return new Vector2(0.0f, -MonoMath.Round(GetNewLineSize() / 4.0f));
+		}
+
+
+
+		/// <summary>
+		/// Audio position
+		/// </summary>
+		Vector2 GetAudioPosition()
+		{
+			return mBottomLeft + new Vector2(mSpikeOffset, 0.0f);
 		}
 
 

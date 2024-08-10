@@ -4,6 +4,7 @@
 	<textStyle>
 		<fillColor>2A1223A2</fillColor>
 		<borderColor>7325c6</borderColor>
+		<voice>NPC/Voice/DefaultFemale.xml</voice>
 	</textStyle>
 	<emitters>
 		<emitter type="SmokeBox">
@@ -15,7 +16,7 @@
 				<color>7325C6</color>
 				<color>8E5CC4</color>
 			</colors>
-			<intensity>0.05</intensity>
+			<intensity>0.02</intensity>
 		</emitter>
 	</emitters>
 </simpleTalkNPC>

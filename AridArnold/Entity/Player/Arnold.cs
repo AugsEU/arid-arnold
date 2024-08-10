@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿//#define ARNOLD_DEBUG_SOUND
+
+namespace AridArnold
 {
 	/// <summary>
 	/// The playable character, our hero, our saviour, Arnold.
@@ -54,7 +56,12 @@
 		// Horse
 		bool mHorseMode;
 
-		#endregion rMembers
+
+#if ARNOLD_DEBUG_SOUND
+		SpacialSFX mDebugSound = null;
+#endif
+
+#endregion rMembers
 
 
 
@@ -172,6 +179,16 @@
 		{
 			// We are listening...
 			SFXManager.I.AddListener(this);
+
+#if ARNOLD_DEBUG_SOUND
+			if(mDebugSound is null)
+			{
+				mDebugSound = new SpacialSFX(AridArnoldSFX.FutronBomb, new Vector2(295.0f, 491.0f), 1.0f);
+				mDebugSound.GetBuffer().SetLoop(true);
+
+				SFXManager.I.PlaySFX(mDebugSound);
+			}
+#endif
 
 			mTimerSinceStart.Update(gameTime);
 			mUseItemTimer.Update(gameTime);

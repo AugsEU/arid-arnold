@@ -4,5 +4,6 @@
 	<textStyle>
 		<fillColor>544D49AF</fillColor>
 		<borderColor>473E3D</borderColor>
+		<voice>NPC/Voice/DefaultMale.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

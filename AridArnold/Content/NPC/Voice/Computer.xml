@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <default>
+        <sfx>Beep</sfx>
+        <vol>0.5</vol>
+        <pitchMin>-0.05</pitchMin>
+        <pitchMax>0.0</pitchMax>
+    </default>
+</root>
