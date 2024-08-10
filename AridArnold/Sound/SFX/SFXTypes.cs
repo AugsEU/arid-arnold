@@ -39,7 +39,8 @@
 		[FilePath("Sound/SFX/Futron/BombLand")]				FutronBombLand,
 
 		// Arnold
-		[FilePath("Sound/SFX/Test")]						ArnoldJump,
+		[FilePath("Sound/SFX/Arnold/Jump")]					ArnoldJump,
+		[FilePath("Sound/SFX/Arnold/Walk")]					ArnoldWalk
 	}
 
 

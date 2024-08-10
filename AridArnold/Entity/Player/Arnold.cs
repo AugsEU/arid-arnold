@@ -112,6 +112,8 @@ namespace AridArnold
 			mPosition.X += 2.0f;
 
 			mVelocity.Y = +0.01f;
+
+			LoadSFX(AridArnoldSFX.ArnoldJump, 0.24f, AridArnoldSFX.ArnoldWalk, 0.1f);
 		}
 
 
@@ -262,7 +264,13 @@ namespace AridArnold
 
 		public override void Kill()
 		{
+			// Fade them all out as the level is about to reset.
 			SFXManager.I.EndAllSFX(160.0f);
+
+			CameraShake cameraShake = new CameraShake(1.0f, 2.0f, 30.0f);
+			Camera cam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+			cam.QueueMovement(cameraShake);
+
 			base.Kill();
 		}
 

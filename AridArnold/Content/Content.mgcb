@@ -15302,3 +15302,15 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/NPC/RobotU.wav
 
+#begin Sound/SFX/Arnold/Jump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Arnold/Jump.wav
+
+#begin Sound/SFX/Arnold/Walk.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Arnold/Walk.wav
+

@@ -5,6 +5,11 @@
 	/// </summary>
 	internal class BufferPlayer
 	{
+		const float MUTE_TIME = 120.0f;
+
+		bool mMuted;
+		PercentageTimer mMuteTimer;
+
 		float mMaxVolume;
 		MonoTimer mFadeTimer;
 		double mFadeTime;
@@ -15,7 +20,9 @@
 		{
 			mBuffer = buffer;
 			mFadeTimer = new MonoTimer();
+			mMuteTimer = new PercentageTimer(MUTE_TIME);
 			mMaxVolume = maxVolume;
+			mMuted = false;
 		}
 
 		public virtual void Begin(double fadeInTime)
@@ -34,6 +41,7 @@
 				return;
 			}
 
+			mMuteTimer.Update(gameTime);
 			mFadeTimer.Update(gameTime);
 
 			ApplyVolume();
@@ -72,6 +80,30 @@
 		private void ApplyVolume()
 		{
 			float vol = DecideVolume();
+
+			if(mMuteTimer.IsPlaying())
+			{
+				if(mMuted)
+				{
+					// Fade to mute
+					vol *= (1.0f - mMuteTimer.GetPercentageF());
+				}
+				else
+				{
+					// Fade to unmute
+					vol *= (mMuteTimer.GetPercentageF());
+				}
+				
+				if(mMuteTimer.GetPercentageF() >= 1.0f)
+				{
+					mMuteTimer.Stop();
+				}
+			}
+			else if(mMuted)
+			{
+				vol = 0.0f;
+			}
+
 			mBuffer.SetVolume(vol * mMaxVolume);
 		}
 
@@ -90,6 +122,15 @@
 		public AudioBuffer GetBuffer()
 		{
 			return mBuffer;
+		}
+
+		public void SetMute(bool mute)
+		{
+			if(mute != mMuted)
+			{
+				mMuteTimer.ResetStart();
+			}
+			mMuted = mute;
 		}
 	}
 }

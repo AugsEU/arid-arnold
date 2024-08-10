@@ -52,6 +52,11 @@ namespace AridArnold
 		// Particles
 		float mDustIntensity;
 
+		// Sound
+		float mJumpVolume = 0.4f;
+		AridArnoldSFX? mJumpSound;
+		SpacialSFX mWalkSound;
+
 		#endregion rMembers
 
 
@@ -99,6 +104,18 @@ namespace AridArnold
 			LayerOptIn(InteractionLayer.kGravityOrb);
 		}
 
+
+		protected void LoadSFX(AridArnoldSFX? jumpType, float jumpVolume, AridArnoldSFX? walkType, float walkVolume)
+		{
+			mJumpSound = jumpType;
+			mJumpVolume = jumpVolume;
+
+			mWalkSound = new SpacialSFX(walkType.Value, mPosition, walkVolume);
+			mWalkSound.GetBuffer().SetLoop(true);
+			mWalkSound.SetMute(true);
+			SFXManager.I.PlaySFX(mWalkSound);
+		}
+
 		#endregion
 
 
@@ -126,6 +143,7 @@ namespace AridArnold
 				return;
 			}
 
+			bool walkMute = true;
 			if (mOnGround)
 			{
 				mUpdatesSinceGrounded = 0;
@@ -134,6 +152,7 @@ namespace AridArnold
 				if (mWalkDirection != WalkDirection.None && mVelocity.LengthSquared() > 0.5f)
 				{
 					EmitWalkDust();
+					walkMute = false;
 				}
 			}
 			else if (mUpdatesSinceGrounded != int.MaxValue)
@@ -144,6 +163,13 @@ namespace AridArnold
 			if (mUpdatesSinceJump != int.MaxValue)
 			{
 				mUpdatesSinceJump++;
+			}
+
+			if (mWalkSound is not null)
+			{
+				mWalkSound.SetMute(walkMute);
+				mWalkSound.SetPosition(mPosition);
+				mWalkSound.SetVelocity(mVelocity);
 			}
 
 			mIceWalking = Math.Max(mIceWalking-1, 0);
@@ -726,6 +752,12 @@ namespace AridArnold
 				if (mUpdatesSinceJump > 10)
 				{
 					EmitDustJump();
+
+					if (mJumpSound.HasValue)
+					{
+						SpacialSFX jumpSFX = new SpacialSFX(mJumpSound.Value, GetCentrePos(), mJumpVolume, -0.02f, 0.04f);
+						SFXManager.I.PlaySFX(jumpSFX);
+					}
 				}
 			}
 
