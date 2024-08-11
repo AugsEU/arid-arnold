@@ -7,7 +7,7 @@
 	{
 		public GameSFX(AridArnoldSFX effect, float maxVol, float minPitch = 0.0f, float maxPitch = 0.0f) : base(MonoSound.Impl.LoadAudioBuffer(effect), maxVol)
 		{
-			if(maxPitch != minPitch)
+			if(maxPitch != 0.0f || minPitch != 0.0f)
 			{
 				MonoRandom rng = RandomManager.I.GetDraw();
 

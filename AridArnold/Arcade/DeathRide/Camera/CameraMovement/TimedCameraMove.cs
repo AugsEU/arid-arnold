@@ -10,6 +10,8 @@
 			mTotalTime = time;
 		}
 
+
+
 		protected override bool IsMovementOverInternal()
 		{
 			return mElapsedTime >= mTotalTime;
@@ -19,6 +21,7 @@
 		{
 			float dt = Util.GetDeltaT(gameTime);
 			mElapsedTime += dt;
+
 		}
 
 		protected float GetMovementPercentage()

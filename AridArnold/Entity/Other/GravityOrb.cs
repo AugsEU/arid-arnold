@@ -146,8 +146,25 @@
 			// Do not allow activation if the activating entity hasn't left our collider yet.
 			if (!IsActive() && mActivatingEntity is null)
 			{
+				// SFX
+				SFXManager.I.PlaySFX(AridArnoldSFX.Collect, 0.3f);
+
+				// Camera turn.
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-				gameCam.QueueMovement(new ShakeAndRotateTo(10.0f, GetTurnToAngle()));
+				
+				ShakeAndRotateTo turnMove = new ShakeAndRotateTo(10.0f, GetTurnToAngle());
+
+				GameSFX travelSFX = new GameSFX(AridArnoldSFX.LibraryRotate, 0.5f);
+				GameSFX finishSFX = new GameSFX(AridArnoldSFX.LibraryBlockLand, 0.7f, -0.7f, -0.8f);
+
+				turnMove.LoadSFX(travelSFX, finishSFX);
+
+				gameCam.QueueMovement(turnMove);
+
+				DiminishCameraShake shakeMove = new DiminishCameraShake(6.0f, 5.0f, 100.0f);
+				gameCam.QueueMovement(shakeMove);
+
+
 				SetAllEntitiesGravity();
 
 				// Pull entity towards orb for consistency

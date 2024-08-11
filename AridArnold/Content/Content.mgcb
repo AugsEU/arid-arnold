@@ -15356,3 +15356,9 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Library/BlockLand.wav
 
+#begin Sound/SFX/Library/Rotate.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Library/Rotate.wav
+

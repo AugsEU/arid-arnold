@@ -46,6 +46,7 @@
 
 		// Library
 		[FilePath("Sound/SFX/Library/BlockLand")]			LibraryBlockLand,
+		[FilePath("Sound/SFX/Library/Rotate")]				LibraryRotate,
 
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,

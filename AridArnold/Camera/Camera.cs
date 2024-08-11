@@ -225,7 +225,8 @@ namespace AridArnold
 		/// </summary>
 		public void DoMovement(CameraMovement movement)
 		{
-			Reset();
+			mCameraMovements.Clear();
+			mCurrentCameraMovement = null;
 			mCameraMovements.Enqueue(movement);
 		}
 
