@@ -113,7 +113,7 @@ namespace AridArnold
 
 			mVelocity.Y = +0.01f;
 
-			LoadSFX(AridArnoldSFX.ArnoldJump, 0.24f, AridArnoldSFX.ArnoldWalk, 0.1f);
+			LoadSFX(AridArnoldSFX.ArnoldJump, 0.8f, AridArnoldSFX.ArnoldWalk, 0.1f);
 		}
 
 
@@ -271,6 +271,8 @@ namespace AridArnold
 			Camera cam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 			cam.QueueMovement(cameraShake);
 
+			SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldDeath, 0.1f);
+
 			base.Kill();
 		}
 
@@ -425,6 +427,35 @@ namespace AridArnold
 				default:
 					throw new Exception("Invalid Arnold age");
 			}
+		}
+
+
+		/// <summary>
+		/// React to collision with walls/ceilings/floors
+		/// </summary>
+		protected override void ReactToCollision(CollisionType collisionType)
+		{
+			switch (collisionType)
+			{
+				case CollisionType.Ground:
+					float downVel = Vector2.Dot(mPrevVelocity, GravityVecNorm());
+					downVel = MathF.Abs(downVel);
+					float thresh = MathF.Abs(mJumpSpeed * 1.5f);
+
+					if (downVel > thresh)
+					{
+						float volumeMod = MonoMath.SquashToRange(downVel - thresh, -1.0f, 1.0f);
+						volumeMod = Math.Clamp(volumeMod, 0.0f, 1.0f);
+
+						SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldLand, 0.2f * volumeMod);
+						CameraShake cameraShake = new CameraShake(volumeMod * 0.7f, 2.0f, 100.0f);
+						Camera cam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+						cam.QueueMovement(cameraShake);
+					}
+					break;
+			}
+
+			base.ReactToCollision(collisionType);
 		}
 
 		#endregion rUpdate

@@ -326,8 +326,8 @@ namespace AridArnold
 				case CollisionType.Ground:
 					mOnGround = true;
 
-					float downVel = Vector2.Dot(mVelocity, GravityVecNorm());
-					if(mUpdatesSinceGrounded > 4 && downVel > mJumpSpeed * 0.5f)
+					float downVel = Vector2.Dot(mPrevVelocity, GravityVecNorm());
+					if(mUpdatesSinceGrounded > 4 && downVel > mJumpSpeed * 0.9f)
 					{
 						EmitDustLand();
 					}
@@ -876,9 +876,9 @@ namespace AridArnold
 				case CardinalDirection.Up:
 					return mPosition.Y < -mTexture.Height / 2.0f;
 				case CardinalDirection.Right:
-					return mPosition.X > TileManager.I.GetDrawWidth() + 2.0f * mTexture.Width;
+					return mPosition.X > GameScreen.GAME_AREA_WIDTH + 2.0f * mTexture.Width;
 				case CardinalDirection.Down:
-					return mPosition.Y > TileManager.I.GetDrawHeight() + mTexture.Height / 2.0f;
+					return mPosition.Y > GameScreen.GAME_AREA_HEIGHT + mTexture.Height / 2.0f;
 				case CardinalDirection.Left:
 					return mPosition.X < -mTexture.Width / 2.0f;
 			}

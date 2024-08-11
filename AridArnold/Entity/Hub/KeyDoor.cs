@@ -142,6 +142,12 @@
 		/// </summary>
 		void UnlockDoor()
 		{
+			if(mIsUnlocking)
+			{
+				return;
+			}
+
+			SFXManager.I.PlaySFX(AridArnoldSFX.Unlock, 0.4f);
 			CollectableManager.I.CollectSpecificItem(GetCollectType(), mTileCoord);
 			mUnlockAnim.Play();
 			mIsUnlocking = true;

@@ -83,6 +83,8 @@
 				return;
 			}
 
+			SFXManager.I.PlaySFX(AridArnoldSFX.DoorOpen, 0.1f);
+
 			mDoorOpen = true;
 			mTexture = mOpenTexture;
 

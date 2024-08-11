@@ -8,6 +8,12 @@
 		// Debug
 		[FilePath("Sound/SFX/Test")]						Test,
 
+		// Arnold
+		[FilePath("Sound/SFX/Arnold/Jump")] ArnoldJump,
+		[FilePath("Sound/SFX/Arnold/Walk")] ArnoldWalk,
+		[FilePath("Sound/SFX/Arnold/Death")] ArnoldDeath,
+		[FilePath("Sound/SFX/Arnold/Land")] ArnoldLand,
+
 		// Voice
 		[FilePath("Sound/SFX/NPC/A")]						VowelA,
 		[FilePath("Sound/SFX/NPC/E")]						VowelE,
@@ -38,9 +44,14 @@
 		[FilePath("Sound/SFX/Futron/Bomb")]					FutronBomb,
 		[FilePath("Sound/SFX/Futron/BombLand")]				FutronBombLand,
 
-		// Arnold
-		[FilePath("Sound/SFX/Arnold/Jump")]					ArnoldJump,
-		[FilePath("Sound/SFX/Arnold/Walk")]					ArnoldWalk
+		// Library
+		[FilePath("Sound/SFX/Library/BlockLand")]			LibraryBlockLand,
+
+		// Misc
+		[FilePath("Sound/SFX/Misc/Collect")]				Collect,
+		[FilePath("Sound/SFX/Misc/CollectKey")]				CollectKey,
+		[FilePath("Sound/SFX/Misc/DoorOpen")]				DoorOpen,
+		[FilePath("Sound/SFX/Misc/Unlock")]					Unlock,
 	}
 
 

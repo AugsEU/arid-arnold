@@ -10,6 +10,7 @@
 		{
 			mFullAnim = MonoData.I.LoadAnimator("Tiles/KeyFull");
 			mGhostAnim = MonoData.I.LoadAnimator("Tiles/KeyGhost");
+			LoadSFX(AridArnoldSFX.CollectKey, 0.0f);
 			base.LoadContent();
 		}
 

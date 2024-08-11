@@ -9,11 +9,22 @@
 		protected Animator mExitAnim;
 		protected bool mHasBeenCollected;
 
+		AridArnoldSFX? mCollectSFX;
+		float mCollectVol;
+
 		public PermanentCollectableTile(Vector2 pos) : base(pos)
 		{
 			mIsGhost = CollectableManager.I.HasSpecific(mTileMapIndex, GetItemID());
 			mExitAnim = null;
 			mHasBeenCollected = false;
+
+			LoadSFX(AridArnoldSFX.Collect, 0.5f);
+		}
+
+		protected void LoadSFX(AridArnoldSFX sound, float vol)
+		{
+			mCollectSFX = sound;
+			mCollectVol = vol;
 		}
 
 		protected abstract CollectableCategory GetCollectableType();
@@ -58,6 +69,11 @@
 				if (mExitAnim is not null)
 				{
 					mExitAnim.Play();
+				}
+
+				if(mCollectSFX.HasValue)
+				{
+					SFXManager.I.PlaySFX(mCollectSFX.Value, mCollectVol, 0.0f, 0.0f, 0.0f);
 				}
 			}
 		}

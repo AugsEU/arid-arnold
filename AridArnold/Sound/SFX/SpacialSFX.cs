@@ -87,7 +87,7 @@ namespace AridArnold
 
 		public void SetDistanceCutoff(float distanceCutoff)
 		{
-			mDistanceCutoff = DISTANCE_CUTOFF;
+			mDistanceCutoff = distanceCutoff;
 		}
 	}
 }

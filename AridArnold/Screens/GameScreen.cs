@@ -266,6 +266,7 @@
 		{
 			mLevelEndTimer.Start();
 			DisplayLevelEndText();
+			SFXManager.I.PlaySFX(AridArnoldSFX.CollectKey, 0.1f);
 		}
 
 

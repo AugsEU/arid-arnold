@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using DeathRide;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Struct to specify the camera
@@ -213,6 +215,17 @@
 		/// </summary>
 		public void QueueMovement(CameraMovement movement)
 		{
+			mCameraMovements.Enqueue(movement);
+		}
+
+
+
+		/// <summary>
+		/// Do a movement instantly.
+		/// </summary>
+		public void DoMovement(CameraMovement movement)
+		{
+			Reset();
 			mCameraMovements.Enqueue(movement);
 		}
 
