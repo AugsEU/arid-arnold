@@ -47,6 +47,8 @@
 		// Library
 		[FilePath("Sound/SFX/Library/BlockLand")]			LibraryBlockLand,
 		[FilePath("Sound/SFX/Library/Rotate")]				LibraryRotate,
+		[FilePath("Sound/SFX/Library/Farry")]				FarryScream,
+
 
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,
@@ -54,6 +56,4 @@
 		[FilePath("Sound/SFX/Misc/DoorOpen")]				DoorOpen,
 		[FilePath("Sound/SFX/Misc/Unlock")]					Unlock,
 	}
-
-
 }

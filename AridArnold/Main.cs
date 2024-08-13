@@ -96,6 +96,7 @@ namespace AridArnold
 			InputManager.I.Init();
 			OptionsManager.I.Init();
 			SFXManager.I.Init();
+			MusicManager.I.Init("Sound/Music/MusicManifest.xml");
 
 			base.Initialize();
 		}
@@ -166,9 +167,10 @@ namespace AridArnold
 		protected override void Update(GameTime gameTime)
 		{
 			// Sound
-			SFXManager.I.Update(gameTime);
 			MonoSound.Impl.Update(gameTime);
-
+			SFXManager.I.Update(gameTime);
+			MusicManager.I.Update(gameTime);
+			
 			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
 			if (mSlowDownCount == 0)
 			{

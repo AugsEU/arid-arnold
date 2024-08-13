@@ -74,6 +74,9 @@ namespace AridArnold
 			entityListenerInfo.mForward = new Vector3(0.0f, 0.0f, 1.0f);
 			entityListenerInfo.mPosition.Z = 20.0f;
 
+			float camAngle = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera).GetCurrentSpec().mRotation;
+			entityListenerInfo.mUp = new Vector3(-MathF.Sin(camAngle), -MathF.Cos(camAngle), 0.0f);
+
 			mNewListeners.Add(entityListenerInfo);
 		}
 

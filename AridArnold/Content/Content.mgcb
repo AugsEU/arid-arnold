@@ -15362,3 +15362,21 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Library/Rotate.wav
 
+#begin Sound/SFX/Library/Farry.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Library/Farry.wav
+
+#begin Sound/Music/ConvertOgg.bat
+/copy:Sound/Music/ConvertOgg.bat
+
+#begin Sound/Music/MusicManifest.xml
+/copy:Sound/Music/MusicManifest.xml
+
+#begin Sound/Music/Steamplant.ogg
+/copy:Sound/Music/Steamplant.ogg
+
+#begin Sound/Music/Library.ogg
+/copy:Sound/Music/Library.ogg
+

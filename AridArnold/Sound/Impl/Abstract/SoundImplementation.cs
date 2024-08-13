@@ -10,7 +10,7 @@ namespace AridArnold
 		public abstract void Init(Game game);
 		public abstract void OnExit(Game game);
 
-		public AudioBuffer LoadAudioBuffer(AridArnoldSFX aridArnoldSFX)
+		public AudioBuffer LoadAudioBuffer<T>(T aridArnoldSFX) where T : Enum
 		{
 			string filePath = MonoEnum.GetFilePath(aridArnoldSFX);
 			return MonoSound.Impl.LoadAudioBuffer(filePath);

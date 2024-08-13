@@ -22,13 +22,11 @@ def create_seamless_loop(input_file, output_file):
     
     # Combine the mixed part with the remaining original sound
     final_sound = start_chunk.overlay(end_chunk)
-
-    final_sound.sample_width = 2
-    final_sound.frame_rate = 48000
-    final_sound.channels=1
     
     # Export the new sound
-    final_sound.export(output_file)
+    final_sound = final_sound.set_frame_rate(48000).set_channels(1)
+    final_sound.export(output_file, format="wav", codec="pcm_s16le",   # Codec for WAV
+)
     
     print(f"Seamless loop created and saved as {output_file}")
 

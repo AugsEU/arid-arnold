@@ -7,6 +7,7 @@
 		List<(string, string)> mRemappedTextures;
 		Color mHubArrowColours;
 		string mDisplayName;
+		string mMusicID;
 
 		#endregion rMembers
 
@@ -40,6 +41,7 @@
 			mHubArrowColours = MonoParse.GetColor(rootNode["exitColour"], Color.Black);
 
 			mDisplayName = MonoParse.GetString(rootNode["name"], "World");
+			mMusicID = MonoParse.GetString(rootNode["music"], "");
 		}
 
 
@@ -53,6 +55,8 @@
 			{
 				MonoData.I.AddPathRemap(path.Item1, path.Item2);
 			}
+
+			MusicManager.I.RequestTrackPlay(mMusicID);
 		}
 
 

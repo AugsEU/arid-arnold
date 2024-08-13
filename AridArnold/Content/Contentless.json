@@ -55,6 +55,10 @@
         {
             "copy": true
         },
+        ".bat": 
+        {
+            "copy": true
+        },
         ".ogg": 
         {
             "copy": true

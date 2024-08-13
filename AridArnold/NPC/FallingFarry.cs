@@ -3,6 +3,7 @@
 	internal class FallingFarry : PlatformingEntity
 	{
 		Animator mFallingAnim;
+		SpacialSFX mScreamSFX;
 
 		public FallingFarry(Vector2 pos) : base(pos, 0.0f, 0.0f, 0.3f)
 		{
@@ -19,10 +20,16 @@
 			mFallingAnim.Play();
 
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/FallinFarry/Farry1");
+
+			mScreamSFX = new SpacialSFX(AridArnoldSFX.FarryScream, mPosition, 0.4f);
+			mScreamSFX.GetBuffer().SetLoop(true);
+			mScreamSFX.SetDistanceCutoff(450.0f);
+			SFXManager.I.PlaySFX(mScreamSFX);
 		}
 
 		public override void Update(GameTime gameTime)
 		{
+			mScreamSFX.SetPosition(mPosition);
 			mFallingAnim.Update(gameTime);
 			base.Update(gameTime);
 		}
