@@ -2,40 +2,25 @@
 {
 	abstract class CameraMovement
 	{
+		protected CameraSpec mStartSpec;
 		protected CameraSpec mCurrentSpec;
 
-		public void StartMovement(CameraSpec startingSpec)
+		public virtual void StartMovement(CameraSpec startingSpec)
 		{
+			mStartSpec = startingSpec;
 			mCurrentSpec = startingSpec;
-			StartMovementInternal();
 		}
 
-		abstract protected void StartMovementInternal();
-
-		abstract protected void EndMovementInternal(ref CameraSpec endSpec);
-
-		public bool IsMovementOver(ref CameraSpec endSpec)
+		public virtual void Update(GameTime gameTime)
 		{
-			bool over = IsMovementOverInternal();
-			if (over)
-			{
-				EndMovementInternal(ref endSpec);
-			}
-
-			return over;
 		}
 
-		abstract protected bool IsMovementOverInternal();
+		abstract public CameraSpec EndMovementSpec();
 
-		public CameraSpec Update(GameTime gameTime)
-		{
-			UpdateInternal(gameTime);
-			return mCurrentSpec;
-		}
-
-		protected abstract void UpdateInternal(GameTime gameTime);
+		abstract public bool IsMovementOver();
 
 		public virtual bool MovementBlocksUpdate() { return false; }
 
+		public CameraSpec GetCurrentSpec() { return mCurrentSpec; }
 	}
 }

@@ -95,14 +95,10 @@ namespace AridArnold
 		public void Update(GameTime gameTime)
 		{
 			CheckQueue();
-			if (mCameraMovements.Count > 0)
+			if (mCurrentCameraMovement is not null)
 			{
-				mCurrentCameraMovement = mCameraMovements.Peek();
-				mCurrentSpec = mCurrentCameraMovement.Update(gameTime);
-			}
-			else
-			{
-				mCurrentCameraMovement = null;
+				mCurrentCameraMovement.Update(gameTime);
+				mCurrentSpec = mCurrentCameraMovement.GetCurrentSpec();
 			}
 		}
 
@@ -120,20 +116,19 @@ namespace AridArnold
 			}
 
 			CameraMovement topCamMove = mCameraMovements.Peek();
-			CameraSpec endSpec = mCurrentSpec;
 
 			if (mCurrentCameraMovement is null)
 			{
-				topCamMove.StartMovement(mCurrentSpec);
+				// Start thing at top of queue
+				mCurrentCameraMovement = topCamMove;
+				mCurrentCameraMovement.StartMovement(mCurrentSpec);
 			}
-			else if (mCurrentCameraMovement.IsMovementOver(ref endSpec))
+			else if (mCurrentCameraMovement.IsMovementOver())
 			{
-				mCurrentSpec = endSpec;
+				// Pop this.
+				mCurrentSpec = mCurrentCameraMovement.EndMovementSpec();
 				mCameraMovements.Dequeue();
-				if (mCameraMovements.Count > 0)
-				{
-					mCameraMovements.Peek().StartMovement(mCurrentSpec);
-				}
+				mCurrentCameraMovement = null;
 			}
 		}
 
@@ -225,8 +220,12 @@ namespace AridArnold
 		/// </summary>
 		public void DoMovement(CameraMovement movement)
 		{
+			if (mCurrentCameraMovement is not null)
+			{
+				mCurrentSpec = mCurrentCameraMovement.EndMovementSpec();
+				mCurrentCameraMovement = null;
+			}
 			mCameraMovements.Clear();
-			mCurrentCameraMovement = null;
 			mCameraMovements.Enqueue(movement);
 		}
 

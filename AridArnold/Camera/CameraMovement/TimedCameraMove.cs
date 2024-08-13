@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using Microsoft.VisualBasic;
+
+namespace AridArnold
 {
 	abstract class TimedCameraMove : CameraMovement
 	{
@@ -25,18 +27,18 @@
 			}
 		}
 
-		protected override bool IsMovementOverInternal()
+		public override bool IsMovementOver()
 		{
 			return mElapsedTime >= mTotalTime;
 		}
 
-		protected override void UpdateInternal(GameTime gameTime)
+		public override void Update(GameTime gameTime)
 		{
 			float dt = Util.GetDeltaT(gameTime);
 			mElapsedTime += dt;
 
 
-			if (IsMovementOverInternal())
+			if (IsMovementOver())
 			{
 				mTravelSound?.Stop(60.0f);
 
@@ -48,6 +50,8 @@
 				mTravelSound = null;
 				mFinishSound = null;
 			}
+
+			base.Update(gameTime);
 		}
 
 		protected float GetMovementPercentage()

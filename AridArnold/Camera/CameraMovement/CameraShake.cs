@@ -1,9 +1,8 @@
 ﻿namespace AridArnold
 {
-	internal class CameraShake : TimedCameraMove
+	class CameraShake : TimedCameraMove
 	{
 		Vector2 mShakeDisplacement;
-		Vector2 mCentrePos;
 		Vector2 mAmplitude;
 		float mAngularSpeed;
 		float mCurrAngle;
@@ -23,20 +22,7 @@
 			mAngularSpeed = speed;
 		}
 
-
-
-		protected override void StartMovementInternal()
-		{
-			mCentrePos = mCurrentSpec.mPosition;
-		}
-
-		protected override void EndMovementInternal(ref CameraSpec endSpec)
-		{
-			// Make sure we end exactly where we started
-			endSpec.mPosition = mCentrePos;
-		}
-
-		protected override void UpdateInternal(GameTime gameTime)
+		public override void Update(GameTime gameTime)
 		{
 			float dt = Util.GetDeltaT(gameTime);
 			mCurrAngle += dt * mAngularSpeed;
@@ -45,9 +31,16 @@
 			mShakeDisplacement.Y = MathF.Cos(mCurrAngle) * mAmplitude.Y;
 			mShakeDisplacement *= GetDropOff();
 
-			mCurrentSpec.mPosition = mCentrePos + mShakeDisplacement;
+			mCurrentSpec.mPosition = mStartSpec.mPosition + mShakeDisplacement;
 
-			base.UpdateInternal(gameTime);
+			base.Update(gameTime);
+		}
+
+		public override CameraSpec EndMovementSpec()
+		{
+			// Make sure we end exactly where we started
+			mCurrentSpec.mPosition = mStartSpec.mPosition;
+			return mCurrentSpec;
 		}
 
 		protected virtual float GetDropOff()

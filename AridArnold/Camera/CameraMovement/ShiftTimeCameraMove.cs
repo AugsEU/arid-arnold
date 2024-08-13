@@ -5,29 +5,21 @@
 		public const float TIME_TO_ROTATE = 2.0f;
 		const float ZOOM_OUT_LEVEL = 8.0f;
 
-		float mStartRotation;
 		bool mForwards;
 		int mUnblockUpdateHack = 0;
 		TimeShiftFaderFX mTextureFader;
 
 		public ShiftTimeCameraMove(bool forwards, TimeShiftFaderFX textureFader) : base(TIME_TO_ROTATE)
 		{
-			mStartRotation = 0.0f;
 			mForwards = forwards;
 			mTextureFader = textureFader;
 		}
 
-
-		protected override void StartMovementInternal()
-		{
-			mStartRotation = mCurrentSpec.mRotation;
-		}
-
-		protected override void UpdateInternal(GameTime gameTime)
+		public override void Update(GameTime gameTime)
 		{
 			float p = GetMovementPercentage();
 			float waveP = MonoMath.SmoothZeroToOne(Math.Min(2.0f - MathF.Abs(4.0f * p - 2.0f), 1.0f));
-			mCurrentSpec.mRotation = mStartRotation + MathF.PI * 2.0f * MonoMath.SmoothZeroToOne(p);
+			mCurrentSpec.mRotation = mStartSpec.mRotation + MathF.PI * 2.0f * MonoMath.SmoothZeroToOne(p);
 
 			if (!mForwards)
 			{
@@ -41,14 +33,16 @@
 
 			mTextureFader.Update(gameTime);
 
-			base.UpdateInternal(gameTime);
+			base.Update(gameTime);
 		}
 
-		protected override void EndMovementInternal(ref CameraSpec endSpec)
+		public override CameraSpec EndMovementSpec()
 		{
-			endSpec.mPosition = Vector2.Zero;
-			endSpec.mRotation = mStartRotation;
-			endSpec.mZoom = 1.0f;
+			mCurrentSpec.mPosition = Vector2.Zero;
+			mCurrentSpec.mRotation = mStartSpec.mRotation;
+			mCurrentSpec.mZoom = 1.0f;
+
+			return mCurrentSpec;
 		}
 
 		public override bool MovementBlocksUpdate()

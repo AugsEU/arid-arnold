@@ -19,9 +19,9 @@
 			mTargetAngle = targetAngle;
 		}
 
-		protected override void StartMovementInternal()
+		public override void StartMovement(CameraSpec startSpec)
 		{
-			mStartRotation = mCurrentSpec.mRotation;
+			mStartRotation = startSpec.mRotation;
 
 			while (MathF.Abs(mTargetAngle - mStartRotation) > MathF.Tau * 0.5f)
 			{
@@ -35,28 +35,29 @@
 				}
 			}
 
-			base.StartMovementInternal();
+			base.StartMovement(startSpec);
 		}
 
-		protected override void EndMovementInternal(ref CameraSpec endSpec)
+		public override CameraSpec EndMovementSpec()
 		{
 			// Make sure we end exactly on the right angle
-			endSpec.mRotation = mTargetAngle % MathF.Tau;
-			base.EndMovementInternal(ref endSpec);
+			mCurrentSpec.mRotation = mTargetAngle % MathF.Tau;
+			
+			return base.EndMovementSpec();
 		}
 
-		protected override bool IsMovementOverInternal()
+		public override bool IsMovementOver()
 		{
-			return mTargetAngle == mStartRotation || base.IsMovementOverInternal();
+			return mTargetAngle == mStartRotation || base.IsMovementOver();
 		}
 
-		protected override void UpdateInternal(GameTime gameTime)
+		public override void Update(GameTime gameTime)
 		{
 			float p = GetMovementPercentage();
 
 			mCurrentSpec.mRotation = mTargetAngle * p + mStartRotation * (1.0f - p);
 
-			base.UpdateInternal(gameTime);
+			base.Update(gameTime);
 		}
 
 		public override bool MovementBlocksUpdate() { return true; }
