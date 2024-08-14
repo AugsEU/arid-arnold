@@ -15380,3 +15380,51 @@
 #begin Sound/Music/Library.ogg
 /copy:Sound/Music/Library.ogg
 
+#begin Sound/SFX/Cave/Bounce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Bounce.wav
+
+#begin Sound/SFX/Cave/Squeak1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak1.wav
+
+#begin Sound/SFX/Cave/Squeak2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak2.wav
+
+#begin Sound/SFX/Cave/Squeak3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak3.wav
+
+#begin Sound/SFX/Cave/Squeak4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak4.wav
+
+#begin Sound/SFX/Cave/Squeak5.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak5.wav
+
+#begin Sound/SFX/Cave/Squeak6.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak6.wav
+
+#begin Sound/SFX/Cave/Squeak7.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak7.wav
+

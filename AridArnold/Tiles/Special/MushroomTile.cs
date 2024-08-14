@@ -126,7 +126,7 @@
 							if (entityVel.Y > DOWN_VEL_THRESH)
 							{
 								float bounceVel = MathF.Max(minVel, entityVel.Y);
-								platformingEntity.SetVelocity(new Vector2(entityVel.X, -bounceVel * alpha));
+								platformingEntity.OverrideVelocity(new Vector2(entityVel.X, -bounceVel * alpha));
 								didBounce = true;
 							}
 
@@ -147,7 +147,7 @@
 						if (valid)
 						{
 							float bounceVel = platformingEntity.OnGround() ? -minVel * alpha : entityVel.Y;
-							platformingEntity.SetVelocity(new Vector2(-entityVel.X, bounceVel));
+							platformingEntity.OverrideVelocity(new Vector2(-entityVel.X, bounceVel));
 							platformingEntity.ReverseWalkDirection();
 
 							didBounce = true;
@@ -160,7 +160,7 @@
 						{
 							if (entityVel.Y < 0.0f)
 							{
-								platformingEntity.SetVelocity(new Vector2(entityVel.X, -entityVel.Y * alpha));
+								platformingEntity.OverrideVelocity(new Vector2(entityVel.X, -entityVel.Y * alpha));
 								didBounce = true;
 							}
 						}
@@ -173,6 +173,7 @@
 				{
 					mBounceAnim.Play();
 					EmitSpores();
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.MushroomBounce, mPosition, 0.5f, 0.0f, 0.2f));
 				}
 			}
 		}

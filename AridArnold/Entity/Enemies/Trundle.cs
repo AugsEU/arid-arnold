@@ -38,6 +38,8 @@
 		#region rMembers
 
 		StateMachine<State> mStateMachine;
+		RandomSFXFactory mSFXFactory;
+		SpacialSFX mCurrentSqueak = null;
 
 		#endregion rMembers
 
@@ -85,6 +87,19 @@
 
 			//Botch position a bit. Not sure what's happening here.
 			mPosition.Y -= 2.0f;
+
+			// SFX
+			mSFXFactory = new RandomSFXFactory();
+			mSFXFactory.AddSFX(AridArnoldSFX.RatSqueak1, 0.1f, -0.3f, 0.0f);
+			mSFXFactory.AddSFX(AridArnoldSFX.RatSqueak2, 0.1f, -0.3f, 0.0f);
+			mSFXFactory.AddSFX(AridArnoldSFX.RatSqueak3, 0.1f, -0.3f, 0.0f);
+			mSFXFactory.AddSFX(AridArnoldSFX.RatSqueak4, 0.1f, -0.3f, 0.0f);
+			mSFXFactory.AddSFX(AridArnoldSFX.RatSqueak5, 0.1f, -0.3f, 0.0f);
+			mSFXFactory.AddSFX(AridArnoldSFX.RatSqueak6, 0.1f, -0.3f, 0.0f);
+			mSFXFactory.AddSFX(AridArnoldSFX.RatSqueak7, 0.1f, -0.3f, 0.0f);
+
+			SFXFactory jumpFactory = new SFXFactory(AridArnoldSFX.ArnoldJump, 0.84f, 0.8f, 0.9f);
+			LoadSFX(jumpFactory, AridArnoldSFX.ArnoldWalk, 0.2f, 0.8f);
 		}
 
 		#endregion rInitialise
@@ -101,7 +116,29 @@
 		public override void Update(GameTime gameTime)
 		{
 			mStateMachine.Update(gameTime);
+
+			if (mCurrentSqueak is not null)
+			{
+				mCurrentSqueak.SetPosition(GetPos());
+				mCurrentSqueak.SetVelocity(GetVelocity());
+
+				if(mCurrentSqueak.GetBuffer().SoundState() == SoundState.Stopped)
+				{
+					mCurrentSqueak = null;
+				}
+			}
+			else if(mStateMachine.GetState() == State.Wait)
+			{
+				MonoRandom rng = RandomManager.I.GetDraw();
+				if(rng.PercentChance(1.0f))
+				{
+					mCurrentSqueak = mSFXFactory.CreateSpacialSFX(mPosition);
+					SFXManager.I.PlaySFX(mCurrentSqueak);
+				}
+			}
+
 			base.Update(gameTime);
+
 		}
 
 		#endregion rUpdate

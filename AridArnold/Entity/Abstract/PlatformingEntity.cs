@@ -53,8 +53,8 @@ namespace AridArnold
 		float mDustIntensity;
 
 		// Sound
-		float mJumpVolume = 0.4f;
-		AridArnoldSFX? mJumpSound;
+		protected bool mSpacialJumpSFX;
+		SFXFactory mJumpFactory = null;
 		SpacialSFX mWalkSound;
 
 		#endregion rMembers
@@ -102,15 +102,17 @@ namespace AridArnold
 
 			// Opt into this by default
 			LayerOptIn(InteractionLayer.kGravityOrb);
+
+			// SFX
+			mSpacialJumpSFX = true;
 		}
 
 
-		protected void LoadSFX(AridArnoldSFX? jumpType, float jumpVolume, AridArnoldSFX? walkType, float walkVolume)
+		protected void LoadSFX(SFXFactory jumpFactory, AridArnoldSFX? walkType, float walkVolume, float walkPitch = 0.0f)
 		{
-			mJumpSound = jumpType;
-			mJumpVolume = jumpVolume;
+			mJumpFactory = jumpFactory;
 
-			mWalkSound = new SpacialSFX(walkType.Value, mPosition, walkVolume);
+			mWalkSound = new SpacialSFX(walkType.Value, mPosition, walkVolume, walkPitch, walkPitch);
 			mWalkSound.GetBuffer().SetLoop(true);
 			mWalkSound.SetMute(true);
 			SFXManager.I.PlaySFX(mWalkSound);
@@ -170,6 +172,11 @@ namespace AridArnold
 				mWalkSound.SetMute(walkMute);
 				mWalkSound.SetPosition(mPosition);
 				mWalkSound.SetVelocity(mVelocity);
+
+				if (mWalkSound.GetBuffer().SoundState() != SoundState.Playing)
+				{
+					SFXManager.I.PlaySFX(mWalkSound, 42.0f);
+				}
 			}
 
 			mIceWalking = Math.Max(mIceWalking-1, 0);
@@ -753,9 +760,9 @@ namespace AridArnold
 				{
 					EmitDustJump();
 
-					if (mJumpSound.HasValue)
+					if (mJumpFactory is not null)
 					{
-						SpacialSFX jumpSFX = new SpacialSFX(mJumpSound.Value, GetCentrePos(), mJumpVolume, -0.02f, 0.04f);
+						GameSFX jumpSFX = mSpacialJumpSFX ? mJumpFactory.CreateSpacialSFX(GetCentrePos()) : mJumpFactory.CreateSFX();
 						SFXManager.I.PlaySFX(jumpSFX);
 					}
 				}

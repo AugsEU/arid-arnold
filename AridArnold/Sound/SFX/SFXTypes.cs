@@ -49,6 +49,15 @@
 		[FilePath("Sound/SFX/Library/Rotate")]				LibraryRotate,
 		[FilePath("Sound/SFX/Library/Farry")]				FarryScream,
 
+		// Cave
+		[FilePath("Sound/SFX/Cave/Bounce")]					MushroomBounce,
+		[FilePath("Sound/SFX/Cave/Squeak1")]				RatSqueak1,
+		[FilePath("Sound/SFX/Cave/Squeak2")]				RatSqueak2,
+		[FilePath("Sound/SFX/Cave/Squeak3")]				RatSqueak3,
+		[FilePath("Sound/SFX/Cave/Squeak4")]				RatSqueak4,
+		[FilePath("Sound/SFX/Cave/Squeak5")]				RatSqueak5,
+		[FilePath("Sound/SFX/Cave/Squeak6")]				RatSqueak6,
+		[FilePath("Sound/SFX/Cave/Squeak7")]				RatSqueak7,
 
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,

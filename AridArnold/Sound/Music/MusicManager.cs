@@ -2,7 +2,7 @@
 {
 	class MusicManager : Singleton<MusicManager>
 	{
-		const double MUSIC_FADE_OUT_LENGTH = 1500.0;
+		const double MUSIC_FADE_OUT_LENGTH = 500.0;
 
 		MusicManifest mManifest;
 		MusicTrack mCurrentTrack;
@@ -31,6 +31,8 @@
 			// If it's the same as we are already playing, do nothing.
 			if (mCurrentTrack?.GetMusicID() == musicID)
 			{
+				// Cancel next track.
+				mNextTrack = mCurrentTrack;
 				return;
 			}
 

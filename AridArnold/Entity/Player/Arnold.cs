@@ -113,7 +113,9 @@ namespace AridArnold
 
 			mVelocity.Y = +0.01f;
 
-			LoadSFX(AridArnoldSFX.ArnoldJump, 0.8f, AridArnoldSFX.ArnoldWalk, 0.1f);
+			SFXFactory jumpFactory = new SFXFactory(AridArnoldSFX.ArnoldJump, 0.84f, 0.0f, 0.1f);
+			LoadSFX(jumpFactory, AridArnoldSFX.ArnoldWalk, 0.2f);
+			mSpacialJumpSFX = false;
 		}
 
 
@@ -264,6 +266,11 @@ namespace AridArnold
 
 		public override void Kill()
 		{
+			if(mTimerSinceDeath.IsPlaying())
+			{
+				return;
+			}
+
 			// Fade them all out as the level is about to reset.
 			SFXManager.I.EndAllSFX(160.0f);
 

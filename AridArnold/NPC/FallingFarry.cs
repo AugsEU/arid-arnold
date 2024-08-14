@@ -21,9 +21,9 @@
 
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/FallinFarry/Farry1");
 
-			mScreamSFX = new SpacialSFX(AridArnoldSFX.FarryScream, mPosition, 0.4f);
+			mScreamSFX = new SpacialSFX(AridArnoldSFX.FarryScream, mPosition, 0.6f);
 			mScreamSFX.GetBuffer().SetLoop(true);
-			mScreamSFX.SetDistanceCutoff(450.0f);
+			mScreamSFX.SetDistanceCutoff(550.0f);
 			SFXManager.I.PlaySFX(mScreamSFX);
 		}
 

@@ -183,6 +183,17 @@
 			return new Vector2(x, y);
 		}
 
+
+
+		/// <summary>
+		/// Get random element in list
+		/// </summary>
+		public T InList<T>(List<T> values)
+		{
+			int idx = GetIntRange(0, values.Count - 1);
+			return values[idx];
+		}
+
 		#endregion rAccessors
 	}
 
