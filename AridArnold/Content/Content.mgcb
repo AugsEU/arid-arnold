@@ -12242,17 +12242,89 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Sound/Music/ConvertOgg.bat
+/copy:Sound/Music/ConvertOgg.bat
+
+#begin Sound/Music/Library.ogg
+/copy:Sound/Music/Library.ogg
+
+#begin Sound/Music/MusicManifest.xml
+/copy:Sound/Music/MusicManifest.xml
+
+#begin Sound/Music/Steamplant.ogg
+/copy:Sound/Music/Steamplant.ogg
+
+#begin Sound/SFX/Arnold/Death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Arnold/Death.wav
+
 #begin Sound/SFX/Arnold/Jump.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/SFX/Arnold/Jump.wav
 
+#begin Sound/SFX/Arnold/Land.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Arnold/Land.wav
+
 #begin Sound/SFX/Arnold/Walk.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/SFX/Arnold/Walk.wav
+
+#begin Sound/SFX/Cave/Bounce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Bounce.wav
+
+#begin Sound/SFX/Cave/Squeak1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak1.wav
+
+#begin Sound/SFX/Cave/Squeak2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak2.wav
+
+#begin Sound/SFX/Cave/Squeak3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak3.wav
+
+#begin Sound/SFX/Cave/Squeak4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak4.wav
+
+#begin Sound/SFX/Cave/Squeak5.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak5.wav
+
+#begin Sound/SFX/Cave/Squeak6.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak6.wav
+
+#begin Sound/SFX/Cave/Squeak7.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Cave/Squeak7.wav
 
 #begin Sound/SFX/Futron/Bomb.wav
 /importer:WavImporter
@@ -12289,6 +12361,96 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/SFX/Futron/LaserShoot.wav
+
+#begin Sound/SFX/Lab/DoorClose.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/DoorClose.wav
+
+#begin Sound/SFX/Lab/DoorOpen.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/DoorOpen.wav
+
+#begin Sound/SFX/Lab/NukeAlarm.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/NukeAlarm.wav
+
+#begin Sound/SFX/Lab/NukeExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/NukeExplode.wav
+
+#begin Sound/SFX/Lab/RobotWalk.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/RobotWalk.wav
+
+#begin Sound/SFX/Library/BlockLand.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Library/BlockLand.wav
+
+#begin Sound/SFX/Library/Farry.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Library/Farry.wav
+
+#begin Sound/SFX/Library/Rotate.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Library/Rotate.wav
+
+#begin Sound/SFX/Menu/Confirm.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Menu/Confirm.wav
+
+#begin Sound/SFX/Menu/Select.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Menu/Select.wav
+
+#begin Sound/SFX/Misc/Collect.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Misc/Collect.wav
+
+#begin Sound/SFX/Misc/CollectKey.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Misc/CollectKey.wav
+
+#begin Sound/SFX/Misc/DoorOpen.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Misc/DoorOpen.wav
+
+#begin Sound/SFX/Misc/OneUp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Misc/OneUp.wav
+
+#begin Sound/SFX/Misc/Unlock.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Misc/Unlock.wav
 
 #begin Sound/SFX/NPC/A.wav
 /importer:WavImporter
@@ -15314,135 +15476,9 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Sound/SFX/Arnold/Death.wav
+#begin Sound/SFX/Lab/ButtonClick.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sound/SFX/Arnold/Death.wav
-
-#begin Sound/SFX/Misc/Collect.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Misc/Collect.wav
-
-#begin Sound/SFX/Misc/CollectKey.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Misc/CollectKey.wav
-
-#begin Sound/SFX/Misc/DoorOpen.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Misc/DoorOpen.wav
-
-#begin Sound/SFX/Arnold/Land.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Arnold/Land.wav
-
-#begin Sound/SFX/Misc/Unlock.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Misc/Unlock.wav
-
-#begin Sound/SFX/Library/BlockLand.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Library/BlockLand.wav
-
-#begin Sound/SFX/Library/Rotate.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Library/Rotate.wav
-
-#begin Sound/SFX/Library/Farry.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Library/Farry.wav
-
-#begin Sound/Music/ConvertOgg.bat
-/copy:Sound/Music/ConvertOgg.bat
-
-#begin Sound/Music/MusicManifest.xml
-/copy:Sound/Music/MusicManifest.xml
-
-#begin Sound/Music/Steamplant.ogg
-/copy:Sound/Music/Steamplant.ogg
-
-#begin Sound/Music/Library.ogg
-/copy:Sound/Music/Library.ogg
-
-#begin Sound/SFX/Cave/Bounce.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Bounce.wav
-
-#begin Sound/SFX/Cave/Squeak1.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Squeak1.wav
-
-#begin Sound/SFX/Cave/Squeak2.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Squeak2.wav
-
-#begin Sound/SFX/Cave/Squeak3.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Squeak3.wav
-
-#begin Sound/SFX/Cave/Squeak4.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Squeak4.wav
-
-#begin Sound/SFX/Cave/Squeak5.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Squeak5.wav
-
-#begin Sound/SFX/Cave/Squeak6.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Squeak6.wav
-
-#begin Sound/SFX/Cave/Squeak7.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Cave/Squeak7.wav
-
-#begin Sound/SFX/Misc/OneUp.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Misc/OneUp.wav
-
-#begin Sound/SFX/Lab/NukeAlarm.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Lab/NukeAlarm.wav
-
-#begin Sound/SFX/Lab/NukeExplode.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Lab/NukeExplode.wav
+/build:Sound/SFX/Lab/ButtonClick.wav
 

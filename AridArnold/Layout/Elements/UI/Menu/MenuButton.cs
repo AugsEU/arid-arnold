@@ -134,6 +134,7 @@ namespace AridArnold
 
 				if ((enterKey || mouseClick) && AllowClick())
 				{
+					SFXManager.I.PlaySFX(AridArnoldSFX.MenuConfirm, 0.4f);
 					mClickTimer.FullReset();
 					mClickTimer.Start();
 				}

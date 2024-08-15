@@ -126,7 +126,7 @@
 
 		public void SetMute(bool mute)
 		{
-			if(mute != mMuted)
+			if(mute != mMuted && mBuffer.SoundState() == SoundState.Playing)
 			{
 				mMuteTimer.ResetStart();
 			}

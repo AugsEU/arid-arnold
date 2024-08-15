@@ -105,6 +105,10 @@
 			if(mSelectedOption != prevOption || mFirstUpdate)
 			{
 				OnOptionSelect(mSelectedOption);
+				if(!mFirstUpdate)
+				{
+					SFXManager.I.PlaySFX(AridArnoldSFX.MenuSelect, 0.2f, 0.5f, 0.5f);
+				}
 			}
 
 			UpdateDescription(gameTime);

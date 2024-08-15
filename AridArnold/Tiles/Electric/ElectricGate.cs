@@ -68,6 +68,11 @@
 
 			if (scan.mTotalPositiveElectric > 0.75f)
 			{
+				if (mStatus != GateStatus.Open)
+				{
+					// Just opened.
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.LabDoorOpen, GetCentre(), 0.4f));
+				}
 				mStatus = GateStatus.Open;
 			}
 			else if (scan.mTotalPositiveElectric > 0.25f)
@@ -76,6 +81,11 @@
 			}
 			else
 			{
+				if (mStatus != GateStatus.Closed)
+				{
+					// Just closed.
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.LabDoorClose, GetCentre(), 0.4f));
+				}
 				mStatus = GateStatus.Closed;
 			}
 		}

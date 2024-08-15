@@ -8,11 +8,15 @@
 		// Debug
 		[FilePath("Sound/SFX/Test")]						Test,
 
+		// Menu
+		[FilePath("Sound/SFX/Menu/Confirm")]				MenuConfirm,
+		[FilePath("Sound/SFX/Menu/Select")]					MenuSelect,
+
 		// Arnold
-		[FilePath("Sound/SFX/Arnold/Jump")] ArnoldJump,
-		[FilePath("Sound/SFX/Arnold/Walk")] ArnoldWalk,
-		[FilePath("Sound/SFX/Arnold/Death")] ArnoldDeath,
-		[FilePath("Sound/SFX/Arnold/Land")] ArnoldLand,
+		[FilePath("Sound/SFX/Arnold/Jump")]					ArnoldJump,
+		[FilePath("Sound/SFX/Arnold/Walk")]					ArnoldWalk,
+		[FilePath("Sound/SFX/Arnold/Death")]				ArnoldDeath,
+		[FilePath("Sound/SFX/Arnold/Land")]					ArnoldLand,
 
 		// Voice
 		[FilePath("Sound/SFX/NPC/A")]						VowelA,
@@ -62,6 +66,10 @@
 		// Lab
 		[FilePath("Sound/SFX/Lab/NukeAlarm")]				NukeAlarm,
 		[FilePath("Sound/SFX/Lab/NukeExplode")]				NukeExplode,
+		[FilePath("Sound/SFX/Lab/RobotWalk")]				RobotWalk,
+		[FilePath("Sound/SFX/Lab/DoorOpen")]				LabDoorOpen,
+		[FilePath("Sound/SFX/Lab/DoorClose")]				LabDoorClose,
+		[FilePath("Sound/SFX/Lab/ButtonClick")]				LabButton,
 
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,

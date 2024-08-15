@@ -134,6 +134,9 @@
 				spawnPos -= Util.GetNormal(gravityCard);
 			}
 			newRobot.SetCentrePos(spawnPos);
+
+			// Sound
+			SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.FutronBombShoot, GetCentre(), 0.5f, 0.8f, 0.8f));
 		}
 
 

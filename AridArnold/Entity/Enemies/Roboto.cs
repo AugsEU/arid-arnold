@@ -57,6 +57,8 @@
 			mStandAnimation = new Animator(Animator.PlayType.OneShot,
 											("Enemies/roboto/RobotoWalk1", 1.2f));
 			mStandAnimation.Play();
+
+			LoadSFX(null, AridArnoldSFX.RobotWalk, 0.1f);
 		}
 
 		#endregion rInitialisation

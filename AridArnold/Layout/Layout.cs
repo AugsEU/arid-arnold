@@ -129,7 +129,14 @@ namespace AridArnold
 		public void Update(GameTime gameTime)
 		{
 			// Only change this once per frame.
-			mSelectedNavElement = mPendingNavElement;
+			if(!object.ReferenceEquals(mPendingNavElement, mSelectedNavElement))
+			{
+				if (mSelectedNavElement is not null)
+				{
+					SFXManager.I.PlaySFX(AridArnoldSFX.MenuSelect, 0.4f);
+				}
+				mSelectedNavElement = mPendingNavElement;
+			}
 
 			foreach (LayElement element in mElements)
 			{
@@ -239,6 +246,18 @@ namespace AridArnold
 			SetSelectedElement(navElement);
 		}
 
+
+		/// <summary>
+		/// Select nav element by ID
+		/// </summary>
+		public void InstantSetSelectedElement(string elemID)
+		{
+			// Note: unsafe cast because we want a crash if this is the wrong type.
+			NavElement navElement = (NavElement)GetElementByID(elemID);
+
+			mPendingNavElement = navElement;
+			mSelectedNavElement = navElement;
+		}
 
 
 		/// <summary>

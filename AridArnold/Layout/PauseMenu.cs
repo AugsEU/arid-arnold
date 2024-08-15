@@ -210,10 +210,10 @@ namespace AridArnold
 			{
 				case PauseSubMenu.kLevel:
 				case PauseSubMenu.kHub:
-					GetCurrentSubMenu().SetSelectedElement("resumeBtn");
+					GetCurrentSubMenu().InstantSetSelectedElement("resumeBtn");
 					break;
 				case PauseSubMenu.kOptions:
-					GetCurrentSubMenu().SetSelectedElement("visionOpt");
+					GetCurrentSubMenu().InstantSetSelectedElement("visionOpt");
 					break;
 			}
 		}
@@ -228,7 +228,7 @@ namespace AridArnold
 			if (mOpen) return;
 
 			mOpen = true;
-
+			SFXManager.I.PlaySFX(AridArnoldSFX.MenuSelect, 0.4f);
 			GoToSubMenu(PauseSubMenu.kHub);
 		}
 
