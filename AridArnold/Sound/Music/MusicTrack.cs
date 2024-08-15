@@ -16,5 +16,11 @@
 		{
 			return mID;
 		}
+
+		protected override float DecideVolume()
+		{
+			float musicVol = OptionsManager.I.GetMusicVolume();
+			return base.DecideVolume() * musicVol;
+		}
 	}
 }

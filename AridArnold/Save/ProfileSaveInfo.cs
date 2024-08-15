@@ -17,8 +17,8 @@ namespace AridArnold
 		ReadMode mReadMode;
 
 		// Basic data
-		string mProfileName;
-		int mNumInputUpdates;
+		string mProfileName = "Debug";
+		int mNumInputUpdates = 0;
 
 		public ProfileSaveInfo(string fileName) : base(fileName, true)
 		{

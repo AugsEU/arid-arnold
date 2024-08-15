@@ -59,9 +59,14 @@
 		[FilePath("Sound/SFX/Cave/Squeak6")]				RatSqueak6,
 		[FilePath("Sound/SFX/Cave/Squeak7")]				RatSqueak7,
 
+		// Lab
+		[FilePath("Sound/SFX/Lab/NukeAlarm")]				NukeAlarm,
+		[FilePath("Sound/SFX/Lab/NukeExplode")]				NukeExplode,
+
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,
 		[FilePath("Sound/SFX/Misc/CollectKey")]				CollectKey,
+		[FilePath("Sound/SFX/Misc/OneUp")]					OneUp,
 		[FilePath("Sound/SFX/Misc/DoorOpen")]				DoorOpen,
 		[FilePath("Sound/SFX/Misc/Unlock")]					Unlock,
 	}

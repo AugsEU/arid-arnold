@@ -15428,3 +15428,21 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Cave/Squeak7.wav
 
+#begin Sound/SFX/Misc/OneUp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Misc/OneUp.wav
+
+#begin Sound/SFX/Lab/NukeAlarm.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/NukeAlarm.wav
+
+#begin Sound/SFX/Lab/NukeExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/NukeExplode.wav
+

@@ -4,7 +4,7 @@ namespace AridArnold
 {
 	internal class SpacialSFX : GameSFX
 	{
-		const float DISTANCE_CUTOFF = 130.0f;
+		const float DISTANCE_CUTOFF = 230.0f;
 		const float VOL_AT_CUTOFF = 0.1f;
 
 		Vector2 mPosition;

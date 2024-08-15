@@ -29,6 +29,7 @@
 				EventManager.I.TriggerEvent(EventType.KeyCollect);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)mFlagType, true);
 				FXManager.I.AddAnimator(mPosition, "Shared/Coin/Explode.max", DrawLayer.TileEffects);
+				SFXManager.I.PlaySFX(AridArnoldSFX.Collect, 0.5f);
 				pEnabled = false;
 			}
 		}

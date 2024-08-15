@@ -61,13 +61,13 @@
 			LoadCampaign(campaignPath);
 			if (BF.DEBUG_LOADER)
 			{
-				mMaxLives = 7;
+				mMaxLives = 1;
 				CollectableManager.I.IncPermanentCount(0x0300, 100);
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
-				//CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
+				CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
-				QueueLoadSequence(new HubDirectLoader(301));
-				//QueueLoadSequence(new LevelDirectLoader(201));
+				//QueueLoadSequence(new HubDirectLoader(403));
+				QueueLoadSequence(new LevelDirectLoader(403));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
@@ -473,6 +473,7 @@
 		/// </summary>
 		public void GiveMaxLifeLevel()
 		{
+			SFXManager.I.PlaySFX(AridArnoldSFX.OneUp, 0.4f);
 			++mMaxLives;
 			mCurrLives = GetStartLives();
 		}

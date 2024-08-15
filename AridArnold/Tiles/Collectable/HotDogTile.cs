@@ -44,10 +44,12 @@
 				{
 					lifeStr = LanguageManager.I.GetText("InGame.LifeGain");
 					tickerColor = Color.OliveDrab;
+					SFXManager.I.PlaySFX(AridArnoldSFX.OneUp, 0.5f);
 				}
 				else
 				{
 					lifeStr = LanguageManager.I.GetText("InGame.NoLifeGain");
+					SFXManager.I.PlaySFX(AridArnoldSFX.Collect, 0.5f);
 					tickerColor = Color.Wheat;
 				}
 
