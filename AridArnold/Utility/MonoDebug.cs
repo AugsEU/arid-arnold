@@ -96,7 +96,7 @@ namespace AridArnold
 			{
 				MonoDraw.DrawRectDepth(info, debugRect.mRectangle, debugRect.mColor, DrawLayer.Front);
 			}
-			mDebugRectToDraw.Clear();
+			//mDebugRectToDraw.Clear();
 #endif
 		}
 	}

@@ -122,30 +122,50 @@
 				MonoAlg.Swap(ref entityHeight, ref entityWidth);
 			}
 
+			// Lingering effects
+			MirrorLingerFX lingerFX = new MirrorLingerFX(entity, 400.0f);
+			lingerFX.SetBaseColor(Color.GreenYellow);
+			FXManager.I.AddFX(lingerFX);
+
 			// Set gravity
 			entity.SetGravity(Util.InvertDirection(mRotation));
+
+			Vector2 dustStart = Vector2.Zero;
+			Vector2 dustEnd = Vector2.Zero;
 
 			// Fix position
 			switch (mRotation)
 			{
 				case CardinalDirection.Up:
 					entityPos.Y = ourCentre.Y - sTILE_SIZE * 0.5f - entityHeight;
+					dustStart = new Vector2(entityPos.X - sTILE_SIZE * 0.5f, ourBounds.min.Y);
+					dustEnd = new Vector2(entityPos.X + sTILE_SIZE * 0.5f, ourBounds.min.Y);
 					break;
 
 				case CardinalDirection.Right:
 					entityPos.X = ourCentre.X + sTILE_SIZE * 0.5f;
+					dustStart = new Vector2(ourBounds.max.X, entityPos.Y - sTILE_SIZE * 0.5f);
+					dustEnd = new Vector2(ourBounds.max.X, entityPos.Y - sTILE_SIZE * 0.5f);
 					break;
 
 				case CardinalDirection.Down:
 					entityPos.Y = ourCentre.Y + sTILE_SIZE * 0.5f;
+					dustStart = new Vector2(entityPos.X - sTILE_SIZE * 0.5f, ourBounds.max.Y);
+					dustEnd = new Vector2(entityPos.X + sTILE_SIZE * 0.5f, ourBounds.max.Y);
 					break;
 
 				case CardinalDirection.Left:
 					entityPos.X = ourCentre.X - sTILE_SIZE * 0.5f - entityWidth;
+					dustStart = new Vector2(ourBounds.min.X, entityPos.Y - sTILE_SIZE * 0.5f);
+					dustEnd = new Vector2(ourBounds.min.X, entityPos.Y - sTILE_SIZE * 0.5f);
 					break;
 			}
 
 			entity.SetPos(entityPos);
+			
+			// FX
+			DustUtil.EmitSwooshLine(dustStart, dustEnd, Util.GetNormal(mRotation) * 8.0f, DustUtil.MIRROR_COLORS);
+			SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.MirrorThrough, GetCentre(), 0.2f, -0.05f, 0.05f), 60.0f);
 		}
 
 

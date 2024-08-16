@@ -72,6 +72,10 @@
 		[FilePath("Sound/SFX/Lab/ButtonClick")]				LabButton,
 		[FilePath("Sound/SFX/Lab/AndroldBorn")]				AndroldBorn,
 
+		// Mirror
+		[FilePath("Sound/SFX/Mirror/MirrorThrough")]			MirrorThrough,
+		[FilePath("Sound/SFX/Mirror/MirrorStep")]		MirrorStep,
+
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,
 		[FilePath("Sound/SFX/Misc/CollectKey")]				CollectKey,

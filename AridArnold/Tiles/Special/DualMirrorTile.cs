@@ -64,6 +64,8 @@ namespace AridArnold
 
 				mChildReflection = new EntityReflection(platformingEntity, this);
 				EntityManager.I.QueueRegisterEntity(mChildReflection);
+
+				SFXManager.I.PlaySFX(AridArnoldSFX.MirrorStep, 0.2f);
 			}
 			base.OnTouch(entity, collisionResults);
 		}

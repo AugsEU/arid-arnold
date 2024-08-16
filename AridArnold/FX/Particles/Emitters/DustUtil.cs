@@ -17,6 +17,13 @@ namespace AridArnold
 			new Color(0x71A337u)
 		};
 
+		public static Color[] MIRROR_COLORS = new Color[]
+		{
+			new Color(0xD8D3B1u),
+			new Color(0xCFD1CFu),
+			new Color(0xFBFEFBu)
+		};
+
 		/// <summary>
 		/// Emit dust particle that go in the direction
 		/// </summary>
@@ -35,7 +42,7 @@ namespace AridArnold
 			MonoRandom rng = RandomManager.I.GetDraw();
 			byte textureIndex = (byte)(rng.GetIntRange(0, 2));
 
-			Color color = colors[RandomManager.I.GetDraw().GetIntRange(0, DUST_COLORS.Length - 1)];
+			Color color = colors[RandomManager.I.GetDraw().GetIntRange(0, colors.Length - 1)];
 
 			float xDiff = rng.GetFloatRange(-xdiff, xdiff);
 			Vector2 position = pos;
@@ -61,6 +68,28 @@ namespace AridArnold
 			EmitDust(pos, dir, SPORE_COLORS, 2.2f);
 		}
 
+
+		public static void EmitSwooshLine(Vector2 start, Vector2 end, Vector2 dir, Color[] colors)
+		{
+			Vector2 normDir = dir;
+			normDir.Normalize();
+
+			MonoRandom rng = RandomManager.I.GetDraw();
+			float len = (start - end).Length();
+			for(float x = 0; x <= len; x += 2.0f)
+			{
+				float t = x / len;
+				int numInColumn = rng.GetIntRange(0, 4);
+				Vector2 basePosition = MonoMath.Lerp(start, end, t);
+				
+				for(int i = 0; i < numInColumn; i++)
+				{
+					Vector2 offset = rng.GetUnitFloat() * dir;
+
+					EmitDust(basePosition + offset, normDir, colors, x * 0.1f);
+				}
+			}
+		}
 		
 	}
 }

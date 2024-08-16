@@ -15488,3 +15488,15 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Lab/AndroldBorn.wav
 
+#begin Sound/SFX/Mirror/MirrorStep.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mirror/MirrorStep.wav
+
+#begin Sound/SFX/Mirror/MirrorThrough.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mirror/MirrorThrough.wav
+
