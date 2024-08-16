@@ -7,10 +7,14 @@
 	{
 		#region rConstants
 
+		static Vector2[] PACK_POSITIONS = { new Vector2(1.0f, 1.0f), new Vector2(1.0f, -1.0f), new Vector2(-1.0f, 1.0f), new Vector2(-1.0f, -1.0f) };
 		const float GRAVITY = 7.0f;
 		const float SPIN_SPEED = 2.0f;
 
 		#endregion rConstants
+
+
+
 
 
 		#region rMembers
@@ -92,5 +96,26 @@
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rStatic
+
+		/// <summary>
+		/// Spawn 4 giblet pack
+		/// </summary>
+		public static void SpawnGibletPack(Vector2 centre, float radius, Color col)
+		{
+			for(int i = 0; i < PACK_POSITIONS.Length; i++)
+			{
+				Vector2 pos = PACK_POSITIONS[i] * radius + centre;
+				GibletFX newGiblet = new GibletFX(pos, new Vector2(4.0f, 4.0f), PACK_POSITIONS[i] * radius, col);
+				FXManager.I.AddFX(newGiblet);
+			}
+		}
+
+		#endregion rStatic
 	}
 }

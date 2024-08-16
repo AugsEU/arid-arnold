@@ -70,6 +70,7 @@
 		[FilePath("Sound/SFX/Lab/DoorOpen")]				LabDoorOpen,
 		[FilePath("Sound/SFX/Lab/DoorClose")]				LabDoorClose,
 		[FilePath("Sound/SFX/Lab/ButtonClick")]				LabButton,
+		[FilePath("Sound/SFX/Lab/AndroldBorn")]				AndroldBorn,
 
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,

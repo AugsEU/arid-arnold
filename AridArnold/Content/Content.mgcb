@@ -15482,3 +15482,9 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Lab/ButtonClick.wav
 
+#begin Sound/SFX/Lab/AndroldBorn.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/AndroldBorn.wav
+

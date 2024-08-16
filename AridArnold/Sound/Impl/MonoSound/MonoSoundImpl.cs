@@ -19,6 +19,7 @@ namespace AridArnold
 			SoundEffect.DistanceScale = DEFAULT_DISTANCE_SCALE;
 			SoundEffect.SpeedOfSound = DEFAULT_SPEED_OF_SOUND;
 			SoundEffect.DopplerScale = DEFAULT_DOPPLE_SCALE;
+			SoundEffect.Initialize();
 		}
 
 		public override void OnExit(Game game)

@@ -73,6 +73,13 @@
 
 					EntityManager.I.QueueRegisterEntity(new Androld(position));
 
+					//Sound
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.AndroldBorn, GetCentre(), 0.5f));
+
+
+					//Spawn giblets
+					GibletFX.SpawnGibletPack(GetCentre(), 5.0f, new Color(12, 12, 12));
+
 					//Self delete.
 					TileManager.I.RequestDelete(mTileMapIndex);
 				}
