@@ -53,6 +53,8 @@
 		MovingEntity mTransportingEntity;
 		float mInputSpeed;
 
+		GameSFX mTravelSFX = null;
+
 		// Draw
 		Texture2D mTraceTex1;
 		Texture2D mTraceTex2;
@@ -92,6 +94,17 @@
 			}
 
 			mSegmentEnd = nextPt.Value;
+
+			// Hack
+			if(entityToTransport is Arnold)
+			{
+				float pitch = entityToTransport.GetVelocity().Length() / 30.0f;
+				pitch = 1.0f - (1.0f / (1.0f + pitch));
+
+				mTravelSFX = new GameSFX(AridArnoldSFX.LibraryRotate, 0.3f, pitch, pitch);
+				mTravelSFX.GetBuffer().SetLoop(true);
+				SFXManager.I.PlaySFX(mTravelSFX);
+			}
 		}
 
 
@@ -193,6 +206,17 @@
 			{
 				return;
 			}
+
+			if (mTravelSFX is not null)
+			{
+				mTravelSFX.Stop(80.0);
+				SFXManager.I.PlaySFX(AridArnoldSFX.TeleportEmerge, 0.06f, -0.05f, 0.05f);
+			}
+			else
+			{
+				SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.TeleportEmerge, mPosition, 0.4f));
+			}
+			
 
 			Vector2 segStart = TileManager.I.GetTileCentre(mSegmentStart);
 			Vector2 segEnd = TileManager.I.GetTileCentre(mSegmentEnd);

@@ -82,12 +82,20 @@
 
 		void SimpleTimeChange(bool forwards)
 		{
-			TimeShiftFaderFX faderFX = new TimeShiftFaderFX();
-
-			// Queue camera move
-			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-			gameCam.QueueMovement(new ShiftTimeCameraMove(forwards, faderFX));
-			FXManager.I.AddFX(faderFX);
+			if (CampaignManager.I.GetCurrentLevelType() == AuxData.LevelType.Hub)
+			{
+				// Queue camera move
+				TimeShiftFaderFX faderFX = new TimeShiftFaderFX();
+				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+				gameCam.QueueMovement(new ShiftTimeCameraMove(forwards, faderFX));
+				FXManager.I.AddFX(faderFX);
+			}
+			else
+			{
+				FXManager.I.AddFX(new TimeShiftFaderFX(800.0));
+				AridArnoldSFX sfx = forwards ? AridArnoldSFX.QuickAgeForward : AridArnoldSFX.QuickAgeBackward;
+				SFXManager.I.PlaySFX(sfx, 0.2f);
+			}
 
 			if (forwards)
 			{

@@ -2,7 +2,7 @@
 {
 	internal class ShiftTimeCameraMove : TimedCameraMove
 	{
-		public const float TIME_TO_ROTATE = 2.0f;
+		public const float TIME_TO_ROTATE = 40.0f;
 		const float ZOOM_OUT_LEVEL = 8.0f;
 
 		bool mForwards;
@@ -13,6 +13,15 @@
 		{
 			mForwards = forwards;
 			mTextureFader = textureFader;
+
+			if(mForwards)
+			{
+				SFXManager.I.PlaySFX(AridArnoldSFX.AgeForward, 0.2f);
+			}
+			else
+			{
+				SFXManager.I.PlaySFX(AridArnoldSFX.AgeBackward, 0.2f);
+			}
 		}
 
 		public override void Update(GameTime gameTime)

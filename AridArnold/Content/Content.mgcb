@@ -15500,3 +15500,45 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Mirror/MirrorThrough.wav
 
+#begin Sound/SFX/Mountain/AgeBackward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/AgeBackward.wav
+
+#begin Sound/SFX/Mountain/AgeForward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/AgeForward.wav
+
+#begin Sound/SFX/Mountain/QuickAgeBackward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/QuickAgeBackward.wav
+
+#begin Sound/SFX/Mountain/QuickAgeForward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/QuickAgeForward.wav
+
+#begin Sound/SFX/Mountain/MamalAngry.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/MamalAngry.wav
+
+#begin Sound/SFX/Mountain/BlockPush.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/BlockPush.wav
+
+#begin Sound/SFX/WW7/TeleportEmerge.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/WW7/TeleportEmerge.wav
+

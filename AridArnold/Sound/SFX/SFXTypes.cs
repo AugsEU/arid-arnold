@@ -40,14 +40,6 @@
 		[FilePath("Sound/SFX/NPC/Beep")]					Beep,
 		[FilePath("Sound/SFX/NPC/Chisel")]					Chisel,
 
-		// Futron
-		[FilePath("Sound/SFX/Futron/LaserShoot")]			FutronLaserShoot,
-		[FilePath("Sound/SFX/Futron/Laser")]				FutronLaser,
-		[FilePath("Sound/SFX/Futron/LaserLand")]			FutronLaserLand,
-		[FilePath("Sound/SFX/Futron/BombShoot")]			FutronBombShoot,
-		[FilePath("Sound/SFX/Futron/Bomb")]					FutronBomb,
-		[FilePath("Sound/SFX/Futron/BombLand")]				FutronBombLand,
-
 		// Library
 		[FilePath("Sound/SFX/Library/BlockLand")]			LibraryBlockLand,
 		[FilePath("Sound/SFX/Library/Rotate")]				LibraryRotate,
@@ -73,8 +65,25 @@
 		[FilePath("Sound/SFX/Lab/AndroldBorn")]				AndroldBorn,
 
 		// Mirror
-		[FilePath("Sound/SFX/Mirror/MirrorThrough")]			MirrorThrough,
-		[FilePath("Sound/SFX/Mirror/MirrorStep")]		MirrorStep,
+		[FilePath("Sound/SFX/Mirror/MirrorThrough")]		MirrorThrough,
+		[FilePath("Sound/SFX/Mirror/MirrorStep")]			MirrorStep,
+
+		// Mountain
+		[FilePath("Sound/SFX/Mountain/AgeForward")]			AgeForward,
+		[FilePath("Sound/SFX/Mountain/QuickAgeForward")]	QuickAgeForward,
+		[FilePath("Sound/SFX/Mountain/AgeBackward")]		AgeBackward,
+		[FilePath("Sound/SFX/Mountain/QuickAgeBackward")]	QuickAgeBackward,
+		[FilePath("Sound/SFX/Mountain/MamalAngry")]			MamalAngry,
+		[FilePath("Sound/SFX/Mountain/BlockPush")]			BlockPush,
+
+		// WW7
+		[FilePath("Sound/SFX/WW7/TeleportEmerge")]			TeleportEmerge,
+		[FilePath("Sound/SFX/Futron/LaserShoot")]			FutronLaserShoot,
+		[FilePath("Sound/SFX/Futron/Laser")]				FutronLaser,
+		[FilePath("Sound/SFX/Futron/LaserLand")]			FutronLaserLand,
+		[FilePath("Sound/SFX/Futron/BombShoot")]			FutronBombShoot,
+		[FilePath("Sound/SFX/Futron/Bomb")]					FutronBomb,
+		[FilePath("Sound/SFX/Futron/BombLand")]				FutronBombLand,
 
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,

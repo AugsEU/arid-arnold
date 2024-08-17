@@ -32,6 +32,7 @@
 
 		StateMachine<State> mStateMachine;
 		bool mIsAwake;
+		SpacialSFX mAngrySFX;
 
 		#endregion rMembers
 
@@ -46,6 +47,11 @@
 			mPosition.Y -= 16.0f;
 			mIsAwake = TimeZoneManager.I.GetCurrentTimeZone() == 1;
 			mStateMachine = new StateMachine<State>(mIsAwake ? State.ChargeAtPlayer : State.Wait);
+
+			mAngrySFX = new SpacialSFX(AridArnoldSFX.MamalAngry, mPosition, 0.2f);
+			mAngrySFX.GetBuffer().SetLoop(true);
+			mAngrySFX.SetMute(true);
+			SFXManager.I.PlaySFX(mAngrySFX);
 		}
 
 
@@ -82,6 +88,8 @@
 			mStateMachine.Update(gameTime);
 
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
+
+			mAngrySFX.SetMute(!mIsAwake);
 
 			base.Update(gameTime);
 		}

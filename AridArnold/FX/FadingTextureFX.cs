@@ -43,13 +43,13 @@ namespace AridArnold
 	{
 		FadingTextureFX mTextureFader;
 
-		public TimeShiftFaderFX()
+		public TimeShiftFaderFX(double fadeTime = ShiftTimeCameraMove.TIME_TO_ROTATE * 80.0)
 		{
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
 			MonoDebug.Assert(gameCam is not null && gameCam.GetPrevRenderTarget() is not null);
 
 			Texture2D previousFrame = MonoDraw.MemCopyTexture(Main.GetGraphicsDevice(), gameCam.GetPrevRenderTarget());
-			mTextureFader = new FadingTextureFX(ShiftTimeCameraMove.TIME_TO_ROTATE * 80.0, previousFrame, Vector2.Zero, DrawLayer.Front);
+			mTextureFader = new FadingTextureFX(fadeTime, previousFrame, Vector2.Zero, DrawLayer.Front);
 		}
 
 		public override void Draw(DrawInfo info)
