@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
+    <!-- World themes -->
     <music id="SteamPlant">
         <file>SteamPlant.ogg</file>
         <vol>1.0</vol>
     </music>
     <music id="Library">
         <file>Library.ogg</file>
+        <vol>1.0</vol>
+    </music>
+
+    <!-- Arcade -->
+    <music id="DeathRide">
+        <file>DeathRide.ogg</file>
+        <vol>0.5</vol>
+    </music>
+    <music id="HorsesAndGun">
+        <file>HorsesAndGun.ogg</file>
+        <vol>1.0</vol>
+    </music>
+    <music id="WormWarp">
+        <file>WormWarp.ogg</file>
         <vol>1.0</vol>
     </music>
 </root>

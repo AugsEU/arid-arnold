@@ -756,30 +756,6 @@
 /processorParam:TextureFormat=Color
 /build:Arcade/DeathRide/Player/PlayerUpRight.png
 
-#begin Arcade/DeathRide/Sound/Convert.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/DeathRide/Sound/Convert.wav
-
-#begin Arcade/DeathRide/Sound/GameOverSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/DeathRide/Sound/GameOverSFX.wav
-
-#begin Arcade/DeathRide/Sound/GMTK2023.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Arcade/DeathRide/Sound/GMTK2023.mp3
-
-#begin Arcade/DeathRide/Sound/PlayerHit.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/DeathRide/Sound/PlayerHit.wav
-
 #begin Arcade/DeathRide/UI/HealthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1538,12 +1514,6 @@
 /processorParam:TextureFormat=Color
 /build:Arcade/HorsesAndGun/main_logo.png
 
-#begin Arcade/HorsesAndGun/Music/Horses and gun.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Arcade/HorsesAndGun/Music/Horses and gun.ogg
-
 #begin Arcade/HorsesAndGun/scrolling_clouds_temp.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1555,36 +1525,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Arcade/HorsesAndGun/scrolling_clouds_temp.png
-
-#begin Arcade/HorsesAndGun/SFX/GameOverSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/HorsesAndGun/SFX/GameOverSFX.wav
-
-#begin Arcade/HorsesAndGun/SFX/getherdone.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/HorsesAndGun/SFX/getherdone.wav
-
-#begin Arcade/HorsesAndGun/SFX/gunsfx.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/HorsesAndGun/SFX/gunsfx.wav
-
-#begin Arcade/HorsesAndGun/SFX/levelupsfx.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/HorsesAndGun/SFX/levelupsfx.wav
-
-#begin Arcade/HorsesAndGun/SFX/reloadsfx.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/HorsesAndGun/SFX/reloadsfx.wav
 
 #begin Arcade/HorsesAndGun/SilverBullet.png
 /importer:TextureImporter
@@ -1859,36 +1799,6 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Arcade/WormWarp/Fonts/PixelFont.spritefont
-
-#begin Arcade/WormWarp/Music/GameJam21.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Arcade/WormWarp/Music/GameJam21.ogg
-
-#begin Arcade/WormWarp/Music/GJ Main.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Arcade/WormWarp/Music/GJ Main.ogg
-
-#begin Arcade/WormWarp/SFX/GameOverSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/WormWarp/SFX/GameOverSFX.wav
-
-#begin Arcade/WormWarp/SFX/NewDimensionSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/WormWarp/SFX/NewDimensionSFX.wav
-
-#begin Arcade/WormWarp/SFX/PointGetSFX.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Arcade/WormWarp/SFX/PointGetSFX.wav
 
 #begin Arcade/WormWarp/Textures/AppleDimension.png
 /importer:TextureImporter
@@ -12245,6 +12155,12 @@
 #begin Sound/Music/ConvertOgg.bat
 /copy:Sound/Music/ConvertOgg.bat
 
+#begin Sound/Music/DeathRide.ogg
+/copy:Sound/Music/DeathRide.ogg
+
+#begin Sound/Music/HorsesAndGun.ogg
+/copy:Sound/Music/HorsesAndGun.ogg
+
 #begin Sound/Music/Library.ogg
 /copy:Sound/Music/Library.ogg
 
@@ -12253,6 +12169,9 @@
 
 #begin Sound/Music/Steamplant.ogg
 /copy:Sound/Music/Steamplant.ogg
+
+#begin Sound/Music/WormWarp.ogg
+/copy:Sound/Music/WormWarp.ogg
 
 #begin Sound/SFX/Arnold/Death.wav
 /importer:WavImporter
@@ -12326,6 +12245,18 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Cave/Squeak7.wav
 
+#begin Sound/SFX/DeathRide/Convert.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/DeathRide/Convert.wav
+
+#begin Sound/SFX/DeathRide/PlayerHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/DeathRide/PlayerHit.wav
+
 #begin Sound/SFX/Futron/Bomb.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -12361,6 +12292,42 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/SFX/Futron/LaserShoot.wav
+
+#begin Sound/SFX/HorsesAndGun/GetHerDone.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/HorsesAndGun/GetHerDone.wav
+
+#begin Sound/SFX/HorsesAndGun/GunShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/HorsesAndGun/GunShoot.wav
+
+#begin Sound/SFX/HorsesAndGun/LevelUp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/HorsesAndGun/LevelUp.wav
+
+#begin Sound/SFX/HorsesAndGun/Reload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/HorsesAndGun/Reload.wav
+
+#begin Sound/SFX/Lab/AndroldBorn.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/AndroldBorn.wav
+
+#begin Sound/SFX/Lab/ButtonClick.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/ButtonClick.wav
 
 #begin Sound/SFX/Lab/DoorClose.wav
 /importer:WavImporter
@@ -12422,6 +12389,24 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Menu/Select.wav
 
+#begin Sound/SFX/Mirror/MirrorStep.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mirror/MirrorStep.wav
+
+#begin Sound/SFX/Mirror/MirrorThrough.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mirror/MirrorThrough.wav
+
+#begin Sound/SFX/Misc/ArcadeGameOver.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Misc/ArcadeGameOver.wav
+
 #begin Sound/SFX/Misc/Collect.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -12451,6 +12436,42 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/SFX/Misc/Unlock.wav
+
+#begin Sound/SFX/Mountain/AgeBackward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/AgeBackward.wav
+
+#begin Sound/SFX/Mountain/AgeForward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/AgeForward.wav
+
+#begin Sound/SFX/Mountain/BlockPush.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/BlockPush.wav
+
+#begin Sound/SFX/Mountain/MamalAngry.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/MamalAngry.wav
+
+#begin Sound/SFX/Mountain/QuickAgeBackward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/QuickAgeBackward.wav
+
+#begin Sound/SFX/Mountain/QuickAgeForward.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Mountain/QuickAgeForward.wav
 
 #begin Sound/SFX/NPC/A.wav
 /importer:WavImporter
@@ -12577,6 +12598,24 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Medium
 /build:Sound/SFX/Test.wav
+
+#begin Sound/SFX/WormWarp/NewDimension.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/WormWarp/NewDimension.wav
+
+#begin Sound/SFX/WormWarp/PointGet.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/WormWarp/PointGet.wav
+
+#begin Sound/SFX/WW7/TeleportEmerge.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/WW7/TeleportEmerge.wav
 
 #begin Text/EN/Arcade/DeathRide/Advanced.txt
 /copy:Text/EN/Arcade/DeathRide/Advanced.txt
@@ -15475,70 +15514,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Sound/SFX/Lab/ButtonClick.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Lab/ButtonClick.wav
-
-#begin Sound/SFX/Lab/AndroldBorn.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Lab/AndroldBorn.wav
-
-#begin Sound/SFX/Mirror/MirrorStep.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mirror/MirrorStep.wav
-
-#begin Sound/SFX/Mirror/MirrorThrough.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mirror/MirrorThrough.wav
-
-#begin Sound/SFX/Mountain/AgeBackward.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mountain/AgeBackward.wav
-
-#begin Sound/SFX/Mountain/AgeForward.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mountain/AgeForward.wav
-
-#begin Sound/SFX/Mountain/QuickAgeBackward.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mountain/QuickAgeBackward.wav
-
-#begin Sound/SFX/Mountain/QuickAgeForward.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mountain/QuickAgeForward.wav
-
-#begin Sound/SFX/Mountain/MamalAngry.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mountain/MamalAngry.wav
-
-#begin Sound/SFX/Mountain/BlockPush.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Mountain/BlockPush.wav
-
-#begin Sound/SFX/WW7/TeleportEmerge.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/WW7/TeleportEmerge.wav
 

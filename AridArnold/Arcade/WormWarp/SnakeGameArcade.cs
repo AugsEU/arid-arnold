@@ -61,5 +61,10 @@ namespace WormWarp
 		{
 			return mGameToEmulate.GetScore();
 		}
+
+		public override string GetMusicID()
+		{
+			return "WormWarp";
+		}
 	}
 }

@@ -32,8 +32,9 @@
 		public void EndRun()
 		{
 			mRunStarted = false;
-			// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.GameOver, 1.0f);
-			// S TO DO SoundManager.I.StopMusic();
+
+			AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.ArcadeGameOver, 0.7f);
+			AridArnold.MusicManager.I.StopMusic();
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 			gameCam.QueueMovement(new DiminishCameraShake(5.5f, 5.0f, 25.0f));
 		}

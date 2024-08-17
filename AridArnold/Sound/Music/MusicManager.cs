@@ -23,6 +23,16 @@
 
 
 		/// <summary>
+		/// Stop the music.
+		/// </summary>
+		public void StopMusic()
+		{
+			RequestTrackPlay("");
+		}
+
+
+
+		/// <summary>
 		/// Request a track to play. Pass null to request none music.
 		/// </summary>
 		public void RequestTrackPlay(string musicID)

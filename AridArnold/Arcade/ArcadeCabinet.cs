@@ -128,15 +128,28 @@
 		{
 			mBlinkTimer.Update(gameTime);
 
-			if(mBlinkTimer.GetPercentageF() >= 1.0f)
+			if (mBlinkTimer.GetPercentageF() >= 1.0f)
 			{
 				mBlinkTimer.Reset();
+			}
+
+			switch (mCurrScreen)
+			{
+				case ArcadeCabScreen.TitleScreen:
+					UpdateTitleScreen(gameTime);
+					break;
+				case ArcadeCabScreen.Gameplay:
+					UpdateGameScreen(gameTime);
+					break;
+				case ArcadeCabScreen.ScoreScreen:
+					UpdateScoreScreen(gameTime);
+					break;
 			}
 
 			if (InputManager.I.KeyPressed(InputAction.Pause))
 			{
 				mLoadedGame.ResetGame();
-				MediaPlayer.Stop();
+				MusicManager.I.StopMusic();
 				ScreenManager.I.ActivateScreen(ScreenType.Game); // Go back to game screen.
 			}
 		}
@@ -152,6 +165,8 @@
 			{
 				mCurrScreen = ArcadeCabScreen.Gameplay;
 				mLoadedGame.ResetGame();
+				string musicID = mLoadedGame.GetMusicID();
+				MusicManager.I.RequestTrackPlay(musicID);
 			}
 		}
 

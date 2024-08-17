@@ -151,8 +151,6 @@
 			mNumApplesPlaced = 0;
 			AddNewApple();
 
-			//Start music - S TO DO.
-
 			mGameState = GameState.GS_MAIN;
 			mCurrScore = 0;
 			mCurrentStep = -1;
@@ -170,8 +168,6 @@
 			mGameOverOpacity = 0.0f;
 
 			mGameState = GameState.GS_MAIN;
-
-			//Start music - S TO DO.
 		}
 
 
@@ -197,7 +193,22 @@
 		/// </summary>
 		void PlaySFX(SFX_TYPE type)
 		{
-			// S TO DO
+			switch (type)
+			{
+				case SFX_TYPE.ST_NONE:
+					break;
+				case SFX_TYPE.ST_PICKUP:
+					AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.WormPointGet, 0.75f);
+					break;
+				case SFX_TYPE.ST_DIMENSION:
+					AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.WormNewDimension, 0.75f);
+					break;
+				case SFX_TYPE.ST_GAMEOVER:
+					AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.ArcadeGameOver, 0.75f);
+					break;
+				default:
+					break;
+			}
 		}
 
 		#endregion rSound

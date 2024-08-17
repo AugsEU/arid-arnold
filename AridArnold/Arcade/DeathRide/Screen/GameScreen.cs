@@ -65,7 +65,6 @@
 			if (RunManager.I.HasStarted() == false)
 			{
 				RunManager.I.StartRun();
-				// S TO DO SoundManager.I.PlayMusic(SoundManager.MusicType.MainGame, 0.55f);
 			}
 
 			EntityManager.I.ClearEntities();

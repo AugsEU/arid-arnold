@@ -12,7 +12,6 @@
 
 		public override void ResetGame()
 		{
-			// S TO DO SoundManager.I.StopMusic();
 			ScreenManager.I.ActivateScreen(ScreenType.MainGame);
 			ScoreManager.I.ResetAll();
 			base.ResetGame();
@@ -56,6 +55,11 @@
 		public override ulong GetScore()
 		{
 			return ScoreManager.I.GetCurrentScore();
+		}
+
+		public override string GetMusicID()
+		{
+			return "HorsesAndGun";
 		}
 	}
 }

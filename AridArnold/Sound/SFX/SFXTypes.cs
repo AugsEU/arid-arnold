@@ -85,11 +85,26 @@
 		[FilePath("Sound/SFX/Futron/Bomb")]					FutronBomb,
 		[FilePath("Sound/SFX/Futron/BombLand")]				FutronBombLand,
 
+
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,
 		[FilePath("Sound/SFX/Misc/CollectKey")]				CollectKey,
 		[FilePath("Sound/SFX/Misc/OneUp")]					OneUp,
 		[FilePath("Sound/SFX/Misc/DoorOpen")]				DoorOpen,
 		[FilePath("Sound/SFX/Misc/Unlock")]					Unlock,
+
+		// Arcade
+		[FilePath("Sound/SFX/Misc/ArcadeGameOver")] ArcadeGameOver,
+
+		[FilePath("Sound/SFX/DeathRide/Convert")]	DeathRideConvert,
+		[FilePath("Sound/SFX/DeathRide/PlayerHit")] DeathRidePlayerHit,
+
+		[FilePath("Sound/SFX/HorsesAndGun/GetHerDone")] HorseGetHerDone,
+		[FilePath("Sound/SFX/HorsesAndGun/GunShoot")] HorseGunShoot,
+		[FilePath("Sound/SFX/HorsesAndGun/LevelUp")] HorseLevelUp,
+		[FilePath("Sound/SFX/HorsesAndGun/Reload")] HorseReload,
+
+		[FilePath("Sound/SFX/WormWarp/NewDimension")] WormNewDimension,
+		[FilePath("Sound/SFX/WormWarp/PointGet")] WormPointGet,
 	}
 }

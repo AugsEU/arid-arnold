@@ -38,6 +38,8 @@
 
 		public abstract ulong GetScore();
 
+		public abstract string GetMusicID();
+
 		public abstract RenderTarget2D DrawToRenderTarget(DrawInfo info);
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MonoSound.Audio;
+using System;
 
 namespace DeathRide
 {
@@ -139,7 +140,7 @@ namespace DeathRide
 						ulong score = mGrappledEntity.GiveScore();
 						score *= (ulong)mFireCombo;
 
-						// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.Convert, 0.7f, 0.0f, 0.0f);
+						AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.DeathRideConvert, 0.7f);
 
 						if (score > 0)
 						{
@@ -453,7 +454,7 @@ namespace DeathRide
 			}
 			else if (delta < 0 && !mImmunityTimer.IsPlaying())
 			{
-				// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.PlayerHit, 0.6f);
+				AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.DeathRidePlayerHit, 0.6f);
 				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 
 				gameCam.QueueMovement(new DiminishCameraShake(1.5f, 3.0f, 25.0f));

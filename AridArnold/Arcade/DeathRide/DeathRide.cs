@@ -72,5 +72,10 @@ namespace DeathRide
 		{
 			return RunManager.I.GetScore();
 		}
+
+		public override string GetMusicID()
+		{
+			return "DeathRide";
+		}
 	}
 }

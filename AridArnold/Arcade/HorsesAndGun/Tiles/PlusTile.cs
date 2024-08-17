@@ -25,7 +25,7 @@ namespace HorsesAndGun.Tiles
 
 		public override void ApplyEffect(Horse horse, TrackManager trackManager)
 		{
-			// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.TileActivate, 0.75f);
+			AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.HorseLevelUp, 0.75f);
 
 			horse.QueueOrderFront(HorseOrderType.moveTile, mMoveAmount);
 		}

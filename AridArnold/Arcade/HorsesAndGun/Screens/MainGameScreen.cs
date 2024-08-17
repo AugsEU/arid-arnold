@@ -113,7 +113,6 @@ namespace HorsesAndGun
 			ScoreManager.I.ResetScore();
 			mScoreTimer.FullReset();
 
-			// S TO DO SoundManager.I.PlayMusic(SoundManager.MusicType.MainGame, 0.5f);
 			mDiceQueue = new DiceQueue();
 			EntityManager.I.ClearEntities();
 
@@ -173,8 +172,8 @@ namespace HorsesAndGun
 			{
 				if (mGameOverFadeTimer.IsPlaying() == false)
 				{
-					// S TO DO SoundManager.I.StopMusic();
-					// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.GameOver, 0.5f);
+					AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.ArcadeGameOver, 0.7f);
+					AridArnold.MusicManager.I.StopMusic();
 					mGameOverFadeTimer.Start();
 					mGunReloadTimer.Stop();
 				}
@@ -215,7 +214,7 @@ namespace HorsesAndGun
 			{
 				mGunReloadTimer.Stop();
 				mGunReloadTimer.FullReset();
-				// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.GunReload, 0.35f);
+				AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.HorseReload, 0.35f);
 				mGunReloadTime = NORMAL_RELOAD_TIME;
 			}
 
@@ -250,7 +249,7 @@ namespace HorsesAndGun
 
 		private void FireGun(GameTime gameTime)
 		{
-			// S TO DO SoundManager.I.PlaySFX(SoundManager.SFXType.GunShoot, 0.2f);
+			AridArnold.SFXManager.I.PlaySFX(AridArnold.AridArnoldSFX.HorseGunShoot, 0.3f);
 			//Shoot dice
 			Dice diceToShoot = mDiceQueue.PopDice();
 			Texture2D diceTex = GetDiceTexture(diceToShoot);
