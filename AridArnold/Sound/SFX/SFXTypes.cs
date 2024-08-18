@@ -85,6 +85,13 @@
 		[FilePath("Sound/SFX/Futron/Bomb")]					FutronBomb,
 		[FilePath("Sound/SFX/Futron/BombLand")]				FutronBombLand,
 
+		// Hell
+		[FilePath("Sound/SFX/Hell/BigFireShoot")]			BigFireShoot,
+		[FilePath("Sound/SFX/Hell/FireShoot")]				FireShoot,
+		[FilePath("Sound/SFX/Hell/FireTravel")]				FireTravel,
+		[FilePath("Sound/SFX/Hell/FireLand")]				FireLand,
+		[FilePath("Sound/SFX/Hell/BossHit")]				BossHit,
+		[FilePath("Sound/SFX/Hell/BossDeath")]				BossDeath,
 
 		// Misc
 		[FilePath("Sound/SFX/Misc/Collect")]				Collect,

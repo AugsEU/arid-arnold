@@ -10,6 +10,12 @@
 
 
 
+		#region rMembers
+
+		bool mHaltShooting = false;
+
+		#endregion rMembers
+
 
 
 		#region rInitialisation
@@ -77,6 +83,16 @@
 		{
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
+			if(EventManager.I.IsSignaled(EventType.DemonBossKilled))
+			{
+				mHaltShooting = true;
+			}
+
+			if(mHaltShooting)
+			{
+				mShootTimer.FullReset();
+			}
+
 			mVelocity = Vector2.Zero;
 			base.Update(gameTime);
 		}
@@ -105,6 +121,8 @@
 			Fireball bullet = new Fireball(this, spawnPos, bulletDirection);
 			bullet.SetGravity(GetGravityDir());
 			EntityManager.I.QueueRegisterEntity(bullet);
+
+			SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.FireShoot, spawnPos, 0.4f));
 		}
 
 

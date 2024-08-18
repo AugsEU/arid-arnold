@@ -10,6 +10,7 @@
 		KeyCollect,
 		ShopDoorOpen,
 		RedKeyUsed,
+		DemonBossKilled,
 	}
 
 

@@ -70,6 +70,7 @@
 			mTravelSFX = travel;
 			mExplodeSFX = explode;
 
+			mTravelSFX.GetBuffer().SetLoop(true);
 			mTravelSFX.SetPosition(mPosition);
 			mTravelSFX.SetVelocity(mVelocity);
 

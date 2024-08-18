@@ -15515,3 +15515,39 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Sound/SFX/Hell/BigFireShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/BigFireShoot.wav
+
+#begin Sound/SFX/Hell/FireLand.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/FireLand.wav
+
+#begin Sound/SFX/Hell/FireShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/FireShoot.wav
+
+#begin Sound/SFX/Hell/FireTravel.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/FireTravel.wav
+
+#begin Sound/SFX/Hell/BossHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/BossHit.wav
+
+#begin Sound/SFX/Hell/BossDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/BossDeath.wav
+

@@ -57,6 +57,8 @@ namespace AridArnold
 																 , ("Enemies/Papyras/FireBall4", FT));
 			mFireballAnim.Play();
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Papyras/FireBall1");
+
+			LoadSFX(new SpacialSFX(AridArnoldSFX.FireTravel, mPosition, 0.4f), new SpacialSFX(AridArnoldSFX.FireLand, mPosition, 0.4f));
 		}
 
 		#endregion rInitialisation

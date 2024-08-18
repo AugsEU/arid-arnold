@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Xna.Framework.Input;
+
 namespace AridArnold
 {
 	internal class DemonBoss : Entity
@@ -214,6 +216,7 @@ namespace AridArnold
 						mJawPhase = JawPhase.kShooting;
 						mJawTimer.ResetStart();
 
+						SFXManager.I.PlaySFX(AridArnoldSFX.BigFireShoot, 0.4f);
 						mCurrFileball = new DemonBossFireBall(CalcFireBallChargePos());
 						EntityManager.I.QueueRegisterEntity(mCurrFileball);
 						break;
@@ -299,6 +302,14 @@ namespace AridArnold
 
 				SpawnEyeGiblet(gibletPos, gibletVelocity);
 			}
+
+			// Sound
+			SFXManager.I.PlaySFX(AridArnoldSFX.BossHit, 0.4f, 0.0f, 0.05f);
+
+			// Shake
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+			DiminishCameraShake shakeMove = new DiminishCameraShake(6.0f, 5.0f, 100.0f);
+			gameCam.QueueMovement(shakeMove);
 		}
 
 
@@ -326,6 +337,8 @@ namespace AridArnold
 		/// </summary>
 		void BeginDeath()
 		{
+			EventManager.I.TriggerEvent(EventType.DemonBossKilled);
+
 			mJawPhase = JawPhase.kShooting;
 			int entityNum = EntityManager.I.GetEntityNum();
 			for(int i = 0; i < entityNum; i++) 
@@ -337,6 +350,14 @@ namespace AridArnold
 				}
 			}
 			mCurrFileball = null;
+
+			// Sound
+			SFXManager.I.PlaySFX(AridArnoldSFX.BossDeath, 0.6f);
+
+			// Shake
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+			DiminishCameraShake shakeMove = new DiminishCameraShake(30.0f, 10.0f, 100.0f);
+			gameCam.DoMovement(shakeMove);
 		}
 
 		#endregion rUpdate
