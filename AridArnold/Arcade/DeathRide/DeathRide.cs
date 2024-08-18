@@ -6,8 +6,6 @@ namespace DeathRide
 		public DeathRide(GraphicsDeviceManager deviceManager, ContentManager content) : base(deviceManager, content)
 		{
 			MonoData.I.Init(content);
-
-			FontManager.I.LoadAllFonts();
 			CameraManager.I.Init();
 
 			ScreenManager.I.LoadAllScreens(deviceManager);
@@ -16,6 +14,7 @@ namespace DeathRide
 
 		public override void ResetGame()
 		{
+			TimeManager.I.Reset();
 			RunManager.I.ResetNoEffects();
 			ScreenManager.I.ActivateScreen(ScreenType.Game);
 			base.ResetGame();

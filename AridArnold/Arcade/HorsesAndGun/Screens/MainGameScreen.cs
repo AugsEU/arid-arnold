@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-
-namespace HorsesAndGun
+﻿namespace HorsesAndGun
 {
 	internal class MainGameScreen : Screen
 	{
@@ -57,11 +53,13 @@ namespace HorsesAndGun
 			mDiceTextures = new Texture2D[6];
 			mSideDiceTextures = new Texture2D[6];
 			mTrackManager = new TrackManager(content);
-			mGunReloadTimer = new MonoTimer();
 			mShootAnim = new Animator(Animator.PlayType.OneShot);
+
+			mGunReloadTimer = new MonoTimer();
 			mGameOverFadeTimer = new MonoTimer();
 			mReadyTimer = new MonoTimer();
 			mScoreTimer = new MonoTimer();
+
 			mGunLane = 0;
 		}
 
@@ -119,6 +117,12 @@ namespace HorsesAndGun
 			mGunReloadTime = NORMAL_RELOAD_TIME;
 			mGunLane = 0;
 			mGameOverPoints = null;
+
+			mGunReloadTimer = new MonoTimer();
+			mGameOverFadeTimer = new MonoTimer();
+			mReadyTimer = new MonoTimer();
+			mScoreTimer = new MonoTimer();
+
 
 			mGunReloadTimer.FullReset();
 			mGameOverFadeTimer.FullReset();
@@ -291,7 +295,7 @@ namespace HorsesAndGun
 
 		public override RenderTarget2D DrawToRenderTarget(DrawInfo info)
 		{
-			SpriteFont pixelFont = FontManager.I.GetFont("Pixica Micro-24");
+			SpriteFont pixelFont = AridArnold.FontManager.I.GetFont("PixicaMicro", 24);
 
 			//Draw out the game area
 			info.device.SetRenderTarget(mScreenTarget);
@@ -344,13 +348,14 @@ namespace HorsesAndGun
 			Util.DrawRect(info, screenBG, new Color(0, 0, 0, 128));
 			Vector2 centre = new Vector2(mScreenTarget.Width / 2, mScreenTarget.Height / 2);
 
-			Util.DrawStringCentred(info.spriteBatch, FontManager.I.GetFont("Pixica-24"), centre, Color.Wheat, "Get ready...");
+			SpriteFont font = AridArnold.FontManager.I.GetFont("Pixica", 24);
+			Util.DrawStringCentred(info.spriteBatch, font, centre, Color.Wheat, "Get ready...");
 		}
 
 		private void DrawGameOver(DrawInfo info)
 		{
-			SpriteFont pixelFont = FontManager.I.GetFont("Pixica-24");
-			SpriteFont smallPixelFont = FontManager.I.GetFont("Pixica Micro-24");
+			SpriteFont pixelFont = AridArnold.FontManager.I.GetFont("Pixica", 24);
+			SpriteFont smallPixelFont = AridArnold.FontManager.I.GetFont("PixicaMicro", 24);
 
 			foreach (Vector2 pos in mGameOverPoints)
 			{
@@ -375,7 +380,7 @@ namespace HorsesAndGun
 
 		private void DrawGun(DrawInfo info)
 		{
-			SpriteFont pixelFont = FontManager.I.GetFont("Pixica Micro-24");
+			SpriteFont pixelFont = AridArnold.FontManager.I.GetFont("PixicaMicro", 24);
 			Vector2 startPoint = new Vector2(0.0f, 29.0f);
 			Vector2 spacing = new Vector2(0.0f, 50.0f);
 

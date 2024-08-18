@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace HorsesAndGun
+﻿namespace HorsesAndGun
 {
 	class MonoTimer
 	{
@@ -89,6 +87,11 @@ namespace HorsesAndGun
 			{
 				timer.Update(gameTime);
 			}
+		}
+
+		public void Reset()
+		{
+			mTimers.Clear();
 		}
 	}
 }

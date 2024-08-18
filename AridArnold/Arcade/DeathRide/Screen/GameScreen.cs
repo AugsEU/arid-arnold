@@ -59,8 +59,13 @@
 		public override void OnActivate()
 		{
 			FXManager.I.Clear();
+
+			mReadyGoTimer = new MonoTimer();
 			mReadyGoTimer.FullReset();
 			mReadyGoTimer.Start();
+
+			mWinTimer = new PercentageTimer(WIN_TIME);
+			mLossTimer = new PercentageTimer(LOSS_TIME);
 
 			if (RunManager.I.HasStarted() == false)
 			{
@@ -213,8 +218,8 @@
 
 		public void DrawUI(DrawInfo info)
 		{
-			SpriteFont smallFont = FontManager.I.GetFont("Pixica-24");
-			SpriteFont font = FontManager.I.GetFont("Scream-36");
+			SpriteFont smallFont = AridArnold.FontManager.I.GetFont("Pixica", 24);
+			SpriteFont font = AridArnold.FontManager.I.GetFont("Scream", 48);
 			Vector2 centre = new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT) * 0.5f;
 
 			if (mReadyGoTimer.GetElapsedMs() < GetReadyTime() + GO_TIME)
@@ -279,9 +284,8 @@
 
 		public void DrawReadyGoText(DrawInfo info)
 		{
-
-			SpriteFont font = FontManager.I.GetFont("Scream-36");
-			SpriteFont smallFont = FontManager.I.GetFont("Scream-24");
+			SpriteFont screamFont = AridArnold.FontManager.I.GetFont("Scream", 48);
+			SpriteFont font = AridArnold.FontManager.I.GetFont("Pixica", 48);
 			double time = mReadyGoTimer.GetElapsedMs();
 			string text = "READY?";
 			Vector2 pos = new Vector2(SCREEN_WIDTH / 2.0f, 0.0f);
@@ -299,9 +303,9 @@
 			}
 
 			pos.Y += 25.0f;
-			MonoDraw.DrawShadowStringCentred(info, font, pos, Color.Wheat, text, DrawLayer.Text);
+			MonoDraw.DrawShadowStringCentred(info, screamFont, pos, Color.Wheat, text, DrawLayer.Text);
 			pos.Y -= 75.0f;
-			MonoDraw.DrawShadowStringCentred(info, smallFont, pos, Color.Wheat, "Round " + (RunManager.I.GetRounds() + 1), DrawLayer.Text);
+			MonoDraw.DrawShadowStringCentred(info, font, pos, Color.Wheat, "Round " + (RunManager.I.GetRounds() + 1), DrawLayer.Text);
 		}
 
 		#endregion rDraw

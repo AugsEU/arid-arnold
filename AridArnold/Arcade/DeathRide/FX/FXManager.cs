@@ -126,7 +126,7 @@
 		/// <param name="time">Time that text shows up</param>
 		public void AddTextScroller(Color colour, Vector2 pos, string text, float upSpeed = 4.1f, float maxHeight = 10.0f, float time = 20.0f)
 		{
-			SpriteFont font = FontManager.I.GetFont("Pixica-24");
+			SpriteFont font = AridArnold.FontManager.I.GetFont("Pixica", 24);
 			mFXList.Add(new ScrollerTextFX(font, colour, pos, text, upSpeed, maxHeight, time));
 		}
 

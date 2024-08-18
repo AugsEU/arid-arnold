@@ -43,9 +43,6 @@
 		List<Uptext> mScoreMarkers = new List<Uptext>();
 		bool mRequestQuit = false;
 
-		Song mMainSong;
-		Song mMenuSong;
-
 		int mNumApplesPlaced = 0;
 
 		int mCurrentStep = -1;
@@ -100,11 +97,7 @@
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			mTextureDB = LoadTypeDB<Texture2D>(content, "Textures");
-
-			mMainSong = content.Load<Song>("Music/GJ Main");
-			mMenuSong = content.Load<Song>("Music/GameJam21");
-
-			mFont = content.Load<SpriteFont>("Fonts/PixelFont");
+			mFont = AridArnold.FontManager.I.GetFont("PixicaMicro", 24);
 
 			InitMenu();
 		}

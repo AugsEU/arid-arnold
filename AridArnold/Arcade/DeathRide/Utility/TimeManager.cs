@@ -290,6 +290,14 @@
 			mTimers.Remove(timer);
 		}
 
+		/// <summary>
+		/// Delete all timers to avoid memory leak situation.
+		/// </summary>
+		public void Reset()
+		{
+			mTimers.Clear();
+		}
+
 		#endregion rRegistry
 
 	}

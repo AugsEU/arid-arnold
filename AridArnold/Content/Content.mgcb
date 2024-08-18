@@ -577,41 +577,6 @@
 /processorParam:TextureFormat=Color
 /build:Arcade/DeathRide/Fire/Flame8.png
 
-#begin Arcade/DeathRide/Fonts/Pixica.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/DeathRide/Fonts/Pixica.spritefont
-
-#begin Arcade/DeathRide/Fonts/PixicaMedium.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/DeathRide/Fonts/PixicaMedium.spritefont
-
-#begin Arcade/DeathRide/Fonts/PixicaSmall.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/DeathRide/Fonts/PixicaSmall.spritefont
-
-#begin Arcade/DeathRide/Fonts/Scream.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/DeathRide/Fonts/Scream.spritefont
-
-#begin Arcade/DeathRide/Fonts/ScreamBig.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/DeathRide/Fonts/ScreamBig.spritefont
-
 #begin Arcade/DeathRide/Player/PlayerBoostLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -995,20 +960,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Arcade/HorsesAndGun/dust_cloud_2.png
-
-#begin Arcade/HorsesAndGun/Fonts/Pixica.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/HorsesAndGun/Fonts/Pixica.spritefont
-
-#begin Arcade/HorsesAndGun/Fonts/Pixica-Small.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/HorsesAndGun/Fonts/Pixica-Small.spritefont
 
 #begin Arcade/HorsesAndGun/ground.png
 /importer:TextureImporter
@@ -1792,13 +1743,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Arcade/WorldCabinetSnake.png
-
-#begin Arcade/WormWarp/Fonts/PixelFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arcade/WormWarp/Fonts/PixelFont.spritefont
 
 #begin Arcade/WormWarp/Textures/AppleDimension.png
 /importer:TextureImporter
@@ -9047,6 +8991,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/PixicaMicro36b.spritefont
 
+#begin Fonts/Scream48.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Scream48.spritefont
+
 #begin Fountain/Base.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12293,6 +12244,42 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Futron/LaserShoot.wav
 
+#begin Sound/SFX/Hell/BigFireShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/BigFireShoot.wav
+
+#begin Sound/SFX/Hell/BossDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/BossDeath.wav
+
+#begin Sound/SFX/Hell/BossHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/BossHit.wav
+
+#begin Sound/SFX/Hell/FireLand.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/FireLand.wav
+
+#begin Sound/SFX/Hell/FireShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/FireShoot.wav
+
+#begin Sound/SFX/Hell/FireTravel.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Hell/FireTravel.wav
+
 #begin Sound/SFX/HorsesAndGun/GetHerDone.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -15514,40 +15501,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Sound/SFX/Hell/BigFireShoot.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Hell/BigFireShoot.wav
-
-#begin Sound/SFX/Hell/FireLand.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Hell/FireLand.wav
-
-#begin Sound/SFX/Hell/FireShoot.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Hell/FireShoot.wav
-
-#begin Sound/SFX/Hell/FireTravel.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Hell/FireTravel.wav
-
-#begin Sound/SFX/Hell/BossHit.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Hell/BossHit.wav
-
-#begin Sound/SFX/Hell/BossDeath.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Hell/BossDeath.wav
 

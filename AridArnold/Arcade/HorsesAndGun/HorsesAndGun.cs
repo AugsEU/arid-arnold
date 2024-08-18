@@ -5,13 +5,13 @@
 		public HorsesAndGun(GraphicsDeviceManager deviceManager, ContentManager content) : base(deviceManager, content)
 		{
 			ScreenManager.I.LoadAllScreens(content, deviceManager);
-			FontManager.I.LoadAllFonts(content);
-
 			ScreenManager.I.ActivateScreen(ScreenType.MainGame);
 		}
 
 		public override void ResetGame()
 		{
+			TimeManager.I.Reset();
+			EntityManager.I.ClearEntities();
 			ScreenManager.I.ActivateScreen(ScreenType.MainGame);
 			ScoreManager.I.ResetAll();
 			base.ResetGame();

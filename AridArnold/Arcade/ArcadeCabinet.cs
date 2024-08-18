@@ -4,6 +4,7 @@
 	{
 		public ulong mScore;
 		public string mInitials;
+		public bool mIsPlayer;
 	}
 
 	/// <summary>
@@ -90,13 +91,14 @@
 		/// <summary>
 		/// Add new high score, taking into account ordering.
 		/// </summary>
-		protected void AddHighScore(ulong score, string initials)
+		protected void AddHighScore(ulong score, string initials, bool player = false)
 		{
 			initials = initials.ToUpperInvariant();
 
 			HighScore newScore = new HighScore();
 			newScore.mScore = score;
 			newScore.mInitials = initials;
+			newScore.mIsPlayer = player;
 
 			for(int i = 0; i < mHighScores.Count + 1; i++)
 			{
@@ -146,7 +148,7 @@
 					break;
 			}
 
-			if (InputManager.I.KeyPressed(InputAction.Pause))
+			if (InputManager.I.KeyPressed(InputAction.Pause) && mCurrScreen != ArcadeCabScreen.ScoreScreen)
 			{
 				mLoadedGame.ResetGame();
 				MusicManager.I.StopMusic();
@@ -167,6 +169,8 @@
 				mLoadedGame.ResetGame();
 				string musicID = mLoadedGame.GetMusicID();
 				MusicManager.I.RequestTrackPlay(musicID);
+
+				SFXManager.I.EndAllSFX(120.0f);
 			}
 		}
 
@@ -210,7 +214,7 @@
 
 				if (InputManager.I.KeyPressed(InputAction.Confirm))
 				{
-					AddHighScore(mPendingNewHighScore, mPendingNewInitials);
+					AddHighScore(mPendingNewHighScore, mPendingNewInitials, true);
 					mPendingNewHighScore = 0;
 				}
 				else if (InputManager.I.KeyPressed(InputAction.ArnoldUp))
@@ -345,8 +349,10 @@
 				leftPos.X -= mScreenSpace.Width * 0.15f;
 				rightPos.X += mScreenSpace.Width * 0.15f;
 
-				MonoDraw.DrawStringCentred(info, bigFont, leftPos, Color.LightGray, mHighScores[i].mInitials, DrawLayer.Background);
-				MonoDraw.DrawStringCentred(info, bigFont, rightPos, Color.LightGray, mHighScores[i].mScore.ToString(), DrawLayer.Background);
+				Color scoreCol = mHighScores[i].mIsPlayer ? Color.Gold : Color.LightGray;
+
+				MonoDraw.DrawStringCentred(info, bigFont, leftPos, scoreCol, mHighScores[i].mInitials, DrawLayer.Background);
+				MonoDraw.DrawStringCentred(info, bigFont, rightPos, scoreCol, mHighScores[i].mScore.ToString(), DrawLayer.Background);
 
 				textPos.Y += 20.0f;
 			}

@@ -40,6 +40,8 @@
 			mFonts.Add("PixicaMicro-12-b", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaMicro12b"));
 			mFonts.Add("PixicaMicro-24-b", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaMicro24b"));
 			mFonts.Add("PixicaMicro-36-b", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/PixicaMicro36b"));
+
+			mFonts.Add("Scream-48", MonoData.I.MonoGameLoad<SpriteFont>("Fonts/Scream48"));
 		}
 
 
