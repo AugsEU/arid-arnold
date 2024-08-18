@@ -48,4 +48,14 @@
 			<y>16</y>
 		</override>
 	</timeOverrides>
+	<hiddenRooms>
+		<hiddenRoom>
+			<from>701</from>
+			<to>704</to>
+		</hiddenRoom>
+		<hiddenRoom>
+			<from>704</from>
+			<to>705</to>
+		</hiddenRoom>
+	</hiddenRooms>
 </campaign>

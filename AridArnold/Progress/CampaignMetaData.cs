@@ -10,6 +10,18 @@ namespace AridArnold
 		public Point mArnoldSpawnPoint;
 	}
 
+	struct HiddenRoom
+	{
+		public int mFromID;
+		public int mToID;
+
+		public HiddenRoom(int from, int to)
+		{
+			mFromID = from;
+			mToID = to;
+		}
+	}
+
 	class CampaignMetaData
 	{
 		#region rMembers
@@ -20,6 +32,7 @@ namespace AridArnold
 		Dictionary<string, byte> mCoinTypeIDs;
 		List<TimeZoneOverride> mTimeOverrides;
 		List<CinematicTrigger> mCinematicTriggers;
+		List<HiddenRoom> mHiddenRooms;
 
 		#endregion rMembers
 
@@ -40,6 +53,7 @@ namespace AridArnold
 			LoadCoinData(rootNode);
 			LoadTimeOverrides(rootNode);
 			LoadCinematicTriggers(campaignRoot, rootNode);
+			LoadHiddenRooms(rootNode);
 		}
 
 
@@ -129,6 +143,25 @@ namespace AridArnold
 			}
 		}
 
+
+
+		/// <summary>
+		/// Load hidden room data
+		/// </summary>
+		void LoadHiddenRooms(XmlNode rootNode)
+		{
+			// Load time overrides
+			mHiddenRooms = new List<HiddenRoom>();
+			XmlNode roomsNode = rootNode.SelectSingleNode("hiddenRooms");
+			XmlNodeList roomNodes = roomsNode.ChildNodes;
+			foreach (XmlNode roomNode in roomNodes)
+			{
+				int from = MonoParse.GetInt(roomNode["from"], 0);
+				int to = MonoParse.GetInt(roomNode["to"], 0);
+				mHiddenRooms.Add(new HiddenRoom(from, to));
+			}
+		}
+
 		#endregion rInit
 
 
@@ -201,6 +234,24 @@ namespace AridArnold
 		public List<CinematicTrigger> GetCinematicTriggers()
 		{
 			return mCinematicTriggers;
+		}
+
+
+		/// <summary>
+		/// Is the transition hidden?
+		/// </summary>
+		public bool IsTransitionHidden(int from, int to)
+		{
+			for(int i = 0; i <mHiddenRooms.Count; i++)
+			{
+				if (mHiddenRooms[i].mFromID == from &&
+					mHiddenRooms[i].mToID == to)
+				{
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		#endregion rGet

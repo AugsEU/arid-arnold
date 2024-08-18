@@ -68,25 +68,33 @@
 
 			MonoDraw.DrawTextureDepth(info, mCompassCentre, position, GetDepth());
 
-			if(hubLevel.GetExitID(0) != 0)
+			int fromID = hubLevel.GetID();
+			CampaignMetaData meta = CampaignManager.I.GetCampaignMetaData();
+
+			int topID = hubLevel.GetExitID(CardinalDirection.Up);
+			int rightID = hubLevel.GetExitID(CardinalDirection.Right);
+			int downID = hubLevel.GetExitID(CardinalDirection.Down);
+			int leftID = hubLevel.GetExitID(CardinalDirection.Left);
+
+			if (topID != 0 && !meta.IsTransitionHidden(fromID, topID))
 			{
 				MonoDraw.DrawTexture(info, mCompassArrow, position + new Vector2(-3.0f, 3.0f),
 					null, Color.White, -MathF.PI * 0.5f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth());
 			}
 
-			if (hubLevel.GetExitID(1) != 0)
+			if (rightID != 0 && !meta.IsTransitionHidden(fromID, rightID))
 			{
 				MonoDraw.DrawTexture(info, mCompassArrow, position + new Vector2(17.0f, -3.0f),
 					null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth());
 			}
 
-			if (hubLevel.GetExitID(2) != 0)
+			if (downID != 0 && !meta.IsTransitionHidden(fromID, downID))
 			{
 				MonoDraw.DrawTexture(info, mCompassArrow, position + new Vector2(23.0f, 17.0f),
 					null, Color.White, MathF.PI * 0.5f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth());
 			}
 
-			if (hubLevel.GetExitID(3) != 0)
+			if (leftID != 0 && !meta.IsTransitionHidden(fromID, leftID))
 			{
 				MonoDraw.DrawTexture(info, mCompassArrow, position + new Vector2(3.0f, 23.0f),
 					null, Color.White, MathF.PI, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth());

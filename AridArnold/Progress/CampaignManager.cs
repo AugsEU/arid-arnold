@@ -111,6 +111,16 @@
 		#region rAccess
 
 		/// <summary>
+		/// Get the currently loaded metadata
+		/// </summary>
+		public CampaignMetaData GetCampaignMetaData() 
+		{ 
+			return mMetaData; 
+		}
+
+
+
+		/// <summary>
 		/// Get current gameplay state
 		/// </summary>
 		/// <returns></returns>

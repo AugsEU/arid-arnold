@@ -148,17 +148,17 @@
 		}
 
 
-		public int GetExitID(int idx)
+		public int GetExitID(CardinalDirection cardDir)
 		{
-			switch (idx)
+			switch (cardDir)
 			{
-				case 0:
+				case CardinalDirection.Up:
 					return mTopID;
-				case 1:
+				case CardinalDirection.Right:
 					return mRightID;
-				case 2:
+				case CardinalDirection.Down:
 					return mBottomID;
-				case 3:
+				case CardinalDirection.Left:
 					return mLeftID;
 				default:
 					break;
