@@ -59,6 +59,22 @@ namespace AridArnold
 			return mScreenTarget;
 		}
 
-		
+		public void ReadBinary(BinaryReader br)
+		{
+			int numCabs = br.ReadInt32();
+			for(int i = 0; i < numCabs && i < mCabinets.Length; i++)
+			{
+				mCabinets[i].ReadBinary(br);
+			}
+		}
+
+		public void WriteBinary(BinaryWriter bw)
+		{
+			bw.Write(mCabinets.Length);
+			for (int i = 0; i < mCabinets.Length; i++)
+			{
+				mCabinets[i].WriteBinary(bw);
+			}
+		}
 	}
 }

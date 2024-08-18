@@ -80,12 +80,16 @@ namespace AridArnold
 			FlagsManager.I.ReadBinary(br);
 			CampaignManager.I.ReadBinary(br);
 
+			ArcadeGameScreen arcadeGameScreen = ScreenManager.I.GetScreen<ArcadeGameScreen>();
+			arcadeGameScreen.ReadBinary(br);
+
 			InputManager.I.LoadInputFrames(mNumInputUpdates + RELOAD_FRAME_PENALTY);
+
+			
 		}
 
 		protected override void WriteBinary(BinaryWriter bw)
 		{
-			// To do: get rid of this?
 			mNumInputUpdates = InputManager.I.GetNumberOfInputFrames();
 
 			bw.Write(PROFILE_SAVE_MAGIC);
@@ -98,6 +102,9 @@ namespace AridArnold
 			CollectableManager.I.WriteBinary(bw);
 			FlagsManager.I.WriteBinary(bw);
 			CampaignManager.I.WriteBinary(bw);
+
+			ArcadeGameScreen arcadeGameScreen = ScreenManager.I.GetScreen<ArcadeGameScreen>();
+			arcadeGameScreen.WriteBinary(bw);
 		}
 	}
 }

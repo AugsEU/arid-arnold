@@ -60,3 +60,16 @@ CAMPAIGN MANAGER
         POS Y - float32
     }
 }
+
+ARCADE CABS
+{
+    NUM CABINETS - int32
+    {
+        NUM SCORES - int32
+        {
+            SCORE - uint64
+            INTIALS - string
+            PLAYER - bool
+        }
+    }
+}

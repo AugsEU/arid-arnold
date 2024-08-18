@@ -397,5 +397,47 @@
 		}
 
 		#endregion rDraw
+
+
+
+
+
+		#region rSerial
+
+		/// <summary>
+		/// Read from a binary file
+		/// </summary>
+		public void ReadBinary(BinaryReader br)
+		{
+			mHighScores.Clear();
+			int numScores = br.ReadInt32();
+			for(int i = 0; i < numScores; i++)
+			{
+				HighScore highScore = new HighScore();
+				highScore.mScore = br.ReadUInt64();
+				highScore.mInitials = br.ReadString();
+				highScore.mIsPlayer = br.ReadBoolean();
+
+				mHighScores.Add(highScore);
+			}
+		}
+
+
+
+		/// <summary>
+		/// Write to a binary file
+		/// </summary>
+		public void WriteBinary(BinaryWriter bw)
+		{
+			bw.Write((Int32)mHighScores.Count);
+			for(int i = 0;i < mHighScores.Count;i++)
+			{
+				bw.Write((UInt64)mHighScores[i].mScore);
+				bw.Write(mHighScores[i].mInitials);
+				bw.Write(mHighScores[i].mIsPlayer);
+			}
+		}
+
+		#endregion rSerial
 	}
 }
