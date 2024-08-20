@@ -7,6 +7,7 @@ namespace AridArnold
 	{
 		#region rMembers
 
+		bool mStopHack;
 		StreamPackage mStreamPackage;
 
 		#endregion rMembers
@@ -23,6 +24,7 @@ namespace AridArnold
 		public MSStreamBuffer(string path)
 		{
 			mStreamPackage = StreamLoader.GetStreamedSound(path, true);
+			mStopHack = false;
 		}
 
 		#endregion rInit
@@ -38,6 +40,7 @@ namespace AridArnold
 		/// </summary>
 		public override void Play()
 		{
+			mStopHack = false;
 			mStreamPackage.Play();
 		}
 
@@ -62,7 +65,11 @@ namespace AridArnold
 		/// </summary>
 		public override void Stop()
 		{
-			mStreamPackage.Stop();
+			// Due to a bug with mono-sound, this can crash the game. Instead set the volume to 0.
+			// mStreamPackage.Stop();
+
+			mStopHack = true;
+			mStreamPackage.Metrics.Volume = 0.0f;
 		}
 
 		#endregion rPlay
@@ -75,6 +82,10 @@ namespace AridArnold
 
 		public override SoundState SoundState()
 		{
+			if(mStopHack)
+			{
+				return Microsoft.Xna.Framework.Audio.SoundState.Stopped;
+			}
 			return mStreamPackage.Metrics.State;
 		}
 

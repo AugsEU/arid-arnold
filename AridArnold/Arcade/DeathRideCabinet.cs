@@ -9,14 +9,14 @@
 		{
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/DeathRide");
 
-			AddHighScore(20, "AJD");
-			AddHighScore(40, "ASS");
-			AddHighScore(80, "PIX");
-			AddHighScore(100, "ACE");
-			AddHighScore(110, "BAR");
-			AddHighScore(140, "DOK");
-			AddHighScore(200, "JCD");
-			AddHighScore(220, "CJM");
+			AddHighScore(60000, "AJD");
+			AddHighScore(56855, "PIX");
+			AddHighScore(45635, "ACE");
+			AddHighScore(25325, "BAR");
+			AddHighScore(6170, "DOK");
+			AddHighScore(6020, "JCD");
+			AddHighScore(270, "CJM");
+			AddHighScore(210, "ASS");
 		}
 
 		protected override void DrawCabinetBG(DrawInfo info)

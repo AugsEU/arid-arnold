@@ -148,7 +148,8 @@
 					break;
 			}
 
-			if (InputManager.I.KeyPressed(InputAction.Pause) && mCurrScreen != ArcadeCabScreen.ScoreScreen)
+			bool enteringScore = mCurrScreen == ArcadeCabScreen.ScoreScreen && mPendingNewHighScore > 0;
+			if (InputManager.I.KeyPressed(InputAction.Pause) && !enteringScore)
 			{
 				mLoadedGame.ResetGame();
 				MusicManager.I.StopMusic();

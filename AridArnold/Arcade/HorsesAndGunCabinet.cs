@@ -9,14 +9,14 @@
 		{
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/HorsesAndGun");
 
-			AddHighScore(20, "AJD");
-			AddHighScore(40, "ASS");
-			AddHighScore(80, "PIX");
-			AddHighScore(100, "ACE");
-			AddHighScore(110, "BAR");
-			AddHighScore(140, "DOK");
-			AddHighScore(200, "JCD");
-			AddHighScore(220, "CJM");
+			AddHighScore(0, "AJD");
+			AddHighScore(0, "ASS");
+			AddHighScore(0, "PIX");
+			AddHighScore(0, "ACE");
+			AddHighScore(0, "BAR");
+			AddHighScore(0, "DOK");
+			AddHighScore(0, "JCD");
+			AddHighScore(0, "CJM");
 		}
 
 		protected override void DrawCabinetBG(DrawInfo info)

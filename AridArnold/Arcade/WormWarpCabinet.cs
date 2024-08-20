@@ -9,14 +9,14 @@
 		{
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/WormWarp");
 
-			AddHighScore(20, "AJD");
-			AddHighScore(40, "ASS");
-			AddHighScore(80, "PIX");
-			AddHighScore(100, "ACE");
-			AddHighScore(110, "BAR");
-			AddHighScore(140, "DOK");
-			AddHighScore(200, "JCD");
-			AddHighScore(220, "CJM");
+			AddHighScore(600, "AJD");
+			AddHighScore(505, "G C");
+			AddHighScore(455, "C K");
+			AddHighScore(210, "WAT");
+			AddHighScore(190, "J S");
+			AddHighScore(55, "DOK");
+			AddHighScore(35, "ASS");
+			AddHighScore(25, "E B");
 		}
 
 		protected override void DrawCabinetBG(DrawInfo info)
