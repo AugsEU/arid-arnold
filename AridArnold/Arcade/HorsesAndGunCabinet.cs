@@ -8,15 +8,18 @@
 		public HorsesAndGunCabinet(GraphicsDeviceManager deviceManager, ContentManager content) : base(new HorsesAndGun.HorsesAndGun(deviceManager, content), HORSE_SCREEN_SPACE)
 		{
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/HorsesAndGun");
+		}
 
-			AddHighScore(0, "AJD");
-			AddHighScore(0, "ASS");
-			AddHighScore(0, "PIX");
-			AddHighScore(0, "ACE");
-			AddHighScore(0, "BAR");
-			AddHighScore(0, "DOK");
-			AddHighScore(0, "JCD");
-			AddHighScore(0, "CJM");
+		public override void SetDefaultScores()
+		{
+			AddHighScore(1800, "AJD");
+			AddHighScore(990, "COW");
+			AddHighScore(475, "ARN");
+			AddHighScore(465, "ACE");
+			AddHighScore(315, "ZIP");
+			AddHighScore(120, "DOK");
+			AddHighScore(110, "BOY");
+			AddHighScore(55, "YOU");
 		}
 
 		protected override void DrawCabinetBG(DrawInfo info)

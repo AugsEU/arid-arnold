@@ -20,6 +20,11 @@ namespace AridArnold
 			mCabinets[(int)ArcadeGameType.HorsesAndGun] = new HorsesAndGunCabinet(graphics, Main.GetMainContentManager());
 			mCabinets[(int)ArcadeGameType.WormWarp] = new WormWarpCabinet(graphics, Main.GetMainContentManager());
 			mActiveCabinet = -1;
+
+			for (int i = 0; i < mCabinets.Length; i++)
+			{
+				mCabinets[i].SetDefaultScores();
+			}
 		}
 
 
@@ -57,6 +62,14 @@ namespace AridArnold
 			EndScreenSpriteBatch(info);
 
 			return mScreenTarget;
+		}
+
+		public void ResetScores()
+		{
+			for(int i = 0; i < mCabinets.Length; i++)
+			{
+				mCabinets[i].SetDefaultScores();
+			}
 		}
 
 		public void ReadBinary(BinaryReader br)

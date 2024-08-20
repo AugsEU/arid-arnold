@@ -86,6 +86,7 @@
 			mLoadedGame.ResetGame();
 		}
 
+		public abstract void SetDefaultScores();
 
 
 		/// <summary>

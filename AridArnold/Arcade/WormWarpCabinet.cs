@@ -8,7 +8,10 @@
 		public WormWarpCabinet(GraphicsDeviceManager deviceManager, ContentManager content) : base(new WormWarp.SnakeGameArcade(deviceManager, content), WORM_SCREEN_SPACE)
 		{
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/WormWarp");
+		}
 
+		public override void SetDefaultScores()
+		{
 			AddHighScore(600, "AJD");
 			AddHighScore(505, "G C");
 			AddHighScore(455, "C K");

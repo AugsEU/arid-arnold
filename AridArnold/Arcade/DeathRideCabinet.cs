@@ -8,7 +8,10 @@
 		public DeathRideCabinet(GraphicsDeviceManager deviceManager, ContentManager content) : base(new DeathRide.DeathRide(deviceManager, content), DEATH_SCREEN_SPACE)
 		{
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/DeathRide");
+		}
 
+		public override void SetDefaultScores()
+		{
 			AddHighScore(60000, "AJD");
 			AddHighScore(56855, "PIX");
 			AddHighScore(45635, "ACE");

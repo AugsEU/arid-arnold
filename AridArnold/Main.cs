@@ -488,6 +488,8 @@ namespace AridArnold
 			ItemManager.I.ResetToDefault();
 			FXManager.I.Clear();
 
+			ScreenManager.I.GetScreen<ArcadeGameScreen>().ResetScores();
+
 			// Reset statics
 			GravityOrb.sActiveDirection = CardinalDirection.Down;
 			Entity.sHandleHead = 0;
