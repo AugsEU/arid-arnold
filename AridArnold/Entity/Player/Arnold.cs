@@ -10,7 +10,7 @@ namespace AridArnold
 		#region rConstants
 
 		const double START_TIME = 500.0;
-		const double USE_ITEM_TIME = 600.0;
+		const double USE_ITEM_TIME = 450.0;
 		const int COYOTE_TIME = 8;
 		const int ROSS_TIME = 5;
 
@@ -244,7 +244,8 @@ namespace AridArnold
 
 			if(mCurrItem is not null)
 			{
-				mCurrItem.ActiveUpdate(gameTime, this);
+				mCurrItem.Update(gameTime);
+				mCurrItem.ActOnArnold(gameTime, this);
 
 				// Check if no longer active, then bin it.
 				if(!mCurrItem.IsActive())
@@ -577,6 +578,10 @@ namespace AridArnold
 				itemPos.Y -= 6.0f * mUseItemTimer.GetPercentageF();
 
 				MonoDraw.DrawTextureDepth(info, mCurrItem.GetTexture(), itemPos, DrawLayer.Player);
+			}
+			else if(mCurrItem is not null && mCurrItem.IsActive())
+			{
+				mCurrItem.DrawOnArnold(info, this);
 			}
 
 			// Base actually draws arnold himself

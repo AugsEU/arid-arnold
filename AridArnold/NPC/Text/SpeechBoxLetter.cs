@@ -68,12 +68,12 @@
 		/// <summary>
 		/// Draw this character.
 		/// </summary>
-		public void Draw(DrawInfo drawInfo)
+		public void Draw(DrawInfo info)
 		{
 			float lifeTime = (float)mLifeTimer.GetElapsedMs();
 			Vector2 drawPos = mPosition + mAnimation.GetPosition(lifeTime);
 			drawPos.Y = MonoMath.Round(drawPos.Y);
-			MonoDraw.DrawString(drawInfo, mFont, mCharacter.ToString(), mPosition + mAnimation.GetPosition(lifeTime), mAnimation.GetColor(lifeTime), DrawLayer.Bubble);
+			MonoDraw.DrawString(info, mFont, mCharacter.ToString(), mPosition + mAnimation.GetPosition(lifeTime), mAnimation.GetColor(lifeTime), DrawLayer.Bubble);
 		}
 
 		#endregion rDraw

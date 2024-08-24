@@ -2,7 +2,7 @@
 {
 	internal abstract class TrackTile
 	{
-		public abstract Texture2D Draw(DrawInfo drawInfo);
+		public abstract Texture2D Draw(DrawInfo info);
 
 		public virtual void Update(GameTime gameTime) { }
 

@@ -9,7 +9,7 @@
 			mTexture = content.Load<Texture2D>(texName);
 		}
 
-		public override Texture2D Draw(DrawInfo drawInfo)
+		public override Texture2D Draw(DrawInfo info)
 		{
 			return mTexture;
 		}

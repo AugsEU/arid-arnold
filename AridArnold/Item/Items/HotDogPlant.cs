@@ -22,7 +22,7 @@
 			mCurrLevel = CampaignManager.I.GetCurrentLevel();
 		}
 
-		public override void InactiveUpdate(GameTime gameTime)
+		public override void Update(GameTime gameTime)
 		{
 			Level newLevel = CampaignManager.I.GetCurrentLevel();
 			if (mNumHotDogs < 4 && !object.ReferenceEquals(newLevel, mCurrLevel) && newLevel is not null)
@@ -32,7 +32,7 @@
 				mCurrLevel = newLevel;
 			}
 
-			base.InactiveUpdate(gameTime);
+			base.Update(gameTime);
 		}
 
 		public override int GetPrice()
@@ -45,7 +45,7 @@
 			CampaignManager.I.GainLives(mNumHotDogs);
 		}
 
-		public override bool CanUseItem(Arnold arnoldUsingItem)
+		public override bool CanUseItem(Arnold arnold)
 		{
 			return mNumHotDogs > 0;
 		}

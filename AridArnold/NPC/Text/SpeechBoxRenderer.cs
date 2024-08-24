@@ -273,15 +273,15 @@
 		/// <summary>
 		/// Draw the text out
 		/// </summary>
-		public void Draw(DrawInfo drawInfo)
+		public void Draw(DrawInfo info)
 		{
 			// Draw BG and border
-			DrawBox(drawInfo);
+			DrawBox(info);
 
 			// Draw the text.
 			foreach (SpeechBoxLetter letter in mLetters)
 			{
-				letter.Draw(drawInfo);
+				letter.Draw(info);
 			}
 		}
 

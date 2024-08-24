@@ -17,19 +17,19 @@
 			EventManager.I.TriggerEvent(EventType.RedKeyUsed);
 		}
 
-		public override bool CanUseItem(Arnold arnoldUsingItem)
+		public override bool CanUseItem(Arnold arnold)
 		{
-			if (AnyRedLocksNearArnold(arnoldUsingItem) == false)
+			if (AnyRedLocksNearArnold(arnold) == false)
 			{
 				return false;
 			}
 
-			return base.CanUseItem(arnoldUsingItem);
+			return base.CanUseItem(arnold);
 		}
 
-		bool AnyRedLocksNearArnold(Arnold arnoldUsingItem)
+		bool AnyRedLocksNearArnold(Arnold arnold)
 		{
-			Rectangle neighbours = TileManager.I.GetNbyN(arnoldUsingItem.GetCentrePos(), 3);
+			Rectangle neighbours = TileManager.I.GetNbyN(arnold.GetCentrePos(), 3);
 			for (int x = neighbours.X; x < neighbours.X + neighbours.Width; x++)
 			{
 				for (int y = neighbours.Y; y < neighbours.Y + neighbours.Height; y++)

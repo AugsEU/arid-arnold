@@ -18,7 +18,7 @@ namespace AridArnold
 			base.Begin();
 		}
 
-		public override void ActiveUpdate(GameTime gameTime, Arnold arnoldUsingItem)
+		public override void ActOnArnold(GameTime gameTime, Arnold arnold)
 		{
 			if(!mDoneEffect)
 			{
@@ -26,7 +26,7 @@ namespace AridArnold
 				mDoneEffect = true;
 				EndItem();
 			}
-			base.ActiveUpdate(gameTime, arnoldUsingItem);
+			base.ActOnArnold(gameTime, arnold);
 		}
 
 		protected abstract void DoEffect();

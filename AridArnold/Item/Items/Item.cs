@@ -10,7 +10,8 @@
 		public enum ItemType
 		{
 			RedKey,
-			HotDogPlant
+			HotDogPlant,
+			JetPack,
 		}
 
 		#endregion rTypes
@@ -64,7 +65,7 @@
 		/// <summary>
 		/// Update item to do effect
 		/// </summary>
-		public virtual void ActiveUpdate(GameTime gameTime, Arnold arnoldUsingItem)
+		public virtual void ActOnArnold(GameTime gameTime, Arnold arnold)
 		{
 			
 		}
@@ -74,7 +75,7 @@
 		/// <summary>
 		/// Update item in your pocket.
 		/// </summary>
-		public virtual void InactiveUpdate(GameTime gameTime)
+		public virtual void Update(GameTime gameTime)
 		{
 
 		}
@@ -102,6 +103,15 @@
 		#endregion rUpdate
 
 
+
+		#region rDraw
+
+		public virtual void DrawOnArnold(DrawInfo info, Arnold arnold)
+		{
+
+		}
+
+		#endregion rDraw
 
 
 
@@ -147,9 +157,9 @@
 		/// <summary>
 		/// Can this arnold use the item?
 		/// </summary>
-		public virtual bool CanUseItem(Arnold arnoldUsingItem)
+		public virtual bool CanUseItem(Arnold arnold)
 		{
-			return arnoldUsingItem.CanUseItem();
+			return arnold.CanUseItem();
 		}
 
 
@@ -181,6 +191,8 @@
 					return new RedKey();
 				case ItemType.HotDogPlant:
 					return new HotDogPlant();
+				case ItemType.JetPack:
+					return new JetPack();
 			}
 
 			throw new NotImplementedException();

@@ -15502,3 +15502,21 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Items/JetPack/Pack1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/JetPack/Pack1.png
+
+#begin Items/JetPack/Pack2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/JetPack/Pack2.png
+
+#begin Text/EN/Items/JetPackDesc.txt
+/copy:Text/EN/Items/JetPackDesc.txt
+
+#begin Text/EN/Items/JetPackTitle.txt
+/copy:Text/EN/Items/JetPackTitle.txt
+
