@@ -9289,6 +9289,42 @@
 /processorParam:TextureFormat=Color
 /build:Items/ItemStand.png
 
+#begin Items/JetPack/Pack1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/JetPack/Pack1.png
+
+#begin Items/JetPack/Pack2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/JetPack/Pack2.png
+
+#begin Items/RatPoison/Box.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/RatPoison/Box.png
+
 #begin Items/RedKey/Key.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12856,6 +12892,18 @@
 #begin Text/EN/Items/HotdogPlantTitle.txt
 /copy:Text/EN/Items/HotdogPlantTitle.txt
 
+#begin Text/EN/Items/JetPackDesc.txt
+/copy:Text/EN/Items/JetPackDesc.txt
+
+#begin Text/EN/Items/JetPackTitle.txt
+/copy:Text/EN/Items/JetPackTitle.txt
+
+#begin Text/EN/Items/RatPoisonDesc.txt
+/copy:Text/EN/Items/RatPoisonDesc.txt
+
+#begin Text/EN/Items/RatPoisonTitle.txt
+/copy:Text/EN/Items/RatPoisonTitle.txt
+
 #begin Text/EN/Items/RedKeyDesc.txt
 /copy:Text/EN/Items/RedKeyDesc.txt
 
@@ -15501,22 +15549,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Items/JetPack/Pack1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/JetPack/Pack1.png
-
-#begin Items/JetPack/Pack2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/JetPack/Pack2.png
-
-#begin Text/EN/Items/JetPackDesc.txt
-/copy:Text/EN/Items/JetPackDesc.txt
-
-#begin Text/EN/Items/JetPackTitle.txt
-/copy:Text/EN/Items/JetPackTitle.txt
 

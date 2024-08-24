@@ -9,9 +9,11 @@
 
 		public enum ItemType
 		{
-			RedKey,
-			HotDogPlant,
-			JetPack,
+			RedKey = 0,
+			HotDogPlant = 1,
+			JetPack = 2,
+			RatPoison = 3,
+			BouncyLiquid = 4
 		}
 
 		#endregion rTypes
@@ -193,6 +195,8 @@
 					return new HotDogPlant();
 				case ItemType.JetPack:
 					return new JetPack();
+				case ItemType.RatPoison:
+					return new RatPoison();
 			}
 
 			throw new NotImplementedException();
