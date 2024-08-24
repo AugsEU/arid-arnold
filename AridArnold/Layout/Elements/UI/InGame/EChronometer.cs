@@ -26,26 +26,25 @@
 			pos.Y -= 36.0f;
 
 			// Draw out level timer.
-			if (GhostManager.I.IsRecording())
-			{
-				string toBeatTitle = LanguageManager.I.GetText("InGame.LevelPB");
-				string toBeatStr = GhostManager.I.GetTimeToBeat();
-				if (toBeatStr != "")
-				{
-					DrawTimer(info, toBeatTitle, toBeatStr, pos, Color.Olive);
-				}
-				pos.Y -= 36.0f;
+			string toBeatTitle = LanguageManager.I.GetText("InGame.LevelPB");
+			string toBeatStr = GhostManager.I.GetTimeToBeat();
+			DrawTimer(info, toBeatTitle, toBeatStr, pos, Color.Olive);
 
-				string timeTitle = LanguageManager.I.GetText("InGame.LevelTime");
-				string timeStr = GhostManager.I.GetTime();
-				DrawTimer(info, timeTitle, timeStr, pos, PANEL_WHITE);
-				return;
-			}
+			pos.Y -= 36.0f;
+
+			string timeTitle = LanguageManager.I.GetText("InGame.LevelTime");
+			string timeStr = GhostManager.I.GetTime();
+			DrawTimer(info, timeTitle, timeStr, pos, PANEL_WHITE);
 		}
 
 
 		public void DrawTimer(DrawInfo info, string title, string time, Vector2 pos, Color color)
 		{
+			if(time.Length == 0)
+			{
+				return;
+			}
+
 			MonoDraw.DrawStringCentred(info, mFont, pos, color, title, GetDepth());
 			pos.Y += 12.0f;
 			MonoDraw.DrawStringCentred(info, mFont, pos, color, time, GetDepth());

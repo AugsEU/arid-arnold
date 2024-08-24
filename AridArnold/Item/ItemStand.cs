@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿using static AridArnold.Item;
+
+namespace AridArnold
 {
 	/// <summary>
 	/// Entity holding an item
@@ -20,7 +22,8 @@
 
 		#region rMembers
 
-		Item mItem;
+		Item.ItemType mItemType;
+		Item mDisplayItem;
 		float mAngle;
 		SpriteFont mFont;
 		ItemStandInfoBubble mInfoBubble;
@@ -39,9 +42,10 @@
 		/// <param name="pos"></param>
 		public ItemStand(Vector2 pos, int itemType) : base(pos)
 		{
-			mItem = Item.CreateItem((Item.ItemType)itemType);
+			mItemType = (Item.ItemType)itemType;
+			mDisplayItem = Item.CreateItem(mItemType);
 
-			mInfoBubble = new ItemStandInfoBubble(pos + INFO_BUBBLE_OFFSET, BubbleStyle.DefaultPrompt, mItem.GetTitle(), mItem.GetDescription());
+			mInfoBubble = new ItemStandInfoBubble(pos + INFO_BUBBLE_OFFSET, BubbleStyle.DefaultPrompt, mDisplayItem.GetTitle(), mDisplayItem.GetDescription());
 		}
 
 		/// <summary>
@@ -67,6 +71,7 @@
 		/// <param name="gameTime"></param>
 		public override void Update(GameTime gameTime)
 		{
+			mDisplayItem.Update(gameTime);
 			float dt = Util.GetDeltaT(gameTime);
 			mAngle += ANGULAR_SPEED * dt;
 
@@ -84,7 +89,8 @@
 		{
 			if (InputManager.I.KeyPressed(InputAction.Confirm))
 			{
-				ItemManager.I.PurchaseItem(mItem, mPosition + SPENDING_TICKER_OFFSET);
+				Item newItem = Item.CreateItem(mItemType);
+				ItemManager.I.PurchaseItem(newItem, mPosition + SPENDING_TICKER_OFFSET);
 			}
 		}
 
@@ -130,7 +136,7 @@
 			MonoDraw.DrawTexture(info, mTexture, mPosition);
 
 			Vector2 itemPos = mPosition;
-			Texture2D itemTex = mItem.GetTexture();
+			Texture2D itemTex = mDisplayItem.GetTexture();
 			itemPos.Y -= itemTex.Height + AMPLITUDE * MathF.Sin(mAngle) - 7.0f;
 			itemPos.X += (mTexture.Width - itemTex.Width) / 2.0f;
 			MonoDraw.DrawTexture(info, itemTex, itemPos);
@@ -138,7 +144,7 @@
 			Vector2 pricePos = itemPos;
 			pricePos.Y -= 10.0f;
 			pricePos.X = mPosition.X + mTexture.Width / 2.0f;
-			MonoDraw.DrawStringCentred(info, mFont, pricePos, Color.White, mItem.GetPrice().ToString(), DrawLayer.Default);
+			MonoDraw.DrawStringCentred(info, mFont, pricePos, Color.White, mDisplayItem.GetPrice().ToString(), DrawLayer.Default);
 
 			mInfoBubble.Draw(info);
 		}

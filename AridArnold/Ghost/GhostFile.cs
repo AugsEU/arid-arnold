@@ -143,26 +143,29 @@
 		/// </summary>
 		/// <param name="entity">Entity to record</param>
 		/// <param name="frame">Frame number</param>
-		public void RecordFrame(PlatformingEntity entity, int frame)
+		public bool RecordFrame(PlatformingEntity entity, int frame)
 		{
-			if (frame < MAX_FRAMES)
+			if (frame >= MAX_FRAMES)
 			{
-				if (mGhostInfos.Count - 1 < frame)
-				{
-					mGhostInfos.Add(new List<GhostInfo>());
-				}
-
-				GhostInfo info;
-				info.mEnabled = entity.IsEnabled();
-				info.mPosition = entity.GetPos();
-				info.mVelocity = entity.GetVelocity();
-				info.mGrounded = entity.OnGround();
-				info.mGravity = entity.GetGravityDir();
-				info.mWalkDirection = entity.GetWalkDirection();
-				info.mPrevWalkDirection = entity.GetPrevWalkDirection();
-
-				mGhostInfos[frame].Add(info);
+				return false;
 			}
+
+			if (mGhostInfos.Count - 1 < frame)
+			{
+				mGhostInfos.Add(new List<GhostInfo>());
+			}
+
+			GhostInfo info;
+			info.mEnabled = entity.IsEnabled();
+			info.mPosition = entity.GetPos();
+			info.mVelocity = entity.GetVelocity();
+			info.mGrounded = entity.OnGround();
+			info.mGravity = entity.GetGravityDir();
+			info.mWalkDirection = entity.GetWalkDirection();
+			info.mPrevWalkDirection = entity.GetPrevWalkDirection();
+
+			mGhostInfos[frame].Add(info);
+			return true;
 		}
 
 

@@ -25,7 +25,7 @@ namespace AridArnold
 
 		#region rConstants
 
-		static Color BACKDROP_COLOR = new Color(0, 0, 0, 180);
+		static Color BACKDROP_COLOR = new Color(0, 0, 0, 220);
 
 		#endregion rConstants
 

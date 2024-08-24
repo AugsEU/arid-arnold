@@ -364,6 +364,10 @@ namespace AridArnold
 				{
 					mUseItemTimer.ResetStart();
 					mCurrItem = ItemManager.I.PopActiveItem();
+					mWalkDirection = WalkDirection.None;
+
+					// Using an item bars us from recording.
+					GhostManager.I.StopRecording();
 				}
 			}
 		}

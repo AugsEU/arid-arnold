@@ -18,15 +18,12 @@
 	{
 		#region rMembers
 
-		int mCurrentFrame;
 		int mRecordFrame;
 
 		GhostArnold mGhostArnold;
 
 		GhostFile mInputFile;
 		GhostFile mOutputFile;
-
-		bool mRecording;
 
 		#endregion rMembers
 
@@ -43,8 +40,6 @@
 		{
 			mGhostArnold = new GhostArnold(Vector2.Zero);
 			mGhostArnold.LoadContent();
-
-			mRecording = false;
 		}
 
 
@@ -58,12 +53,11 @@
 			AuxData.LevelType levelType = level.GetAuxData().GetLevelType();
 			if (levelType == AuxData.LevelType.Hub || levelType == AuxData.LevelType.Shop)
 			{
-				mRecording = false;
+				mInputFile = null;
+				mOutputFile = null;
 				return;
 			}
 
-			mRecording = true;
-			mCurrentFrame = 0;
 			mRecordFrame = 0;
 
 			mInputFile = new GhostFile(level);
@@ -95,8 +89,6 @@
 					mOutputFile.Save();
 				}
 			}
-
-			mRecording = false;
 		}
 
 		#endregion rInitialisation
@@ -113,19 +105,16 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
-			if (!mRecording)
-			{
-				return;
-			}
-
-			mCurrentFrame++;
-
-			if (mRecordFrame < mInputFile.GetFrameCount())
+			if (mInputFile is not null && mGhostArnold is not null && mRecordFrame < mInputFile.GetFrameCount())
 			{
 				mGhostArnold.Update(gameTime);
 			}
 
-			RecordFrame();
+			if (mOutputFile is not null)
+			{
+				RecordFrame();
+			}
+
 			mRecordFrame++;
 		}
 
@@ -143,7 +132,12 @@
 				if (entity is Arnold)
 				{
 					Arnold arnold = (Arnold)entity;
-					mOutputFile.RecordFrame(arnold, mRecordFrame);
+					bool success = mOutputFile.RecordFrame(arnold, mRecordFrame);
+					if(!success)
+					{
+						StopRecording();
+						return;
+					}
 				}
 			}
 		}
@@ -162,11 +156,6 @@
 		/// <param name="info">Info needed to draw</param>
 		public void Draw(DrawInfo info)
 		{
-			if (mRecording == false)
-			{
-				return;
-			}
-
 			if (mInputFile is not null && mInputFile.IsEmpty() == false)
 			{
 				List<GhostInfo> ghosts = mInputFile.ReadFrame(mRecordFrame);
@@ -194,7 +183,7 @@
 		/// <returns>Formatted current time</returns>
 		public string GetTime()
 		{
-			return MonoText.GetTimeTextFromFrames(mOutputFile.GetFrameCount());
+			return mOutputFile is null ? "" : MonoText.GetTimeTextFromFrames(mOutputFile.GetFrameCount());
 		}
 
 
@@ -221,7 +210,7 @@
 		/// <returns>Integer frame count between output and input file times</returns>
 		public int? GetTimeDifference()
 		{
-			if (mInputFile is null || mOutputFile is null || mInputFile.IsEmpty() || mOutputFile.IsEmpty() || mRecording == false)
+			if (mInputFile is null || mOutputFile is null || mInputFile.IsEmpty() || mOutputFile.IsEmpty())
 			{
 				return null;
 			}
@@ -230,13 +219,17 @@
 		}
 
 
+
 		/// <summary>
-		/// Are we actually recording anything?
+		/// Stop recording because we are disqualified?
 		/// </summary>
-		/// <returns></returns>
-		public bool IsRecording()
+		public void StopRecording()
 		{
-			return mRecording && mOutputFile is not null;
+			if (mOutputFile is not null)
+			{
+				mOutputFile.Close();
+				mOutputFile = null;
+			}
 		}
 
 		#endregion rUtility

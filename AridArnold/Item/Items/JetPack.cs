@@ -9,6 +9,7 @@ namespace AridArnold
 
 		Animator mJetAnim;
 		PercentageTimer mSpeedTimer;
+		GameSFX mTravelSFX;
 
 		public JetPack() : base("Items.JetPackTitle", "Items.JetPackDesc")
 		{
@@ -20,12 +21,15 @@ namespace AridArnold
 			mTexture = mJetAnim.GetCurrentTexture();
 
 			mSpeedTimer = new PercentageTimer(JET_PACK_TIME);
+			mTravelSFX = null;
 		}
 
 
 		public override void Begin()
 		{
 			mSpeedTimer.ResetStart();
+			mTravelSFX = new GameSFX(AridArnoldSFX.FireTravel, 0.6f, 0.6f);
+			SFXManager.I.PlaySFX(mTravelSFX, 100.0f);
 			base.Begin();
 		}
 
@@ -50,8 +54,15 @@ namespace AridArnold
 				arnold.OverrideVelocity(speedVec);
 				arnold.SetWalkDirection(WalkDirection.None);
 
+				Vector2 smokePos = GetPos(arnold);
+				smokePos.X += mTexture.Width * 0.5f;
+				smokePos.Y += mTexture.Height;
+
+				DustUtil.EmitDust(smokePos, new Vector2(0.0f, 1.0f));
+
 				if (t >= 1.0f)
 				{
+					mTravelSFX.Stop(20.0f);
 					EndItem();
 				}
 			}
@@ -66,24 +77,33 @@ namespace AridArnold
 
 		public override void DrawOnArnold(DrawInfo info, Arnold arnold)
 		{
-			Rect2f arnBounds = arnold.ColliderBounds();
-
-			Vector2 pos = arnBounds.min;
-			pos.X -= 10.0f;
+			Vector2 pos = GetPos(arnold);
 			SpriteEffects spriteEffects = SpriteEffects.None;
 
 			if(arnold.GetPrevWalkDirection() == WalkDirection.Left)
 			{
 				spriteEffects = SpriteEffects.FlipHorizontally;
-
-				pos = arnBounds.min;
-				pos.X += arnBounds.Width;
-				pos.X -= 8.0f;
 			}
 
 			MonoDraw.DrawTexture(info, mTexture, pos, null, Color.White, 0.0f, Vector2.Zero, 1.0f, spriteEffects, DrawLayer.SubEntity);
 
 			base.DrawOnArnold(info, arnold);
+		}
+
+		private Vector2 GetPos(Arnold arnold)
+		{
+			Rect2f arnBounds = arnold.ColliderBounds();
+			Vector2 pos = arnBounds.min;
+			pos.X -= 10.0f;
+
+			if (arnold.GetPrevWalkDirection() == WalkDirection.Left)
+			{
+				pos = arnBounds.min;
+				pos.X += arnBounds.Width;
+				pos.X -= 8.0f;
+			}
+
+			return pos;
 		}
 	}
 }
