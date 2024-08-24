@@ -27,6 +27,8 @@ namespace AridArnold
 		float mDownwardsOffset;
 		PercentageTimer mLerpTimer;
 
+		GameSFX mScrollSound;
+
 		#endregion rMembers
 
 
@@ -57,6 +59,12 @@ namespace AridArnold
 
 		public override void OnActivate()
 		{
+			SFXManager.I.EndAllSFX(120.0f);
+			mScrollSound = new GameSFX(AridArnoldSFX.LibraryRotate, 0.4f, 1.0f, 1.0f);
+			mScrollSound.GetBuffer().SetLoop(true);
+			mScrollSound.SetMute(true);
+			SFXManager.I.PlaySFX(mScrollSound);
+
 			mSelectedColumn = 0;
 			mDownwardsOffset = 0.0f;
 			base.OnActivate();
@@ -98,24 +106,32 @@ namespace AridArnold
 				return;
 			}
 
+
+			bool scrollMute = true;
 			if (InputManager.I.KeyHeld(InputAction.ArnoldLeft) && mSelectedColumn > 0)
 			{
+				SFXManager.I.PlaySFX(AridArnoldSFX.LabButton, 0.6f);
 				mTargetColumn = mSelectedColumn - 1;
 				mLerpTimer.Start();
 			}
 			else if(InputManager.I.KeyHeld(InputAction.ArnoldRight) && mSelectedColumn < NUM_MANUALS - 1)
 			{
+				SFXManager.I.PlaySFX(AridArnoldSFX.LabButton, 0.6f);
 				mTargetColumn = mSelectedColumn + 1;
 				mLerpTimer.Start();
 			}
 			else if(InputManager.I.KeyHeld(InputAction.ArnoldUp))
 			{
+				scrollMute = false;
 				mDownwardsOffset -= SCROLL_SPEED * dt;
 			}
 			else if (InputManager.I.KeyHeld(InputAction.ArnoldDown))
 			{
+				scrollMute = false;
 				mDownwardsOffset += SCROLL_SPEED * dt;
 			}
+
+			mScrollSound.SetMute(scrollMute);
 
 			mDownwardsOffset = Math.Clamp(mDownwardsOffset, 0.0f, MAX_SCROLL);
 		}

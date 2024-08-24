@@ -86,7 +86,15 @@
 			mLoadedGame.ResetGame();
 		}
 
-		public abstract void SetDefaultScores();
+		protected abstract void SetDefaultScores();
+
+		public void ResetScores()
+		{
+			mPendingNewHighScore = 0;
+			mPendingCursorPos = 0;
+			mHighScores.Clear();
+			SetDefaultScores();
+		}
 
 
 		/// <summary>
@@ -319,7 +327,7 @@
 		/// <summary>
 		/// Draw the score screen
 		/// </summary>
-		void DrawScoreScreen(DrawInfo info)
+		protected void DrawScoreScreen(DrawInfo info)
 		{
 			Vector2 textPos = mScreenSpace.min;
 			textPos.X += mScreenSpace.Width * 0.5f;
@@ -343,21 +351,7 @@
 			textPos.Y += mScreenSpace.Height * 0.2f;
 
 			// Draw scores
-			for (int i = 0; i < mHighScores.Count; i++)
-			{
-				Vector2 leftPos = textPos;
-				Vector2 rightPos = textPos;
-
-				leftPos.X -= mScreenSpace.Width * 0.15f;
-				rightPos.X += mScreenSpace.Width * 0.15f;
-
-				Color scoreCol = mHighScores[i].mIsPlayer ? Color.Gold : Color.LightGray;
-
-				MonoDraw.DrawStringCentred(info, bigFont, leftPos, scoreCol, mHighScores[i].mInitials, DrawLayer.Background);
-				MonoDraw.DrawStringCentred(info, bigFont, rightPos, scoreCol, mHighScores[i].mScore.ToString(), DrawLayer.Background);
-
-				textPos.Y += 20.0f;
-			}
+			DrawScoreList(info, textPos.Y);
 
 			// Draw high score submission
 			if (mPendingNewHighScore > 0)
@@ -395,6 +389,33 @@
 
 				footerPos.Y -= 50.0f;
 				MonoDraw.DrawStringCentred(info, font, footerPos, Color.LightGray, newScore, DrawLayer.Background);
+			}
+		}
+
+
+		protected void DrawScoreList(DrawInfo info, float y)
+		{
+			SpriteFont font = FontManager.I.GetFont("Pixica-24");
+
+			Vector2 textPos = mScreenSpace.min;
+			textPos.X += mScreenSpace.Width * 0.5f;
+			textPos.Y = y;
+
+			// Draw scores
+			for (int i = 0; i < mHighScores.Count; i++)
+			{
+				Vector2 leftPos = textPos;
+				Vector2 rightPos = textPos;
+
+				leftPos.X -= mScreenSpace.Width * 0.15f;
+				rightPos.X += mScreenSpace.Width * 0.15f;
+
+				Color scoreCol = mHighScores[i].mIsPlayer ? Color.Gold : Color.LightGray;
+
+				MonoDraw.DrawStringCentred(info, font, leftPos, scoreCol, mHighScores[i].mInitials, DrawLayer.Background);
+				MonoDraw.DrawStringCentred(info, font, rightPos, scoreCol, mHighScores[i].mScore.ToString(), DrawLayer.Background);
+
+				textPos.Y += 20.0f;
 			}
 		}
 

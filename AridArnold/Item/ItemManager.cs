@@ -163,9 +163,9 @@
 		/// </summary>
 		public void Update(GameTime gameTime)
 		{
-			if (mActiveItem is not null)
+			if (mActiveItem is not null && !mActiveItem.IsActive())
 			{
-				mActiveItem.Update(gameTime);
+				mActiveItem.InactiveUpdate(gameTime);
 			}
 		}
 

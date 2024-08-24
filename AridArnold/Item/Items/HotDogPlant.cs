@@ -1,6 +1,6 @@
 ﻿namespace AridArnold
 {
-	class HotDogPlant : Item
+	class HotDogPlant : OnceItem
 	{
 		int mNumHotDogs;
 		Texture2D[] mPlantTextures;
@@ -22,7 +22,7 @@
 			mCurrLevel = CampaignManager.I.GetCurrentLevel();
 		}
 
-		public override void Update(GameTime gameTime)
+		public override void InactiveUpdate(GameTime gameTime)
 		{
 			Level newLevel = CampaignManager.I.GetCurrentLevel();
 			if (mNumHotDogs < 4 && !object.ReferenceEquals(newLevel, mCurrLevel) && newLevel is not null)
@@ -32,7 +32,7 @@
 				mCurrLevel = newLevel;
 			}
 
-			base.Update(gameTime);
+			base.InactiveUpdate(gameTime);
 		}
 
 		public override int GetPrice()
@@ -40,7 +40,7 @@
 			return 5;
 		}
 
-		public override void UseItem(Arnold arnoldUsingItem)
+		protected override void DoEffect()
 		{
 			CampaignManager.I.GainLives(mNumHotDogs);
 		}

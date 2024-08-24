@@ -1,6 +1,6 @@
 ﻿namespace AridArnold
 {
-	internal class RedKey : Item
+	internal class RedKey : OnceItem
 	{
 		public RedKey() : base("Items.RedKeyTitle", "Items.RedKeyDesc")
 		{
@@ -12,7 +12,7 @@
 			return 3;
 		}
 
-		public override void UseItem(Arnold arnoldUsingItem)
+		protected override void DoEffect()
 		{
 			EventManager.I.TriggerEvent(EventType.RedKeyUsed);
 		}

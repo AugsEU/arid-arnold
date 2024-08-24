@@ -24,6 +24,7 @@
 		protected Texture2D mTexture;
 		protected string mTitle;
 		protected string mDescription;
+		bool mActive;
 
 		#endregion rMembers
 
@@ -51,19 +52,57 @@
 		#region rUpdate
 
 		/// <summary>
-		/// Update item info
+		/// Begin item usage.
 		/// </summary>
-		public virtual void Update(GameTime gameTime)
+		public virtual void Begin()
+		{
+			mActive = true;
+		}
+
+
+
+		/// <summary>
+		/// Update item to do effect
+		/// </summary>
+		public virtual void ActiveUpdate(GameTime gameTime, Arnold arnoldUsingItem)
+		{
+			
+		}
+
+
+
+		/// <summary>
+		/// Update item in your pocket.
+		/// </summary>
+		public virtual void InactiveUpdate(GameTime gameTime)
 		{
 
 		}
 
+
+
 		/// <summary>
-		/// Trigger item effect
+		/// Call this to stop the item's effect.
 		/// </summary>
-		public abstract void UseItem(Arnold arnoldUsingItem);
+		public void EndItem()
+		{
+			mActive = false;
+		}
+
+
+
+		/// <summary>
+		/// Are we still active?
+		/// </summary>
+		public bool IsActive()
+		{
+			return mActive;
+		}
 
 		#endregion rUpdate
+
+
+
 
 
 		#region rUtil
@@ -124,6 +163,8 @@
 		}
 
 		#endregion rUtil
+
+
 
 
 

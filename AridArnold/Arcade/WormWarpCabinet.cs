@@ -10,7 +10,7 @@
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/WormWarp");
 		}
 
-		public override void SetDefaultScores()
+		protected override void SetDefaultScores()
 		{
 			AddHighScore(600, "AJD");
 			AddHighScore(505, "G C");
@@ -40,7 +40,10 @@
 			textPos.Y += 50.0f;
 			MonoDraw.DrawStringCentred(info, bigFont, textPos, new Color(255,125,147), wormTitle, DrawLayer.Background);
 
-			textPos.Y += 150.0f;
+			textPos.Y += 60.0f;
+			DrawScoreList(info, textPos.Y);
+
+			textPos.Y += 190.0f;
 			MonoDraw.DrawStringCentred(info, font, textPos, new Color(71, 116, 237), insertCoin, DrawLayer.Background);
 		}
 	}

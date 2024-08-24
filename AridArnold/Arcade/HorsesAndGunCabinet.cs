@@ -10,7 +10,7 @@
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/HorsesAndGun");
 		}
 
-		public override void SetDefaultScores()
+		protected override void SetDefaultScores()
 		{
 			AddHighScore(1800, "AJD");
 			AddHighScore(990, "COW");
@@ -40,7 +40,10 @@
 			textPos.Y += 50.0f;
 			MonoDraw.DrawStringCentred(info, bigFont, textPos, new Color(255, 209, 112), deathTitle, DrawLayer.Background);
 
-			textPos.Y += 150.0f;
+			textPos.Y += 60.0f;
+			DrawScoreList(info, textPos.Y);
+
+			textPos.Y += 190.0f;
 			MonoDraw.DrawStringCentred(info, font, textPos, new Color(111, 65, 58), insertCoin, DrawLayer.Background);
 		}
 	}

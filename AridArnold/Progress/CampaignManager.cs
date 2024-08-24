@@ -65,8 +65,12 @@
 				CollectableManager.I.IncPermanentCount(0x0300, 100);
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
 				CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 0);
-				QueueLoadSequence(new HubDirectLoader(703));
+
+				UInt16 coinID = CollectableManager.GetCollectableID(CollectableCategory.Coin, 0);
+				CollectableManager.I.IncPermanentCount(coinID, 100);
+
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
+				QueueLoadSequence(new HubDirectLoader(102));
 				//QueueLoadSequence(new LevelDirectLoader(814));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);

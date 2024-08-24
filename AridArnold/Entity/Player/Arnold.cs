@@ -45,7 +45,7 @@ namespace AridArnold
 		protected PercentageTimer mTimerSinceStart;
 
 		// Items
-		Item mItemToUse;
+		Item mCurrItem;
 		PercentageTimer mUseItemTimer;
 
 		// Inputs(can change based on camera angle etc)
@@ -85,7 +85,7 @@ namespace AridArnold
 			mRightKey = InputAction.ArnoldRight;
 			mDownKey = InputAction.ArnoldDown;
 
-			mItemToUse = null;
+			mCurrItem = null;
 			LayerOptIn(InteractionLayer.kPlayer);
 
 			SetDustIntensity(15.0f);
@@ -224,27 +224,34 @@ namespace AridArnold
 				return;
 			}
 
-			//Item
-			if (mUseItemTimer.IsPlaying())
-			{
-				if (mUseItemTimer.GetPercentage() == 1.0)
-				{
-					Item usingItem = ItemManager.I.PopActiveItem();
-					MonoDebug.Assert(usingItem == mItemToUse);
-
-					usingItem.UseItem(this);
-					mItemToUse = usingItem;
-					mUseItemTimer.FullReset();
-				}
-
-				return;
-			}
-
 			//Anim
 			mRunningAnimation.Update(gameTime);
 
 			//Collider
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
+
+			//Item
+			if (mUseItemTimer.IsPlaying() && mCurrItem is not null)
+			{
+				if (mUseItemTimer.GetPercentage() == 1.0)
+				{
+					mUseItemTimer.FullReset();
+					mCurrItem.Begin();
+				}
+
+				return;
+			}
+
+			if(mCurrItem is not null)
+			{
+				mCurrItem.ActiveUpdate(gameTime, this);
+
+				// Check if no longer active, then bin it.
+				if(!mCurrItem.IsActive())
+				{
+					mCurrItem = null;
+				}
+			}
 
 			if (mOnGround == false)
 			{
@@ -264,6 +271,11 @@ namespace AridArnold
 			base.Update(gameTime);
 		}
 
+
+
+		/// <summary>
+		/// Kill Arnold
+		/// </summary>
 		public override void Kill()
 		{
 			if(mTimerSinceDeath.IsPlaying())
@@ -283,6 +295,11 @@ namespace AridArnold
 			base.Kill();
 		}
 
+
+
+		/// <summary>
+		/// Ordered update for physics
+		/// </summary>
 		public override void OrderedUpdate(GameTime gameTime)
 		{
 			if (mTimerSinceStart.IsPlaying() || mTimerSinceDeath.IsPlaying() || mUseItemTimer.IsPlaying())
@@ -339,14 +356,13 @@ namespace AridArnold
 
 			// Items
 			bool useItem = InputManager.I.KeyPressed(InputAction.UseItem);
-			if (CanUseItem() && useItem)
+			if (useItem && mCurrItem is null)
 			{
-				Item activeItem = ItemManager.I.GetActiveItem();
-				if (activeItem is not null && activeItem.CanUseItem(this))
+				Item newItem = ItemManager.I.GetActiveItem();
+				if (newItem is not null && newItem.CanUseItem(this))
 				{
-					mUseItemTimer.Reset();
-					mUseItemTimer.Start();
-					mItemToUse = activeItem;
+					mUseItemTimer.ResetStart();
+					mCurrItem = ItemManager.I.PopActiveItem();
 				}
 			}
 		}
@@ -560,7 +576,7 @@ namespace AridArnold
 				// Make item travel up a bit
 				itemPos.Y -= 6.0f * mUseItemTimer.GetPercentageF();
 
-				MonoDraw.DrawTextureDepth(info, mItemToUse.GetTexture(), itemPos, DrawLayer.Player);
+				MonoDraw.DrawTextureDepth(info, mCurrItem.GetTexture(), itemPos, DrawLayer.Player);
 			}
 
 			// Base actually draws arnold himself

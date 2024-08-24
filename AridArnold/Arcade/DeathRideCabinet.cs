@@ -10,8 +10,9 @@
 			mBGTexture = MonoData.I.MonoGameLoad<Texture2D>("Arcade/Cabinets/DeathRide");
 		}
 
-		public override void SetDefaultScores()
+		protected override void SetDefaultScores()
 		{
+			
 			AddHighScore(60000, "AJD");
 			AddHighScore(56855, "PIX");
 			AddHighScore(45635, "ACE");
@@ -37,8 +38,11 @@
 			string deathTitle = LanguageManager.I.GetText("Arcade.DeathRide.Title");
 			string insertCoin = LanguageManager.I.GetText("Arcade.InsertCoin");
 
-			textPos.Y += 50.0f;
+			textPos.Y += 65.0f;
 			MonoDraw.DrawStringCentred(info, bigFont, textPos, new Color(196, 0, 0), deathTitle, DrawLayer.Background);
+
+			textPos.Y += 80.0f;
+			DrawScoreList(info, textPos.Y);
 
 			textPos.Y += 250.0f;
 			MonoDraw.DrawStringCentred(info, font, textPos, new Color(91, 19, 0), insertCoin, DrawLayer.Background);

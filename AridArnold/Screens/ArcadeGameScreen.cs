@@ -23,7 +23,7 @@ namespace AridArnold
 
 			for (int i = 0; i < mCabinets.Length; i++)
 			{
-				mCabinets[i].SetDefaultScores();
+				mCabinets[i].ResetScores();
 			}
 		}
 
@@ -33,6 +33,12 @@ namespace AridArnold
 			ArcadeCabinet cab = mCabinets[(int)gameType];
 			mActiveCabinet = (int)gameType;
 			cab.ResetCabinet();
+		}
+
+		public override void OnActivate()
+		{
+			SFXManager.I.EndAllSFX(40.0f);
+			base.OnActivate();
 		}
 
 		public override void Update(GameTime gameTime)
@@ -68,7 +74,7 @@ namespace AridArnold
 		{
 			for(int i = 0; i < mCabinets.Length; i++)
 			{
-				mCabinets[i].SetDefaultScores();
+				mCabinets[i].ResetScores();
 			}
 		}
 
