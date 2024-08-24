@@ -9325,6 +9325,18 @@
 /processorParam:TextureFormat=Color
 /build:Items/MushOil/Bottle.png
 
+#begin Items/PocketOrb/Orb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/PocketOrb/Orb.png
+
 #begin Items/RatPoison/Box.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12915,6 +12927,12 @@
 
 #begin Text/EN/Items/MushOilTitle.txt
 /copy:Text/EN/Items/MushOilTitle.txt
+
+#begin Text/EN/Items/PocketOrbDesc.txt
+/copy:Text/EN/Items/PocketOrbDesc.txt
+
+#begin Text/EN/Items/PocketOrbTitle.txt
+/copy:Text/EN/Items/PocketOrbTitle.txt
 
 #begin Text/EN/Items/RatPoisonDesc.txt
 /copy:Text/EN/Items/RatPoisonDesc.txt

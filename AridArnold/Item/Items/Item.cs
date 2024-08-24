@@ -14,6 +14,7 @@
 			JetPack = 2,
 			RatPoison = 3,
 			MushOil = 4,
+			PocketOrb = 5,
 		}
 
 		#endregion rTypes
@@ -199,6 +200,8 @@
 					return new RatPoison();
 				case ItemType.MushOil:
 					return new MushOil();
+				case ItemType.PocketOrb:
+					return new PocketOrb();
 			}
 
 			throw new NotImplementedException();

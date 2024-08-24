@@ -149,23 +149,7 @@
 				// SFX
 				SFXManager.I.PlaySFX(AridArnoldSFX.Collect, 0.3f);
 
-				// Camera turn.
-				Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-				
-				ShakeAndRotateTo turnMove = new ShakeAndRotateTo(10.0f, GetTurnToAngle());
-
-				GameSFX travelSFX = new GameSFX(AridArnoldSFX.LibraryRotate, 0.5f);
-				GameSFX finishSFX = new GameSFX(AridArnoldSFX.LibraryBlockLand, 0.7f, -0.7f, -0.8f);
-
-				turnMove.LoadSFX(travelSFX, finishSFX);
-
-				gameCam.QueueMovement(turnMove);
-
-				DiminishCameraShake shakeMove = new DiminishCameraShake(6.0f, 5.0f, 100.0f);
-				gameCam.QueueMovement(shakeMove);
-
-
-				SetAllEntitiesGravity();
+				DoGravityShift(mGravityDir);
 
 				// Pull entity towards orb for consistency
 				Vector2 orbCentrePos = mPosition + new Vector2(Tile.sTILE_SIZE) * 0.5f;
@@ -180,11 +164,32 @@
 		}
 
 
+		public static void DoGravityShift(CardinalDirection newDir)
+		{
+			// Camera turn.
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+
+			ShakeAndRotateTo turnMove = new ShakeAndRotateTo(10.0f, GetTurnToAngle(newDir));
+
+			GameSFX travelSFX = new GameSFX(AridArnoldSFX.LibraryRotate, 0.5f);
+			GameSFX finishSFX = new GameSFX(AridArnoldSFX.LibraryBlockLand, 0.7f, -0.7f, -0.8f);
+
+			turnMove.LoadSFX(travelSFX, finishSFX);
+
+			gameCam.QueueMovement(turnMove);
+
+			DiminishCameraShake shakeMove = new DiminishCameraShake(6.0f, 5.0f, 100.0f);
+			gameCam.QueueMovement(shakeMove);
+
+
+			SetAllEntitiesGravity(newDir);
+		}
+
 
 		/// <summary>
 		/// Set the gravity of all entities.
 		/// </summary>
-		void SetAllEntitiesGravity()
+		static void SetAllEntitiesGravity(CardinalDirection newDir)
 		{
 			int entityNum = EntityManager.I.GetEntityNum();
 
@@ -195,9 +200,9 @@
 				{
 					PlatformingEntity platformingEntity = (PlatformingEntity)entity;
 
-					if (platformingEntity.GetGravityDir() != mGravityDir)
+					if (platformingEntity.GetGravityDir() != newDir)
 					{
-						platformingEntity.SetGravity(mGravityDir);
+						platformingEntity.SetGravity(newDir);
 
 						if (!platformingEntity.IsUsingRealPhysics())
 						{
@@ -273,9 +278,9 @@
 		/// <summary>
 		/// Get angle we need to turn to.
 		/// </summary>
-		float GetTurnToAngle()
+		static float GetTurnToAngle(CardinalDirection newDir)
 		{
-			switch (mGravityDir)
+			switch (newDir)
 			{
 				case CardinalDirection.Up:
 					return MathF.PI;
