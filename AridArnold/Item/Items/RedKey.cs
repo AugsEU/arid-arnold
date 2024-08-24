@@ -12,7 +12,7 @@
 			return 3;
 		}
 
-		protected override void DoEffect()
+		protected override void DoEffect(Arnold arnold)
 		{
 			EventManager.I.TriggerEvent(EventType.RedKeyUsed);
 		}

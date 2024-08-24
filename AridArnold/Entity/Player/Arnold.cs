@@ -53,8 +53,9 @@ namespace AridArnold
 		InputAction mRightKey;
 		InputAction mDownKey;
 
-		// Horse
+		// RandomModes
 		bool mHorseMode;
+		bool mBouncyMode;
 
 
 #if ARNOLD_DEBUG_SOUND
@@ -95,6 +96,8 @@ namespace AridArnold
 			{
 				mWalkSpeed = HORSE_WALK_SPEED;
 			}
+
+			mBouncyMode = false;
 		}
 
 
@@ -463,24 +466,53 @@ namespace AridArnold
 		/// </summary>
 		protected override void ReactToCollision(CollisionType collisionType)
 		{
-			switch (collisionType)
+			if (mBouncyMode)
 			{
-				case CollisionType.Ground:
-					float downVel = Vector2.Dot(mPrevVelocity, GravityVecNorm());
-					downVel = MathF.Abs(downVel);
-					float thresh = MathF.Abs(mJumpSpeed * 1.5f);
+				Vector2 downVec = GravityVecNorm();
+				Vector2 sideVec = MonoMath.Perpendicular(downVec);
 
-					if (downVel > thresh)
-					{
-						float volumeMod = MonoMath.SquashToRange(downVel - thresh, -1.0f, 1.0f);
-						volumeMod = Math.Clamp(volumeMod, 0.0f, 1.0f);
+				Vector2 downVel = Vector2.Dot(downVec, mPrevVelocity) * downVec;
+				Vector2 sideVel = Vector2.Dot(sideVec, mPrevVelocity) * sideVec;
 
-						SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldLand, 0.2f * volumeMod);
-						CameraShake cameraShake = new CameraShake(volumeMod * 0.7f, 2.0f, 100.0f);
-						Camera cam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
-						cam.QueueMovement(cameraShake);
-					}
-					break;
+				switch (collisionType)
+				{ 
+					case CollisionType.Ground:
+						if (downVel.LengthSquared() > 120.0f)
+							mVelocity -= downVel * 1.95f;
+						else
+							mVelocity = sideVel + -GravityVecNorm() * 30.0f;
+						break;
+					case CollisionType.Wall:
+						OverrideVelocity(downVel - sideVel);
+						ReverseWalkDirection();
+						break;
+					case CollisionType.Ceiling:
+						break;
+					default:
+						break;
+				}
+			}
+			else
+			{
+				switch (collisionType)
+				{
+					case CollisionType.Ground:
+						float downVel = Vector2.Dot(mPrevVelocity, GravityVecNorm());
+						downVel = MathF.Abs(downVel);
+						float thresh = MathF.Abs(mJumpSpeed * 1.5f);
+
+						if (downVel > thresh)
+						{
+							float volumeMod = MonoMath.SquashToRange(downVel - thresh, -1.0f, 1.0f);
+							volumeMod = Math.Clamp(volumeMod, 0.0f, 1.0f);
+
+							SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldLand, 0.2f * volumeMod);
+							CameraShake cameraShake = new CameraShake(volumeMod * 0.7f, 2.0f, 100.0f);
+							Camera cam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+							cam.QueueMovement(cameraShake);
+						}
+						break;
+				}
 			}
 
 			base.ReactToCollision(collisionType);
@@ -552,6 +584,11 @@ namespace AridArnold
 				}
 			}
 
+			if(mBouncyMode)
+			{
+				return new Color(55, 148, 167);
+			}
+
 			return base.GetDrawColor();
 		}
 
@@ -616,6 +653,15 @@ namespace AridArnold
 		public virtual bool CanBuyItem()
 		{
 			return mOnGround && !mUseItemTimer.IsPlaying();
+		}
+
+
+		/// <summary>
+		/// Make Arnold bouncy.
+		/// </summary>
+		public void SetBouncyMode()
+		{
+			mBouncyMode = true;
 		}
 
 		#endregion rItem

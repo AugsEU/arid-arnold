@@ -13,7 +13,7 @@
 			HotDogPlant = 1,
 			JetPack = 2,
 			RatPoison = 3,
-			BouncyLiquid = 4
+			MushOil = 4,
 		}
 
 		#endregion rTypes
@@ -197,6 +197,8 @@
 					return new JetPack();
 				case ItemType.RatPoison:
 					return new RatPoison();
+				case ItemType.MushOil:
+					return new MushOil();
 			}
 
 			throw new NotImplementedException();

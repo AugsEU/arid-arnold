@@ -40,7 +40,7 @@
 			return 5;
 		}
 
-		protected override void DoEffect()
+		protected override void DoEffect(Arnold arnold)
 		{
 			CampaignManager.I.GainLives(mNumHotDogs);
 		}

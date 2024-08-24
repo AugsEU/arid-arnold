@@ -19,7 +19,28 @@
 			return 3;
 		}
 
-		protected override void DoEffect()
+		public override bool CanUseItem(Arnold arnold)
+		{
+			bool anyRats = false;
+			int numEnt = EntityManager.I.GetEntityNum();
+			for (int i = 0; i < numEnt; i++)
+			{
+				Entity ent = EntityManager.I.GetEntity(i);
+				if (ent is Trundle rat)
+				{
+					anyRats = true;
+				}
+			}
+
+			if(!anyRats)
+			{
+				return false;
+			}
+
+			return base.CanUseItem(arnold);
+		}
+
+		protected override void DoEffect(Arnold arnold)
 		{
 			// Kill all rats
 			int numEnt = EntityManager.I.GetEntityNum();

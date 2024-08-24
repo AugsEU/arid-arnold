@@ -9313,6 +9313,18 @@
 /processorParam:TextureFormat=Color
 /build:Items/JetPack/Pack2.png
 
+#begin Items/MushOil/Bottle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/MushOil/Bottle.png
+
 #begin Items/RatPoison/Box.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12897,6 +12909,12 @@
 
 #begin Text/EN/Items/JetPackTitle.txt
 /copy:Text/EN/Items/JetPackTitle.txt
+
+#begin Text/EN/Items/MushOilDesc.txt
+/copy:Text/EN/Items/MushOilDesc.txt
+
+#begin Text/EN/Items/MushOilTitle.txt
+/copy:Text/EN/Items/MushOilTitle.txt
 
 #begin Text/EN/Items/RatPoisonDesc.txt
 /copy:Text/EN/Items/RatPoisonDesc.txt

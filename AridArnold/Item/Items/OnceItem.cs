@@ -22,13 +22,13 @@ namespace AridArnold
 		{
 			if(!mDoneEffect)
 			{
-				DoEffect();
+				DoEffect(arnold);
 				mDoneEffect = true;
 				EndItem();
 			}
 			base.ActOnArnold(gameTime, arnold);
 		}
 
-		protected abstract void DoEffect();
+		protected abstract void DoEffect(Arnold arnold);
 	}
 }
