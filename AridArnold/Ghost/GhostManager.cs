@@ -225,11 +225,17 @@
 		/// </summary>
 		public void StopRecording()
 		{
-			if (mOutputFile is not null)
-			{
-				mOutputFile.Close();
-				mOutputFile = null;
-			}
+			mOutputFile = null;
+		}
+
+
+
+		/// <summary>
+		/// Get the output file
+		/// </summary>
+		public GhostFile GetOutputFile()
+		{
+			return mOutputFile;
 		}
 
 		#endregion rUtility

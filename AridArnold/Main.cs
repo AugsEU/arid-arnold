@@ -19,7 +19,6 @@ namespace AridArnold
 
 		#region rConstants
 
-		private const int FRAME_SLOWDOWN = 1;
 		private const double FRAME_RATE = 60d;
 		private const int MIN_HEIGHT = 550;
 		private const float ASPECT_RATIO = 1.77778f;
@@ -39,6 +38,7 @@ namespace AridArnold
 		private int mSlowDownCount;
 		private Texture2D mDummyTexture;
 		private bool mInLoadingSection = true;
+		private int mFrameSlowdown = 1;
 
 
 		// Hack
@@ -97,6 +97,8 @@ namespace AridArnold
 			OptionsManager.I.Init();
 			SFXManager.I.Init();
 			MusicManager.I.Init("Sound/Music/MusicManifest.xml");
+
+			mFrameSlowdown = 1;
 
 			base.Initialize();
 		}
@@ -171,7 +173,7 @@ namespace AridArnold
 			SFXManager.I.Update(gameTime);
 			MusicManager.I.Update(gameTime);
 			
-			mSlowDownCount = (mSlowDownCount + 1) % FRAME_SLOWDOWN;
+			mSlowDownCount = (mSlowDownCount + 1) % mFrameSlowdown;
 			if (mSlowDownCount == 0)
 			{
 				if (InputManager.I.KeyPressed(InputAction.SysFullScreen))
@@ -493,6 +495,16 @@ namespace AridArnold
 			// Reset statics
 			GravityOrb.sActiveDirection = CardinalDirection.Down;
 			Entity.sHandleHead = 0;
+		}
+
+
+
+		/// <summary>
+		/// Slow game by integer factor
+		/// </summary>
+		public static void SetTimeSlowDown(int frame)
+		{
+			sSelf.mFrameSlowdown = frame;
 		}
 
 

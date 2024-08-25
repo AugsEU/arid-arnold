@@ -15694,3 +15694,27 @@
 #begin Text/EN/Items/BorgChipTitle.txt
 /copy:Text/EN/Items/BorgChipTitle.txt
 
+#begin Items/SlowWatch/Watch.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/SlowWatch/Watch.png
+
+#begin Text/EN/Items/SlowWatchDesc.txt
+/copy:Text/EN/Items/SlowWatchDesc.txt
+
+#begin Text/EN/Items/SlowWatchTitle.txt
+/copy:Text/EN/Items/SlowWatchTitle.txt
+
+#begin Items/ReverseWatch/Watch.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/ReverseWatch/Watch.png
+
+#begin Text/EN/Items/ReverseWatchDesc.txt
+/copy:Text/EN/Items/ReverseWatchDesc.txt
+
+#begin Text/EN/Items/ReverseWatchTitle.txt
+/copy:Text/EN/Items/ReverseWatchTitle.txt
+

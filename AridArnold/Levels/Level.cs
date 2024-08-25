@@ -83,6 +83,7 @@
 			FXManager.I.Clear();
 			EventManager.I.ResetAllEvents();
 			CollectableManager.I.ClearTransient();
+			Main.SetTimeSlowDown(1);
 
 			// Re-Load BG (hack)
 			mBGLayout = new Layout(mLayoutPath);
@@ -117,7 +118,7 @@
 
 			if (BF.DEBUG_LOADER)
 			{
-				ItemManager.I.PurchaseItem(new BorgChip(), Vector2.Zero);
+				ItemManager.I.PurchaseItem(new ReverseWatch(), Vector2.Zero);
 			}
 
 			// Inform others

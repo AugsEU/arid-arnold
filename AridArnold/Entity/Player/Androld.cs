@@ -18,6 +18,13 @@
 			mPrevDirection = WalkDirection.Right;
 		}
 
+		public override void LoadContent()
+		{
+			base.LoadContent();
+
+			// Turn off jump sound.
+			LoadSFX(null, AridArnoldSFX.ArnoldWalk, 0.2f);
+		}
 
 		protected override void InitTexturePacks()
 		{

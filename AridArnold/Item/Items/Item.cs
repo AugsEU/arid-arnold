@@ -17,6 +17,8 @@
 			typeof(PocketOrb),	// 5
 			typeof(Ivermectin),
 			typeof(BorgChip),
+			typeof(SlowWatch),
+			typeof(ReverseWatch)
 		};
 
 		#endregion rConstant

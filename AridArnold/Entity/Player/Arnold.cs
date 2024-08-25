@@ -23,6 +23,8 @@ namespace AridArnold
 
 		static Vector2 ITEM_OFFSET = new Vector2(-2.0f, -15.0f);
 
+		static int REVERSE_TIME_FRAMES = 120;
+
 		#endregion rConstants
 
 
@@ -47,6 +49,10 @@ namespace AridArnold
 		// Items
 		Item mCurrItem;
 		PercentageTimer mUseItemTimer;
+
+		int mReverseTimeFrame = 0;
+		int mReverseFramesMax = REVERSE_TIME_FRAMES;
+		GhostFile mReverseTimeFile = null;
 
 		// Inputs(can change based on camera angle etc)
 		InputAction mLeftKey;
@@ -256,6 +262,25 @@ namespace AridArnold
 			//Anim
 			mRunningAnimation.Update(gameTime);
 
+			// Reverse time
+			if(mReverseTimeFile is not null)
+			{
+				while(mReverseTimeFile is not null)
+				{
+					HandleTimeReverse(gameTime);
+					if(mVelocity.LengthSquared() < 1.0f)
+					{
+						// Do one more frame of reverse and keep reversing.
+						mReverseFramesMax++;
+					}
+					else
+					{
+						break;
+					}
+				}
+				return;
+			}
+
 			//Collider
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
@@ -302,15 +327,81 @@ namespace AridArnold
 		}
 
 
+		/// <summary>
+		/// Handle reverse
+		/// </summary>
+		void HandleTimeReverse(GameTime gameTime)
+		{
+			int frame = mReverseTimeFile.GetFrameCount() - mReverseTimeFrame;
+			if (frame < 0 || mReverseTimeFrame >= mReverseFramesMax)
+			{
+				mReverseTimeFile = null;
+				mReverseTimeFrame = 0;
+				return;
+			}
+
+			List<GhostInfo> infos = mReverseTimeFile.ReadFrame(frame);
+
+			if(infos.Count == 0)
+			{
+				mReverseTimeFile = null;
+				mReverseTimeFrame = 0;
+				return;
+			}
+
+			// Hack: Find closest one which should be us
+			int bestIdx = 0;
+			float bestIdxDist = (infos[0].mPosition - mPosition).LengthSquared();
+
+			for(int i = 1; i < infos.Count; i++)
+			{
+				float newDist = (infos[i].mPosition - mPosition).LengthSquared();
+				if(newDist < bestIdxDist)
+				{
+					bestIdx = i;
+					bestIdxDist = newDist;
+				}
+			}
+
+			// Set our info...
+			GhostInfo ourInfo = infos[bestIdx];
+
+			mPosition = ourInfo.mPosition;
+			mVelocity = ourInfo.mVelocity;
+			SetGrounded(ourInfo.mGrounded);
+			SetGravity(ourInfo.mGravity);
+			SetWalkDirection(ourInfo.mWalkDirection);
+			SetPrevWalkDirection(ourInfo.mPrevWalkDirection);
+
+			// Inc
+			mReverseTimeFrame++;
+		}
+
+
 
 		/// <summary>
 		/// Kill Arnold
 		/// </summary>
 		public override void Kill()
 		{
-			if(mTimerSinceDeath.IsPlaying())
+			if(mTimerSinceDeath.IsPlaying() || mReverseTimeFile is not null)
 			{
 				return;
+			}
+
+			Item currItem = ItemManager.I.GetActiveItem();
+			if(currItem is ReverseWatch)
+			{
+				mReverseTimeFile = GhostManager.I.GetOutputFile();
+				if(mReverseTimeFile is not null)
+				{
+					ItemManager.I.PopActiveItem();
+					mReverseTimeFrame = 0;
+					GhostManager.I.StopRecording();
+					mReverseFramesMax = REVERSE_TIME_FRAMES;
+					SFXManager.I.PlaySFX(AridArnoldSFX.QuickAgeBackward, 0.2f);
+					return;
+				}
 			}
 
 			// Fade them all out as the level is about to reset.
@@ -336,6 +427,12 @@ namespace AridArnold
 			{
 				return;
 			}
+
+			if(mReverseTimeFile is not null)
+			{
+				return;
+			}
+
 			DoInputs(gameTime);
 			base.OrderedUpdate(gameTime);
 		}
@@ -608,6 +705,11 @@ namespace AridArnold
 				{
 					return new Color(200, 255, 200);
 				}
+			}
+
+			if(mReverseTimeFile is not null)
+			{
+				return new Color(60, 60, 60);
 			}
 
 			if(mBouncyMode)
