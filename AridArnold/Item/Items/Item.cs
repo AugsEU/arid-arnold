@@ -16,6 +16,7 @@
 			typeof(MushOil),
 			typeof(PocketOrb),	// 5
 			typeof(Ivermectin),
+			typeof(BorgChip),
 		};
 
 		#endregion rConstant

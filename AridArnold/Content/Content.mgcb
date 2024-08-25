@@ -3595,6 +3595,21 @@
 /processorParam:TextureFormat=Color
 /build:BG/Lab/H403.png
 
+#begin BG/Lab/L40000.mlo
+/copy:BG/Lab/L40000.mlo
+
+#begin BG/Lab/L40000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Lab/L40000.png
+
 #begin BG/Lab/L401.mlo
 /copy:BG/Lab/L401.mlo
 
@@ -7561,6 +7576,51 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/60000.png
 
+#begin Campaigns/MainCampaign/Levels/70000.aux
+/copy:Campaigns/MainCampaign/Levels/70000.aux
+
+#begin Campaigns/MainCampaign/Levels/70000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/70000.png
+
+#begin Campaigns/MainCampaign/Levels/80000.aux
+/copy:Campaigns/MainCampaign/Levels/80000.aux
+
+#begin Campaigns/MainCampaign/Levels/80000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/80000.png
+
+#begin Campaigns/MainCampaign/Levels/90000.aux
+/copy:Campaigns/MainCampaign/Levels/90000.aux
+
+#begin Campaigns/MainCampaign/Levels/90000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/90000.png
+
 #begin Campaigns/MainCampaign/Meta.xml
 /copy:Campaigns/MainCampaign/Meta.xml
 
@@ -9217,6 +9277,30 @@
 /processorParam:TextureFormat=Color
 /build:Icon.ico
 
+#begin Items/BorgChip/ArnHead.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/BorgChip/ArnHead.png
+
+#begin Items/BorgChip/Chip.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/BorgChip/Chip.png
+
 #begin Items/HotDogPlant/PlantPhase0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9288,6 +9372,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Items/ItemStand.png
+
+#begin Items/Ivermectin/Box.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Ivermectin/Box.png
 
 #begin Items/JetPack/Pack1.png
 /importer:TextureImporter
@@ -12916,6 +13012,12 @@
 #begin Text/EN/Items/HotdogPlantTitle.txt
 /copy:Text/EN/Items/HotdogPlantTitle.txt
 
+#begin Text/EN/Items/IvermectinDesc.txt
+/copy:Text/EN/Items/IvermectinDesc.txt
+
+#begin Text/EN/Items/IvermectinTitle.txt
+/copy:Text/EN/Items/IvermectinTitle.txt
+
 #begin Text/EN/Items/JetPackDesc.txt
 /copy:Text/EN/Items/JetPackDesc.txt
 
@@ -15586,51 +15688,9 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Items/Ivermectin/Box.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/Ivermectin/Box.png
+#begin Text/EN/Items/BorgChipDesc.txt
+/copy:Text/EN/Items/BorgChipDesc.txt
 
-#begin Campaigns/MainCampaign/Levels/70000.aux
-/copy:Campaigns/MainCampaign/Levels/70000.aux
-
-#begin Campaigns/MainCampaign/Levels/70000.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/70000.png
-
-#begin Campaigns/MainCampaign/Levels/80000.aux
-/copy:Campaigns/MainCampaign/Levels/80000.aux
-
-#begin Campaigns/MainCampaign/Levels/80000.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/80000.png
-
-#begin Campaigns/MainCampaign/Levels/90000.aux
-/copy:Campaigns/MainCampaign/Levels/90000.aux
-
-#begin Campaigns/MainCampaign/Levels/90000.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/90000.png
-
-#begin BG/Lab/L40000.mlo
-/copy:BG/Lab/L40000.mlo
-
-#begin BG/Lab/L40000.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Lab/L40000.png
-
-#begin Text/EN/Items/IvermectinTitle.txt
-/copy:Text/EN/Items/IvermectinTitle.txt
-
-#begin Text/EN/Items/IvermectinDesc.txt
-/copy:Text/EN/Items/IvermectinDesc.txt
+#begin Text/EN/Items/BorgChipTitle.txt
+/copy:Text/EN/Items/BorgChipTitle.txt
 

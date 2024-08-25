@@ -115,10 +115,14 @@
 			gameCam.Reset();
 			GravityOrb.sActiveDirection = CardinalDirection.Down; // HACK: Down is the default direction.
 
+			if (BF.DEBUG_LOADER)
+			{
+				ItemManager.I.PurchaseItem(new BorgChip(), Vector2.Zero);
+			}
+
 			// Inform others
 			GhostManager.I.StartLevel(this);
 			ItemManager.I.LevelBegin();
-
 		}
 
 

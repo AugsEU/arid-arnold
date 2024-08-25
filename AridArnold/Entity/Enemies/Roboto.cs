@@ -20,6 +20,7 @@
 		#region rMembers
 
 		bool mPoweredOn;
+		bool mHitboxActive = true;
 		MonoTimer mTimeSinceOn;
 
 		#endregion rMembers
@@ -77,7 +78,13 @@
 		{
 			mTimeSinceOn.Update(gameTime);
 
-			if (!mPoweredOn)
+			Item currItem = ItemManager.I.GetActiveItem();
+			if(currItem is not null && currItem is BorgChip)
+			{
+				mHitboxActive = false;
+			}
+
+			if (!mPoweredOn || (mPoweredOn && !mHitboxActive))
 			{
 				//Collider
 				EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
@@ -155,7 +162,7 @@
 		/// <param name="entity"></param>
 		public override void OnCollideEntity(Entity entity)
 		{
-			if (mTimeSinceOn.GetElapsedMs() > ROBOTO_INT_TIME)
+			if (mTimeSinceOn.GetElapsedMs() > ROBOTO_INT_TIME && mHitboxActive)
 			{
 				base.OnCollideEntity(entity);
 			}

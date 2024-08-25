@@ -1,5 +1,7 @@
 ﻿#define ADD_TEMP_FILES
 
+using System.Diagnostics;
+
 namespace AridArnold
 {
 	internal class LanguageManager : Singleton<LanguageManager>
@@ -138,6 +140,7 @@ namespace AridArnold
 					path = Path.Join(TEMP_FILE_OUTPUT_PATH, path);
 					rawText = "TEMP TEXT";
 					File.WriteAllText(path, rawText);
+					Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
 					MonoDebug.Log("Created translation file: {0}", path);
 #else
 					throw new Exception("Invalid string {0}", ID);
