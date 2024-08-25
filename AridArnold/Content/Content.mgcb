@@ -15586,3 +15586,51 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Items/Ivermectin/Box.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/Ivermectin/Box.png
+
+#begin Campaigns/MainCampaign/Levels/70000.aux
+/copy:Campaigns/MainCampaign/Levels/70000.aux
+
+#begin Campaigns/MainCampaign/Levels/70000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/70000.png
+
+#begin Campaigns/MainCampaign/Levels/80000.aux
+/copy:Campaigns/MainCampaign/Levels/80000.aux
+
+#begin Campaigns/MainCampaign/Levels/80000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/80000.png
+
+#begin Campaigns/MainCampaign/Levels/90000.aux
+/copy:Campaigns/MainCampaign/Levels/90000.aux
+
+#begin Campaigns/MainCampaign/Levels/90000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/90000.png
+
+#begin BG/Lab/L40000.mlo
+/copy:BG/Lab/L40000.mlo
+
+#begin BG/Lab/L40000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:BG/Lab/L40000.png
+
+#begin Text/EN/Items/IvermectinTitle.txt
+/copy:Text/EN/Items/IvermectinTitle.txt
+
+#begin Text/EN/Items/IvermectinDesc.txt
+/copy:Text/EN/Items/IvermectinDesc.txt
+

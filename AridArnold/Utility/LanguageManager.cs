@@ -1,4 +1,6 @@
-﻿namespace AridArnold
+﻿#define ADD_TEMP_FILES
+
+namespace AridArnold
 {
 	internal class LanguageManager : Singleton<LanguageManager>
 	{
@@ -16,6 +18,15 @@
 
 		#endregion rType
 
+
+
+		#region rConstants
+
+#if ADD_TEMP_FILES
+		const string TEMP_FILE_OUTPUT_PATH = "C:\\Users\\Augus\\Documents\\Programming_Stuff\\Games\\arid-arnold\\AridArnold\\";
+#endif
+
+		#endregion rConstants
 
 
 
@@ -112,11 +123,26 @@
 				return "";
 			}
 
-			string rawText;
+			string rawText = "";
 
 			if (!mKeyCache.TryGetValue(ID, out rawText))
 			{
-				rawText = File.ReadAllText(GetTextPath(ID));
+				string path = GetTextPath(ID);
+				if(File.Exists(path))
+				{
+					rawText = File.ReadAllText(GetTextPath(ID));
+				}
+				else
+				{
+#if ADD_TEMP_FILES
+					path = Path.Join(TEMP_FILE_OUTPUT_PATH, path);
+					rawText = "TEMP TEXT";
+					File.WriteAllText(path, rawText);
+					MonoDebug.Log("Created translation file: {0}", path);
+#else
+					throw new Exception("Invalid string {0}", ID);
+#endif
+				}
 			}
 
 			return TextPreprocessor.Process(rawText);
@@ -133,6 +159,6 @@
 			return mKeyCache.ContainsKey(ID);
 		}
 
-		#endregion rText
+#endregion rText
 	}
 }

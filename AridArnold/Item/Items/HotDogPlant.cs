@@ -47,7 +47,7 @@
 
 		public override bool CanUseItem(Arnold arnold)
 		{
-			return mNumHotDogs > 0;
+			return mNumHotDogs > 0 && base.CanUseItem(arnold);
 		}
 
 		public override string GetTitle()
@@ -63,6 +63,11 @@
 		public override bool RegenerateAfterDeath()
 		{
 			return false;
+		}
+
+		public override bool CanUseInShop()
+		{
+			return true;
 		}
 	}
 }

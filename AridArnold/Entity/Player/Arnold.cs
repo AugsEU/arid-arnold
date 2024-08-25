@@ -91,10 +91,9 @@ namespace AridArnold
 
 			SetDustIntensity(15.0f);
 
-			mHorseMode = horseMode;
-			if (horseMode)
+			if(horseMode)
 			{
-				mWalkSpeed = HORSE_WALK_SPEED;
+				SetHorseMode();
 			}
 
 			mBouncyMode = false;
@@ -154,6 +153,23 @@ namespace AridArnold
 			mRunningAnimation.Play();
 		}
 
+
+
+		/// <summary>
+		/// Make arnold into a horse
+		/// </summary>
+		public void SetHorseMode()
+		{
+			mHorseMode = true;
+			mWalkSpeed = HORSE_WALK_SPEED;
+
+			if (mHorseTexturePack is not null)
+			{
+				RefreshTexturePack();
+				mPosition += -GravityVecNorm() * 10.0f;
+			}
+		}
+
 		#endregion rInitialisation
 
 
@@ -168,6 +184,16 @@ namespace AridArnold
 		public override bool PersistLevelEntry()
 		{
 			return true;
+		}
+
+
+
+		/// <summary>
+		/// Are we a horse?
+		/// </summary>
+		public bool IsHorseMode()
+		{
+			return mHorseMode;
 		}
 
 		#endregion rProperties

@@ -5,19 +5,20 @@
 	/// </summary>
 	abstract class Item
 	{
-		#region rTypes
+		#region rConstant
 
-		public enum ItemType
+		public static Type[] ITEM_TYPES =
 		{
-			RedKey = 0,
-			HotDogPlant = 1,
-			JetPack = 2,
-			RatPoison = 3,
-			MushOil = 4,
-			PocketOrb = 5,
-		}
+			typeof(RedKey),		// 0
+			typeof(HotDogPlant),
+			typeof(JetPack),
+			typeof(RatPoison),
+			typeof(MushOil),
+			typeof(PocketOrb),	// 5
+			typeof(Ivermectin),
+		};
 
-		#endregion rTypes
+		#endregion rConstant
 
 
 
@@ -162,6 +163,13 @@
 		/// </summary>
 		public virtual bool CanUseItem(Arnold arnold)
 		{
+			bool isShop = CampaignManager.I.GetCurrentLevelType() == AuxData.LevelType.Shop;
+
+			if (isShop && !CanUseInShop())
+			{
+				return false;
+			}
+
 			return arnold.CanUseItem();
 		}
 
@@ -175,6 +183,16 @@
 			return true;
 		}
 
+
+
+		/// <summary>
+		/// Can we use this in the shop?
+		/// </summary>
+		public virtual bool CanUseInShop()
+		{
+			return false;
+		}
+
 		#endregion rUtil
 
 
@@ -186,25 +204,10 @@
 		/// <summary>
 		/// Item factory
 		/// </summary>
-		public static Item CreateItem(ItemType type)
+		public static Item CreateItem(int type)
 		{
-			switch (type)
-			{
-				case ItemType.RedKey:
-					return new RedKey();
-				case ItemType.HotDogPlant:
-					return new HotDogPlant();
-				case ItemType.JetPack:
-					return new JetPack();
-				case ItemType.RatPoison:
-					return new RatPoison();
-				case ItemType.MushOil:
-					return new MushOil();
-				case ItemType.PocketOrb:
-					return new PocketOrb();
-			}
-
-			throw new NotImplementedException();
+			Type itemType = ITEM_TYPES[type];
+			return (Item)Activator.CreateInstance(itemType);
 		}
 
 		#endregion rFactory

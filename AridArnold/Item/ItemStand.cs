@@ -22,7 +22,7 @@ namespace AridArnold
 
 		#region rMembers
 
-		Item.ItemType mItemType;
+		int mItemType;
 		Item mDisplayItem;
 		float mAngle;
 		SpriteFont mFont;
@@ -42,11 +42,13 @@ namespace AridArnold
 		/// <param name="pos"></param>
 		public ItemStand(Vector2 pos, int itemType) : base(pos)
 		{
-			mItemType = (Item.ItemType)itemType;
+			mItemType = itemType;
 			mDisplayItem = Item.CreateItem(mItemType);
 
 			mInfoBubble = new ItemStandInfoBubble(pos + INFO_BUBBLE_OFFSET, BubbleStyle.DefaultPrompt, mDisplayItem.GetTitle(), mDisplayItem.GetDescription());
 		}
+
+
 
 		/// <summary>
 		/// Load content for item stand

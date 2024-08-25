@@ -47,8 +47,13 @@
 		{
 			int levelID = CampaignManager.I.GetCurrentLevel().GetID();
 			SpecificCollectableID specificID = new SpecificCollectableID(type, pos, levelID);
-			bool addedResult = mCurrent.mSpecificCollected.Add(specificID);
 
+			if(mCurrent.mSpecificCollected.Contains(specificID))
+			{
+				return;
+			}
+
+			bool addedResult = mCurrent.mSpecificCollected.Add(specificID);
 			if(addedResult)
 			{
 				// This was a new collectable, increment count.
@@ -56,7 +61,7 @@
 			}
 			else
 			{
-				MonoDebug.Log("Warning: Re-collecting permanent collectable.");
+				MonoDebug.Log("Warning: Failed to add new collectable.");
 			}
 		}
 
