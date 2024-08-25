@@ -9,16 +9,17 @@
 
 		public static Type[] ITEM_TYPES =
 		{
-			typeof(RedKey),		// 0
+			typeof(RedKey),			// 0
 			typeof(HotDogPlant),
 			typeof(JetPack),
 			typeof(RatPoison),
 			typeof(MushOil),
-			typeof(PocketOrb),	// 5
+			typeof(PocketOrb),		// 5
 			typeof(Ivermectin),
 			typeof(BorgChip),
 			typeof(SlowWatch),
-			typeof(ReverseWatch)
+			typeof(ReverseWatch),
+			typeof(ClusterBomb),	// 10
 		};
 
 		#endregion rConstant

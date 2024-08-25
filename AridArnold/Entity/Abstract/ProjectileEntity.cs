@@ -197,8 +197,13 @@
 		/// <summary>
 		/// Kill player.
 		/// </summary>
-		protected void KillPlayer(Entity entity)
+		protected void KillEntity(Entity entity)
 		{
+			if(object.ReferenceEquals(entity, mParent))
+			{
+				return;
+			}
+
 			if(entity is MovingEntity movingEntity)
 			{
 				if (movingEntity.GetVelocity().LengthSquared() > SPEED_KILL_LIMIT * SPEED_KILL_LIMIT)

@@ -135,7 +135,7 @@
 							Vector2 toEntity = entity.GetCentrePos() - mExplosionCentre;
 							if (Vector2.Dot(toEntity, mExplosionNormal) > 0.0f)
 							{
-								KillPlayer(entity);
+								KillEntity(entity);
 							}
 						}
 					}

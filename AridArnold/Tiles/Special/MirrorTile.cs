@@ -145,7 +145,7 @@
 				case CardinalDirection.Right:
 					entityPos.X = ourCentre.X + sTILE_SIZE * 0.5f;
 					dustStart = new Vector2(ourBounds.max.X, entityPos.Y - sTILE_SIZE * 0.5f);
-					dustEnd = new Vector2(ourBounds.max.X, entityPos.Y - sTILE_SIZE * 0.5f);
+					dustEnd = new Vector2(ourBounds.max.X, entityPos.Y + sTILE_SIZE * 0.5f);
 					break;
 
 				case CardinalDirection.Down:
@@ -157,7 +157,7 @@
 				case CardinalDirection.Left:
 					entityPos.X = ourCentre.X - sTILE_SIZE * 0.5f - entityWidth;
 					dustStart = new Vector2(ourBounds.min.X, entityPos.Y - sTILE_SIZE * 0.5f);
-					dustEnd = new Vector2(ourBounds.min.X, entityPos.Y - sTILE_SIZE * 0.5f);
+					dustEnd = new Vector2(ourBounds.min.X, entityPos.Y + sTILE_SIZE * 0.5f);
 					break;
 			}
 

@@ -18,5 +18,10 @@ namespace AridArnold
 			// It's a passive item.
 			return false;
 		}
+
+		public override bool RegenerateAfterDeath()
+		{
+			return false;
+		}
 	}
 }

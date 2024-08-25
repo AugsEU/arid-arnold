@@ -15718,3 +15718,15 @@
 #begin Text/EN/Items/ReverseWatchTitle.txt
 /copy:Text/EN/Items/ReverseWatchTitle.txt
 
+#begin Items/ClusterBomb/Bomb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/ClusterBomb/Bomb.png
+
+#begin Text/EN/Items/ClusterBombDesc.txt
+/copy:Text/EN/Items/ClusterBombDesc.txt
+
+#begin Text/EN/Items/ClusterBombTitle.txt
+/copy:Text/EN/Items/ClusterBombTitle.txt
+

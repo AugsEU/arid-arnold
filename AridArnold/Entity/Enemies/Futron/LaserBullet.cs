@@ -95,7 +95,7 @@
 			{
 				if (entity != this && entity != mParent)
 				{
-					KillPlayer(entity);
+					KillEntity(entity);
 				}
 			}
 

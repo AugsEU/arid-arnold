@@ -96,7 +96,7 @@ namespace AridArnold
 			{
 				if (entity != this && entity != mParent && entity is PlatformingEntity)
 				{
-					KillPlayer(entity);
+					KillEntity(entity);
 				}
 			}
 

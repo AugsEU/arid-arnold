@@ -118,7 +118,7 @@
 
 			if (BF.DEBUG_LOADER)
 			{
-				ItemManager.I.PurchaseItem(new ReverseWatch(), Vector2.Zero);
+				ItemManager.I.PurchaseItem(new ClusterBomb(), Vector2.Zero);
 			}
 
 			// Inform others

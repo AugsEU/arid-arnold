@@ -18,7 +18,6 @@
 
 		#region rMembers
 
-		Level mLevel;
 		List<List<GhostInfo>> mGhostInfos;
 
 		#endregion rMembers
@@ -32,7 +31,6 @@
 		public GhostFile(Level level) : base(level.GetImagePath() + ".ght", true)
 		{
 			mGhostInfos = new List<List<GhostInfo>>(MAX_FRAMES);
-			mLevel = level;
 		}
 
 		public GhostFile(string relativePath) : base(relativePath, true)
@@ -127,7 +125,6 @@
 		public void Close()
 		{
 			mGhostInfos.Clear();
-			mLevel = null;
 		}
 
 		#endregion rFileOperations
