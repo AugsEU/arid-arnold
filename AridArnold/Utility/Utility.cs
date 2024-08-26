@@ -43,6 +43,36 @@
 			throw new NotImplementedException();
 		}
 
+
+
+		/// <summary>
+		/// Convert cardinal direction enum to unit point
+		/// </summary>
+		/// <param name="dir">Cardinal direction</param>
+		/// <returns>Cardinal direction unit vector</returns>
+		/// <exception cref="NotImplementedException">Requires a valid cardinal direction</exception>
+		public static Point GetNormalPoint(CardinalDirection dir)
+		{
+			switch (dir)
+			{
+				case CardinalDirection.Up:
+					return new Point(0, -1);
+				case CardinalDirection.Down:
+					return new Point(0, 1);
+				case CardinalDirection.Left:
+					return new Point(-1, 0);
+				case CardinalDirection.Right:
+					return new Point(1, 0);
+			}
+
+			throw new NotImplementedException();
+		}
+
+
+
+		/// <summary>
+		/// Gets angle from cardinal direction
+		/// </summary>
 		public static float GetRotation(CardinalDirection dir)
 		{
 			switch (dir)

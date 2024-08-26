@@ -22,6 +22,8 @@
 			typeof(ClusterBomb),	// 10
 			typeof(MoonBoots),
 			typeof(Trainers),
+			typeof(ChaosDrive),
+			typeof(TreeSeed)
 		};
 
 		#endregion rConstant

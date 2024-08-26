@@ -501,6 +501,17 @@
 
 
 		/// <summary>
+		/// Is the point within the map?
+		/// </summary>
+		public bool IsInTileMap(Point pos)
+		{
+			return pos.X >= 0 && pos.X < mTileMap.GetLength(0)
+				&& pos.Y >= 0 && pos.Y < mTileMap.GetLength(1);
+		}
+
+
+
+		/// <summary>
 		/// Query if tile at position is solid.
 		/// </summary>
 		public bool IsTileSolid(Point coord)
@@ -588,6 +599,27 @@
 			Vector2 pos = new Vector2(point.X * mTileSize, point.Y * mTileSize) + mTileMapPos;
 			mTileMap[point.X, point.Y] = new AirTile(pos);
 			mTileMap[point.X, point.Y].LoadContent();
+		}
+
+
+
+		/// <summary>
+		/// Overwrite a tile.
+		/// </summary>
+		public	void PlaceTile(Tile tile)
+		{
+			tile.LoadContent();
+			Point coord = GetTileMapCoord(tile.GetCentre());
+
+			Tile prevTile = mTileMap[coord.X, coord.Y];
+
+			if(prevTile is KeyTile || prevTile is WaterBottleTile)
+			{
+				// Safety to not break levels.
+				return;
+			}
+
+			mTileMap[coord.X, coord.Y] = tile;
 		}
 
 		#endregion rUtility

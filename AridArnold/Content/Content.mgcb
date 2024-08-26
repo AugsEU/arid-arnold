@@ -15826,3 +15826,27 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Items/Tree/Seed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/Tree/Seed.png
+
+#begin Items/Tree/TreeBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/Tree/TreeBase.png
+
+#begin Items/Tree/TreeExt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/Tree/TreeExt.png
+
+#begin Text/EN/Items/TreeSeedDesc.txt
+/copy:Text/EN/Items/TreeSeedDesc.txt
+
+#begin Text/EN/Items/TreeSeedTitle.txt
+/copy:Text/EN/Items/TreeSeedTitle.txt
+
