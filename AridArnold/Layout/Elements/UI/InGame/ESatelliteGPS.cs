@@ -6,6 +6,7 @@
 		static Vector2 COMPASS_OFFSET = new Vector2(95.0f, 75.0f);
 
 		SpriteFont mFont;
+		SpriteFont mSmallFont;
 
 		Texture2D mCompassCentre;
 		Texture2D mCompassArrow;
@@ -16,10 +17,10 @@
 		Texture2D mSequenceArrowMiddle;
 		Texture2D mSequenceArrowEnd;
 
-
 		public ESatelliteGPS(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/SatelliteBG", parent)
 		{
 			mFont = FontManager.I.GetFont("Pixica", 24, true);
+			mSmallFont = FontManager.I.GetFont("Pixica", 12, true);
 
 			mCompassCentre = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/CompassCentre");
 			mCompassArrow = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/CompassArrow");
@@ -54,7 +55,14 @@
 			if (currLevel is not null)
 			{
 				string worldName = currLevel.GetTheme().GetDisplayName();
-				MonoDraw.DrawStringCentred(info, mFont, GetPosition() + WORLD_TITLE_OFFSET, PANEL_GOLD, worldName, DrawLayer.Bubble);
+				Vector2 pos = GetPosition() + WORLD_TITLE_OFFSET;
+				MonoDraw.DrawStringCentred(info, mFont, pos, PANEL_GOLD, worldName, DrawLayer.Bubble);
+				if(currLevel.CanLoseLives())
+				{
+					pos.Y -= 20.0f;
+					string levelName = Util.LevelIDToString(currLevel.GetID());
+					MonoDraw.DrawStringCentred(info, mSmallFont, pos, PANEL_GOLD, levelName, DrawLayer.Bubble);
+				}
 			}
 		}
 

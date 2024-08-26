@@ -240,5 +240,21 @@
 			cardVec = MonoMath.Reflect(cardVec, normal);
 			return CardinalDirectionFromVector(cardVec);
 		}
+
+
+
+		/// <summary>
+		/// Converts level ID into hyphen notation.
+		/// </summary>
+		public static string LevelIDToString(int id)
+		{
+			string idStr = id.ToString();
+
+			string firstPart = idStr.Substring(0, idStr.Length - 2).TrimStart('0');
+			string lastPart = idStr.Substring(idStr.Length - 2).TrimStart('0');
+
+			// Combine with a hyphen
+			return $"{firstPart}-{lastPart}";
+		}
 	}
 }

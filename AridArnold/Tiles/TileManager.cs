@@ -432,7 +432,6 @@
 
 			Point ret = new Point((int)Math.Floor(pos.X), (int)MathF.Floor(pos.Y));
 
-			MonoDebug.Assert(ret.X >= 0 && ret.Y >= 0);
 			return ret;
 		}
 
