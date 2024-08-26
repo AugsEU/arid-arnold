@@ -15850,3 +15850,21 @@
 #begin Text/EN/Items/TreeSeedTitle.txt
 /copy:Text/EN/Items/TreeSeedTitle.txt
 
+#begin Items/Tree/TreeMid.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/Tree/TreeMid.png
+
+#begin Sound/SFX/Items/TreePlace.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Items/TreePlace.wav
+
+#begin Sound/SFX/Items/UseItem.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Items/UseItem.wav
+

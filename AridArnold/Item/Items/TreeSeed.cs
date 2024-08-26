@@ -12,6 +12,7 @@ namespace AridArnold
 		Point mStartPoint;
 		CardinalDirection mGrowDir;
 		PercentageTimer mTimer;
+		bool mPlaceMid = true;
 
 		public TreeSeed() : base("Items.TreeSeedTitle", "Items.TreeSeedDesc")
 		{
@@ -26,6 +27,7 @@ namespace AridArnold
 
 		public override void Begin()
 		{
+			mPlaceMid = true;
 			mTimer.FullReset();
 			base.Begin();
 		}
@@ -44,6 +46,8 @@ namespace AridArnold
 				// Place base tile
 				PlacePlatformTile(mStartPoint, "Items/Tree/TreeBase");
 				mTimer.Start();
+
+				mPlaceMid = true;
 			}
 
 			// Time to place a new tree or end task
@@ -52,7 +56,17 @@ namespace AridArnold
 				mStartPoint += Util.GetNormalPoint(mGrowDir);
 				if(IsValidToPlace(mStartPoint))
 				{
-					PlacePlatformTile(mStartPoint, "Items/Tree/TreeExt");
+					if(mPlaceMid)
+					{
+						PlaceMidTile(mStartPoint, "Items/Tree/TreeMid");
+					}
+					else
+					{
+						PlacePlatformTile(mStartPoint, "Items/Tree/TreeExt");
+					}
+
+					mPlaceMid = !mPlaceMid;
+
 					mTimer.Reset();
 				}
 				else
@@ -81,7 +95,25 @@ namespace AridArnold
 		{
 			Vector2 tilePos = TileManager.I.GetTileTopLeft(pos);
 			AnimatedPlatformTile baseTile = new AnimatedPlatformTile(mGrowDir, tilePos, texture);
-			TileManager.I.PlaceTile(baseTile);
+			PlaceTile(baseTile);
+		}
+
+		private void PlaceMidTile(Point pos, string texture)
+		{
+			Vector2 tilePos = TileManager.I.GetTileTopLeft(pos);
+			AirTile baseTile = new DecorTile(tilePos, mGrowDir, texture);
+			PlaceTile(baseTile);
+		}
+
+		private void PlaceTile(Tile tile)
+		{
+			Rect2f newBounds = tile.GetBounds();
+
+			DustUtil.EmitInSquare(newBounds, 10, 20, DustUtil.MIRROR_COLORS);
+
+			SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.TreePlace, newBounds.Centre, 0.8f));
+
+			TileManager.I.PlaceTile(tile);
 		}
 
 		private bool IsValidToPlace(Point p)

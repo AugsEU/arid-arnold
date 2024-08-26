@@ -547,6 +547,7 @@ namespace AridArnold
 				Item newItem = ItemManager.I.GetActiveItem();
 				if (newItem is not null && newItem.CanUseItem(this))
 				{
+					SFXManager.I.PlaySFX(AridArnoldSFX.UseItem, 0.5f);
 					mUseItemTimer.ResetStart();
 					mCurrItem = ItemManager.I.PopActiveItem();
 					mWalkDirection = WalkDirection.None;

@@ -100,6 +100,10 @@
 		[FilePath("Sound/SFX/Misc/DoorOpen")]				DoorOpen,
 		[FilePath("Sound/SFX/Misc/Unlock")]					Unlock,
 
+		// Item
+		[FilePath("Sound/SFX/Items/UseItem")]				UseItem,
+		[FilePath("Sound/SFX/Items/TreePlace")]				TreePlace,
+
 		// Arcade
 		[FilePath("Sound/SFX/Misc/ArcadeGameOver")] ArcadeGameOver,
 

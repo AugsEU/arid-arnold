@@ -90,6 +90,21 @@ namespace AridArnold
 				}
 			}
 		}
-		
+
+		public static void EmitInSquare(Rect2f rect, int numMin, int numMax, Color[] colors)
+		{
+			MonoRandom rng = RandomManager.I.GetDraw();
+
+			int numToEmit = rng.GetIntRange(numMin, numMax);
+
+			for(int i = 0; i < numToEmit; i++)
+			{
+				Vector2 point = rng.PointIn(rect);
+				Vector2 vel = new Vector2(rng.GetFloatRange(-1.0f, 1.0f), rng.GetFloatRange(-1.0f, 1.0f));
+				vel *= 0.20f;
+
+				EmitDust(point, vel, colors, 1.0f);
+			}
+		}
 	}
 }

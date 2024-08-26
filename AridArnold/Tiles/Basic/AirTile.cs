@@ -5,20 +5,24 @@
 	/// </summary>
 	class AirTile : Tile
 	{
+		string mTexPath;
+
 		/// <summary>
 		/// Tile with start position
 		/// </summary>
 		/// <param name="position">Start position</param>
-		public AirTile(Vector2 position) : base(position)
+		public AirTile(Vector2 position, string texturePath = "Tiles/Air") : base(position)
 		{
+			mTexPath = texturePath;
 		}
+
 
 		/// <summary>
 		/// Load all textures and assets
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Air");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>(mTexPath);
 		}
 
 		/// <summary>
