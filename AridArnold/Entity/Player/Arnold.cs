@@ -15,7 +15,7 @@ namespace AridArnold
 		const int ROSS_TIME = 5;
 
 
-		const float ARNOLD_WALK_SPEED = 9.0f;
+		const float ARNOLD_WALK_SPEED = 9.2f;
 		const float ARNOLD_GRAVITY = 4.35f;
 		const float ARNOLD_JUMP_SPEED = 25.0f;
 		const float ARNOLD_AIR_SPEED_BOOST = 0.015f;
@@ -436,11 +436,16 @@ namespace AridArnold
 			DoInputs(gameTime);
 
 			mGravity = DEFAULT_GRAVITY;
+			mWalkSpeed = ARNOLD_WALK_SPEED;
 
 			Item currItem = ItemManager.I.GetActiveItem();
-			if(currItem != null && currItem is MoonBoots)
+			if(currItem is MoonBoots)
 			{
 				mGravity = DEFAULT_GRAVITY * 0.7f;
+			}
+			else if(currItem is Trainers)
+			{
+				mWalkSpeed = ARNOLD_WALK_SPEED * 1.25f;
 			}
 
 			base.OrderedUpdate(gameTime);

@@ -15742,3 +15742,15 @@
 #begin Text/EN/Items/MoonBootsTitle.txt
 /copy:Text/EN/Items/MoonBootsTitle.txt
 
+#begin Items/Trainers/Boots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/Trainers/Boots.png
+
+#begin Text/EN/Items/TrainersDesc.txt
+/copy:Text/EN/Items/TrainersDesc.txt
+
+#begin Text/EN/Items/TrainersTitle.txt
+/copy:Text/EN/Items/TrainersTitle.txt
+

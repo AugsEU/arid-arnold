@@ -21,6 +21,7 @@
 			typeof(ReverseWatch),
 			typeof(ClusterBomb),	// 10
 			typeof(MoonBoots),
+			typeof(Trainers),
 		};
 
 		#endregion rConstant
