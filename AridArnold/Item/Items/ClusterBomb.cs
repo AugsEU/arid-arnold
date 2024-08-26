@@ -11,7 +11,7 @@
 			new Vector2(0.42f, -0.9f),
 		};
 
-		const float BOMB_SPEED = 15.0f;
+		const float BOMB_SPEED = 16.0f;
 
 		public ClusterBomb() : base("Items.ClusterBombTitle", "Items.ClusterBombDesc")
 		{

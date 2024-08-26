@@ -15730,3 +15730,15 @@
 #begin Text/EN/Items/ClusterBombTitle.txt
 /copy:Text/EN/Items/ClusterBombTitle.txt
 
+#begin Items/MoonBoots/Boots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/MoonBoots/Boots.png
+
+#begin Text/EN/Items/MoonBootsDesc.txt
+/copy:Text/EN/Items/MoonBootsDesc.txt
+
+#begin Text/EN/Items/MoonBootsTitle.txt
+/copy:Text/EN/Items/MoonBootsTitle.txt
+

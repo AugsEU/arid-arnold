@@ -1,7 +1,7 @@
 ﻿
 namespace AridArnold
 {
-	internal class BorgChip : Item
+	internal class BorgChip : PassiveItem
 	{
 		public BorgChip() : base("Items.BorgChipTitle", "Items.BorgChipDesc")
 		{
@@ -11,12 +11,6 @@ namespace AridArnold
 		public override int GetPrice()
 		{
 			return 10;
-		}
-
-		public override bool CanUseItem(Arnold arnold)
-		{
-			// It's a passive item.
-			return false;
 		}
 	}
 }

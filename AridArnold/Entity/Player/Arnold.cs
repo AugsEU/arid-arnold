@@ -434,6 +434,15 @@ namespace AridArnold
 			}
 
 			DoInputs(gameTime);
+
+			mGravity = DEFAULT_GRAVITY;
+
+			Item currItem = ItemManager.I.GetActiveItem();
+			if(currItem != null && currItem is MoonBoots)
+			{
+				mGravity = DEFAULT_GRAVITY * 0.7f;
+			}
+
 			base.OrderedUpdate(gameTime);
 		}
 
