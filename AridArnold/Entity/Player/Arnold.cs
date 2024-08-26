@@ -202,6 +202,17 @@ namespace AridArnold
 			return mHorseMode;
 		}
 
+
+
+		/// <summary>
+		/// Are we in choas mode?
+		/// </summary>
+		public bool IsChaosMode()
+		{
+			Item currItem = ItemManager.I.GetActiveItem();
+			return currItem is ChaosDrive;
+		}
+
 		#endregion rProperties
 
 
@@ -436,7 +447,8 @@ namespace AridArnold
 			DoInputs(gameTime);
 
 			mGravity = DEFAULT_GRAVITY;
-			mWalkSpeed = ARNOLD_WALK_SPEED;
+
+			mWalkSpeed = mHorseMode ? HORSE_WALK_SPEED : ARNOLD_WALK_SPEED;
 
 			Item currItem = ItemManager.I.GetActiveItem();
 			if(currItem is MoonBoots)
@@ -445,7 +457,40 @@ namespace AridArnold
 			}
 			else if(currItem is Trainers)
 			{
-				mWalkSpeed = ARNOLD_WALK_SPEED * 1.25f;
+				mWalkSpeed = mWalkSpeed * 1.25f;
+			}
+
+			if (IsChaosMode())
+			{
+				MonoRandom rng = RandomManager.I.GetWorld();
+				mWalkSpeed = rng.GetFloatRange(ARNOLD_WALK_SPEED * 0.5f, 1.8f * ARNOLD_WALK_SPEED);
+				mGravity = rng.GetFloatRange(DEFAULT_GRAVITY * 0.5f, 1.5f * DEFAULT_GRAVITY);
+
+				const float MAX_WEIRD_SPEED = 60.0f;
+				if(rng.PercentChance(0.5f))
+				{
+					float xv = rng.GetFloatRange(4.0f, MAX_WEIRD_SPEED) * (rng.GetIntRange(0, 1) * 2 - 1);
+					float yv = rng.GetFloatRange(4.0f, MAX_WEIRD_SPEED) * (rng.GetIntRange(0, 1) * 2 - 1);
+
+					mVelocity = new Vector2(xv, yv);
+
+					if(rng.PercentChance(0.5f))
+					{
+						if (rng.PercentChance(50.0f))
+						{
+							SetHorseMode();
+						}
+						else
+						{
+							mHorseMode = false;
+							RefreshTexturePack();
+						}
+					}
+					else if(rng.PercentChance(0.5f))
+					{
+						mBouncyMode = rng.PercentChance(50.0f);
+					}
+				}
 			}
 
 			base.OrderedUpdate(gameTime);
@@ -729,6 +774,12 @@ namespace AridArnold
 			if(mBouncyMode)
 			{
 				return new Color(55, 148, 167);
+			}
+
+			if(IsChaosMode())
+			{
+				MonoRandom rng = RandomManager.I.GetWorld();
+				return rng.GetColor();
 			}
 
 			return base.GetDrawColor();

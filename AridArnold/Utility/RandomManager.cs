@@ -194,6 +194,20 @@
 			return values[idx];
 		}
 
+
+
+		/// <summary>
+		/// Generate a random color
+		/// </summary>
+		public Color GetColor()
+		{
+			int r = GetIntRange(0, 255);
+			int g = GetIntRange(0, 255);
+			int b = GetIntRange(0, 255);
+
+			return new Color(r, g, b);
+		}
+
 		#endregion rAccessors
 	}
 

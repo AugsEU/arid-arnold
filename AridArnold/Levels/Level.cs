@@ -118,7 +118,7 @@
 
 			if (BF.DEBUG_LOADER)
 			{
-				ItemManager.I.PurchaseItem(new Trainers(), Vector2.Zero);
+				ItemManager.I.PurchaseItem(new ChaosDrive(), Vector2.Zero);
 			}
 
 			// Inform others

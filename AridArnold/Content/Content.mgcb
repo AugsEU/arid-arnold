@@ -9301,6 +9301,54 @@
 /processorParam:TextureFormat=Color
 /build:Items/BorgChip/Chip.png
 
+#begin Items/ChaosDrive/Flash1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/ChaosDrive/Flash1.png
+
+#begin Items/ChaosDrive/Flash2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/ChaosDrive/Flash2.png
+
+#begin Items/ChaosDrive/Flash3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/ChaosDrive/Flash3.png
+
+#begin Items/ClusterBomb/Bomb.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/ClusterBomb/Bomb.png
+
 #begin Items/HotDogPlant/PlantPhase0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9409,6 +9457,18 @@
 /processorParam:TextureFormat=Color
 /build:Items/JetPack/Pack2.png
 
+#begin Items/MoonBoots/Boots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/MoonBoots/Boots.png
+
 #begin Items/MushOil/Bottle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9456,6 +9516,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Items/RedKey/Key.png
+
+#begin Items/ReverseWatch/Watch.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/ReverseWatch/Watch.png
+
+#begin Items/SlowWatch/Watch.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/SlowWatch/Watch.png
+
+#begin Items/Trainers/Boots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Trainers/Boots.png
 
 #begin Layouts/MainGame.mlo
 /copy:Layouts/MainGame.mlo
@@ -13006,6 +13102,24 @@
 #begin Text/EN/Input/Pad/Y.txt
 /copy:Text/EN/Input/Pad/Y.txt
 
+#begin Text/EN/Items/BorgChipDesc.txt
+/copy:Text/EN/Items/BorgChipDesc.txt
+
+#begin Text/EN/Items/BorgChipTitle.txt
+/copy:Text/EN/Items/BorgChipTitle.txt
+
+#begin Text/EN/Items/ChaosDesc.txt
+/copy:Text/EN/Items/ChaosDesc.txt
+
+#begin Text/EN/Items/ChaosTitle.txt
+/copy:Text/EN/Items/ChaosTitle.txt
+
+#begin Text/EN/Items/ClusterBombDesc.txt
+/copy:Text/EN/Items/ClusterBombDesc.txt
+
+#begin Text/EN/Items/ClusterBombTitle.txt
+/copy:Text/EN/Items/ClusterBombTitle.txt
+
 #begin Text/EN/Items/HotdogPlantDesc.txt
 /copy:Text/EN/Items/HotdogPlantDesc.txt
 
@@ -13023,6 +13137,12 @@
 
 #begin Text/EN/Items/JetPackTitle.txt
 /copy:Text/EN/Items/JetPackTitle.txt
+
+#begin Text/EN/Items/MoonBootsDesc.txt
+/copy:Text/EN/Items/MoonBootsDesc.txt
+
+#begin Text/EN/Items/MoonBootsTitle.txt
+/copy:Text/EN/Items/MoonBootsTitle.txt
 
 #begin Text/EN/Items/MushOilDesc.txt
 /copy:Text/EN/Items/MushOilDesc.txt
@@ -13047,6 +13167,24 @@
 
 #begin Text/EN/Items/RedKeyTitle.txt
 /copy:Text/EN/Items/RedKeyTitle.txt
+
+#begin Text/EN/Items/ReverseWatchDesc.txt
+/copy:Text/EN/Items/ReverseWatchDesc.txt
+
+#begin Text/EN/Items/ReverseWatchTitle.txt
+/copy:Text/EN/Items/ReverseWatchTitle.txt
+
+#begin Text/EN/Items/SlowWatchDesc.txt
+/copy:Text/EN/Items/SlowWatchDesc.txt
+
+#begin Text/EN/Items/SlowWatchTitle.txt
+/copy:Text/EN/Items/SlowWatchTitle.txt
+
+#begin Text/EN/Items/TrainersDesc.txt
+/copy:Text/EN/Items/TrainersDesc.txt
+
+#begin Text/EN/Items/TrainersTitle.txt
+/copy:Text/EN/Items/TrainersTitle.txt
 
 #begin Text/EN/NPC/Barbara/Heckle.txt
 /copy:Text/EN/NPC/Barbara/Heckle.txt
@@ -15687,70 +15825,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Text/EN/Items/BorgChipDesc.txt
-/copy:Text/EN/Items/BorgChipDesc.txt
-
-#begin Text/EN/Items/BorgChipTitle.txt
-/copy:Text/EN/Items/BorgChipTitle.txt
-
-#begin Items/SlowWatch/Watch.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/SlowWatch/Watch.png
-
-#begin Text/EN/Items/SlowWatchDesc.txt
-/copy:Text/EN/Items/SlowWatchDesc.txt
-
-#begin Text/EN/Items/SlowWatchTitle.txt
-/copy:Text/EN/Items/SlowWatchTitle.txt
-
-#begin Items/ReverseWatch/Watch.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/ReverseWatch/Watch.png
-
-#begin Text/EN/Items/ReverseWatchDesc.txt
-/copy:Text/EN/Items/ReverseWatchDesc.txt
-
-#begin Text/EN/Items/ReverseWatchTitle.txt
-/copy:Text/EN/Items/ReverseWatchTitle.txt
-
-#begin Items/ClusterBomb/Bomb.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/ClusterBomb/Bomb.png
-
-#begin Text/EN/Items/ClusterBombDesc.txt
-/copy:Text/EN/Items/ClusterBombDesc.txt
-
-#begin Text/EN/Items/ClusterBombTitle.txt
-/copy:Text/EN/Items/ClusterBombTitle.txt
-
-#begin Items/MoonBoots/Boots.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/MoonBoots/Boots.png
-
-#begin Text/EN/Items/MoonBootsDesc.txt
-/copy:Text/EN/Items/MoonBootsDesc.txt
-
-#begin Text/EN/Items/MoonBootsTitle.txt
-/copy:Text/EN/Items/MoonBootsTitle.txt
-
-#begin Items/Trainers/Boots.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/Trainers/Boots.png
-
-#begin Text/EN/Items/TrainersDesc.txt
-/copy:Text/EN/Items/TrainersDesc.txt
-
-#begin Text/EN/Items/TrainersTitle.txt
-/copy:Text/EN/Items/TrainersTitle.txt
 
