@@ -15,7 +15,7 @@ namespace AridArnold
 		const int ROSS_TIME = 5;
 
 
-		const float ARNOLD_WALK_SPEED = 9.2f;
+		const float ARNOLD_WALK_SPEED = 9.05f;
 		const float ARNOLD_GRAVITY = 4.35f;
 		const float ARNOLD_JUMP_SPEED = 25.0f;
 		const float ARNOLD_AIR_SPEED_BOOST = 0.015f;
