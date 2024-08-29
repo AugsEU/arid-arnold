@@ -15868,3 +15868,51 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/Items/UseItem.wav
 
+#begin NPC/ShopKeeper/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopKeeper/Default.png
+
+#begin NPC/ShopKeeper/Gavel.max
+/copy:NPC/ShopKeeper/Gavel.max
+
+#begin NPC/ShopKeeper/Idle.mia
+/copy:NPC/ShopKeeper/Idle.mia
+
+#begin NPC/ShopKeeper/Itch.max
+/copy:NPC/ShopKeeper/Itch.max
+
+#begin NPC/ShopKeeper/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopKeeper/Itch1.png
+
+#begin NPC/ShopKeeper/Itch2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopKeeper/Itch2.png
+
+#begin NPC/ShopKeeper/ShopKeeper.mtn
+/copy:NPC/ShopKeeper/ShopKeeper.mtn
+
+#begin NPC/ShopKeeper/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopKeeper/TalkAngry.png
+
+#begin NPC/ShopKeeper/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopKeeper/TalkNormal.png
+
+#begin Text/EN/NPC/ShopKeeper/IntroHeckle.txt
+/copy:Text/EN/NPC/ShopKeeper/IntroHeckle.txt
+
+#begin Text/EN/NPC/ShopKeeper/ShopIntro.txt
+/copy:Text/EN/NPC/ShopKeeper/ShopIntro.txt
+

@@ -1,1 +1,1 @@
-TEMP TEXT
+Passive item that increases run speed.
