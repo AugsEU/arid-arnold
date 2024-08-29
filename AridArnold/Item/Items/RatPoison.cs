@@ -9,14 +9,9 @@
 			new Color(200, 90, 70)
 		};
 
-		public RatPoison() : base("Items.RatPoisonTitle", "Items.RatPoisonDesc")
+		public RatPoison(int price) : base("Items.RatPoisonTitle", "Items.RatPoisonDesc", price)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/RatPoison/Box");
-		}
-
-		public override int GetPrice()
-		{
-			return 3;
 		}
 
 		public override bool CanUseItem(Arnold arnold)

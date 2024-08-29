@@ -3,14 +3,9 @@ namespace AridArnold
 {
 	internal class ReverseWatch : Item
 	{
-		public ReverseWatch() : base("Items.ReverseWatchTitle", "Items.ReverseWatchDesc")
+		public ReverseWatch(int price) : base("Items.ReverseWatchTitle", "Items.ReverseWatchDesc", price)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/ReverseWatch/Watch");
-		}
-
-		public override int GetPrice()
-		{
-			return 7;
 		}
 
 		public override bool CanUseItem(Arnold arnold)

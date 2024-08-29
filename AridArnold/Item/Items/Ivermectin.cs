@@ -2,14 +2,9 @@
 {
 	internal class Ivermectin : OnceItem
 	{
-		public Ivermectin() : base("Items.IvermectinTitle", "Items.IvermectinDesc")
+		public Ivermectin(int price) : base("Items.IvermectinTitle", "Items.IvermectinDesc", price)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/Ivermectin/Box");
-		}
-
-		public override int GetPrice()
-		{
-			return 3;
 		}
 
 		public override bool CanUseItem(Arnold arnold)

@@ -2,14 +2,9 @@
 {
 	internal class RedKey : OnceItem
 	{
-		public RedKey() : base("Items.RedKeyTitle", "Items.RedKeyDesc")
+		public RedKey(int price) : base("Items.RedKeyTitle", "Items.RedKeyDesc", price)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/RedKey/Key");
-		}
-
-		public override int GetPrice()
-		{
-			return 3;
 		}
 
 		protected override void DoEffect(Arnold arnold)

@@ -6,7 +6,7 @@ namespace AridArnold
 	{
 		Animator mFlashAnim;
 
-		public ChaosDrive() : base("Items.ChaosTitle", "Items.ChaosDesc")
+		public ChaosDrive(int price) : base("Items.ChaosTitle", "Items.ChaosDesc", price)
 		{
 			mFlashAnim = new Animator(Animator.PlayType.Repeat, 
 									("Items/ChaosDrive/Flash1", 0.05f),
@@ -23,11 +23,6 @@ namespace AridArnold
 			mTexture = mFlashAnim.GetCurrentTexture();
 
 			base.Update(gameTime);
-		}
-
-		public override int GetPrice()
-		{
-			return -3;
 		}
 	}
 }

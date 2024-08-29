@@ -6,7 +6,7 @@
 		Texture2D[] mPlantTextures;
 		Level mCurrLevel;
 
-		public HotDogPlant() : base("Items.HotdogPlantTitle", "Items.HotdogPlantDesc")
+		public HotDogPlant(int price) : base("Items.HotdogPlantTitle", "Items.HotdogPlantDesc", price)
 		{
 			mNumHotDogs = 0;
 
@@ -33,11 +33,6 @@
 			}
 
 			base.Update(gameTime);
-		}
-
-		public override int GetPrice()
-		{
-			return 5;
 		}
 
 		protected override void DoEffect(Arnold arnold)

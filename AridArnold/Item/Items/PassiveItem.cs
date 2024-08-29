@@ -3,7 +3,7 @@ namespace AridArnold
 {
 	abstract class PassiveItem : Item
 	{
-		protected PassiveItem(string titleID, string descID) : base(titleID, descID)
+		protected PassiveItem(string titleID, string descID, int price) : base(titleID, descID, price)
 		{
 		}
 

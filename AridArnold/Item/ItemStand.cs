@@ -40,10 +40,10 @@ namespace AridArnold
 		/// Create item stand at point
 		/// </summary>
 		/// <param name="pos"></param>
-		public ItemStand(Vector2 pos, int itemType) : base(pos)
+		public ItemStand(Vector2 pos, int itemType, int price) : base(pos)
 		{
 			mItemType = itemType;
-			mDisplayItem = Item.CreateItem(mItemType);
+			mDisplayItem = Item.CreateItem(mItemType, price);
 
 			mInfoBubble = new ItemStandInfoBubble(pos + INFO_BUBBLE_OFFSET, BubbleStyle.DefaultPrompt, mDisplayItem.GetTitle(), mDisplayItem.GetDescription());
 		}
@@ -91,7 +91,7 @@ namespace AridArnold
 		{
 			if (InputManager.I.KeyPressed(InputAction.Confirm))
 			{
-				Item newItem = Item.CreateItem(mItemType);
+				Item newItem = Item.CreateItem(mItemType, mDisplayItem.GetPrice());
 				ItemManager.I.PurchaseItem(newItem, mPosition + SPENDING_TICKER_OFFSET);
 			}
 		}

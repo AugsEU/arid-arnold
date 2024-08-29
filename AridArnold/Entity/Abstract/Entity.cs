@@ -466,7 +466,7 @@
 					entity = new ShopDoor(worldPosition, data.mIntParams[0], data.mFloatParams[0], data.mFloatParams[1]);
 					break;
 				case EntityData.EntityClass.kItemStand:
-					entity = new ItemStand(worldPosition, data.mIntParams[0]);
+					entity = new ItemStand(worldPosition, data.mIntParams[0], data.mIntParams[1]);
 					break;
 				case EntityData.EntityClass.kGravityOrb:
 					entity = new GravityOrb(worldPosition, (CardinalDirection)data.mIntParams[0]);

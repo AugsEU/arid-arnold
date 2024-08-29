@@ -11,7 +11,7 @@ namespace AridArnold
 		PercentageTimer mSpeedTimer;
 		GameSFX mTravelSFX;
 
-		public JetPack() : base("Items.JetPackTitle", "Items.JetPackDesc")
+		public JetPack(int price) : base("Items.JetPackTitle", "Items.JetPackDesc", price)
 		{
 			mJetAnim = new Animator(Animator.PlayType.Repeat,
 									("Items/JetPack/Pack1", 0.1f),
@@ -68,11 +68,6 @@ namespace AridArnold
 			}
 
 			base.ActOnArnold(gameTime, arnold);
-		}
-
-		public override int GetPrice()
-		{
-			return 2;
 		}
 
 		public override void DrawOnArnold(DrawInfo info, Arnold arnold)

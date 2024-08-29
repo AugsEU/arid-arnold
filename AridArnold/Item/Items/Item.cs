@@ -9,21 +9,27 @@
 
 		public static Type[] ITEM_TYPES =
 		{
-			typeof(RedKey),			// 0
+			typeof(RedKey),			// 0 - All worlds
 			typeof(HotDogPlant),
-			typeof(JetPack),
-			typeof(RatPoison),
-			typeof(MushOil),
-			typeof(PocketOrb),		// 5
-			typeof(Ivermectin),
-			typeof(BorgChip),
-			typeof(SlowWatch),
-			typeof(ReverseWatch),
-			typeof(ClusterBomb),	// 10
-			typeof(MoonBoots),
 			typeof(Trainers),
 			typeof(ChaosDrive),
-			typeof(TreeSeed)
+			typeof(JetPack),
+
+			typeof(PocketOrb),		// 5 - Library
+
+			typeof(RatPoison),		// 6 - Cave
+			typeof(MushOil),
+
+			typeof(Ivermectin),		// 8 - Lab
+			typeof(BorgChip),
+
+			typeof(TreeSeed),		// 10 - Mirror
+
+			typeof(SlowWatch),		// 11 - Kingdom
+			typeof(ReverseWatch),
+
+			typeof(ClusterBomb),	// 13 - WW7
+			typeof(MoonBoots),
 		};
 
 		#endregion rConstant
@@ -37,6 +43,7 @@
 		protected Texture2D mTexture;
 		protected string mTitle;
 		protected string mDescription;
+		public int mPrice;
 		bool mActive;
 
 		#endregion rMembers
@@ -50,8 +57,9 @@
 		/// <summary>
 		/// Create item with base description
 		/// </summary>
-		public Item(string titleID, string descID)
+		public Item(string titleID, string descID, int price)
 		{
+			mPrice = price;
 			mTitle = LanguageManager.I.GetText(titleID);
 			mDescription = LanguageManager.I.GetText(descID);
 		}
@@ -162,7 +170,10 @@
 		/// <summary>
 		/// Get item's price
 		/// </summary>
-		public abstract int GetPrice();
+		public int GetPrice()
+		{
+			return mPrice;
+		}
 
 
 
@@ -212,10 +223,10 @@
 		/// <summary>
 		/// Item factory
 		/// </summary>
-		public static Item CreateItem(int type)
+		public static Item CreateItem(int type, int price)
 		{
 			Type itemType = ITEM_TYPES[type];
-			return (Item)Activator.CreateInstance(itemType);
+			return (Item)Activator.CreateInstance(itemType, price);
 		}
 
 		#endregion rFactory

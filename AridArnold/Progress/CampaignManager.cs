@@ -74,8 +74,8 @@
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 				
-				QueueLoadSequence(new HubDirectLoader(201));
-				//QueueLoadSequence(new LevelDirectLoader(107));
+				//QueueLoadSequence(new HubDirectLoader(201));
+				QueueLoadSequence(new LevelDirectLoader(10000));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);

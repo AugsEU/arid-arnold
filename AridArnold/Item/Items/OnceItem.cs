@@ -8,7 +8,7 @@ namespace AridArnold
 	{
 		bool mDoneEffect;
 
-		protected OnceItem(string titleID, string descID) : base(titleID, descID)
+		protected OnceItem(string titleID, string descID, int price) : base(titleID, descID, price)
 		{
 		}
 

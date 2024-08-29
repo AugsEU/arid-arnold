@@ -118,7 +118,7 @@
 
 			if (BF.DEBUG_LOADER)
 			{
-				ItemManager.I.PurchaseItem(new TreeSeed(), Vector2.Zero);
+				ItemManager.I.PurchaseItem(new TreeSeed(0), Vector2.Zero);
 			}
 
 			// Inform others

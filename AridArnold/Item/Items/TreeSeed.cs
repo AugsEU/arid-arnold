@@ -14,15 +14,10 @@ namespace AridArnold
 		PercentageTimer mTimer;
 		bool mPlaceMid = true;
 
-		public TreeSeed() : base("Items.TreeSeedTitle", "Items.TreeSeedDesc")
+		public TreeSeed(int price) : base("Items.TreeSeedTitle", "Items.TreeSeedDesc", price)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/Tree/Seed");
 			mTimer = new PercentageTimer(SEED_PLANT_TIME);
-		}
-
-		public override int GetPrice()
-		{
-			return 2;
 		}
 
 		public override void Begin()

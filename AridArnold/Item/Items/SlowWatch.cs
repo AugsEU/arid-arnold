@@ -7,15 +7,10 @@ namespace AridArnold
 
 		PercentageTimer mSlowTimer;
 
-		public SlowWatch() : base("Items.SlowWatchTitle", "Items.SlowWatchDesc")
+		public SlowWatch(int price) : base("Items.SlowWatchTitle", "Items.SlowWatchDesc", price)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/SlowWatch/Watch");
 			mSlowTimer = new PercentageTimer(SLOW_TIME);
-		}
-
-		public override int GetPrice()
-		{
-			return 1;
 		}
 
 		public override void Begin()

@@ -13,14 +13,9 @@
 
 		const float BOMB_SPEED = 16.0f;
 
-		public ClusterBomb() : base("Items.ClusterBombTitle", "Items.ClusterBombDesc")
+		public ClusterBomb(int price) : base("Items.ClusterBombTitle", "Items.ClusterBombDesc", price)
 		{
 			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Items/ClusterBomb/Bomb");
-		}
-
-		public override int GetPrice()
-		{
-			return 3;
 		}
 
 		protected override void DoEffect(Arnold arnold)
