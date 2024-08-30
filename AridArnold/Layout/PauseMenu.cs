@@ -228,6 +228,7 @@ namespace AridArnold
 			if (mOpen) return;
 
 			mOpen = true;
+			SFXManager.I.EndAllSFX(320.0f);
 			SFXManager.I.PlaySFX(AridArnoldSFX.MenuSelect, 0.4f);
 			GoToSubMenu(PauseSubMenu.kHub);
 		}

@@ -1,6 +1,7 @@
 ﻿#define ADD_TEMP_FILES
 
 using System.Diagnostics;
+using System.IO;
 
 namespace AridArnold
 {
@@ -139,6 +140,11 @@ namespace AridArnold
 #if ADD_TEMP_FILES
 					path = Path.Join(TEMP_FILE_OUTPUT_PATH, path);
 					rawText = "TEMP TEXT";
+					string directory = Path.GetDirectoryName(path);
+					if (!Directory.Exists(directory))
+					{
+						Directory.CreateDirectory(directory);
+					}
 					File.WriteAllText(path, rawText);
 					Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
 					MonoDebug.Log("Created translation file: {0}", path);

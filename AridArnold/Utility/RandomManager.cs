@@ -36,7 +36,8 @@
 		public MonoRandom()
 		{
 			// Get ingame time as seed. This is deterministic.
-			mSeed = InputManager.I.GetNumberOfInputFrames();
+			UInt64 inputFrames = InputManager.I.GetNumberOfInputFrames();
+			mSeed = (int)(inputFrames % (ulong)int.MaxValue);
 		}
 
 

@@ -212,6 +212,16 @@
 			return false;
 		}
 
+
+
+		/// <summary>
+		/// Should we refund this at the end of the sequence?
+		/// </summary>
+		public virtual bool RefundAtSequenceEnd()
+		{
+			return true;
+		}
+
 		#endregion rUtil
 
 

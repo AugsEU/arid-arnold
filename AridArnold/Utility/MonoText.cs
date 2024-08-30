@@ -117,5 +117,25 @@ namespace AridArnold
 
 			return string.Format("{0:D} : {1:D2} : {2:D2}", m, s % 60, cs % 100);
 		}
+
+
+		/// <summary>
+		/// Convert frame count into a time string
+		/// </summary>
+		public static string GetTimeTextFromFrames(UInt64 frame)
+		{
+			UInt64 ms = (UInt64)(frame * (1000.0 / 60.0));
+			UInt64 cs = ms / 10;
+			UInt64 s = cs / 100;
+			UInt64 m = s / 60;
+
+
+			if (m == 0)
+			{
+				return string.Format("{0:D2} : {1:D2}", s, cs % 100);
+			}
+
+			return string.Format("{0:D} : {1:D2} : {2:D2}", m, s % 60, cs % 100);
+		}
 	}
 }

@@ -19,5 +19,11 @@ namespace AridArnold
 			// Passive items can't be used
 			return false;
 		}
+
+		public override bool RefundAtSequenceEnd()
+		{
+			// Don't refund since we did use this.
+			return false;
+		}
 	}
 }

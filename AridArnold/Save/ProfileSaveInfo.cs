@@ -12,13 +12,13 @@ namespace AridArnold
 		public const string PROFILE_SAVE_FOLDER = "profileSave/";
 		const string PROFILE_SAVE_MAGIC = "pas";
 		const int PROFILE_SAVE_VER = 1;
-		const int RELOAD_FRAME_PENALTY = 121; // 2 seconds added just for reloading to avoid weird strats.
+		const UInt64 RELOAD_FRAME_PENALTY = 121; // 2 seconds added just for reloading to avoid weird strats.
 
 		ReadMode mReadMode;
 
 		// Basic data
 		string mProfileName = "Debug";
-		int mNumInputUpdates = 0;
+		UInt64 mNumInputUpdates = 0;
 
 		public ProfileSaveInfo(string fileName) : base(fileName, true)
 		{
@@ -67,7 +67,7 @@ namespace AridArnold
 			MonoDebug.Assert(fileVer == PROFILE_SAVE_VER);
 
 			mProfileName = br.ReadString();
-			mNumInputUpdates = br.ReadInt32();
+			mNumInputUpdates = br.ReadUInt64();
 
 			if(mReadMode == ReadMode.kMetaOnly)
 			{

@@ -42,7 +42,11 @@
 
 		public override bool CanUseItem(Arnold arnold)
 		{
-			return mNumHotDogs > 0 && base.CanUseItem(arnold);
+			bool baseCanUse = base.CanUseItem(arnold);
+			bool hasAnyLives = mNumHotDogs > 0;
+			bool canHaveLives = CampaignManager.I.GetLives() < CampaignManager.I.GetMaxLives();
+
+			return baseCanUse && hasAnyLives && canHaveLives;
 		}
 
 		public override string GetTitle()

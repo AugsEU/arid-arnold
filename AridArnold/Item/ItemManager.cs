@@ -24,11 +24,17 @@
 			mActiveItem = null;
 		}
 
+
+
 		/// <summary>
 		/// Called when a level sequence ends.
 		/// </summary>
 		public void SequenceEnd()
 		{
+			if(mActiveItem is not null && mActiveItem.RefundAtSequenceEnd())
+			{
+				RefundActiveItem();
+			}
 			mActiveItem = null;
 		}
 
@@ -130,7 +136,7 @@
 				FXManager.I.AddTextScroller(FontManager.I.GetFont("PixicaMicro-24"), Color.DeepSkyBlue, tickerPos, refundStr, 2.0f, 10.0f, 40.0f);
 				tickerPos.Y += 14.0f;
 
-				RefundItem(mActiveItem);
+				RefundActiveItem();
 			}
 
 			mActiveItem = item;
@@ -145,9 +151,14 @@
 		/// <summary>
 		/// Refund an item
 		/// </summary>
-		void RefundItem(Item item)
+		void RefundActiveItem()
 		{
-			RefundMoney(item.GetPrice());
+			if(mActiveItem is null)
+			{
+				return;
+			}
+			RefundMoney(mActiveItem.GetPrice());
+			mActiveItem = null;
 		}
 
 		#endregion rPurchase

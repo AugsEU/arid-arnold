@@ -70,7 +70,7 @@
 		MouseState mMouseState;
 		InputBindingMap mInputBindings = new InputBindingMap();
 		InputBindingGangList mBindingGangs = new InputBindingGangList();
-		int mInputUpdateIndex = 0;
+		UInt64 mInputUpdateIndex = 0;
 
 		/// States used only for rebinding purposes. Not gameplay related.
 		KeyboardState mKeyboardState;
@@ -206,8 +206,8 @@
 
 			mInputUpdateIndex++;
 
-			// If you leave the game open for more than a year then maybe we should stop...
-			if(mInputUpdateIndex == int.MaxValue-32)
+			// If you leave the game open for more than this then maybe we should stop...
+			if(mInputUpdateIndex == UInt64.MaxValue-32)
 			{
 				Main.ExitGame();
 			}
@@ -352,7 +352,7 @@
 		/// <summary>
 		/// Over how many frames have we made inputs?
 		/// </summary>
-		public int GetNumberOfInputFrames()
+		public UInt64 GetNumberOfInputFrames()
 		{
 			return mInputUpdateIndex;
 		}
@@ -361,7 +361,7 @@
 		/// <summary>
 		/// Frames
 		/// </summary>
-		public void LoadInputFrames(int frames)
+		public void LoadInputFrames(UInt64 frames)
 		{
 			mInputUpdateIndex = frames;
 		}

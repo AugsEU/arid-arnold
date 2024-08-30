@@ -54,7 +54,7 @@
 		#region rInit
 
 		/// <summary>
-		/// Begin a fresh campaign
+		/// Begin a fresh campaign.
 		/// </summary>
 		public void BeginCampaign(string campaignPath)
 		{
@@ -74,8 +74,8 @@
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 				
-				//QueueLoadSequence(new HubDirectLoader(201));
-				QueueLoadSequence(new LevelDirectLoader(10000));
+				//QueueLoadSequence(new HubDirectLoader(203));
+				QueueLoadSequence(new LevelDirectLoader(213));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
