@@ -22,6 +22,7 @@
 		protected override void OnCollect()
 		{
 			EventManager.I.TriggerEvent(EventType.KeyCollect);
+			FlagsManager.I.SetFlag(FlagCategory.kPanelsUnlocked, (uint)PanelUnlockedType.kInventory, true);
 			base.OnCollect();
 		}
 	}

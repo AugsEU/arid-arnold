@@ -54,6 +54,11 @@
 
 		public override void Draw(DrawInfo info)
 		{
+			if (!ShouldDraw())
+			{
+				return;
+			}
+
 			base.Draw(info);
 
 			if (mCurrItem is not null)
@@ -73,6 +78,13 @@
 				string title = mCurrItem.GetTitle();
 				MonoDraw.DrawStringCentred(info, mFont, GetPosition() + TEXT_OFFSET, textColor, title, GetDepth());
 			}
+		}
+
+		protected override bool IsUnlocked()
+		{
+			bool flag = FlagsManager.I.CheckFlag(FlagCategory.kPanelsUnlocked, (uint)PanelUnlockedType.kPowerItem);
+
+			return flag && base.IsUnlocked();
 		}
 	}
 }

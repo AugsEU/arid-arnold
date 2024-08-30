@@ -3,6 +3,6 @@
 	public static class BF
 	{
 		// Debug loader
-		public const bool DEBUG_LOADER = true;
+		public const bool DEBUG_LOADER = false;
 	}
 }

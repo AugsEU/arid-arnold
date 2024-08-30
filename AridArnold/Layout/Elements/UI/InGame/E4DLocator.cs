@@ -65,6 +65,11 @@
 
 		public override void Draw(DrawInfo info)
 		{
+			if(!ShouldDraw())
+			{
+				return;
+			}
+
 			//Draw BG first
 			base.Draw(info);
 
@@ -98,6 +103,13 @@
 			Rect2f rectangle = new Rect2f(point, 3.0f, 3.0f);
 
 			MonoDraw.DrawRectDepth(info, rectangle, drawCol, GetDepth());
+		}
+
+		protected override bool IsUnlocked()
+		{
+			bool flag = FlagsManager.I.CheckFlag(FlagCategory.kPanelsUnlocked, (uint)PanelUnlockedType.k4DLocator);
+
+			return flag && base.IsUnlocked();
 		}
 	}
 }

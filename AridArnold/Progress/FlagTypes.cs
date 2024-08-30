@@ -12,6 +12,7 @@
 		kCurses = 1,
 		kKeyItems = 2,
 		kUnlockedGreatGate = 3,
+		kPanelsUnlocked = 4,
 		kMaxFlagCategory
 	}
 
@@ -44,6 +45,15 @@
 		kHorseToken = 4,
 		kDemonToken = 5,
 		kMaxKeyItems,
+	}
+
+
+	enum PanelUnlockedType
+	{
+		kMaxLives = 0,
+		k4DLocator = 1,
+		kPowerItem = 2,
+		kInventory = 3
 	}
 
 

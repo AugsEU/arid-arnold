@@ -130,6 +130,9 @@
 				return;
 			}
 
+			// Unlock panel.
+			FlagsManager.I.SetFlag(FlagCategory.kPanelsUnlocked, (uint)PanelUnlockedType.kPowerItem, true);
+
 			if (mActiveItem is not null)
 			{
 				string refundStr = LanguageManager.I.GetText("InGame.Refund") + mActiveItem.GetPrice();

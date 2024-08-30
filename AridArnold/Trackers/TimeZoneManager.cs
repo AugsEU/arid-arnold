@@ -58,9 +58,12 @@ namespace AridArnold
 		/// <param name="time"></param>
 		public void SetCurrentTimeZoneAndAge(int time, int age)
 		{
+			if(time != mCurrentTimeZone || age != mCurrentPlayerAge)
+			{
+				NotifyTimeChanged();
+			}
 			mCurrentTimeZone = time;
 			mCurrentPlayerAge = age;
-			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 
 
@@ -70,7 +73,7 @@ namespace AridArnold
 		public void TimeTravel()
 		{
 			mCurrentTimeZone++;
-			EventManager.I.TriggerEvent(EventType.TimeChanged);
+			NotifyTimeChanged();
 		}
 
 
@@ -81,7 +84,7 @@ namespace AridArnold
 		public void AntiTimeTravel()
 		{
 			mCurrentTimeZone--;
-			EventManager.I.TriggerEvent(EventType.TimeChanged);
+			NotifyTimeChanged();
 		}
 
 
@@ -93,7 +96,7 @@ namespace AridArnold
 		{
 			mCurrentTimeZone++;
 			mCurrentPlayerAge++;
-			EventManager.I.TriggerEvent(EventType.TimeChanged);
+			NotifyTimeChanged();
 		}
 
 
@@ -105,6 +108,19 @@ namespace AridArnold
 		{
 			mCurrentTimeZone--;
 			mCurrentPlayerAge--;
+			NotifyTimeChanged();
+		}
+
+
+		/// <summary>
+		/// Do stuff when time has changed.
+		/// </summary>
+		private void NotifyTimeChanged()
+		{
+			// Unlock panel.
+			FlagsManager.I.SetFlag(FlagCategory.kPanelsUnlocked, (uint)PanelUnlockedType.k4DLocator, true);
+
+			// Send event
 			EventManager.I.TriggerEvent(EventType.TimeChanged);
 		}
 

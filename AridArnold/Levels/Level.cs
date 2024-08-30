@@ -116,7 +116,7 @@
 			gameCam.Reset();
 			GravityOrb.sActiveDirection = CardinalDirection.Down; // HACK: Down is the default direction.
 
-			if (BF.DEBUG_LOADER)
+			if (BF.DEBUG_LOADER && false)
 			{
 				ItemManager.I.PurchaseItem(new ArmyBoots(0), Vector2.Zero);
 			}

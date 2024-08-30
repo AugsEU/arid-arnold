@@ -85,6 +85,11 @@
 
 		public override void Draw(DrawInfo info)
 		{
+			if(!ShouldDraw())
+			{
+				return;
+			}
+
 			base.Draw(info);
 
 			Vector2 textPos = COLLECTIBLE_TEXT_ORIGIN + GetPosition();
@@ -141,6 +146,13 @@
 
 				pos.Y += KEY_ITEM_DISPLACEMENT;
 			}
+		}
+
+		protected override bool IsUnlocked()
+		{
+			bool flag = FlagsManager.I.CheckFlag(FlagCategory.kPanelsUnlocked, (uint)PanelUnlockedType.kInventory);
+
+			return flag && base.IsUnlocked();
 		}
 	}
 }
