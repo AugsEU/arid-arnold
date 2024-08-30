@@ -14,21 +14,22 @@
 			typeof(Trainers),
 			typeof(ChaosDrive),
 			typeof(JetPack),
+			typeof(ArmyBoots),
 
-			typeof(PocketOrb),		// 5 - Library
+			typeof(PocketOrb),		// 6 - Library
 
-			typeof(RatPoison),		// 6 - Cave
+			typeof(RatPoison),		// 7 - Cave
 			typeof(MushOil),
 
-			typeof(Ivermectin),		// 8 - Lab
+			typeof(Ivermectin),		// 9 - Lab
 			typeof(BorgChip),
 
-			typeof(TreeSeed),		// 10 - Mirror
+			typeof(TreeSeed),		// 11 - Mirror
 
-			typeof(SlowWatch),		// 11 - Kingdom
+			typeof(SlowWatch),		// 12 - Kingdom
 			typeof(ReverseWatch),
 
-			typeof(ClusterBomb),	// 13 - WW7
+			typeof(ClusterBomb),	// 14 - WW7
 			typeof(MoonBoots),
 		};
 

@@ -15937,3 +15937,15 @@
 #begin Text/EN/NPC/Zippy/ItemExplain.txt
 /copy:Text/EN/NPC/Zippy/ItemExplain.txt
 
+#begin Items/Army/Boots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Items/Army/Boots.png
+
+#begin Text/EN/Items/ArmyBootsDesc.txt
+/copy:Text/EN/Items/ArmyBootsDesc.txt
+
+#begin Text/EN/Items/ArmyBootsTitle.txt
+/copy:Text/EN/Items/ArmyBootsTitle.txt
+
