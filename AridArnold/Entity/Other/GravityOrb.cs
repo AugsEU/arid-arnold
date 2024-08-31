@@ -159,8 +159,6 @@
 
 				mActivatingEntity = activatingEntity;
 			}
-
-			sActiveDirection = mGravityDir;
 		}
 
 
@@ -181,8 +179,8 @@
 			DiminishCameraShake shakeMove = new DiminishCameraShake(6.0f, 5.0f, 100.0f);
 			gameCam.QueueMovement(shakeMove);
 
-
 			SetAllEntitiesGravity(newDir);
+			sActiveDirection = newDir;
 		}
 
 

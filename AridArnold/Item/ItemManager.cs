@@ -96,7 +96,7 @@
 		/// <summary>
 		/// Can we purchase this item?
 		/// </summary>
-		bool CanPurchase(Item item)
+		public bool CanPurchase(Item item)
 		{
 			UInt16 coinID = CampaignManager.I.GetCurrCoinID();
 			uint currentMoney = CollectableManager.I.GetNumCollected(coinID);

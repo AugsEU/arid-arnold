@@ -16,6 +16,8 @@
 			if (EventManager.I.IsSignaled(EventType.RedKeyUsed))
 			{
 				mEnabled = false;
+				FXManager.I.AddAnimator(mPosition, "Shared/Coin/Explode.max", DrawLayer.TileEffects);
+				SFXManager.I.PlaySFX(AridArnoldSFX.Unlock, 0.6f);
 			}
 			base.Update(gameTime);
 		}

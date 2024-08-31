@@ -89,6 +89,13 @@ namespace AridArnold
 #endif
 		}
 
+		public static void AddDebugPoint(Vector2 pos, Color color)
+		{
+#if DEBUG
+			AddDebugRect(new Rect2f(pos, 2.0f, 2.0f), color);
+#endif
+		}
+
 		public static void DrawDebugRects(DrawInfo info)
 		{
 #if DEBUG

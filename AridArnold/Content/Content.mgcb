@@ -15949,3 +15949,30 @@
 #begin Text/EN/Items/ArmyBootsTitle.txt
 /copy:Text/EN/Items/ArmyBootsTitle.txt
 
+#begin Campaigns/MainCampaign/Levels/20001.aux
+/copy:Campaigns/MainCampaign/Levels/20001.aux
+
+#begin Campaigns/MainCampaign/Levels/20001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/20001.png
+
+#begin Campaigns/MainCampaign/Levels/20002.aux
+/copy:Campaigns/MainCampaign/Levels/20002.aux
+
+#begin Campaigns/MainCampaign/Levels/20002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/20002.png
+
+#begin Campaigns/MainCampaign/Levels/20003.aux
+/copy:Campaigns/MainCampaign/Levels/20003.aux
+
+#begin Campaigns/MainCampaign/Levels/20003.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/20003.png
+

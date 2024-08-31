@@ -25,6 +25,7 @@
 		protected const float ANGULAR_SPEED = 0.7f;
 		const float AMPLITUDE = 1.5f;
 		const int BORDER_WIDTH = 2;
+		const float SCREEN_PADDING = 8.0f;
 
 		#endregion rConstants
 
@@ -173,6 +174,12 @@
 			}
 
 			Vector2 pos = mBotCentre + mOffset;
+
+			// Clamp to region.
+			Point areaSize = FXManager.I.GetDrawableSize();
+			pos.X = Math.Clamp(pos.X, SCREEN_PADDING + mCurrentSize.X * 0.5f, areaSize.X - SCREEN_PADDING - mCurrentSize.X * 0.5f);
+			pos.Y = Math.Clamp(pos.Y, SCREEN_PADDING + mCurrentSize.Y * 0.5f, areaSize.Y - SCREEN_PADDING - mCurrentSize.Y * 0.5f);
+
 			Point innerOrigin = new Point((int)(pos.X - mCurrentSize.X / 2), (int)(pos.Y - mCurrentSize.Y));
 			Rectangle innerRect = new Rectangle(innerOrigin.X, innerOrigin.Y, (int)mCurrentSize.X, (int)mCurrentSize.Y);
 

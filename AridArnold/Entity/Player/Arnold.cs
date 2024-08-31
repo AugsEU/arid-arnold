@@ -806,13 +806,18 @@ namespace AridArnold
 		{
 			if (mOnGround && mUseItemTimer.IsPlaying())
 			{
+				// Texture
+				Texture2D itemTex = mCurrItem.GetTexture();
+
 				// Base position
-				Vector2 itemPos = mPosition + ITEM_OFFSET;
+				Vector2 itemPos = GetCentrePos() - GravityVecNorm() * 14.0f - new Vector2(itemTex.Width, itemTex.Height) * 0.5f;
 
 				// Make item travel up a bit
-				itemPos.Y -= 6.0f * mUseItemTimer.GetPercentageF();
+				itemPos -= 6.0f * mUseItemTimer.GetPercentageF() * GravityVecNorm();
 
-				MonoDraw.DrawTextureDepth(info, mCurrItem.GetTexture(), itemPos, DrawLayer.Player);
+				float rot = Util.GetRotation(Util.InvertDirection(GetGravityDir()));
+
+				MonoDraw.DrawTextureRotCent(info, itemTex, itemPos, rot);
 			}
 			else if(mCurrItem is not null && mCurrItem.IsActive())
 			{

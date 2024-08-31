@@ -1,1 +1,2 @@
-TEMP TEXT
+Passive item that allows you 
+to walk on spikes.

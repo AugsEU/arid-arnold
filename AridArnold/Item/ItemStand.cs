@@ -144,9 +144,10 @@ namespace AridArnold
 			MonoDraw.DrawTexture(info, itemTex, itemPos);
 
 			Vector2 pricePos = itemPos;
+			Color priceCol = ItemManager.I.CanPurchase(mDisplayItem) ? Color.White : Color.Red;
 			pricePos.Y -= 10.0f;
 			pricePos.X = mPosition.X + mTexture.Width / 2.0f;
-			MonoDraw.DrawStringCentred(info, mFont, pricePos, Color.White, mDisplayItem.GetPrice().ToString(), DrawLayer.Default);
+			MonoDraw.DrawStringCentred(info, mFont, pricePos, priceCol, mDisplayItem.GetPrice().ToString(), DrawLayer.Default);
 
 			mInfoBubble.Draw(info);
 		}
