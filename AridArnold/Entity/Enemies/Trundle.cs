@@ -154,7 +154,7 @@
 		/// </summary>
 		protected override void DecideActions()
 		{
-			if (mOnGround)
+			if (CanWalkDirChange())
 			{
 				if (mRandom.PercentChance(0.15f))
 				{
@@ -240,12 +240,13 @@
 		/// <returns>True if we can keep walking.</returns>
 		bool KeepWalking()
 		{
-			if (mOnGround == false)
+			if (!CanWalkDirChange())
 			{
 				return false;
 			}
 
-			if (mWalkDirection == WalkDirection.Right)
+			State currState = mStateMachine.GetState();
+			if (mWalkDirection == WalkDirection.Right || currState == State.WalkRight)
 			{
 				if (!CanWalkInDir(WalkDirection.Right))
 				{
@@ -257,7 +258,7 @@
 					return true;
 				}
 			}
-			else if (mWalkDirection == WalkDirection.Left)
+			else if (mWalkDirection == WalkDirection.Left || currState == State.WalkLeft)
 			{
 				if (!CanWalkInDir(WalkDirection.Left))
 				{
@@ -284,7 +285,7 @@
 		{
 			const float GRADIENT = 1.952342523523f;
 
-			if (mOnGround == false)
+			if (!CanWalkDirChange())
 			{
 				return false;
 			}
@@ -378,13 +379,16 @@
 			switch (currentState)
 			{
 				case State.Wait:
-					if (mOnGround) mWalkDirection = WalkDirection.None;
+					if (CanWalkDirChange())
+						mWalkDirection = WalkDirection.None;
 					break;
 				case State.WalkRight:
-					if (mOnGround) mWalkDirection = WalkDirection.Right;
+					if (CanWalkDirChange())
+						mWalkDirection = WalkDirection.Right;
 					break;
 				case State.WalkLeft:
-					if (mOnGround) mWalkDirection = WalkDirection.Left;
+					if (CanWalkDirChange())
+						mWalkDirection = WalkDirection.Left;
 					break;
 				case State.ChargeAtPlayer:
 					ChargeAtPlayer();
