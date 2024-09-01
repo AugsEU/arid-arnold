@@ -15976,3 +15976,12 @@
 /processorParam:PremultiplyAlpha=False
 /build:Campaigns/MainCampaign/Levels/20003.png
 
+#begin Text/EN/NPC/ShopKeeper/Hotdogs.txt
+/copy:Text/EN/NPC/ShopKeeper/Hotdogs.txt
+
+#begin Text/EN/NPC/ShopKeeper/RatPoison.txt
+/copy:Text/EN/NPC/ShopKeeper/RatPoison.txt
+
+#begin Text/EN/NPC/ShopKeeper/CantHear.txt
+/copy:Text/EN/NPC/ShopKeeper/CantHear.txt
+
