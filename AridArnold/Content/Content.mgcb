@@ -15985,3 +15985,6 @@
 #begin Text/EN/NPC/ShopKeeper/CantHear.txt
 /copy:Text/EN/NPC/ShopKeeper/CantHear.txt
 
+#begin Text/EN/NPC/Vagabond/Drugs.txt
+/copy:Text/EN/NPC/Vagabond/Drugs.txt
+
