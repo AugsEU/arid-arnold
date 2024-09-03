@@ -89,6 +89,18 @@
 			return false;
 		}
 
+
+		/// <summary>
+		/// Update all the cameras
+		/// </summary>
+		public void ResetAllCameras(GameTime gameTime)
+		{
+			foreach (Camera camera in mCameraList)
+			{
+				camera.Reset();
+			}
+		}
+
 		#endregion rUtil
 	}
 }

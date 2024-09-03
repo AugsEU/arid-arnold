@@ -73,6 +73,11 @@
 
 			if (mSpawnTimer.GetPercentageF() > 0.02f || scan.mTotalPositiveElectric > 0.75f)
 			{
+				if(!mIsOn && !mSpawnTimer.IsPlaying())
+				{
+					// Set to spawn robot immediately.
+					mSpawnTimer.SetElapsedMs(SPAWN_TIME + CHARGE_UP_TIME * 0.6f);
+				}
 				mIsOn = true;
 			}
 			else if (scan.mTotalPositiveElectric < 0.65f)

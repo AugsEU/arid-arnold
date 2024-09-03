@@ -15988,3 +15988,21 @@
 #begin Text/EN/NPC/Vagabond/Drugs.txt
 /copy:Text/EN/NPC/Vagabond/Drugs.txt
 
+#begin Campaigns/MainCampaign/Levels/40001.aux
+/copy:Campaigns/MainCampaign/Levels/40001.aux
+
+#begin Campaigns/MainCampaign/Levels/40001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/40001.png
+
+#begin Campaigns/MainCampaign/Levels/40002.aux
+/copy:Campaigns/MainCampaign/Levels/40002.aux
+
+#begin Campaigns/MainCampaign/Levels/40002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/40002.png
+

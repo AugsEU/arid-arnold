@@ -74,8 +74,8 @@
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
-				//QueueLoadSequence(new HubDirectLoader(401));
-				QueueLoadSequence(new LevelDirectLoader(402));
+				QueueLoadSequence(new HubDirectLoader(401));
+				//QueueLoadSequence(new LevelDirectLoader(413));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
@@ -510,9 +510,22 @@
 				return false;
 			}
 
-			//Can't lose lives on the first level
-			return !object.ReferenceEquals(mCurrentLevel, mLevelSequence[0]) &&
-				mCurrentLevel.CanLoseLives();
+			if(!mCurrentLevel.CanLoseLives())
+			{
+				return false;
+			}
+
+			//Can't lose lives on the first level(that isn't a shop)
+			int i = 0;
+			for( ; i < mLevelSequence.Count; i++)
+			{
+				if(mLevelSequence[i].CanLoseLives())
+				{
+					break;
+				}
+			}
+
+			return !object.ReferenceEquals(mCurrentLevel, mLevelSequence[i]);
 		}
 
 
