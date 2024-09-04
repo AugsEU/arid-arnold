@@ -201,7 +201,7 @@
 
 			MonoDraw.DrawTextureDepth(info, texture, texPos, DrawLayer.Default);
 
-			if (mDoorOpen == false && IsInCorrectTimeZone())
+			if (mDoorOpen == false && IsInCorrectTimeZone() && !mAltDoor)
 			{
 				Color numberCol = mAlreadyCompleted ? Color.Gray : Color.White;
 				MonoDraw.DrawTextureDepthColor(info, mNumberTextures[mLevelSequence.Count], mPosition, numberCol, DrawLayer.Default);

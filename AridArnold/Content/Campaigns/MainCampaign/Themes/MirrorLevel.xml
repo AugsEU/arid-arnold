@@ -6,4 +6,7 @@
 	<path from="Platform">TreePlatform</path>
 	<path from="CoinFull">FlowerFull</path>
 	<path from="CoinGhost">FlowerGhost</path>
+
+	<path from="Shared/Door/HorseDoorOpen">BossDoorOpen</path>
+	<path from="Shared/Door/HorseDoorClosed">BossDoorClosed</path>
 </theme>

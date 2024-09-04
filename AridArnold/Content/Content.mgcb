@@ -6211,36 +6211,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0410.png
 
-#begin Campaigns/MainCampaign/Levels/0411.aux
-/copy:Campaigns/MainCampaign/Levels/0411.aux
-
-#begin Campaigns/MainCampaign/Levels/0411.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0411.png
-
-#begin Campaigns/MainCampaign/Levels/0412.aux
-/copy:Campaigns/MainCampaign/Levels/0412.aux
-
-#begin Campaigns/MainCampaign/Levels/0412.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0412.png
-
 #begin Campaigns/MainCampaign/Levels/0413.aux
 /copy:Campaigns/MainCampaign/Levels/0413.aux
 
@@ -7501,6 +7471,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/10000.png
 
+#begin Campaigns/MainCampaign/Levels/10001.aux
+/copy:Campaigns/MainCampaign/Levels/10001.aux
+
+#begin Campaigns/MainCampaign/Levels/10001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/10001.png
+
 #begin Campaigns/MainCampaign/Levels/20000.aux
 /copy:Campaigns/MainCampaign/Levels/20000.aux
 
@@ -7515,6 +7500,51 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/20000.png
+
+#begin Campaigns/MainCampaign/Levels/20001.aux
+/copy:Campaigns/MainCampaign/Levels/20001.aux
+
+#begin Campaigns/MainCampaign/Levels/20001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/20001.png
+
+#begin Campaigns/MainCampaign/Levels/20002.aux
+/copy:Campaigns/MainCampaign/Levels/20002.aux
+
+#begin Campaigns/MainCampaign/Levels/20002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/20002.png
+
+#begin Campaigns/MainCampaign/Levels/20003.aux
+/copy:Campaigns/MainCampaign/Levels/20003.aux
+
+#begin Campaigns/MainCampaign/Levels/20003.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/20003.png
 
 #begin Campaigns/MainCampaign/Levels/30000.aux
 /copy:Campaigns/MainCampaign/Levels/30000.aux
@@ -7545,6 +7575,36 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/40000.png
+
+#begin Campaigns/MainCampaign/Levels/40001.aux
+/copy:Campaigns/MainCampaign/Levels/40001.aux
+
+#begin Campaigns/MainCampaign/Levels/40001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/40001.png
+
+#begin Campaigns/MainCampaign/Levels/40002.aux
+/copy:Campaigns/MainCampaign/Levels/40002.aux
+
+#begin Campaigns/MainCampaign/Levels/40002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/40002.png
 
 #begin Campaigns/MainCampaign/Levels/50000.aux
 /copy:Campaigns/MainCampaign/Levels/50000.aux
@@ -9277,6 +9337,18 @@
 /processorParam:TextureFormat=Color
 /build:Icon.ico
 
+#begin Items/Army/Boots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Army/Boots.png
+
 #begin Items/BorgChip/ArnHead.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9552,6 +9624,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Items/Trainers/Boots.png
+
+#begin Items/Tree/Seed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Tree/Seed.png
+
+#begin Items/Tree/TreeBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Tree/TreeBase.png
+
+#begin Items/Tree/TreeExt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Tree/TreeExt.png
+
+#begin Items/Tree/TreeMid.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items/Tree/TreeMid.png
 
 #begin Layouts/MainGame.mlo
 /copy:Layouts/MainGame.mlo
@@ -11140,6 +11260,78 @@
 /processorParam:TextureFormat=Color
 /build:NPC/SciOld/TalkNormal.png
 
+#begin NPC/ShopKeeper/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopKeeper/Default.png
+
+#begin NPC/ShopKeeper/Gavel.max
+/copy:NPC/ShopKeeper/Gavel.max
+
+#begin NPC/ShopKeeper/Idle.mia
+/copy:NPC/ShopKeeper/Idle.mia
+
+#begin NPC/ShopKeeper/Itch.max
+/copy:NPC/ShopKeeper/Itch.max
+
+#begin NPC/ShopKeeper/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopKeeper/Itch1.png
+
+#begin NPC/ShopKeeper/Itch2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopKeeper/Itch2.png
+
+#begin NPC/ShopKeeper/ShopKeeper.mtn
+/copy:NPC/ShopKeeper/ShopKeeper.mtn
+
+#begin NPC/ShopKeeper/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopKeeper/TalkAngry.png
+
+#begin NPC/ShopKeeper/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopKeeper/TalkNormal.png
+
 #begin NPC/Sign/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12556,6 +12748,18 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/HorsesAndGun/Reload.wav
 
+#begin Sound/SFX/Items/TreePlace.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Items/TreePlace.wav
+
+#begin Sound/SFX/Items/UseItem.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Items/UseItem.wav
+
 #begin Sound/SFX/Lab/AndroldBorn.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -13102,6 +13306,12 @@
 #begin Text/EN/Input/Pad/Y.txt
 /copy:Text/EN/Input/Pad/Y.txt
 
+#begin Text/EN/Items/ArmyBootsDesc.txt
+/copy:Text/EN/Items/ArmyBootsDesc.txt
+
+#begin Text/EN/Items/ArmyBootsTitle.txt
+/copy:Text/EN/Items/ArmyBootsTitle.txt
+
 #begin Text/EN/Items/BorgChipDesc.txt
 /copy:Text/EN/Items/BorgChipDesc.txt
 
@@ -13185,6 +13395,12 @@
 
 #begin Text/EN/Items/TrainersTitle.txt
 /copy:Text/EN/Items/TrainersTitle.txt
+
+#begin Text/EN/Items/TreeSeedDesc.txt
+/copy:Text/EN/Items/TreeSeedDesc.txt
+
+#begin Text/EN/Items/TreeSeedTitle.txt
+/copy:Text/EN/Items/TreeSeedTitle.txt
 
 #begin Text/EN/NPC/Barbara/Heckle.txt
 /copy:Text/EN/NPC/Barbara/Heckle.txt
@@ -13504,6 +13720,30 @@
 #begin Text/EN/NPC/SciOld/WorldWar1.txt
 /copy:Text/EN/NPC/SciOld/WorldWar1.txt
 
+#begin Text/EN/NPC/ShopKeeper/Browse.txt
+/copy:Text/EN/NPC/ShopKeeper/Browse.txt
+
+#begin Text/EN/NPC/ShopKeeper/CantHear.txt
+/copy:Text/EN/NPC/ShopKeeper/CantHear.txt
+
+#begin Text/EN/NPC/ShopKeeper/Heckle.txt
+/copy:Text/EN/NPC/ShopKeeper/Heckle.txt
+
+#begin Text/EN/NPC/ShopKeeper/Hotdogs.txt
+/copy:Text/EN/NPC/ShopKeeper/Hotdogs.txt
+
+#begin Text/EN/NPC/ShopKeeper/IntroHeckle.txt
+/copy:Text/EN/NPC/ShopKeeper/IntroHeckle.txt
+
+#begin Text/EN/NPC/ShopKeeper/Jetpack.txt
+/copy:Text/EN/NPC/ShopKeeper/Jetpack.txt
+
+#begin Text/EN/NPC/ShopKeeper/RatPoison.txt
+/copy:Text/EN/NPC/ShopKeeper/RatPoison.txt
+
+#begin Text/EN/NPC/ShopKeeper/ShopIntro.txt
+/copy:Text/EN/NPC/ShopKeeper/ShopIntro.txt
+
 #begin Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
 /copy:Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
 
@@ -13533,6 +13773,9 @@
 
 #begin Text/EN/NPC/Vagabond/DemonWorld.txt
 /copy:Text/EN/NPC/Vagabond/DemonWorld.txt
+
+#begin Text/EN/NPC/Vagabond/Drugs.txt
+/copy:Text/EN/NPC/Vagabond/Drugs.txt
 
 #begin Text/EN/NPC/Vagabond/Heckle.txt
 /copy:Text/EN/NPC/Vagabond/Heckle.txt
@@ -13650,6 +13893,9 @@
 
 #begin Text/EN/NPC/Zippy/Intro.txt
 /copy:Text/EN/NPC/Zippy/Intro.txt
+
+#begin Text/EN/NPC/Zippy/ItemExplain.txt
+/copy:Text/EN/NPC/Zippy/ItemExplain.txt
 
 #begin Text/EN/NPC/Zippy/LevelSequence.txt
 /copy:Text/EN/NPC/Zippy/LevelSequence.txt
@@ -15826,183 +16072,15 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Items/Tree/Seed.png
+#begin Tiles/Mirror/BossDoorClosed.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Items/Tree/Seed.png
+/build:Tiles/Mirror/BossDoorClosed.png
 
-#begin Items/Tree/TreeBase.png
+#begin Tiles/Mirror/BossDoorOpen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Items/Tree/TreeBase.png
-
-#begin Items/Tree/TreeExt.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/Tree/TreeExt.png
-
-#begin Text/EN/Items/TreeSeedDesc.txt
-/copy:Text/EN/Items/TreeSeedDesc.txt
-
-#begin Text/EN/Items/TreeSeedTitle.txt
-/copy:Text/EN/Items/TreeSeedTitle.txt
-
-#begin Items/Tree/TreeMid.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/Tree/TreeMid.png
-
-#begin Sound/SFX/Items/TreePlace.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Items/TreePlace.wav
-
-#begin Sound/SFX/Items/UseItem.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Items/UseItem.wav
-
-#begin NPC/ShopKeeper/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopKeeper/Default.png
-
-#begin NPC/ShopKeeper/Gavel.max
-/copy:NPC/ShopKeeper/Gavel.max
-
-#begin NPC/ShopKeeper/Idle.mia
-/copy:NPC/ShopKeeper/Idle.mia
-
-#begin NPC/ShopKeeper/Itch.max
-/copy:NPC/ShopKeeper/Itch.max
-
-#begin NPC/ShopKeeper/Itch1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopKeeper/Itch1.png
-
-#begin NPC/ShopKeeper/Itch2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopKeeper/Itch2.png
-
-#begin NPC/ShopKeeper/ShopKeeper.mtn
-/copy:NPC/ShopKeeper/ShopKeeper.mtn
-
-#begin NPC/ShopKeeper/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopKeeper/TalkAngry.png
-
-#begin NPC/ShopKeeper/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopKeeper/TalkNormal.png
-
-#begin Text/EN/NPC/ShopKeeper/IntroHeckle.txt
-/copy:Text/EN/NPC/ShopKeeper/IntroHeckle.txt
-
-#begin Text/EN/NPC/ShopKeeper/ShopIntro.txt
-/copy:Text/EN/NPC/ShopKeeper/ShopIntro.txt
-
-#begin Campaigns/MainCampaign/Levels/10001.aux
-/copy:Campaigns/MainCampaign/Levels/10001.aux
-
-#begin Campaigns/MainCampaign/Levels/10001.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/10001.png
-
-#begin Text/EN/NPC/ShopKeeper/Heckle.txt
-/copy:Text/EN/NPC/ShopKeeper/Heckle.txt
-
-#begin Text/EN/NPC/ShopKeeper/Jetpack.txt
-/copy:Text/EN/NPC/ShopKeeper/Jetpack.txt
-
-#begin Text/EN/NPC/ShopKeeper/Browse.txt
-/copy:Text/EN/NPC/ShopKeeper/Browse.txt
-
-#begin Text/EN/NPC/Zippy/ItemExplain.txt
-/copy:Text/EN/NPC/Zippy/ItemExplain.txt
-
-#begin Items/Army/Boots.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Items/Army/Boots.png
-
-#begin Text/EN/Items/ArmyBootsDesc.txt
-/copy:Text/EN/Items/ArmyBootsDesc.txt
-
-#begin Text/EN/Items/ArmyBootsTitle.txt
-/copy:Text/EN/Items/ArmyBootsTitle.txt
-
-#begin Campaigns/MainCampaign/Levels/20001.aux
-/copy:Campaigns/MainCampaign/Levels/20001.aux
-
-#begin Campaigns/MainCampaign/Levels/20001.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/20001.png
-
-#begin Campaigns/MainCampaign/Levels/20002.aux
-/copy:Campaigns/MainCampaign/Levels/20002.aux
-
-#begin Campaigns/MainCampaign/Levels/20002.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/20002.png
-
-#begin Campaigns/MainCampaign/Levels/20003.aux
-/copy:Campaigns/MainCampaign/Levels/20003.aux
-
-#begin Campaigns/MainCampaign/Levels/20003.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/20003.png
-
-#begin Text/EN/NPC/ShopKeeper/Hotdogs.txt
-/copy:Text/EN/NPC/ShopKeeper/Hotdogs.txt
-
-#begin Text/EN/NPC/ShopKeeper/RatPoison.txt
-/copy:Text/EN/NPC/ShopKeeper/RatPoison.txt
-
-#begin Text/EN/NPC/ShopKeeper/CantHear.txt
-/copy:Text/EN/NPC/ShopKeeper/CantHear.txt
-
-#begin Text/EN/NPC/Vagabond/Drugs.txt
-/copy:Text/EN/NPC/Vagabond/Drugs.txt
-
-#begin Campaigns/MainCampaign/Levels/40001.aux
-/copy:Campaigns/MainCampaign/Levels/40001.aux
-
-#begin Campaigns/MainCampaign/Levels/40001.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/40001.png
-
-#begin Campaigns/MainCampaign/Levels/40002.aux
-/copy:Campaigns/MainCampaign/Levels/40002.aux
-
-#begin Campaigns/MainCampaign/Levels/40002.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/40002.png
+/build:Tiles/Mirror/BossDoorOpen.png
 
