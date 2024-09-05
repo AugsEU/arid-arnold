@@ -16084,3 +16084,21 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/Mirror/BossDoorOpen.png
 
+#begin Campaigns/MainCampaign/Levels/50001.aux
+/copy:Campaigns/MainCampaign/Levels/50001.aux
+
+#begin Campaigns/MainCampaign/Levels/50001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/50001.png
+
+#begin Campaigns/MainCampaign/Levels/50002.aux
+/copy:Campaigns/MainCampaign/Levels/50002.aux
+
+#begin Campaigns/MainCampaign/Levels/50002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/50002.png
+
