@@ -6871,51 +6871,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0712.png
 
-#begin Campaigns/MainCampaign/Levels/0713.aux
-/copy:Campaigns/MainCampaign/Levels/0713.aux
-
-#begin Campaigns/MainCampaign/Levels/0713.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0713.png
-
-#begin Campaigns/MainCampaign/Levels/0714.aux
-/copy:Campaigns/MainCampaign/Levels/0714.aux
-
-#begin Campaigns/MainCampaign/Levels/0714.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0714.png
-
-#begin Campaigns/MainCampaign/Levels/0715.aux
-/copy:Campaigns/MainCampaign/Levels/0715.aux
-
-#begin Campaigns/MainCampaign/Levels/0715.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0715.png
-
 #begin Campaigns/MainCampaign/Levels/0801.aux
 /copy:Campaigns/MainCampaign/Levels/0801.aux
 
@@ -7635,6 +7590,51 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/60000.png
+
+#begin Campaigns/MainCampaign/Levels/60001.aux
+/copy:Campaigns/MainCampaign/Levels/60001.aux
+
+#begin Campaigns/MainCampaign/Levels/60001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/60001.png
+
+#begin Campaigns/MainCampaign/Levels/60002.aux
+/copy:Campaigns/MainCampaign/Levels/60002.aux
+
+#begin Campaigns/MainCampaign/Levels/60002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/60002.png
+
+#begin Campaigns/MainCampaign/Levels/60003.aux
+/copy:Campaigns/MainCampaign/Levels/60003.aux
+
+#begin Campaigns/MainCampaign/Levels/60003.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/60003.png
 
 #begin Campaigns/MainCampaign/Levels/70000.aux
 /copy:Campaigns/MainCampaign/Levels/70000.aux
@@ -16096,30 +16096,33 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Campaigns/MainCampaign/Levels/60001.aux
-/copy:Campaigns/MainCampaign/Levels/60001.aux
+#begin Text/EN/NPC/ShopKeeper/HardTimes.txt
+/copy:Text/EN/NPC/ShopKeeper/HardTimes.txt
 
-#begin Campaigns/MainCampaign/Levels/60001.png
+#begin Campaigns/MainCampaign/Levels/70001.aux
+/copy:Campaigns/MainCampaign/Levels/70001.aux
+
+#begin Campaigns/MainCampaign/Levels/70001.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/60001.png
+/build:Campaigns/MainCampaign/Levels/70001.png
 
-#begin Campaigns/MainCampaign/Levels/60002.aux
-/copy:Campaigns/MainCampaign/Levels/60002.aux
+#begin Campaigns/MainCampaign/Levels/70002.aux
+/copy:Campaigns/MainCampaign/Levels/70002.aux
 
-#begin Campaigns/MainCampaign/Levels/60002.png
+#begin Campaigns/MainCampaign/Levels/70002.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/60002.png
+/build:Campaigns/MainCampaign/Levels/70002.png
 
-#begin Campaigns/MainCampaign/Levels/60003.aux
-/copy:Campaigns/MainCampaign/Levels/60003.aux
+#begin Campaigns/MainCampaign/Levels/70003.aux
+/copy:Campaigns/MainCampaign/Levels/70003.aux
 
-#begin Campaigns/MainCampaign/Levels/60003.png
+#begin Campaigns/MainCampaign/Levels/70003.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/60003.png
+/build:Campaigns/MainCampaign/Levels/70003.png
 
