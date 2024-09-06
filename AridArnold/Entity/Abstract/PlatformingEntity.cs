@@ -804,6 +804,7 @@ namespace AridArnold
 		{
 			mUpdatesSinceJump = int.MaxValue;
 			mUpdatesSinceGrounded = int.MaxValue;
+			mIceWalking = 0;
 		}
 
 
@@ -900,16 +901,18 @@ namespace AridArnold
 		/// </summary>
 		public WalkDirection DirectionNeededToWalkToMe(Vector2 pos)
 		{
+			const float closenessLevel = 1.0f; 
+
 			Vector2 down = GravityVecNorm();
 			Vector2 toPosition = pos - GetCentrePos();
 
 			float cross = down.X * toPosition.Y - down.Y * toPosition.X;
 
-			if (cross > 0.0f)
+			if (cross > closenessLevel)
 			{
 				return WalkDirection.Right;
 			}
-			else if (cross < 0.0f)
+			else if (cross < -closenessLevel)
 			{
 				return WalkDirection.Left;
 			}

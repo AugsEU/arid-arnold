@@ -97,6 +97,18 @@
 
 
 		/// <summary>
+		/// Physics update
+		/// </summary>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			// Don't slide on ice.
+			mIceWalking = 0;
+			base.OrderedUpdate(gameTime);
+		}
+
+
+
+		/// <summary>
 		/// Decide on action
 		/// </summary>
 		protected override void DecideActions()

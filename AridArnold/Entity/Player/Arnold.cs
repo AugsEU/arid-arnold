@@ -457,7 +457,7 @@ namespace AridArnold
 			}
 			else if(currItem is Trainers)
 			{
-				mWalkSpeed = mWalkSpeed * 1.25f;
+				mWalkSpeed = mWalkSpeed * 1.15f;
 			}
 
 			if (IsChaosMode())
@@ -466,30 +466,35 @@ namespace AridArnold
 				mWalkSpeed = rng.GetFloatRange(ARNOLD_WALK_SPEED * 0.5f, 1.8f * ARNOLD_WALK_SPEED);
 				mGravity = rng.GetFloatRange(DEFAULT_GRAVITY * 0.5f, 1.5f * DEFAULT_GRAVITY);
 
-				const float MAX_WEIRD_SPEED = 60.0f;
-				if(rng.PercentChance(0.5f))
+				const float MAX_WEIRD_SPEED = 40.0f;
+				if(rng.PercentChance(0.1f))
 				{
 					float xv = rng.GetFloatRange(4.0f, MAX_WEIRD_SPEED) * (rng.GetIntRange(0, 1) * 2 - 1);
 					float yv = rng.GetFloatRange(4.0f, MAX_WEIRD_SPEED) * (rng.GetIntRange(0, 1) * 2 - 1);
 
 					mVelocity = new Vector2(xv, yv);
 
-					if(rng.PercentChance(0.5f))
+					if (mHorseMode)
 					{
-						if (rng.PercentChance(50.0f))
-						{
-							SetHorseMode();
-						}
-						else
+						if (rng.PercentChance(30.0f))
 						{
 							mHorseMode = false;
 							RefreshTexturePack();
 						}
 					}
-					else if(rng.PercentChance(0.5f))
+					else
 					{
-						mBouncyMode = rng.PercentChance(50.0f);
+						if (rng.PercentChance(1.5f))
+						{
+							SetHorseMode();
+						}
+						else if (rng.PercentChance(0.1f))
+						{
+							mBouncyMode = rng.PercentChance(50.0f);
+						}
 					}
+					
+					
 				}
 			}
 

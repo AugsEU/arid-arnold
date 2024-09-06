@@ -52,6 +52,7 @@
 				arnold.SetPrevWalkDirFromVelocity();
 				arnold.SetWalkDirection(WalkDirection.None);
 				arnold.OverrideVelocity(Vector2.Zero);
+				arnold.ResetAllJumpHelpers();
 
 				ChangeTime();
 			}
@@ -92,7 +93,7 @@
 			}
 			else
 			{
-				FXManager.I.AddFX(new TimeShiftFaderFX(800.0));
+				FXManager.I.AddFX(new TimeShiftFaderFX(600.0));
 				AridArnoldSFX sfx = forwards ? AridArnoldSFX.QuickAgeForward : AridArnoldSFX.QuickAgeBackward;
 				SFXManager.I.PlaySFX(sfx, 0.2f);
 			}

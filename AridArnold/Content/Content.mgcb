@@ -6691,36 +6691,6 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0614.png
 
-#begin Campaigns/MainCampaign/Levels/0615.aux
-/copy:Campaigns/MainCampaign/Levels/0615.aux
-
-#begin Campaigns/MainCampaign/Levels/0615.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0615.png
-
-#begin Campaigns/MainCampaign/Levels/0616.aux
-/copy:Campaigns/MainCampaign/Levels/0616.aux
-
-#begin Campaigns/MainCampaign/Levels/0616.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0616.png
-
 #begin Campaigns/MainCampaign/Levels/0701.aux
 /copy:Campaigns/MainCampaign/Levels/0701.aux
 
@@ -7620,6 +7590,36 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/50000.png
+
+#begin Campaigns/MainCampaign/Levels/50001.aux
+/copy:Campaigns/MainCampaign/Levels/50001.aux
+
+#begin Campaigns/MainCampaign/Levels/50001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/50001.png
+
+#begin Campaigns/MainCampaign/Levels/50002.aux
+/copy:Campaigns/MainCampaign/Levels/50002.aux
+
+#begin Campaigns/MainCampaign/Levels/50002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/50002.png
 
 #begin Campaigns/MainCampaign/Levels/60000.aux
 /copy:Campaigns/MainCampaign/Levels/60000.aux
@@ -15193,6 +15193,30 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Library/WoodPlatform.png
 
+#begin Tiles/Mirror/BossDoorClosed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mirror/BossDoorClosed.png
+
+#begin Tiles/Mirror/BossDoorOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mirror/BossDoorOpen.png
+
 #begin Tiles/Mirror/cobble.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -16072,33 +16096,30 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Tiles/Mirror/BossDoorClosed.png
+#begin Campaigns/MainCampaign/Levels/60001.aux
+/copy:Campaigns/MainCampaign/Levels/60001.aux
+
+#begin Campaigns/MainCampaign/Levels/60001.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Tiles/Mirror/BossDoorClosed.png
+/build:Campaigns/MainCampaign/Levels/60001.png
 
-#begin Tiles/Mirror/BossDoorOpen.png
+#begin Campaigns/MainCampaign/Levels/60002.aux
+/copy:Campaigns/MainCampaign/Levels/60002.aux
+
+#begin Campaigns/MainCampaign/Levels/60002.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Tiles/Mirror/BossDoorOpen.png
+/build:Campaigns/MainCampaign/Levels/60002.png
 
-#begin Campaigns/MainCampaign/Levels/50001.aux
-/copy:Campaigns/MainCampaign/Levels/50001.aux
+#begin Campaigns/MainCampaign/Levels/60003.aux
+/copy:Campaigns/MainCampaign/Levels/60003.aux
 
-#begin Campaigns/MainCampaign/Levels/50001.png
+#begin Campaigns/MainCampaign/Levels/60003.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/50001.png
-
-#begin Campaigns/MainCampaign/Levels/50002.aux
-/copy:Campaigns/MainCampaign/Levels/50002.aux
-
-#begin Campaigns/MainCampaign/Levels/50002.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/50002.png
+/build:Campaigns/MainCampaign/Levels/60003.png
 

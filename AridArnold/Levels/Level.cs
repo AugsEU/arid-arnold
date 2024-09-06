@@ -280,6 +280,19 @@
 			return false;
 		}
 
+
+
+		/// <summary>
+		/// Get level ID for items, takes into account level type
+		/// </summary>
+		public int GetIDForItems()
+		{
+			int typeHash = this is HubLevel ? int.MaxValue : 0; // HACK to separate hub IDs from level IDs
+			int myMetaID = typeHash ^ mID; // XOR the type hash with mID
+
+			return myMetaID;
+		}
+
 		#endregion rUtility
 
 

@@ -45,10 +45,10 @@
 		/// </summary>
 		public void CollectSpecificItem(CollectableID type, Point pos)
 		{
-			int levelID = CampaignManager.I.GetCurrentLevel().GetID();
+			int levelID = CampaignManager.I.GetCurrentLevel().GetIDForItems();
 			SpecificCollectableID specificID = new SpecificCollectableID(type, pos, levelID);
 
-			if(mCurrent.mSpecificCollected.Contains(specificID))
+			if (mCurrent.mSpecificCollected.Contains(specificID))
 			{
 				return;
 			}
@@ -124,7 +124,7 @@
 		/// </summary>
 		public bool HasSpecific(Point pos, UInt16 type)
 		{
-			int levelID = CampaignManager.I.GetCurrentLevel().GetID();
+			int levelID = CampaignManager.I.GetCurrentLevel().GetIDForItems();
 			SpecificCollectableID specificID = new SpecificCollectableID(type, pos, levelID);
 			return mCurrent.mSpecificCollected.Contains(specificID);
 		}

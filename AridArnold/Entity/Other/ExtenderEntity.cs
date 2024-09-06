@@ -31,6 +31,7 @@
 			mIsExtended = IsExtended();
 			mLength = length;
 			mPrevDirection = WalkDirection.Right;
+			mPrevPushDir = WalkDirection.Right;
 
 			LoadSFX(null, AridArnoldSFX.BlockPush, 0.6f);
 		}
