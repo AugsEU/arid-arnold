@@ -72,9 +72,9 @@
 					CollectableManager.I.IncPermanentCount(coinID, 100);
 				}
 
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 0);
 
-				QueueLoadSequence(new HubDirectLoader(601));
+				QueueLoadSequence(new HubDirectLoader(701));
 				//QueueLoadSequence(new LevelDirectLoader(60000));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
