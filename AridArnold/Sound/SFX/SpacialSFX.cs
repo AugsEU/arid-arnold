@@ -72,7 +72,7 @@ namespace AridArnold
 				volMod = (VOL_AT_CUTOFF) / (1.0f + VOL_AT_CUTOFF * t);
 			}
 
-			return baseVolume * volMod;
+			return Math.Clamp(baseVolume * volMod, 0.0f, 1.0f);
 		}
 
 		public void SetPosition(Vector2 pos)

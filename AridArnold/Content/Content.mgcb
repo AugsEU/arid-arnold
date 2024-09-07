@@ -16114,3 +16114,33 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Campaigns/MainCampaign/Levels/80001.aux
+/copy:Campaigns/MainCampaign/Levels/80001.aux
+
+#begin Campaigns/MainCampaign/Levels/80001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/80001.png
+
+#begin Campaigns/MainCampaign/Levels/80002.aux
+/copy:Campaigns/MainCampaign/Levels/80002.aux
+
+#begin Campaigns/MainCampaign/Levels/80002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/80002.png
+
+#begin Campaigns/MainCampaign/Levels/80003.aux
+/copy:Campaigns/MainCampaign/Levels/80003.aux
+
+#begin Campaigns/MainCampaign/Levels/80003.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Levels/80003.png
+
+#begin Text/EN/NPC/ShopKeeper/HellBrowse.txt
+/copy:Text/EN/NPC/ShopKeeper/HellBrowse.txt
+
