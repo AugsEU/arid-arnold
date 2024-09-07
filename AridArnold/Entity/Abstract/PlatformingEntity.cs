@@ -224,6 +224,14 @@ namespace AridArnold
 				
 				SetSideVelocityFromDirection(motorDirection);
 			}
+			else
+			{
+				if(mOnGround)
+				{
+					// Infinite friction.
+					SetSideVelocityFromDirection(WalkDirection.None);
+				}
+			}
 
 			ApplyGravity(gameTime);
 

@@ -221,7 +221,7 @@
 			Vector2 segStart = TileManager.I.GetTileCentre(mSegmentStart);
 			Vector2 segEnd = TileManager.I.GetTileCentre(mSegmentEnd);
 			Vector2 dir = segEnd - segStart;
-			Vector2 output = segEnd + dir;
+			Vector2 output = segEnd + dir * 1.02f;
 
 			mTransportingEntity.SetCentrePos(output);
 			mTransportingEntity.OverrideVelocity(dir * ((mInputSpeed * SPEED_MULTIPLIER) / dir.Length()));
