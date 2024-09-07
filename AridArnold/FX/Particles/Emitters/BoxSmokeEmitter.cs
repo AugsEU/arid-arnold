@@ -25,7 +25,7 @@ namespace AridArnold
 			MonoRandom rng = RandomManager.I.GetDraw();
 
 			mLockoutTimer.Update(gameTime);
-			if (mLockoutTimer.GetElapsedMs() < rng.GetFloatRange(16.0f, 100.0f))
+			if (mLockoutTimer.GetElapsedMs() < rng.GetFloatRange(60.0f, 160.0f))
 			{
 				return;
 			}

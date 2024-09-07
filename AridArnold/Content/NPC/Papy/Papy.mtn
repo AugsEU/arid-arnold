@@ -3,7 +3,7 @@
 	<name>Vagabond</name>
 	<textStyle>
 		<fillColor>544D49AF</fillColor>
-		<borderColor>473E3D</borderColor>
+		<borderColor>372E2D</borderColor>
 		<voice>NPC/Voice/DefaultMale.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

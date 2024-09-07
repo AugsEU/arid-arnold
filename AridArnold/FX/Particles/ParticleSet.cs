@@ -7,7 +7,7 @@ namespace AridArnold
 	{
 		#region rConstants
 
-		const int MAX_PARTICLES = 256;
+		const int MAX_PARTICLES = 512;
 
 		#endregion rConstants
 

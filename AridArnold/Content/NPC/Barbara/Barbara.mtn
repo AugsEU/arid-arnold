@@ -16,7 +16,7 @@
 				<color>7325C6</color>
 				<color>8E5CC4</color>
 			</colors>
-			<intensity>0.02</intensity>
+			<intensity>0.01</intensity>
 		</emitter>
 	</emitters>
 </simpleTalkNPC>

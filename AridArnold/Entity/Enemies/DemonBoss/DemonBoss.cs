@@ -99,7 +99,7 @@ namespace AridArnold
 			mEyeHitTimer = new PercentageTimer(HIT_TIME);
 
 			Vector2 emitMin = pos + new Vector2(15.0f, 20.0f);
-			mParticleEmitter = new BoxSmokeEmitter(new Rect2f(emitMin, 83.0f, 20.0f), 0.2f);
+			mParticleEmitter = new BoxSmokeEmitter(new Rect2f(emitMin, 83.0f, 20.0f), 0.4f);
 
 			// All eyes alive.
 			mEyesAlive = new bool[EYE_POSITIONS.Length];
@@ -308,7 +308,7 @@ namespace AridArnold
 
 			// Shake
 			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-			DiminishCameraShake shakeMove = new DiminishCameraShake(6.0f, 5.0f, 100.0f);
+			DiminishCameraShake shakeMove = new DiminishCameraShake(9.0f, 10.0f, 100.0f);
 			gameCam.QueueMovement(shakeMove);
 		}
 
@@ -355,9 +355,13 @@ namespace AridArnold
 			SFXManager.I.PlaySFX(AridArnoldSFX.BossDeath, 0.6f);
 
 			// Shake
-			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
-			DiminishCameraShake shakeMove = new DiminishCameraShake(30.0f, 10.0f, 100.0f);
-			gameCam.DoMovement(shakeMove);
+			Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+			DiminishCameraShake screenShakeMove = new DiminishCameraShake(30.0f, 10.0f, 100.0f);
+			screenCam.DoMovement(screenShakeMove);
+
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+			DiminishCameraShake gameShakeMove = new DiminishCameraShake(9.0f, 10.0f, 100.0f);
+			gameCam.QueueMovement(gameShakeMove);
 		}
 
 		#endregion rUpdate

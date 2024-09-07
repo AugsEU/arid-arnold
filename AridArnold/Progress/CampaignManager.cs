@@ -72,10 +72,10 @@
 					CollectableManager.I.IncPermanentCount(coinID, 100);
 				}
 
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 0);
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(2, 1);
 
-				QueueLoadSequence(new HubDirectLoader(701));
-				//QueueLoadSequence(new LevelDirectLoader(70000));
+				//QueueLoadSequence(new HubDirectLoader(801));
+				QueueLoadSequence(new LevelDirectLoader(805));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
@@ -495,6 +495,15 @@
 		{
 			SFXManager.I.PlaySFX(AridArnoldSFX.OneUp, 0.4f);
 			++mMaxLives;
+			mCurrLives = GetStartLives();
+		}
+
+
+		/// <summary>
+		/// Call to notify curse
+		/// </summary>
+		public void RefreshCurrLives()
+		{
 			mCurrLives = GetStartLives();
 		}
 

@@ -19,6 +19,19 @@ namespace AridArnold
 			FlagsManager.I.SetFlag(FlagCategory.kCurses, (UInt32)curse, true);
 			FlagsManager.I.SetFlag(FlagCategory.kCurses, (UInt32)CurseFlagTypes.kCurseGiven, true);
 
+			switch (curse)
+			{
+				case CurseFlagTypes.kBlessingLives:
+				case CurseFlagTypes.kBlessingMoney:
+					SFXManager.I.PlaySFX(AridArnoldSFX.OneUp, 0.4f);
+					break;
+				case CurseFlagTypes.kCurseMoney:
+				case CurseFlagTypes.kCurseLives:
+					SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldDeath, 0.4f);
+					CampaignManager.I.RefreshCurrLives();
+					break;
+			}
+
 			// Say thanks.
 			string curseText = LanguageManager.I.GetText(GetCurseStringID(curse));
 			GetSmartTextBlock().AppendTextAtHead(curseText);

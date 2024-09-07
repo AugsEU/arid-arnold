@@ -17,7 +17,7 @@
 				<color>CE3D35</color>
 				<color>91534F</color>
 			</colors>
-			<intensity>0.05</intensity>
+			<intensity>0.01</intensity>
 		</emitter>
 	</emitters>
 </simpleTalkNPC>
