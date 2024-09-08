@@ -6,7 +6,7 @@
 
 		const float EXIT_VELOCITY_X = 10.0f;
 		const float EXIT_VELOCITY_Y = 12.0f;
-		const double SPAWN_TIME = 2000.0;
+		const double SPAWN_TIME = 2200.0;
 		const double CHARGE_UP_TIME = 800.0;
 
 		#endregion rConstants

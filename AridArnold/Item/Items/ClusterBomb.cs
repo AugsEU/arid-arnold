@@ -4,11 +4,17 @@
 	{
 		static Vector2[] BOMB_DIR =
 		{
-			new Vector2(0.0f, -1.0f),
-			new Vector2(-0.71f, -0.71f),
-			new Vector2(0.71f, -0.71f),
-			new Vector2(-0.42f, -0.9f),
-			new Vector2(0.42f, -0.9f),
+			new Vector2(-0.96f, -0.28f),
+			new Vector2(-0.84f, -0.54f),
+			new Vector2(-0.65f, -0.76f),
+			new Vector2(-0.41f, -0.91f),
+			new Vector2(-0.14f, -0.98f),
+
+			new Vector2(0.14f, -0.98f),
+			new Vector2(0.41f, -0.91f),
+			new Vector2(0.65f, -0.76f),
+			new Vector2(0.84f, -0.54f),
+			new Vector2(0.96f, -0.28f),
 		};
 
 		const float BOMB_SPEED = 22.0f;

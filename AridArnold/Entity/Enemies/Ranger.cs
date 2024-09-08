@@ -127,7 +127,7 @@
 			bool jumping = mStateMachine.GetState() == State.Jump;
 			bool shooting = mStateMachine.GetState() == State.ShootLaser;
 
-			if (mOnGround && !shooting)
+			if (CanWalkDirChange() && !shooting)
 			{
 				if (ShouldShootLaser() && !jumping)
 				{
@@ -274,13 +274,13 @@
 			switch (mStateMachine.GetState())
 			{
 				case State.Wait:
-					if (mOnGround) mWalkDirection = WalkDirection.None;
+					if (CanWalkDirChange()) mWalkDirection = WalkDirection.None;
 					break;
 				case State.WalkRight:
-					if (mOnGround) mWalkDirection = WalkDirection.Right;
+					if (CanWalkDirChange()) mWalkDirection = WalkDirection.Right;
 					break;
 				case State.WalkLeft:
-					if (mOnGround) mWalkDirection = WalkDirection.Left;
+					if (CanWalkDirChange()) mWalkDirection = WalkDirection.Left;
 					break;
 				case State.Jump:
 					mWalkDirection = mPrevDirection;
