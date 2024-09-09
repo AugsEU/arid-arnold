@@ -16177,3 +16177,6 @@
 #begin Text/EN/NPC/ShopKeeper/NewFace.txt
 /copy:Text/EN/NPC/ShopKeeper/NewFace.txt
 
+#begin Sound/Music/BukCave.ogg
+/copy:Sound/Music/BukCave.ogg
+

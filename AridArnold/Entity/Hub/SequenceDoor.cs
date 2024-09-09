@@ -164,6 +164,7 @@
 				return;
 			}
 
+			SFXManager.I.EndAllSFX(120.0f);
 			SFXManager.I.PlaySFX(AridArnoldSFX.DoorOpen, 0.1f);
 
 			mDoorOpen = true;

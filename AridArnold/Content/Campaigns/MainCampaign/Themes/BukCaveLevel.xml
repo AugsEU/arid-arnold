@@ -2,6 +2,8 @@
 <theme>
 	<name>Buk's Cave</name>
 	<exitColour>18151E</exitColour>
+	<music>BukCave</music>
+
 	<path from="Wall">Cave</path>
 	<path from="ApparentWall">Cave</path>
 	<path from="FadedWall">CaveFaded</path>

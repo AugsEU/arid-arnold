@@ -9,6 +9,10 @@
         <file>Library.ogg</file>
         <vol>1.0</vol>
     </music>
+    <music id="BukCave">
+        <file>BukCave.ogg</file>
+        <vol>0.8</vol>
+    </music>
 
     <!-- Arcade -->
     <music id="DeathRide">

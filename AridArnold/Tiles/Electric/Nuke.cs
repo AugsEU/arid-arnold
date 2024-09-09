@@ -54,7 +54,7 @@
 			mReadyToBlowAnim = new Animator(Animator.PlayType.Repeat, ("Tiles/Lab/NukeOn", 0.2f), ("Tiles/Lab/NukeOff", 0.2f));
 			mExplodeTimer = new MonoTimer();
 
-			mWarningSFX = new GameSFX(AridArnoldSFX.NukeAlarm, 0.5f);
+			mWarningSFX = new GameSFX(AridArnoldSFX.NukeAlarm, 0.2f);
 			mWarningSFX.GetBuffer().SetLoop(true);
 			mExplodeSFX = new GameSFX(AridArnoldSFX.NukeExplode, 0.9f);
 

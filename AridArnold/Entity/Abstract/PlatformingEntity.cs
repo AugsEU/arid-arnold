@@ -416,6 +416,7 @@ namespace AridArnold
 		public override void Kill()
 		{
 			mTimerSinceDeath.Start();
+			mWalkSound?.Stop(60.0f);
 		}
 
 
