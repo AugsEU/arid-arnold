@@ -16240,3 +16240,15 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin UI/InGame/SequenceArrowLB.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SequenceArrowLB.png
+
+#begin UI/InGame/SequenceArrowLE.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:UI/InGame/SequenceArrowLE.png
+

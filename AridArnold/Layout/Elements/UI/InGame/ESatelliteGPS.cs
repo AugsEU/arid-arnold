@@ -15,6 +15,8 @@
 		Texture2D mSequenceTileOff;
 		Texture2D mSequenceArrowBegin;
 		Texture2D mSequenceArrowMiddle;
+		Texture2D mSequenceArrowLE;
+		Texture2D mSequenceArrowLB;
 		Texture2D mSequenceArrowEnd;
 
 		public ESatelliteGPS(XmlNode rootNode, Layout parent) : base(rootNode, "UI/InGame/SatelliteBG", parent)
@@ -29,6 +31,8 @@
 			mSequenceTileOff = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/SequenceTileOff");
 			mSequenceArrowBegin = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/SequenceArrowStart");
 			mSequenceArrowMiddle = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/SequenceArrowMid");
+			mSequenceArrowLE = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/SequenceArrowLE");
+			mSequenceArrowLB = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/SequenceArrowLB");
 			mSequenceArrowEnd = MonoData.I.MonoGameLoad<Texture2D>("UI/InGame/SequenceArrowEnd");
 		}
 
@@ -111,35 +115,54 @@
 
 		void DrawLevelSequence(DrawInfo info, List<Level> levelSequence, Level currLevel)
 		{
-			Rectangle rectCrop = new Rectangle(0, 0, 11, 9);
-			float calcWidth = mSequenceArrowBegin.Width + levelSequence.Count * (mSequenceTileOn.Width + 12.0f) + mSequenceArrowEnd.Width - 14.0f;
-			Vector2 position = COMPASS_OFFSET + GetPosition();
+			const int MAX_LINE_LEN = 5;
+
+			if(levelSequence.Count <= MAX_LINE_LEN)
+			{
+				DrawSequenceLine(info, GetPosition() + COMPASS_OFFSET, 0, levelSequence.Count, levelSequence, currLevel);
+			}
+			else
+			{
+				// HACK: Manually do 2 lines
+				DrawSequenceLine(info, GetPosition() + COMPASS_OFFSET + new Vector2(0.0f, -20.0f), 0, MAX_LINE_LEN - 1, levelSequence, currLevel);
+				DrawSequenceLine(info, GetPosition() + COMPASS_OFFSET + new Vector2(0.0f, 20.0f), MAX_LINE_LEN - 1, levelSequence.Count, levelSequence, currLevel);
+			}
+		}
+
+		void DrawSequenceLine(DrawInfo info, Vector2 basePos, int start, int end, List<Level> levelSequence, Level currLevel)
+		{
+			int count = end - start;
+			Texture2D startLineTex = start == 0 ? mSequenceArrowBegin : mSequenceArrowLB;
+			Texture2D endLineTex = end == levelSequence.Count ? mSequenceArrowEnd : mSequenceArrowLE;
+
+			float calcWidth = startLineTex.Width + count * (mSequenceTileOn.Width + 12.0f) + endLineTex.Width - 14.0f;
+			Vector2 position = basePos;
 			position.X -= calcWidth * 0.5f;
 			position = MonoMath.Round(position);
 
-			MonoDraw.DrawTextureDepth(info, mSequenceArrowBegin, position, GetDepth());
-			position.X += mSequenceArrowBegin.Width - 1.0f;
+			// Draw line
+			MonoDraw.DrawTextureDepth(info, startLineTex, position, GetDepth());
+			position.X += startLineTex.Width - 1.0f;
 
-			for(int i = 0; i < levelSequence.Count; i++)
+			for (int i = start; i < end; i++)
 			{
 				Level selectedLevel = levelSequence[i];
 				Texture2D tileBase = object.ReferenceEquals(currLevel, selectedLevel) ? mSequenceTileOn : mSequenceTileOff;
 
 				Texture2D levelIcon = LevelSequenceInfoBubble.GetIconForLevel(selectedLevel.GetAuxData().GetLevelType());
-				MonoDraw.DrawTexture(info, levelIcon, position + new Vector2(4.0f, -10.0f), rectCrop, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth());
+				MonoDraw.DrawTextureDepth(info, levelIcon, position + new Vector2(4.0f, -10.0f), GetDepth());
 
 				MonoDraw.DrawTextureDepth(info, tileBase, position, GetDepth());
 				position.X += tileBase.Width - 1.0f;
 
-				if(i != levelSequence.Count - 1)
+				if (i != end - 1)
 				{
 					MonoDraw.DrawTextureDepth(info, mSequenceArrowMiddle, position, GetDepth());
 					position.X += mSequenceArrowMiddle.Width - 1.0f;
 				}
 			}
 
-			MonoDraw.DrawTextureDepth(info, mSequenceArrowEnd, position, GetDepth());
-			position.X += mSequenceArrowEnd.Width - 1.0f;
+			MonoDraw.DrawTextureDepth(info, endLineTex, position, GetDepth());
 		}
 	}
 }
