@@ -122,7 +122,17 @@
 		/// <summary>
 		/// Do we have a specific collectable?
 		/// </summary>
-		public bool HasSpecific(Point pos, UInt16 type)
+		public bool HasSpecific(Point pos, CollectableCategory cat)
+		{
+			return HasSpecific(pos, GetCollectableID(cat));
+		}
+
+
+
+		/// <summary>
+		/// Do we have a specific collectable?
+		/// </summary>
+		public bool HasSpecific(Point pos, CollectableID type)
 		{
 			int levelID = CampaignManager.I.GetCurrentLevel().GetIDForItems();
 			SpecificCollectableID specificID = new SpecificCollectableID(type, pos, levelID);

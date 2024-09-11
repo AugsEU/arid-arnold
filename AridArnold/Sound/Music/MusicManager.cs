@@ -2,7 +2,8 @@
 {
 	class MusicManager : Singleton<MusicManager>
 	{
-		const double MUSIC_FADE_OUT_LENGTH = 500.0;
+		const double MUSIC_FADE_OUT_LENGTH = 900.0;
+		const double MUSIC_FADE_IN_LENGTH = 1000.0;
 
 		MusicManifest mManifest;
 		MusicTrack mCurrentTrack;
@@ -72,7 +73,7 @@
 			{
 				mCurrentTrack = mNextTrack;
 				mNextTrack = null;
-				mCurrentTrack.Begin(0.0);
+				mCurrentTrack.Begin(MUSIC_FADE_IN_LENGTH);
 			}
 		}
 	}

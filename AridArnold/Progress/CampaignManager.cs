@@ -34,6 +34,7 @@
 		GameplayState mGameplayState;
 		Level mCurrentLevel;
 		List<Level> mLevelSequence;
+		bool mPlayingCompletedSequence = false;
 
 		LoadingSequence mQueuedLoad;
 		HubReturnInfo? mHubReturnInfo;
@@ -105,6 +106,7 @@
 			mMetaData = new CampaignMetaData(contentPath);
 
 			mLevelSequence = null;
+			mPlayingCompletedSequence = false;
 			mGameplayState = GameplayState.HubWorld;
 
 			mHubReturnInfo = null;
@@ -371,6 +373,7 @@
 		public void PushLevelSequence(List<Level> sequence, Point entryPoint)
 		{
 			mLevelSequence = sequence;
+			mPlayingCompletedSequence = CollectableManager.I.HasSpecific(entryPoint, CollectableCategory.Door);
 			mPrevDoorPos = entryPoint;
 
 			// Inform others
@@ -425,6 +428,7 @@
 
 			// Clear level sequence
 			mLevelSequence = null;
+			mPlayingCompletedSequence = false;
 		}
 
 
@@ -435,6 +439,16 @@
 		public List<Level> GetLevelSequence()
 		{
 			return mLevelSequence;
+		}
+
+
+		/// <summary>
+		/// Are we playing a completed level sequence?
+		/// Used to make items free.
+		/// </summary>
+		public bool IsPlayingCompletedSequence()
+		{
+			return mPlayingCompletedSequence;
 		}
 
 		#endregion rLevelSequence
@@ -642,7 +656,7 @@
 		/// <summary>
 		/// Read from a binary file
 		/// </summary>
-		public void ReadBinary(BinaryReader br)
+		public void ReadBinary(BinaryReader br, int version)
 		{
 			// Load campaign by name
 			string campaignName = br.ReadString();

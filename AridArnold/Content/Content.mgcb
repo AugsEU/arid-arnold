@@ -7681,6 +7681,51 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/80000.png
 
+#begin Campaigns/MainCampaign/Levels/80001.aux
+/copy:Campaigns/MainCampaign/Levels/80001.aux
+
+#begin Campaigns/MainCampaign/Levels/80001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/80001.png
+
+#begin Campaigns/MainCampaign/Levels/80002.aux
+/copy:Campaigns/MainCampaign/Levels/80002.aux
+
+#begin Campaigns/MainCampaign/Levels/80002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/80002.png
+
+#begin Campaigns/MainCampaign/Levels/80003.aux
+/copy:Campaigns/MainCampaign/Levels/80003.aux
+
+#begin Campaigns/MainCampaign/Levels/80003.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/80003.png
+
 #begin Campaigns/MainCampaign/Levels/90000.aux
 /copy:Campaigns/MainCampaign/Levels/90000.aux
 
@@ -7695,6 +7740,51 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/90000.png
+
+#begin Campaigns/MainCampaign/Levels/90001.aux
+/copy:Campaigns/MainCampaign/Levels/90001.aux
+
+#begin Campaigns/MainCampaign/Levels/90001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/90001.png
+
+#begin Campaigns/MainCampaign/Levels/90002.aux
+/copy:Campaigns/MainCampaign/Levels/90002.aux
+
+#begin Campaigns/MainCampaign/Levels/90002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/90002.png
+
+#begin Campaigns/MainCampaign/Levels/90003.aux
+/copy:Campaigns/MainCampaign/Levels/90003.aux
+
+#begin Campaigns/MainCampaign/Levels/90003.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/90003.png
 
 #begin Campaigns/MainCampaign/Meta.xml
 /copy:Campaigns/MainCampaign/Meta.xml
@@ -12286,17 +12376,29 @@
 /processorParam:TextureFormat=Color
 /build:Shared/Door/HorseDoorOpen.png
 
-#begin Shared/Icons/LevelDefault.png
+#begin Shared/Icons/LevelCircle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
+/processorParam:PremultiplyAlpha=False
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Shared/Icons/LevelDefault.png
+/build:Shared/Icons/LevelCircle.png
+
+#begin Shared/Icons/LevelCircleComp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/Icons/LevelCircleComp.png
 
 #begin Shared/Icons/LevelEmpty.png
 /importer:TextureImporter
@@ -12321,6 +12423,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shared/Icons/LevelFlag.png
+
+#begin Shared/Icons/LevelFountain.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Shared/Icons/LevelFountain.png
 
 #begin Shared/Icons/LevelKey.png
 /importer:TextureImporter
@@ -12561,6 +12675,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
+
+#begin Sound/Music/BukCave.ogg
+/copy:Sound/Music/BukCave.ogg
 
 #begin Sound/Music/ConvertOgg.bat
 /copy:Sound/Music/ConvertOgg.bat
@@ -13681,6 +13798,9 @@
 #begin Text/EN/NPC/Keen/OpenGateScript.txt
 /copy:Text/EN/NPC/Keen/OpenGateScript.txt
 
+#begin Text/EN/NPC/Keen/SoClose.txt
+/copy:Text/EN/NPC/Keen/SoClose.txt
+
 #begin Text/EN/NPC/Keen/Where.txt
 /copy:Text/EN/NPC/Keen/Where.txt
 
@@ -13747,6 +13867,9 @@
 #begin Text/EN/NPC/ShopKeeper/Heckle.txt
 /copy:Text/EN/NPC/ShopKeeper/Heckle.txt
 
+#begin Text/EN/NPC/ShopKeeper/HellBrowse.txt
+/copy:Text/EN/NPC/ShopKeeper/HellBrowse.txt
+
 #begin Text/EN/NPC/ShopKeeper/Hotdogs.txt
 /copy:Text/EN/NPC/ShopKeeper/Hotdogs.txt
 
@@ -13755,6 +13878,9 @@
 
 #begin Text/EN/NPC/ShopKeeper/Jetpack.txt
 /copy:Text/EN/NPC/ShopKeeper/Jetpack.txt
+
+#begin Text/EN/NPC/ShopKeeper/NewFace.txt
+/copy:Text/EN/NPC/ShopKeeper/NewFace.txt
 
 #begin Text/EN/NPC/ShopKeeper/RatPoison.txt
 /copy:Text/EN/NPC/ShopKeeper/RatPoison.txt
@@ -16113,70 +16239,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Campaigns/MainCampaign/Levels/80001.aux
-/copy:Campaigns/MainCampaign/Levels/80001.aux
-
-#begin Campaigns/MainCampaign/Levels/80001.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/80001.png
-
-#begin Campaigns/MainCampaign/Levels/80002.aux
-/copy:Campaigns/MainCampaign/Levels/80002.aux
-
-#begin Campaigns/MainCampaign/Levels/80002.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/80002.png
-
-#begin Campaigns/MainCampaign/Levels/80003.aux
-/copy:Campaigns/MainCampaign/Levels/80003.aux
-
-#begin Campaigns/MainCampaign/Levels/80003.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/80003.png
-
-#begin Text/EN/NPC/ShopKeeper/HellBrowse.txt
-/copy:Text/EN/NPC/ShopKeeper/HellBrowse.txt
-
-#begin Text/EN/NPC/Keen/SoClose.txt
-/copy:Text/EN/NPC/Keen/SoClose.txt
-
-#begin Campaigns/MainCampaign/Levels/90001.aux
-/copy:Campaigns/MainCampaign/Levels/90001.aux
-
-#begin Campaigns/MainCampaign/Levels/90001.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/90001.png
-
-#begin Campaigns/MainCampaign/Levels/90002.aux
-/copy:Campaigns/MainCampaign/Levels/90002.aux
-
-#begin Campaigns/MainCampaign/Levels/90002.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/90002.png
-
-#begin Campaigns/MainCampaign/Levels/90003.aux
-/copy:Campaigns/MainCampaign/Levels/90003.aux
-
-#begin Campaigns/MainCampaign/Levels/90003.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Levels/90003.png
-
-#begin Text/EN/NPC/ShopKeeper/NewFace.txt
-/copy:Text/EN/NPC/ShopKeeper/NewFace.txt
-
-#begin Sound/Music/BukCave.ogg
-/copy:Sound/Music/BukCave.ogg
 

@@ -24,6 +24,7 @@
 		Projectiles,
 		Bubble,
 		PauseMenu,
+		SequenceBG,
 		Front,
 		NumLayers
 	}

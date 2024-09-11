@@ -308,7 +308,7 @@
 		{
 			if (CampaignManager.I.GetNextLevelInSequence() is not null)
 			{
-				CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader());
+				CampaignManager.I.QueueLoadSequence(new ContinueSequenceLoader());
 			}
 			else
 			{

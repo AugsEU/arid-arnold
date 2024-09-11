@@ -11,7 +11,13 @@
 		static Texture2D mShopIcon = null;
 		static Texture2D mWaterIcon = null;
 		static Texture2D mFlagIcon = null;
+		static Texture2D mFountainIcon = null;
 		static Texture2D mEmptyIcon = null;
+
+		Texture2D mLevelCircle;
+		Texture2D mLevelCircleComp;
+
+		bool mSeqCompleted;
 
 		List<Level> mLevelSequence;
 
@@ -22,11 +28,16 @@
 
 			SetTargetSize(2 * BORDER_SIZE + mLevelSequence.Count * (ICON_WIDTH + ICON_SPACING) - ICON_SPACING, 20);
 
-			mLevelIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelDefault");
+			mLevelIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelEmpty");
 			mShopIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelShop");
 			mWaterIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelWater");
 			mFlagIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelKey");
 			mEmptyIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelEmpty");
+			mFountainIcon = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelFountain");
+
+			mLevelCircle = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelCircle");
+			mLevelCircleComp = MonoData.I.MonoGameLoad<Texture2D>("Shared/Icons/LevelCircleComp");
+			mSeqCompleted = false;
 		}
 
 		protected override void DrawInner(DrawInfo info, Rectangle area)
@@ -40,6 +51,9 @@
 				Texture2D levelIconTex = GetIconForLevel(levelType);
 
 				MonoDraw.DrawTextureDepth(info, levelIconTex, offset, DrawLayer.Bubble);
+
+				Texture2D circleTex = mSeqCompleted ? mLevelCircleComp : mLevelCircle;
+				MonoDraw.DrawTextureDepth(info, circleTex, offset + new Vector2(0.0f, 9.0f), DrawLayer.Bubble);
 
 				offset.X += ICON_SPACING + ICON_WIDTH;
 			}
@@ -56,6 +70,8 @@
 					return mShopIcon;
 				case AuxData.LevelType.Empty:
 					return mEmptyIcon;
+				case AuxData.LevelType.Fountain:
+					return mFountainIcon;
 			}
 
 			return mLevelIcon;
@@ -63,6 +79,11 @@
 
 		protected override void UpdateInternal()
 		{
+		}
+
+		public void SetSeqCompleted(bool comp)
+		{
+			mSeqCompleted = comp;
 		}
 	}
 }

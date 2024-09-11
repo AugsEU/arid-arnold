@@ -7,6 +7,7 @@
 		protected enum LoadingState
 		{
 			FadeOut,
+			DoEffects,
 			PreLevelLoad,
 			LoadingLevel,
 			PostLevelLoad,
@@ -55,6 +56,10 @@
 			{
 				case LoadingState.FadeOut:
 					UpdateFade(mFadeOut, gameTime);
+					break;
+
+				case LoadingState.DoEffects:
+					UpdateEffects(gameTime);
 					break;
 
 				case LoadingState.PreLevelLoad:
@@ -117,6 +122,17 @@
 			mNumUpdatesLoading = 0;
 		}
 
+		protected virtual void UpdateEffects(GameTime gameTime)
+		{
+			// No effects...
+			FinishEffectsStage();
+		}
+
+		protected void FinishEffectsStage()
+		{
+			mLoadingState = LoadingState.PreLevelLoad;
+		}
+
 		#endregion rUpdate
 
 
@@ -136,6 +152,9 @@
 				case LoadingState.FadeIn:
 					currFade = mFadeIn;
 					break;
+				case LoadingState.DoEffects:
+					DrawEffects(info);
+					break;
 			}
 
 			if (currFade is not null)
@@ -144,8 +163,13 @@
 			}
 			else
 			{
-				MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, GameScreen.GAME_AREA_WIDTH, GameScreen.GAME_AREA_HEIGHT), Color.Black, DrawLayer.Front);
+				MonoDraw.DrawRectDepth(info, new Rectangle(0, 0, GameScreen.GAME_AREA_WIDTH, GameScreen.GAME_AREA_HEIGHT), Color.Black, DrawLayer.SequenceBG);
 			}
+		}
+
+		protected virtual void DrawEffects(DrawInfo info)
+		{
+			// No effects.
 		}
 
 		#endregion rDraw

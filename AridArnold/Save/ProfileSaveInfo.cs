@@ -11,7 +11,7 @@ namespace AridArnold
 
 		public const string PROFILE_SAVE_FOLDER = "profileSave/";
 		const string PROFILE_SAVE_MAGIC = "pas";
-		const int PROFILE_SAVE_VER = 1;
+		public const int PROFILE_SAVE_VER = 2;
 		const UInt64 RELOAD_FRAME_PENALTY = 121; // 2 seconds added just for reloading to avoid weird strats.
 
 		ReadMode mReadMode;
@@ -78,7 +78,7 @@ namespace AridArnold
 			TimeZoneManager.I.ReadBinary(br);
 			CollectableManager.I.ReadBinary(br);
 			FlagsManager.I.ReadBinary(br);
-			CampaignManager.I.ReadBinary(br);
+			CampaignManager.I.ReadBinary(br, fileVer);
 
 			ArcadeGameScreen arcadeGameScreen = ScreenManager.I.GetScreen<ArcadeGameScreen>();
 			arcadeGameScreen.ReadBinary(br);

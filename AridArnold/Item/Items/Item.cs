@@ -173,7 +173,14 @@
 		/// </summary>
 		public int GetPrice()
 		{
-			return mPrice;
+			int price = mPrice;
+
+			if(price > 0 && CampaignManager.I.IsPlayingCompletedSequence())
+			{
+				price = 0;
+			}
+
+			return price;
 		}
 
 

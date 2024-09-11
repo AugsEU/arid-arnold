@@ -57,17 +57,17 @@
 
 			MonoDebug.Assert(mLevelSequence.Count > 0 && mLevelSequence.Count < 10);
 
-			BubbleStyle bubbleStyle = new BubbleStyle();
-			bubbleStyle.mInnerColor = new Color(20, 20, 20, 150);
-			bubbleStyle.mBorderColor = new Color(150, 150, 150, 200);
-			mHelpBubble = new LevelSequenceInfoBubble(mLevelSequence, mPosition + BUBBLE_OFFSET, bubbleStyle);
-
 			mDoorOpen = false;
 			mTileCoord = TileManager.I.GetTileMapCoord(mPosition);
 
 			mActiveTimeZone = timeZone;
 
 			mAltDoor = horseDoor;
+
+			BubbleStyle bubbleStyle = new BubbleStyle();
+			bubbleStyle.mInnerColor = new Color(20, 20, 20, 150);
+			bubbleStyle.mBorderColor = new Color(150, 150, 150, 200);
+			mHelpBubble = new LevelSequenceInfoBubble(mLevelSequence, mPosition + BUBBLE_OFFSET, bubbleStyle);
 		}
 
 
@@ -137,7 +137,8 @@
 		/// </summary>
 		private void CheckCompletion()
 		{
-			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, (UInt16)CollectableCategory.Door);
+			mAlreadyCompleted = CollectableManager.I.HasSpecific(mTileCoord, CollectableCategory.Door);
+			mHelpBubble.SetSeqCompleted(mAlreadyCompleted);
 		}
 
 
@@ -171,7 +172,7 @@
 			mTexture = mOpenTexture;
 
 			CampaignManager.I.PushLevelSequence(mLevelSequence, mTileCoord);
-			CampaignManager.I.QueueLoadSequence(new LevelSequenceLoader());
+			CampaignManager.I.QueueLoadSequence(new StartSequenceLoader());
 		}
 
 
