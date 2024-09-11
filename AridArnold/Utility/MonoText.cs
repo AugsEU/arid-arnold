@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 
 namespace AridArnold
 {
@@ -136,6 +137,21 @@ namespace AridArnold
 			}
 
 			return string.Format("{0:D} : {1:D2} : {2:D2}", m, s % 60, cs % 100);
+		}
+
+
+
+		/// <summary>
+		/// Converts number such as 3 to +3 or negatives to -0
+		/// </summary>
+		public static string IntToDiff(int diff)
+		{
+			if(diff >= 0)
+			{
+				return string.Format("+{0}", diff);
+			}
+			
+			return diff.ToString();
 		}
 	}
 }

@@ -16252,3 +16252,21 @@
 /processorParam:PremultiplyAlpha=False
 /build:UI/InGame/SequenceArrowLE.png
 
+#begin Text/EN/UI/Sequence/LevelComplete.txt
+/copy:Text/EN/UI/Sequence/LevelComplete.txt
+
+#begin Text/EN/UI/Sequence/SequenceComplete.txt
+/copy:Text/EN/UI/Sequence/SequenceComplete.txt
+
+#begin Text/EN/UI/Sequence/ItemRefund.txt
+/copy:Text/EN/UI/Sequence/ItemRefund.txt
+
+#begin Text/EN/UI/Sequence/KeyGet.txt
+/copy:Text/EN/UI/Sequence/KeyGet.txt
+
+#begin Text/EN/UI/Sequence/Money.txt
+/copy:Text/EN/UI/Sequence/Money.txt
+
+#begin Text/EN/UI/Sequence/WaterGet.txt
+/copy:Text/EN/UI/Sequence/WaterGet.txt
+

@@ -176,6 +176,25 @@
 			mCurrent.CopyFrom(ref mStartSequence);
 		}
 
+		public int GetSequenceEndDiff(CollectableCategory cat, byte impl = 0)
+		{
+			return GetSequenceEndDiff(GetCollectableID(cat, impl));
+		}
+
+		public int GetSequenceEndDiff(CollectableID collectableID)
+		{
+			uint now = 0;
+			uint then = 0;
+
+			mCurrent.mCollectableCounts.TryGetValue(collectableID, out now);
+			mStartSequence.mCollectableCounts.TryGetValue(collectableID, out then);
+
+			int nowInt = (int)now;
+			int thenInt = (int)then;
+
+			return nowInt - thenInt;
+		}
+
 		#endregion rLevelSequence
 
 

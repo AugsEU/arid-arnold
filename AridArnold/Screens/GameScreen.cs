@@ -312,7 +312,7 @@
 			}
 			else
 			{
-				CampaignManager.I.QueueLoadSequence(new ReturnToHubSuccessLoader());
+				CampaignManager.I.QueueLoadSequence(new SequenceWinLoader());
 			}
 			mLevelEndTimer.FullReset();
 		}

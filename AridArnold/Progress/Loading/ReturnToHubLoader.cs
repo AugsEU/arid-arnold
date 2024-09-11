@@ -11,7 +11,7 @@
 			mFadeIn = new FadeFX(new ScreenStars(), 0.1f, false);
 		}
 
-		protected void ReturnToHubLoad()
+		protected void ReturnToHubLoad(bool success)
 		{
 			// To do: Make this more complex
 			HubReturnInfo returnInfo = CampaignManager.I.GetReturnInfo().Value;
@@ -26,10 +26,10 @@
 			}
 
 			NotifyFinishedLoading();
+
+			CampaignManager.I.EndSequence(success);
 		}
 	}
-
-
 
 	/// <summary>
 	/// Return to the hub after completing a sequence successfully
@@ -38,9 +38,7 @@
 	{
 		protected override void LevelLoadUpdate(GameTime gameTime)
 		{
-			// To do: make this more complicated
-			ReturnToHubLoad();
-			CampaignManager.I.EndSequence(true);
+			ReturnToHubLoad(true);
 		}
 	}
 
@@ -53,9 +51,7 @@
 	{
 		protected override void LevelLoadUpdate(GameTime gameTime)
 		{
-			// To do: make this more complicated
-			ReturnToHubLoad();
-			CampaignManager.I.EndSequence(false);
+			ReturnToHubLoad(false);
 		}
 	}
 }
