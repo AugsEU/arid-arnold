@@ -47,6 +47,9 @@
 			{
 				case "GrillVogel":
 					return GenerateGrillVogelName();
+				case "FinalTime":
+					ulong frames = InputManager.I.GetNumberOfInputFrames();
+					return MonoText.GetTimeTextFromFrames(frames);
 			}
 
 			// More complex matches

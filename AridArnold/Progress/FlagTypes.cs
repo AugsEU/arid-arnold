@@ -13,6 +13,7 @@
 		kKeyItems = 2,
 		kUnlockedGreatGate = 3,
 		kPanelsUnlocked = 4,
+		kFinishedGame = 5,
 		kMaxFlagCategory
 	}
 

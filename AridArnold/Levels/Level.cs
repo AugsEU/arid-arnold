@@ -111,9 +111,8 @@
 				EntityManager.I.RegisterEntity(newEntity);
 			}
 
-			// Reset camera
-			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
-			gameCam.Reset();
+			// Reset cameras
+			CameraManager.I.ResetAllCameras();
 			GravityOrb.sActiveDirection = CardinalDirection.Down; // HACK: Down is the default direction.
 
 			if (BF.DEBUG_LOADER)

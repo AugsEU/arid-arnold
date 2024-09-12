@@ -73,7 +73,7 @@
 		protected override void OnPlayerInteract()
 		{
 			// End game...
-			EventManager.I.TriggerEvent(EventType.ShopDoorOpen);
+			EventManager.I.TriggerEvent(EventType.EndGame);
 			base.OnPlayerInteract();
 		}
 

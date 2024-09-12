@@ -126,6 +126,15 @@ namespace AridArnold
 
 		}
 
+
+		/// <summary>
+		/// Should we pause the cinematic?
+		/// </summary>
+		virtual public bool RequestPause()
+		{
+			return false;
+		}
+
 		#endregion rUtil
 	}
 }

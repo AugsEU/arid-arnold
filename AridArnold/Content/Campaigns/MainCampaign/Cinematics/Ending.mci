@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinematic>
+
+	<actors>
+		<actor>
+			<name>Fountain</name>
+			<layer>SubEntity</layer>
+			<x>242</x>
+			<y>186</y>
+		</actor>
+		<actor>
+			<name>Barbara</name>
+			<layer>Default</layer>
+			<x>0</x>
+			<y>0</y>
+			<emitters>
+				<emitter type="SmokeBox">
+					<x>-4.0</x>
+					<y>0.0</y>
+					<width>16.0</width>
+					<height>16.0</height>
+					<colors>
+						<color>7325C6</color>
+						<color>8E5CC4</color>
+					</colors>
+					<intensity>0.08</intensity>
+				</emitter>
+			</emitters>
+		</actor>
+		<actor>
+			<name>Arnold</name>
+			<layer>Default</layer>
+			<x>0</x>
+			<y>0</y>
+		</actor>
+	</actors>
+
+
+
+	<commands>
+		<!-- Setup -->
+		<CC_DisplayLayout frames="0,2260">
+			<layout>BG/Heaven/Heaven.mlo</layout>
+		</CC_DisplayLayout>
+		<CC_DisplayLayout frames="0,2260">
+			<layout>BG/Cinematics/EndingBG.mlo</layout>
+		</CC_DisplayLayout>
+
+		<!-- Fountain setup -->
+		<CC_SetActorProps frames="0">
+			<actor>Fountain</actor>
+			<layer>SubEntity</layer>
+			<facing>right</facing>
+			<x>242</x>
+			<y>186</y>
+		</CC_SetActorProps>
+		<CC_AnimActor frames="0,2260">
+			<actor>Fountain</actor>
+			<anim>Fountain/Water.max</anim>
+		</CC_AnimActor>
+
+		<!-- Arnold Setup -->
+		<CC_SetActorProps frames="0">
+			<actor>Arnold</actor>
+			<layer>Default</layer>
+			<facing>left</facing>
+			<tex>Arnold/ArnoldBathe</tex>
+			<x>256</x>
+			<y>218</y>
+		</CC_SetActorProps>
+
+		<!-- Opening pan -->
+		<CC_BlackFade frames="0,60">
+			<type>BlackTo</type>
+		</CC_BlackFade>
+		<CC_CameraLerp frames = "0,300">
+			<start>
+				<x>-208</x>
+				<y>80</y>
+				<zoom>4.0</zoom>
+			</start>
+			<end>
+				<x>-208</x>
+				<y>-80</y>
+				<zoom>4.0</zoom>
+			</end>
+		</CC_CameraLerp>
+
+		<!-- Barbara flies down -->
+		<CC_AnimActor frames="400,565">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/Fall.max</anim>
+		</CC_AnimActor>
+		<CC_ActorLeafFall frames="400">
+			<actor>Barbara</actor>
+			<x>252</x>
+			<y>112</y>
+			<yStop>195</yStop>
+		</CC_ActorLeafFall>
+		<CC_SetActorProps frames="565">
+			<actor>Barbara</actor>
+			<tex>NPC/Barbara/Land1</tex>
+			<facing>right</facing>
+		</CC_SetActorProps>
+
+		<!-- Barbara lands -->
+		<CC_SetActorProps frames="600,7650">
+			<actor>Barbara</actor>
+			<tex>NPC/Barbara/Default</tex>
+			<facing>right</facing>
+		</CC_SetActorProps>
+
+		<!-- Barbara: Ending speil -->
+		<CC_SpawnTextbox frames="630">
+			<actor>Barbara</actor>
+			<mouthOpen>NPC/Barbara/TalkNormal</mouthOpen>
+			<mouthClosed>NPC/Barbara/Default</mouthClosed>
+
+			<text>NPC.Barbara.Opening.EndingSpeil</text>
+			<x>170</x>
+			<y>180</y>
+			<spike>70</spike>
+			<framesPerLetter>4</framesPerLetter>
+			<borderColor>7325C6</borderColor>
+			<fillColor>2A1223A0</fillColor>
+		</CC_SpawnTextbox>
+
+		<!-- Barbara: Turns and leaves -->
+		<CC_SetActorProps frames="1780,2260">
+			<actor>Barbara</actor>
+			<tex>NPC/Barbara/Land1</tex>
+			<facing>left</facing>
+		</CC_SetActorProps>
+		<CC_AnimActor frames="1800,2260">
+			<actor>Barbara</actor>
+			<anim>NPC/Barbara/Fall.max</anim>
+		</CC_AnimActor>
+		<CC_ActorFloatAway frames="1800">
+			<actor>Barbara</actor>
+			<accelerate>
+				<x>-0.4</x>
+				<y>-0.2</y>
+			</accelerate>
+		</CC_ActorFloatAway>
+
+		<!-- Opening pan -->
+		<CC_BlackFade frames="2200,2260">
+			<type>ToBlack</type>
+		</CC_BlackFade>
+
+		<!-- Ending card -->
+		<CC_BlackFade frames="2200,2260">
+			<type>ToBlack</type>
+		</CC_BlackFade>
+		<CC_BlackSquare frames="2260, 99999">
+		</CC_BlackSquare>
+		<CC_CameraSet frames = "2260">
+				<x>0</x>
+				<y>0</y>
+				<zoom>1.0</zoom>
+		</CC_CameraSet>
+		
+		<CC_FadeInText frames="2280, 99999">
+			<text>InGame.EndingLine1</text>
+			<x>480</x>
+			<y>100</y>
+
+			<fade>1200</fade>
+			<font>Pixica-24</font>
+			<layer>Front</layer>
+		</CC_FadeInText>
+		<CC_FadeInText frames="2500, 99999">
+			<text>InGame.EndingLine2</text>
+			<x>480</x>
+			<y>140</y>
+
+			<fade>1200</fade>
+			<font>Pixica-24</font>
+			<layer>Front</layer>
+		</CC_FadeInText>
+
+		<CC_FadeInText frames="2600, 99999">
+			<text>InGame.EndingLine3</text>
+			<x>480</x>
+			<y>440</y>
+
+			<fade>1200</fade>
+			<font>Pixica-24</font>
+			<layer>Front</layer>
+		</CC_FadeInText>
+		<CC_FadeInText frames="2600, 99999">
+			<text>UI.Sequence.GoNext</text>
+			<x>480</x>
+			<y>480</y>
+
+			<fade>1200</fade>
+			<font>Pixica-24</font>
+			<layer>Front</layer>
+		</CC_FadeInText>
+
+		<CC_PauseUntilConfirm frames="2700, 99999">
+		</CC_PauseUntilConfirm>
+	</commands>
+</cinematic>

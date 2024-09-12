@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Microsoft.Xna.Framework;
+using System.Linq;
 using System.Reflection;
 
 namespace AridArnold
@@ -11,7 +12,7 @@ namespace AridArnold
 
 
 #if DEBUG
-		const int DEBUG_FRAME_SKIP = 0;
+		const int DEBUG_FRAME_SKIP = 2280;
 #endif
 
 		#endregion rConstant
@@ -40,6 +41,8 @@ namespace AridArnold
 		double mElapsedTime;
 		bool mIsPlaying;
 
+		bool mPaused;
+
 		#endregion rMembers
 
 
@@ -63,6 +66,8 @@ namespace AridArnold
 			mElapsedTime = 0.0;
 			mLastFrameCompleted = -1;
 			mIsPlaying = false;
+
+			mPaused = false;
 		}
 
 
@@ -167,7 +172,7 @@ namespace AridArnold
 		{
 			if (!mIsPlaying || gameTime.ElapsedGameTime.TotalMilliseconds <= 1.0) return;
 
-			foreach(CinematicActor cinematicActor in mActors)
+			foreach (CinematicActor cinematicActor in mActors)
 			{
 				cinematicActor.Update(gameTime);
 			}
@@ -175,14 +180,28 @@ namespace AridArnold
 #if DEBUG
 			DebugLoop:
 #endif
-			mElapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
-
-			int runUpToFrame = GetFrameFromElapsedTime();
-
-			while (mLastFrameCompleted < runUpToFrame)
+			if (mPaused)
 			{
-				AdvanceFrame(gameTime);
+				// Keep them updated while paused.
+				UpdateAllCommands(gameTime, mLastFrameCompleted);
 			}
+			else
+			{
+				mElapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
+
+				int runUpToFrame = GetFrameFromElapsedTime();
+
+				while (mLastFrameCompleted < runUpToFrame)
+				{
+					AdvanceFrame(gameTime);
+					if (mPaused)
+					{
+						// Stop advancing frames.
+						break;
+					}
+				}
+			}
+
 
 			if (mLastFrameCompleted >= mTotalFrameCount)
 			{
@@ -205,16 +224,33 @@ namespace AridArnold
 		{
 			int frameNum = mLastFrameCompleted + 1; // Ensure frames are done sequentially.
 
+			UpdateAllCommands(gameTime, frameNum);
+
+			mLastFrameCompleted = frameNum;
+		}
+
+
+
+		/// <summary>
+		/// Update all the commands
+		/// </summary>
+		/// <param name="gameTime"></param>
+		public void UpdateAllCommands(GameTime gameTime, int frameNum)
+		{
+			mPaused = false;
 			foreach (CinematicCommand command in mCommands)
 			{
 				int commandSpaceship = command.FrameSpaceship(frameNum);
 				if (commandSpaceship == 0)
 				{
 					command.Update(gameTime, frameNum);
+
+					if (command.RequestPause())
+					{
+						mPaused = true;
+					}
 				}
 			}
-
-			mLastFrameCompleted = frameNum;
 		}
 
 
@@ -227,6 +263,7 @@ namespace AridArnold
 			mElapsedTime = 0.0;
 			mLastFrameCompleted = -1;
 			mIsPlaying = true;
+			mPaused = false;
 			FullReset();
 		}
 
@@ -240,6 +277,7 @@ namespace AridArnold
 			mElapsedTime = (double)mTotalFrameCount / CINE_FRAME_RATE;
 			mLastFrameCompleted = mTotalFrameCount;
 			mIsPlaying = false;
+			mPaused = false;
 		}
 
 		#endregion rUpdate

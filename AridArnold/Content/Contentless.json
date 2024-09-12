@@ -55,6 +55,10 @@
         {
             "copy": true
         },
+        ".mci": 
+        {
+            "copy": true
+        },
         ".bat": 
         {
             "copy": true

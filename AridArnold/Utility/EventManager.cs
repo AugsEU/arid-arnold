@@ -11,6 +11,7 @@
 		ShopDoorOpen,
 		RedKeyUsed,
 		DemonBossKilled,
+		EndGame,
 	}
 
 

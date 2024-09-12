@@ -6,6 +6,11 @@
 		<cinematicTrigger type="Opening">
 			<cinematicPath>Cinematics/Opening.mci</cinematicPath>
 		</cinematicTrigger>
+		<cinematicTrigger type="LevelEnterFirst">
+			<cinematicPath>Cinematics/Ending.mci</cinematicPath>
+			<level>903</level>
+			<flag>5</flag>
+		</cinematicTrigger>
 	</cinematics>
 	<coins>
 		<type root="SteamPlant">0</type>

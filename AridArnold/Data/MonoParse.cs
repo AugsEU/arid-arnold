@@ -36,6 +36,20 @@ namespace AridArnold
 		}
 
 
+		/// <summary>
+		/// Parse UInt64 from xml node. Default = Zero
+		/// </summary>
+		static public UInt64 GetUInt64(XmlNode node, UInt64 defaultVal = 0u)
+		{
+			if (node is null)
+			{
+				return defaultVal;
+			}
+
+			return UInt64.Parse(node.InnerText, CultureInfo.InvariantCulture.NumberFormat);
+		}
+
+
 
 		/// <summary>
 		/// Get inner text of node

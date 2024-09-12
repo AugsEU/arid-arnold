@@ -27,9 +27,12 @@
 		/// </summary>
 		protected override void UpdateInternal(GameTime gameTime)
 		{
-			if (EventManager.I.IsSignaled(EventType.ShopDoorOpen))
+			if (EventManager.I.IsSignaled(EventType.EndGame))
 			{
 				mLevelStatus = LevelStatus.Win;
+
+				// Inform we completed the game.
+				FlagsManager.I.SetFlag(FlagCategory.kFinishedGame, true);
 			}
 		}
 

@@ -39,6 +39,7 @@ namespace AridArnold
 			{
 				mTextStaggerTimer.Start();
 				PopulateWinStats();
+				CameraManager.I.ResetAllCameras();
 			}
 
 			mTextStaggerTimer.Update(gameTime);
@@ -104,7 +105,14 @@ namespace AridArnold
 
 		protected override void DrawEffects(DrawInfo info)
 		{
+			if (!mTextStaggerTimer.IsPlaying())
+			{
+				// Hack to make sure setup is done.
+				return;
+			}
+
 			SpriteFont bigFont = FontManager.I.GetFont("Pixica", 36, true);
+			SpriteFont font = FontManager.I.GetFont("Pixica", 24, false);
 			Color textColor = new Color(127, 127, 127);
 
 			Vector2 pos = new Vector2(GameScreen.GAME_AREA_WIDTH * 0.5f, 50.0f);
@@ -119,6 +127,9 @@ namespace AridArnold
 			// Stats
 			DrawAllStats(info, pos);
 
+			pos.Y = 500.0f;
+			string nextText = LanguageManager.I.GetText("UI.Sequence.GoNext");
+			MonoDraw.DrawStringCentredShadow(info, font, pos, textColor, nextText, DrawLayer.Front);
 
 			base.DrawEffects(info);
 		}

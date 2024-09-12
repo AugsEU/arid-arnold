@@ -90,6 +90,19 @@
 			return false;
 		}
 
+
+
+		/// <summary>
+		/// Update all the cameras
+		/// </summary>
+		public void ResetAllCameras()
+		{
+			foreach (Camera camera in mCameraList)
+			{
+				camera.Reset();
+			}
+		}
+
 		#endregion rUtil
 	}
 }
