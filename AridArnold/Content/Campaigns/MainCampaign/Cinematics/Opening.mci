@@ -100,7 +100,9 @@
 			<tex>NPC/BossMan/Default</tex>
 		</CC_SetActorProps>
 
-
+		<CC_PlayMusic frames="0">
+			<id>IntroCut</id>
+		</CC_PlayMusic>
 
 		<!-- Opening pan -->
 		<CC_BlackFade frames="0,60">
@@ -133,6 +135,7 @@
 			<spike>80</spike>
 			<borderColor>160014</borderColor>
 			<fillColor>260B23A0</fillColor>
+			<voice>NPC/Voice/DefaultMale.xml</voice>
 		</CC_SpawnTextbox>
 		<CC_SetActorProps frames="500">
 			<actor>BossMan</actor>
@@ -152,6 +155,7 @@
 			<borderColor>3D41B5</borderColor>
 			<fillColor>0F102DA0</fillColor>
 			<flipSpike></flipSpike>
+			<voice>NPC/Voice/AltMale.xml</voice>
 		</CC_SpawnTextbox>
 
 		<!-- Boiler: Looks like we are out of water -->
@@ -166,6 +170,7 @@
 			<spike>80</spike>
 			<borderColor>160014</borderColor>
 			<fillColor>260B23A0</fillColor>
+			<voice>NPC/Voice/DefaultMale.xml</voice>
 		</CC_SpawnTextbox>
 
 		<!-- Boss: WHAAT?! -->
@@ -181,6 +186,7 @@
 			<borderColor>3D41B5</borderColor>
 			<fillColor>0F102DA0</fillColor>
 			<flipSpike></flipSpike>
+			<voice>NPC/Voice/AltMale.xml</voice>
 		</CC_SpawnTextbox>
 		<CC_AnimActor frames="900,970">
 			<actor>BossMan</actor>
@@ -199,6 +205,7 @@
 			<spike>80</spike>
 			<borderColor>160014</borderColor>
 			<fillColor>260B23A0</fillColor>
+			<voice>NPC/Voice/DefaultMale.xml</voice>
 		</CC_SpawnTextbox>
 
 		<!-- Strange noise, both look around -->
@@ -273,6 +280,7 @@
 			<borderColor>7325C6</borderColor>
 			<fillColor>2A1223A0</fillColor>
 			<flipSpike></flipSpike>
+			<voice>NPC/Voice/DefaultFemale.xml</voice>
 		</CC_SpawnTextbox>
 
 		<!-- Boss: Who are you? -->
@@ -287,6 +295,7 @@
 			<spike>96</spike>
 			<borderColor>3D41B5</borderColor>
 			<fillColor>0F102DA0</fillColor>
+			<voice>NPC/Voice/AltMale.xml</voice>
 		</CC_SpawnTextbox>
 
 		<!-- Barbara: Intro -->
@@ -303,6 +312,7 @@
 			<borderColor>7325C6</borderColor>
 			<fillColor>2A1223A0</fillColor>
 			<flipSpike></flipSpike>
+			<voice>NPC/Voice/DefaultFemale.xml</voice>
 		</CC_SpawnTextbox>
 
 		<!-- Boss: Summon the man -->
@@ -317,6 +327,7 @@
 			<spike>96</spike>
 			<borderColor>3D41B5</borderColor>
 			<fillColor>0F102DA0</fillColor>
+			<voice>NPC/Voice/AltMale.xml</voice>
 		</CC_SpawnTextbox>
 		<CC_AnimActor frames="3785,3810">
 			<actor>BossMan</actor>
@@ -366,6 +377,7 @@
 			<borderColor>7325C6</borderColor>
 			<fillColor>2A1223A0</fillColor>
 			<flipSpike></flipSpike>
+			<voice>NPC/Voice/DefaultFemale.xml</voice>
 		</CC_SpawnTextbox>
 		<CC_LerpActorPos frames="5040,5300">
 			<actor>Arnold</actor>
@@ -396,7 +408,13 @@
 			<framesPerLetter>4</framesPerLetter>
 			<borderColor>3D41B5</borderColor>
 			<fillColor>0F102DA0</fillColor>
+			<voice>NPC/Voice/AltMale.xml</voice>
 		</CC_SpawnTextbox>
+		<CC_SetActorProps frames="6120">
+			<actor>Arnold</actor>
+			<facing>left</facing>
+			<tex>Arnold/ArnoldStand</tex>
+		</CC_SetActorProps>
 
 		<CC_BlackFade frames="7500,7650">
 			<type>ToBlack</type>

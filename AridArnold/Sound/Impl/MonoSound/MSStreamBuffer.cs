@@ -82,7 +82,7 @@ namespace AridArnold
 
 		public override SoundState SoundState()
 		{
-			if(mStopHack)
+			if(mStopHack || mStreamPackage.Metrics is null)
 			{
 				return Microsoft.Xna.Framework.Audio.SoundState.Stopped;
 			}

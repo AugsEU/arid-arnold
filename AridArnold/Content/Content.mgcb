@@ -16333,3 +16333,6 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/Mountain/BlackTile.png
 
+#begin Sound/Music/Intro.ogg
+/copy:Sound/Music/Intro.ogg
+

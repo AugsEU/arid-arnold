@@ -4,6 +4,7 @@
 	{
 		public string mFileName;
 		public float mVolume;
+		public bool mNoLoop;
 
 		public MusicManifestEntry(XmlNode node, string basePath)
 		{
@@ -11,6 +12,7 @@
 			mFileName = Path.Join(basePath, mFileName);
 
 			mVolume = MonoParse.GetFloat(node["vol"], 0.0f);
+			mNoLoop = node["noLoop"] is not null; 
 		}
 	}
 

@@ -14,6 +14,13 @@
         <vol>0.8</vol>
     </music>
 
+    <!-- Cutscene -->
+    <music id="IntroCut">
+        <file>Intro.ogg</file>
+        <vol>0.6</vol>
+        <noLoop></noLoop>
+    </music>
+
     <!-- Arcade -->
     <music id="DeathRide">
         <file>DeathRide.ogg</file>

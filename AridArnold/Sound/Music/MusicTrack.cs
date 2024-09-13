@@ -10,6 +10,8 @@
 		public MusicTrack(string id, MusicManifestEntry data) : base(MonoSound.Impl.LoadAudioBuffer(data.mFileName), data.mVolume)
 		{
 			mID = id;
+			
+			GetBuffer().SetLoop(!data.mNoLoop);
 		}
 
 		public string GetMusicID()
