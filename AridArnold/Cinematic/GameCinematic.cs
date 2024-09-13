@@ -12,7 +12,7 @@ namespace AridArnold
 
 
 #if DEBUG
-		const int DEBUG_FRAME_SKIP = 2280;
+		const int DEBUG_FRAME_SKIP = 0;
 #endif
 
 		#endregion rConstant

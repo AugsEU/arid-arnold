@@ -16303,3 +16303,33 @@
 #begin Text/EN/InGame/EndingLine3.txt
 /copy:Text/EN/InGame/EndingLine3.txt
 
+#begin Tiles/Mountain/Marble.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Mountain/Marble.png
+
+#begin Tiles/Mountain/MarbleGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Mountain/MarbleGhost.png
+
+#begin Campaigns/MainCampaign/Hub/0604.aux
+/copy:Campaigns/MainCampaign/Hub/0604.aux
+
+#begin Campaigns/MainCampaign/Hub/0604.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Campaigns/MainCampaign/Hub/0604.png
+
+#begin Text/EN/NPC/Tome/Hope.txt
+/copy:Text/EN/NPC/Tome/Hope.txt
+
+#begin Tiles/Mountain/BlackTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:Tiles/Mountain/BlackTile.png
+

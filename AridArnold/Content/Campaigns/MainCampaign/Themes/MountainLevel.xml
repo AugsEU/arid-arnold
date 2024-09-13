@@ -13,4 +13,8 @@
 	<path from="Platform">LogSummer</path>
 	<path from="CoinFull">FrancFull</path>
 	<path from="CoinGhost">FrancGhost</path>
+
+	<path from="ApparentWall">Marble</path>
+	<path from="FadedWall">MarbleGhost</path>
+	<path from="OtherWorldWall">BlackTile</path>
 </theme>

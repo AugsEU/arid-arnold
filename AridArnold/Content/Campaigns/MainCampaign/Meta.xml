@@ -62,5 +62,17 @@
 			<from>704</from>
 			<to>705</to>
 		</hiddenRoom>
+		<hiddenRoom>
+			<from>601</from>
+			<to>604</to>
+		</hiddenRoom>
+		<hiddenRoom>
+			<from>403</from>
+			<to>604</to>
+		</hiddenRoom>
+		<hiddenRoom>
+			<from>403</from>
+			<to>308</to>
+		</hiddenRoom>
 	</hiddenRooms>
 </campaign>

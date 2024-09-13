@@ -55,7 +55,7 @@ namespace AridArnold
 			// Water
 			{
 				int waterDiff = CollectableManager.I.GetSequenceEndDiff(CollectableCategory.WaterBottle);
-				if (waterDiff > 0)
+				if (waterDiff != 0)
 				{
 					string waterTitle = LanguageManager.I.GetText("UI.Sequence.WaterGet");
 					mStats.Add(new WinInfoStatistic(waterTitle, new Color(59, 100, 226), MonoText.IntToDiff(waterDiff)));
@@ -65,7 +65,7 @@ namespace AridArnold
 			// Key
 			{
 				int keyDiff = CollectableManager.I.GetSequenceEndDiff(CollectableCategory.Key);
-				if (keyDiff > 0)
+				if (keyDiff != 0)
 				{
 					string keyTitle = LanguageManager.I.GetText("UI.Sequence.KeyGet");
 					mStats.Add(new WinInfoStatistic(keyTitle, new Color(224, 160, 33), MonoText.IntToDiff(keyDiff)));
@@ -76,7 +76,7 @@ namespace AridArnold
 			{
 				ushort moneyID = CampaignManager.I.GetCurrCoinID();
 				int moneyDiff = CollectableManager.I.GetSequenceEndDiff(moneyID);
-				if (moneyDiff > 0)
+				if (moneyDiff != 0)
 				{
 					string moneyTitle = LanguageManager.I.GetText("UI.Sequence.Money");
 					string moneyStr = string.Format("{0}$", MonoText.IntToDiff(moneyDiff));

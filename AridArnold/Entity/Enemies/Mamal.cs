@@ -89,6 +89,12 @@
 
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
+			if(mAngrySFX.GetBuffer().SoundState() != SoundState.Playing)
+			{
+				SFXManager.I.PlaySFX(mAngrySFX);
+			}
+			mAngrySFX.SetPosition(GetCentrePos());
+			mAngrySFX.SetVelocity(GetVelocity());
 			mAngrySFX.SetMute(!mIsAwake);
 
 			base.Update(gameTime);
