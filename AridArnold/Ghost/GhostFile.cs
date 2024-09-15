@@ -1,5 +1,13 @@
 ﻿namespace AridArnold
 {
+	enum GhostSkin
+	{
+		kYoung,
+		kOld,
+		kRobot,
+		kHorse
+	}
+
 	/// <summary>
 	/// A file that stores ghost information
 	/// </summary>
@@ -69,6 +77,7 @@
 					bw.Write((int)info.mGravity);
 					bw.Write((int)info.mWalkDirection);
 					bw.Write((int)info.mPrevWalkDirection);
+					bw.Write((int)info.mSkin);
 				}
 			}
 		}
@@ -102,6 +111,7 @@
 					info.mGravity = (CardinalDirection)br.ReadInt32();
 					info.mWalkDirection = (WalkDirection)br.ReadInt32();
 					info.mPrevWalkDirection = (WalkDirection)br.ReadInt32();
+					info.mSkin = (GhostSkin)br.ReadInt32();
 					mGhostInfos[i].Add(info);
 				}
 			}
@@ -138,9 +148,9 @@
 		/// <summary>
 		/// Record a frame into the buffer
 		/// </summary>
-		/// <param name="entity">Entity to record</param>
+		/// <param name="arnold">Entity to record</param>
 		/// <param name="frame">Frame number</param>
-		public bool RecordFrame(PlatformingEntity entity, int frame)
+		public bool RecordFrame(Arnold arnold, int frame)
 		{
 			if (frame >= MAX_FRAMES)
 			{
@@ -153,13 +163,14 @@
 			}
 
 			GhostInfo info;
-			info.mEnabled = entity.IsEnabled();
-			info.mPosition = entity.GetPos();
-			info.mVelocity = entity.GetVelocity();
-			info.mGrounded = entity.OnGround();
-			info.mGravity = entity.GetGravityDir();
-			info.mWalkDirection = entity.GetWalkDirection();
-			info.mPrevWalkDirection = entity.GetPrevWalkDirection();
+			info.mEnabled = arnold.IsEnabled();
+			info.mPosition = arnold.GetPos();
+			info.mVelocity = arnold.GetVelocity();
+			info.mGrounded = arnold.OnGround();
+			info.mGravity = arnold.GetGravityDir();
+			info.mWalkDirection = arnold.GetWalkDirection();
+			info.mPrevWalkDirection = arnold.GetPrevWalkDirection();
+			info.mSkin = arnold.GetGhostSkin();
 
 			mGhostInfos[frame].Add(info);
 			return true;

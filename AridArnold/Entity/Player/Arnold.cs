@@ -63,6 +63,8 @@ namespace AridArnold
 		bool mHorseMode;
 		bool mBouncyMode;
 
+		GhostSkin mLoadedSkin = GhostSkin.kYoung;
+
 
 #if ARNOLD_DEBUG_SOUND
 		SpacialSFX mDebugSound = null;
@@ -143,13 +145,14 @@ namespace AridArnold
 		/// <summary>
 		/// Load textures from a pack
 		/// </summary>
-		void LoadTexturePack(MonoTexturePack texturePack)
+		protected void LoadTexturePack(MonoTexturePack texturePack)
 		{
 			mTexture = texturePack.GetTexture("Stand");
 			mJumpUpTex = texturePack.GetTexture("JumpUp");
 			mJumpDownTex = texturePack.GetTexture("JumpDown");
 			mUseItemTex = texturePack.GetTexture("UseItem");
 
+			float playHead = mRunningAnimation is null ? 0.0f : mRunningAnimation.GetPlayHead();
 			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
 												(texturePack.GetTexture("Run1"), 0.1f),
 												(texturePack.GetTexture("Run2"), 0.1f),
@@ -157,6 +160,7 @@ namespace AridArnold
 												(texturePack.GetTexture("Run4"), 0.15f));
 
 			mRunningAnimation.Play();
+			mRunningAnimation.SetPlayHead(playHead);
 		}
 
 
@@ -634,11 +638,12 @@ namespace AridArnold
 		/// <summary>
 		/// Refresh the textures so we update with age
 		/// </summary>
-		void RefreshTexturePack()
+		protected virtual void RefreshTexturePack()
 		{
 			if(mHorseMode)
 			{
 				LoadTexturePack(mHorseTexturePack);
+				mLoadedSkin = GhostSkin.kHorse;
 				return;
 			}
 
@@ -646,9 +651,11 @@ namespace AridArnold
 			{
 				case 0:
 					LoadTexturePack(mYoungTexturePack);
+					mLoadedSkin = GhostSkin.kYoung;
 					break;
 				case 1:
 					LoadTexturePack(mOldTexturePack);
+					mLoadedSkin = GhostSkin.kOld;
 					break;
 				default:
 					throw new Exception("Invalid Arnold age");
@@ -975,6 +982,16 @@ namespace AridArnold
 				case (CardinalDirection.Left, CardinalDirection.Left):
 					break;
 			}
+		}
+
+
+
+		/// <summary>
+		/// Hack to make ghost have the right texture
+		/// </summary>
+		public virtual GhostSkin GetGhostSkin()
+		{
+			return mLoadedSkin;
 		}
 
 		#endregion rUtility

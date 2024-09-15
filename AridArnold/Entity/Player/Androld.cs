@@ -32,6 +32,15 @@
 			mOldTexturePack = new MonoTexturePack("Arnold/Androld.mtp");
 		}
 
+
+		/// <summary>
+		/// Hack to make ghost have the right texture
+		/// </summary>
+		public override GhostSkin GetGhostSkin()
+		{
+			return GhostSkin.kRobot;
+		}
+
 		#endregion rInitialisation
 
 

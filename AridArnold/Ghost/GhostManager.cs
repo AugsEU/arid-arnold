@@ -9,6 +9,7 @@
 		public CardinalDirection mGravity;
 		public WalkDirection mWalkDirection;
 		public WalkDirection mPrevWalkDirection;
+		public GhostSkin mSkin;
 	}
 
 	/// <summary>

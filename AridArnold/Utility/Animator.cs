@@ -241,6 +241,25 @@
 			mPlayType = type;
 		}
 
+
+
+		/// <summary>
+		/// Get current decseconds
+		/// </summary>
+		public float GetPlayHead()
+		{
+			return mPlayHead;
+		}
+
+
+		/// <summary>
+		/// Set anim play position
+		/// </summary>
+		public void SetPlayHead(float head)
+		{
+			mPlayHead = head;
+		}
+
 		#endregion rUtility
 	}
 }

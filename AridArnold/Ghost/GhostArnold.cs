@@ -5,6 +5,14 @@
 	/// </summary>
 	class GhostArnold : Arnold
 	{
+		#region rMembers
+
+		GhostSkin mCurrSkin;
+		MonoTexturePack mRobotTexturePack;
+
+		#endregion rMembers
+
+
 		#region rInitialisation
 
 		/// <summary>
@@ -13,6 +21,7 @@
 		/// <param name="startPos">Starting position</param>
 		public GhostArnold(Vector2 startPos) : base(startPos)
 		{
+			mCurrSkin = GetGhostSkin();
 		}
 
 
@@ -24,6 +33,13 @@
 		{
 			mPrevDirection = WalkDirection.Right;
 			mVelocity = Vector2.Zero;
+		}
+
+
+		protected override void InitTexturePacks()
+		{
+			mRobotTexturePack = new MonoTexturePack("Arnold/Androld.mtp");
+			base.InitTexturePacks();
 		}
 
 		#endregion rInitialisation
@@ -74,6 +90,12 @@
 			SetPrevWalkDirection(info.mPrevWalkDirection);
 			SetGravity(info.mGravity);
 			SetEnabled(info.mEnabled);
+
+			if(info.mSkin != mCurrSkin)
+			{
+				mCurrSkin = info.mSkin;
+				RefreshTexturePack();
+			}
 		}
 
 
@@ -86,6 +108,31 @@
 		{
 			//Slight green.
 			return new Color(0.0f, 0.7f, 0.0f, 0.9f);
+		}
+
+
+		/// <summary>
+		/// Refresh texture packs.
+		/// </summary>
+		protected override void RefreshTexturePack()
+		{
+			switch (mCurrSkin)
+			{
+				case GhostSkin.kYoung:
+					LoadTexturePack(mYoungTexturePack);
+					break;
+				case GhostSkin.kOld:
+					LoadTexturePack(mOldTexturePack);
+					break;
+				case GhostSkin.kRobot:
+					LoadTexturePack(mRobotTexturePack);
+					break;
+				case GhostSkin.kHorse:
+					LoadTexturePack(mHorseTexturePack);
+					break;
+				default:
+					break;
+			}
 		}
 
 		#endregion
