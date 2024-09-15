@@ -4,6 +4,8 @@
 	<textStyle>
 		<fillColor>1E1E1EA2</fillColor>
 		<borderColor>382222</borderColor>
+		<scrollSpeed>1.0</scrollSpeed>
+		<framesPerLetter>4</framesPerLetter>
 		<voice>NPC/Voice/BickDogel.xml</voice>
 	</textStyle>
 </simpleTalkNPC>

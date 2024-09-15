@@ -4,6 +4,8 @@
 	<textStyle>
 		<fillColor>473C2DA2</fillColor>
 		<borderColor>28221A</borderColor>
+		<scrollSpeed>1.0</scrollSpeed>
+		<framesPerLetter>4</framesPerLetter>
 		<voice>NPC/Voice/DefaultFemale.xml</voice>
 	</textStyle>
 	<emitters>

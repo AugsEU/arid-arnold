@@ -2,8 +2,6 @@
 <simpleTalkNPC>
 	<name>Zippy</name>
 	<textStyle>
-		<scrollSpeed>1.1</scrollSpeed>
-		<framesPerLetter>4</framesPerLetter>
 		<fillColor>000000A2</fillColor>
 		<borderColor>7F7272</borderColor>
 		<voice>NPC/Voice/DefaultFemale.xml</voice>

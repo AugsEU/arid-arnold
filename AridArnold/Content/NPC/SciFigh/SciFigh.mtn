@@ -4,6 +4,8 @@
 	<textStyle>
 		<fillColor>020F00AF</fillColor>
 		<borderColor>183F1B</borderColor>
+		<scrollSpeed>1.0</scrollSpeed>
+		<framesPerLetter>4</framesPerLetter>
 		<voice>NPC/Voice/DefaultMale.xml</voice>
 	</textStyle>
 	<walk/>

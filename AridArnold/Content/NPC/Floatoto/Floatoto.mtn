@@ -4,6 +4,8 @@
 	<textStyle>
 		<fillColor>D1C9B8A2</fillColor>
 		<borderColor>AA002B</borderColor>
+		<scrollSpeed>1.0</scrollSpeed>
+		<framesPerLetter>4</framesPerLetter>
 		<voice>NPC/Voice/RobotFemale.xml</voice>
 	</textStyle>
 	<walk/>

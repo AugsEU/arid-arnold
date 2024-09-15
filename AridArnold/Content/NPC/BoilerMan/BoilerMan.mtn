@@ -4,6 +4,8 @@
 	<textStyle>
 		<fillColor>260B23A2</fillColor>
 		<borderColor>160014</borderColor>
+		<scrollSpeed>1.0</scrollSpeed>
+		<framesPerLetter>4</framesPerLetter>
 		<voice>NPC/Voice/DefaultMale.xml</voice>
 	</textStyle>
 </simpleTalkNPC>
