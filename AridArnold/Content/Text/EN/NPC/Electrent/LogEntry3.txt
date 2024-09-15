@@ -1,6 +1,3 @@
-﻿<α[008E0E]>12-01-33
---
-Cooperation between Androids is proving difficult.
+﻿<α[008E0E]>Cooperation between Androids is proving difficult.
 If two Androids are stacked on top of each other, having the bottom one walk will result in the top one also walking, and thus falling off the stack.
 New theory to test for next session: If they jump in tandem, can we avoid this problem?
---

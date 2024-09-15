@@ -1,7 +1,4 @@
-﻿<α[008E0E]>04-10-32
---
-The first killer-robot has been successfully activated.
+﻿<α[008E0E]>The first killer-robot has been successfully activated.
 Avoids walls successfully.
 Eyes have stylish glow.
 Origin of the name "killer-robot" is unknown to me. But they are surely safe and there is nothing to worry about.
---

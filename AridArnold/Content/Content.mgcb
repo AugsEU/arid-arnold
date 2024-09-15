@@ -1963,6 +1963,18 @@
 /processorParam:TextureFormat=Color
 /build:Arnold/AndroldStandOff.png
 
+#begin Arnold/ArnoldBathe.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arnold/ArnoldBathe.png
+
 #begin Arnold/ArnoldJumpDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2385,6 +2397,21 @@
 
 #begin BG/Buk/Buk.mlo
 /copy:BG/Buk/Buk.mlo
+
+#begin BG/Cinematics/EndingBG.mlo
+/copy:BG/Cinematics/EndingBG.mlo
+
+#begin BG/Cinematics/EndingBG.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG/Cinematics/EndingBG.png
 
 #begin BG/Cinematics/OpeningBG.mlo
 /copy:BG/Cinematics/OpeningBG.mlo
@@ -4813,6 +4840,9 @@
 #begin BG/WW7/WW7Sewer.mlo
 /copy:BG/WW7/WW7Sewer.mlo
 
+#begin Campaigns/MainCampaign/Cinematics/Ending.mci
+/copy:Campaigns/MainCampaign/Cinematics/Ending.mci
+
 #begin Campaigns/MainCampaign/Cinematics/Opening.mci
 /copy:Campaigns/MainCampaign/Cinematics/Opening.mci
 
@@ -5221,6 +5251,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Hub/0603.png
 
+#begin Campaigns/MainCampaign/Hub/0604.aux
+/copy:Campaigns/MainCampaign/Hub/0604.aux
+
+#begin Campaigns/MainCampaign/Hub/0604.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Hub/0604.png
+
 #begin Campaigns/MainCampaign/Hub/0701.aux
 /copy:Campaigns/MainCampaign/Hub/0701.aux
 
@@ -5566,6 +5611,21 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0110.png
 
+#begin Campaigns/MainCampaign/Levels/0111.aux
+/copy:Campaigns/MainCampaign/Levels/0111.aux
+
+#begin Campaigns/MainCampaign/Levels/0111.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0111.png
+
 #begin Campaigns/MainCampaign/Levels/0112.aux
 /copy:Campaigns/MainCampaign/Levels/0112.aux
 
@@ -5640,21 +5700,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0116.png
-
-#begin Campaigns/MainCampaign/Levels/0117.aux
-/copy:Campaigns/MainCampaign/Levels/0117.aux
-
-#begin Campaigns/MainCampaign/Levels/0117.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0117.png
 
 #begin Campaigns/MainCampaign/Levels/0201.aux
 /copy:Campaigns/MainCampaign/Levels/0201.aux
@@ -6211,6 +6256,36 @@
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0410.png
 
+#begin Campaigns/MainCampaign/Levels/0411.aux
+/copy:Campaigns/MainCampaign/Levels/0411.aux
+
+#begin Campaigns/MainCampaign/Levels/0411.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0411.png
+
+#begin Campaigns/MainCampaign/Levels/0412.aux
+/copy:Campaigns/MainCampaign/Levels/0412.aux
+
+#begin Campaigns/MainCampaign/Levels/0412.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Campaigns/MainCampaign/Levels/0412.png
+
 #begin Campaigns/MainCampaign/Levels/0413.aux
 /copy:Campaigns/MainCampaign/Levels/0413.aux
 
@@ -6255,36 +6330,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Campaigns/MainCampaign/Levels/0415.png
-
-#begin Campaigns/MainCampaign/Levels/0416.aux
-/copy:Campaigns/MainCampaign/Levels/0416.aux
-
-#begin Campaigns/MainCampaign/Levels/0416.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0416.png
-
-#begin Campaigns/MainCampaign/Levels/0417.aux
-/copy:Campaigns/MainCampaign/Levels/0417.aux
-
-#begin Campaigns/MainCampaign/Levels/0417.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Campaigns/MainCampaign/Levels/0417.png
 
 #begin Campaigns/MainCampaign/Levels/0501.aux
 /copy:Campaigns/MainCampaign/Levels/0501.aux
@@ -12688,8 +12733,17 @@
 #begin Sound/Music/HorsesAndGun.ogg
 /copy:Sound/Music/HorsesAndGun.ogg
 
+#begin Sound/Music/Intro.ogg
+/copy:Sound/Music/Intro.ogg
+
+#begin Sound/Music/Lab.ogg
+/copy:Sound/Music/Lab.ogg
+
 #begin Sound/Music/Library.ogg
 /copy:Sound/Music/Library.ogg
+
+#begin Sound/Music/Mirror.ogg
+/copy:Sound/Music/Mirror.ogg
 
 #begin Sound/Music/MusicManifest.xml
 /copy:Sound/Music/MusicManifest.xml
@@ -12880,6 +12934,12 @@
 /processorParam:Quality=Best
 /build:Sound/SFX/HorsesAndGun/Reload.wav
 
+#begin Sound/SFX/Items/BuyItem.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Items/BuyItem.wav
+
 #begin Sound/SFX/Items/TreePlace.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -12915,6 +12975,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/SFX/Lab/DoorOpen.wav
+
+#begin Sound/SFX/Lab/Horse.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/Horse.wav
 
 #begin Sound/SFX/Lab/NukeAlarm.wav
 /importer:WavImporter
@@ -13294,6 +13360,15 @@
 #begin Text/EN/InGame/Bathe.txt
 /copy:Text/EN/InGame/Bathe.txt
 
+#begin Text/EN/InGame/EndingLine1.txt
+/copy:Text/EN/InGame/EndingLine1.txt
+
+#begin Text/EN/InGame/EndingLine2.txt
+/copy:Text/EN/InGame/EndingLine2.txt
+
+#begin Text/EN/InGame/EndingLine3.txt
+/copy:Text/EN/InGame/EndingLine3.txt
+
 #begin Text/EN/InGame/GetKey.txt
 /copy:Text/EN/InGame/GetKey.txt
 
@@ -13545,6 +13620,9 @@
 
 #begin Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
 /copy:Text/EN/NPC/Barbara/Opening/ArnoldBirth.txt
+
+#begin Text/EN/NPC/Barbara/Opening/EndingSpeil.txt
+/copy:Text/EN/NPC/Barbara/Opening/EndingSpeil.txt
 
 #begin Text/EN/NPC/Barbara/Opening/FountainSpeil.txt
 /copy:Text/EN/NPC/Barbara/Opening/FountainSpeil.txt
@@ -13900,6 +13978,9 @@
 #begin Text/EN/NPC/Tome/AgeExplain.txt
 /copy:Text/EN/NPC/Tome/AgeExplain.txt
 
+#begin Text/EN/NPC/Tome/Hope.txt
+/copy:Text/EN/NPC/Tome/Hope.txt
+
 #begin Text/EN/NPC/Tome/KingdomRuin.txt
 /copy:Text/EN/NPC/Tome/KingdomRuin.txt
 
@@ -14116,6 +14197,12 @@
 #begin Text/EN/UI/Menu/GameTitle.txt
 /copy:Text/EN/UI/Menu/GameTitle.txt
 
+#begin Text/EN/UI/Menu/GhostOption.txt
+/copy:Text/EN/UI/Menu/GhostOption.txt
+
+#begin Text/EN/UI/Menu/GhostOptionDesc.txt
+/copy:Text/EN/UI/Menu/GhostOptionDesc.txt
+
 #begin Text/EN/UI/Menu/ImpatientOption.txt
 /copy:Text/EN/UI/Menu/ImpatientOption.txt
 
@@ -14190,6 +14277,27 @@
 
 #begin Text/EN/UI/ProfileNames.txt
 /copy:Text/EN/UI/ProfileNames.txt
+
+#begin Text/EN/UI/Sequence/GoNext.txt
+/copy:Text/EN/UI/Sequence/GoNext.txt
+
+#begin Text/EN/UI/Sequence/ItemRefund.txt
+/copy:Text/EN/UI/Sequence/ItemRefund.txt
+
+#begin Text/EN/UI/Sequence/KeyGet.txt
+/copy:Text/EN/UI/Sequence/KeyGet.txt
+
+#begin Text/EN/UI/Sequence/LevelComplete.txt
+/copy:Text/EN/UI/Sequence/LevelComplete.txt
+
+#begin Text/EN/UI/Sequence/Money.txt
+/copy:Text/EN/UI/Sequence/Money.txt
+
+#begin Text/EN/UI/Sequence/SequenceComplete.txt
+/copy:Text/EN/UI/Sequence/SequenceComplete.txt
+
+#begin Text/EN/UI/Sequence/WaterGet.txt
+/copy:Text/EN/UI/Sequence/WaterGet.txt
 
 #begin Tiles/air.png
 /importer:TextureImporter
@@ -15445,6 +15553,18 @@
 /processorParam:TextureFormat=Color
 /build:Tiles/Mirror/TreePlatform.png
 
+#begin Tiles/Mountain/BlackTile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mountain/BlackTile.png
+
 #begin Tiles/Mountain/FrancFull.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -15540,6 +15660,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tiles/Mountain/LogWinter.png
+
+#begin Tiles/Mountain/Marble.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mountain/Marble.png
+
+#begin Tiles/Mountain/MarbleGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Mountain/MarbleGhost.png
 
 #begin Tiles/Mountain/StopWatch.png
 /importer:TextureImporter
@@ -16105,6 +16249,30 @@
 /processorParam:TextureFormat=Color
 /build:UI/InGame/SequenceArrowEnd.png
 
+#begin UI/InGame/SequenceArrowLB.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/SequenceArrowLB.png
+
+#begin UI/InGame/SequenceArrowLE.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/InGame/SequenceArrowLE.png
+
 #begin UI/InGame/SequenceArrowMid.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -16240,123 +16408,12 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin UI/InGame/SequenceArrowLB.png
+#begin NPC/Tome/Default-1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:UI/InGame/SequenceArrowLB.png
+/build:NPC/Tome/Default-1.png
 
-#begin UI/InGame/SequenceArrowLE.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:UI/InGame/SequenceArrowLE.png
-
-#begin Text/EN/UI/Sequence/LevelComplete.txt
-/copy:Text/EN/UI/Sequence/LevelComplete.txt
-
-#begin Text/EN/UI/Sequence/SequenceComplete.txt
-/copy:Text/EN/UI/Sequence/SequenceComplete.txt
-
-#begin Text/EN/UI/Sequence/ItemRefund.txt
-/copy:Text/EN/UI/Sequence/ItemRefund.txt
-
-#begin Text/EN/UI/Sequence/KeyGet.txt
-/copy:Text/EN/UI/Sequence/KeyGet.txt
-
-#begin Text/EN/UI/Sequence/Money.txt
-/copy:Text/EN/UI/Sequence/Money.txt
-
-#begin Text/EN/UI/Sequence/WaterGet.txt
-/copy:Text/EN/UI/Sequence/WaterGet.txt
-
-#begin Text/EN/UI/Sequence/GoNext.txt
-/copy:Text/EN/UI/Sequence/GoNext.txt
-
-#begin BG/Cinematics/EndingBG.mlo
-/copy:BG/Cinematics/EndingBG.mlo
-
-#begin BG/Cinematics/EndingBG.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:BG/Cinematics/EndingBG.png
-
-#begin Campaigns/MainCampaign/Cinematics/Ending.mci
-/copy:Campaigns/MainCampaign/Cinematics/Ending.mci
-
-#begin Arnold/ArnoldBathe.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Arnold/ArnoldBathe.png
-
-#begin Text/EN/NPC/Barbara/Opening/EndingSpeil.txt
-/copy:Text/EN/NPC/Barbara/Opening/EndingSpeil.txt
-
-#begin Text/EN/InGame/EndingLine1.txt
-/copy:Text/EN/InGame/EndingLine1.txt
-
-#begin Text/EN/InGame/EndingLine2.txt
-/copy:Text/EN/InGame/EndingLine2.txt
-
-#begin Text/EN/InGame/EndingLine3.txt
-/copy:Text/EN/InGame/EndingLine3.txt
-
-#begin Tiles/Mountain/Marble.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Mountain/Marble.png
-
-#begin Tiles/Mountain/MarbleGhost.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Mountain/MarbleGhost.png
-
-#begin Campaigns/MainCampaign/Hub/0604.aux
-/copy:Campaigns/MainCampaign/Hub/0604.aux
-
-#begin Campaigns/MainCampaign/Hub/0604.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Campaigns/MainCampaign/Hub/0604.png
-
-#begin Text/EN/NPC/Tome/Hope.txt
-/copy:Text/EN/NPC/Tome/Hope.txt
-
-#begin Tiles/Mountain/BlackTile.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:Tiles/Mountain/BlackTile.png
-
-#begin Sound/Music/Intro.ogg
-/copy:Sound/Music/Intro.ogg
-
-#begin Sound/SFX/Lab/Horse.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Lab/Horse.wav
-
-#begin Sound/SFX/Items/BuyItem.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/SFX/Items/BuyItem.wav
-
-#begin Sound/Music/Mirror.ogg
-/copy:Sound/Music/Mirror.ogg
-
-#begin Sound/Music/Lab.ogg
-/copy:Sound/Music/Lab.ogg
-
-#begin Text/EN/UI/Menu/GhostOption.txt
-/copy:Text/EN/UI/Menu/GhostOption.txt
-
-#begin Text/EN/UI/Menu/GhostOptionDesc.txt
-/copy:Text/EN/UI/Menu/GhostOptionDesc.txt
+#begin NPC/Tome/Idle-1.mia
+/copy:NPC/Tome/Idle-1.mia
 
