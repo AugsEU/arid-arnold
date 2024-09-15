@@ -5,9 +5,13 @@
 	/// </summary>
 	abstract class PermanentCollectableTile : InteractableTile
 	{
+		const float BOB_SPEED = 0.4f;
+		const float BOB_AMOUNT = 1.8f;
+
 		protected bool mIsGhost;
 		protected Animator mExitAnim;
 		protected bool mHasBeenCollected;
+		float mBobAngle = 0.0f;
 
 		AridArnoldSFX? mCollectSFX;
 		float mCollectVol;
@@ -19,6 +23,8 @@
 			mHasBeenCollected = false;
 
 			LoadSFX(AridArnoldSFX.Collect, 0.5f);
+
+			mBobAngle = pos.X * 0.3f + pos.Y * MathF.PI;
 		}
 
 		protected void LoadSFX(AridArnoldSFX sound, float vol)
@@ -40,6 +46,17 @@
 			{
 				mEnabled = false;
 			}
+
+			float dt = Util.GetDeltaT(gameTime);
+			mBobAngle += dt * BOB_SPEED;
+
+			mDrawOffset = Util.GetNormal(mRotation) * MathF.Sin(mBobAngle) * BOB_AMOUNT;
+
+			if(mBobAngle > MathF.PI * 2.0f)
+			{
+				mBobAngle -= MathF.PI * 2.0f;
+			}
+
 			base.Update(gameTime);
 		}
 

@@ -16417,3 +16417,6 @@
 #begin NPC/Tome/Idle-1.mia
 /copy:NPC/Tome/Idle-1.mia
 
+#begin Text/EN/NPC/Zippy/NoMovement.txt
+/copy:Text/EN/NPC/Zippy/NoMovement.txt
+

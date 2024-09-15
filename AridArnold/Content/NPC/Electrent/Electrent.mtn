@@ -4,7 +4,7 @@
 	<textStyle>
 		<fillColor>000000E2</fillColor>
 		<borderColor>00560F</borderColor>
-		<scrollSpeed>1.0</scrollSpeed>
+		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>
 		<voice>NPC/Voice/Computer.xml</voice>
 	</textStyle>

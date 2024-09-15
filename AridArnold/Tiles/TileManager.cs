@@ -695,7 +695,6 @@
 		/// <param name="info">Info needed to draw</param>
 		public void Draw(DrawInfo info)
 		{
-			Point offset = new Point((int)mTileMapPos.X, (int)mTileMapPos.Y);
 
 			for (int x = 0; x < mTileMap.GetLength(0); x++)
 			{
@@ -703,9 +702,10 @@
 				{
 					if (mTileMap[x, y].pEnabled)
 					{
-						Rectangle drawRectangle = new Rectangle(offset.X + x * (int)mTileSize, offset.Y + y * (int)mTileSize, (int)mTileSize, (int)mTileSize);
+						Vector2 tileOffset = mTileMap[x, y].GetDrawOffset();
+						Vector2 tilePos = mTileMapPos + tileOffset + new Vector2(x * mTileSize, y * mTileSize);
 
-						DrawTile(info, drawRectangle, mTileMap[x, y]);
+						DrawTile(info, tilePos, mTileMap[x, y]);
 					}
 				}
 			}
@@ -720,7 +720,7 @@
 		/// <param name="drawDestination">Screen space of where to draw the tile</param>
 		/// <param name="tile">Reference of tile to draw</param>
 		/// <exception cref="Exception">Only textures of the correct dimensions can be used</exception>
-		public void DrawTile(DrawInfo info, Rectangle drawDestination, Tile tile)
+		public void DrawTile(DrawInfo info, Vector2 drawDestination, Tile tile)
 		{
 			Texture2D tileTexture = tile.GetTexture();
 
@@ -729,7 +729,7 @@
 			int tileHeight = (int)Tile.sTILE_SIZE;
 			Rectangle sourceRectangle = new Rectangle(tileDrawInfo.mTileIndex.X * tileHeight, tileDrawInfo.mTileIndex.Y * tileHeight, tileHeight, tileHeight);
 
-			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, tileDrawInfo.mRotation, MonoDraw.CalcRotationOffset(tileDrawInfo.mRotation, tileHeight), tileDrawInfo.mEffect, DrawLayer.Tile);
+			MonoDraw.DrawTexture(info, tileTexture, drawDestination, sourceRectangle, Color.White, tileDrawInfo.mRotation, MonoDraw.CalcRotationOffset(tileDrawInfo.mRotation, tileHeight), 1.0f, tileDrawInfo.mEffect, DrawLayer.Tile);
 			tile.DrawExtra(info);
 		}
 

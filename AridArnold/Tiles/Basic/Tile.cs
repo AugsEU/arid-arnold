@@ -254,6 +254,17 @@
 
 
 
+
+		/// <summary>
+		/// Get draw offset
+		/// </summary>
+		public Vector2 GetDrawOffset()
+		{
+			return mDrawOffset;
+		}
+
+
+
 		/// <summary>
 		/// Is this tile enabled?
 		/// </summary>

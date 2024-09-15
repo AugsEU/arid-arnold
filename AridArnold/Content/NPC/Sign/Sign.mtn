@@ -3,7 +3,7 @@
 	<name>Sign</name>
 	<textStyle>
 		<fillColor>4F4FB5A2</fillColor>
-		<scrollSpeed>1.0</scrollSpeed>
+		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>
 		<borderColor>0E0E38</borderColor>
 	</textStyle>
