@@ -28,11 +28,11 @@ namespace AridArnold
 		private void FormatBaseText()
 		{
 			string inputBindStr = mInRebindMode ? "..." : InputManager.I.GetInputBindSet(mInputAction).ToString();
-			string newDisplayText = string.Format("{0} - [{1}]", mBaseText, inputBindStr);
+			string newDisplayText = string.Format("{0} - {1}", mBaseText, inputBindStr);
 
 			if (newDisplayText != mDisplayText)
 			{
-				mDisplayText = string.Format("{0} - [{1}]", mBaseText, inputBindStr);
+				mDisplayText = string.Format("{0} - {1}", mBaseText, inputBindStr);
 				RecalcSize();
 			}
 		}

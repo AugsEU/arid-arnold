@@ -1,1 +1,1 @@
-Press [{Key.Confirm}] to continue.
+Press {Key.Confirm} to continue.

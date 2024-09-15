@@ -1,9 +1,9 @@
 ﻿<α[260A00]>Controls:
-[{Key.ArnoldUp}] - Move Up
-[{Key.ArnoldDown}] - Move Down
-[{Key.ArnoldLeft}] - Move Left
-[{Key.ArnoldRight}] - Move Right
-[{Key.UseItem}] - Use Grapple
+{Key.ArnoldUp} - Move Up
+{Key.ArnoldDown} - Move Down
+{Key.ArnoldLeft} - Move Left
+{Key.ArnoldRight} - Move Right
+{Key.UseItem} - Use Grapple
 
 
 

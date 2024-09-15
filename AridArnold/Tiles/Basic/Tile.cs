@@ -23,6 +23,7 @@
 		protected Vector2 mPosition;
 		protected Point mTileMapIndex;
 		protected CardinalDirection mRotation;
+		protected Vector2 mDrawOffset;
 
 		private Rect2f? mBoundsCache;
 
@@ -43,6 +44,8 @@
 			mRotation = CardinalDirection.Up;
 			mPosition = position;
 			mBoundsCache = null;
+
+			mDrawOffset = Vector2.Zero;
 
 			mTileMapIndex = TileManager.I.GetTileMapCoord(position);
 		}

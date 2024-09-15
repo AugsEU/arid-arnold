@@ -1,1 +1,1 @@
-(Press [{Key.Confirm}] to give bottles.)
+(Press {Key.Confirm} to give bottles.)

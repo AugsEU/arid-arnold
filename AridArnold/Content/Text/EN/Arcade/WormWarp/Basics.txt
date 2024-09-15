@@ -1,8 +1,8 @@
 ﻿<α[140B09]>Controls:
-[{Key.ArnoldUp}] - Move Up
-[{Key.ArnoldDown}] - Move Down
-[{Key.ArnoldLeft}] - Move Left
-[{Key.ArnoldRight}] - Move Right
+{Key.ArnoldUp} - Move Up
+{Key.ArnoldDown} - Move Down
+{Key.ArnoldLeft} - Move Left
+{Key.ArnoldRight} - Move Right
 
 
 Move the worm and eat the fruit to score points. Each fruit will make your worm grow, and, as it gets longer, it becomes harder and harder to not crash into yourself. If you do, it's GAME OVER!

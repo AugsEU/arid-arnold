@@ -62,7 +62,7 @@
 			{
 				subCode = subCode.Substring(4);
 				InputAction key = MonoEnum.GetEnumFromString<InputAction>(subCode);
-				return InputManager.I.GetInputBindSet(key).ToString();
+				return InputManager.I.GetInputBindSet(key).SingleString();
 			}
 
 			throw new NotImplementedException("Did not recognise substitution code:" + subCode);

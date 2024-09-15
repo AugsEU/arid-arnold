@@ -1,1 +1,1 @@
-Press [{Key.Confirm}] to accept.
+Press {Key.Confirm} to accept.

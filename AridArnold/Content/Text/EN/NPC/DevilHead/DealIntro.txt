@@ -1,4 +1,4 @@
 ﻿They say you should never do a deal with the devil, but I'm no devil, I'm just a demon's head! So why don't we strike a deal?
 I'll flip this coin, if it lands on heads you will get a <Σα[FF5555]060B>terrible curse<ψ>, but if it lands on tails you will get a great blessing.
 What say you, my little old boy?
-(Press [{Key.Confirm}] to accept deal.)
+(Press {Key.Confirm} to accept deal.)

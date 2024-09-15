@@ -36,7 +36,7 @@
 
 		public override string ToString()
 		{
-			return mInputKey.ToString();
+			return string.Format("[{0}]", mInputKey.ToString());
 		}
 
 		public override InputBindingType GetBindingType()

@@ -1,1 +1,1 @@
-﻿-- Press [{Key.Confirm}] to submit score --
+﻿-- Press {Key.Confirm} to submit score --

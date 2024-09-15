@@ -1,1 +1,1 @@
-﻿-- Press [{Key.Confirm}] to insert Coin --
+﻿-- Press {Key.Confirm} to insert coin --

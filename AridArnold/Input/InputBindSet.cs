@@ -133,6 +133,29 @@
 			return returnStr;
 		}
 
+
+
+		/// <summary>
+		/// Convert to most important button.
+		/// </summary>
+		public string SingleString()
+		{
+			List<InputBindingType> inputOrder = InputManager.I.GetMostRecentInputTypes();
+
+			foreach(InputBindingType bindType in inputOrder)
+			{
+				foreach(InputBinding binding in mBindings)
+				{
+					if(binding.GetBindingType() == bindType)
+					{
+						return binding.ToString();
+					}
+				}
+			}
+
+			return "";
+		}
+
 		#endregion rUtility
 
 

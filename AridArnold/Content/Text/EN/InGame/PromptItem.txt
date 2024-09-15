@@ -1,1 +1,1 @@
-[{Key.UseItem}]
+{Key.UseItem}

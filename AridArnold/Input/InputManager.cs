@@ -79,6 +79,8 @@
 		GamePadState[] mGamePadStates;
 		GamePadState[] mPrevGamePadStates;
 
+		List<InputBindingType> mInputOrder;
+
 		#endregion rMembers
 
 
@@ -103,6 +105,13 @@
 
 			mGamePadStates = new GamePadState[] { new GamePadState() , new GamePadState(), new GamePadState(), new GamePadState() };
 			mPrevGamePadStates = new GamePadState[] { new GamePadState(), new GamePadState(), new GamePadState(), new GamePadState() };
+
+			mInputOrder = new List<InputBindingType>
+			{
+				InputBindingType.kKeyboard,
+				InputBindingType.kGamepad,
+				InputBindingType.kMouse
+			};
 		}
 
 
@@ -151,7 +160,7 @@
 			DefineBindingGang(BindingGang.SysDown, InputAction.SysDown, InputAction.ArnoldDown);
 			DefineBindingGang(BindingGang.SysLeft, InputAction.SysLeft, InputAction.ArnoldLeft);
 			DefineBindingGang(BindingGang.SysRight, InputAction.SysRight, InputAction.ArnoldRight);
-			DefineBindingGang(BindingGang.SysConfirm, InputAction.SysConfirm, InputAction.ArnoldJump);
+			DefineBindingGang(BindingGang.SysConfirm, InputAction.SysConfirm, InputAction.ArnoldJump, InputAction.Confirm);
 		}
 
 
@@ -204,6 +213,15 @@
 
 			mMouseState = Mouse.GetState();
 
+			if(GetFirstNewlyPressedKey() != Keys.None)
+			{
+				UpdateInputOrder(InputBindingType.kKeyboard);
+			}
+			else if(GetFirstNewlyPressedPadButton() != Buttons.None)
+			{
+				UpdateInputOrder(InputBindingType.kGamepad);
+			}
+
 			mInputUpdateIndex++;
 
 			// If you leave the game open for more than this then maybe we should stop...
@@ -211,6 +229,23 @@
 			{
 				Main.ExitGame();
 			}
+		}
+
+
+
+		/// <summary>
+		/// Update the order of most recent key types
+		/// </summary>
+		void UpdateInputOrder(InputBindingType recentInput)
+		{
+			// Remove the input from the list if it exists
+			if (mInputOrder.Contains(recentInput))
+			{
+				mInputOrder.Remove(recentInput);
+			}
+
+			// Insert the input at the front (most recent)
+			mInputOrder.Insert(0, recentInput);
 		}
 
 
@@ -446,6 +481,22 @@
 		}
 
 		#endregion rRebind
+
+
+
+
+
+		#region rUtility
+
+		/// <summary>
+		/// Get which are the most recent input types
+		/// </summary>
+		public List<InputBindingType> GetMostRecentInputTypes()
+		{
+			return mInputOrder;
+		}
+
+		#endregion rUtility
 
 
 
