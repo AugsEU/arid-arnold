@@ -44,6 +44,19 @@ namespace AridArnold
 			return mWorldReachedList;
 		}
 
+		public void NotifyWorld(string worldRoot)
+		{
+			for(int i = 0; i < mWorldReachedList.Count; i++)
+			{
+				if (mWorldReachedList[i].mWorldRoot == worldRoot)
+				{
+					// Already know about this one.
+					return;
+				}
+			}
+			mWorldReachedList.Add(new WorldReachedInfo(worldRoot));
+		}
+
 		protected override void ReadBinary(BinaryReader br)
 		{
 			string magic = br.ReadString();

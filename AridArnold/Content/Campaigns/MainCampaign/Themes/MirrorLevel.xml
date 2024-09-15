@@ -2,6 +2,8 @@
 <theme>
 	<name>Land Of Mirrors</name>
 	<exitColour>133828</exitColour>
+	<music>Mirror</music>
+
 	<path from="Wall">Cobble</path>
 	<path from="Platform">TreePlatform</path>
 	<path from="CoinFull">FlowerFull</path>

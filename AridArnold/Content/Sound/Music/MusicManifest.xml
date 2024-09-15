@@ -13,6 +13,14 @@
         <file>BukCave.ogg</file>
         <vol>0.8</vol>
     </music>
+    <music id="Mirror">
+        <file>Mirror.ogg</file>
+        <vol>0.8</vol>
+    </music>
+    <music id="Lab">
+        <file>Lab.ogg</file>
+        <vol>1.0</vol>
+    </music>
 
     <!-- Cutscene -->
     <music id="IntroCut">

@@ -1,4 +1,6 @@
-﻿namespace WormWarp
+﻿using AridArnold;
+
+namespace WormWarp
 {
 	enum GameState
 	{
@@ -97,7 +99,7 @@
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			mTextureDB = LoadTypeDB<Texture2D>(content, "Textures");
-			mFont = AridArnold.FontManager.I.GetFont("PixicaMicro", 24);
+			mFont = AridArnold.FontManager.I.GetFont("PixicaMicro", 36);
 
 			InitMenu();
 		}
@@ -171,6 +173,7 @@
 		void InitGameOver()
 		{
 			mGameState = GameState.GS_GAMEOVER;
+			MusicManager.I.StopMusic();
 		}
 
 		#endregion rInit

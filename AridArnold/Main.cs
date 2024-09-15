@@ -135,7 +135,7 @@ namespace AridArnold
 				CampaignManager.I.BeginCampaign("MainCampaign");
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
 
-				//GameCinematic myCine = new GameCinematic("Content/Campaigns/MainCampaign/Cinematics/Ending.mci");
+				//GameCinematic myCine = new GameCinematic("Content/Campaigns/MainCampaign/Cinematics/Opening.mci");
 				//CinematicScreen cinematicScreen = ScreenManager.I.GetScreen(ScreenType.CinematicScreen) as CinematicScreen;
 				//cinematicScreen.StartCinematic(myCine, ScreenManager.I.GetActiveScreenType());
 				//ScreenManager.I.ActivateScreen(ScreenType.CinematicScreen);
@@ -186,7 +186,7 @@ namespace AridArnold
 
 				Screen screen = ScreenManager.I.GetActiveScreen();
 
-				if (!mInLoadingSection && this.IsActive)
+				if (!mInLoadingSection)
 				{
 					InputManager.I.Update(gameTime);
 				}
@@ -515,6 +515,16 @@ namespace AridArnold
 		protected override void OnExiting(object sender, EventArgs args)
 		{
 			MonoSound.Impl.OnExit(this);
+		}
+
+
+
+		/// <summary>
+		/// Is game window in focus?
+		/// </summary>
+		public static bool GameActive()
+		{
+			return sSelf.IsActive;
 		}
 
 		#endregion rUtility

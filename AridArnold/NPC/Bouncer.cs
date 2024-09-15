@@ -50,6 +50,8 @@ namespace AridArnold
 
 			mJumpSpeed = 23.0f;
 			mSentDialogBox = false;
+
+			mStyle.mVoice = new Voice("NPC/Voice/DefaultMale.xml");
 		}
 
 		#endregion rInit

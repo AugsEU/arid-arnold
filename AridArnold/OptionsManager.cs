@@ -16,6 +16,7 @@ namespace AridArnold
 		float mMasterVolume;
 		float mMusicVolume;
 		bool mImpatientPlayer;
+		bool mGhosts;
 
 		#endregion rMembers
 
@@ -44,6 +45,7 @@ namespace AridArnold
 			mMasterVolume = 0.5f;
 			mMusicVolume = 1.0f;
 			mImpatientPlayer = false;
+			mGhosts = true;
 		}
 
 		#endregion rInit
@@ -64,6 +66,9 @@ namespace AridArnold
 
 		public bool GetImpatientPlayer() { return mImpatientPlayer; }
 		public void SetImpatientPlayer(bool impatientPlayer) { mImpatientPlayer = impatientPlayer; }
+
+		public bool GetGhostDisplay() { return mGhosts; }
+		public void SetGhostDisplay(bool ghosts) { mGhosts = ghosts; }
 
 		#endregion rSGetter
 

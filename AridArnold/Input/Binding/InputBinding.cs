@@ -79,7 +79,7 @@
 		public void Update(GameTime gameTime)
 		{
 			mPreviousState = mCurrentState;
-			mCurrentState = PollInput();
+			mCurrentState = Main.GameActive() && PollInput();
 		}
 
 

@@ -43,6 +43,15 @@
 			mRunningAnimation.Update(gameTime);
 		}
 
+		/// <summary>
+		/// Physics update
+		/// </summary>
+		public override void OrderedUpdate(GameTime gameTime)
+		{
+			// None physics.
+			return;
+		}
+
 		#endregion rUpdate
 
 

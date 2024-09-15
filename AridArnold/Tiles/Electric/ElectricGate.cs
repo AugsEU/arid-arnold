@@ -71,7 +71,7 @@
 				if (mStatus != GateStatus.Open)
 				{
 					// Just opened.
-					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.LabDoorOpen, GetCentre(), 0.4f));
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.LabDoorOpen, GetCentre(), 0.15f));
 				}
 				mStatus = GateStatus.Open;
 			}
@@ -84,7 +84,7 @@
 				if (mStatus != GateStatus.Closed)
 				{
 					// Just closed.
-					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.LabDoorClose, GetCentre(), 0.4f));
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.LabDoorClose, GetCentre(), 0.15f));
 				}
 				mStatus = GateStatus.Closed;
 			}

@@ -73,6 +73,8 @@
 
 			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
 			mPauseMenu.Close();
+
+			mMainUI = new Layout("Layouts/MainGame.mlo");
 		}
 
 
@@ -135,15 +137,17 @@
 		/// </summary>
 		void GameUpdate(GameTime gameTime)
 		{
-			if (CameraManager.I.BlockUpdateRequested())
-			{
-				return;
-			}
-
 			if (InputManager.I.KeyHeld(InputAction.Pause) && AllowPauseMenu())
 			{
 				// Open pause menu and immediately abort the update.
 				mPauseMenu.Open();
+				return;
+			}
+
+			GhostManager.I.Update(gameTime);
+
+			if (CameraManager.I.BlockUpdateRequested())
+			{
 				return;
 			}
 
@@ -181,7 +185,6 @@
 		void GameUpdateStep(GameTime gameTime, Level level)
 		{
 			HandleInput();
-			GhostManager.I.Update(gameTime);
 			EntityManager.I.Update(gameTime);
 			TileManager.I.Update(gameTime);
 			ItemManager.I.Update(gameTime);

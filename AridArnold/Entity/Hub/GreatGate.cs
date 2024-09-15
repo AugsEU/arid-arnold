@@ -33,6 +33,8 @@
 		TextInfoBubble mUseKeyInfoBubble;
 		TextInfoBubble mGetKeyInfoBubble;
 
+		GameSFX mOpeningSFX;
+
 		#endregion rMembers
 
 
@@ -52,6 +54,8 @@
 
 			mUseKeyInfoBubble = new TextInfoBubble(mPosition + BUBBLE_OFFSET, "InGame.UseKey");
 			mGetKeyInfoBubble = new TextInfoBubble(mPosition + BUBBLE_OFFSET, "InGame.GetKey");
+
+			mOpeningSFX = null;
 		}
 
 		/// <summary>
@@ -78,6 +82,8 @@
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
+			Camera screenCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
+
 			mUnlockDoorTimer.Update(gameTime);
 
 			bool hasGreatKey = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey);
@@ -98,6 +104,12 @@
 				{
 					mUnlockDoorTimer.FullReset();
 					mUnlockDoorTimer.Start();
+
+					mOpeningSFX = new GameSFX(AridArnoldSFX.BlockPush, 0.8f, -0.6f, -0.6f);
+					mOpeningSFX.GetBuffer().SetLoop(true);
+					SFXManager.I.PlaySFX(mOpeningSFX, 0.0f);
+
+					screenCam.DoMovement(new CameraShake((float)UNLOCK_TIME / 10.0f, 2.0f, 99.0f));
 				}
 			}
 
@@ -108,8 +120,19 @@
 
 			if (mUnlockDoorTimer.IsPlaying() && mUnlockDoorTimer.GetPercentageF() >= 1.0f)
 			{
-				if(openFlag)
+				if (openFlag)
+				{
 					mIsUnlocked = openFlag;
+				}
+
+				if(mOpeningSFX is not null)
+				{
+					mOpeningSFX.Stop(80.0f);
+					SFXManager.I.PlaySFX(AridArnoldSFX.LibraryBlockLand, 0.8f, -0.6f, -0.6f);
+					screenCam.DoMovement(new DiminishCameraShake((float)10.0f, 15.0f, 99.0f));
+				}
+				
+				mUnlockDoorTimer.Stop();
 			}
 
 			mUseKeyInfoBubble.Update(gameTime, IsPlayerNear() && hasGreatKey && !mIsUnlocked && !mUnlockDoorTimer.IsPlaying());

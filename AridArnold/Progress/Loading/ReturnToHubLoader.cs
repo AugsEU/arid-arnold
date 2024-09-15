@@ -28,6 +28,9 @@
 			NotifyFinishedLoading();
 
 			CampaignManager.I.EndSequence(success);
+
+			// Auto-save
+			SaveManager.I.SaveProfile();
 		}
 	}
 

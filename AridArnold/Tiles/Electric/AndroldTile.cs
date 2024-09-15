@@ -74,7 +74,7 @@
 					EntityManager.I.QueueRegisterEntity(new Androld(position));
 
 					//Sound
-					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.AndroldBorn, GetCentre(), 0.5f));
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.AndroldBorn, GetCentre(), 0.9f));
 
 
 					//Spawn giblets

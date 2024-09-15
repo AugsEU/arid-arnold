@@ -75,7 +75,7 @@
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
-				QueueLoadSequence(new HubDirectLoader(601));
+				QueueLoadSequence(new HubDirectLoader(401));
 				//QueueLoadSequence(new LevelDirectLoader(90003));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
@@ -385,6 +385,7 @@
 
 			// Inform others
 			CollectableManager.I.NotifySequenceBegin();
+			FlagsManager.I.NotifySequenceStart();
 		}
 
 

@@ -52,6 +52,13 @@ namespace AridArnold
 
 		void PopulateWinStats()
 		{
+			// Special items
+			{
+				AddItemStat(KeyItemFlagType.kSerpentToken, new Color(85, 145, 90));
+				AddItemStat(KeyItemFlagType.kHorseToken, new Color(216, 160, 75));
+				AddItemStat(KeyItemFlagType.kDemonToken, new Color(186, 34, 29));
+			}
+
 			// Water
 			{
 				int waterDiff = CollectableManager.I.GetSequenceEndDiff(CollectableCategory.WaterBottle);
@@ -100,6 +107,16 @@ namespace AridArnold
 						mStats.Add(new WinInfoStatistic(refundTitle, new Color(127, 127, 127), retundMoneyStr));
 					}
 				}
+			}
+		}
+
+		void AddItemStat(KeyItemFlagType itemType, Color itemColor)
+		{
+			if (FlagsManager.I.GetFlagSeqDiff(FlagCategory.kKeyItems, (uint)itemType) == 1)
+			{
+				string itemID = FlagTypeHelpers.GetKeyItemNameID(itemType);
+				string locItemName = LanguageManager.I.GetText(itemID);
+				mStats.Add(new WinInfoStatistic(locItemName, itemColor, "+1"));
 			}
 		}
 

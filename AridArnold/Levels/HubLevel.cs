@@ -26,6 +26,19 @@
 		}
 
 
+		/// <summary>
+		/// World reached info.
+		/// </summary>
+		public override void Begin()
+		{
+			string worldRoot = GetAuxData().GetRoot();
+
+			SaveManager.I.GetGlobalSaveInfo().NotifyWorld(worldRoot);
+
+			base.Begin();
+		}
+
+
 
 		/// <summary>
 		/// Do update

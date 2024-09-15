@@ -2,6 +2,8 @@
 <theme>
 	<name>The Lab</name>
 	<exitColour>1E191D</exitColour>
+	<music>Lab</music>
+
 	<path from="Wall">LabWall.max</path>
 	<path from="ApparentWall">LabWall1</path>
 	<path from="FadedWall">LabWallFaded</path>

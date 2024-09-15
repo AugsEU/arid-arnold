@@ -166,6 +166,11 @@ namespace AridArnold
 		/// </summary>
 		public void SetHorseMode()
 		{
+			if(mHorseMode)
+			{
+				return;
+			}
+
 			mHorseMode = true;
 			mWalkSpeed = HORSE_WALK_SPEED;
 
@@ -174,6 +179,8 @@ namespace AridArnold
 				RefreshTexturePack();
 				mPosition += -GravityVecNorm() * 10.0f;
 			}
+
+			SFXManager.I.PlaySFX(AridArnoldSFX.HorseBorn, 0.4f);
 		}
 
 		#endregion rInitialisation
@@ -422,7 +429,7 @@ namespace AridArnold
 			Camera cam = CameraManager.I.GetCamera(CameraManager.CameraInstance.ScreenCamera);
 			cam.QueueMovement(cameraShake);
 
-			SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldDeath, 0.1f);
+			SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldDeath, 0.2f);
 
 			base.Kill();
 		}

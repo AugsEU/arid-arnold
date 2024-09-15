@@ -161,12 +161,12 @@
 		<text>UI.Menu.ClairaudienceOption</text>
 		<explainBox>optionDescTxb</explainBox>
 		<up>masterVolOpt</up>
-		<down>impatientOpt</down>
+		<down>ghostOpt</down>
 	</element>
-	<element type="impatientOption" id="impatientOpt">
+	<element type="ghostOption" id="ghostOpt">
 		<x>480.0</x>
 		<y>800.0</y>
-		<text>UI.Menu.ImpatientOption</text>
+		<text>UI.Menu.GhostOption</text>
 		<explainBox>optionDescTxb</explainBox>
 		<up>musicVolOpt</up>
 		<down>fullScreenOpt</down>
@@ -176,7 +176,7 @@
 		<y>840.0</y>
 		<text>UI.Menu.FullscreenOption</text>
 		<explainBox>optionDescTxb</explainBox>
-		<up>impatientOpt</up>
+		<up>ghostOpt</up>
 		<down>optRebindBtn</down>
 	</element>
 
@@ -193,7 +193,7 @@
 		<y>996.0</y>
 		<msg>go:kRebindArea</msg>
 		<text>UI.Menu.Rebind</text>
-		<up>impatientOpt</up>
+		<up>ghostOpt</up>
 		<down>visionOpt</down>
 		<left>optBackBtn</left>
 		<right>optBackBtn</right>
@@ -203,7 +203,7 @@
 		<y>996.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
-		<up>impatientOpt</up>
+		<up>ghostOpt</up>
 		<down>visionOpt</down>
 		<left>optRebindBtn</left>
 		<right>optRebindBtn</right>

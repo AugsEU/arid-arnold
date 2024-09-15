@@ -173,7 +173,7 @@
 				{
 					mBounceAnim.Play();
 					EmitSpores();
-					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.MushroomBounce, mPosition, 0.5f, 0.0f, 0.2f));
+					SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.MushroomBounce, mPosition, 0.7f, 0.0f, 0.2f));
 				}
 			}
 		}

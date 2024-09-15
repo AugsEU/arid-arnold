@@ -63,6 +63,7 @@
 		[FilePath("Sound/SFX/Lab/DoorClose")]				LabDoorClose,
 		[FilePath("Sound/SFX/Lab/ButtonClick")]				LabButton,
 		[FilePath("Sound/SFX/Lab/AndroldBorn")]				AndroldBorn,
+		[FilePath("Sound/SFX/Lab/Horse")]					HorseBorn,
 
 		// Mirror
 		[FilePath("Sound/SFX/Mirror/MirrorThrough")]		MirrorThrough,
@@ -103,6 +104,7 @@
 		// Item
 		[FilePath("Sound/SFX/Items/UseItem")]				UseItem,
 		[FilePath("Sound/SFX/Items/TreePlace")]				TreePlace,
+		[FilePath("Sound/SFX/Items/BuyItem")]				BuyItem,
 
 		// Arcade
 		[FilePath("Sound/SFX/Misc/ArcadeGameOver")] ArcadeGameOver,

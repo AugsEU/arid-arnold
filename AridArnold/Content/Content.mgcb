@@ -16336,3 +16336,27 @@
 #begin Sound/Music/Intro.ogg
 /copy:Sound/Music/Intro.ogg
 
+#begin Sound/SFX/Lab/Horse.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Lab/Horse.wav
+
+#begin Sound/SFX/Items/BuyItem.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/SFX/Items/BuyItem.wav
+
+#begin Sound/Music/Mirror.ogg
+/copy:Sound/Music/Mirror.ogg
+
+#begin Sound/Music/Lab.ogg
+/copy:Sound/Music/Lab.ogg
+
+#begin Text/EN/UI/Menu/GhostOption.txt
+/copy:Text/EN/UI/Menu/GhostOption.txt
+
+#begin Text/EN/UI/Menu/GhostOptionDesc.txt
+/copy:Text/EN/UI/Menu/GhostOptionDesc.txt
+

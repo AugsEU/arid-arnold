@@ -93,6 +93,7 @@ namespace AridArnold
 			{
 				Item newItem = Item.CreateItem(mItemType, mDisplayItem.GetPrice());
 				ItemManager.I.PurchaseItem(newItem, mPosition + SPENDING_TICKER_OFFSET);
+				SFXManager.I.PlaySFX(AridArnoldSFX.BuyItem, 0.1f);
 			}
 		}
 

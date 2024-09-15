@@ -67,7 +67,7 @@
 		/// <summary>
 		/// Begin level
 		/// </summary>
-		public void Begin()
+		public virtual void Begin()
 		{
 			SFXManager.I.EndAllSFX(150.0f);
 

@@ -231,6 +231,9 @@ namespace AridArnold
 			SFXManager.I.EndAllSFX(320.0f);
 			SFXManager.I.PlaySFX(AridArnoldSFX.MenuSelect, 0.4f);
 			GoToSubMenu(PauseSubMenu.kHub);
+
+			// Prevent pause buffering.
+			GhostManager.I.StopRecording();
 		}
 
 

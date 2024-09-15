@@ -9,6 +9,7 @@
 
 		// Save a bunch of flags in a pot
 		HashSet<UInt64> mFlagPot;
+		HashSet<UInt64> mStartSequenceFlagPot;
 
 		#endregion rMembers
 
@@ -132,6 +133,48 @@
 		}
 
 		#endregion rFlags
+
+
+
+
+
+		#region rSequence
+
+		/// <summary>
+		/// Call at start of sequence
+		/// </summary>
+		public void NotifySequenceStart()
+		{
+			mStartSequenceFlagPot = new HashSet<UInt64>(mFlagPot);
+		}
+
+
+
+		/// <summary>
+		/// Compare two flags.
+		/// -1 Was set now isn't
+		/// 0 Same as before
+		/// 1 Wasn't set and now is
+		/// </summary>
+		public int GetFlagSeqDiff(FlagCategory flag, UInt32 impl = 0)
+		{
+			UInt64 rawFlag = GetRawFlag(flag, impl);
+			bool wasSet = mStartSequenceFlagPot.Contains(rawFlag);
+			bool isSet = mFlagPot.Contains(rawFlag);
+
+			if(wasSet && !isSet)
+			{
+				return -1;
+			}
+			else if(!wasSet && isSet)
+			{
+				return 1;
+			}
+
+			return 0;
+		}
+
+		#endregion rSequence
 
 
 

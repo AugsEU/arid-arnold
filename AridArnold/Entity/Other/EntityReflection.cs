@@ -168,7 +168,7 @@ namespace AridArnold
 
 			Animator explodeAnimator = MonoData.I.LoadAnimator("Shared/Coin/Explode.max");
 			FXManager.I.AddFX(new AnimationFX(GetPos(), explodeAnimator, DrawLayer.TileEffects));
-			SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldDeath, 0.1f);
+			SFXManager.I.PlaySFX(AridArnoldSFX.ArnoldDeath, 0.2f);
 
 			base.Kill();
 		}
