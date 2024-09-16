@@ -138,6 +138,8 @@ namespace AridArnold
 			Camera cameraBG = CameraManager.I.GetCamera(CameraManager.CameraInstance.MenuBGCamera);
 			cameraBG.ForcePosition(Vector2.Zero);
 
+			MusicManager.I.RequestTrackPlay("MainMenu");
+
 
 			base.OnActivate();
 		}
@@ -234,6 +236,7 @@ namespace AridArnold
 					QueueAreaTransition(newArea);
 					break;
 				case "lo": // Load campaign
+					MusicManager.I.StopMusic(300.0);
 					mPendingCampaignLoad = msgStr;
 					StartFade(FadeState.kFadeOutNewCampaign);
 					break;

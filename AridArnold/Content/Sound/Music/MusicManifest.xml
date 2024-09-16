@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
+    <!-- Menu -->
+    <music id="MainMenu">
+        <file>MainMenu.ogg</file>
+        <vol>0.7</vol>
+    </music>
+
     <!-- World themes -->
     <music id="SteamPlant">
         <file>SteamPlant.ogg</file>

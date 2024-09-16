@@ -7,7 +7,7 @@ namespace AridArnold
 	/// </summary>
 	internal class TitleScreen : Screen
 	{
-		const double FADE_IN_TIME = 8000.0;
+		const double FADE_IN_TIME = 5000.0;
 
 		string mIcefishSoftware;
 		string mPresents;
@@ -40,7 +40,10 @@ namespace AridArnold
 			bool generalConfirm = InputManager.I.AnyGangPressed(BindingGang.SysConfirm);
 			bool mouseClick = InputManager.I.KeyPressed(InputAction.SysLClick);
 
-			if (generalConfirm || mouseClick || mFadeInTimer.GetPercentageF() >= 1.0f)
+			bool allowSkip = mFadeInTimer.GetPercentageF() >= 0.5f;
+			bool willSkip = allowSkip && (generalConfirm || mouseClick);
+
+			if (willSkip || mFadeInTimer.GetPercentageF() >= 1.0f)
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.MainMenu);
 			}
@@ -69,7 +72,7 @@ namespace AridArnold
 
 		public float GetColorT()
 		{
-			const float alpha = 0.22f;
+			const float alpha = 0.12f;
 			const float beta = 12.0f;
 
 			float t = mFadeInTimer.GetPercentageF();

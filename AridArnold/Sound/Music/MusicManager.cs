@@ -26,7 +26,7 @@
 		/// <summary>
 		/// Stop the music.
 		/// </summary>
-		public void StopMusic()
+		public void StopMusic(double fadeOut = MUSIC_FADE_OUT_LENGTH)
 		{
 			RequestTrackPlay("");
 		}
@@ -36,7 +36,7 @@
 		/// <summary>
 		/// Request a track to play. Pass null to request none music.
 		/// </summary>
-		public void RequestTrackPlay(string musicID)
+		public void RequestTrackPlay(string musicID, double fadeOut = MUSIC_FADE_OUT_LENGTH)
 		{
 			musicID = musicID.ToLower();
 			// If it's the same as we are already playing, do nothing.
@@ -48,7 +48,7 @@
 			}
 
 			mNextTrack = mManifest.LoadTrack(musicID);
-			mCurrentTrack?.Stop(MUSIC_FADE_OUT_LENGTH);
+			mCurrentTrack?.Stop(fadeOut);
 		}
 
 

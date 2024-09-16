@@ -133,7 +133,7 @@ namespace AridArnold
 			{
 				if (mSelectedNavElement is not null)
 				{
-					SFXManager.I.PlaySFX(AridArnoldSFX.MenuSelect, 0.4f);
+					SFXManager.I.PlaySFX(AridArnoldSFX.MenuSelect, 0.2f);
 				}
 				mSelectedNavElement = mPendingNavElement;
 			}
