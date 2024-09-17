@@ -16423,3 +16423,9 @@
 #begin Sound/Music/MainMenu.ogg
 /copy:Sound/Music/MainMenu.ogg
 
+#begin Text/EN/NPC/Sign/BossGrave.txt
+/copy:Text/EN/NPC/Sign/BossGrave.txt
+
+#begin Text/EN/NPC/Sign/Heckle.txt
+/copy:Text/EN/NPC/Sign/Heckle.txt
+

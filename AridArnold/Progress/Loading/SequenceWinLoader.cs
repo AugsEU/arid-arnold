@@ -92,6 +92,21 @@ namespace AridArnold
 				}
 			}
 
+			// Coin Purse
+			bool coinPurse = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kCoinPurse);
+			if(coinPurse)
+			{
+				ushort moneyID = CampaignManager.I.GetCurrCoinID();
+				int moneyDiff = CollectableManager.I.GetSequenceEndDiff(moneyID);
+				if (moneyDiff < 0)
+				{
+					string moneyTitle = LanguageManager.I.GetText("UI.KeyItem.CoinPurse");
+					string moneyStr = string.Format("{0}$", MonoText.IntToDiff(-moneyDiff));
+
+					mStats.Add(new WinInfoStatistic(moneyTitle, new Color(127, 127, 127), moneyStr));
+				}
+			}
+
 			// Item refund
 			{
 				Item currItem = ItemManager.I.GetActiveItem();

@@ -29,7 +29,15 @@
 				EventManager.I.TriggerEvent(EventType.KeyCollect);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)mFlagType, true);
 				FXManager.I.AddAnimator(mPosition, "Shared/Coin/Explode.max", DrawLayer.TileEffects);
-				SFXManager.I.PlaySFX(AridArnoldSFX.Collect, 0.5f);
+				if (CampaignManager.I.GetCurrentLevelType() == AuxData.LevelType.Hub)
+				{
+					SFXManager.I.PlaySFX(AridArnoldSFX.CollectKey, 0.3f);
+				}
+				else
+				{
+					SFXManager.I.PlaySFX(AridArnoldSFX.Collect, 0.5f);
+				}
+				
 				pEnabled = false;
 			}
 		}

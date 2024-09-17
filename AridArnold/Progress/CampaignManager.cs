@@ -75,7 +75,7 @@
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
-				QueueLoadSequence(new HubDirectLoader(601));
+				QueueLoadSequence(new HubDirectLoader(105));
 				//QueueLoadSequence(new LevelDirectLoader(508));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
@@ -428,6 +428,18 @@
 				UInt16 doorID = CollectableManager.GetCollectableID(CollectableCategory.Door);
 
 				CollectableManager.I.CollectSpecificItem(doorID, mPrevDoorPos);
+
+				bool coinPurse = FlagsManager.I.CheckFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kCoinPurse);
+				if (coinPurse)
+				{
+					ushort moneyID = GetCurrCoinID();
+					int moneyDiff = CollectableManager.I.GetSequenceEndDiff(moneyID);
+
+					if (moneyDiff < 0)
+					{
+						CollectableManager.I.IncPermanentCount(moneyID, -moneyDiff);
+					}
+				}
 			}
 			else
 			{

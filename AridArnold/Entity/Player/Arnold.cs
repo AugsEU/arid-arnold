@@ -468,7 +468,7 @@ namespace AridArnold
 			}
 			else if(currItem is Trainers)
 			{
-				mWalkSpeed = mWalkSpeed * 1.15f;
+				mWalkSpeed = mWalkSpeed * 1.2f;
 			}
 
 			if (IsChaosMode())

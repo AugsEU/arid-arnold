@@ -40,9 +40,11 @@
 
 		protected override void OnCollect()
 		{
-			if (!mIsGhost && FlagsManager.I.CheckFlag(FlagCategory.kCurses, (UInt32)CurseFlagTypes.kBlessingMoney))
+			bool moneyBlessing = FlagsManager.I.CheckFlag(FlagCategory.kCurses, (UInt32)CurseFlagTypes.kBlessingMoney);
+
+			if (!mIsGhost && moneyBlessing)
 			{
-				UInt16 collectableID = CollectableManager.GetCollectableID(GetCollectableType(), GetImplByte());
+				UInt16 collectableID = CampaignManager.I.GetCurrCoinID();
 				CollectableManager.I.IncPermanentCount(collectableID, 1);
 			}
 			base.OnCollect();
