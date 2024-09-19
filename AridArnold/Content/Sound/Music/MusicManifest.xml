@@ -43,6 +43,11 @@
         <vol>0.6</vol>
         <noLoop></noLoop>
     </music>
+    <music id="Fountain">
+        <file>Fountain.ogg</file>
+        <vol>0.7</vol>
+        <noLoop></noLoop>
+    </music>
 
     <!-- Arcade -->
     <music id="DeathRide">

@@ -40,6 +40,7 @@ namespace AridArnold
 		int mLastFrameCompleted = -1;
 		double mElapsedTime;
 		bool mIsPlaying;
+		bool mAllowSkip;
 
 		bool mPaused;
 
@@ -68,6 +69,8 @@ namespace AridArnold
 			mIsPlaying = false;
 
 			mPaused = false;
+
+			mAllowSkip = rootNode["noSkip"] is null;
 		}
 
 
@@ -388,6 +391,15 @@ namespace AridArnold
 			}
 
 			throw new Exception("Could not find actor named: " + name);
+		}
+
+
+		/// <summary>
+		/// Can we skip this one?
+		/// </summary>
+		public bool IsSkippable()
+		{
+			return mAllowSkip;
 		}
 
 		#endregion rUtil

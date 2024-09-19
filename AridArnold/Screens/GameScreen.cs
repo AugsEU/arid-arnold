@@ -69,6 +69,8 @@
 		/// </summary>
 		public override void OnActivate()
 		{
+			mLoadSequence = null;
+
 			mFadeInFx = new FadeFX(new ScreenStars(10.0f, SCREEN_RECTANGLE));
 
 			FXManager.I.Init(GAME_AREA_WIDTH, GAME_AREA_HEIGHT);
@@ -268,9 +270,18 @@
 		private void LevelWin()
 		{
 			mLevelEndTimer.Start();
-			DisplayLevelEndText();
 			SFXManager.I.EndAllSFX(150.0f);
-			SFXManager.I.PlaySFX(AridArnoldSFX.CollectKey, 0.4f);
+			
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
+			if (currLevel.CanLoseLives())
+			{
+				SFXManager.I.PlaySFX(AridArnoldSFX.CollectKey, 0.4f);
+				DisplayLevelEndText();
+			}
+			else
+			{
+				mLevelEndTimer.SetPercentTime(0.8f);
+			}
 		}
 
 
@@ -427,7 +438,7 @@
 			for (int i = 0; i < EntityManager.I.GetEntityNum(); i++)
 			{
 				Entity e = EntityManager.I.GetEntity(i);
-				if (e is Arnold)
+				if (e is Arnold && e is not Androld)
 				{
 					DisplayLevelEndTextOnArnold((Arnold)e);
 				}

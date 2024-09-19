@@ -46,7 +46,7 @@ namespace AridArnold
 			FXManager.I.Update(gameTime);
 			mCurrentCinematic.Update(gameTime);
 
-			if (InputManager.I.KeyPressed(InputAction.Confirm))
+			if (mCurrentCinematic.IsSkippable() && InputManager.I.KeyPressed(InputAction.Confirm))
 			{
 				mCurrentCinematic.SkipToEnd();
 			}

@@ -16450,3 +16450,6 @@
 /processorParam:Quality=Best
 /build:Sound/Music/BossMusic.wav
 
+#begin Sound/Music/Fountain.ogg
+/copy:Sound/Music/Fountain.ogg
+

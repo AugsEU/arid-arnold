@@ -40,6 +40,8 @@ namespace AridArnold
 				mTextStaggerTimer.Start();
 				PopulateWinStats();
 				CameraManager.I.ResetAllCameras();
+
+				CampaignManager.I.CheckCinematicTriggers(CinematicTrigger.TriggerType.Ending);
 			}
 
 			mTextStaggerTimer.Update(gameTime);

@@ -10,6 +10,7 @@ namespace AridArnold
 		#region rMembers
 
 		protected MonoRange<int> mFrameSpan;
+		protected GameCinematic mParent;
 
 		#endregion rMembers
 
@@ -47,6 +48,8 @@ namespace AridArnold
 			}
 
 			MonoDebug.Assert(mFrameSpan.IsValid());
+
+			mParent = parent;
 		}
 
 		#endregion rInit

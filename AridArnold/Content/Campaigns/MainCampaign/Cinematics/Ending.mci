@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cinematic>
-
+	<noSkip></noSkip>
 	<actors>
 		<actor>
 			<name>Fountain</name>
@@ -45,6 +45,10 @@
 		<CC_DisplayLayout frames="0,2260">
 			<layout>BG/Cinematics/EndingBG.mlo</layout>
 		</CC_DisplayLayout>
+
+		<CC_PlayMusic frames="0">
+			<id>Fountain</id>
+		</CC_PlayMusic>
 
 		<!-- Fountain setup -->
 		<CC_SetActorProps frames="0">
@@ -120,7 +124,10 @@
 			<x>170</x>
 			<y>180</y>
 			<spike>70</spike>
+
+			<voice>NPC/Voice/DefaultFemale.xml</voice>
 			<framesPerLetter>4</framesPerLetter>
+			<scrollSpeed>0.8</scrollSpeed>
 			<borderColor>7325C6</borderColor>
 			<fillColor>2A1223A0</fillColor>
 		</CC_SpawnTextbox>
@@ -200,5 +207,9 @@
 
 		<CC_PauseUntilConfirm frames="2700, 99999">
 		</CC_PauseUntilConfirm>
+
+		<CC_OpenScreen frames="2710">
+			<screen>Credits</screen>
+		</CC_OpenScreen>
 	</commands>
 </cinematic>

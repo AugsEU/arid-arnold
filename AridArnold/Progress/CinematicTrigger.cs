@@ -10,6 +10,7 @@
 		public enum TriggerType
 		{
 			Opening,
+			Ending,
 			LevelEnterFirst,
 		}
 
@@ -24,7 +25,6 @@
 		TriggerType mType;
 		int mLevelTrigger;
 		GameCinematic mCinematic;
-		UInt64? mRequiredFlag;
 
 		#endregion rMembers
 
@@ -42,16 +42,6 @@
 			mType = MonoParse.GetEnum<TriggerType>(cineNode.Attributes["type"]);
 			mLevelTrigger = MonoParse.GetInt(cineNode["level"]);
 			mCinematic = new GameCinematic(Path.Combine(campaignRoot, cineNode["cinematicPath"].InnerText));
-
-			XmlNode flagNode = cineNode["flag"];
-			if(flagNode is not null)
-			{
-				mRequiredFlag = MonoParse.GetUInt64(flagNode);
-			}
-			else
-			{
-				mRequiredFlag = null;
-			}
 		}
 
 		#endregion rInit
@@ -69,10 +59,9 @@
 		{
 			UInt64 typeHash = (UInt64)mType;
 			UInt64 triggerHash = (UInt64)mLevelTrigger;
-			UInt64 flagHash = (UInt64)mRequiredFlag.GetValueOrDefault();
 
 			// Weird hash
-			UInt64 totalHash = typeHash ^ (triggerHash << 23 | triggerHash >> 43) ^ (flagHash << 42 | flagHash >> 19);
+			UInt64 totalHash = typeHash ^ (triggerHash << 23 | triggerHash >> 43);
 
 			return totalHash;
 		}
@@ -97,12 +86,9 @@
 						return false;
 					}
 
-					if(mRequiredFlag.HasValue && !FlagsManager.I.CheckFlag(mRequiredFlag.Value))
-					{
-						return false;
-					}
-
 					return CampaignManager.I.GetCurrentLevel().GetID() == mLevelTrigger;
+				case TriggerType.Ending:
+					return FlagsManager.I.CheckFlag(FlagCategory.kFinishedGame);
 				case TriggerType.Opening:
 					return true;
 			}

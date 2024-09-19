@@ -179,6 +179,7 @@ namespace AridArnold
 				if (InputManager.I.KeyPressed(InputAction.SysFullScreen))
 				{
 					ToggleFullscreen();
+					SaveManager.I.SaveGlobalSettings();
 				}
 
 				//Record elapsed time
