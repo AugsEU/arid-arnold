@@ -75,14 +75,14 @@
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
-				QueueLoadSequence(new HubDirectLoader(105));
-				//QueueLoadSequence(new LevelDirectLoader(508));
+				//QueueLoadSequence(new HubDirectLoader(601));
+				QueueLoadSequence(new LevelDirectLoader(814));
 
-				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
-				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
-				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
-				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kDemonToken, true);
-				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kHorseToken, true);
+				//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
+				//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
+				//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
+				//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kDemonToken, true);
+				//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kHorseToken, true);
 				FlagsManager.I.SetFlag(FlagCategory.kPanelsUnlocked, (UInt32)PanelUnlockedType.kInventory, true);
 			}
 			else

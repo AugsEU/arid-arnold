@@ -15,19 +15,27 @@
 		<msg>go:kLoadGameArea</msg>
 		<text>UI.Menu.LoadGame</text>
 		<up>newGameBtn</up>
+		<down>creditsBtn</down>
+	</element>
+	<element type="messageButton" id="creditsBtn">
+		<x>480.0</x>
+		<y>320.0</y>
+		<msg>sc:Credits</msg>
+		<text>UI.Menu.CreditsButton</text>
+		<up>loadGameBtn</up>
 		<down>optionsBtn</down>
 	</element>
 	<element type="messageButton" id="optionsBtn">
 		<x>480.0</x>
-		<y>340.0</y>
+		<y>360.0</y>
 		<msg>go:kOptionsArea</msg>
 		<text>UI.Menu.Options</text>
-		<up>loadGameBtn</up>
+		<up>creditsBtn</up>
 		<down>exitBtn</down>
 	</element>
 	<element type="exitButton" id="exitBtn">
 		<x>480.0</x>
-		<y>380.0</y>
+		<y>400.0</y>
 		<text>UI.Menu.Exit</text>
 		<up>optionsBtn</up>
 		<down>newGameBtn</down>

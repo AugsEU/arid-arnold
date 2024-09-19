@@ -28,6 +28,7 @@ namespace AridArnold
 		{
 			kFadeIn,
 			kActive,
+			kFadeOutNewScreen,
 			kFadeOutNewCampaign,
 		}
 
@@ -69,7 +70,7 @@ namespace AridArnold
 		MainMenuArea mCurrentMenuArea;
 		MainMenuArea mNextMenuArea;
 		PercentageTimer mTransitionTimer;
-
+		ScreenType mNextScreen = ScreenType.MainMenu;
 
 		// Campaign load
 		string mPendingCampaignLoad = null;
@@ -187,6 +188,9 @@ namespace AridArnold
 						break;
 					case FadeState.kActive:
 						break;
+					case FadeState.kFadeOutNewScreen:
+						ScreenManager.I.ActivateScreen(mNextScreen);
+						break;
 					case FadeState.kFadeOutNewCampaign:
 						StartNewCampaign(mPendingCampaignLoad);
 						break;
@@ -234,6 +238,10 @@ namespace AridArnold
 				case "go": // Go to sub-screen
 					MainMenuArea newArea = MonoEnum.GetEnumFromString<MainMenuArea>(msgStr);
 					QueueAreaTransition(newArea);
+					break;
+				case "sc": // Go to screen
+					mNextScreen = MonoEnum.GetEnumFromString<ScreenType>(msgStr);
+					StartFade(FadeState.kFadeOutNewScreen);
 					break;
 				case "lo": // Load campaign
 					MusicManager.I.StopMusic(300.0);
@@ -407,6 +415,7 @@ namespace AridArnold
 					break;
 				case FadeState.kActive:
 					break;
+				case FadeState.kFadeOutNewScreen:
 				case FadeState.kFadeOutNewCampaign:
 					mScreenFade.DrawAtTime(info, mFadeTimer.GetPercentageF());
 					break;

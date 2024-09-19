@@ -216,7 +216,7 @@ namespace AridArnold
 						mJawPhase = JawPhase.kShooting;
 						mJawTimer.ResetStart();
 
-						SFXManager.I.PlaySFX(AridArnoldSFX.BigFireShoot, 0.4f);
+						SFXManager.I.PlaySFX(AridArnoldSFX.BigFireShoot, 0.2f);
 						mCurrFileball = new DemonBossFireBall(CalcFireBallChargePos());
 						EntityManager.I.QueueRegisterEntity(mCurrFileball);
 						break;

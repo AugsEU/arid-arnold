@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>Hell</name>
+	<exitColour>562B2B</exitColour>
+	<music>BossMusic</music>
+
+	<path from="Wall">HellAsh</path>
+	<path from="Platform">HellPlatform</path>
+	<path from="TimePlatform2">HellPlatform</path>
+	<path from="CoinFull">RockFull</path>
+	<path from="CoinGhost">RockGhost</path>
+
+	<path from="Shared/Door/HorseDoorOpen">BossDoorOpen</path>
+	<path from="Shared/Door/HorseDoorClosed">BossDoorClosed</path>
+</theme>

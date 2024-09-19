@@ -27,6 +27,15 @@
         <file>Lab.ogg</file>
         <vol>1.0</vol>
     </music>
+    <music id="Mountain">
+        <file>Mountain.ogg</file>
+        <vol>0.7</vol>
+    </music>
+
+    <music id="BossMusic">
+        <file>BossMusic.ogg</file>
+        <vol>0.9</vol>
+    </music>
 
     <!-- Cutscene -->
     <music id="IntroCut">

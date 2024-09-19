@@ -8,9 +8,7 @@
 		// Menu
 		Title,
 		MainMenu,
-		NewGame,
-		LoadGame,
-		Options,
+		Credits,
 
 		// In Game
 		Game,
@@ -21,6 +19,9 @@
 		// Deprecated
 		GameOver,
 		LevelStart,
+		NewGame,
+		LoadGame,
+		Options,
 
 		// Type
 		None
@@ -55,6 +56,7 @@
 			//Menu
 			LoadScreen(ScreenType.Title, new TitleScreen(deviceManager));
 			LoadScreen(ScreenType.MainMenu, new MainMenuScreen(deviceManager));
+			LoadScreen(ScreenType.Credits, new CreditsScreen(deviceManager));
 			LoadScreen(ScreenType.NewGame, new NewGameScreen(deviceManager));
 			LoadScreen(ScreenType.LoadGame, new LoadGameScreen(deviceManager));
 			LoadScreen(ScreenType.Options, new OptionsScreen(deviceManager));

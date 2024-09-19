@@ -16429,3 +16429,24 @@
 #begin Text/EN/NPC/Sign/Heckle.txt
 /copy:Text/EN/NPC/Sign/Heckle.txt
 
+#begin Sound/Music/Mountain.ogg
+/copy:Sound/Music/Mountain.ogg
+
+#begin Text/EN/UI/Menu/Credits.txt
+/copy:Text/EN/UI/Menu/Credits.txt
+
+#begin Text/EN/UI/Menu/CreditsButton.txt
+/copy:Text/EN/UI/Menu/CreditsButton.txt
+
+#begin Sound/Music/BossMusic.ogg
+/copy:Sound/Music/BossMusic.ogg
+
+#begin Campaigns/MainCampaign/Themes/HellBoss.xml
+/copy:Campaigns/MainCampaign/Themes/HellBoss.xml
+
+#begin Sound/Music/BossMusic.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/BossMusic.wav
+
