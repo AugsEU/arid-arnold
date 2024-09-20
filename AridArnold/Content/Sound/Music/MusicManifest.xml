@@ -33,7 +33,12 @@
     </music>
     <music id="Hell">
         <file>Hell.ogg</file>
-        <vol>0.9</vol>
+        <vol>1.0</vol>
+    </music>
+    <music id="Heaven">
+        <file>Heaven.ogg</file>
+        <vol>0.7</vol>
+        <fadeIn>4000</fadeIn>
     </music>
 
     <music id="BossMusic">

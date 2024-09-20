@@ -16489,3 +16489,6 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Sound/Music/Heaven.ogg
+/copy:Sound/Music/Heaven.ogg
+

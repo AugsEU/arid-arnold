@@ -2,16 +2,22 @@
 {
 	struct MusicManifestEntry
 	{
+
+		const float DEFAULT_FADE_IN = 700.0f;
+
 		public string mFileName;
 		public float mVolume;
 		public bool mNoLoop;
+		public float mFadeIn;
 
 		public MusicManifestEntry(XmlNode node, string basePath)
 		{
 			mFileName = MonoParse.GetString(node["file"], "");
 			mFileName = Path.Join(basePath, mFileName);
 
-			mVolume = MonoParse.GetFloat(node["vol"], 0.0f);
+			mVolume = MonoParse.GetFloat(node["vol"], 1.0f);
+			mFadeIn = MonoParse.GetFloat(node["fadeIn"], DEFAULT_FADE_IN);
+
 			mNoLoop = node["noLoop"] is not null; 
 		}
 	}

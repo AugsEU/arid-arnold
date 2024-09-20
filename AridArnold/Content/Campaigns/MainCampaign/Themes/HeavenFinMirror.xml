@@ -2,6 +2,8 @@
 <theme>
 	<name>Heaven</name>
 	<exitColour>423F63</exitColour>
+	<music>Heaven</music>
+
 	<path from="Wall">HeavenBlock</path>
 	<path from="WallSecondary">Marble</path>
 	<path from="Platform">HeavenPlatform</path>
