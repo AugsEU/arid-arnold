@@ -13,6 +13,7 @@
 	<path from="NPC/FallinFarry/Farry2">../../NPC/BabyFarry/Baby2</path>
 	<path from="NPC/FallinFarry/Farry3">../../NPC/BabyFarry/Baby1</path>
 	<path from="NPC/FallinFarry/Farry4">../../NPC/BabyFarry/Baby2</path>
+	<path from="NPC/FallinFarry/FarryStand">../../NPC/BabyFarry/BabyStand</path>
 
 	<path from="CoinFull">GoldCoin</path>
 	<path from="CoinGhost">GoldGhost</path>

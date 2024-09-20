@@ -19,16 +19,30 @@
 											("NPC/FallinFarry/Farry4", FT));
 			mFallingAnim.Play();
 
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/FallinFarry/Farry1");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("NPC/FallinFarry/FarryStand");
 
 			mScreamSFX = new SpacialSFX(AridArnoldSFX.FarryScream, mPosition, 0.6f);
 			mScreamSFX.GetBuffer().SetLoop(true);
 			mScreamSFX.SetDistanceCutoff(550.0f);
-			SFXManager.I.PlaySFX(mScreamSFX);
 		}
 
 		public override void Update(GameTime gameTime)
 		{
+			if(!mOnGround)
+			{
+				if(mScreamSFX.GetBuffer().SoundState() != SoundState.Playing)
+				{
+					SFXManager.I.PlaySFX(mScreamSFX);
+				}
+			}
+			else
+			{
+				if (mScreamSFX.GetBuffer().SoundState() == SoundState.Playing)
+				{
+					mScreamSFX.Stop(90.0f);
+				}
+			}
+
 			mScreamSFX.SetPosition(mPosition);
 			mFallingAnim.Update(gameTime);
 			base.Update(gameTime);
@@ -36,7 +50,7 @@
 
 		public override Texture2D GetDrawTexture()
 		{
-			return mFallingAnim.GetCurrentTexture();
+			return mOnGround ? mTexture : mFallingAnim.GetCurrentTexture();
 		}
 
 		/// <summary>

@@ -99,7 +99,7 @@ namespace WormWarp
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			mTextureDB = LoadTypeDB<Texture2D>(content, "Textures");
-			mFont = AridArnold.FontManager.I.GetFont("PixicaMicro", 36);
+			mFont = AridArnold.FontManager.I.GetFont("Pixica", 48);
 
 			InitMenu();
 		}
@@ -423,7 +423,8 @@ namespace WormWarp
 
 				for (int i = 0; i < mScoreMarkers.Count; i++)
 				{
-					mScoreMarkers[i].Draw(ref spriteBatch, ref mFont);
+					// Turn this off because they look bad at half-res
+					//mScoreMarkers[i].Draw(ref spriteBatch, ref mFont);
 				}
 
 				if (mGameState != GameState.GS_GAMEOVER)

@@ -16453,3 +16453,18 @@
 #begin Sound/Music/Fountain.ogg
 /copy:Sound/Music/Fountain.ogg
 
+#begin Text/EN/NPC/ShopKeeper/EndJourney.txt
+/copy:Text/EN/NPC/ShopKeeper/EndJourney.txt
+
+#begin NPC/BabyFarry/BabyStand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/BabyFarry/BabyStand.png
+
+#begin NPC/FallinFarry/FarryStand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/FallinFarry/FarryStand.png
+

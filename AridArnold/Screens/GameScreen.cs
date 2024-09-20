@@ -146,13 +146,6 @@
 				return;
 			}
 
-			GhostManager.I.Update(gameTime);
-
-			if (CameraManager.I.BlockUpdateRequested())
-			{
-				return;
-			}
-
 			FXManager.I.Update(gameTime);
 			if (mLevelEndTimer.IsPlaying())
 			{
@@ -160,6 +153,13 @@
 				{
 					MoveToNextLevel();
 				}
+				return;
+			}
+
+			GhostManager.I.Update(gameTime);
+
+			if (CameraManager.I.BlockUpdateRequested())
+			{
 				return;
 			}
 

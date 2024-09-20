@@ -1,3 +1,3 @@
-﻿The world is burning. Can't you feel it? Isn't your skin burning... like mine?
-Please water... I need at least 30 bottles to cool me down.
+﻿The world is burning. Though Barbara says never give up. Something I have heard before from a man harvesting clams.
+Say, could you give me 25 bottles of water? In exchange for a blessing.
 {Str.NPC.Witch.PromptEnter}

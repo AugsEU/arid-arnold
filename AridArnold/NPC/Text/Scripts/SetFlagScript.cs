@@ -33,6 +33,10 @@ namespace AridArnold
 		{
 			if(!mHasSetFlag)
 			{
+				if(mFlagCategory == FlagCategory.kKeyItems)
+				{
+					SFXManager.I.PlaySFX(AridArnoldSFX.CollectKey, 0.3f);
+				}
 				FlagsManager.I.SetFlag(mFlagCategory, mFlagImpl, mFlagValue);
 				mHasSetFlag = true;
 			}
