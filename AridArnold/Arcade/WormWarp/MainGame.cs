@@ -1,8 +1,6 @@
-﻿using AridArnold;
-
-namespace WormWarp
+﻿namespace WormWarp
 {
-	enum GameState
+	public enum GameState
 	{
 		GS_MAIN,
 		GS_GAMEOVER
@@ -173,7 +171,7 @@ namespace WormWarp
 		void InitGameOver()
 		{
 			mGameState = GameState.GS_GAMEOVER;
-			MusicManager.I.StopMusic();
+			AridArnold.MusicManager.I.StopMusic();
 		}
 
 		#endregion rInit
@@ -280,7 +278,7 @@ namespace WormWarp
 			else if (mGameState == GameState.GS_GAMEOVER)
 			{
 				mGameOverOpacity = Math.Min(mGameOverOpacity + 0.2f * ((float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f), 0.6f);
-				if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Confirm))
+				if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Confirm) || AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Pause))
 				{
 					mRequestQuit = true;
 				}
@@ -491,6 +489,11 @@ namespace WormWarp
 		public bool QuitRequested()
 		{
 			return mRequestQuit;
+		}
+
+		public GameState GetGameState()
+		{
+			return mGameState;
 		}
 
 		#endregion rUtil

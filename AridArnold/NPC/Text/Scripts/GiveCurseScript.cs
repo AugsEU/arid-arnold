@@ -43,6 +43,12 @@ namespace AridArnold
 
 		static CurseFlagTypes GetRandomCurseBlessing()
 		{
+			if (CampaignManager.I.IsSpeedrunMode())
+			{
+				// Speedrunners are never lucky
+				return CurseFlagTypes.kCurseLives;
+			}
+
 			MonoRandom rng = RandomManager.I.GetWorld();
 			
 			int min = 1;

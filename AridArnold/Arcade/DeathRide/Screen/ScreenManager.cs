@@ -96,6 +96,17 @@
 
 
 		/// <summary>
+		/// Get the currently active screen
+		/// </summary>
+		/// <returns>Active screen refernece, null if there is none.</returns>
+		public ScreenType GetActiveScreenType()
+		{
+			return mActiveScreen;
+		}
+
+
+
+		/// <summary>
 		/// Activates a screen of a certain type
 		/// </summary>
 		/// <param name="type">Screen type you want to actiavet</param>

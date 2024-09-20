@@ -128,6 +128,8 @@ namespace AridArnold
 		/// </summary>
 		public override void OnActivate()
 		{
+			SFXManager.I.EndAllSFX(60.0f);
+
 			SaveManager.I.ScanExistingProfiles();
 
 			// Reload the menu
@@ -152,7 +154,10 @@ namespace AridArnold
 		/// </summary>
 		public override void Update(GameTime gameTime)
 		{
-			mMenuLayout.Update(gameTime);
+			if(!mFadeTimer.IsPlaying())
+			{
+				mMenuLayout.Update(gameTime);
+			}
 			mBGLayout.Update(gameTime);
 
 			ProcessAllMessages();

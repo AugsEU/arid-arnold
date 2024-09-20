@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <nonSpacial></nonSpacial>
+    <letter char="a">
+        <sfx>VowelA</sfx>
+        <vol>0.4</vol>
+        <pitchMin>-0.55</pitchMin>
+        <pitchMax>-0.45</pitchMax>
+    </letter>
+    <letter char="e">
+        <sfx>VowelE</sfx>
+        <vol>0.4</vol>
+        <pitchMin>-0.55</pitchMin>
+        <pitchMax>-0.45</pitchMax>
+    </letter>
+    <letter char="i">
+        <sfx>VowelI</sfx>
+        <vol>0.4</vol>
+        <pitchMin>-0.55</pitchMin>
+        <pitchMax>-0.45</pitchMax>
+    </letter>
+    <letter char="o">
+        <sfx>VowelO</sfx>
+        <vol>0.4</vol>
+        <pitchMin>-0.55</pitchMin>
+        <pitchMax>-0.45</pitchMax>
+    </letter>
+    <letter char="u">
+        <sfx>VowelU</sfx>
+        <vol>0.4</vol>
+        <pitchMin>-0.55</pitchMin>
+        <pitchMax>-0.45</pitchMax>
+    </letter>
+    <default>
+        <sfx>VowelA</sfx>
+        <vol>0.4</vol>
+        <pitchMin>-0.55</pitchMin>
+        <pitchMax>-0.45</pitchMax>
+    </default>
+</root>

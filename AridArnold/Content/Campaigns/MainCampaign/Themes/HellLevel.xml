@@ -2,6 +2,8 @@
 <theme>
 	<name>Hell</name>
 	<exitColour>562B2B</exitColour>
+	<music>Hell</music>
+
 	<path from="Wall">HellAsh</path>
 	<path from="Platform">HellPlatform</path>
 	<path from="TimePlatform2">HellPlatform</path>

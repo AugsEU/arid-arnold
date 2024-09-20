@@ -59,8 +59,11 @@ namespace AridArnold
 
 		public override void OnActivate()
 		{
+			// Reload for button prompts
+			mManualPages = new Layout("Arcade/Manuals/Manual.mlo");
+
 			SFXManager.I.EndAllSFX(120.0f);
-			mScrollSound = new GameSFX(AridArnoldSFX.LibraryRotate, 0.4f, 1.0f, 1.0f);
+			mScrollSound = new GameSFX(AridArnoldSFX.LibraryRotate, 0.2f, 1.0f, 1.0f);
 			mScrollSound.GetBuffer().SetLoop(true);
 			mScrollSound.SetMute(true);
 			SFXManager.I.PlaySFX(mScrollSound);
@@ -89,7 +92,7 @@ namespace AridArnold
 
 			mManualPages.Update(gameTime);
 
-			if (InputManager.I.KeyPressed(InputAction.Pause))
+			if (InputManager.I.KeyPressed(InputAction.Pause) || InputManager.I.KeyPressed(InputAction.RestartLevel))
 			{
 				ScreenManager.I.ActivateScreen(ScreenType.Game);
 				return;

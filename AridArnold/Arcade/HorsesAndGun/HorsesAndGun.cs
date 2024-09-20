@@ -61,5 +61,18 @@
 		{
 			return "HorsesAndGun";
 		}
+
+		public override bool AllowQuit()
+		{
+			if(ScreenManager.I.GetActiveScreen() is MainGameScreen gs)
+			{
+				if(gs.IsGameOver())
+				{
+					return false;
+				}
+			}
+
+			return base.AllowQuit();
+		}
 	}
 }

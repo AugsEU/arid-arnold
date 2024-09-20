@@ -36,6 +36,7 @@
 
 			string wormTitle = LanguageManager.I.GetText("Arcade.WormWarp.Title");
 			string insertCoin = LanguageManager.I.GetText("Arcade.InsertCoin");
+			string exitCab = LanguageManager.I.GetText("Arcade.QuitGame");
 
 			textPos.Y += 50.0f;
 			MonoDraw.DrawStringCentred(info, bigFont, textPos, new Color(255,125,147), wormTitle, DrawLayer.Background);
@@ -45,6 +46,9 @@
 
 			textPos.Y += 190.0f;
 			MonoDraw.DrawStringCentred(info, font, textPos, new Color(71, 116, 237), insertCoin, DrawLayer.Background);
+
+			textPos.Y += 30.0f;
+			MonoDraw.DrawStringCentred(info, font, textPos, new Color(71, 116, 237), exitCab, DrawLayer.Background);
 		}
 	}
 }

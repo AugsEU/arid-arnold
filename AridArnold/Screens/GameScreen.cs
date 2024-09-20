@@ -139,8 +139,17 @@
 		/// </summary>
 		void GameUpdate(GameTime gameTime)
 		{
-			if (InputManager.I.KeyHeld(InputAction.Pause) && AllowPauseMenu())
+			if (InputManager.I.KeyPressed(InputAction.Pause) && AllowPauseMenu())
 			{
+				if(CampaignManager.I.IsSpeedrunMode())
+				{
+					// End run.
+					MusicManager.I.StopMusic();
+					Main.DefaultGameplayManagers();
+					ScreenManager.I.ActivateScreen(ScreenType.MainMenu);
+					return;
+				}
+
 				// Open pause menu and immediately abort the update.
 				mPauseMenu.Open();
 				return;

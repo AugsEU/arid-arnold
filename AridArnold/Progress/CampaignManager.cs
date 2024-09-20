@@ -73,10 +73,10 @@
 					CollectableManager.I.IncPermanentCount(coinID, 100);
 				}
 
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(-1, 0);
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
-				//QueueLoadSequence(new HubDirectLoader(703));
-				QueueLoadSequence(new LevelDirectLoader(916));
+				QueueLoadSequence(new HubDirectLoader(101));
+				//QueueLoadSequence(new LevelDirectLoader(916));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
@@ -654,6 +654,12 @@
 		/// </summary>
 		public void CheckCinematicTriggers(CinematicTrigger.TriggerType triggerType)
 		{
+			// No cinematics for you!
+			if(IsSpeedrunMode())
+			{
+				return;
+			}
+
 			foreach (CinematicTrigger cinematicTrigger in mMetaData.GetCinematicTriggers())
 			{
 				UInt64 cineID = cinematicTrigger.GetTriggerID();

@@ -46,7 +46,7 @@ namespace AridArnold
 
 			mTextStaggerTimer.Update(gameTime);
 
-			if (InputManager.I.AnyGangPressed(BindingGang.SysConfirm))
+			if (InputManager.I.AnyGangPressed(BindingGang.SysConfirm) || CampaignManager.I.IsSpeedrunMode())
 			{
 				FinishEffectsStage();
 			}

@@ -23,6 +23,7 @@ namespace AridArnold
 	/// </summary>
 	internal class Voice
 	{
+		bool mIsSpacial;
 		Dictionary<char, VoiceInfo> mCustomLetters = new Dictionary<char, VoiceInfo>();
 		VoiceInfo? mDefaultLetter;
 
@@ -54,6 +55,8 @@ namespace AridArnold
 			{
 				mDefaultLetter = new VoiceInfo(defaultNode);
 			}
+
+			mIsSpacial = rootNode["nonSpacial"] is null;
 		}
 
 		public void PlaySoundFromLetter(Vector2 position, char letter)
@@ -74,7 +77,16 @@ namespace AridArnold
 				info = mDefaultLetter.Value;
 			}
 
-			SpacialSFX letterSFX = new SpacialSFX(info.mSFX, position, info.mVolume, info.mPitchMin, info.mPitchMax);
+			GameSFX letterSFX = null;
+
+			if (mIsSpacial)
+			{
+				letterSFX = new SpacialSFX(info.mSFX, position, info.mVolume, info.mPitchMin, info.mPitchMax);
+			}
+			else
+			{
+				letterSFX = new GameSFX(info.mSFX, info.mVolume, info.mPitchMin, info.mPitchMax);
+			}
 
 			SFXManager.I.PlaySFX(letterSFX);
 		}

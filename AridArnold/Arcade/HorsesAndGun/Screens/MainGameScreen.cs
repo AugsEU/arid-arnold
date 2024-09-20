@@ -139,7 +139,7 @@
 			EntityManager.I.ClearEntities();
 		}
 
-		private bool IsGameOver()
+		public bool IsGameOver()
 		{
 			return mGameOverPoints != null && mGameOverPoints.Count > 0;
 		}
@@ -184,7 +184,7 @@
 
 				if (GetGameOverPercent() == 1.0f)
 				{
-					if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Confirm))
+					if (AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Confirm) || AridArnold.InputManager.I.KeyPressed(AridArnold.InputAction.Pause))
 					{
 						mRequestedExit = true;
 					}

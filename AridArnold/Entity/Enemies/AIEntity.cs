@@ -94,6 +94,11 @@
 		/// </summary>
 		private void ChugRandom()
 		{
+			if(CampaignManager.I.IsSpeedrunMode())
+			{
+				return;
+			}
+
 			//Make random deterministic based on player movement.
 			mRandom.SetSeed(mStartSeed);
 			mRandom.ChugNumber(mFrameNum / 15);

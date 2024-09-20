@@ -36,6 +36,7 @@
 
 			string deathTitle = LanguageManager.I.GetText("Arcade.HorsesAndGun.Title");
 			string insertCoin = LanguageManager.I.GetText("Arcade.InsertCoin");
+			string exitCab = LanguageManager.I.GetText("Arcade.QuitGame");
 
 			textPos.Y += 50.0f;
 			MonoDraw.DrawStringCentred(info, bigFont, textPos, new Color(255, 209, 112), deathTitle, DrawLayer.Background);
@@ -45,6 +46,9 @@
 
 			textPos.Y += 190.0f;
 			MonoDraw.DrawStringCentred(info, font, textPos, new Color(111, 65, 58), insertCoin, DrawLayer.Background);
+
+			textPos.Y += 30.0f;
+			MonoDraw.DrawStringCentred(info, font, textPos, new Color(111, 65, 58), exitCab, DrawLayer.Background);
 		}
 	}
 }

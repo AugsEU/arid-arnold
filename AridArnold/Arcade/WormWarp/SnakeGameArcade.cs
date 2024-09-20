@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.Xna.Framework.Graphics;
-
 namespace WormWarp
 {
 	class SnakeGameArcade : AridArnold.ArcadeGame
@@ -65,6 +63,16 @@ namespace WormWarp
 		public override string GetMusicID()
 		{
 			return "WormWarp";
+		}
+
+		public override bool AllowQuit()
+		{
+			if (mGameToEmulate.GetGameState() == GameState.GS_GAMEOVER)
+			{
+				return false;
+			}
+
+			return base.AllowQuit();
 		}
 	}
 }

@@ -7864,6 +7864,9 @@
 #begin Campaigns/MainCampaign/Themes/HeavenLevel.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenLevel.xml
 
+#begin Campaigns/MainCampaign/Themes/HellBoss.xml
+/copy:Campaigns/MainCampaign/Themes/HellBoss.xml
+
 #begin Campaigns/MainCampaign/Themes/HellLevel.xml
 /copy:Campaigns/MainCampaign/Themes/HellLevel.xml
 
@@ -9937,6 +9940,18 @@
 /processorParam:TextureFormat=Color
 /build:NPC/BabyFarry/Baby2.png
 
+#begin NPC/BabyFarry/BabyStand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/BabyFarry/BabyStand.png
+
 #begin NPC/Barbara/Barbara.mtn
 /copy:NPC/Barbara/Barbara.mtn
 
@@ -10743,6 +10758,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:NPC/FallinFarry/Farry4.png
+
+#begin NPC/FallinFarry/FarryStand.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/FallinFarry/FarryStand.png
 
 #begin NPC/Floatoto/Default.png
 /importer:TextureImporter
@@ -11644,11 +11671,26 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Tome/Default1.png
 
+#begin NPC/Tome/Default-1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Tome/Default-1.png
+
 #begin NPC/Tome/Idle0.mia
 /copy:NPC/Tome/Idle0.mia
 
 #begin NPC/Tome/Idle1.mia
 /copy:NPC/Tome/Idle1.mia
+
+#begin NPC/Tome/Idle-1.mia
+/copy:NPC/Tome/Idle-1.mia
 
 #begin NPC/Tome/Tome.mtn
 /copy:NPC/Tome/Tome.mtn
@@ -11787,6 +11829,9 @@
 
 #begin NPC/Voice/BickDogel.xml
 /copy:NPC/Voice/BickDogel.xml
+
+#begin NPC/Voice/BickDogelNonSpacial.xml
+/copy:NPC/Voice/BickDogelNonSpacial.xml
 
 #begin NPC/Voice/Computer.xml
 /copy:NPC/Voice/Computer.xml
@@ -12721,6 +12766,9 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Sound/Music/BossMusic.ogg
+/copy:Sound/Music/BossMusic.ogg
+
 #begin Sound/Music/BukCave.ogg
 /copy:Sound/Music/BukCave.ogg
 
@@ -12729,6 +12777,12 @@
 
 #begin Sound/Music/DeathRide.ogg
 /copy:Sound/Music/DeathRide.ogg
+
+#begin Sound/Music/Fountain.ogg
+/copy:Sound/Music/Fountain.ogg
+
+#begin Sound/Music/Hell.ogg
+/copy:Sound/Music/Hell.ogg
 
 #begin Sound/Music/HorsesAndGun.ogg
 /copy:Sound/Music/HorsesAndGun.ogg
@@ -12742,8 +12796,14 @@
 #begin Sound/Music/Library.ogg
 /copy:Sound/Music/Library.ogg
 
+#begin Sound/Music/MainMenu.ogg
+/copy:Sound/Music/MainMenu.ogg
+
 #begin Sound/Music/Mirror.ogg
 /copy:Sound/Music/Mirror.ogg
+
+#begin Sound/Music/Mountain.ogg
+/copy:Sound/Music/Mountain.ogg
 
 #begin Sound/Music/MusicManifest.xml
 /copy:Sound/Music/MusicManifest.xml
@@ -13332,6 +13392,9 @@
 
 #begin Text/EN/Arcade/PlaySnake.txt
 /copy:Text/EN/Arcade/PlaySnake.txt
+
+#begin Text/EN/Arcade/QuitGame.txt
+/copy:Text/EN/Arcade/QuitGame.txt
 
 #begin Text/EN/Arcade/SubmitName.txt
 /copy:Text/EN/Arcade/SubmitName.txt
@@ -13939,6 +14002,9 @@
 #begin Text/EN/NPC/ShopKeeper/CantHear.txt
 /copy:Text/EN/NPC/ShopKeeper/CantHear.txt
 
+#begin Text/EN/NPC/ShopKeeper/EndJourney.txt
+/copy:Text/EN/NPC/ShopKeeper/EndJourney.txt
+
 #begin Text/EN/NPC/ShopKeeper/HardTimes.txt
 /copy:Text/EN/NPC/ShopKeeper/HardTimes.txt
 
@@ -13965,6 +14031,12 @@
 
 #begin Text/EN/NPC/ShopKeeper/ShopIntro.txt
 /copy:Text/EN/NPC/ShopKeeper/ShopIntro.txt
+
+#begin Text/EN/NPC/Sign/BossGrave.txt
+/copy:Text/EN/NPC/Sign/BossGrave.txt
+
+#begin Text/EN/NPC/Sign/Heckle.txt
+/copy:Text/EN/NPC/Sign/Heckle.txt
 
 #begin Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
 /copy:Text/EN/NPC/Thornforge/KeyAlreadyGot.txt
@@ -14128,6 +14200,9 @@
 #begin Text/EN/NPC/Zippy/MovingPlatforms.txt
 /copy:Text/EN/NPC/Zippy/MovingPlatforms.txt
 
+#begin Text/EN/NPC/Zippy/NoMovement.txt
+/copy:Text/EN/NPC/Zippy/NoMovement.txt
+
 #begin Text/EN/NPC/Zippy/RacoonTime.txt
 /copy:Text/EN/NPC/Zippy/RacoonTime.txt
 
@@ -14172,6 +14247,12 @@
 
 #begin Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
 /copy:Text/EN/UI/Menu/ClairaudienceOptionDesc.txt
+
+#begin Text/EN/UI/Menu/Credits.txt
+/copy:Text/EN/UI/Menu/Credits.txt
+
+#begin Text/EN/UI/Menu/CreditsButton.txt
+/copy:Text/EN/UI/Menu/CreditsButton.txt
 
 #begin Text/EN/UI/Menu/Default.txt
 /copy:Text/EN/UI/Menu/Default.txt
@@ -16407,64 +16488,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin NPC/Tome/Default-1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/Tome/Default-1.png
-
-#begin NPC/Tome/Idle-1.mia
-/copy:NPC/Tome/Idle-1.mia
-
-#begin Text/EN/NPC/Zippy/NoMovement.txt
-/copy:Text/EN/NPC/Zippy/NoMovement.txt
-
-#begin Sound/Music/MainMenu.ogg
-/copy:Sound/Music/MainMenu.ogg
-
-#begin Text/EN/NPC/Sign/BossGrave.txt
-/copy:Text/EN/NPC/Sign/BossGrave.txt
-
-#begin Text/EN/NPC/Sign/Heckle.txt
-/copy:Text/EN/NPC/Sign/Heckle.txt
-
-#begin Sound/Music/Mountain.ogg
-/copy:Sound/Music/Mountain.ogg
-
-#begin Text/EN/UI/Menu/Credits.txt
-/copy:Text/EN/UI/Menu/Credits.txt
-
-#begin Text/EN/UI/Menu/CreditsButton.txt
-/copy:Text/EN/UI/Menu/CreditsButton.txt
-
-#begin Sound/Music/BossMusic.ogg
-/copy:Sound/Music/BossMusic.ogg
-
-#begin Campaigns/MainCampaign/Themes/HellBoss.xml
-/copy:Campaigns/MainCampaign/Themes/HellBoss.xml
-
-#begin Sound/Music/BossMusic.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/BossMusic.wav
-
-#begin Sound/Music/Fountain.ogg
-/copy:Sound/Music/Fountain.ogg
-
-#begin Text/EN/NPC/ShopKeeper/EndJourney.txt
-/copy:Text/EN/NPC/ShopKeeper/EndJourney.txt
-
-#begin NPC/BabyFarry/BabyStand.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/BabyFarry/BabyStand.png
-
-#begin NPC/FallinFarry/FarryStand.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/FallinFarry/FarryStand.png
 

@@ -29,7 +29,7 @@
 			return mCurrState;
 		}
 
-		protected void SetState(ArcadeGameState state)
+		public void SetState(ArcadeGameState state)
 		{
 			mCurrState = state;
 		}
@@ -41,5 +41,10 @@
 		public abstract string GetMusicID();
 
 		public abstract RenderTarget2D DrawToRenderTarget(DrawInfo info);
+
+		public virtual bool AllowQuit()
+		{
+			return true;
+		}
 	}
 }

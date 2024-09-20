@@ -76,5 +76,15 @@ namespace DeathRide
 		{
 			return "DeathRide";
 		}
+
+		public override bool AllowQuit()
+		{
+			if(ScreenManager.I.GetActiveScreenType() == ScreenType.GameOver)
+			{
+				return false;
+			}
+
+			return base.AllowQuit();
+		}
 	}
 }

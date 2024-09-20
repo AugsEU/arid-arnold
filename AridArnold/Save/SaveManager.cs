@@ -178,6 +178,12 @@
 		/// </summary>
 		public void SaveProfile()
 		{
+			if(CampaignManager.I.IsSpeedrunMode())
+			{
+				// Can't save in speedruns.
+				return;
+			}
+
 			mPendingProfileSave.Save();
 		}
 

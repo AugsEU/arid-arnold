@@ -9,6 +9,16 @@
 		{
 		}
 
+		public override void Begin()
+		{
+			if (CampaignManager.I.IsSpeedrunMode())
+			{
+				RandomManager.I.ResetToDefault();
+			}
+
+			base.Begin();
+		}
+
 		public override void End()
 		{
 			bool success = mLevelStatus == LevelStatus.Win;

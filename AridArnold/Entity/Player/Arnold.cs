@@ -49,6 +49,7 @@ namespace AridArnold
 		// Items
 		Item mCurrItem;
 		PercentageTimer mUseItemTimer;
+		MonoRandom mChaosRandom;
 
 		int mReverseTimeFrame = 0;
 		int mReverseFramesMax = REVERSE_TIME_FRAMES;
@@ -126,6 +127,8 @@ namespace AridArnold
 			SFXFactory jumpFactory = new SFXFactory(AridArnoldSFX.ArnoldJump, 0.40f, 0.0f, 0.15f);
 			LoadSFX(jumpFactory, AridArnoldSFX.ArnoldWalk, 0.14f);
 			mSpacialJumpSFX = false;
+
+			mChaosRandom = new MonoRandom(120);
 		}
 
 
@@ -473,7 +476,7 @@ namespace AridArnold
 
 			if (IsChaosMode())
 			{
-				MonoRandom rng = RandomManager.I.GetWorld();
+				MonoRandom rng = mChaosRandom; // Shorter name
 				mWalkSpeed = rng.GetFloatRange(ARNOLD_WALK_SPEED * 0.5f, 1.8f * ARNOLD_WALK_SPEED);
 				mGravity = rng.GetFloatRange(DEFAULT_GRAVITY * 0.5f, 1.5f * DEFAULT_GRAVITY);
 
@@ -798,7 +801,7 @@ namespace AridArnold
 
 			if(IsChaosMode())
 			{
-				MonoRandom rng = RandomManager.I.GetWorld();
+				MonoRandom rng = RandomManager.I.GetDraw();
 				return rng.GetColor();
 			}
 

@@ -46,7 +46,7 @@
 			mStyle.mFramesPerLetter = 5;
 			mStyle.mBorderColor = new Color(204, 122, 0, 200);
 			mStyle.mFillColor = new Color(50, 50, 0, 60);
-			mStyle.mVoice = new Voice("NPC/Voice/BickDogel.xml");
+			mStyle.mVoice = new Voice("NPC/Voice/BickDogelNonSpacial.xml");
 
 			mStoryRandom = new MonoRandom();
 			mStoryRandom.ChugNumber((int)pos.X);

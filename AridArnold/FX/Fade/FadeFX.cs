@@ -13,8 +13,10 @@ namespace AridArnold
 
 		public FadeFX(Fade fadeObj, float speed = 0.1f, bool forwards = false)
 		{
+			float speedMult = CampaignManager.I.IsSpeedrunMode() ? 7.0f : 1.0f;
+
 			mTime = 0.0f;
-			mSpeed = speed;
+			mSpeed = speed * speedMult;
 			mForwards = forwards;
 			mFadeObj = fadeObj;
 		}
