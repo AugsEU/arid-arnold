@@ -9,12 +9,12 @@ namespace AridArnold
 
 		protected override void SyncOption()
 		{
-			SyncFromFloat(OptionsManager.I.GetMasterVolume());
+			SyncFromFloat(OptionsManager.I.GetSFXVolume());
 		}
 
 		protected override void OnOptionSelect(int optionIdx)
 		{
-			OptionsManager.I.SetMasterVolume(GetPercentage());
+			OptionsManager.I.SetSFXVolume(GetPercentage());
 		}
 
 		protected override string GetDescriptionStrID(int optionIdx)

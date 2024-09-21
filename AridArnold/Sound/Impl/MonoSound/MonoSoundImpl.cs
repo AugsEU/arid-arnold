@@ -19,6 +19,7 @@ namespace AridArnold
 			SoundEffect.DistanceScale = DEFAULT_DISTANCE_SCALE;
 			SoundEffect.SpeedOfSound = DEFAULT_SPEED_OF_SOUND;
 			SoundEffect.DopplerScale = DEFAULT_DOPPLE_SCALE;
+			SoundEffect.MasterVolume = 1.0f;
 			SoundEffect.Initialize();
 		}
 
@@ -45,8 +46,6 @@ namespace AridArnold
 
 		public override void Update(GameTime gameTime)
 		{
-			float masterVolume = OptionsManager.I.GetMasterVolume();
-			SoundEffect.MasterVolume = masterVolume;
 		}
 	}
 }

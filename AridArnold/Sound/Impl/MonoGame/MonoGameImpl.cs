@@ -47,8 +47,6 @@
 
 		public override void Update(GameTime gameTime)
 		{
-			float masterVolume = OptionsManager.I.GetMasterVolume();
-			SoundEffect.MasterVolume = masterVolume;
 		}
 	}
 }

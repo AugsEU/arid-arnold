@@ -13,7 +13,7 @@ namespace AridArnold
 		#region rMembers
 
 		VisionOption mVision;
-		float mMasterVolume;
+		float mSFXVolume;
 		float mMusicVolume;
 		bool mImpatientPlayer;
 		bool mGhosts;
@@ -42,7 +42,7 @@ namespace AridArnold
 		public void SetDefaults()
 		{
 			mVision = VisionOption.kPerfect;
-			mMasterVolume = 0.5f;
+			mSFXVolume = 0.5f;
 			mMusicVolume = 0.5f;
 			mImpatientPlayer = false;
 			mGhosts = true;
@@ -57,8 +57,8 @@ namespace AridArnold
 		public void SetVision(VisionOption vision) { mVision = vision; }
 
 
-		public float GetMasterVolume() { return mMasterVolume; }
-		public void SetMasterVolume(float masterVolume) { mMasterVolume = masterVolume; }
+		public float GetSFXVolume() { return mSFXVolume; }
+		public void SetSFXVolume(float sfxVolume) { mSFXVolume = sfxVolume; }
 
 
 		public float GetMusicVolume() { return mMusicVolume; }
@@ -84,7 +84,7 @@ namespace AridArnold
 		public void ReadFromBinary(BinaryReader br)
 		{
 			mVision = (VisionOption)br.ReadInt32();
-			mMasterVolume = br.ReadSingle();
+			mSFXVolume = br.ReadSingle();
 			mMusicVolume = br.ReadSingle();
 			mImpatientPlayer = br.ReadBoolean();
 
@@ -100,7 +100,7 @@ namespace AridArnold
 		public void WriteFromBinary(BinaryWriter bw)
 		{
 			bw.Write((Int32)mVision);
-			bw.Write(mMasterVolume);
+			bw.Write(mSFXVolume);
 			bw.Write(mMusicVolume);
 			bw.Write(mImpatientPlayer);
 

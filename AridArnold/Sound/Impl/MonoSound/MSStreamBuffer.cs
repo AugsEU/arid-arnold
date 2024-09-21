@@ -1,5 +1,6 @@
 ﻿using MonoSound;
 using MonoSound.Streaming;
+using System;
 
 namespace AridArnold
 {
@@ -7,7 +8,6 @@ namespace AridArnold
 	{
 		#region rMembers
 
-		bool mStopHack;
 		StreamPackage mStreamPackage;
 
 		#endregion rMembers
@@ -24,7 +24,6 @@ namespace AridArnold
 		public MSStreamBuffer(string path)
 		{
 			mStreamPackage = StreamLoader.GetStreamedSound(path, true);
-			mStopHack = false;
 		}
 
 		#endregion rInit
@@ -40,8 +39,11 @@ namespace AridArnold
 		/// </summary>
 		public override void Play()
 		{
-			mStopHack = false;
-			mStreamPackage.Play();
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed) return;
+				mStreamPackage.Play();
+			}
 		}
 
 		/// <summary>
@@ -49,7 +51,11 @@ namespace AridArnold
 		/// </summary>
 		public override void Resume()
 		{
-			mStreamPackage.Resume();
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed) return;
+				mStreamPackage.Resume();
+			}
 		}
 
 		/// <summary>
@@ -57,7 +63,11 @@ namespace AridArnold
 		/// </summary>
 		public override void Pause()
 		{
-			mStreamPackage.Pause();
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed) return;
+				mStreamPackage.Pause();
+			}
 		}
 
 		/// <summary>
@@ -65,11 +75,11 @@ namespace AridArnold
 		/// </summary>
 		public override void Stop()
 		{
-			// Due to a bug with mono-sound, this can crash the game. Instead set the volume to 0.
-			// mStreamPackage.Stop();
-
-			mStopHack = true;
-			mStreamPackage.Metrics.Volume = 0.0f;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed) return;
+				mStreamPackage.Stop();
+			}
 		}
 
 		#endregion rPlay
@@ -82,51 +92,83 @@ namespace AridArnold
 
 		public override SoundState GetState()
 		{
-			if(mStopHack || mStreamPackage.Metrics is null)
+			lock (mStreamPackage)
 			{
-				return Microsoft.Xna.Framework.Audio.SoundState.Stopped;
+				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return SoundState.Stopped;
+				return mStreamPackage.Metrics.State;
 			}
-			return mStreamPackage.Metrics.State;
 		}
 
 		public override bool GetLoop()
 		{
-			return mStreamPackage.IsLooping;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed) return false;
+				return mStreamPackage.IsLooping;
+			}
 		}
 
 		public override void SetLoop(bool loop)
 		{
-			mStreamPackage.IsLooping = loop;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed) return;
+				mStreamPackage.IsLooping = loop;
+			}
 		}
 
 		public override float GetPan()
 		{
-			return mStreamPackage.Metrics.Pan;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return 0.0f;
+				return mStreamPackage.Metrics.Pan;
+			}
 		}
 
 		public override void SetPan(float pan)
 		{
-			mStreamPackage.Metrics.Pan = pan;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return;
+				mStreamPackage.Metrics.Pan = pan;
+			}
 		}
 
 		public override float GetPitch()
 		{
-			return mStreamPackage.Metrics.Pitch;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return 0.0f;
+				return mStreamPackage.Metrics.Pitch;
+			}
 		}
 
 		public override void SetPitch(float pitch)
 		{
-			mStreamPackage.Metrics.Pitch = pitch;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return;
+				mStreamPackage.Metrics.Pitch = pitch;
+			}
 		}
 
 		public override float GetVolume()
 		{
-			return mStreamPackage.Metrics.Volume;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return 0.0f;
+				return mStreamPackage.Metrics.Volume;
+			}
 		}
 
 		public override void SetVolume(float volume)
 		{
-			mStreamPackage.Metrics.Volume = volume;
+			lock (mStreamPackage)
+			{
+				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return;
+				mStreamPackage.Metrics.Volume = volume;
+			}
 		}
 
 		public override void SetEmitter(AudioPositionInfo info)

@@ -25,5 +25,11 @@
 		{
 			return mBuffer.GetState() == SoundState.Stopped;
 		}
+
+		protected override float DecideVolume()
+		{
+			float sfxVol = OptionsManager.I.GetSFXVolume();
+			return base.DecideVolume() * sfxVol;
+		}
 	}
 }

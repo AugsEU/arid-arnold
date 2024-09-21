@@ -24,7 +24,7 @@ namespace AridArnold
 	static class MonoSound
 	{
 		// Swap this out to change implementation.
-		static SoundImplementation mImpl = new MonoGameImpl();
+		static SoundImplementation mImpl = new MonoSoundImpl();
 
 		public static SoundImplementation Impl { get { return mImpl; } }
 	}
