@@ -2,6 +2,8 @@
 <theme>
 	<name>Arcade</name>
 	<exitColour>2B2B3F</exitColour>
+	<music>Arcade</music>
+
 	<path from="Wall">PlasticFloor</path>
 	<path from="WallSecondary">PlasticFloor</path>
 	<path from="Platform">RedBeam</path>

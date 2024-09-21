@@ -98,6 +98,15 @@
 			return mDisplayName;
 		}
 
+
+		/// <summary>
+		/// Get the theme's music
+		/// </summary>
+		public string GetMusicID()
+		{
+			return mMusicID;
+		}
+
 		#endregion rGet
 	}
 }

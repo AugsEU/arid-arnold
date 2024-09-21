@@ -37,6 +37,7 @@ namespace AridArnold
 
 		public override void OnActivate()
 		{
+			MusicManager.I.StopMusic(1100.0);
 			SFXManager.I.EndAllSFX(40.0f);
 			base.OnActivate();
 		}

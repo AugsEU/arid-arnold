@@ -77,6 +77,14 @@
 			mPauseMenu.Close();
 
 			mMainUI = new Layout("Layouts/MainGame.mlo");
+
+			Level currLevel = CampaignManager.I.GetCurrentLevel();
+
+			if (currLevel is not null)
+			{
+				string musicID = currLevel.GetTheme().GetMusicID();
+				MusicManager.I.RequestTrackPlay(musicID);
+			}
 		}
 
 

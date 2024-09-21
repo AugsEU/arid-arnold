@@ -18,6 +18,7 @@
     <music id="BukCave">
         <file>BukCave.ogg</file>
         <vol>0.8</vol>
+        <fadeIn>4000</fadeIn>
     </music>
     <music id="Mirror">
         <file>Mirror.ogg</file>
@@ -30,15 +31,25 @@
     <music id="Mountain">
         <file>Mountain.ogg</file>
         <vol>0.8</vol>
+        <fadeIn>300</fadeIn>
+    </music>
+    <music id="WW7">
+        <file>WW7.ogg</file>
+        <vol>0.6</vol>
+    </music>
+    <music id="Arcade">
+        <file>Arcade.ogg</file>
+        <vol>0.8</vol>
     </music>
     <music id="Hell">
         <file>Hell.ogg</file>
         <vol>1.0</vol>
+        <fadeIn>2000</fadeIn>
     </music>
     <music id="Heaven">
         <file>Heaven.ogg</file>
         <vol>0.7</vol>
-        <fadeIn>4000</fadeIn>
+        <fadeIn>8000</fadeIn>
     </music>
 
     <music id="BossMusic">

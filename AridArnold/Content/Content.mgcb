@@ -7846,6 +7846,9 @@
 #begin Campaigns/MainCampaign/Themes/HeavenFinCave.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenFinCave.xml
 
+#begin Campaigns/MainCampaign/Themes/HeavenFinFountain.xml
+/copy:Campaigns/MainCampaign/Themes/HeavenFinFountain.xml
+
 #begin Campaigns/MainCampaign/Themes/HeavenFinLab.xml
 /copy:Campaigns/MainCampaign/Themes/HeavenFinLab.xml
 
@@ -12766,6 +12769,9 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
+#begin Sound/Music/Arcade.ogg
+/copy:Sound/Music/Arcade.ogg
+
 #begin Sound/Music/BossMusic.ogg
 /copy:Sound/Music/BossMusic.ogg
 
@@ -12780,6 +12786,9 @@
 
 #begin Sound/Music/Fountain.ogg
 /copy:Sound/Music/Fountain.ogg
+
+#begin Sound/Music/Heaven.ogg
+/copy:Sound/Music/Heaven.ogg
 
 #begin Sound/Music/Hell.ogg
 /copy:Sound/Music/Hell.ogg
@@ -12813,6 +12822,9 @@
 
 #begin Sound/Music/WormWarp.ogg
 /copy:Sound/Music/WormWarp.ogg
+
+#begin Sound/Music/WW7.ogg
+/copy:Sound/Music/WW7.ogg
 
 #begin Sound/SFX/Arnold/Death.wav
 /importer:WavImporter
@@ -16488,7 +16500,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin Sound/Music/Heaven.ogg
-/copy:Sound/Music/Heaven.ogg
 

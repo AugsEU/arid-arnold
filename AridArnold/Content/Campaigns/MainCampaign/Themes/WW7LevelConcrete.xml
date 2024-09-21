@@ -2,6 +2,8 @@
 <theme>
 	<name>World War VII</name>
 	<exitColour>2B2B3F</exitColour>
+	<music>WW7</music>
+
 	<path from="Wall">Gravel</path>
 	<path from="WallSecondary">Concrete</path>
 	<path from="ApparentWall">Concrete</path>
