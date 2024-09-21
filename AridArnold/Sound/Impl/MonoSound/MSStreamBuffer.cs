@@ -9,6 +9,7 @@ namespace AridArnold
 		#region rMembers
 
 		StreamPackage mStreamPackage;
+		bool mHasStopped;
 
 		#endregion rMembers
 
@@ -41,7 +42,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed) return;
+				if (StreamValid()) return;
 				mStreamPackage.Play();
 			}
 		}
@@ -53,7 +54,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed) return;
+				if (StreamValid()) return;
 				mStreamPackage.Resume();
 			}
 		}
@@ -65,7 +66,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed) return;
+				if (StreamValid()) return;
 				mStreamPackage.Pause();
 			}
 		}
@@ -75,9 +76,10 @@ namespace AridArnold
 		/// </summary>
 		public override void Stop()
 		{
+			mHasStopped = true;
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed) return;
+				if (StreamValid()) return;
 				mStreamPackage.Stop();
 			}
 		}
@@ -94,7 +96,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return SoundState.Stopped;
+				if (StreamValid()) return SoundState.Stopped;
 				return mStreamPackage.Metrics.State;
 			}
 		}
@@ -103,7 +105,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed) return false;
+				if (StreamValid()) return false;
 				return mStreamPackage.IsLooping;
 			}
 		}
@@ -112,7 +114,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed) return;
+				if (StreamValid()) return;
 				mStreamPackage.IsLooping = loop;
 			}
 		}
@@ -121,7 +123,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return 0.0f;
+				if (StreamValid()) return 0.0f;
 				return mStreamPackage.Metrics.Pan;
 			}
 		}
@@ -130,7 +132,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return;
+				if (StreamValid()) return;
 				mStreamPackage.Metrics.Pan = pan;
 			}
 		}
@@ -139,7 +141,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return 0.0f;
+				if (StreamValid()) return 0.0f;
 				return mStreamPackage.Metrics.Pitch;
 			}
 		}
@@ -148,7 +150,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return;
+				if (StreamValid()) return;
 				mStreamPackage.Metrics.Pitch = pitch;
 			}
 		}
@@ -157,7 +159,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return 0.0f;
+				if (StreamValid()) return 0.0f;
 				return mStreamPackage.Metrics.Volume;
 			}
 		}
@@ -166,7 +168,7 @@ namespace AridArnold
 		{
 			lock (mStreamPackage)
 			{
-				if (mStreamPackage.Disposed || mStreamPackage.Metrics is null) return;
+				if (StreamValid()) return;
 				mStreamPackage.Metrics.Volume = volume;
 			}
 		}
@@ -185,6 +187,18 @@ namespace AridArnold
 #endif // WARN_UNIMPLEMENTED_SOUND
 		}
 
-		#endregion rUtil
+		private bool StreamValid()
+		{
+			lock (mStreamPackage)
+			{
+				if(mHasStopped)
+				{
+					return false;
+				}
+				return mStreamPackage is not null && mStreamPackage.Metrics is not null && !mStreamPackage.Disposed && mStreamPackage.TotalBytes > 0;
+			}
+		}
+
+			#endregion rUtil
+		}
 	}
-}
