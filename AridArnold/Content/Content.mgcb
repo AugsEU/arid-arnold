@@ -16498,3 +16498,87 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin NPC/ShopOld/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopOld/Default.png
+
+#begin NPC/ShopOld/Gavel.max
+/copy:NPC/ShopOld/Gavel.max
+
+#begin NPC/ShopOld/Idle.mia
+/copy:NPC/ShopOld/Idle.mia
+
+#begin NPC/ShopOld/Itch.max
+/copy:NPC/ShopOld/Itch.max
+
+#begin NPC/ShopOld/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopOld/Itch1.png
+
+#begin NPC/ShopOld/Itch2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopOld/Itch2.png
+
+#begin NPC/ShopOld/ShopOld.mtn
+/copy:NPC/ShopOld/ShopOld.mtn
+
+#begin NPC/ShopOld/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopOld/TalkAngry.png
+
+#begin NPC/ShopOld/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopOld/TalkNormal.png
+
+#begin NPC/ShopYoung/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopYoung/Default.png
+
+#begin NPC/ShopYoung/Gavel.max
+/copy:NPC/ShopYoung/Gavel.max
+
+#begin NPC/ShopYoung/Idle.mia
+/copy:NPC/ShopYoung/Idle.mia
+
+#begin NPC/ShopYoung/Itch.max
+/copy:NPC/ShopYoung/Itch.max
+
+#begin NPC/ShopYoung/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopYoung/Itch1.png
+
+#begin NPC/ShopYoung/Itch2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopYoung/Itch2.png
+
+#begin NPC/ShopYoung/ShopYoung.mtn
+/copy:NPC/ShopYoung/ShopYoung.mtn
+
+#begin NPC/ShopYoung/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopYoung/TalkAngry.png
+
+#begin NPC/ShopYoung/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopYoung/TalkNormal.png
+
