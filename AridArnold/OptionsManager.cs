@@ -43,7 +43,7 @@ namespace AridArnold
 		{
 			mVision = VisionOption.kPerfect;
 			mSFXVolume = 0.5f;
-			mMusicVolume = 0.5f;
+			mMusicVolume = 0.3f;
 			mImpatientPlayer = false;
 			mGhosts = true;
 		}

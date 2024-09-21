@@ -93,7 +93,7 @@
 
 			SpacialSFX bombTravel = new SpacialSFX(AridArnoldSFX.FutronBomb, mPosition, 0.5f, 0.0f, 0.1f);
 			bombTravel.GetBuffer().SetLoop(true);
-			SpacialSFX bombLand = new SpacialSFX(AridArnoldSFX.FutronBombLand, mPosition, 0.8f, 0.0f, 0.1f);
+			SpacialSFX bombLand = new SpacialSFX(AridArnoldSFX.FutronBombLand, mPosition, 0.5f, 0.0f, 0.1f);
 			bombLand.SetDistanceCutoff(35000.0f);
 			LoadSFX(bombTravel, bombLand);
 

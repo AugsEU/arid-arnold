@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <animation variation="45.0">
-	<main>NPC/ShopKeeper/Default</main>
-	<alt>NPC/ShopKeeper/Gavel.max</alt>
-	<alt>NPC/ShopKeeper/Itch.max</alt>
+	<main>NPC/ShopOld/Default</main>
+	<alt>NPC/ShopOld/Gavel.max</alt>
+	<alt>NPC/ShopOld/Itch.max</alt>
 </animation>

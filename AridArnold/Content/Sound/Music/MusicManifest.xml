@@ -22,7 +22,7 @@
     </music>
     <music id="Mirror">
         <file>Mirror.ogg</file>
-        <vol>0.8</vol>
+        <vol>0.7</vol>
     </music>
     <music id="Lab">
         <file>Lab.ogg</file>

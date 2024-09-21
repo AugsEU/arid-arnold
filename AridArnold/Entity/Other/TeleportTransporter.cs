@@ -214,7 +214,7 @@
 			}
 			else
 			{
-				SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.TeleportEmerge, mPosition, 0.4f));
+				SFXManager.I.PlaySFX(new SpacialSFX(AridArnoldSFX.TeleportEmerge, mPosition, 0.1f));
 			}
 			
 

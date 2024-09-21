@@ -1,4 +1,5 @@
 A tough game this be. Arrr. Why don't ye buy a <γ>power item<ψ> to help?
+Ye use them by pressing {Key.UseItem}.
 Yet ye ought to know the rules before ye do:
 <γ>One<ψ> - Any item ye buy but don't use will be refunded at the end.
 <γ>Two<ψ> - I'll only accept the <γ>local currency<ψ>.
