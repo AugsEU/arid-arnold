@@ -122,7 +122,7 @@
 				mCurrentSqueak.SetPosition(GetPos());
 				mCurrentSqueak.SetVelocity(GetVelocity());
 
-				if(mCurrentSqueak.GetBuffer().SoundState() == SoundState.Stopped)
+				if(mCurrentSqueak.GetBuffer().GetState() == SoundState.Stopped)
 				{
 					mCurrentSqueak = null;
 				}

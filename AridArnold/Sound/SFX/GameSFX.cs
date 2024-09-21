@@ -23,7 +23,7 @@
 
 		public bool IsFinished()
 		{
-			return mBuffer.SoundState() == SoundState.Stopped;
+			return mBuffer.GetState() == SoundState.Stopped;
 		}
 	}
 }

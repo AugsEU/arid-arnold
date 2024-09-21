@@ -62,10 +62,6 @@
         ".bat": 
         {
             "copy": true
-        },
-        ".ogg": 
-        {
-            "copy": true
         }
     },
 

@@ -11512,6 +11512,150 @@
 /processorParam:TextureFormat=Color
 /build:NPC/ShopKeeper/TalkNormal.png
 
+#begin NPC/ShopOld/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopOld/Default.png
+
+#begin NPC/ShopOld/Gavel.max
+/copy:NPC/ShopOld/Gavel.max
+
+#begin NPC/ShopOld/Idle.mia
+/copy:NPC/ShopOld/Idle.mia
+
+#begin NPC/ShopOld/Itch.max
+/copy:NPC/ShopOld/Itch.max
+
+#begin NPC/ShopOld/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopOld/Itch1.png
+
+#begin NPC/ShopOld/Itch2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopOld/Itch2.png
+
+#begin NPC/ShopOld/ShopOld.mtn
+/copy:NPC/ShopOld/ShopOld.mtn
+
+#begin NPC/ShopOld/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopOld/TalkAngry.png
+
+#begin NPC/ShopOld/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopOld/TalkNormal.png
+
+#begin NPC/ShopYoung/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopYoung/Default.png
+
+#begin NPC/ShopYoung/Gavel.max
+/copy:NPC/ShopYoung/Gavel.max
+
+#begin NPC/ShopYoung/Idle.mia
+/copy:NPC/ShopYoung/Idle.mia
+
+#begin NPC/ShopYoung/Itch.max
+/copy:NPC/ShopYoung/Itch.max
+
+#begin NPC/ShopYoung/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopYoung/Itch1.png
+
+#begin NPC/ShopYoung/Itch2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopYoung/Itch2.png
+
+#begin NPC/ShopYoung/ShopYoung.mtn
+/copy:NPC/ShopYoung/ShopYoung.mtn
+
+#begin NPC/ShopYoung/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopYoung/TalkAngry.png
+
+#begin NPC/ShopYoung/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/ShopYoung/TalkNormal.png
+
 #begin NPC/Sign/Default.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -12767,61 +12911,112 @@
 /build:Shared/TransitionArrows.png
 
 #begin Sound/Music/Arcade.ogg
-/copy:Sound/Music/Arcade.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Arcade.ogg
 
 #begin Sound/Music/BossMusic.ogg
-/copy:Sound/Music/BossMusic.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/BossMusic.ogg
 
 #begin Sound/Music/BukCave.ogg
-/copy:Sound/Music/BukCave.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/BukCave.ogg
 
 #begin Sound/Music/ConvertOgg.bat
 /copy:Sound/Music/ConvertOgg.bat
 
 #begin Sound/Music/DeathRide.ogg
-/copy:Sound/Music/DeathRide.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/DeathRide.ogg
 
 #begin Sound/Music/Fountain.ogg
-/copy:Sound/Music/Fountain.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Fountain.ogg
 
 #begin Sound/Music/Heaven.ogg
-/copy:Sound/Music/Heaven.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Heaven.ogg
 
 #begin Sound/Music/Hell.ogg
-/copy:Sound/Music/Hell.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Hell.ogg
 
 #begin Sound/Music/HorsesAndGun.ogg
-/copy:Sound/Music/HorsesAndGun.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/HorsesAndGun.ogg
 
 #begin Sound/Music/Intro.ogg
-/copy:Sound/Music/Intro.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Intro.ogg
 
 #begin Sound/Music/Lab.ogg
-/copy:Sound/Music/Lab.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Lab.ogg
 
 #begin Sound/Music/Library.ogg
-/copy:Sound/Music/Library.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Library.ogg
 
 #begin Sound/Music/MainMenu.ogg
-/copy:Sound/Music/MainMenu.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/MainMenu.ogg
 
 #begin Sound/Music/Mirror.ogg
-/copy:Sound/Music/Mirror.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Mirror.ogg
 
 #begin Sound/Music/Mountain.ogg
-/copy:Sound/Music/Mountain.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Mountain.ogg
 
 #begin Sound/Music/MusicManifest.xml
 /copy:Sound/Music/MusicManifest.xml
 
 #begin Sound/Music/Steamplant.ogg
-/copy:Sound/Music/Steamplant.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/Steamplant.ogg
 
 #begin Sound/Music/WormWarp.ogg
-/copy:Sound/Music/WormWarp.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/WormWarp.ogg
 
 #begin Sound/Music/WW7.ogg
-/copy:Sound/Music/WW7.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sound/Music/WW7.ogg
 
 #begin Sound/SFX/Arnold/Death.wav
 /importer:WavImporter
@@ -16497,88 +16692,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
-
-#begin NPC/ShopOld/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopOld/Default.png
-
-#begin NPC/ShopOld/Gavel.max
-/copy:NPC/ShopOld/Gavel.max
-
-#begin NPC/ShopOld/Idle.mia
-/copy:NPC/ShopOld/Idle.mia
-
-#begin NPC/ShopOld/Itch.max
-/copy:NPC/ShopOld/Itch.max
-
-#begin NPC/ShopOld/Itch1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopOld/Itch1.png
-
-#begin NPC/ShopOld/Itch2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopOld/Itch2.png
-
-#begin NPC/ShopOld/ShopOld.mtn
-/copy:NPC/ShopOld/ShopOld.mtn
-
-#begin NPC/ShopOld/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopOld/TalkAngry.png
-
-#begin NPC/ShopOld/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopOld/TalkNormal.png
-
-#begin NPC/ShopYoung/Default.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopYoung/Default.png
-
-#begin NPC/ShopYoung/Gavel.max
-/copy:NPC/ShopYoung/Gavel.max
-
-#begin NPC/ShopYoung/Idle.mia
-/copy:NPC/ShopYoung/Idle.mia
-
-#begin NPC/ShopYoung/Itch.max
-/copy:NPC/ShopYoung/Itch.max
-
-#begin NPC/ShopYoung/Itch1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopYoung/Itch1.png
-
-#begin NPC/ShopYoung/Itch2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopYoung/Itch2.png
-
-#begin NPC/ShopYoung/ShopYoung.mtn
-/copy:NPC/ShopYoung/ShopYoung.mtn
-
-#begin NPC/ShopYoung/TalkAngry.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopYoung/TalkAngry.png
-
-#begin NPC/ShopYoung/TalkNormal.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:PremultiplyAlpha=False
-/build:NPC/ShopYoung/TalkNormal.png
 

@@ -103,6 +103,10 @@
 		/// </summary>
 		public void PlayCinematic()
 		{
+			if(mCinematic is null)
+			{
+				return;
+			}
 			CinematicScreen cinematicScreen = ScreenManager.I.GetScreen(ScreenType.CinematicScreen) as CinematicScreen;
 			cinematicScreen.StartCinematic(mCinematic, ScreenManager.I.GetActiveScreenType());
 			ScreenManager.I.ActivateScreen(ScreenType.CinematicScreen);

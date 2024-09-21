@@ -170,7 +170,7 @@
 
 		#region rUtil
 
-		public override SoundState SoundState()
+		public override SoundState GetState()
 		{
 			return mSoundEffect.State;
 		}

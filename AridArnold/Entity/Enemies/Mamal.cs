@@ -89,7 +89,7 @@
 
 			EntityManager.I.AddColliderSubmission(new EntityColliderSubmission(this));
 
-			if(mAngrySFX.GetBuffer().SoundState() != SoundState.Playing)
+			if(mAngrySFX.GetBuffer().GetState() != SoundState.Playing)
 			{
 				SFXManager.I.PlaySFX(mAngrySFX);
 			}

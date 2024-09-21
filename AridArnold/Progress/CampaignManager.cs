@@ -73,10 +73,10 @@
 					CollectableManager.I.IncPermanentCount(coinID, 100);
 				}
 
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(1, 1);
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(-1, 0);
 
-				//QueueLoadSequence(new HubDirectLoader(701));
-				QueueLoadSequence(new LevelDirectLoader(101));
+				QueueLoadSequence(new HubDirectLoader(703));
+				//QueueLoadSequence(new LevelDirectLoader(918));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);

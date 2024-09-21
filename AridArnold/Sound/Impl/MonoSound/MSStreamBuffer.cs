@@ -80,7 +80,7 @@ namespace AridArnold
 
 		#region rUtil
 
-		public override SoundState SoundState()
+		public override SoundState GetState()
 		{
 			if(mStopHack || mStreamPackage.Metrics is null)
 			{

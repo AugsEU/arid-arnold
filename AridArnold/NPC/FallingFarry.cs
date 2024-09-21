@@ -30,14 +30,14 @@
 		{
 			if(!mOnGround)
 			{
-				if(mScreamSFX.GetBuffer().SoundState() != SoundState.Playing)
+				if(mScreamSFX.GetBuffer().GetState() != SoundState.Playing)
 				{
 					SFXManager.I.PlaySFX(mScreamSFX);
 				}
 			}
 			else
 			{
-				if (mScreamSFX.GetBuffer().SoundState() == SoundState.Playing)
+				if (mScreamSFX.GetBuffer().GetState() == SoundState.Playing)
 				{
 					mScreamSFX.Stop(90.0f);
 				}

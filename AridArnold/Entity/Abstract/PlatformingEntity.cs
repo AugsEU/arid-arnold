@@ -173,7 +173,7 @@ namespace AridArnold
 				mWalkSound.SetPosition(mPosition);
 				mWalkSound.SetVelocity(mVelocity);
 
-				if (mWalkSound.GetBuffer().SoundState() != SoundState.Playing)
+				if (mWalkSound.GetBuffer().GetState() != SoundState.Playing)
 				{
 					SFXManager.I.PlaySFX(mWalkSound, 42.0f);
 				}

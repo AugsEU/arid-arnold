@@ -60,7 +60,7 @@
 			if (mCurrentTrack is not null)
 			{
 				mCurrentTrack.Update(gameTime);
-				if (mCurrentTrack.GetBuffer().SoundState() == SoundState.Stopped)
+				if (mCurrentTrack.GetBuffer().GetState() == SoundState.Stopped)
 				{
 					// Dispose of this track.
 					mCurrentTrack = null;

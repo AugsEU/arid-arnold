@@ -17,6 +17,7 @@ namespace AridArnold
 		/// </summary>
 		public CinematicScreen(GraphicsDeviceManager graphics) : base(graphics)
 		{
+			mScreenToReturnTo = ScreenType.Game;
 		}
 
 
@@ -30,6 +31,12 @@ namespace AridArnold
 		public override void OnActivate()
 		{
 			MonoDebug.Assert(mCurrentCinematic != null);
+			if(mCurrentCinematic is null)
+			{
+				// HOW IS THIS NULL???
+				ScreenManager.I.ActivateScreen(mScreenToReturnTo);
+				return;
+			}
 			mCurrentCinematic.PlayFromStart();
 			FXManager.I.Init(SCREEN_WIDTH, SCREEN_HEIGHT);
 			FXManager.I.Clear();

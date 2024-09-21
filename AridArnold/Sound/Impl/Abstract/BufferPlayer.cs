@@ -36,7 +36,7 @@
 
 		public void Update(GameTime gameTime)
 		{
-			if (mBuffer.SoundState() != SoundState.Playing)
+			if (mBuffer.GetState() != SoundState.Playing)
 			{
 				return;
 			}
@@ -126,7 +126,7 @@
 
 		public void SetMute(bool mute)
 		{
-			if(mute != mMuted && mBuffer.SoundState() == SoundState.Playing)
+			if(mute != mMuted && mBuffer.GetState() == SoundState.Playing)
 			{
 				mMuteTimer.ResetStart();
 			}

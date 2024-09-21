@@ -201,7 +201,7 @@
 		<y>996.0</y>
 		<msg>go:kRebindArea</msg>
 		<text>UI.Menu.Rebind</text>
-		<up>ghostOpt</up>
+		<up>fullScreenOpt</up>
 		<down>visionOpt</down>
 		<left>optBackBtn</left>
 		<right>optBackBtn</right>

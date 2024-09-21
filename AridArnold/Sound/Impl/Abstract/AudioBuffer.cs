@@ -35,7 +35,7 @@
 		public abstract void Pause();
 		public abstract void Stop();
 
-		public abstract SoundState SoundState();
+		public abstract SoundState GetState();
 
 		/// <summary>
 		/// Set information about us emitting.
