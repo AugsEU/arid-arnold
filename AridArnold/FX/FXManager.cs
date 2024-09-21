@@ -101,9 +101,9 @@ namespace AridArnold
 		/// <param name="upSpeed">Speed at which text goes up</param>
 		/// <param name="maxHeight">Maximum height difference reached by text</param>
 		/// <param name="time">Time that text shows up</param>
-		public void AddTextScroller(SpriteFont font, Color colour, Vector2 pos, string text, float upSpeed = 3.5f, float maxHeight = 8.0f, float time = 20.0f)
+		public void AddTextScroller(SpriteFont font, Color colour, Vector2 pos, string text, float maxHeight = 8.0f, float time = 20.0f)
 		{
-			mFXList.Add(new ScrollerTextFX(font, colour, pos, text, upSpeed, maxHeight, time));
+			mFXList.Add(new ScrollerTextFX(font, colour, pos, text, maxHeight, time));
 		}
 
 

@@ -17,12 +17,10 @@
 		SpriteFont mFont;
 		Color mColor;
 		Vector2 mStartPos;
-		Vector2 mPos;
-		Vector2 mShadowOffset;
 		Vector2 mTextSize;
 		float mSpeed;
 		float mMaxHeight;
-		float mTime;
+		PercentageTimer mRiseTimer;
 		string mText;
 
 		#endregion rMembers
@@ -43,19 +41,17 @@
 		/// <param name="upSpeed">Speed at which text goes up</param>
 		/// <param name="maxHeight">Maximum height difference reached by text</param>
 		/// <param name="time">Time that text shows up</param>
-		public ScrollerTextFX(SpriteFont font, Color colour, Vector2 pos, string text, float upSpeed, float maxHeight, float time)
+		public ScrollerTextFX(SpriteFont font, Color colour, Vector2 pos, string text, float maxHeight, float time)
 		{
 			mFont = font;
 			mColor = colour;
-			mPos = pos;
-			mSpeed = upSpeed;
 			mText = text;
 			mMaxHeight = maxHeight;
-			mTime = time;
+			mRiseTimer = new PercentageTimer(time * 100.0f);
+			mRiseTimer.Start();
 
 			mStartPos = pos;
 
-			mShadowOffset = new Vector2(1.0f, 2.0f);
 
 			mTextSize = mFont.MeasureString(mText);
 		}
@@ -74,7 +70,7 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
-			mPos.Y -= mSpeed * Util.GetDeltaT(gameTime);
+			mRiseTimer.Update(gameTime);
 		}
 
 
@@ -85,7 +81,7 @@
 		/// <returns>True if we are finished.</returns>
 		public override bool Finished()
 		{
-			return Math.Abs(mStartPos.Y - mPos.Y) > mTime + mMaxHeight;
+			return mRiseTimer.GetPercentageF() >= 1.0f;
 		}
 
 		#endregion rUpdate
@@ -102,20 +98,36 @@
 		/// <param name="info">Info needed to draw</param>
 		public override void Draw(DrawInfo info)
 		{
-			Vector2 drawPos = mPos;
-			drawPos.Y = Math.Max(drawPos.Y, mStartPos.Y - mMaxHeight);
+			float t = GetRiseT();
+
+			Camera gameCam = CameraManager.I.GetCamera(CameraManager.CameraInstance.GameAreaCamera);
+			float rot = -gameCam.GetCurrentSpec().mRotation;
+			Vector2 downVec = MonoMath.Rotate(new Vector2(0.0f, 1.0f), rot);
+
+			Vector2 relStartPos = mStartPos - downVec * 5.0f;
+
+			Vector2 destPos = relStartPos - downVec * mMaxHeight;
+
+			Vector2 drawPos = MonoMath.Lerp(relStartPos, destPos, t);
 
 			// Clamp to visible area
-
 			Point visSize = FXManager.I.GetDrawableSize();
 			drawPos.X = Math.Clamp(drawPos.X, SCREEN_BORDER + (mTextSize.X / 2.0f), visSize.X - SCREEN_BORDER - (mTextSize.X / 2.0f));
 			drawPos.Y = Math.Clamp(drawPos.Y, SCREEN_BORDER + (mTextSize.Y / 2.0f), visSize.Y - SCREEN_BORDER - (mTextSize.Y / 2.0f));
 
-			Vector2 dropShadow = drawPos + mShadowOffset;
+			Vector2 dropShadow = drawPos + 2.0f * downVec + MonoMath.Perpendicular(downVec);
 
-			MonoDraw.DrawStringCentred(info, mFont, dropShadow, Color.Black, mText, DrawLayer.Bubble);
-			MonoDraw.DrawStringCentred(info, mFont, drawPos, mColor, mText, DrawLayer.Bubble);
+			MonoDraw.DrawStringCentredRot(info, mFont, dropShadow, Color.Black, mText, rot, DrawLayer.Bubble);
+			MonoDraw.DrawStringCentredRot(info, mFont, drawPos, mColor, mText, rot, DrawLayer.Bubble);
 
+		}
+
+		float GetRiseT()
+		{
+			float t = mRiseTimer.GetPercentageF();
+			t *= 4.0f;
+
+			return Math.Clamp(t, 0.0f, 1.0f);
 		}
 
 		#endregion rDraw

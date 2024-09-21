@@ -217,6 +217,18 @@
 
 
 
+		/// <summary>
+		/// Draw a string centred at a position
+		/// </summary>
+		public static void DrawStringCentredRot(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, float rotation, DrawLayer depth = DrawLayer.Bubble)
+		{
+			Vector2 size = font.MeasureString(text);
+
+			info.spriteBatch.DrawString(font, text, position, color, rotation, size * 0.5f, 1.0f, SpriteEffects.None, GetDepth(depth));
+		}
+
+
+
 		/// <summary>  
 		/// Draw a string centred at a position with a shadow
 		/// </summary>
