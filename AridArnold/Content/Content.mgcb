@@ -11527,9 +11527,6 @@
 #begin NPC/Sign/Idle.mia
 /copy:NPC/Sign/Idle.mia
 
-#begin NPC/Sign/Lights.max
-/copy:NPC/Sign/Lights.max
-
 #begin NPC/Sign/Sign.mtn
 /copy:NPC/Sign/Sign.mtn
 

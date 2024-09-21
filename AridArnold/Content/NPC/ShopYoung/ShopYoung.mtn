@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<simpleTalkNPC>
+	<name>Shop Keeper</name>
+	<textStyle>
+		<fillColor>160A05A2</fillColor>
+		<borderColor>77381C</borderColor>
+		<scrollSpeed>0.9</scrollSpeed>
+		<framesPerLetter>4</framesPerLetter>
+		<voice>NPC/Voice/AltMale.xml</voice>
+	</textStyle>
+</simpleTalkNPC>

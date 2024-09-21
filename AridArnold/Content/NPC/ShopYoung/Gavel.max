@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation type="oneshot">
+	<texture time="0.2">NPC/ShopKeeper/Default</texture>
+	<texture time="0.3">NPC/ShopKeeper/Itch2</texture>
+	<texture time="0.2">NPC/ShopKeeper/Default</texture>
+	<texture time="0.3">NPC/ShopKeeper/Itch2</texture>
+	<texture time="0.3">NPC/ShopKeeper/Default</texture>
+</animation>

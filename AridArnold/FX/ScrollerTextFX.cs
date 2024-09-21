@@ -18,7 +18,6 @@
 		Color mColor;
 		Vector2 mStartPos;
 		Vector2 mTextSize;
-		float mSpeed;
 		float mMaxHeight;
 		PercentageTimer mRiseTimer;
 		string mText;
