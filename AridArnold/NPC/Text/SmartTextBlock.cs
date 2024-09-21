@@ -351,7 +351,7 @@ namespace AridArnold
 							mRawCharHead++;
 							break;
 						case 'γ':
-							mAnimation = new LetterAnimColor(Color.Yellow);
+							mAnimation = new LetterAnimColor(new Color(255, 198, 30));
 							mRawCharHead++;
 							break;
 						case 'Σ':
