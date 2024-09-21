@@ -15,8 +15,11 @@ namespace AridArnold
 		VisionOption mVision;
 		float mSFXVolume;
 		float mMusicVolume;
-		bool mImpatientPlayer;
 		bool mGhosts;
+
+		// Not used.
+		bool mImpatientPlayer;
+
 
 		#endregion rMembers
 
@@ -86,7 +89,7 @@ namespace AridArnold
 			mVision = (VisionOption)br.ReadInt32();
 			mSFXVolume = br.ReadSingle();
 			mMusicVolume = br.ReadSingle();
-			mImpatientPlayer = br.ReadBoolean();
+			mGhosts = br.ReadBoolean();
 
 			bool isFullScreen = br.ReadBoolean();
 			Main.SetFullScreen(isFullScreen);
@@ -102,7 +105,7 @@ namespace AridArnold
 			bw.Write((Int32)mVision);
 			bw.Write(mSFXVolume);
 			bw.Write(mMusicVolume);
-			bw.Write(mImpatientPlayer);
+			bw.Write(mGhosts);
 
 			bool isFullScreen = Main.IsFullScreen();
 			bw.Write(isFullScreen);
