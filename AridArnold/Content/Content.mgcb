@@ -12928,9 +12928,6 @@
 /processorParam:Quality=Best
 /build:Sound/Music/BukCave.ogg
 
-#begin Sound/Music/ConvertOgg.bat
-/copy:Sound/Music/ConvertOgg.bat
-
 #begin Sound/Music/DeathRide.ogg
 /importer:OggImporter
 /processor:SongProcessor
