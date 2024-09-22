@@ -1,6 +1,7 @@
 ﻿using MonoSound;
 using MonoSound.Streaming;
 using System;
+using System.IO;
 
 namespace AridArnold
 {
@@ -8,8 +9,12 @@ namespace AridArnold
 	{
 		#region rMembers
 
-		StreamPackage mStreamPackage;
-		bool mHasStopped;
+		static StreamPackage sStreamingSound;
+		static string sLastPlayedPath;
+
+		string mPath;
+		bool mLooped;
+		float mVolume;
 
 		#endregion rMembers
 
@@ -24,7 +29,10 @@ namespace AridArnold
 		/// </summary>
 		public MSStreamBuffer(string path)
 		{
-			mStreamPackage = StreamLoader.GetStreamedSound(path, true);
+			mPath = path;
+			mLooped = true;
+			mVolume = 1.0f;
+			
 		}
 
 		#endregion rInit
@@ -40,11 +48,23 @@ namespace AridArnold
 		/// </summary>
 		public override void Play()
 		{
-			lock (mStreamPackage)
+			if(IsUsPlaying())
 			{
-				if (StreamValid()) return;
-				mStreamPackage.Play();
+				return;
 			}
+
+			if(sStreamingSound is not null)
+			{
+				sStreamingSound.Dispose();
+				sStreamingSound = null;
+			}
+
+			sStreamingSound = StreamLoader.GetStreamedSound(mPath, mLooped);
+			sLastPlayedPath = mPath;
+
+			if (!StreamValid()) return;
+			sStreamingSound.Metrics.Volume = mVolume;
+			sStreamingSound.Play();
 		}
 
 		/// <summary>
@@ -52,11 +72,8 @@ namespace AridArnold
 		/// </summary>
 		public override void Resume()
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return;
-				mStreamPackage.Resume();
-			}
+			if (!StreamValid()) return;
+			sStreamingSound.Resume();
 		}
 
 		/// <summary>
@@ -64,11 +81,8 @@ namespace AridArnold
 		/// </summary>
 		public override void Pause()
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return;
-				mStreamPackage.Pause();
-			}
+			if (!StreamValid()) return;
+			sStreamingSound.Pause();
 		}
 
 		/// <summary>
@@ -76,12 +90,9 @@ namespace AridArnold
 		/// </summary>
 		public override void Stop()
 		{
-			mHasStopped = true;
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return;
-				mStreamPackage.Stop();
-			}
+			if (!StreamValid()) return;
+			sStreamingSound.Stop();
+			sLastPlayedPath = "";
 		}
 
 		#endregion rPlay
@@ -94,82 +105,77 @@ namespace AridArnold
 
 		public override SoundState GetState()
 		{
-			lock (mStreamPackage)
+			if(!IsUsPlaying())
 			{
-				if (StreamValid()) return SoundState.Stopped;
-				return mStreamPackage.Metrics.State;
+				return SoundState.Stopped;
 			}
+
+			if (!StreamValid()) return SoundState.Stopped;
+			return sStreamingSound.Metrics.State;
 		}
 
 		public override bool GetLoop()
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return false;
-				return mStreamPackage.IsLooping;
-			}
+			return mLooped;
 		}
 
 		public override void SetLoop(bool loop)
 		{
-			lock (mStreamPackage)
+			mLooped = loop;
+
+			if (IsUsPlaying())
 			{
-				if (StreamValid()) return;
-				mStreamPackage.IsLooping = loop;
+				if (!StreamValid()) return;
+				sStreamingSound.IsLooping = loop;
 			}
 		}
 
 		public override float GetPan()
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return 0.0f;
-				return mStreamPackage.Metrics.Pan;
-			}
+#if WARN_UNIMPLEMENTED_SOUND
+			throw new NotImplementedException();
+#else
+			return 0.0f;
+#endif // WARN_UNIMPLEMENTED_SOUND
+
 		}
 
 		public override void SetPan(float pan)
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return;
-				mStreamPackage.Metrics.Pan = pan;
-			}
+#if WARN_UNIMPLEMENTED_SOUND
+			throw new NotImplementedException();
+#endif // WARN_UNIMPLEMENTED_SOUND
 		}
 
 		public override float GetPitch()
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return 0.0f;
-				return mStreamPackage.Metrics.Pitch;
-			}
+#if WARN_UNIMPLEMENTED_SOUND
+			throw new NotImplementedException();
+#else
+			return 0.0f;
+#endif // WARN_UNIMPLEMENTED_SOUND
 		}
 
 		public override void SetPitch(float pitch)
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return;
-				mStreamPackage.Metrics.Pitch = pitch;
-			}
+#if WARN_UNIMPLEMENTED_SOUND
+			throw new NotImplementedException();
+#endif // WARN_UNIMPLEMENTED_SOUND
 		}
 
 		public override float GetVolume()
 		{
-			lock (mStreamPackage)
-			{
-				if (StreamValid()) return 0.0f;
-				return mStreamPackage.Metrics.Volume;
-			}
+			return mVolume;
 		}
 
 		public override void SetVolume(float volume)
 		{
-			lock (mStreamPackage)
+			mVolume = volume;
+
+			if(IsUsPlaying())
 			{
-				if (StreamValid()) return;
-				mStreamPackage.Metrics.Volume = volume;
+				if (!StreamValid()) return;
+				sStreamingSound.Metrics.Volume = volume;
 			}
 		}
 
@@ -189,16 +195,17 @@ namespace AridArnold
 
 		private bool StreamValid()
 		{
-			lock (mStreamPackage)
+			lock (sStreamingSound)
 			{
-				if(mHasStopped)
-				{
-					return false;
-				}
-				return mStreamPackage is not null && mStreamPackage.Metrics is not null && !mStreamPackage.Disposed && mStreamPackage.TotalBytes > 0;
+				return sStreamingSound is not null && !sStreamingSound.Disposed && sStreamingSound.Metrics is not null;
 			}
 		}
 
-			#endregion rUtil
+		private bool IsUsPlaying()
+		{
+			return mPath == sLastPlayedPath;
 		}
+
+		#endregion rUtil
 	}
+}
