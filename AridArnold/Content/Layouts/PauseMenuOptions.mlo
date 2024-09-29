@@ -6,8 +6,8 @@
 		<font>PixicaMicro-36</font>
 		<depth>PauseMenu</depth>
 		<text>UI.Menu.FullscreenOption</text>
-		<up>ghostOpt</up>
-		<down>optBackBtn</down>
+		<up>optBackBtn</up>
+		<down>visionOpt</down>
 	</element>
 	<element type="visionOption" id="visionOpt">
 		<x>500.0</x>
@@ -15,7 +15,7 @@
 		<font>PixicaMicro-36</font>
 		<depth>PauseMenu</depth>
 		<text>UI.Menu.VisionOption</text>
-		<up>optBackBtn</up>
+		<up>fullScreenOpt</up>
 		<down>masterVolOpt</down>
 	</element>
 	<element type="masterVolOption" id="masterVolOpt">
@@ -34,7 +34,7 @@
 		<depth>PauseMenu</depth>
 		<text>UI.Menu.ClairaudienceOption</text>
 		<up>masterVolOpt</up>
-		<down>ghostOpt</down>
+		<down>jumpStyleOpt</down>
 	</element>
 	<element type="jumpStyleOption" id="jumpStyleOpt">
 		<x>500.0</x>
@@ -51,8 +51,8 @@
 		<font>PixicaMicro-36</font>
 		<depth>PauseMenu</depth>
 		<text>UI.Menu.GhostOption</text>
-		<up>musicVolOpt</up>
-		<down>fullScreenOpt</down>
+		<up>jumpStyleOpt</up>
+		<down>fastTextOpt</down>
 	</element>
 	<element type="fastTextOption" id="fastTextOpt">
 		<x>500.0</x>
@@ -71,7 +71,7 @@
 		<depth>PauseMenu</depth>
 		<msg>go:kHub</msg>
 		<text>UI.Menu.Back</text>
-		<up>fullScreenOpt</up>
-		<down>visionOpt</down>
+		<up>fastTextOpt</up>
+		<down>fullScreenOpt</down>
 	</element>
 </root>
