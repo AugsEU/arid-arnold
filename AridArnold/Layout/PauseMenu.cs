@@ -213,7 +213,7 @@ namespace AridArnold
 					GetCurrentSubMenu().InstantSetSelectedElement("resumeBtn");
 					break;
 				case PauseSubMenu.kOptions:
-					GetCurrentSubMenu().InstantSetSelectedElement("visionOpt");
+					GetCurrentSubMenu().InstantSetSelectedElement("fullScreenOpt");
 					break;
 			}
 		}
