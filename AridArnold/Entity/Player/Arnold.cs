@@ -13,7 +13,7 @@ namespace AridArnold
 		const double USE_ITEM_TIME = 450.0;
 		const int COYOTE_TIME = 8;
 		const int ROSS_TIME = 5;
-
+		const float JUMP_BUFFER_DURATION = 200.0f;
 
 		const float ARNOLD_WALK_SPEED = 9.05f;
 		const float ARNOLD_GRAVITY = 4.35f;
@@ -60,6 +60,9 @@ namespace AridArnold
 		InputAction mRightKey;
 		InputAction mDownKey;
 
+		// v1.1 Use jump buffer.
+		InputBuffer mJumpBuffer;
+
 		// RandomModes
 		bool mHorseMode;
 		bool mBouncyMode;
@@ -94,6 +97,8 @@ namespace AridArnold
 			mLeftKey = InputAction.ArnoldLeft;
 			mRightKey = InputAction.ArnoldRight;
 			mDownKey = InputAction.ArnoldDown;
+
+			mJumpBuffer = new InputBuffer(InputAction.ArnoldJump, JUMP_BUFFER_DURATION);
 
 			mCurrItem = null;
 			LayerOptIn(InteractionLayer.kPlayer);
@@ -522,12 +527,21 @@ namespace AridArnold
 		/// <param name="gameTime">Frame time</param>
 		private void DoInputs(GameTime gameTime)
 		{
+			mJumpBuffer.Update(gameTime);
+
 			UpdateArnoldKeys();
 
-			bool jump = InputManager.I.KeyHeld(InputAction.ArnoldJump);
+			bool jumpHold = InputManager.I.KeyHeld(InputAction.ArnoldJump);
 			bool fallthrough = InputManager.I.KeyHeld(mDownKey);
 
-			if (jump && fallthrough)
+			bool jump = jumpHold;
+
+			if(!OptionsManager.I.GetHoldJump())
+			{
+				jump = mJumpBuffer.QueryAction();
+			}
+
+			if (jumpHold && fallthrough)
 			{
 				if (!(mOnGround && mWalkDirection != WalkDirection.None))
 				{
@@ -541,6 +555,7 @@ namespace AridArnold
 				if (jump && mOnGround)
 				{
 					Jump();
+					mJumpBuffer.NotifyActionDone();
 				}
 			}
 			else if (IsGroundedSince(COYOTE_TIME) && !HasJumpedInTheLast(COYOTE_TIME + 1) && !HasFallThroughInLast(COYOTE_TIME + 1))
@@ -551,6 +566,7 @@ namespace AridArnold
 					float originalJumpSpeed = mJumpSpeed;
 					mJumpSpeed += 1.03f;
 					Jump();
+					mJumpBuffer.NotifyActionDone();
 					mJumpSpeed = originalJumpSpeed;
 				}
 			}

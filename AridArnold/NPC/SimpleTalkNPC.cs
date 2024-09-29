@@ -89,6 +89,10 @@
 
 			mIsWalkingType = rootNode["walk"] is not null;
 			mStyle = MonoParse.GetSpeechBoxStyle(rootNode["textStyle"]);
+			if(OptionsManager.I.GetFastText() && mStyle.mFramesPerLetter > 2)
+			{
+				mStyle.mFramesPerLetter -= 1;
+			}
 
 			// System of fallbacks for textures
 			List<string> idleAnimPaths = new List<string>{ "Idle" };

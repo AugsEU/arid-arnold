@@ -16,6 +16,8 @@ namespace AridArnold
 		float mSFXVolume;
 		float mMusicVolume;
 		bool mGhosts;
+		bool mHoldJump;
+		bool mFastText;
 
 		// Not used.
 		bool mImpatientPlayer;
@@ -49,6 +51,8 @@ namespace AridArnold
 			mMusicVolume = 0.3f;
 			mImpatientPlayer = false;
 			mGhosts = true;
+			mHoldJump = true;
+			mFastText = false;
 		}
 
 		#endregion rInit
@@ -73,6 +77,12 @@ namespace AridArnold
 		public bool GetGhostDisplay() { return mGhosts; }
 		public void SetGhostDisplay(bool ghosts) { mGhosts = ghosts; }
 
+		public bool GetHoldJump() { return mHoldJump; }
+		public void SetHoldJump(bool holdJump) { mHoldJump = holdJump; }
+
+		public bool GetFastText() { return mFastText; }
+		public void SetFastText(bool fastText) { mFastText = fastText; }
+
 		#endregion rSGetter
 
 
@@ -84,7 +94,7 @@ namespace AridArnold
 		/// <summary>
 		/// Read binary segment
 		/// </summary>
-		public void ReadFromBinary(BinaryReader br)
+		public void ReadFromBinary(BinaryReader br, int saveVer)
 		{
 			mVision = (VisionOption)br.ReadInt32();
 			mSFXVolume = br.ReadSingle();
@@ -93,6 +103,13 @@ namespace AridArnold
 
 			bool isFullScreen = br.ReadBoolean();
 			Main.SetFullScreen(isFullScreen);
+
+			// v1.1 Add new options
+			if (saveVer >= 2)
+			{
+				mHoldJump = br.ReadBoolean();
+				mFastText = br.ReadBoolean();
+			}
 		}
 
 
@@ -109,6 +126,9 @@ namespace AridArnold
 
 			bool isFullScreen = Main.IsFullScreen();
 			bw.Write(isFullScreen);
+
+			bw.Write(mHoldJump);
+			bw.Write(mFastText);
 		}
 
 		#endregion rSerial
