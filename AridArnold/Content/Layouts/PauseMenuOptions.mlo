@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
+	<element type="fullscreenOption" id="fullScreenOpt">
+		<x>500.0</x>
+		<y>120.0</y>
+		<font>PixicaMicro-36</font>
+		<depth>PauseMenu</depth>
+		<text>UI.Menu.FullscreenOption</text>
+		<up>ghostOpt</up>
+		<down>optBackBtn</down>
+	</element>
 	<element type="visionOption" id="visionOpt">
 		<x>500.0</x>
-		<y>140.0</y>
+		<y>150.0</y>
 		<font>PixicaMicro-36</font>
 		<depth>PauseMenu</depth>
 		<text>UI.Menu.VisionOption</text>
@@ -20,28 +29,37 @@
 	</element>
 	<element type="musicVolOption" id="musicVolOpt">
 		<x>500.0</x>
-		<y>220.0</y>
+		<y>210.0</y>
 		<font>PixicaMicro-36</font>
 		<depth>PauseMenu</depth>
 		<text>UI.Menu.ClairaudienceOption</text>
 		<up>masterVolOpt</up>
 		<down>ghostOpt</down>
 	</element>
+	<element type="jumpStyleOption" id="jumpStyleOpt">
+		<x>500.0</x>
+		<y>240.0</y>
+		<font>PixicaMicro-36</font>
+		<depth>PauseMenu</depth>
+		<text>UI.Menu.JumpStyleOption</text>
+		<up>musicVolOpt</up>
+		<down>ghostOpt</down>
+	</element>
 	<element type="ghostOption" id="ghostOpt">
 		<x>500.0</x>
-		<y>260.0</y>
+		<y>270.0</y>
 		<font>PixicaMicro-36</font>
 		<depth>PauseMenu</depth>
 		<text>UI.Menu.GhostOption</text>
 		<up>musicVolOpt</up>
 		<down>fullScreenOpt</down>
 	</element>
-	<element type="fullscreenOption" id="fullScreenOpt">
+	<element type="fastTextOption" id="fastTextOpt">
 		<x>500.0</x>
 		<y>300.0</y>
 		<font>PixicaMicro-36</font>
 		<depth>PauseMenu</depth>
-		<text>UI.Menu.FullscreenOption</text>
+		<text>UI.Menu.TextSpeedOption</text>
 		<up>ghostOpt</up>
 		<down>optBackBtn</down>
 	</element>

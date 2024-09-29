@@ -9,6 +9,10 @@ namespace AridArnold
 		{
 		}
 
+		public YesNoOption(XmlNode rootNode, Layout parent, string[] optionStrs) : base(rootNode, parent, optionStrs)
+		{
+		}
+
 		protected void SyncFromBool(bool isYes)
 		{
 			SetSelectedOptionsIdx(isYes ? 0 : 1);

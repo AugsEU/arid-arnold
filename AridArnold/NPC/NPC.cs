@@ -247,7 +247,15 @@
 
 			float spikeOffset = mPosition.X - dialogPosition.X + 17.0f;
 
-			mTextBlocks.Add(new SpeechBoxRenderer(stringID, dialogPosition, spikeOffset, mStyle));
+			SpeechBoxStyle style = mStyle;
+
+			bool fastText = OptionsManager.I.GetFastText() || CampaignManager.I.IsSpeedrunMode();
+			if (fastText && style.mFramesPerLetter > 2)
+			{
+				style.mFramesPerLetter -= 1;
+			}
+
+			mTextBlocks.Add(new SpeechBoxRenderer(stringID, dialogPosition, spikeOffset, style));
 		}
 
 

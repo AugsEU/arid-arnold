@@ -1,1 +1,1 @@
-Control volume of sound effects.
+Control the volume of sound effects.

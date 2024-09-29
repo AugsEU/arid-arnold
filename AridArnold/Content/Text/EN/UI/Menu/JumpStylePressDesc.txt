@@ -1,0 +1,1 @@
+Jump only when the button is pressed.

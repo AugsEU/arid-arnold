@@ -147,17 +147,25 @@
 		<font>Pixica-48-b</font>
 	</element>
 
+	<element type="fullscreenOption" id="fullScreenOpt">
+		<x>480.0</x>
+		<y>670.0</y>
+		<text>UI.Menu.FullscreenOption</text>
+		<explainBox>optionDescTxb</explainBox>
+		<up>optBackBtn</up>
+		<down>visionOpt</down>
+	</element>
 	<element type="visionOption" id="visionOpt">
 		<x>480.0</x>
-		<y>680.0</y>
+		<y>700.0</y>
 		<text>UI.Menu.VisionOption</text>
 		<explainBox>optionDescTxb</explainBox>
-		<up>optRebindBtn</up>
+		<up>fullScreenOpt</up>
 		<down>masterVolOpt</down>
 	</element>
 	<element type="masterVolOption" id="masterVolOpt">
 		<x>480.0</x>
-		<y>720.0</y>
+		<y>730.0</y>
 		<text>UI.Menu.EarPowerOption</text>
 		<explainBox>optionDescTxb</explainBox>
 		<up>visionOpt</up>
@@ -169,24 +177,33 @@
 		<text>UI.Menu.ClairaudienceOption</text>
 		<explainBox>optionDescTxb</explainBox>
 		<up>masterVolOpt</up>
+		<down>jumpStyleOpt</down>
+	</element>
+	<element type="jumpStyleOption" id="jumpStyleOpt">
+		<x>480.0</x>
+		<y>790.0</y>
+		<text>UI.Menu.JumpStyleOption</text>
+		<explainBox>optionDescTxb</explainBox>
+		<up>musicVolOpt</up>
 		<down>ghostOpt</down>
 	</element>
 	<element type="ghostOption" id="ghostOpt">
 		<x>480.0</x>
-		<y>800.0</y>
+		<y>820.0</y>
 		<text>UI.Menu.GhostOption</text>
 		<explainBox>optionDescTxb</explainBox>
-		<up>musicVolOpt</up>
-		<down>fullScreenOpt</down>
+		<up>jumpStyleOpt</up>
+		<down>fastTextOpt</down>
 	</element>
-	<element type="fullscreenOption" id="fullScreenOpt">
+	<element type="fastTextOption" id="fastTextOpt">
 		<x>480.0</x>
-		<y>840.0</y>
-		<text>UI.Menu.FullscreenOption</text>
+		<y>850.0</y>
+		<text>UI.Menu.TextSpeedOption</text>
 		<explainBox>optionDescTxb</explainBox>
 		<up>ghostOpt</up>
-		<down>optRebindBtn</down>
+		<down>optBackBtn</down>
 	</element>
+
 
 	<element type="textBlock" id="optionDescTxb">
 		<x>120.0</x>
@@ -201,8 +218,8 @@
 		<y>996.0</y>
 		<msg>go:kRebindArea</msg>
 		<text>UI.Menu.Rebind</text>
-		<up>fullScreenOpt</up>
-		<down>visionOpt</down>
+		<up>fastTextOpt</up>
+		<down>fullScreenOpt</down>
 		<left>optBackBtn</left>
 		<right>optBackBtn</right>
 	</element>
@@ -211,8 +228,8 @@
 		<y>996.0</y>
 		<msg>go:kMainArea</msg>
 		<text>UI.Menu.Back</text>
-		<up>ghostOpt</up>
-		<down>visionOpt</down>
+		<up>fastTextOpt</up>
+		<down>fullScreenOpt</down>
 		<left>optRebindBtn</left>
 		<right>optRebindBtn</right>
 	</element>
