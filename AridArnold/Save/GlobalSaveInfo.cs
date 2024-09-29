@@ -30,7 +30,7 @@ namespace AridArnold
 	class GlobalSaveInfo : MonoReadWriteFile
 	{
 		const string GLOBAL_SAVE_MAGIC = "gas";
-		const int GLOBAL_SAVE_VER = 1;
+		const int GLOBAL_SAVE_VER = 2;
 
 		List<WorldReachedInfo> mWorldReachedList;
 
@@ -63,7 +63,6 @@ namespace AridArnold
 			int version = br.ReadInt32();
 
 			MonoDebug.Assert(magic == GLOBAL_SAVE_MAGIC);
-			MonoDebug.Assert(version == GLOBAL_SAVE_VER);
 
 			int numWorldsReached = br.ReadInt32();
 			for(int i = 0; i < numWorldsReached; i++)
@@ -71,7 +70,7 @@ namespace AridArnold
 				mWorldReachedList.Add(new WorldReachedInfo(br));
 			}
 
-			OptionsManager.I.ReadFromBinary(br);
+			OptionsManager.I.ReadFromBinary(br, version);
 			InputManager.I.ReadFromBinary(br);
 		}
 

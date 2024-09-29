@@ -1,4 +1,4 @@
-GLOBAL SAVE FORMAT VERSION 1:
+GLOBAL SAVE FORMAT VERSION 2:
 
 META
 {
@@ -18,6 +18,8 @@ OPTIONS
     MUSIC VOL - float32
     IMPATIENT - bool
     FULLSCREEN - bool
+    HOLDJUMP - bool
+    FASTTEXT - bool
 }
 
 INPUT

@@ -16690,3 +16690,12 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
+#begin Text/EN/NPC/ShopOld/HellBrowse.txt
+/copy:Text/EN/NPC/ShopOld/HellBrowse.txt
+
+#begin Text/EN/NPC/ShopYoung/NewFace.txt
+/copy:Text/EN/NPC/ShopYoung/NewFace.txt
+
+#begin Text/EN/NPC/ShopKepper/NewFace.txt
+/copy:Text/EN/NPC/ShopKepper/NewFace.txt
+
