@@ -513,7 +513,7 @@ namespace AridArnold
 		/// <summary>
 		/// Called on exit
 		/// </summary>
-		protected override void OnExiting(object sender, EventArgs args)
+		protected override void OnExiting(object sender, ExitingEventArgs args)
 		{
 			MonoSound.Impl.OnExit(this);
 		}
