@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AridArnold.Entity" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAiEAUBQEoRIAgEQAAgQkAAACAiEAQaAAAgAA4Q=</HashCode>
+      <FileName>Entity\Abstract\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.MovingEntity" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQhAAAEQJAAIAAQEAACgAABAAAAAECAABgAAAAAAAA=</HashCode>
+      <FileName>Entity\Abstract\MovingEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.PlatformingEntity" Collapsed="true">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>jKRBAIAIA0kyBmgQIiskkCAJApgCpaCEBwMRABIgBAY=</HashCode>
+      <FileName>Entity\Abstract\PlatformingEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.ProjectileEntity" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACEAAAAIQAgAGAACBAAAAAACAgAAACAAAAIA=</HashCode>
+      <FileName>Entity\Abstract\ProjectileEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.LaserBomb" Collapsed="true">
+    <Position X="10.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQABAiIEAAEgkBAAQAAggAGBAAAAAEAAIAAAAAAAIQ=</HashCode>
+      <FileName>Entity\Enemies\Futron\LaserBomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.LaserBullet" Collapsed="true">
+    <Position X="8.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAAAAAgAAgAAAAAAAgAAQAAAAAgAAAAAAAAQ=</HashCode>
+      <FileName>Entity\Enemies\Futron\LaserBullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.AIEntity" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IASAEAgAABAAAEQAAAAAAAACkAAAAAAICAAAgAAgBAA=</HashCode>
+      <FileName>Entity\Enemies\AIEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.Trundle" Collapsed="true">
+    <Position X="4.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgQAwACAAAAIAAAAKBAEAAAAAAAAAAAMAACAAQAAAAQ=</HashCode>
+      <FileName>Entity\Enemies\Trundle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.Roboto" Collapsed="true">
+    <Position X="6.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAIAEAEAAACAAAAAIABAAAIAAJAAAAAAAABAQ=</HashCode>
+      <FileName>Entity\Enemies\Roboto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.Arnold" Collapsed="true">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JASAIQgAAdEBQgYYAAQZAQYRgAZE0ACFggIAgJBgpAQ=</HashCode>
+      <FileName>Entity\Player\Arnold.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.NPC" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAgAQAQAAgAAAAAAAAAAyAgAABgAAARQAIGBCAQ=</HashCode>
+      <FileName>NPC\NPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.SimpleTalkNPC" Collapsed="true">
+    <Position X="12.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAQMgAAQQYAAAAAAUAqQAAwAACABCABEggAAFAFAQ=</HashCode>
+      <FileName>NPC\SimpleTalkNPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.EntityReflection" Collapsed="true">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAEAAAEIAAgAQAAAAAAAQgAAAAACAAAAAAAEAAAY=</HashCode>
+      <FileName>Entity\Other\EntityReflection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.FreeBodyEntity" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIQAAgAAAAAAAgAQAAAAAAAAgAAAAAAAAABAAAAAAgQ=</HashCode>
+      <FileName>Entity\Abstract\FreeBodyEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.TimeMachine" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAgAAAkAQAAIAEAAAAAAAAAAAAIAAABQ=</HashCode>
+      <FileName>Entity\Other\TimeMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.FireBarrel" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Entity\Other\FireBarrel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
