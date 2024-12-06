@@ -111,18 +111,21 @@
 		/// <param name="gameTime">Frame time</param>
 		public override void Update(GameTime gameTime)
 		{
+			// Update various timers and UI.
+			// These always update no matter what.
 			mFadeInFx.Update(gameTime);
 			mLevelEndTimer.Update(gameTime);
+			mMainUI.Update(gameTime);
 
+			// Check if a load sequence is pending.
 			if (mLoadSequence is null)
 			{
 				CheckForLoadSequence();
 			}
 
-			mMainUI.Update(gameTime);
-
 			if (mLoadSequence is not null)
 			{
+				// Do load sequence until it is finished
 				mLoadSequence.Update(gameTime);
 
 				if (mLoadSequence.Finished())
@@ -132,10 +135,12 @@
 			}
 			else if(mPauseMenu.IsOpen())
 			{
+				// Do pause menu until it is closed
 				mPauseMenu.Update(gameTime);
 			}
 			else
 			{
+				// Actually run the game.
 				GameUpdate(gameTime);
 			}
 		}

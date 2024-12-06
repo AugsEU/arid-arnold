@@ -43,6 +43,8 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
+			Profiler.PushProfileZone("Update Entities", System.Drawing.Color.Orange);
+
 			mAuxiliaryColliders.Clear();
 
 			// Do unordered update. To do: Multi-threading if it turns out to be worth it.
@@ -55,6 +57,8 @@
 			mRegisteredEntities.Sort(mUpdateSorter);
 
 			// Do physics
+			Profiler.PushProfileZone("Entity Physics", System.Drawing.Color.Salmon);
+
 			System.TimeSpan timeInc = gameTime.ElapsedGameTime / PHYSICS_STEPS;
 			for (int i = 0; i < PHYSICS_STEPS; i++)
 			{
@@ -66,6 +70,10 @@
 
 			// Add/Removed queued entities
 			FlushQueues();
+
+			Profiler.PopProfileZone();
+
+			Profiler.PopProfileZone();
 		}
 
 
@@ -167,6 +175,8 @@
 		/// </summary>
 		void ResolveEntityTouching()
 		{
+			Profiler.PushProfileZone("ResolveEntityTouching", System.Drawing.Color.SeaGreen);
+
 			// Not the best but the number of entities is small enough for optimisations to not be needed.
 			for (int i = 0; i < mRegisteredEntities.Count - 1; i++)
 			{
@@ -190,6 +200,8 @@
 					}
 				}
 			}
+
+			Profiler.PopProfileZone();
 		}
 
 		#endregion rCollision
@@ -274,6 +286,8 @@
 		/// <param name="info">Info needed to draw</param>
 		public void Draw(DrawInfo info)
 		{
+			Profiler.PushProfileZone("Entities draw", System.Drawing.Color.Sienna);
+
 			foreach (Entity entity in mRegisteredEntities)
 			{
 				if (!entity.IsEnabled()) continue;
@@ -286,6 +300,8 @@
 			{
 				railData.NotifyEndDrawCycle();
 			}
+
+			Profiler.PopProfileZone();
 		}
 
 		#endregion rDraw

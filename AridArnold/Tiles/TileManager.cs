@@ -635,6 +635,8 @@
 		/// <param name="gameTime">Frame time</param>
 		public void Update(GameTime gameTime)
 		{
+			Profiler.PushProfileZone("Tiles update", System.Drawing.Color.Yellow);
+
 			const int ELEC_SPEED_MULT = 4;
 
 			for (int x = 0; x < mTileMap.GetLength(0); x++)
@@ -653,10 +655,15 @@
 
 			mDeleteRequests.Clear();
 
+			Profiler.PushProfileZone("EM field update", System.Drawing.Color.MintCream);
+
 			for (int i = 0; i < ELEC_SPEED_MULT; i++)
 			{
 				mEMField.Update();
 			}
+
+			Profiler.PopProfileZone();
+			Profiler.PopProfileZone();
 		}
 
 
@@ -695,6 +702,7 @@
 		/// <param name="info">Info needed to draw</param>
 		public void Draw(DrawInfo info)
 		{
+			Profiler.PushProfileZone("Tiles draw", System.Drawing.Color.MediumVioletRed);
 
 			for (int x = 0; x < mTileMap.GetLength(0); x++)
 			{
@@ -709,6 +717,8 @@
 					}
 				}
 			}
+
+			Profiler.PopProfileZone();
 		}
 
 

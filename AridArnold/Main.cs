@@ -86,6 +86,8 @@ namespace AridArnold
 		/// </summary>
 		protected override void Initialize()
 		{
+			Profiler.InitThread();
+
 			SetWindowHeight(MIN_HEIGHT);
 			mGraphicsManager.IsFullScreen = false;
 			mGraphicsManager.ApplyChanges();
@@ -168,10 +170,16 @@ namespace AridArnold
 		/// <param name="gameTime"></param>
 		protected override void Update(GameTime gameTime)
 		{
+			Profiler.HeartBeat();
+
+			Profiler.PushProfileZone("Update", System.Drawing.Color.White);
+
 			// Sound
+			Profiler.PushProfileZone("Sound", System.Drawing.Color.OrangeRed);
 			MonoSound.Impl.Update(gameTime);
 			SFXManager.I.Update(gameTime);
 			MusicManager.I.Update(gameTime);
+			Profiler.PopProfileZone();
 			
 			mSlowDownCount = (mSlowDownCount + 1) % mFrameSlowdown;
 			if (mSlowDownCount == 0)
@@ -198,8 +206,9 @@ namespace AridArnold
 				}
 			}
 
-
 			base.Update(gameTime);
+
+			Profiler.PopProfileZone();
 		}
 
 		#endregion rUpdate
@@ -216,6 +225,8 @@ namespace AridArnold
 		/// <param name="gameTime">Frame time</param>
 		protected override void Draw(GameTime gameTime)
 		{
+			Profiler.PushProfileZone("Draw", System.Drawing.Color.Gray);
+
 			DrawInfo frameInfo;
 
 			frameInfo.graphics = mGraphicsManager;
@@ -245,6 +256,8 @@ namespace AridArnold
 			base.Draw(gameTime);
 
 			MonoDraw.FlushRender();
+
+			Profiler.PopProfileZone();
 		}
 
 

@@ -76,6 +76,8 @@
 		/// <param name="gameTime"></param>
 		public override void Update(GameTime gameTime)
 		{
+			Profiler.PushProfileZone("Roboto Update", System.Drawing.Color.Pink);
+
 			mTimeSinceOn.Update(gameTime);
 
 			Item currItem = ItemManager.I.GetActiveItem();
@@ -100,6 +102,8 @@
 			}
 
 			base.Update(gameTime);
+
+			Profiler.PopProfileZone();
 		}
 
 
