@@ -1,4 +1,4 @@
-﻿
+﻿#if MONOSOUND_BUILD
 using MonoSound;
 
 namespace AridArnold
@@ -49,3 +49,4 @@ namespace AridArnold
 		}
 	}
 }
+#endif // MONOSOUND_BUILD

@@ -1,6 +1,4 @@
-﻿using MonoSound;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Program top level

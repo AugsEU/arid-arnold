@@ -1,4 +1,5 @@
-﻿using MonoSound;
+﻿#if MONOSOUND_BUILD
+using MonoSound;
 using MonoSound.Streaming;
 using System;
 using System.IO;
@@ -209,3 +210,4 @@ namespace AridArnold
 		#endregion rUtil
 	}
 }
+#endif // MONOSOUND_BUILD

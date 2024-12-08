@@ -973,18 +973,6 @@
 /processorParam:TextureFormat=Color
 /build:Arcade/HorsesAndGun/ground.png
 
-#begin Arcade/HorsesAndGun/gun.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Arcade/HorsesAndGun/gun.png
-
 #begin Arcade/HorsesAndGun/gun_barrel.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1116,6 +1104,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Arcade/HorsesAndGun/gun-fire9.png
+
+#begin Arcade/HorsesAndGun/gun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Arcade/HorsesAndGun/gun.png
 
 #begin Arcade/HorsesAndGun/Horse/horse_jump_1.png
 /importer:TextureImporter
@@ -11791,6 +11791,18 @@
 #begin NPC/Thornforge/ThornForge.mtn
 /copy:NPC/Thornforge/ThornForge.mtn
 
+#begin NPC/Tome/Default-1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=False
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC/Tome/Default-1.png
+
 #begin NPC/Tome/Default0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11815,26 +11827,14 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Tome/Default1.png
 
-#begin NPC/Tome/Default-1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=False
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:NPC/Tome/Default-1.png
+#begin NPC/Tome/Idle-1.mia
+/copy:NPC/Tome/Idle-1.mia
 
 #begin NPC/Tome/Idle0.mia
 /copy:NPC/Tome/Idle0.mia
 
 #begin NPC/Tome/Idle1.mia
 /copy:NPC/Tome/Idle1.mia
-
-#begin NPC/Tome/Idle-1.mia
-/copy:NPC/Tome/Idle-1.mia
 
 #begin NPC/Tome/Tome.mtn
 /copy:NPC/Tome/Tome.mtn
@@ -12910,110 +12910,8 @@
 /processorParam:TextureFormat=Color
 /build:Shared/TransitionArrows.png
 
-#begin Sound/Music/Arcade.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Arcade.ogg
-
-#begin Sound/Music/BossMusic.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/BossMusic.ogg
-
-#begin Sound/Music/BukCave.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/BukCave.ogg
-
-#begin Sound/Music/DeathRide.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/DeathRide.ogg
-
-#begin Sound/Music/Fountain.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Fountain.ogg
-
-#begin Sound/Music/Heaven.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Heaven.ogg
-
-#begin Sound/Music/Hell.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Hell.ogg
-
-#begin Sound/Music/HorsesAndGun.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/HorsesAndGun.ogg
-
-#begin Sound/Music/Intro.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Intro.ogg
-
-#begin Sound/Music/Lab.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Lab.ogg
-
-#begin Sound/Music/Library.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Library.ogg
-
-#begin Sound/Music/MainMenu.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/MainMenu.ogg
-
-#begin Sound/Music/Mirror.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Mirror.ogg
-
-#begin Sound/Music/Mountain.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Mountain.ogg
-
 #begin Sound/Music/MusicManifest.xml
 /copy:Sound/Music/MusicManifest.xml
-
-#begin Sound/Music/Steamplant.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/Steamplant.ogg
-
-#begin Sound/Music/WormWarp.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/WormWarp.ogg
-
-#begin Sound/Music/WW7.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Sound/Music/WW7.ogg
 
 #begin Sound/SFX/Arnold/Death.wav
 /importer:WavImporter
@@ -14233,6 +14131,15 @@
 #begin Text/EN/NPC/ShopKeeper/ShopIntro.txt
 /copy:Text/EN/NPC/ShopKeeper/ShopIntro.txt
 
+#begin Text/EN/NPC/ShopKepper/NewFace.txt
+/copy:Text/EN/NPC/ShopKepper/NewFace.txt
+
+#begin Text/EN/NPC/ShopOld/HellBrowse.txt
+/copy:Text/EN/NPC/ShopOld/HellBrowse.txt
+
+#begin Text/EN/NPC/ShopYoung/NewFace.txt
+/copy:Text/EN/NPC/ShopYoung/NewFace.txt
+
 #begin Text/EN/NPC/Sign/BossGrave.txt
 /copy:Text/EN/NPC/Sign/BossGrave.txt
 
@@ -14470,6 +14377,9 @@
 #begin Text/EN/UI/Menu/Exit.txt
 /copy:Text/EN/UI/Menu/Exit.txt
 
+#begin Text/EN/UI/Menu/FastText.txt
+/copy:Text/EN/UI/Menu/FastText.txt
+
 #begin Text/EN/UI/Menu/FullscreenOption.txt
 /copy:Text/EN/UI/Menu/FullscreenOption.txt
 
@@ -14491,6 +14401,21 @@
 #begin Text/EN/UI/Menu/ImpatientOptionDesc.txt
 /copy:Text/EN/UI/Menu/ImpatientOptionDesc.txt
 
+#begin Text/EN/UI/Menu/JumpStyleHold.txt
+/copy:Text/EN/UI/Menu/JumpStyleHold.txt
+
+#begin Text/EN/UI/Menu/JumpStyleHoldDesc.txt
+/copy:Text/EN/UI/Menu/JumpStyleHoldDesc.txt
+
+#begin Text/EN/UI/Menu/JumpStyleOption.txt
+/copy:Text/EN/UI/Menu/JumpStyleOption.txt
+
+#begin Text/EN/UI/Menu/JumpStylePress.txt
+/copy:Text/EN/UI/Menu/JumpStylePress.txt
+
+#begin Text/EN/UI/Menu/JumpStylePressDesc.txt
+/copy:Text/EN/UI/Menu/JumpStylePressDesc.txt
+
 #begin Text/EN/UI/Menu/LoadGame.txt
 /copy:Text/EN/UI/Menu/LoadGame.txt
 
@@ -14505,6 +14430,9 @@
 
 #begin Text/EN/UI/Menu/No.txt
 /copy:Text/EN/UI/Menu/No.txt
+
+#begin Text/EN/UI/Menu/NormalText.txt
+/copy:Text/EN/UI/Menu/NormalText.txt
 
 #begin Text/EN/UI/Menu/Options.txt
 /copy:Text/EN/UI/Menu/Options.txt
@@ -14535,6 +14463,12 @@
 
 #begin Text/EN/UI/Menu/SpeedRunMode.txt
 /copy:Text/EN/UI/Menu/SpeedRunMode.txt
+
+#begin Text/EN/UI/Menu/TextSpeedOption.txt
+/copy:Text/EN/UI/Menu/TextSpeedOption.txt
+
+#begin Text/EN/UI/Menu/TextSpeedOptionDesc.txt
+/copy:Text/EN/UI/Menu/TextSpeedOptionDesc.txt
 
 #begin Text/EN/UI/Menu/VisionOption.txt
 /copy:Text/EN/UI/Menu/VisionOption.txt
@@ -16690,39 +16624,54 @@
 /processorParam:TextureFormat=Color
 /build:UI/UIBG.png
 
-#begin Text/EN/NPC/ShopOld/HellBrowse.txt
-/copy:Text/EN/NPC/ShopOld/HellBrowse.txt
+#begin Sound/Music/Arcade.adpcm
+/copy:Sound/Music/Arcade.adpcm
 
-#begin Text/EN/NPC/ShopYoung/NewFace.txt
-/copy:Text/EN/NPC/ShopYoung/NewFace.txt
+#begin Sound/Music/BossMusic.adpcm
+/copy:Sound/Music/BossMusic.adpcm
 
-#begin Text/EN/NPC/ShopKepper/NewFace.txt
-/copy:Text/EN/NPC/ShopKepper/NewFace.txt
+#begin Sound/Music/BukCave.adpcm
+/copy:Sound/Music/BukCave.adpcm
 
-#begin Text/EN/UI/Menu/FastText.txt
-/copy:Text/EN/UI/Menu/FastText.txt
+#begin Sound/Music/DeathRide.adpcm
+/copy:Sound/Music/DeathRide.adpcm
 
-#begin Text/EN/UI/Menu/JumpStyleHold.txt
-/copy:Text/EN/UI/Menu/JumpStyleHold.txt
+#begin Sound/Music/Fountain.adpcm
+/copy:Sound/Music/Fountain.adpcm
 
-#begin Text/EN/UI/Menu/JumpStyleHoldDesc.txt
-/copy:Text/EN/UI/Menu/JumpStyleHoldDesc.txt
+#begin Sound/Music/Heaven.adpcm
+/copy:Sound/Music/Heaven.adpcm
 
-#begin Text/EN/UI/Menu/JumpStyleOption.txt
-/copy:Text/EN/UI/Menu/JumpStyleOption.txt
+#begin Sound/Music/Hell.adpcm
+/copy:Sound/Music/Hell.adpcm
 
-#begin Text/EN/UI/Menu/JumpStylePress.txt
-/copy:Text/EN/UI/Menu/JumpStylePress.txt
+#begin Sound/Music/HorsesAndGun.adpcm
+/copy:Sound/Music/HorsesAndGun.adpcm
 
-#begin Text/EN/UI/Menu/JumpStylePressDesc.txt
-/copy:Text/EN/UI/Menu/JumpStylePressDesc.txt
+#begin Sound/Music/Intro.adpcm
+/copy:Sound/Music/Intro.adpcm
 
-#begin Text/EN/UI/Menu/NormalText.txt
-/copy:Text/EN/UI/Menu/NormalText.txt
+#begin Sound/Music/Lab.adpcm
+/copy:Sound/Music/Lab.adpcm
 
-#begin Text/EN/UI/Menu/TextSpeedOption.txt
-/copy:Text/EN/UI/Menu/TextSpeedOption.txt
+#begin Sound/Music/Library.adpcm
+/copy:Sound/Music/Library.adpcm
 
-#begin Text/EN/UI/Menu/TextSpeedOptionDesc.txt
-/copy:Text/EN/UI/Menu/TextSpeedOptionDesc.txt
+#begin Sound/Music/MainMenu.adpcm
+/copy:Sound/Music/MainMenu.adpcm
+
+#begin Sound/Music/Mirror.adpcm
+/copy:Sound/Music/Mirror.adpcm
+
+#begin Sound/Music/Mountain.adpcm
+/copy:Sound/Music/Mountain.adpcm
+
+#begin Sound/Music/Steamplant.adpcm
+/copy:Sound/Music/Steamplant.adpcm
+
+#begin Sound/Music/WormWarp.adpcm
+/copy:Sound/Music/WormWarp.adpcm
+
+#begin Sound/Music/WW7.adpcm
+/copy:Sound/Music/WW7.adpcm
 

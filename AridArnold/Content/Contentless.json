@@ -8,57 +8,61 @@
 
     "overrides": 
     {
-        ".png": 
+        "*/*.png": 
         {
             "processorParams": 
             {
                 "PremultiplyAlpha": "False"
             }
         },
-        ".wav": 
+        "*/*.wav": 
         {
             "processorParams": 
             {
                 "Quality": "Best"
             }
         },
-        ".txt": 
+        "*/*.txt": 
         {
             "copy": true
         },
-        ".mlo": 
+        "*/*.mlo": 
         {
             "copy": true
         },
-        ".xml": 
+        "*/*.xml": 
         {
             "copy": true
         },
-        ".aux": 
+        "*/*.aux": 
         {
             "copy": true
         },
-        ".mia": 
+        "*/*.mia": 
         {
             "copy": true
         },
-        ".max": 
+        "*/*.max": 
         {
             "copy": true
         },
-        ".mtn": 
+        "*/*.mtn": 
         {
             "copy": true
         },
-        ".mtp": 
+        "*/*.mtp": 
         {
             "copy": true
         },
-        ".mci": 
+        "*/*.mci": 
         {
             "copy": true
         },
-        ".bat": 
+        "*/*.bat": 
+        {
+            "copy": true
+        },
+        "*/*.adpcm": 
         {
             "copy": true
         }

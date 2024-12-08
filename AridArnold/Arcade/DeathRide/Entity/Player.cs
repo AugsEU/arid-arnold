@@ -1,7 +1,4 @@
-﻿using MonoSound.Audio;
-using System;
-
-namespace DeathRide
+﻿namespace DeathRide
 {
 	internal class Player : Motorbike
 	{

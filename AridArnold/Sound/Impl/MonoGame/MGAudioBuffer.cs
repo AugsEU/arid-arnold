@@ -63,7 +63,7 @@
 				}
 				else
 				{
-					effectInfo.mSoundEffect = MonoData.I.MonoGameLoad<SoundEffect>(path);
+					effectInfo.mSoundEffect = LoadSoundEffectFromFile(path);
 					effectInfo.mNumInstances = 1;
 				}
 
@@ -72,6 +72,23 @@
 				mSoundEffect = effectInfo.mSoundEffect.CreateInstance();
 			}
 
+		}
+
+
+		public static SoundEffect LoadSoundEffectFromFile(string path)
+		{
+			string extension = Path.GetExtension(path);
+
+			switch (extension)
+			{
+				case "":
+					return MonoData.I.MonoGameLoad<SoundEffect>(path);
+				case ".adpcm":
+					Stream SongAsSFXStream = File.Open(path, FileMode.Open);
+					return SoundEffect.FromStream(SongAsSFXStream);
+			}
+
+			throw new NotImplementedException();
 		}
 
 

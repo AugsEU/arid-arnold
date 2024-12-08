@@ -38,6 +38,7 @@
 					string sanPath = Path.Combine(dir, fileNameRaw);
 
 					return new MGStreamBuffer(sanPath);
+				case ".adpcm":
 				case "":
 					return new MGAudioBuffer(path);
 			}

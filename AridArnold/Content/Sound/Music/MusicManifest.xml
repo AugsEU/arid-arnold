@@ -2,84 +2,84 @@
 <root>
     <!-- Menu -->
     <music id="MainMenu">
-        <file>MainMenu.ogg</file>
+        <file>MainMenu.adpcm</file>
         <vol>0.7</vol>
     </music>
 
     <!-- World themes -->
     <music id="SteamPlant">
-        <file>SteamPlant.ogg</file>
+        <file>SteamPlant.adpcm</file>
         <vol>1.0</vol>
     </music>
     <music id="Library">
-        <file>Library.ogg</file>
+        <file>Library.adpcm</file>
         <vol>1.0</vol>
     </music>
     <music id="BukCave">
-        <file>BukCave.ogg</file>
+        <file>BukCave.adpcm</file>
         <vol>0.8</vol>
         <fadeIn>4000</fadeIn>
     </music>
     <music id="Mirror">
-        <file>Mirror.ogg</file>
+        <file>Mirror.adpcm</file>
         <vol>0.7</vol>
     </music>
     <music id="Lab">
-        <file>Lab.ogg</file>
+        <file>Lab.adpcm</file>
         <vol>1.0</vol>
     </music>
     <music id="Mountain">
-        <file>Mountain.ogg</file>
+        <file>Mountain.adpcm</file>
         <vol>0.8</vol>
         <fadeIn>300</fadeIn>
     </music>
     <music id="WW7">
-        <file>WW7.ogg</file>
+        <file>WW7.adpcm</file>
         <vol>0.6</vol>
     </music>
     <music id="Arcade">
-        <file>Arcade.ogg</file>
+        <file>Arcade.adpcm</file>
         <vol>0.8</vol>
     </music>
     <music id="Hell">
-        <file>Hell.ogg</file>
+        <file>Hell.adpcm</file>
         <vol>1.0</vol>
         <fadeIn>2000</fadeIn>
     </music>
     <music id="Heaven">
-        <file>Heaven.ogg</file>
+        <file>Heaven.adpcm</file>
         <vol>0.7</vol>
         <fadeIn>8000</fadeIn>
     </music>
 
     <music id="BossMusic">
-        <file>BossMusic.ogg</file>
+        <file>BossMusic.adpcm</file>
         <vol>0.9</vol>
     </music>
 
     <!-- Cutscene -->
     <music id="IntroCut">
-        <file>Intro.ogg</file>
+        <file>Intro.adpcm</file>
         <vol>0.6</vol>
         <noLoop></noLoop>
     </music>
     <music id="Fountain">
-        <file>Fountain.ogg</file>
+        <file>Fountain.adpcm</file>
         <vol>0.7</vol>
         <noLoop></noLoop>
     </music>
 
     <!-- Arcade -->
     <music id="DeathRide">
-        <file>DeathRide.ogg</file>
+        <file>DeathRide.adpcm</file>
         <vol>0.5</vol>
     </music>
     <music id="HorsesAndGun">
-        <file>HorsesAndGun.ogg</file>
+        <file>HorsesAndGun.adpcm</file>
         <vol>1.0</vol>
     </music>
     <music id="WormWarp">
-        <file>WormWarp.ogg</file>
+        <file>WormWarp.adpcm</file>
         <vol>1.0</vol>
     </music>
 </root>
