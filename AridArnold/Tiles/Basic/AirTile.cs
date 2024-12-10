@@ -1,4 +1,4 @@
-﻿namespace AridArnold
+namespace AridArnold
 {
 	/// <summary>
 	/// A tile that has no texture or collisions.

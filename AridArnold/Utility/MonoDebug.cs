@@ -23,6 +23,7 @@ namespace AridArnold
 		public static void Log(string msg, params object[] args)
 		{
 #if DEBUG
+#if WINDOWS_OFF
 			if(!mConsoleAlloc)
 			{
 				AllocConsole();
@@ -31,12 +32,15 @@ namespace AridArnold
 			mLogLineNum++;
 			string format = string.Format("[{0}]: {1}", mLogLineNum.ToString("X4"), msg);
 			Console.WriteLine(format, args);
+#endif // WINDOWS
 #endif
 		}
 
+#if WINDOWS_OFF
 		[DllImport("kernel32.dll", SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		static extern bool AllocConsole();
+#endif // WINDOWS
 
 
 		public static void Break(string msg = "", params object[] args)

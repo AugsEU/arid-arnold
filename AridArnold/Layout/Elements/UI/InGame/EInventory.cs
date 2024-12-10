@@ -1,4 +1,4 @@
-﻿namespace AridArnold
+namespace AridArnold
 {
 	class EInventory : UIPanelBase
 	{

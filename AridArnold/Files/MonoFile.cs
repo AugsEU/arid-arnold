@@ -62,7 +62,7 @@ namespace AridArnold
 		/// <returns>Full folder directory</returns>
 		protected virtual string GetBaseFolder()
 		{
-			return Directory.GetCurrentDirectory() + "\\";
+			return Directory.GetCurrentDirectory();
 		}
 
 
@@ -73,7 +73,7 @@ namespace AridArnold
 		/// <returns>Full folder directory</returns>
 		protected string GetFullFolder()
 		{
-			return GetBaseFolder() + GetRelativeFolder();
+			return Path.Join(GetBaseFolder(), GetRelativeFolder());
 		}
 
 
@@ -84,7 +84,7 @@ namespace AridArnold
 		/// <returns>Full file path directory</returns>
 		protected string GetFullFilePath()
 		{
-			return GetFullFolder() + GetFilename();
+			return Path.Join(GetFullFolder(), GetFilename());
 		}
 
 
@@ -207,7 +207,7 @@ namespace AridArnold
 
 		protected override string GetRelativeFolder()
 		{
-			return "Content\\";
+			return "Content";
 		}
 
 		#endregion rFile

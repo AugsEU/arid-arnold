@@ -1,4 +1,4 @@
-﻿#define ADD_TEMP_FILES
+﻿// #define ADD_TEMP_FILES
 
 using System.Diagnostics;
 using System.IO;
@@ -74,8 +74,8 @@ namespace AridArnold
 		/// </summary>
 		public string GetTextPath(string ID)
 		{
-			ID = ID.Replace('.', '\\');
-			return Path.Join(GetBasePath(), "\\" + ID + ".txt");
+			ID = ID.Replace('.', '/');
+			return Path.Join(GetBasePath(), ID + ".txt");
 		}
 
 
@@ -87,7 +87,7 @@ namespace AridArnold
 		/// <returns></returns>
 		public string GetBasePath()
 		{
-			return Path.Join("Content\\Text\\", GetLanguageCode());
+			return Path.Join("Content", "Text", GetLanguageCode());
 		}
 
 
@@ -149,7 +149,7 @@ namespace AridArnold
 					Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
 					MonoDebug.Log("Created translation file: {0}", path);
 #else
-					throw new Exception("Invalid string {0}", ID);
+					throw new Exception(string.Format("Invalid string {0}", ID));
 #endif
 				}
 			}

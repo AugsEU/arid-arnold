@@ -110,7 +110,7 @@
 		private Dictionary<string, T> LoadTypeDB<T>(ContentManager content, string contentFolder)
 		{
 			//Load directory info, abort if none
-			DirectoryInfo dir = new DirectoryInfo(content.RootDirectory + "\\" + contentFolder);
+			DirectoryInfo dir = new DirectoryInfo(Path.Join(content.RootDirectory, contentFolder));
 			if (!dir.Exists)
 				throw new DirectoryNotFoundException();
 

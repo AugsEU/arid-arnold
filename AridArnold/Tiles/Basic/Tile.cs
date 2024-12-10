@@ -1,4 +1,4 @@
-﻿namespace AridArnold
+namespace AridArnold
 {
 	/// <summary>
 	/// Represents a tile in the game world.
