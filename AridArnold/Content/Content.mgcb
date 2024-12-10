@@ -14554,9 +14554,6 @@
 #begin Tiles/bottleFade.max
 /copy:Tiles/bottleFade.max
 
-#begin Tiles/BottleFade.max
-/copy:Tiles/BottleFade.max
-
 #begin Tiles/bottleFade1.png
 /importer:TextureImporter
 /processor:TextureProcessor

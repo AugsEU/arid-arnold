@@ -10,7 +10,7 @@
 		<x>192.0</x>
 		<y>432.0</y>
 		<depth>BackgroundElement</depth>
-		<anim>BG/Steamplant/BirthFire.max</anim>
+		<anim>BG/SteamPlant/BirthFire.max</anim>
 	</element>
 	<element type="emitter">
 		<emitter type="smokebox">

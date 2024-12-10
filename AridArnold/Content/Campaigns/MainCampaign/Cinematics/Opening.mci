@@ -71,7 +71,7 @@
 		</CC_SetActorProps>
 		<CC_AnimActor frames="0,7650">
 			<actor>Fire1</actor>
-			<anim>BG/Steamplant/BirthFire.max</anim>
+			<anim>BG/SteamPlant/BirthFire.max</anim>
 		</CC_AnimActor>
 
 		<!-- Setup -->
