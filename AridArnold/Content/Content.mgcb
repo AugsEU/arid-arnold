@@ -16336,11 +16336,11 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/WW7/Gravel.png
 
-#begin Tiles/spikes.png
+#begin Tiles/Spikes.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Tiles/spikes.png
+/build:Tiles/Spikes.png
 
 #begin Enemies/Roboto/RobotoFall.png
 /importer:TextureImporter
