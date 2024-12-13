@@ -20,7 +20,7 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/HotDog");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Hotdog");
 		}
 
 

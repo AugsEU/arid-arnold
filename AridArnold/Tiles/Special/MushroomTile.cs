@@ -36,14 +36,14 @@
 		/// </summary>
 		public override void LoadContent()
 		{
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/buk/Mushroom");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Tiles/Buk/Mushroom");
 			mBounceAnim = new Animator(Animator.PlayType.OneShot,
-											("Tiles/buk/MushroomBounce1", 0.05f),
-											("Tiles/buk/MushroomBounce2", 0.1f),
-											("Tiles/buk/MushroomBounce1", 0.05f),
-											("Tiles/buk/MushroomBounce3", 0.05f),
-											("Tiles/buk/MushroomBounce4", 0.05f),
-											("Tiles/buk/MushroomBounce3", 0.05f));
+											("Tiles/Buk/MushroomBounce1", 0.05f),
+											("Tiles/Buk/MushroomBounce2", 0.1f),
+											("Tiles/Buk/MushroomBounce1", 0.05f),
+											("Tiles/Buk/MushroomBounce3", 0.05f),
+											("Tiles/Buk/MushroomBounce4", 0.05f),
+											("Tiles/Buk/MushroomBounce3", 0.05f));
 		}
 
 		#endregion rInitialisation

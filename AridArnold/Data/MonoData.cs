@@ -65,7 +65,7 @@ namespace AridArnold
 		/// </summary>
 		public bool FileExists(string path)
 		{
-			return File.Exists($@"Content\{GetRemappedPath(path)}");
+			return File.Exists(Path.Join("Content",GetRemappedPath(path)));
 		}
 
 
@@ -161,7 +161,7 @@ namespace AridArnold
 		{
 			foreach (string path in pathsToTry)
 			{
-				string fullPath = Path.Combine(folder, path);
+				string fullPath = Path.Join(folder, path);
 				if (TextureFileExists(fullPath))
 				{
 					return MonoGameLoad<Texture2D>(fullPath);
@@ -180,7 +180,7 @@ namespace AridArnold
 		{
 			foreach (string path in pathsToTry)
 			{
-				string fullPath = Path.Combine(folder, path);
+				string fullPath = Path.Join(folder, path);
 				if (!fullPath.EndsWith(".mia"))
 				{
 					fullPath += ".mia";

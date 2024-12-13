@@ -72,17 +72,17 @@
 			mJumpDownTex = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Trundle/TrundleJumpDown");
 
 			mRunningAnimation = new Animator(Animator.PlayType.Repeat,
-												("Enemies/trundle/TrundleWalk1", 0.12f),
-												("Enemies/trundle/TrundleWalk2", 0.15f),
-												("Enemies/trundle/TrundleWalk3", 0.12f),
-												("Enemies/trundle/TrundleWalk4", 0.12f));
+												("Enemies/Trundle/TrundleWalk1", 0.12f),
+												("Enemies/Trundle/TrundleWalk2", 0.15f),
+												("Enemies/Trundle/TrundleWalk3", 0.12f),
+												("Enemies/Trundle/TrundleWalk4", 0.12f));
 			mRunningAnimation.Play();
 
 			mStandAnimation = new Animator(Animator.PlayType.Repeat,
-											("Enemies/trundle/TrundleStand1", 0.4f),
-											("Enemies/trundle/TrundleStand2", 0.7f),
-											("Enemies/trundle/TrundleStand4", 0.5f),
-											("Enemies/trundle/TrundleStand3", 0.8f));
+											("Enemies/Trundle/TrundleStand1", 0.4f),
+											("Enemies/Trundle/TrundleStand2", 0.7f),
+											("Enemies/Trundle/TrundleStand4", 0.5f),
+											("Enemies/Trundle/TrundleStand3", 0.8f));
 			mStandAnimation.Play();
 
 			//Botch position a bit. Not sure what's happening here.

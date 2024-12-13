@@ -11596,8 +11596,8 @@
 /processorParam:TextureFormat=Color
 /build:NPC/Thornforge/TalkNormal.png
 
-#begin NPC/Thornforge/ThornForge.mtn
-/copy:NPC/Thornforge/ThornForge.mtn
+#begin NPC/Thornforge/Thornforge.mtn
+/copy:NPC/Thornforge/Thornforge.mtn
 
 #begin NPC/Tome/Default-1.png
 /importer:TextureImporter
@@ -16204,8 +16204,8 @@
 #begin Sound/Music/Mountain.adpcm
 /copy:Sound/Music/Mountain.adpcm
 
-#begin Sound/Music/Steamplant.adpcm
-/copy:Sound/Music/Steamplant.adpcm
+#begin Sound/Music/SteamPlant.adpcm
+/copy:Sound/Music/SteamPlant.adpcm
 
 #begin Sound/Music/WormWarp.adpcm
 /copy:Sound/Music/WormWarp.adpcm
@@ -16438,9 +16438,9 @@
 /processorParam:PremultiplyAlpha=False
 /build:Enemies/Futron-Gun/Bullet.png
 
-#begin Tiles/Buk/mushroom.png
+#begin Tiles/Buk/Mushroom.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:PremultiplyAlpha=False
-/build:Tiles/Buk/mushroom.png
+/build:Tiles/Buk/Mushroom.png
 

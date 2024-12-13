@@ -111,7 +111,7 @@
 
 			if (mIsWalkingType)
 			{
-				string walkAnim = Path.Combine(folder, "Walk.max");
+				string walkAnim = Path.Join(folder, "Walk.max");
 
 				if (MonoData.I.FileExists(walkAnim))
 				{

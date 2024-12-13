@@ -155,7 +155,7 @@
 		private bool IsProfileUsed(string fileName)
 		{
 			string baseDirectory = Path.Join("data/", ProfileSaveInfo.PROFILE_SAVE_FOLDER);
-			string fullPath = Path.Combine(baseDirectory, fileName);
+			string fullPath = Path.Join(baseDirectory, fileName);
 
 			return File.Exists(fullPath);
 		}
