@@ -306,7 +306,7 @@ namespace AridArnold
 		/// <returns>Full folder directory</returns>
 		protected override string GetBaseFolder()
 		{
-			return Directory.GetCurrentDirectory() + "\\data\\";
+			return Path.Join(Directory.GetCurrentDirectory(),"data");
 		}
 
 		#endregion rFileSystem
