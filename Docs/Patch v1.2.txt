@@ -1,0 +1,25 @@
+Linux problems:
+-Text is not bold?
+-Can't open folder
+
+Patch:
+-NPCs with too little transparency:
+	-Zippy
+	-Shopkeep
+-Change item red to be more tasteful
+-Witches give full lives(difficulty select?)
+-Text speed should not affect grill vogel
+
+Level changes
+2-7: change return route?
+2-15: change end. make start easier.
+3-1: make jump easier
+3-2: Increase side platform
+3-9: Move oil to here and rat poison back
+
+
+Hub changes
+Library:
+	Remove moving platform to get to fallin farry.
+	Fix weird platform arrangement in left side
+
