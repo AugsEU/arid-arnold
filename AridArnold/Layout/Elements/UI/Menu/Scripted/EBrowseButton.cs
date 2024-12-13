@@ -1,6 +1,7 @@
 ﻿
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace AridArnold
 {
@@ -12,7 +13,7 @@ namespace AridArnold
 
 		public override void DoAction()
 		{
-			string baseDirectory = Path.Join("data/", ProfileSaveInfo.PROFILE_SAVE_FOLDER);
+			string baseDirectory = Path.Join("data", ProfileSaveInfo.PROFILE_SAVE_FOLDER);
 			if (!Directory.Exists(baseDirectory))
 			{
 				return;
@@ -22,15 +23,34 @@ namespace AridArnold
 
 			try
 			{
-				Process.Start("explorer.exe", fullPath);
-				
+				if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+				{
+					string explorerPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe");
+					if (!File.Exists(explorerPath))
+					{
+						throw new FileNotFoundException("Explorer.exe not found.");
+					}
+
+					Process.Start("explorer.exe", fullPath);
+				}
+				else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+				{
+					// Use an alternative for Linux, such as xdg-open.
+					Process.Start("xdg-open", fullPath);
+				}
+				else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+				{
+					// Use open command for macOS.
+					Process.Start("open", fullPath);
+				}
+
 				// Need to exit game.
 				Main.ExitGame();
 			}
-			catch (Win32Exception win32Exception)
+			catch (Exception ex)
 			{
 				//The system cannot find the file specified...
-				Console.WriteLine(win32Exception.Message);
+				Console.WriteLine(ex.Message);
 			}
 		}
 	}

@@ -285,10 +285,13 @@ namespace AridArnold
 
 		public static string SanitiseFileName(string fileName)
 		{
-			// Remove invalid characters
-			string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
-			string invalidRegStr = string.Format(@"[{0}]+", invalidChars);
+			// Full list of forbidden characters across Windows, macOS, and Linux
+			string forbiddenChars = """/\:*?\"<>|"""; 
+			forbiddenChars += "\0\n\r";
+			forbiddenChars += new string(Path.GetInvalidFileNameChars()); // plus any we have forgotten?
 
+			// Create a regex pattern to match any of these characters
+			string invalidRegStr = string.Format(@"[{0}]+", Regex.Escape(forbiddenChars));
 			return Regex.Replace(fileName, invalidRegStr, "");
 		}
 
