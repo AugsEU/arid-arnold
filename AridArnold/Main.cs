@@ -334,10 +334,12 @@
 			else
 			{
 				mWindowRect = GraphicsDevice.PresentationParameters.Bounds;
-				mGraphicsManager.IsFullScreen = true;
 
 				mGraphicsManager.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
 				mGraphicsManager.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+				mGraphicsManager.ApplyChanges();
+
+				mGraphicsManager.IsFullScreen = true;
 			}
 
 			mGraphicsManager.ApplyChanges();
