@@ -1,6 +1,5 @@
 Linux problems:
 -Text is not bold?
--Can't open folder
 
 Patch:
 -NPCs with too little transparency:
@@ -9,6 +8,7 @@ Patch:
 -Change item red to be more tasteful
 -Witches give full lives(difficulty select?)
 -Text speed should not affect grill vogel
+-Possible bug with double bound controller inputs
 
 Level changes
 2-7: change return route?
@@ -16,10 +16,21 @@ Level changes
 3-1: make jump easier
 3-2: Increase side platform
 3-9: Move oil to here and rat poison back
-
-
+5-8: Make more forgiving on jumps by adding plats?
+5-10: fix start?
+5-12: extend some blocks
+5-13: make easier?
+6-12: remove spikes
+6-9: extend top plat
+7-9: rework this
+9-7: reword this
+9-8: REDUCE SPIKES
+9-17: Add bumper to stop jump into gun.
 Hub changes
 Library:
 	Remove moving platform to get to fallin farry.
 	Fix weird platform arrangement in left side
+Mirrors:
+	Make top exit more obvious.
+	Add fallthrough on L
 
