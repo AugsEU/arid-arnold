@@ -49,7 +49,7 @@
 																   , ("Enemies/Futron-Gun/Explode6", EFT)
 																   , ("Enemies/Futron-Gun/Explode7", EFT)
 																   , ("Enemies/Futron-Gun/Explode8", EFT));
-			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/bullet");
+			mTexture = MonoData.I.MonoGameLoad<Texture2D>("Enemies/Futron-Gun/Bullet");
 
 			if (mDirection == CardinalDirection.Left)
 			{

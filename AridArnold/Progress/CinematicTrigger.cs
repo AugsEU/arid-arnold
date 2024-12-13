@@ -41,7 +41,7 @@
 		{
 			mType = MonoParse.GetEnum<TriggerType>(cineNode.Attributes["type"]);
 			mLevelTrigger = MonoParse.GetInt(cineNode["level"]);
-			mCinematic = new GameCinematic(Path.Combine(campaignRoot, cineNode["cinematicPath"].InnerText));
+			mCinematic = new GameCinematic(Path.Join(campaignRoot, cineNode["cinematicPath"].InnerText));
 		}
 
 		#endregion rInit

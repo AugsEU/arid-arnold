@@ -35,7 +35,7 @@
 
 					string fileNameRaw = Path.GetFileNameWithoutExtension(path);
 
-					string sanPath = Path.Combine(dir, fileNameRaw);
+					string sanPath = Path.Join(dir, fileNameRaw);
 
 					return new MGStreamBuffer(sanPath);
 				case ".adpcm":

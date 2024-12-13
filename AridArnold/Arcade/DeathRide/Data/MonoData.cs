@@ -135,7 +135,7 @@
 			const string PATH_PREFIX = "Arcade/DeathRide";
 			if (!path.StartsWith("Arcade"))
 			{
-				path = Path.Combine(PATH_PREFIX, path);
+				path = Path.Join(PATH_PREFIX, path);
 			}
 			
 
