@@ -1,4 +1,4 @@
-﻿#define EXTERNAL_CONSOLE
+﻿// #define EXTERNAL_CONSOLE
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
