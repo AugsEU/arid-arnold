@@ -62,6 +62,7 @@
 			LoadCampaign(campaignPath);
 			if (BF.DEBUG_LOADER)
 			{
+				MonoDebug.Log("Log {0}", BitConverter.IsLittleEndian);
 				mMaxLives = 7;
 				CollectableManager.I.IncPermanentCount(0x0300, 100);
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
@@ -73,10 +74,10 @@
 					CollectableManager.I.IncPermanentCount(coinID, 100);
 				}
 
-				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
+				TimeZoneManager.I.SetCurrentTimeZoneAndAge(-1, 0);
 
 				//QueueLoadSequence(new HubDirectLoader(801));
-				QueueLoadSequence(new LevelDirectLoader(909));
+				QueueLoadSequence(new LevelDirectLoader(906));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				//FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);

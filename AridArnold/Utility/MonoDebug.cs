@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿#define EXTERNAL_CONSOLE
+
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace AridArnold
@@ -23,24 +25,25 @@ namespace AridArnold
 		public static void Log(string msg, params object[] args)
 		{
 #if DEBUG
-#if WINDOWS_OFF
-			if(!mConsoleAlloc)
+#if EXTERNAL_CONSOLE
+			if (!mConsoleAlloc)
 			{
 				AllocConsole();
 				mConsoleAlloc = true;
 			}
+#endif // EXTERNAL_CONSOLE
 			mLogLineNum++;
 			string format = string.Format("[{0}]: {1}", mLogLineNum.ToString("X4"), msg);
 			Console.WriteLine(format, args);
-#endif // WINDOWS
+
 #endif
 		}
 
-#if WINDOWS_OFF
+#if EXTERNAL_CONSOLE
 		[DllImport("kernel32.dll", SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		static extern bool AllocConsole();
-#endif // WINDOWS
+#endif // EXTERNAL_CONSOLE
 
 
 		public static void Break(string msg = "", params object[] args)
