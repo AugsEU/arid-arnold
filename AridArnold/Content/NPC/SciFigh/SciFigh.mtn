@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>SciFigh</name>
 	<textStyle>
-		<fillColor>020F00AF</fillColor>
+		<fillColor>020F00CF</fillColor>
 		<borderColor>183F1B</borderColor>
 		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>
