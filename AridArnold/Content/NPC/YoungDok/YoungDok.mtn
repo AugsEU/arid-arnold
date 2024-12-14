@@ -4,7 +4,7 @@
 	<textStyle>
 		<scrollSpeed>0.55</scrollSpeed>
 		<framesPerLetter>5</framesPerLetter>
-		<fillColor>1E1E28A2</fillColor>
+		<fillColor>1E1E28C2</fillColor>
 		<borderColor>004705</borderColor>
 		<voice>NPC/Voice/AltMale.xml</voice>
 	</textStyle>

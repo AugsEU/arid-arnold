@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Devil Sister</name>
 	<textStyle>
-		<fillColor>473C2DA2</fillColor>
+		<fillColor>473C2DC2</fillColor>
 		<borderColor>28221A</borderColor>
 		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>

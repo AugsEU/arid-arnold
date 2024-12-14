@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Shop Keeper</name>
 	<textStyle>
-		<fillColor>160A05A2</fillColor>
+		<fillColor>160A05C2</fillColor>
 		<borderColor>77381C</borderColor>
 		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>

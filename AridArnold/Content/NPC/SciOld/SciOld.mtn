@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Scientissmo</name>
 	<textStyle>
-		<fillColor>1E1E1EA2</fillColor>
+		<fillColor>1E1E1EC2</fillColor>
 		<borderColor>070400</borderColor>
 		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>

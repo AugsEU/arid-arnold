@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Devil Head</name>
 	<textStyle>
-		<fillColor>473C2DA2</fillColor>
+		<fillColor>473C2DC2</fillColor>
 		<borderColor>28221A</borderColor>
 		<voice>NPC/Voice/DefaultMale.xml</voice>
 	</textStyle>

@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Boss</name>
 	<textStyle>
-		<fillColor>0F102DA2</fillColor>
+		<fillColor>0F102DC2</fillColor>
 		<borderColor>3D41B5</borderColor>
 		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>

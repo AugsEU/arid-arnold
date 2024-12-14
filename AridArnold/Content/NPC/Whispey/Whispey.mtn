@@ -4,7 +4,7 @@
 	<textStyle>
 		<scrollSpeed>0.55</scrollSpeed>
 		<framesPerLetter>5</framesPerLetter>
-		<fillColor>5D6060A2</fillColor>
+		<fillColor>5D6060C2</fillColor>
 		<borderColor>A43030</borderColor>
 		<voice>NPC/Voice/AltFemale.xml</voice>
 	</textStyle>

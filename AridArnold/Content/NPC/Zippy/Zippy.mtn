@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Zippy</name>
 	<textStyle>
-		<fillColor>000000A2</fillColor>
+		<fillColor>000000C2</fillColor>
 		<borderColor>7F7272</borderColor>
 		<voice>NPC/Voice/DefaultFemale.xml</voice>
 	</textStyle>

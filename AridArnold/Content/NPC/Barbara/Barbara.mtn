@@ -2,7 +2,7 @@
 <simpleTalkNPC>
 	<name>Barbara</name>
 	<textStyle>
-		<fillColor>2A1223A2</fillColor>
+		<fillColor>2A1223C2</fillColor>
 		<borderColor>7325c6</borderColor>
 		<scrollSpeed>0.9</scrollSpeed>
 		<framesPerLetter>4</framesPerLetter>
