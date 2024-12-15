@@ -52,12 +52,12 @@ namespace AridArnold
 			{
 				if(i % 2 == 0)
 				{
-					MonoDraw.DrawStringCentredShadow(info, smallFont, pos, lerpColor, mCreditsLines[i], DrawLayer.Front);
+					MonoDraw.DrawStringCentredShadow(info, smallFont, pos, lerpColor, mCreditsLines[i], 2.0f, DrawLayer.Front);
 					pos.Y += 30.0f;
 				}
 				else
 				{
-					MonoDraw.DrawStringCentredShadow(info, bigFont, pos, lerpColor, mCreditsLines[i], DrawLayer.Front);
+					MonoDraw.DrawStringCentredShadow(info, bigFont, pos, lerpColor, mCreditsLines[i], 2.0f, DrawLayer.Front);
 					pos.Y += 70.0f;
 				}
 			}

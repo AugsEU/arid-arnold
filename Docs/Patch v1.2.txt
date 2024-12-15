@@ -2,12 +2,7 @@ Linux problems:
 -Text is not bold?
 
 Patch:
--NPCs with too little transparency:
-	-Zippy
-	-Shopkeep
--Change item red to be more tasteful
 -Witches give full lives(difficulty select?)
--Text speed should not affect grill vogel
 -Possible bug with double bound controller inputs
 
 Level changes

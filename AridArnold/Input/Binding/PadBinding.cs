@@ -4,7 +4,7 @@ namespace AridArnold
 	/// <summary>
 	/// Joypad button binding.
 	/// </summary>
-	class PadBinding : InputBinding
+	class PadBinding : InputBinding, IEquatable<PadBinding>
 	{
 		Buttons mInputKey;
 
@@ -56,6 +56,25 @@ namespace AridArnold
 			}
 
 			return BindingCategory.kGamepadButton;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj is null || obj is not PadBinding)
+			{
+				return false;
+			}
+			return Equals((PadBinding)obj);
+		}
+
+		public bool Equals(PadBinding other)
+		{
+			return other.mInputKey == mInputKey;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 
 		public override void WriteFromBinary(BinaryWriter bw)

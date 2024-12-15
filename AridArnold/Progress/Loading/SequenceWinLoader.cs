@@ -153,7 +153,7 @@ namespace AridArnold
 
 			// Title
 			string titleText = LanguageManager.I.GetText("UI.Sequence.SequenceComplete");
-			MonoDraw.DrawStringCentredShadow(info, bigFont, pos, textColor, titleText, DrawLayer.Front);
+			MonoDraw.DrawStringCentredShadow(info, bigFont, pos, textColor, titleText, 2.0f, DrawLayer.Front);
 			Rectangle dividingLine = new Rectangle(16, 76, GameScreen.GAME_AREA_WIDTH - 32, 2);
 			MonoDraw.DrawRectShadow(info, dividingLine, textColor, textColor * 0.2f, 2.0f, DrawLayer.Front);
 			pos.Y += 80.0f;
@@ -163,7 +163,7 @@ namespace AridArnold
 
 			pos.Y = 500.0f;
 			string nextText = LanguageManager.I.GetText("UI.Sequence.GoNext");
-			MonoDraw.DrawStringCentredShadow(info, font, pos, textColor, nextText, DrawLayer.Front);
+			MonoDraw.DrawStringCentredShadow(info, font, pos, textColor, nextText, 2.0f, DrawLayer.Front);
 
 			base.DrawEffects(info);
 		}
@@ -190,8 +190,8 @@ namespace AridArnold
 			SpriteFont font = FontManager.I.GetFont("Pixica", 24, false);
 			Color textColor = new Color(127, 127, 127);
 
-			MonoDraw.DrawStringCentredShadow(info, font, pos - statOffset, stat.mColor, stat.mName, DrawLayer.Front);
-			MonoDraw.DrawStringCentredShadow(info, font, pos + statOffset, textColor, stat.mValue, DrawLayer.Front);
+			MonoDraw.DrawStringCentredShadow(info, font, pos - statOffset, stat.mColor, stat.mName, 2.0f, DrawLayer.Front);
+			MonoDraw.DrawStringCentredShadow(info, font, pos + statOffset, textColor, stat.mValue, 2.0f, DrawLayer.Front);
 		}
 	}
 }

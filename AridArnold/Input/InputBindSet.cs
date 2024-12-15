@@ -156,6 +156,29 @@
 			return "";
 		}
 
+
+
+		/// <summary>
+		/// Are any of our bindings the same as the others?
+		/// </summary>
+		public bool ClashesWith(InputBindSet other)
+		{
+			MonoDebug.Assert(other != null && !ReferenceEquals(this, other));
+
+			foreach(InputBinding myBind in mBindings)
+			{
+				foreach(InputBinding otherBind in other.mBindings)
+				{
+					if(otherBind.Equals(myBind))
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
 		#endregion rUtility
 
 

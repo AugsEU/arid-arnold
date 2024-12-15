@@ -129,7 +129,7 @@ namespace AridArnold
 			}
 			else if (IsSelected())
 			{
-				bool enterKey = InputManager.I.AnyGangPressed(BindingGang.SysConfirm);
+				bool enterKey = InputManager.I.KeyPressed(InputAction.SysConfirm);
 				bool mouseClick = MouseClicked();
 
 				if ((enterKey || mouseClick) && AllowClick())
@@ -229,7 +229,7 @@ namespace AridArnold
 				modText = string.Format(".{0}.", modText);
 			}
 
-			MonoDraw.DrawStringCentredShadow(info, mFont, textPos, textColor, modText, GetDepth());
+			MonoDraw.DrawStringCentredShadow(info, mFont, textPos, textColor, modText, 2.0f, GetDepth());
 		}
 
 

@@ -249,8 +249,9 @@
 
 			SpeechBoxStyle style = mStyle;
 
+			bool grillVogelHack = this is GrillVogel;
 			bool fastText = OptionsManager.I.GetFastText() || CampaignManager.I.IsSpeedrunMode();
-			if (fastText && style.mFramesPerLetter > 2)
+			if (fastText && style.mFramesPerLetter > 2 && !grillVogelHack)
 			{
 				style.mFramesPerLetter -= 1;
 			}

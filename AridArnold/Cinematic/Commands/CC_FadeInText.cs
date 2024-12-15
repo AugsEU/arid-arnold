@@ -54,7 +54,7 @@ namespace AridArnold
 			float t = MathF.Floor(FADE_QUANT * mFadeTimer.GetPercentageF()) / FADE_QUANT;
 			Color lerpColor = MonoMath.Lerp(Color.Black, mTextColor, t);
 
-			MonoDraw.DrawStringCentredShadow(info, mFont, mCentrePos, lerpColor, mLocString, mLayer);
+			MonoDraw.DrawStringCentredShadow(info, mFont, mCentrePos, lerpColor, mLocString, 2.0f, mLayer);
 		}
 	}
 }

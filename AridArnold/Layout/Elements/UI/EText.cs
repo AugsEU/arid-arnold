@@ -38,7 +38,7 @@ namespace AridArnold
 			{
 				if(mShadow)
 				{
-					MonoDraw.DrawStringCentredShadow(info, mFont, GetPosition(), GetColor(), str, GetDepth());
+					MonoDraw.DrawStringCentredShadow(info, mFont, GetPosition(), GetColor(), str, 2.0f, GetDepth());
 				}
 				else
 				{

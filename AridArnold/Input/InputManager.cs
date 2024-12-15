@@ -1,11 +1,11 @@
 ﻿namespace AridArnold
 {
+	using Microsoft.Xna.Framework;
 	using Microsoft.Xna.Framework.Input;
+	using System.Linq;
+	using InputBindingGangList = Dictionary<BindingGang, InputAction[]>;
 	using InputBindingMap = Dictionary<InputAction, InputBindSet>;
 	using InputBindingPair = KeyValuePair<InputAction, InputBindSet>;
-	using InputBindingGangList = Dictionary<BindingGang, InputAction[]>;
-	using System.Linq;
-	using Microsoft.Xna.Framework;
 
 	/// <summary>
 	/// Represents the types of actions an input can be bound to.
@@ -478,6 +478,46 @@
 			}
 
 			return Buttons.None;
+		}
+
+
+		public bool IsInputActionClashing(InputAction action)
+		{
+			InputBindSet subject;
+			if(!mInputBindings.TryGetValue(action, out subject))
+			{
+				return false;
+			}
+
+			// Search for a clash.
+			foreach(var kv in mInputBindings)
+			{
+				if(kv.Key == action)
+				{
+					continue;
+				}
+
+				// Skip system keys
+				switch (kv.Key)
+				{
+					case InputAction.SysUp:
+					case InputAction.SysDown:
+					case InputAction.SysLeft:
+					case InputAction.SysRight:
+					case InputAction.SysConfirm:
+					case InputAction.SysLClick:
+					case InputAction.SysRClick:
+					case InputAction.SysFullScreen:
+						continue;
+				}
+
+				if(subject.ClashesWith(kv.Value))
+				{
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		#endregion rRebind

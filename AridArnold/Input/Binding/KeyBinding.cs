@@ -15,7 +15,7 @@
 	/// <summary>
 	/// Keyboard button binding.
 	/// </summary>
-	class KeyBinding : InputBinding
+	class KeyBinding : InputBinding, IEquatable<KeyBinding>
 	{
 		Keys mInputKey;
 
@@ -49,9 +49,30 @@
 			return BindingCategory.kKeyboard;
 		}
 
+		public override bool Equals(object obj)
+		{
+			if(obj is null || obj is not KeyBinding)
+			{
+				return false;
+			}
+			return Equals((KeyBinding)obj);
+		}
+
+		public bool Equals(KeyBinding other)
+		{
+			return other.mInputKey == mInputKey;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
 		public override void WriteFromBinary(BinaryWriter bw)
 		{
 			bw.Write((int)mInputKey);
 		}
+
+
 	}
 }

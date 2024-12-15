@@ -29,8 +29,8 @@ namespace AridArnold
 			string nameStr = mSaveFileRef.GetProfileName();
 			string saveTimeStr = mSaveFileRef.GetSaveTimeStr();
 
-			MonoDraw.DrawStringCentredShadow(info, mFont, namePosition, GetButtonColor(), nameStr, GetDepth());
-			MonoDraw.DrawStringCentredShadow(info, mFont, timePosition, GetButtonColor(), saveTimeStr, GetDepth());
+			MonoDraw.DrawStringCentredShadow(info, mFont, namePosition, GetButtonColor(), nameStr, 2.0f, GetDepth());
+			MonoDraw.DrawStringCentredShadow(info, mFont, timePosition, GetButtonColor(), saveTimeStr, 2.0f, GetDepth());
 		}
 	}
 }

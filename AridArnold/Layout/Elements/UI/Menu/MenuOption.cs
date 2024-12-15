@@ -185,8 +185,8 @@
 			textPos.X += mFont.MeasureString(modText).X * 0.5f;
 			textPos.Y += mSize.Y * 0.5f;
 
-			MonoDraw.DrawStringCentredShadow(info, mFont, textPos, textColor, modText, GetDepth());
-			MonoDraw.DrawStringCentredShadow(info, mFont, mOptionCenPoint, textColor, GetOptionStr(mSelectedOption), GetDepth());
+			MonoDraw.DrawStringCentredShadow(info, mFont, textPos, textColor, modText, 2.0f, GetDepth());
+			MonoDraw.DrawStringCentredShadow(info, mFont, mOptionCenPoint, textColor, GetOptionStr(mSelectedOption), 2.0f, GetDepth());
 			base.Draw(info);
 		}
 

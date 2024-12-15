@@ -10,8 +10,8 @@
 			get
 			{
 				BubbleStyle style = new BubbleStyle();
-				style.mInnerColor = new Color(20, 20, 20, 220);
-				style.mBorderColor = new Color(150, 150, 150, 200);
+				style.mInnerColor = new Color(20, 20, 20, 230);
+				style.mBorderColor = new Color(150, 150, 150, 240);
 				return style;
 			}
 		}

@@ -314,7 +314,7 @@ namespace AridArnold
 					mMenuLayout.SetSelectedElement("saveFileLstTop");
 					break;
 				case MainMenuArea.kOptionsArea:
-					mMenuLayout.SetSelectedElement("visionOpt");
+					mMenuLayout.SetSelectedElement("fullScreenOpt");
 					break;
 				case MainMenuArea.kRebindArea:
 					mMenuLayout.SetSelectedElement("upRbnd");

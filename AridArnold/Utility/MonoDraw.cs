@@ -232,17 +232,18 @@
 		/// <summary>  
 		/// Draw a string centred at a position with a shadow
 		/// </summary>
-		public static void DrawStringCentredShadow(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, DrawLayer depth = DrawLayer.Bubble)
+		public static void DrawStringCentredShadow(DrawInfo info, SpriteFont font, Vector2 position, Color color, string text, float dropDist = 2.0f, DrawLayer depth = DrawLayer.Bubble)
 		{
 			Color shadowColor = color * 0.2f;
+			shadowColor.A = color.A;
 			Vector2 size = font.MeasureString(text);
 			Vector2 drawPosition = position - size * 0.5f;
 			drawPosition.X = MathF.Round(drawPosition.X);
 			drawPosition.Y = MathF.Round(drawPosition.Y);
-			Vector2 shadowPos = drawPosition + new Vector2(2.0f, 2.0f);
+			Vector2 shadowPos = drawPosition + new Vector2(dropDist, dropDist);
 
-			info.spriteBatch.DrawString(font, text, drawPosition, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 			info.spriteBatch.DrawString(font, text, shadowPos, shadowColor, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
+			info.spriteBatch.DrawString(font, text, drawPosition, color, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, GetDepth(depth));
 		}
 
 

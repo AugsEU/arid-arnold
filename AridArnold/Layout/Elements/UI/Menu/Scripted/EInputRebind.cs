@@ -1,5 +1,7 @@
 ﻿
 
+using DeathRide;
+
 namespace AridArnold
 {
 	/// <summary>
@@ -15,6 +17,10 @@ namespace AridArnold
 		bool mInRebindMode;
 		MonoTimer mTimeoutTimer;
 		PercentageTimer mUnlockSelectTimer;
+		bool mIsClashing = false;
+
+		Color mClashColor = Color.OrangeRed;
+		Color mOKColor = Color.White;
 
 		public EInputRebind(XmlNode rootNode, Layout parent) : base(rootNode, parent)
 		{
@@ -23,6 +29,10 @@ namespace AridArnold
 			FormatBaseText();
 			mTimeoutTimer = new MonoTimer();
 			mUnlockSelectTimer = new PercentageTimer(UNLOCK_TIME);
+
+			mOKColor = mDefaultColor;
+
+			mIsClashing = false;
 		}
 
 		private void FormatBaseText()
@@ -68,15 +78,19 @@ namespace AridArnold
 
 			FormatBaseText();
 
+			bool isClashing = InputManager.I.IsInputActionClashing(mInputAction);
+			mDefaultColor = isClashing ? mClashColor : mOKColor;
+
 			base.Update(gameTime);
 		}
 
 		public override void DoAction()
 		{
-			if(mUnlockSelectTimer.IsPlaying())
+			if (mUnlockSelectTimer.IsPlaying())
 			{
 				return;
 			}
+
 			mTimeoutTimer.Start();
 			mInRebindMode = true;
 			GetParent().SetSelectedElement(this);

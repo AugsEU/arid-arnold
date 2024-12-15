@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Mouse button binding.
 	/// </summary>
-	class MouseBtnBinding : InputBinding
+	class MouseBtnBinding : InputBinding, IEquatable<MouseBtnBinding>
 	{
 		MouseButton mMouseButton;
 
@@ -47,6 +47,25 @@
 		public override BindingCategory GetBindingCategory()
 		{
 			return BindingCategory.kMouseButton;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (obj is null || obj is not MouseBtnBinding)
+			{
+				return false;
+			}
+			return Equals((MouseBtnBinding)obj);
+		}
+
+		public bool Equals(MouseBtnBinding other)
+		{
+			return other.mMouseButton == mMouseButton;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 
 		public override void WriteFromBinary(BinaryWriter bw)
