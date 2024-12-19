@@ -62,7 +62,6 @@
 			LoadCampaign(campaignPath);
 			if (BF.DEBUG_LOADER)
 			{
-				MonoDebug.Log("Log {0}", BitConverter.IsLittleEndian);
 				mMaxLives = 7;
 				CollectableManager.I.IncPermanentCount(0x0300, 100);
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
