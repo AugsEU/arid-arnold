@@ -16444,3 +16444,54 @@
 /processorParam:PremultiplyAlpha=False
 /build:Tiles/Buk/Mushroom.png
 
+#begin NPC/ShopEvil/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopEvil/Default.png
+
+#begin NPC/ShopEvil/Gavel.max
+/copy:NPC/ShopEvil/Gavel.max
+
+#begin NPC/ShopEvil/Idle.mia
+/copy:NPC/ShopEvil/Idle.mia
+
+#begin NPC/ShopEvil/Itch.max
+/copy:NPC/ShopEvil/Itch.max
+
+#begin NPC/ShopEvil/Itch1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopEvil/Itch1.png
+
+#begin NPC/ShopEvil/Itch2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopEvil/Itch2.png
+
+#begin NPC/ShopEvil/ShopEvil.mtn
+/copy:NPC/ShopEvil/ShopEvil.mtn
+
+#begin NPC/ShopEvil/TalkAngry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopEvil/TalkAngry.png
+
+#begin NPC/ShopEvil/TalkNormal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:PremultiplyAlpha=False
+/build:NPC/ShopEvil/TalkNormal.png
+
+#begin Text/EN/NPC/ShopEvil/Heckle.txt
+/copy:Text/EN/NPC/ShopEvil/Heckle.txt
+
+#begin Text/EN/NPC/ShopEvil/MushOil.txt
+/copy:Text/EN/NPC/ShopEvil/MushOil.txt
+
+#begin Text/EN/NPC/ShopEvil/HorsePills.txt
+/copy:Text/EN/NPC/ShopEvil/HorsePills.txt
+

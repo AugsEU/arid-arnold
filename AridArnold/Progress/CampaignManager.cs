@@ -71,13 +71,13 @@
 				for (int i = 0; i < 20; i++)
 				{
 					UInt16 coinID = CollectableManager.GetCollectableID(CollectableCategory.Coin, (byte)i);
-					//CollectableManager.I.IncPermanentCount(coinID, 100);
+					CollectableManager.I.IncPermanentCount(coinID, 100);
 				}
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
 				//QueueLoadSequence(new HubDirectLoader(901));
-				QueueLoadSequence(new LevelDirectLoader(40000));
+				QueueLoadSequence(new LevelDirectLoader(908));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);

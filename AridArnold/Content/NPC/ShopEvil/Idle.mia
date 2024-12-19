@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<animation variation="45.0">
+	<main>NPC/ShopEvil/Default</main>
+	<alt>NPC/ShopEvil/Gavel.max</alt>
+	<alt>NPC/ShopEvil/Itch.max</alt>
+</animation>

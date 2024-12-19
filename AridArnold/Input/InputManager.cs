@@ -481,6 +481,9 @@
 		}
 
 
+		/// <summary>
+		/// Does this input have buttons that clash with any other input?
+		/// </summary>
 		public bool IsInputActionClashing(InputAction action)
 		{
 			InputBindSet subject;

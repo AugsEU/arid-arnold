@@ -4,23 +4,26 @@ Linux problems:
 Patch:
 -Witches give full lives(difficulty select?)
 -Possible bug with double bound controller inputs
+-Make funny merchant
 
 Level changes
-2-7: change return route?
-2-15: change end. make start easier.
-3-1: make jump easier
-3-2: Increase side platform
-3-9: Move oil to here and rat poison back
-5-8: Make more forgiving on jumps by adding plats?
-5-10: fix start?
-5-12: extend some blocks
-5-13: make easier?
-6-12: remove spikes
-6-9: extend top plat
-7-9: rework this
-9-7: reword this
-9-8: REDUCE SPIKES
-9-17: Add bumper to stop jump into gun.
+[X] 2-7: change return route?
+[X] 2-15: change end. make start easier.
+[X] 3-1: make jump easier
+[X] 3-2: Increase side platform
+[X] 3-9: Move oil to here and rat poison back
+[X] 5-8: Make more forgiving on jumps by adding plats?
+[X] 5-10: fix start?
+[X] 5-12: extend some blocks
+[V] 5-13: make easier?
+[X] 6-12: remove spikes
+[X] 6-9: extend top plat
+[X] 7-9: rework this
+[X] 9-7: reword this
+[X] 9-8: REDUCE SPIKES
+[X] 9-17: Add bumper to stop jump into gun.
+
+
 Hub changes
 Library:
 	Remove moving platform to get to fallin farry.
