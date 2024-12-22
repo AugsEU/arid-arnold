@@ -1,38 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
   </PropertyGroup>
+
   <PropertyGroup>
-    <PackageIcon>arnold-run0.png</PackageIcon>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <PackageIcon>Icon.bmp</PackageIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <StartupObject>AridArnold.Program</StartupObject>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>$(DefineConstants);WARN_UNIMPLEMENTED_SOUND</DefineConstants>
   </PropertyGroup>
+
   <ItemGroup>
-    <Content Include="Icon.ico" />
+    <Content Include="Icon.bmp">
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <EmbeddedResource Include="Icon.bmp">
+      <LogicalName>Icon.bmp</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icon.ico" />
-  </ItemGroup>
+
+
+
   <ItemGroup>
     <MonoGameContentReference Include="./Content/Content.mgcb" />
   </ItemGroup>
+
   <ItemGroup>
     <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Contentless" Version="4.0.0" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
     <PackageReference Include="TracyWrapperStubs" Version="0.20.0" />
   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Content\Fonts\" />
   </ItemGroup>
