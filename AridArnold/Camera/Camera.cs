@@ -1,6 +1,4 @@
-﻿using DeathRide;
-
-namespace AridArnold
+﻿namespace AridArnold
 {
 	/// <summary>
 	/// Struct to specify the camera
@@ -94,7 +92,10 @@ namespace AridArnold
 		/// <param name="gameTime"></param>
 		public void Update(GameTime gameTime)
 		{
+			// See if there is a new camera movement.
 			CheckQueue();
+
+			// Perform camera movement if needed.
 			if (mCurrentCameraMovement is not null)
 			{
 				mCurrentCameraMovement.Update(gameTime);

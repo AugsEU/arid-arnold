@@ -1,7 +1,7 @@
 ﻿namespace AridArnold
 {
 	/// <summary>
-	/// These are all files but exist as an enum to solve the issue
+	/// These are all files but exist as an enum to solve the issue of missing path names.
 	/// </summary>
 	enum AridArnoldSFX
 	{
@@ -107,17 +107,17 @@
 		[FilePath("Sound/SFX/Items/BuyItem")]				BuyItem,
 
 		// Arcade
-		[FilePath("Sound/SFX/Misc/ArcadeGameOver")] ArcadeGameOver,
+		[FilePath("Sound/SFX/Misc/ArcadeGameOver")]			ArcadeGameOver,
 
-		[FilePath("Sound/SFX/DeathRide/Convert")]	DeathRideConvert,
-		[FilePath("Sound/SFX/DeathRide/PlayerHit")] DeathRidePlayerHit,
+		[FilePath("Sound/SFX/DeathRide/Convert")]			DeathRideConvert,
+		[FilePath("Sound/SFX/DeathRide/PlayerHit")]			DeathRidePlayerHit,
 
-		[FilePath("Sound/SFX/HorsesAndGun/GetHerDone")] HorseGetHerDone,
-		[FilePath("Sound/SFX/HorsesAndGun/GunShoot")] HorseGunShoot,
-		[FilePath("Sound/SFX/HorsesAndGun/LevelUp")] HorseLevelUp,
-		[FilePath("Sound/SFX/HorsesAndGun/Reload")] HorseReload,
+		[FilePath("Sound/SFX/HorsesAndGun/GetHerDone")]		HorseGetHerDone,
+		[FilePath("Sound/SFX/HorsesAndGun/GunShoot")]		HorseGunShoot,
+		[FilePath("Sound/SFX/HorsesAndGun/LevelUp")]		HorseLevelUp,
+		[FilePath("Sound/SFX/HorsesAndGun/Reload")]			HorseReload,
 
-		[FilePath("Sound/SFX/WormWarp/NewDimension")] WormNewDimension,
-		[FilePath("Sound/SFX/WormWarp/PointGet")] WormPointGet,
+		[FilePath("Sound/SFX/WormWarp/NewDimension")]		WormNewDimension,
+		[FilePath("Sound/SFX/WormWarp/PointGet")]			WormPointGet,
 	}
 }

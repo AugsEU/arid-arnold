@@ -201,9 +201,6 @@
 				startSky.X += mSkyline.Width;
 			}
 
-
-
-
 			EntityManager.I.Draw(info);
 
 			DrawUI(info);

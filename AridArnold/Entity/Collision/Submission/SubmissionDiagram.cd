@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AridArnold.ColliderSubmission" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAoAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Collision\Submission\ColliderSubmission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.EntityColliderSubmission" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Entity\Collision\Submission\EntityColliderSubmission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.PlatformColliderSubmission" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAABAAAFAAAAAAAAAAAAAAAAAAAAAgAAgAAAgA=</HashCode>
+      <FileName>Entity\Collision\Submission\PlatformColliderSubmission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.RectangleColliderSubmission" Collapsed="true">
+    <Position X="4.25" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Collision\Submission\RectangleColliderSubmission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AridArnold.ReflectedTileSubmission" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAAAAAAAAEAAAAAAAAAAAAAggAAAAAAAAAABAAAI=</HashCode>
+      <FileName>Entity\Collision\Submission\ReflectedTileSubmission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

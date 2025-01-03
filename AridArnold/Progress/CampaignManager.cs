@@ -76,7 +76,7 @@
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
 				//QueueLoadSequence(new HubDirectLoader(901));
-				QueueLoadSequence(new LevelDirectLoader(908));
+				QueueLoadSequence(new LevelDirectLoader(703));
 
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
@@ -95,6 +95,8 @@
 			mCurrLives = GetStartLives();
 			InputManager.I.LoadInputFrames(0);
 		}
+
+
 
 		/// <summary>
 		/// Load a campaign from the folder.

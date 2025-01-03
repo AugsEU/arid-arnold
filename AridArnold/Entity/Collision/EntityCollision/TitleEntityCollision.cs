@@ -18,7 +18,4 @@
 			base.PostCollisionReact(entity);
 		}
 	}
-
-
-
 }
