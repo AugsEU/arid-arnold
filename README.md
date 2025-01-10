@@ -6,6 +6,10 @@ Arid Arnold is a classic adventure, explore 9 unique worlds, travel in time, tal
 
 Download: https://icefish-software.itch.io/arid-arnold
 
+✔️ Windows
+✔️ Linux
+❓  Mac
+
 ### How did I make this?
 
 I have made a document which explains how this code works, and how it is structured.
