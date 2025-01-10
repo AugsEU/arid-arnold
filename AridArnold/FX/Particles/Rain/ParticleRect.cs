@@ -11,7 +11,7 @@
 	/// <summary>
 	/// Draws rain in a rectangle
 	/// </summary>
-	abstract class ParticleRect<TParticle> : FX where TParticle : IParticle
+	abstract class ParticleRect<TParticle> : FX where TParticle : struct, IParticle
 	{
 		#region rConstants
 

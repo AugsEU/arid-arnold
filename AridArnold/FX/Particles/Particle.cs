@@ -1,7 +1,7 @@
 ﻿namespace AridArnold
 {
 	/// <summary>
-	/// Information for a single particle. Should be 16 bytes
+	/// Information for a single particle. Should be 24 bytes
 	/// </summary>
 	struct Particle
 	{

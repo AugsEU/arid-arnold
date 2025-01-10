@@ -2,7 +2,7 @@
 
 namespace AridArnold
 {
-	unsafe public struct LeafParticle : IParticle // Use interface bleh
+	public struct LeafParticle : IParticle // Use interface bleh
 	{
 		public Vector2 mPos { get; set; }
 		public Vector2 mPrevPos { get; set; }

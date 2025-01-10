@@ -2,7 +2,7 @@
 
 namespace AridArnold
 {
-	unsafe public struct EmberParticle : IParticle // Use interface bleh
+	public struct EmberParticle : IParticle // Use interface bleh
 	{
 		public Vector2 mPos { get; set; }
 		public Vector2 mPrevPos { get; set; }
@@ -12,7 +12,7 @@ namespace AridArnold
 	}
 
 
-	internal class EmberRect : ParticleRect<SnowParticle>
+	internal class EmberRect : ParticleRect<EmberParticle>
 	{
 		Texture2D mSmallParticle;
 		Texture2D mMediumParticle;

@@ -62,11 +62,15 @@
 			LoadCampaign(campaignPath);
 			if (BF.DEBUG_LOADER)
 			{
+				// Unlock max lives
 				mMaxLives = 7;
+
+				// Give resources
 				CollectableManager.I.IncPermanentCount(0x0300, 100);
 				CollectableManager.I.IncPermanentCount(0x0000, 100);
 				CollectableManager.I.IncPermanentCount((UInt16)CollectableCategory.WaterBottle, 100);
 
+				// Give 100 coins of every local currency
 				for (int i = 0; i < 20; i++)
 				{
 					UInt16 coinID = CollectableManager.GetCollectableID(CollectableCategory.Coin, (byte)i);
@@ -75,9 +79,10 @@
 
 				TimeZoneManager.I.SetCurrentTimeZoneAndAge(0, 0);
 
-				//QueueLoadSequence(new HubDirectLoader(901));
-				QueueLoadSequence(new LevelDirectLoader(703));
+				QueueLoadSequence(new HubDirectLoader(701));
+				//QueueLoadSequence(new LevelDirectLoader(204));
 
+				// Unlock all items.
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kGatewayKey, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kRippedJeans, true);
 				FlagsManager.I.SetFlag(FlagCategory.kKeyItems, (UInt32)KeyItemFlagType.kSerpentToken, true);
