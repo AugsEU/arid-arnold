@@ -22,4 +22,6 @@ Open solution in visual studio. Add MonoGame dependencies, hit build.
 
 In visual studio code, [setup your environment](https://github.com/MonoGame/MonoGame/discussions/8131) then you can open the folder and hit F5 to run it.
 
+__*Important*__: You must install the fonts in the Docs/Fonts folder. Pixica, PixicaMicro, and Doomed.
+
 Once you have it running, you can go into BuildFlags.cs to turn the debug loader on/off. Go into CampaignManager.cs to configure the debug loader once it is enabled.
