@@ -2,7 +2,7 @@
 
 ![alt text](https://img.itch.zone/aW1nLzE3ODgxMDg3LnBuZw==/original/nhgQls.png)
 
-Arid Arnold is a classic adventure, explore 9 unique worlds, travel in time, talk to racoons, go to hell and back in search of the fountain of water. In one world you might be rotating the entire level, but in the next you will need to travel in time, there’s even a few levels where you need to coordinate with a clone of yourself.
+Arid Arnold is a classic adventure, explore 9 unique worlds, travel in time, talk to raccoons, go to hell and back in search of the fountain of water. In one world you might be rotating the entire level, but in the next you will need to travel in time, there’s even a few levels where you need to coordinate with a clone of yourself.
 
 Download: https://icefish-software.itch.io/arid-arnold
 
